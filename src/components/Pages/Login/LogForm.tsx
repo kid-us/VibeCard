@@ -3,6 +3,7 @@ import { z } from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import Button from "../../Button/Button";
 
 interface Props {
   emailAddress: (email: string) => void;
@@ -84,9 +85,9 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
           </Link>
         </div>
       </div>
-      <button className="bg-teal-400 w-full py-3 rounded-xl font-poppins mt-5 shadow-lg">
-        Login
-      </button>
+
+      {/* Button */}
+      <Button label="Login" />
     </form>
   );
 };
