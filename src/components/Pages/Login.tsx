@@ -18,7 +18,7 @@ const Login = () => {
           VibeCard
         </Link>
       </div>
-      <div className="flex justify-center w-full ">
+      <div className="flex justify-center w-full">
         <div className="lg:w-5/6 md:w-5/6 w-full">
           <div className="lg:grid grid-cols-2 gap-5">
             <div className="lg:p-10 md:p-9 p-8 shadow-lg bg-white">
