@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Card from "../Login/Card";
-import Form from "../Login/Form";
+import Card from "./Login/Card";
+import LogForm from "./Login/LogForm";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -28,7 +28,7 @@ const Login = () => {
               </p>
 
               {/* Form */}
-              <Form
+              <LogForm
                 emailAddress={(email: string) => setEmail(email)}
                 passwordLen={(len: number) => setPassword(len)}
                 buttonClicked={(value: boolean) =>
@@ -47,7 +47,7 @@ const Login = () => {
                   Continue with goggle.
                 </div>
               </Link>
-              <p className="text-sm mt-5 text-end">
+              <p className="text-sm mt-5 text-end text-gray-500">
                 Don't have an account?
                 <Link to="/register" className="text-sm text-blue-600 ms-1">
                   Create

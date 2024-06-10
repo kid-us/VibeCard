@@ -1,10 +1,11 @@
-import { qrCode, user } from "../../assets";
-import Magnetic from "../GsapMagnetic/Magnetic";
+import { qrCode, user } from "../../../assets";
+import Magnetic from "../../GsapMagnetic/Magnetic";
 
 interface Props {
   passLength: number;
   email: string;
   submitted: boolean;
+  username?: string;
 }
 
 const Card = ({ passLength, email, submitted }: Props) => {

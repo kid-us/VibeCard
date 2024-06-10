@@ -8,6 +8,7 @@ interface Props {
   emailAddress: (email: string) => void;
   passwordLen: (len: number) => void;
   buttonClicked: (value: boolean) => void;
+  username?: (username: string) => void;
 }
 
 const schema = z.object({
