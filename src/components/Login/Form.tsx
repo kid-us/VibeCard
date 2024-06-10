@@ -7,6 +7,7 @@ import { useState } from "react";
 interface Props {
   emailAddress: (email: string) => void;
   passwordLen: (len: number) => void;
+  buttonClicked: (value: boolean) => void;
 }
 
 const schema = z.object({

@@ -6,7 +6,7 @@ import Form from "../Login/Form";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(0);
-  const [s]
+  const [submitButtonClicked, setSubmitButtonClicked] = useState(false);
 
   return (
     <div className="px-40 bg-zinc-50 h-[100vh]">
@@ -28,6 +28,9 @@ const Login = () => {
               <Form
                 emailAddress={(email: string) => setEmail(email)}
                 passwordLen={(len: number) => setPassword(len)}
+                buttonClicked={(value: boolean) =>
+                  setSubmitButtonClicked(value)
+                }
               />
 
               <div className="grid grid-cols-3 mt-4">
@@ -49,7 +52,11 @@ const Login = () => {
               </p>
             </div>
             {/* Card */}
-            <Card email={email} passLength={password} />
+            <Card
+              email={email}
+              passLength={password}
+              submitted={submitButtonClicked}
+            />
           </div>
         </div>
       </div>

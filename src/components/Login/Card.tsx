@@ -3,6 +3,7 @@ import { qrCode, user } from "../../assets";
 interface Props {
   passLength: number;
   email: string;
+  submitted: boolean;
 }
 
 export const Card = ({ passLength, email }: Props) => {
