@@ -80,7 +80,7 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
           <p className="text-red-600 text-xs pt-1">{errors.password.message}</p>
         )}
         <div className="mt-2 text-end">
-          <Link to="/" className="text-xs text-blue-600">
+          <Link to="/request" className="text-xs text-blue-600">
             Forgot Password?
           </Link>
         </div>
