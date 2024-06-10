@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import Input from "../Form/Input";
 const Login = () => {
   return (
     <div className="px-40 ">
@@ -13,42 +13,19 @@ const Login = () => {
                 Log in to your Vibecard account.
               </p>
               <form>
-                <div className="mb-5">
-                  <label
-                    className="text-sm text-gray-500 block"
-                    htmlFor="email"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="text"
-                    name="email"
-                    className="bg-gray-100 py-2 rounded-lg w-full focus:outline-none px-5 mt-1 block"
-                  />
-                </div>
-                <div className="mb-5 relative">
-                  <label
-                    className="text-sm text-gray-500 block"
-                    htmlFor="password"
-                  >
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    name="password"
-                    className="bg-gray-100 py-2 rounded-lg w-full focus:outline-none px-5 mt-1 block"
-                  />
-                  <span className="absolute bi-eye-slash right-2 top-8 cursor-pointer"></span>
-                  <div className="mt-2">
-                    <Link to="/" className="text-sm text-blue-600">
-                      Forgot Password?
-                    </Link>
-                  </div>
-                </div>
+                <Input label="Email" type="text" />
+                <Input
+                  label="Password"
+                  type="password"
+                  forgotPassword
+                  password
+                />
+
                 <button className="bg-teal-400 w-full py-3 rounded-xl font-poppins mt-5">
                   Login
                 </button>
               </form>
+
               <div className="grid grid-cols-3 mt-4">
                 <div className="border-t-2 mt-2"></div>
                 <div className="text-center text-xs">or</div>
