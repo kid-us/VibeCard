@@ -9,16 +9,16 @@ const Login = () => {
   const [submitButtonClicked, setSubmitButtonClicked] = useState(false);
 
   return (
-    <div className="px-40 bg-zinc-50 h-[100vh]">
-      <div className="mb-10 pt-10 ps-24">
-        <Link to={"/"} className="text-xl">
+    <div className="lg:px-40 md:px-36 px-2 bg-zinc-50 h-[100vh]">
+      <div className="lg:mb-10 lg:pt-10 md:mb-10 md:pt-10 py-5 lg:ps-24">
+        <Link to={"/"} className="text-xl text-teal-800 ">
           VibeCard
         </Link>
       </div>
       <div className="flex justify-center w-full ">
-        <div className="w-5/6">
-          <div className="grid grid-cols-2 gap-5">
-            <div className="p-10 shadow-lg bg-white">
+        <div className="lg:w-5/6 md:w-5/6 w-full">
+          <div className="lg:grid grid-cols-2 gap-5">
+            <div className="lg:p-10 md:p-9 p-8 shadow-lg bg-white">
               <h1 className="text-2xl">Welcome Back</h1>
               <p className="text-sm mb-14 mt-2">
                 Log in to your Vibecard account.
