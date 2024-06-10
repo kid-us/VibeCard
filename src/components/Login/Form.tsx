@@ -19,7 +19,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const Form = ({ emailAddress, passwordLen }: Props) => {
+const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
   const {
     register,
     handleSubmit,
@@ -29,6 +29,7 @@ const Form = ({ emailAddress, passwordLen }: Props) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = (data: FieldValues) => {
+    buttonClicked(true);
     console.log(data);
   };
 

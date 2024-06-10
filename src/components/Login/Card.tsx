@@ -6,7 +6,9 @@ interface Props {
   submitted: boolean;
 }
 
-export const Card = ({ passLength, email }: Props) => {
+const Card = ({ passLength, email, submitted }: Props) => {
+  console.log(submitted);
+
   const renderPasswordLength = () => {
     let spans = [];
     for (let i = 0; i < passLength; i++) {
@@ -17,7 +19,7 @@ export const Card = ({ passLength, email }: Props) => {
     return spans;
   };
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center ms-5">
       <div className="content-center">
         <div className="bg-teal-600 w-[95%] rounded text-white p-5 shadow-xl shadow-teal-950 relative overflow-hidden">
           <div className="z-10">
@@ -51,7 +53,7 @@ export const Card = ({ passLength, email }: Props) => {
                   Password : {passLength === 0 ? "" : renderPasswordLength()}
                 </p>
               </div>
-              <div className="">
+              <div className={`${submitted && "animate-pulse"}`}>
                 <img src={qrCode} alt="qr code" className="blur-sm" />
               </div>
             </div>
@@ -61,3 +63,5 @@ export const Card = ({ passLength, email }: Props) => {
     </div>
   );
 };
+
+export default Card;
