@@ -19,11 +19,12 @@ const ForgotPassword = () => {
 
   const onSubmit = (data: FieldValues) => {
     console.log(data);
+    window.location.href = "/check-email";
   };
 
   return (
     <div className="h-[100vh]" style={{ backgroundColor: "#effe" }}>
-      <div className="px-40">
+      <div className="lg:px-40 md:px-36 px-2">
         <div className="lg:pt-10 md:pt-10 py-5 lg:ps-24">
           <Link to={"/"} className="text-xl text-teal-950 ">
             VibeCard
