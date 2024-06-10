@@ -22,7 +22,12 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
+const Form = ({
+  emailAddress,
+  passwordLen,
+  buttonClicked,
+  username,
+}: Props) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
 
@@ -57,7 +62,7 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
           className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
             errors.email && "border-red-600 border-1 border"
           }`}
-          onChange={(event) => emailAddress(event.currentTarget.value)}
+          onChange={(event) => username(event.currentTarget.value)}
         />
         {errors.username && (
           <p className="text-red-600 text-xs pt-1">{errors.username.message}</p>

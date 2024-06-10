@@ -8,9 +8,7 @@ interface Props {
   username?: string;
 }
 
-const Card = ({ passLength, email, submitted }: Props) => {
-  console.log(submitted);
-
+const Card = ({ passLength, email, submitted, username }: Props) => {
   const renderPasswordLength = () => {
     let spans = [];
     for (let i = 0; i < passLength; i++) {
@@ -39,11 +37,22 @@ const Card = ({ passLength, email, submitted }: Props) => {
             <div className="z-10 relative">
               <h1 className="text-end text-sm z-10 float-end">Member card</h1>
               <h1 className="text-xl text-teal-500">VibeCard</h1>
-              <img
-                src={user}
-                alt="User Icon"
-                className="aspect-square w-14 blur-sm mt-4"
-              />
+              <div className={`${username && "flex"}`}>
+                <div>
+                  <img
+                    src={user}
+                    alt="User Icon"
+                    className="aspect-square w-14 blur-sm mt-4"
+                  />
+                </div>
+                {username && (
+                  <div className="mt-8 ms-6">
+                    <p className="first-letter:uppercase text-gray-200">
+                      {username}
+                    </p>
+                  </div>
+                )}
+              </div>
               <div className="grid grid-cols-4">
                 <div className="col-span-3">
                   <p className="mt-5 mb-3 font-poppins text-orange-500">
