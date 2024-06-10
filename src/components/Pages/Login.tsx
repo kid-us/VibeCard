@@ -6,6 +6,7 @@ import Form from "../Login/Form";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(0);
+  const [s]
 
   return (
     <div className="px-40 bg-zinc-50 h-[100vh]">
