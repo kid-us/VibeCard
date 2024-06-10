@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "../Card/Card";
 import RegForm from "./Register/RegForm";
+import SignUpOption from "../SignUpOption/SignUpOption";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -23,7 +24,7 @@ const Register = () => {
         <div className="lg:w-5/6 md:w-5/6 w-full">
           <div className="lg:grid grid-cols-2 gap-5">
             <div className="lg:p-10 md:p-9 p-8 shadow-lg bg-white">
-              <h1 className="text-2xl">Join Vibecard</h1>
+              <h1 className="text-2xl">Join VibeVibeCardcard</h1>
               <p className="text-sm mb-10 mt-2">Sign up for free!</p>
 
               {/* Form */}
@@ -36,17 +37,10 @@ const Register = () => {
                 }
               />
 
-              <div className="grid grid-cols-3 mt-4">
-                <div className="border-t-2 mt-2"></div>
-                <div className="text-center text-xs">or</div>
-                <div className="border-t-2 mt-2"></div>
-              </div>
-              <Link to="/" className="text-xs">
-                <div className="text-center border-2 w-full rounded-lg py-3 mt-4">
-                  <span className="bi-google me-4 text-red-500"></span>
-                  Continue with goggle.
-                </div>
-              </Link>
+              {/* Sign up option */}
+              <SignUpOption />
+
+              {/* Footer */}
               <p className="text-sm mt-5 text-end text-gray-500">
                 Already have an account?
                 <Link to="/login" className="text-sm text-blue-600 ms-1">
