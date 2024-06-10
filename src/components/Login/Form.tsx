@@ -44,7 +44,7 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
           {...register("email")}
           type="email"
           name="email"
-          className={`bg-gray-100 py-2 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins ${
+          className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
             errors.email && "border-red-600 border-1 border"
           }`}
           onChange={(event) => emailAddress(event.currentTarget.value)}
@@ -63,7 +63,7 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
           {...register("password")}
           type={showPassword ? "text" : "password"}
           name="password"
-          className={`bg-gray-100 py-2 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins ${
+          className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
             errors.email && "border-red-600 border-1 border"
           }`}
           onChange={(event) => passwordLen(event.currentTarget.value.length)}
