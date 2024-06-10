@@ -1,5 +1,5 @@
-import { qrCode, user } from "../../../assets";
-import Magnetic from "../../GsapMagnetic/Magnetic";
+import { qrCode, user } from "../../assets";
+import Magnetic from "../GsapMagnetic/Magnetic";
 
 interface Props {
   passLength: number;
@@ -61,7 +61,7 @@ const Card = ({ passLength, email, submitted, username }: Props) => {
                     <span className="text-sm text-stone-400">{email}</span>
                   </p>
 
-                  <p className="font-poppins text-orange-500">
+                  <p className="font-poppins text-orange-500 text-nowrap overflow-hidden">
                     <span className="bi-lock-fill text-blue-400 me-3"></span>
                     Password : {passLength === 0 ? "" : renderPasswordLength()}
                   </p>
