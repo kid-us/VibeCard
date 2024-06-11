@@ -8,7 +8,7 @@ const Home = () => {
       <Navbar />
       <Gradient />
       <div className="container mx-auto">
-        <div className="lg:mt-36 mt-28">
+        <div className="lg:mt-44 mt-28">
           <Hero />
         </div>
       </div>

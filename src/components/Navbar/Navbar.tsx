@@ -49,7 +49,7 @@ const Navbar = () => {
                 <Link
                   key={n.id}
                   to={n.path}
-                  className="lg:inline-block hidden font-poppins me-16 hover:text-gray-300 text-gray-100"
+                  className="lg:inline-block hidden font-poppins me-16 hover:text-gray-300 text-white"
                 >
                   {n.title}
                 </Link>
