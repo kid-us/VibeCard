@@ -91,7 +91,7 @@ const Magnetic: React.FC<MagneticProps> = ({ children }) => {
 
       // Reset the position of all child text elements
       const textElements = element.querySelectorAll(
-        "p, span, h1, h2, h3, h4, h5, h6"
+        "p, span, h1, h2, h3, h4, h5, h6, img"
       );
       textElements.forEach((textElement) => {
         gsap.to(textElement, {
