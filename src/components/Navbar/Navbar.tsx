@@ -29,7 +29,9 @@ const Navbar = () => {
       className={`lg:p-0 py-2  ${
         isSticky &&
         "sticky top-0 shadow animate__animated animate__fadeInDown menu-bg"
-      } ${isMenu && "menu-bg animate__animated animate__bounceInLeft"}`}
+      } ${
+        isMenu && "menu-bg animate__animated animate__bounceInLeft"
+      } lg:shadow`}
     >
       <nav className="container mx-auto relative">
         <div className="lg:grid lg:grid-cols-10 lg:py-4 flex justify-between py-2 px-3">
@@ -39,7 +41,9 @@ const Navbar = () => {
                 <Link
                   key={n.id}
                   to={n.path}
-                  className="font-poppins me-32 text-2xl"
+                  className={`font-poppins me-32 text-2xl lg:text-black ${
+                    isMenu ? "text-black" : "text-white"
+                  }`}
                 >
                   {n.title}
                 </Link>
@@ -47,7 +51,7 @@ const Navbar = () => {
                 <Link
                   key={n.id}
                   to={n.path}
-                  className="lg:inline-block hidden font-poppins me-16 hover:text-gray-400"
+                  className="lg:inline-block hidden font-poppins me-16 hover:text-gray-300 text-gray-100"
                 >
                   {n.title}
                 </Link>
@@ -63,18 +67,32 @@ const Navbar = () => {
             </Link>
             <p
               onClick={() => setIsMenu(!isMenu)}
-              className={`lg:hidden rounded-full border border-black
+              className={`lg:hidden rounded-full border ${
+                isMenu ? "border-black" : "border-white"
+              } 
               } font-poppins text-2xl text-teal-950 font-bold`}
             >
               {isMenu ? (
                 <span className="px-3 flex">
-                  <span className="text-sm font-light pt-[6px] pe-3">Menu</span>
-                  <span className="bi-x text-2xl"></span>
+                  <span
+                    className={`text-sm font-light pt-[6px] pe-3 ${
+                      isMenu ? "text-black" : "text-white"
+                    } `}
+                  >
+                    Menu
+                  </span>
+                  <span
+                    className={`bi-x text-2xl ${
+                      isMenu ? "text-black" : "text-white"
+                    }`}
+                  ></span>
                 </span>
               ) : (
                 <span className="px-3 flex">
-                  <span className="text-sm font-light pt-[6px] pe-3">Menu</span>
-                  <span className="bi-list text-2xl"></span>
+                  <span className="text-sm font-light pt-[6px] pe-3 text-white">
+                    Menu
+                  </span>
+                  <span className="bi-list text-2xl text-white"></span>
                 </span>
               )}
             </p>

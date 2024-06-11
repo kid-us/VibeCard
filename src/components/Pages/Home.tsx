@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+import Hero from "./Home/Hero";
+import Gradient from "../Gradient/Gradient";
 
 const Home = () => {
   return (
     <>
-      {/* <div className="box-container">
-        <div className="box1"></div>
-        <div className="box2 blur"></div>
-      </div> */}
-
       <Navbar />
+      <Gradient />
       <div className="container mx-auto">
+        <div className="mt-28">
+          <Hero />
+        </div>
         <div className="mt-16">
           <p>Home</p> <br />
           <h1 className="text-3xl">VibeCard</h1>

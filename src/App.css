@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Raleway:wght@600;800&family=Russo+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
-body {
-  overflow-x: hidden !important;
-}
+/* body {
+  overflow: hidden !important;
+} */
 
 h1,
 h2,
@@ -60,31 +60,24 @@ textarea {
   }
 }
 
-.box-container {
-  width: 100%;
-}
-
-.box1 {
+.gradient-container {
   position: absolute;
+  overflow: hidden;
   width: 100%;
-  height: 100vh;
-  z-index: -2;
-  background-color: #fff;
+  height: 130vh;
+  top: 0;
+  z-index: -1;
 }
 
-.box2 {
+.gradient-bg {
   position: absolute;
   width: 300%;
   transform: rotate(-10deg);
-  height: 130%;
+  height: 130vh;
   z-index: -1;
   right: -2em;
   top: -20em;
-  background-color: #293132;
-  /*  */
-  /* background: rgb(94, 35, 157); */
-  /* background: radial-gradient(#e2e0e0 66%, #0d9488 98%); */
-
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #efef);
   background-size: 400% 400%;
-  animation: gradient 25s ease infinite;
+  animation: gradient 15s ease infinite;
 }
