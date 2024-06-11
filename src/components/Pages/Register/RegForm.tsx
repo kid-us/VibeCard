@@ -44,6 +44,7 @@ const Form = ({
     if (data.password !== confirmPassword) {
       return setConfirmPasswordError(true);
     } else {
+      setConfirmPasswordError(false);
       buttonClicked(true);
       console.log(data);
     }
