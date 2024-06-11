@@ -27,8 +27,7 @@ const Navbar = () => {
     <header
       className={`lg:p-0 py-2  ${
         isSticky && "sticky top-0 shadow animate__animated animate__fadeInDown"
-      }`}
-      style={{ backgroundColor: "#FFFCE1" }}
+      } ${isMenu && "menu-bg animate__animated animate__bounceInLeft"}`}
     >
       <nav className="container mx-auto relative">
         <div className="lg:grid lg:grid-cols-10 lg:py-4 flex justify-between py-2 px-3">
