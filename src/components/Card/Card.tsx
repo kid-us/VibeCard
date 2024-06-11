@@ -36,7 +36,7 @@ const Card = ({ passLength, email, submitted, username }: Props) => {
 
             <div className="z-10 relative">
               <h1 className="text-end text-sm z-10 float-end">Member card</h1>
-              <h1 className="text-xl text-teal-500">VibeCard</h1>
+              <h1 className="text-2xl text-teal-400 logo-font">vibecard</h1>
               <div className={`${username && "flex"}`}>
                 <div>
                   <img
