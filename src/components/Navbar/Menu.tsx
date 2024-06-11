@@ -7,7 +7,7 @@ interface Props {
 
 const Menu = ({ nav }: Props) => {
   return (
-    <div className="animate__animated animate__bounceInLeft pt-16 absolute z-10 h-[91.5dvh] w-full px-3 menu-bg">
+    <div className="animate__animated animate__fadeInLeft pt-16 absolute z-10 h-[91.5dvh] w-full px-3 menu-bg">
       {nav.map(
         (n) =>
           n.id !== 1 && (
