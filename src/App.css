@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Raleway:wght@600;800&family=Russo+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
-/* body {
-  background-color: rgb(240, 240, 240) !important;
-} */
+body {
+  overflow-x: hidden !important;
+}
 
 h1,
 h2,
@@ -38,4 +38,45 @@ textarea {
 
 ::-webkit-scrollbar-thumb {
   background: #293132;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.box-container {
+  width: 100%;
+}
+
+.box1 {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: -2;
+  background-color: #fff;
+}
+
+.box2 {
+  position: absolute;
+  width: 300%;
+  transform: rotate(-10deg);
+  height: 130%;
+  z-index: -1;
+  right: -2em;
+  top: -20em;
+  background-color: #293132;
+  /*  */
+  /* background: rgb(94, 35, 157); */
+  /* background: radial-gradient(#e2e0e0 66%, #0d9488 98%); */
+
+  background-size: 400% 400%;
+  animation: gradient 25s ease infinite;
 }
