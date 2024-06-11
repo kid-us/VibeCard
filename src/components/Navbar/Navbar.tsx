@@ -61,7 +61,7 @@ const Navbar = () => {
           <div className="col-1">
             <Link
               to={"/login"}
-              className="lg:block hidden bg-teal-700 py-2 px-5 rounded-full text-white text-center transition ease-in-out delay-200 hover:scale-105 hover:bg-teal-900 duration-200"
+              className="lg:block hidden bg-teal-700 py-2 px-5 rounded-full text-white text-center transition ease-in-out delay-200 hover:scale-105 hover:bg-teal-900 duration-200 shadow shadow-zinc-950"
             >
               Sign In
             </Link>
