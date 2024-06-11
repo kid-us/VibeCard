@@ -17,8 +17,7 @@ const HeroCard = () => {
               Lorem Ipsum
             </p>
             <p className="text-[7px] font-poppins font-extrabold">
-              Developer at{" "}
-              <span className="permanent-marker-regular">VidCard</span> Co.
+              Developer at <span className="logo-font">vibecard</span> Co.
             </p>
             <p className="text-[6px] font-poppins font-extrabold">
               lorem@gmail.com
@@ -46,9 +45,7 @@ const HeroCard = () => {
       <Magnetic>
         <div className="content-center hover:z-40">
           <div className="bg-zinc-900 rounded-md h-56 p-5 w-[400px] text-sm relative shadow-lg shadow-black">
-            <p className="text-xl text-teal-400 permanent-marker-regular">
-              VibeCard
-            </p>
+            <p className="text-2xl text-teal-400 logo-font">vibecard</p>
             <div className="grid grid-cols-3">
               <div className="col-span-2 mt-4">
                 <div className="flex mb-5">
@@ -75,7 +72,7 @@ const HeroCard = () => {
                   </span>
                 </p>
               </div>
-              <div className="p-1 bg-white rounded">
+              <div className="p-1 bg-white rounded mt-4">
                 <img src={qrCode} alt="qr code" className="w-32 pt-2 blur-sm" />
               </div>
             </div>

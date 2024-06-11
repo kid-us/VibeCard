@@ -8,7 +8,7 @@ export interface Nav {
 export const nav: Nav[] = [
   {
     id: 1,
-    title: "VibeCard",
+    title: "vibecard",
     path: "/",
   },
   {

@@ -26,8 +26,8 @@ const ForgotPassword = () => {
     <div className="h-[100vh] menu-bg">
       <div className="lg:px-40 md:px-36 px-2">
         <div className="lg:pt-10 md:pt-10 py-5 lg:ps-24">
-          <Link to={"/"} className="text-xl text-teal-950 ">
-            VibeCard
+          <Link to={"/"} className="text-2xl text-teal-950 logo-font">
+            vibecard
           </Link>
         </div>
       </div>
