@@ -3,7 +3,7 @@ import { qrCode, user } from "../../../assets";
 const HeroCard = () => {
   return (
     <>
-      <div className="absolute bg-white w-52 h-[380px] rounded-xl -top-24 left-10 overflow-hidden border">
+      <div className="absolute bg-white w-52 h-[380px] rounded-xl -top-24 left-10 overflow-hidden border shadow-lg shadow-black">
         <div className="flex justify-center bg-black  w-full h-28 relative">
           <div className="absolute border-4 border-white w-24 h-24 rounded-full mt-4">
             <img src={user} alt="user" className="blur-sm" />
@@ -38,7 +38,7 @@ const HeroCard = () => {
       {/* Card */}
       <div className="content-center">
         {/* card */}
-        <div className="bg-black rounded-md h-48 p-5 w-[400px] text-sm relative z">
+        <div className="bg-zinc-900 rounded-md h-56 p-5 w-[400px] text-sm relative shadow-lg shadow-black">
           <p>VibeCard</p>
           <div className="grid grid-cols-3">
             <div className="col-span-2 mt-4">
@@ -46,14 +46,14 @@ const HeroCard = () => {
                 <img src={user} alt="user" className="w-10 blur-sm" />
                 <span className="text-gray-200 ms-6 mt-3">Lorem</span>
               </div>
-              <p className="text-gray-400 text-xs">
+              <p className="text-gray-400 text-xs mb-2">
                 {" "}
                 <span className="bi-geo-alt-fill text-xs text-yellow-400 font-poppins">
                   {" "}
                   Developer at VibeCard
                 </span>{" "}
               </p>
-              <p>
+              <p className="mb-2">
                 <span className="bi-envelope-fill text-xs text-indigo-500 font-poppins">
                   {" "}
                   lorem@gmail.com
@@ -74,7 +74,7 @@ const HeroCard = () => {
       </div>
       {/* Contact Card */}
 
-      <div className="absolute bg-teal-600 w-56 h-36 bottom-0 right-14 rounded">
+      <div className="absolute bg-stone-600 w-56 h-36 bottom-0 right-14 rounded shadow-lg shadow-black">
         <div className="flex justify-center">
           <div className="w-16 h-16 rounded-full border-2 mt-1">
             <img src={user} alt="user" className="blur-sm" />
@@ -82,7 +82,7 @@ const HeroCard = () => {
         </div>
         <p className="text-sm text-center font-poppins mt-1">Lorem Ipsum</p>
         <div className="text-center mt-2">
-          <button className="font-poppins bg-indigo-600 p-2 text-xs rounded shadow shadow-zinc-800">
+          <button className="font-poppins bg-sky-800 p-2 text-xs rounded shadow shadow-zinc-800">
             Save Contact
           </button>
         </div>
