@@ -39,7 +39,7 @@ const Navbar = () => {
                 <Link
                   key={n.id}
                   to={n.path}
-                  className={`font-poppins me-32 text-2xl lg:text-black ${
+                  className={`permanent-marker-regular me-32 text-2xl lg:text-white ${
                     isMenu ? "text-black" : "text-white"
                   }`}
                 >
