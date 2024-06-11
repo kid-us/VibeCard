@@ -21,6 +21,7 @@ const Home = () => {
             <Link to="/register">Register</Link>
           </div>
         </div>
+        <p>lorem1000x</p>
       </div>
     </>
   );
