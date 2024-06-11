@@ -80,7 +80,7 @@ const Navbar = () => {
                   <Link
                     key={n.id}
                     to={n.path}
-                    className="me-16 block text-xl pb-1"
+                    className="me-16 block text-xl pb-2 font-poppins"
                   >
                     {n.title}
                   </Link>
