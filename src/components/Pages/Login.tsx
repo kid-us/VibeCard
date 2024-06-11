@@ -11,8 +11,8 @@ const Login = () => {
 
   return (
     <div
-      className="lg:px-40 md:px-36 px-2 h-[100vh]"
-      style={{ backgroundColor: "#effe" }}
+      className="lg:px-40 md:px-36 px-2 h-[100vh] menu-bg"
+      // style={{ backgroundColor: "#effe" }}
     >
       <div className="lg:mb-10 lg:pt-10 md:mb-10 md:pt-10 py-5 lg:ps-24">
         <Link to={"/"} className="text-xl text-teal-950 ">
