@@ -26,9 +26,9 @@ const Navbar = () => {
   return (
     <header
       className={`lg:p-0 py-2  ${
-        isSticky &&
-        "sticky top-0 bg-white shadow animate__animated animate__fadeInDown"
+        isSticky && "sticky top-0 shadow animate__animated animate__fadeInDown"
       }`}
+      style={{ backgroundColor: "#FFFCE1" }}
     >
       <nav className="container mx-auto relative">
         <div className="lg:grid lg:grid-cols-10 lg:py-4 flex justify-between py-2 px-3">
@@ -59,21 +59,28 @@ const Navbar = () => {
             </Link>
             <p
               onClick={() => setIsMenu(!isMenu)}
-              className={`lg:hidden ${
-                isMenu ? " rounded-full border border-black" : "bi-list"
+              className={`lg:hidden rounded-full border border-black
               } font-poppins text-2xl text-teal-950 font-bold`}
             >
-              {isMenu && (
+              {isMenu ? (
                 <span className="px-3 flex">
                   <span className="text-sm font-light pt-[6px] pe-3">Menu</span>
                   <span className="bi-x text-2xl"></span>
+                </span>
+              ) : (
+                <span className="px-3 flex">
+                  <span className="text-sm font-light pt-[6px] pe-3">Menu</span>
+                  <span className="bi-list text-2xl"></span>
                 </span>
               )}
             </p>
           </div>
         </div>
         {isMenu && (
-          <div className="animate__animated animate__fadeInDown pt-16 absolute z-10 h-[91.5dvh] bg-white w-full px-3">
+          <div
+            className="animate__animated animate__bounceInLeft pt-16 absolute z-10 h-[91.5dvh] w-full px-3"
+            style={{ backgroundColor: "#FFFCE1" }}
+          >
             {nav.map(
               (n) =>
                 n.id !== 1 && (
