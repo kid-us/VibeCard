@@ -20,6 +20,6 @@ export const nav: Nav[] = [
   {
     id: 4,
     title: "Pricing",
-    path: "/",
+    path: "/pricing",
   },
 ];

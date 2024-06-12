@@ -1,7 +1,17 @@
 const Page404 = () => {
   return (
-    <div className="text-white">
-      <p>Page Not Found</p>
+    <div className="loader-container">
+      <svg viewBox="0 0 400 160">
+        <text
+          x="50%"
+          y="50%"
+          dy=".32rem"
+          textAnchor="middle"
+          className="text-body"
+        >
+          vibecard
+        </text>
+      </svg>
     </div>
   );
 };
