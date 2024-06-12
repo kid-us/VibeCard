@@ -1,18 +1,11 @@
 const Page404 = () => {
   return (
-    <div className="loader-container">
-      <svg viewBox="0 0 400 160">
-        <text
-          x="50%"
-          y="50%"
-          dy=".32rem"
-          textAnchor="middle"
-          className="text-body"
-        >
-          vibecard
-        </text>
-      </svg>
-    </div>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi fugit
+      sequi architecto animi consequuntur non exercitationem tempora soluta
+      quisquam aliquam praesentium ipsam harum enim, maiores temporibus? Sit
+      voluptate sint ad?
+    </p>
   );
 };
 
