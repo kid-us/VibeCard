@@ -6,7 +6,7 @@ const Page404 = () => {
     <div className="lg:px-40 px-2 menu-bg">
       <div className="flex justify-center h-[100dvh]">
         <div className="content-center">
-          <div className="w-[500px] h-64 bg-zinc-800 rounded relative p-3 shadow-lg shadow-zinc-950">
+          <div className="lg:w-[500px] lg:h-64 bg-zinc-800 rounded relative p-3 shadow-lg shadow-zinc-950">
             <Link to="/" className="logo-font text-teal-400 text-2xl">
               vibecard
             </Link>
