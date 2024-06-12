@@ -26,13 +26,13 @@ const Navbar = () => {
 
   return (
     <header
-      className={`lg:p-0 py-2  ${
+      className={`lg:p-0 py-1  ${
         isSticky &&
         "sticky top-0 shadow animate__animated animate__fadeInDown menu-bg"
       } ${isMenu && "menu-bg animate__animated animate__fadeInLeft"} `}
     >
       <nav className="container mx-auto relative">
-        <div className="lg:grid lg:grid-cols-10 lg:py-4 flex justify-between py-2 px-3">
+        <div className="lg:grid lg:grid-cols-10 lg:py-3 flex justify-between py-2 px-3">
           <div className="col-span-9">
             {nav.map((n) =>
               n.id === 1 ? (
@@ -59,7 +59,7 @@ const Navbar = () => {
           <div className="col-1">
             <Link
               to={"/login"}
-              className="lg:block hidden bg-teal-700 py-2 px-5 rounded-full text-white text-center transition ease-in-out delay-200 hover:scale-105 hover:bg-teal-900 duration-200 shadow shadow-zinc-950"
+              className="lg:block hidden bg-teal-700 py-1 px-5 text-sm rounded-full text-white text-center transition ease-in-out delay-200 hover:scale-105 hover:bg-teal-900 duration-200 shadow shadow-zinc-950"
             >
               Sign In
             </Link>
