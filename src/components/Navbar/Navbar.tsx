@@ -28,7 +28,7 @@ const Navbar = () => {
     <header
       className={`lg:p-0 py-1  ${
         isSticky &&
-        "sticky top-0 shadow animate__animated animate__fadeInDown menu-bg"
+        "sticky top-0 shadow animate__animated animate__fadeInDown bg-white z-50"
       } ${isMenu && "menu-bg animate__animated animate__fadeInLeft"} `}
     >
       <nav className="container mx-auto relative">
@@ -39,9 +39,13 @@ const Navbar = () => {
                 <Link
                   key={n.id}
                   to={n.path}
-                  className={`logo-font me-32 text-2xl lg:text-white ${
-                    isMenu ? "text-black" : "text-white"
-                  }`}
+                  className={`logo-font me-32 text-2xl ${
+                    isMenu
+                      ? "text-black"
+                      : isSticky
+                      ? "text-black"
+                      : "text-white"
+                  } `}
                 >
                   {n.title}
                 </Link>
@@ -49,7 +53,11 @@ const Navbar = () => {
                 <Link
                   key={n.id}
                   to={n.path}
-                  className="lg:inline-block hidden font-poppins me-16 hover:text-gray-300 text-white"
+                  className={`lg:inline-block hidden font-poppins me-16 ${
+                    isSticky
+                      ? "text-black hover:text-gray-500"
+                      : "text-white hover:text-gray-300"
+                  }`}
                 >
                   {n.title}
                 </Link>
@@ -66,7 +74,11 @@ const Navbar = () => {
             <p
               onClick={() => setIsMenu(!isMenu)}
               className={`lg:hidden rounded-full border ${
-                isMenu ? "border-black" : "border-white"
+                isMenu
+                  ? "border-black"
+                  : isSticky
+                  ? "border-black"
+                  : "border-white"
               } 
               } font-poppins text-2xl text-teal-950 font-bold`}
             >
@@ -87,10 +99,18 @@ const Navbar = () => {
                 </span>
               ) : (
                 <span className="px-3 flex">
-                  <span className="text-sm font-light pt-[6px] pe-3 text-white">
+                  <span
+                    className={`text-sm font-light pt-[6px] pe-3 ${
+                      isSticky ? "text-black" : "text-white"
+                    }`}
+                  >
                     Menu
                   </span>
-                  <span className="bi-list text-2xl text-white"></span>
+                  <span
+                    className={`bi-list text-2xl ${
+                      isSticky ? "text-black" : "text-white"
+                    }`}
+                  ></span>
                 </span>
               )}
             </p>
