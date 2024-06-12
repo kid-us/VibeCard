@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <div className="lg:grid grid-cols-2 lg:px-0 px-4 gap-10">
       <div className="">
-        <h1 className="lg:text-5xl text-2xl font-extrabold leading-tight">
+        <h1 className="lg:text-5xl text-3xl font-extrabold leading-tight">
           From Meet-and-Greets to Meaningful Relationships:{" "}
           <span className="text-white logo-font">vibecard</span>-Your
           Personalized Networking Companion.
