@@ -3,7 +3,6 @@ import Hero from "./Home/Hero";
 import Gradient from "../Gradient/Gradient";
 import { useEffect, useState } from "react";
 import Loading from "../Loading/Loading";
-// import Footer from "../Footer/Footer";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
