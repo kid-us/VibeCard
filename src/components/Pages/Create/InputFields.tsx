@@ -65,8 +65,7 @@ const InputFields = ({
       <input
         type={type}
         name={label}
-        className={`bg-gray-100 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm px-3`}
-        // onChange={name && (event) => name(event.currentTarget.value)}
+        className={`bg-gray-100 py-3 rounded-xl focus:outline-none w-full mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm px-3`}
         onChange={handleChange}
       />
     </div>
