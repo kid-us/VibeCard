@@ -101,3 +101,37 @@ textarea {
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(9, 0, 0, 0.3);
 }
+
+.file-input-container {
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+  margin: auto;
+  position: relative;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-input-label {
+  cursor: pointer;
+}
+
+.file-input-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #888;
+}
+
+.file-icon {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.file-input-container:hover {
+  border-color: #888;
+}
