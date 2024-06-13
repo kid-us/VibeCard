@@ -68,18 +68,33 @@ const Create = () => {
 
       <div className="grid grid-cols-5">
         <div className="grid grid-cols-5 bg-stone-800 -md w-full h-[93dvh]">
-          <div className="text-white bg-stone-900 overflow-hidden p-3">
-            <p>Lorem</p>
+          <div className="text-white bg-stone-900 overflow-hidden">
+            <div className="py-5 text-center cursor-pointer hover:bg-stone-800 p-3">
+              <p className="bi-grid-1x2-fill text-xl"></p>
+              <p className="text-[10px] font-poppins text-gray-300 py-1">
+                Layout
+              </p>
+            </div>
+            <div className="py-5 text-center cursor-pointer hover:bg-stone-800 p-3">
+              <p className="bi-fonts text-xl"></p>
+              <p className="text-[10px] font-poppins text-gray-300 py-1">
+                Text
+              </p>
+            </div>
+            <div className="py-5 text-center cursor-pointer hover:bg-stone-800 p-3">
+              <p className="bi-body-text text-xl"></p>
+              <p className="text-[10px] font-poppins text-gray-300 py-1">
+                Content
+              </p>
+            </div>
+            <div className="py-5 text-center cursor-pointer hover:bg-stone-800 p-3">
+              <p className="bi-gear-fill text-center text-xl"></p>
+              <p className="text-[10px] font-poppins text-gray-300 py-1">
+                Setting
+              </p>
+            </div>
           </div>
-          <div className="col-span-4">
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Quisquam, doloribus inventore? Dolor officiis itaque maiores illo,
-              expedita hic consequatur doloremque nemo tenetur omnis, dolorum
-              ipsum, animi qui! Quos, nobis? Similique.
-            </p>
-          </div>
-          {/* </div> */}
+          <div className="col-span-4 p-4"></div>
         </div>
 
         <div className="col-span-4 w-full p-3 ">
@@ -95,12 +110,13 @@ const Create = () => {
               <p>Logout</p>
             </div>
           </div>
+          {/* Form */}
           <div className="grid grid-cols-5 bg-white shadow shadow-zinc-400 rounded-lg overflow-hidden p-5">
             <div className="col-span-3">
               <p className="text-xl font-poppins my-6 ps-4">
                 Create your Business card
               </p>
-              <div className=" bg-white h-[64dvh] overflow-y-scroll px-6">
+              <div className="bg-white h-[64dvh] overflow-y-scroll px-6">
                 {/* Images */}
                 <div className="flex justify-between flex-shrink-0">
                   {/* Profile */}
@@ -328,6 +344,7 @@ const Create = () => {
               </div>
             </div>
 
+            {/* Card */}
             <div className="col-span-2">
               <Card
                 pronoun={pronoun}

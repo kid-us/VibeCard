@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { qrCode, user } from "../../../assets";
+import { user } from "../../../assets";
 import Magnetic from "../../GsapMagnetic/Magnetic";
 
 interface Props {
