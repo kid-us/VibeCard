@@ -2,6 +2,7 @@ interface Props {
   label: string;
   type: string;
   inputName: string;
+  required: boolean;
   name?: (name: string) => void;
   emailAddress?: (email: string) => void;
   website?: (website: string) => void;
@@ -16,6 +17,7 @@ const InputFields = ({
   label,
   type,
   inputName,
+  required,
   name,
   location,
   website,
@@ -61,6 +63,7 @@ const InputFields = ({
     <div className="mb-4">
       <label className="text-xs text-gray-600 block" htmlFor={label}>
         {inputName}
+        {required && <span className="text-red-700 text-2xl">*</span>}
       </label>
       <input
         type={type}
