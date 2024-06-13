@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-// import { user } from "../../assets";
 import { useState } from "react";
 import InputFields from "./Create/InputFields";
 import Card from "./Create/Card";
 import { user } from "../../assets";
 import InputImages from "./Create/InputImages";
+import Sidebar from "./Create/Sidebar";
 
 const Create = () => {
   const [previews, setPreviews] = useState({
@@ -39,70 +39,39 @@ const Create = () => {
 
   return (
     <div className="menu-bg">
-      <div className="bg-white shadow">
-        <div className="container mx-auto py-1">
-          <nav className="flex justify-between py-2">
-            <div>
-              <Link to={"/"} className="logo-font text-2xl">
-                vibecard
+      <div className="fixed w-full bg-white shadow">
+        <nav className="flex justify-between py-2 px-5">
+          <div>
+            <Link to={"/"} className="logo-font text-2xl">
+              vibecard
+            </Link>
+          </div>
+          <div className="flex justify-between">
+            <div className="space-x-16">
+              <Link to={"/insight"} className="text-sm">
+                <span className="bi-bar-chart-fill text-black text-xs me-1"></span>
+                Insights
+              </Link>
+              <Link to={"/insight"} className="text-sm">
+                <span className="bi-gear-fill text-black text-xs me-1"></span>
+                Settings
               </Link>
             </div>
-            <div className="flex justify-between">
-              <div className="space-x-10">
-                <Link to={"/insight"} className="text-sm">
-                  <span className="bi-bar-chart-fill text-black text-xs me-1"></span>
-                  Insights
-                </Link>
-                <Link to={"/insight"} className="text-sm">
-                  <span className="bi-gear-fill text-black text-xs me-1"></span>
-                  Settings
-                </Link>
-              </div>
-              <div className="ms-16 flex cursor-pointer">
-                <img
-                  src={user}
-                  alt=""
-                  className="w-8 border-2 border-black rounded-full"
-                />
-                <span className="bi-caret-down-fill mt-1 ms-1"></span>
-              </div>
+            <div className="ms-28 flex cursor-pointer">
+              <img
+                src={previews.profile ? previews.profile : user}
+                alt="user"
+                className="w-8 h-8 overflow-hidden border-2 border-black rounded-full"
+              />
+              <span className="bi-caret-down-fill mt-1 ms-1"></span>
             </div>
-          </nav>
-        </div>
+          </div>
+        </nav>
       </div>
 
       <div className="grid grid-cols-5">
-        <div className="grid grid-cols-5 bg-stone-800 -md w-full h-[93dvh]">
-          <div className="text-white bg-stone-900 overflow-hidden">
-            <div className="py-5 text-center cursor-pointer hover:bg-stone-800 p-3">
-              <p className="bi-grid-1x2-fill text-xl"></p>
-              <p className="text-[10px] font-poppins text-gray-300 py-1">
-                Layout
-              </p>
-            </div>
-            <div className="py-5 text-center cursor-pointer hover:bg-stone-800 p-3">
-              <p className="bi-fonts text-xl"></p>
-              <p className="text-[10px] font-poppins text-gray-300 py-1">
-                Text
-              </p>
-            </div>
-            <div className="py-5 text-center cursor-pointer hover:bg-stone-800 p-3">
-              <p className="bi-body-text text-xl"></p>
-              <p className="text-[10px] font-poppins text-gray-300 py-1">
-                Content
-              </p>
-            </div>
-            <div className="py-5 text-center cursor-pointer hover:bg-stone-800 p-3">
-              <p className="bi-gear-fill text-center text-xl"></p>
-              <p className="text-[10px] font-poppins text-gray-300 py-1">
-                Setting
-              </p>
-            </div>
-          </div>
-          <div className="col-span-4 p-4"></div>
-        </div>
-
-        <div className="col-span-4 w-full p-3 mt-4">
+        <Sidebar />
+        <div className="col-span-4 w-full p-3 mt-16">
           {/* Form */}
           <div className="grid grid-cols-5 bg-white shadow shadow-zinc-400 rounded-lg overflow-hidden p-5">
             <div className="col-span-3">
@@ -127,6 +96,7 @@ const Create = () => {
                     onPreviewChange={handlePreviewChange}
                   />
                 </div>
+
                 {/* Inputs */}
                 <div className="grid grid-cols-2 gap-x-8 mt-5">
                   {/* Pronoun */}
