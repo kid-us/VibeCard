@@ -36,11 +36,17 @@ const Card = ({
     <div className="px-20 mt-14">
       <div className="rounded-2xl w-full overflow-hidden bg-stone-900 shadow-lg shadow-zinc-800">
         <div
-          className={`${
-            !preview?.cover && "gradient-cover"
-          } h-20 relative flex justify-between p-2`}
+          className={`h-24 relative flex justify-between p-2 ${
+            !preview?.cover ? "gradient-cover" : ""
+          }`}
+          style={{
+            backgroundImage:
+              preview?.cover && preview?.cover
+                ? `url("${preview.cover}")`
+                : undefined,
+          }}
         >
-          <div className="absolute top-8 w-20 h-20 border-[4px] rounded-full border-white overflow-hidden">
+          <div className="absolute top-10 w-20 h-20 border-[4px] rounded-full border-white overflow-hidden">
             <img
               src={preview?.profile ? preview.profile : user}
               alt="user"
