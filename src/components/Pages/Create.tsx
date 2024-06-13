@@ -13,6 +13,8 @@ const Create = () => {
     logo: null,
   });
 
+  const [dropdown, setDropdown] = useState(false);
+
   //   Form Values
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -57,13 +59,35 @@ const Create = () => {
                 Settings
               </Link>
             </div>
-            <div className="ms-28 flex cursor-pointer">
+            <div
+              onClick={() => setDropdown(!dropdown)}
+              className="ms-28 flex cursor-pointer relative"
+            >
               <img
                 src={previews.profile ? previews.profile : user}
                 alt="user"
                 className="w-8 h-8 overflow-hidden border-2 border-black rounded-full"
               />
-              <span className="bi-caret-down-fill mt-1 ms-1"></span>
+              <span
+                className={`${
+                  dropdown ? "bi-caret-up-fill" : "bi-caret-down-fill"
+                }  mt-1 ms-1`}
+              ></span>
+
+              {/* Dropdown */}
+              {dropdown && (
+                <div className="absolute w-44 h-20 bg-white shadow shadow-zinc-800 top-11 -left-28 rounded px-4 pt-2">
+                  <p className="text sm font-poppins mb-3 text-gray-500">
+                    @Lorem
+                  </p>
+                  <Link
+                    to="/logout"
+                    className="bi-box-arrow-in-left bg-teal-500 px-8 text-white py-1 rounded shadow shadow-zinc-800"
+                  >
+                    Logout
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </nav>
