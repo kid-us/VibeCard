@@ -229,10 +229,10 @@ const Create = () => {
                       <option hidden selected>
                         {" "}
                       </option>
-                      <option value="mr"> Mr</option>
-                      <option value="mrs">Mrs</option>
-                      <option value="prof">Professor</option>
-                      <option value="dr">Dr</option>
+                      <option value="Mr"> Mr</option>
+                      <option value="Mrs">Mrs</option>
+                      <option value="Prof">Professor</option>
+                      <option value="Dr">Dr</option>
                     </select>
                   </div>
                   {/* Name */}

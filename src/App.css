@@ -103,6 +103,9 @@ textarea {
   border: 1px solid rgba(9, 0, 0, 0.3);
 }
 
+.gradient-cover {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #efef);
+}
 .overlay {
   position: fixed;
   top: 0;
