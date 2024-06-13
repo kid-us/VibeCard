@@ -89,7 +89,7 @@ const Card = ({
             <div className="grid grid-cols-3 gap-5 mt-5 mb-5">
               <Link
                 to="/"
-                className="bi-twitter text-3xl text-center bg-sky-400 rounded-lg py-3"
+                className="bi-twitter text-3xl text-center bg-sky-400 rounded-lg py-3 shadow-inner"
               ></Link>
               <Link
                 to="/"

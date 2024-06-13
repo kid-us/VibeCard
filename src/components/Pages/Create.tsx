@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { user } from "../../assets";
+// import { user } from "../../assets";
 import { ChangeEvent, useState } from "react";
 import InputFields from "./Create/InputFields";
 import Card from "./Create/Card";
+import { user } from "../../assets";
 
 const Create = () => {
   const [, setFile] = useState<File | null>(null);
@@ -52,15 +53,25 @@ const Create = () => {
                 vibecard
               </Link>
             </div>
-            <div className="space-x-10">
-              <Link to={"/insight"} className="text-sm">
-                <span className="bi-bar-chart-fill text-black text-xs me-1"></span>
-                Insights
-              </Link>
-              <Link to={"/insight"} className="text-sm">
-                <span className="bi-gear-fill text-black text-xs me-1"></span>
-                Settings
-              </Link>
+            <div className="flex justify-between">
+              <div className="space-x-10">
+                <Link to={"/insight"} className="text-sm">
+                  <span className="bi-bar-chart-fill text-black text-xs me-1"></span>
+                  Insights
+                </Link>
+                <Link to={"/insight"} className="text-sm">
+                  <span className="bi-gear-fill text-black text-xs me-1"></span>
+                  Settings
+                </Link>
+              </div>
+              <div className="ms-16 flex cursor-pointer">
+                <img
+                  src={user}
+                  alt=""
+                  className="w-8 border-2 border-black rounded-full"
+                />
+                <span className="bi-caret-down-fill mt-1 ms-1"></span>
+              </div>
             </div>
           </nav>
         </div>
@@ -97,32 +108,20 @@ const Create = () => {
           <div className="col-span-4 p-4"></div>
         </div>
 
-        <div className="col-span-4 w-full p-3 ">
-          <div className="flex justify-between bg-white rounded p-2 mb-4">
-            <div className="flex">
-              <img src={user} alt="user" className="w-12" />
-              <div className="text-sm content-center ms-4">
-                <p className="text-gray-900 font-poppins">Lorem</p>
-                <p className="text-sky-600">lorem@gmail.com</p>
-              </div>
-            </div>
-            <div>
-              <p>Logout</p>
-            </div>
-          </div>
+        <div className="col-span-4 w-full p-3 mt-4">
           {/* Form */}
           <div className="grid grid-cols-5 bg-white shadow shadow-zinc-400 rounded-lg overflow-hidden p-5">
             <div className="col-span-3">
               <p className="text-xl font-poppins my-6 ps-4">
                 Create your Business card
               </p>
-              <div className="bg-white h-[64dvh] overflow-y-scroll px-6">
+              <div className="bg-white h-[71dvh] overflow-y-scroll px-6">
                 {/* Images */}
                 <div className="flex justify-between flex-shrink-0">
                   {/* Profile */}
                   <div className="">
-                    <p className="text-xs text-gray-500 mb-4 font-poppins">
-                      Profile{" "}
+                    <p className="text-xs text-gray-800 mb-4 font-poppins">
+                      Profile
                     </p>
                     <div className="border rounded-lg border-gray-300 w-28 p-3 relative">
                       <input
@@ -146,8 +145,8 @@ const Create = () => {
                           className="cursor-pointer"
                         >
                           <div className="flex flex-col text-center">
-                            <i className="bi-image text-xl text-gray-600"></i>
-                            <span className="text-[8px] text-gray-400">
+                            <i className="bi-image text-xl text-gray-800"></i>
+                            <span className="text-[8px] text-gray-600">
                               Select image or video file or drag and drop one
                               here
                             </span>
@@ -158,7 +157,7 @@ const Create = () => {
                   </div>
                   {/* Cover */}
                   <div className="">
-                    <p className="text-xs text-gray-500 mb-4 font-poppins">
+                    <p className="text-xs text-gray-800 mb-4 font-poppins">
                       Cover{" "}
                     </p>
                     <div className="border rounded-lg border-gray-300 w-72 h-24 overflow-hidden p-3 relative">
@@ -180,8 +179,8 @@ const Create = () => {
                       ) : (
                         <label htmlFor="cover-file" className="cursor-pointer">
                           <div className="flex flex-col text-center">
-                            <i className="bi-image text-xl text-gray-600"></i>
-                            <span className="text-[8px] text-gray-400">
+                            <i className="bi-image text-xl text-gray-800"></i>
+                            <span className="text-[8px] text-gray-600">
                               Select image or video file or drag and drop one
                               here
                             </span>
@@ -192,7 +191,7 @@ const Create = () => {
                   </div>
                   {/* Logo */}
                   <div className="">
-                    <p className="text-xs text-gray-500 mb-4 font-poppins">
+                    <p className="text-xs text-gray-800 mb-4 font-poppins">
                       Logo{" "}
                     </p>
                     <div className="border rounded-lg border-gray-300 w-24 h-24 overflow-hidden p-3 relative">
@@ -214,8 +213,8 @@ const Create = () => {
                       ) : (
                         <label htmlFor="logo-file" className="cursor-pointer">
                           <div className="flex flex-col text-center">
-                            <i className="bi-image text-xl text-gray-600"></i>
-                            <span className="text-[8px] text-gray-400">
+                            <i className="bi-image text-xl text-gray-800"></i>
+                            <span className="text-[8px] text-gray-600">
                               Select image or video file or drag and drop one
                               here
                             </span>
