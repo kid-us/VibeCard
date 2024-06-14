@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { qrCode, user } from "../../../assets";
 import { useCoverColorStore } from "../../../store/useCoverColorStore";
 import { useCardColorStore } from "../../../store/useCardColorStore";
+import { useTextColorStore } from "../../../store/useTextColorStore";
 
 interface Preview {
   profile: string | null;
@@ -10,32 +11,34 @@ interface Preview {
 }
 
 interface Props {
-  pronoun?: string;
-  email?: string;
-  phone?: string;
-  website?: string;
-  tagLine?: string;
-  jobTitle?: string;
-  company?: string;
-  name?: string;
-  location?: string;
+  pronounVal?: string;
+  emailVal?: string;
+  phoneVal?: string;
+  websiteVal?: string;
+  tagLineVal?: string;
+  jobTitleVal?: string;
+  companyVal?: string;
+  nameVal?: string;
+  locationVal?: string;
   preview?: Preview;
 }
 
 const Card = ({
-  company,
-  email,
-  jobTitle,
-  location,
-  name,
-  phone,
-  tagLine,
-  website,
-  pronoun,
+  companyVal,
+  emailVal,
+  jobTitleVal,
+  locationVal,
+  nameVal,
+  phoneVal,
+  tagLineVal,
+  websiteVal,
+  pronounVal,
   preview,
 }: Props) => {
   const { coverColorBg } = useCoverColorStore();
   const { cardColorBg } = useCardColorStore();
+  const { company, jobTitle, location, name, pronoun, tagLine } =
+    useTextColorStore();
 
   return (
     <div className="px-20 mt-14">
@@ -66,13 +69,14 @@ const Card = ({
           </div>
           <div className="content-center">
             <p
-              className={`absolute right-0 font-poppins me-1 text-white w-48 text-center overflow-hidden text-ellipsis text-nowrap`}
+              className={`absolute right-0 font-poppins me-1 w-48 text-center overflow-hidden text-ellipsis text-nowrap`}
+              style={{ color: name.color }}
             >
-              <span className={`text-gray-300 text-xs`}>
-                {pronoun && "(" + pronoun + ")"}{" "}
+              <span className={`text-xs`} style={{ color: pronoun.color }}>
+                {pronounVal && "(" + pronounVal + ")"}{" "}
               </span>
 
-              {name && name}
+              {nameVal && nameVal}
             </p>
           </div>
         </div>
@@ -87,52 +91,64 @@ const Card = ({
             {/* )} */}
 
             <p
-              className={`text-teal-400 font-poppins mb-1 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase ${
-                !jobTitle && "invisible"
+              className={`font-poppins mb-1 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase ${
+                !jobTitleVal && "invisible"
               } `}
+              style={{ color: jobTitle.color }}
             >
-              {jobTitle && jobTitle}
+              {jobTitleVal && jobTitleVal}
             </p>
 
-            <p className={`text-gray-400 ${!company && "invisible"} text-xs`}>
-              {company && "At " + company}
+            <p
+              className={`${!companyVal && "invisible"} text-xs`}
+              style={{ color: company.color }}
+            >
+              {companyVal && "At " + companyVal}
             </p>
             <p
-              className={`text-xs text-gray-400 mt-3 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase ${
-                !tagLine && "invisible"
+              className={`text-xs mt-3 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase ${
+                !tagLineVal && "invisible"
               }`}
+              style={{ color: tagLine.color }}
             >
               <span className="bi-info"></span>
-              {tagLine && tagLine}
+              {tagLineVal && tagLineVal}
             </p>
-            <p className={`my-2 ${!location && "invisible"} text-gray-400`}>
-              <span className="bi-geo-alt-fill me-2 text-xs text-blue-600"></span>
-              {location && location}
+            <p
+              className={`my-2 ${!locationVal && "invisible"}`}
+              style={{ color: location.color }}
+            >
+              <span
+                className="bi-geo-alt-fill me-2 text-xs"
+                style={{ color: location.color }}
+              ></span>
+              {locationVal && locationVal}
             </p>
           </div>
 
+          {/* Icons */}
           <div
             className={`grid grid-cols-3 gap-5 my-8 ${
-              !phone && !email && website && "invisible"
+              !phoneVal && !emailVal && websiteVal && "invisible"
             }`}
           >
-            {email && (
+            {emailVal && (
               <Link
-                to={email}
+                to={emailVal}
                 className="bi-envelope-fill text-center text-2xl"
               ></Link>
             )}
-            {phone && (
+            {phoneVal && (
               <div className={`bi-telephone-fill text-center text-2xl`}></div>
             )}
-            {website && (
+            {websiteVal && (
               <Link
-                to={website}
+                to={websiteVal}
                 className="bi-globe text-center text-2xl"
               ></Link>
             )}
           </div>
-
+          {/* Social Media */}
           <div className="grid grid-cols-3 gap-5 mt-5 mb-5">
             <Link
               to="/"

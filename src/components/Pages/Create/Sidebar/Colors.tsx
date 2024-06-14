@@ -14,14 +14,14 @@ const Colors = () => {
   return (
     <>
       <p className="text-xs text-gray-300 mb-2">Card Background Color</p>
-      <BackgroundColor bgColors={cardColorBg} cardType="card" colorPicker />
-      {/* Cover Background */}
-      <p className="text-xs text-gray-300 mb-2">Cover Background Color</p>
       <BackgroundColor
-        bgColors={coverColorBg}
-        cardType="cover"
+        bgColors={cardColorBg}
+        cardType="card"
         colorPicker={false}
       />
+      {/* Cover Background */}
+      <p className="text-xs text-gray-300 mb-2">Cover Background Color</p>
+      <BackgroundColor bgColors={coverColorBg} cardType="cover" colorPicker />
       {/* Text Colors */}
       <p className="text-xs text-gray-300 mb-2">Text Colors</p>
       {/* Pronoun */}

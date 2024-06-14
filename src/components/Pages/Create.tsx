@@ -251,15 +251,15 @@ const Create = () => {
             {/* Card */}
             <div className="col-span-2">
               <Card
-                pronoun={pronoun}
-                name={name}
-                email={email}
-                phone={phone}
-                website={website}
-                jobTitle={jobTitle}
-                tagLine={tagLine}
-                company={company}
-                location={location}
+                pronounVal={pronoun}
+                nameVal={name}
+                emailVal={email}
+                phoneVal={phone}
+                websiteVal={website}
+                jobTitleVal={jobTitle}
+                tagLineVal={tagLine}
+                companyVal={company}
+                locationVal={location}
                 preview={previews}
               />
             </div>
