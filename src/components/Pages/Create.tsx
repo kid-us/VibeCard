@@ -134,15 +134,14 @@ const Create = () => {
 
                     <select
                       name="pronoun"
-                      className={`bg-gray-100 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm px-3`}
+                      className="bg-gray-100 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm px-3"
                       onChange={(event) =>
                         setPronoun(event.currentTarget.value)
                       }
+                      defaultValue=""
                     >
-                      <option hidden selected>
-                        {" "}
-                      </option>
-                      <option value="Mr"> Mr</option>
+                      <option value="" hidden></option>
+                      <option value="Mr">Mr</option>
                       <option value="Mrs">Mrs</option>
                       <option value="Prof">Professor</option>
                       <option value="Dr">Dr</option>
