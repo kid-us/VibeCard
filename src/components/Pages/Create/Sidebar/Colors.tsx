@@ -6,7 +6,7 @@ import { useCardColorStore } from "../../../../store/useCardColorStore";
 import { useCoverColorStore } from "../../../../store/useCoverColorStore";
 
 const Colors = () => {
-  const { company, jobTitle, location, name, pronoun, tagLine } =
+  const { company, jobTitle, location, name, pronoun, tagLine, icon } =
     useTextColorStore();
 
   const { cardColorBg } = useCardColorStore();
@@ -36,6 +36,8 @@ const Colors = () => {
       <TextColor name={"company"} bg={company.color} title={"Company"} />
       {/* Tag Title */}
       <TextColor name={"tagLine"} bg={tagLine.color} title={"Tag Line"} />
+      {/* Icons */}
+      <TextColor name={"icon"} bg={icon.color} title={"Icons"} />
     </>
   );
 };

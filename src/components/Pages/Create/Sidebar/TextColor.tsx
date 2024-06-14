@@ -8,6 +8,7 @@ type State = {
   jobTitle: Props;
   company: Props;
   location: Props;
+  icon: Props;
 };
 
 interface Props {
@@ -21,7 +22,7 @@ const TextColor = ({ bg, name, title }: Props) => {
 
   return (
     <>
-      <p className="text-xs text-gray-300 mb-2 ms-5">{title} text color</p>
+      <p className="text-xs text-gray-300 mb-2 ms-5">{title} color</p>
       <div className="bg-white rounded p-2 mb-5">
         <p className="text-xs mt-2">Default</p>
         <div

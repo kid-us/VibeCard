@@ -37,7 +37,7 @@ const Card = ({
 }: Props) => {
   const { coverColorBg } = useCoverColorStore();
   const { cardColorBg } = useCardColorStore();
-  const { company, jobTitle, location, name, pronoun, tagLine } =
+  const { company, jobTitle, location, name, pronoun, tagLine, icon } =
     useTextColorStore();
 
   return (
@@ -129,8 +129,9 @@ const Card = ({
           {/* Icons */}
           <div
             className={`grid grid-cols-3 gap-5 my-8 ${
-              !phoneVal && !emailVal && websiteVal && "invisible"
+              !phoneVal && !emailVal && !websiteVal && "invisible"
             }`}
+            style={{ color: icon.color }}
           >
             {emailVal && (
               <Link
