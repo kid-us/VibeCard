@@ -1,30 +1,18 @@
 import { useState } from "react";
-import { coverColor, cardColor } from "../../../services/coverColor";
+// import { coverColor, cardColor } from "../../../services/coverColor";
 import { useCoverColorStore } from "../../../store/useCoverColorStore";
 import { useCardColorStore } from "../../../store/useCardColorStore";
 import { useTextColorStore } from "../../../store/useTextColorStore";
 import TextColor from "./Sidebar/TextColor";
+import BackgroundColor from "./Sidebar/BackgroundColor";
 
 const Sidebar = () => {
-  // Zustand Store
-  const { coverColorBg, updateCoverColor } = useCoverColorStore();
-  const { updateCardColor, cardColorBg } = useCardColorStore();
+  const { coverColorBg } = useCoverColorStore();
+  const { cardColorBg } = useCardColorStore();
   const { company, jobTitle, location, name, pronoun, tagLine } =
     useTextColorStore();
 
-  // States
   const [selected, setSelected] = useState("layout");
-
-  const [color, setColor] = useState("#000000");
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newColor = event.target.value;
-    setColor(newColor);
-
-    if (newColor !== "#000000") {
-      updateCoverColor(newColor);
-    }
-  };
 
   return (
     <div className="grid grid-cols-5 bg-stone-800 -md w-full h-[100dvh] pt-[51px]">
@@ -67,60 +55,20 @@ const Sidebar = () => {
           <p className="text-[10px] font-poppins text-gray-300 py-1">Setting</p>
         </div>
       </div>
+      
       {/* Contents */}
       <div className="col-span-4 p-1 mt-3 overflow-y-scroll">
-        {/* Layout */}
+        {/* Color */}
         {/* Card Background */}
         <p className="text-xs text-gray-300 mb-2">Card Background Color</p>
-        <div className="bg-white rounded p-2 mb-5">
-          <p className="text-xs mt-2">Default</p>
-          <div
-            className={`w-full h-20 rounded-lg my-2 shadow shadow-zinc-900`}
-            style={{ backgroundColor: cardColorBg }}
-          ></div>
-          <p className="text-xs mt-3">Choose Colors</p>
-          <div className="grid grid-cols-6 gap-3 overflow-hidden py-5">
-            {cardColor.map((card) => (
-              <button
-                key={card.id}
-                onClick={() => updateCardColor(card.value)}
-                className={`p-3 rounded shadow-sm shadow-zinc-900 hover:shadow-none`}
-                style={{ backgroundColor: card.value }}
-              ></button>
-            ))}
-          </div>
-        </div>
+        <BackgroundColor bgColors={cardColorBg} cardType="card" colorPicker />
         {/* Cover Background */}
         <p className="text-xs text-gray-300 mb-2">Cover Background Color</p>
-        <div className="bg-white rounded p-2 mb-5">
-          <p className="text-xs mt-2">Default</p>
-          <div
-            className={`${
-              coverColorBg === "gradient-cover" && coverColorBg
-            } w-full h-20 rounded-lg my-2 shadow shadow-zinc-900`}
-            style={{ backgroundColor: coverColorBg }}
-          ></div>
-          <p className="text-xs mt-2">Trend Colors</p>
-          <div className="grid grid-cols-6 gap-3 overflow-hidden py-5">
-            {coverColor.map((cover) => (
-              <button
-                key={cover.id}
-                onClick={() => updateCoverColor(cover.value)}
-                className={`p-3 rounded shadow-sm shadow-zinc-900 hover:shadow-none`}
-                style={{ backgroundColor: cover.value }}
-              ></button>
-            ))}
-          </div>
-          <div className={`relative ${color}`}>
-            <p className="text-xs mb-2">Pick you Color here</p>
-            <input
-              type="color"
-              className="w-full h-14 border-none outline-none shadow shadow-orange-900"
-              value={color}
-              onChange={(e) => handleChange(e)}
-            />
-          </div>
-        </div>
+        <BackgroundColor
+          bgColors={coverColorBg}
+          cardType="cover"
+          colorPicker={false}
+        />
         {/* Text Colors */}
         <p className="text-xs text-gray-300 mb-2">Text Colors</p>
         {/* Pronoun */}
