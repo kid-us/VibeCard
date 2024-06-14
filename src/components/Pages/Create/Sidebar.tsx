@@ -75,7 +75,8 @@ const Sidebar = () => {
               <button
                 key={cover.id}
                 onClick={() => updateCoverColor(cover.value)}
-                className={`${cover.value} p-3 rounded shadow-sm shadow-zinc-900 hover:shadow-none`}
+                className={`p-3 rounded shadow-sm shadow-zinc-900 hover:shadow-none`}
+                style={{ backgroundColor: cover.value }}
               ></button>
             ))}
           </div>

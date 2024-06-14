@@ -40,13 +40,16 @@ const Card = ({
       <div className="rounded-2xl w-full overflow-hidden bg-stone-900 shadow-lg shadow-zinc-800">
         <div
           className={`h-24 relative flex justify-between p-2 ${
-            !preview?.cover ? coverColorBg : ""
+            !preview?.cover
+              ? coverColorBg === "gradient-cover" && coverColorBg
+              : ""
           }`}
           style={{
             backgroundImage:
               preview?.cover && preview?.cover
                 ? `url("${preview.cover}")`
                 : undefined,
+            backgroundColor: coverColorBg,
           }}
         >
           <div className="absolute top-10 w-20 h-20 border-[4px] rounded-full border-white overflow-hidden">
