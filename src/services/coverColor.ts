@@ -3,7 +3,7 @@ interface CoverColor {
   value: string;
 }
 
-const coverColor: CoverColor[] = [
+export const coverColor: CoverColor[] = [
   {
     id: 1,
     value: "#456990",
@@ -79,4 +79,17 @@ const coverColor: CoverColor[] = [
   },
 ];
 
-export default coverColor;
+export const cardColor: CoverColor[] = [
+  { id: 1, value: "#222222" },
+  { id: 1, value: "#ffffff" },
+  { id: 1, value: "#664C43" },
+  { id: 1, value: "#130303" },
+  { id: 1, value: "#171738" },
+  { id: 1, value: "#394648" },
+  { id: 1, value: "#A5978B" },
+  { id: 1, value: "#F4EBBE" },
+  { id: 1, value: "#A7CECB" },
+  { id: 1, value: "#05204A" },
+  { id: 1, value: "#114B5F" },
+  { id: 1, value: "#6B2737" },
+];

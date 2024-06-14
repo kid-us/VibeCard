@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { qrCode, user } from "../../../assets";
-import { useCoverColorStore } from "../../../sotre/useCoverColorStore";
+import { useCoverColorStore } from "../../../store/useCoverColorStore";
+import { useCardColorStore } from "../../../store/useCardColorStore";
 
 interface Preview {
   profile: string | null;
@@ -34,10 +35,14 @@ const Card = ({
   preview,
 }: Props) => {
   const { coverColorBg } = useCoverColorStore();
+  const { cardColorBg } = useCardColorStore();
 
   return (
     <div className="px-20 mt-14">
-      <div className="rounded-2xl w-full overflow-hidden bg-stone-900 shadow-lg shadow-zinc-800">
+      <div
+        className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800`}
+        style={{ backgroundColor: cardColorBg }}
+      >
         <div
           className={`h-24 relative flex justify-between p-2 ${
             !preview?.cover

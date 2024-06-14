@@ -1,9 +1,11 @@
 import { useState } from "react";
-import coverColor from "../../../services/coverColor";
-import { useCoverColorStore } from "../../../sotre/useCoverColorStore";
+import { coverColor, cardColor, textColor } from "../../../services/coverColor";
+import { useCoverColorStore } from "../../../store/useCoverColorStore";
+import { useCardColorStore } from "../../../store/useCardColorStore";
 
 const Sidebar = () => {
   const { coverColorBg, updateCoverColor } = useCoverColorStore();
+  const { updateCardColor, cardColorBg } = useCardColorStore();
 
   const [selected, setSelected] = useState("layout");
 
@@ -19,8 +21,9 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="grid grid-cols-5 bg-stone-800 -md w-full h-[100dvh] pt-14">
-      <div className="text-white bg-stone-900 overflow-hidden">
+    <div className="grid grid-cols-5 bg-stone-800 -md w-full h-[100dvh] pt-[51px]">
+      {/* Icon */}
+      <div className="text-white bg-stone-900 shadow shadow-stone-400 overflow-hidden">
         <div
           onClick={() => setSelected("layout")}
           className={`py-5 text-center cursor-pointer ${
@@ -58,10 +61,32 @@ const Sidebar = () => {
           <p className="text-[10px] font-poppins text-gray-300 py-1">Setting</p>
         </div>
       </div>
-      <div className="col-span-4 p-2">
+      {/* Contents */}
+      <div className="col-span-4 p-1 mt-3 overflow-y-scroll">
         {/* Layout */}
-        <p className="text-xs text-gray-300 mb-1">Cover Background Color</p>
-        <div className="bg-white rounded p-2">
+        {/* Card Background */}
+        <p className="text-xs text-gray-300 mb-2">Card Background Color</p>
+        <div className="bg-white rounded p-2 mb-5">
+          <p className="text-xs mt-2">Default</p>
+          <div
+            className={`w-full h-20 rounded-lg my-2 shadow shadow-zinc-900`}
+            style={{ backgroundColor: cardColorBg }}
+          ></div>
+          <p className="text-xs mt-3">Choose Colors</p>
+          <div className="grid grid-cols-6 gap-3 overflow-hidden py-5">
+            {cardColor.map((card) => (
+              <button
+                key={card.id}
+                onClick={() => updateCardColor(card.value)}
+                className={`p-3 rounded shadow-sm shadow-zinc-900 hover:shadow-none`}
+                style={{ backgroundColor: card.value }}
+              ></button>
+            ))}
+          </div>
+        </div>
+        {/* Cover Background */}
+        <p className="text-xs text-gray-300 mb-2">Cover Background Color</p>
+        <div className="bg-white rounded p-2 mb-5">
           <p className="text-xs mt-2">Default</p>
           <div
             className={`${
@@ -88,6 +113,27 @@ const Sidebar = () => {
               value={color}
               onChange={(e) => handleChange(e)}
             />
+          </div>
+        </div>
+        {/* Text Colors */}
+        <p className="text-xs text-gray-300 mb-2">Text Colors</p>
+        <p className="text-xs text-gray-300 mb-2 ms-5">Pronoun text color</p>
+        <div className="bg-white rounded p-2 mb-5">
+          <p className="text-xs mt-2">Default</p>
+          <div
+            className={`w-full h-20 rounded-lg my-2 shadow shadow-zinc-900`}
+            style={{ backgroundColor: cardColorBg }}
+          ></div>
+          <p className="text-xs mt-3">Choose Colors</p>
+          <div className="grid grid-cols-6 gap-3 overflow-hidden py-5">
+            {cardColor.map((card) => (
+              <button
+                key={card.id}
+                onClick={() => updateCardColor(card.value)}
+                className={`p-3 rounded shadow-sm shadow-zinc-900 hover:shadow-none`}
+                style={{ backgroundColor: card.value }}
+              ></button>
+            ))}
           </div>
         </div>
       </div>
