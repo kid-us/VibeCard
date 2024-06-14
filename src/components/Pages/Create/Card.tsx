@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { qrCode, user } from "../../../assets";
+import { useCoverColorStore } from "../../../sotre/useCoverColorStore";
 
 interface Preview {
   profile: string | null;
@@ -32,12 +33,14 @@ const Card = ({
   pronoun,
   preview,
 }: Props) => {
+  const { coverColorBg } = useCoverColorStore();
+
   return (
     <div className="px-20 mt-14">
       <div className="rounded-2xl w-full overflow-hidden bg-stone-900 shadow-lg shadow-zinc-800">
         <div
           className={`h-24 relative flex justify-between p-2 ${
-            !preview?.cover ? "gradient-cover" : ""
+            !preview?.cover ? coverColorBg : ""
           }`}
           style={{
             backgroundImage:
