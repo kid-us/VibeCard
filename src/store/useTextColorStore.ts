@@ -8,7 +8,7 @@ interface Props {
 
 // Define the State type
 type State = {
-  pronouns: Props;
+  pronoun: Props;
   name: Props;
   tagLine: Props;
   jobTitle: Props;
@@ -23,13 +23,13 @@ type Action = {
 };
 
 // Create the Zustand store
-const useTextColorStore = create<State & Action>((set) => ({
-  pronouns: { font: "", color: "" },
-  name: { font: "", color: "" },
-  tagLine: { font: "", color: "" },
-  jobTitle: { font: "", color: "" },
-  company: { font: "", color: "" },
-  location: { font: "", color: "" },
+export const useTextColorStore = create<State & Action>((set) => ({
+  pronoun: { font: "", color: "#9ca3af" },
+  name: { font: "", color: "#ffffff" },
+  tagLine: { font: "", color: "#9ca3af" },
+  jobTitle: { font: "", color: "#2dd4bf" },
+  company: { font: "", color: "#9ca3af" },
+  location: { font: "", color: "#9ca3af" },
 
   updateFont: (key: keyof State, font: string) =>
     set((state) => ({
@@ -41,5 +41,3 @@ const useTextColorStore = create<State & Action>((set) => ({
       [key]: { ...state[key], color },
     })),
 }));
-
-export default useTextColorStore;

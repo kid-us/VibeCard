@@ -1,12 +1,18 @@
 import { useState } from "react";
-import { coverColor, cardColor, textColor } from "../../../services/coverColor";
+import { coverColor, cardColor } from "../../../services/coverColor";
 import { useCoverColorStore } from "../../../store/useCoverColorStore";
 import { useCardColorStore } from "../../../store/useCardColorStore";
+import { useTextColorStore } from "../../../store/useTextColorStore";
+import TextColor from "./Sidebar/TextColor";
 
 const Sidebar = () => {
+  // Zustand Store
   const { coverColorBg, updateCoverColor } = useCoverColorStore();
   const { updateCardColor, cardColorBg } = useCardColorStore();
+  const { company, jobTitle, location, name, pronoun, tagLine } =
+    useTextColorStore();
 
+  // States
   const [selected, setSelected] = useState("layout");
 
   const [color, setColor] = useState("#000000");
@@ -117,25 +123,18 @@ const Sidebar = () => {
         </div>
         {/* Text Colors */}
         <p className="text-xs text-gray-300 mb-2">Text Colors</p>
-        <p className="text-xs text-gray-300 mb-2 ms-5">Pronoun text color</p>
-        <div className="bg-white rounded p-2 mb-5">
-          <p className="text-xs mt-2">Default</p>
-          <div
-            className={`w-full h-20 rounded-lg my-2 shadow shadow-zinc-900`}
-            style={{ backgroundColor: cardColorBg }}
-          ></div>
-          <p className="text-xs mt-3">Choose Colors</p>
-          <div className="grid grid-cols-6 gap-3 overflow-hidden py-5">
-            {cardColor.map((card) => (
-              <button
-                key={card.id}
-                onClick={() => updateCardColor(card.value)}
-                className={`p-3 rounded shadow-sm shadow-zinc-900 hover:shadow-none`}
-                style={{ backgroundColor: card.value }}
-              ></button>
-            ))}
-          </div>
-        </div>
+        {/* Pronoun */}
+        <TextColor name={"pronoun"} bg={pronoun.color} title={"Pronoun"} />
+        {/* Name */}
+        <TextColor name={"name"} bg={name.color} title={"Name"} />
+        {/* Job Title */}
+        <TextColor name={"jobTitle"} bg={jobTitle.color} title={"Job Title"} />
+        {/* Location */}
+        <TextColor name={"location"} bg={location.color} title={"Location"} />
+        {/* Company */}
+        <TextColor name={"company"} bg={company.color} title={"Company"} />
+        {/* Tag Title */}
+        <TextColor name={"tagLine"} bg={tagLine.color} title={"Tag Line"} />
       </div>
     </div>
   );

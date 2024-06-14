@@ -93,3 +93,12 @@ export const cardColor: CoverColor[] = [
   { id: 1, value: "#114B5F" },
   { id: 1, value: "#6B2737" },
 ];
+
+export const textColor: CoverColor[] = [
+  { id: 1, value: "#000000" },
+  { id: 1, value: "#ffffff" },
+  { id: 1, value: "#664C43" },
+  { id: 1, value: "#130303" },
+  { id: 1, value: "#171738" },
+  { id: 1, value: "#394648" },
+];

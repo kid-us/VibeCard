@@ -65,8 +65,10 @@ const Card = ({
             />
           </div>
           <div className="content-center">
-            <p className="absolute right-0 font-poppins me-1 text-white w-48 text-center overflow-hidden text-ellipsis text-nowrap">
-              <span className="text-gray-300 text-xs">
+            <p
+              className={`absolute right-0 font-poppins me-1 text-white w-48 text-center overflow-hidden text-ellipsis text-nowrap`}
+            >
+              <span className={`text-gray-300 text-xs`}>
                 {pronoun && "(" + pronoun + ")"}{" "}
               </span>
 
