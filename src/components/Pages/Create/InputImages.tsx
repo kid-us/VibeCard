@@ -49,7 +49,7 @@ const InputImages = ({ type, onPreviewChange }: Props) => {
           </div>
         ) : (
           <label htmlFor={`${type}-file`} className="cursor-pointer">
-            <div className="flex flex-col text-center">
+            <div className="flex flex-col text-center mt-5">
               <i className="bi-image text-xl text-gray-800"></i>
               <span className="text-[8px] text-gray-600">
                 Select image or video file or drag and drop one here
