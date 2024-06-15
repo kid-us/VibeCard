@@ -80,7 +80,11 @@ const Texts = () => {
         {view === "pronoun" && (
           <>
             {/* Font Styles */}
-            <FontStylesSize view={view} />
+            <FontStylesSize
+              defaultFontStyle={pronoun.font}
+              view={view}
+              defaultFontSize={pronoun.size}
+            />
             {/* <div className="flex my-5">
               <p className="first-letter:uppercase text-teal-400">{view}</p>
               <p className="ms-2 text-white text-xs"> Font Style</p>

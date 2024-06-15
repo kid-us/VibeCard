@@ -3,11 +3,12 @@ import { fontSize, fonts } from "../../../../services/fonts";
 import { State, useTextColorStore } from "../../../../store/useTextColorStore";
 
 interface Props {
-    view: string;
-    viewState: 
+  defaultFontStyle: string;
+  defaultFontSize: string;
+  view: keyof State;
 }
 
-const FontStylesSize = () => {
+const FontStylesSize = ({ view, defaultFontSize, defaultFontStyle }: Props) => {
   const [fontStyle, setFontStyle] = useState({
     style: "font-poppins",
     name: "Poppins",
@@ -21,8 +22,6 @@ const FontStylesSize = () => {
     element: keyof State
   ) => {
     updateFont(element, style);
-
-    console.log(style, element.toLowerCase());
 
     setFontStyle({
       ...fontStyle,
@@ -48,7 +47,7 @@ const FontStylesSize = () => {
             }
             className={`${font.style} hover:gray-300 hover:text-teal-400
   cursor-pointer  pb-2 ${
-    pronoun.font === font.style ? "text-sky-600" : "text-black"
+    defaultFontStyle === font.style ? "text-sky-600" : "text-black"
   }`}
           >
             {font.name}
@@ -64,10 +63,10 @@ const FontStylesSize = () => {
         {fontSize.map((size) => (
           <p
             key={size.name}
-            onClick={() => updateSize(view as keyof State, size.size)}
+            onClick={() => updateSize(view, size.size)}
             className={`${size.size} hover:gray-300 hover:text-teal-400
   cursor-pointer  pb-2 ${
-    pronoun.size === size.size ? "text-teal-400" : "text-black"
+    defaultFontSize === size.size ? "text-teal-400" : "text-black"
   }`}
           >
             {size.name}
