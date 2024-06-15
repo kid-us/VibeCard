@@ -74,11 +74,11 @@ const Navbar = () => {
           </div>
 
           <div className="lg:hidden md:hidden mt-1">
-            <p className="bi-person-fill text-white text-lg"></p>
+            <p className="bi-search text-white text-lg"></p>
           </div>
 
           <div className="lg:hidden md:hidden mt-1">
-            <p className="bi-search text-white text-lg"></p>
+            <p className="bi-person-fill text-white text-lg"></p>
           </div>
 
           <div className="col-1 mt-2">
