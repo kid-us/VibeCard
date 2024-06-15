@@ -27,7 +27,7 @@ const Colors = () => {
   const { coverColorBg } = useCoverColorStore();
   return (
     <>
-      <p className="text-xs text-gray-300 mb-2">Card Background Color</p>
+      <p className="text-sm text-gray-300 mb-4">Card Background Color</p>
       <BackgroundColor
         bgColors={cardColorBg}
         cardType="card"

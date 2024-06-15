@@ -14,7 +14,7 @@ const Texts = () => {
 
   return (
     <>
-      <p className="text-sm text-gray-300 mb-2 mx-2">Text Styles</p>
+      <p className="text-sm text-gray-300 mb-4">Text Styles</p>
 
       <div className="z-50">
         <div className="relative text-sm border-teal-500 shadow shadow-stone-300 rounded">

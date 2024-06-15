@@ -33,7 +33,7 @@ const FontStylesSize = ({ view, defaultFontSize, defaultFontStyle }: Props) => {
   return (
     <>
       {/* Font Styles */}
-      <div className="flex my-5">
+      <div className="flex my-5 text-sm ms-1">
         <p className="first-letter:uppercase text-teal-400">{view}</p>
         <p className="ms-2 text-white text-xs"> Font Style</p>
       </div>
@@ -55,8 +55,8 @@ const FontStylesSize = ({ view, defaultFontSize, defaultFontStyle }: Props) => {
         ))}
       </div>
       {/* Font Sizes */}
-      <div className="flex my-3">
-        <p className="first-letter:uppercase text-teal-600">{view}</p>
+      <div className="flex my-3 text-sm ms-1">
+        <p className="first-letter:uppercase text-teal-400">{view}</p>
         <p className=" ms-2 text-white text-xs"> Font Size</p>
       </div>
       <div className="bg-white w-full rounded p-2">
