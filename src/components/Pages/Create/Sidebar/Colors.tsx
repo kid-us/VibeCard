@@ -45,7 +45,7 @@ const Colors = () => {
           onClick={() => setDropdown(!dropdown)}
           className={`${
             dropdown ? "bi-caret-up-fill" : "bi-caret-down-fill"
-          } absolute top-2 right-3 cursor-pointer`}
+          } absolute top-2 right-3 cursor-pointer text-white`}
         ></p>
         {dropdown && (
           <div
