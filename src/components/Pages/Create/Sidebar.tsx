@@ -15,7 +15,7 @@ const Sidebar = () => {
             key={icons.id}
             onClick={() => setSelected(icons.title)}
             className={`py-5 text-center cursor-pointer ${
-              selected === icons.title ? "bg-stone-800" : "hover:bg-stone-800"
+              selected === icons.title ? "bg-stone-700" : "hover:bg-stone-800"
             } p-3`}
           >
             <p className={`${icons.icon} text-xl`}></p>
@@ -31,7 +31,6 @@ const Sidebar = () => {
         {/* Color */}
         {selected === "Colors" && <Colors />}
         {/* Text */}
-        {/* Card Background */}
       </div>
     </div>
   );
