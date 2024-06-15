@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "../fonts.css";
-import { fontSize, fonts } from "../../../../services/fonts";
-import { State, useTextColorStore } from "../../../../store/useTextColorStore";
+import { useTextColorStore } from "../../../../store/useTextColorStore";
 import FontStylesSize from "./FontStylesSize";
 
 const texts = ["pronoun", "name", "location", "jobTitle", "tagLine", "company"];
@@ -10,37 +9,8 @@ const Texts = () => {
   const [dropdown, setDropdown] = useState(false);
   const [view, setView] = useState("pronoun");
 
-  const [fontStyle, setFontStyle] = useState({
-    style: "font-poppins",
-    name: "Poppins",
-  });
-
-  const {
-    updateFont,
-    pronoun,
-    company,
-    jobTitle,
-    name,
-    tagLine,
-    location,
-    updateSize,
-  } = useTextColorStore();
-
-  const handleFontStyle = (
-    style: string,
-    name: string,
-    element: keyof State
-  ) => {
-    updateFont(element, style);
-
-    console.log(style, element.toLowerCase());
-
-    setFontStyle({
-      ...fontStyle,
-      style: style,
-      name: name,
-    });
-  };
+  const { pronoun, company, jobTitle, name, tagLine, location } =
+    useTextColorStore();
 
   return (
     <>
@@ -79,11 +49,55 @@ const Texts = () => {
 
         {view === "pronoun" && (
           <>
-            {/* Font Styles */}
             <FontStylesSize
               defaultFontStyle={pronoun.font}
               view={view}
               defaultFontSize={pronoun.size}
+            />
+          </>
+        )}
+        {view === "name" && (
+          <>
+            <FontStylesSize
+              defaultFontStyle={name.font}
+              view={view}
+              defaultFontSize={name.size}
+            />
+          </>
+        )}
+        {view === "company" && (
+          <>
+            <FontStylesSize
+              defaultFontStyle={company.font}
+              view={view}
+              defaultFontSize={company.size}
+            />
+          </>
+        )}
+        {view === "tagLine" && (
+          <>
+            <FontStylesSize
+              defaultFontStyle={tagLine.font}
+              view={view}
+              defaultFontSize={tagLine.size}
+            />
+          </>
+        )}
+        {view === "location" && (
+          <>
+            <FontStylesSize
+              defaultFontStyle={location.font}
+              view={view}
+              defaultFontSize={location.size}
+            />
+          </>
+        )}
+        {view === "jobTitle" && (
+          <>
+            <FontStylesSize
+              defaultFontStyle={jobTitle.font}
+              view={view}
+              defaultFontSize={jobTitle.size}
             />
           </>
         )}
