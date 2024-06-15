@@ -3,6 +3,12 @@ interface Fonts {
   name: string;
 }
 
+interface Size {
+  size: string;
+  name: string;
+}
+
+// Font Styles
 export const fonts: Fonts[] = [
   {
     style: "font-poppins",
@@ -44,4 +50,13 @@ export const fonts: Fonts[] = [
     style: "roboto",
     name: "Roboto",
   },
+];
+
+// Font Size
+export const fontSize: Size[] = [
+  { size: "text-xl", name: "Extra Large" },
+  { size: "text-lg", name: "Large" },
+  { size: "text-md", name: "Medium" },
+  { size: "text-sm", name: "Small" },
+  { size: "text-xs", name: "Extra Small" },
 ];

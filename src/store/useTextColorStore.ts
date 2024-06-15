@@ -27,12 +27,12 @@ type Action = {
 
 // Create the Zustand store
 export const useTextColorStore = create<State & Action>((set) => ({
-  pronoun: { font: "font-monospace", color: "#9ca3af", size: "" },
-  name: { font: "font-poppins", color: "#ffffff", size: "" },
-  tagLine: { font: "pompiere", color: "#9ca3af", size: "" },
-  jobTitle: { font: "chakra", color: "#2dd4bf", size: "" },
-  company: { font: "chakra", color: "#9ca3af", size: "" },
-  location: { font: "chakra", color: "#9ca3af", size: "" },
+  pronoun: { font: "font-monospace", color: "#9ca3af", size: "text-xs" },
+  name: { font: "font-poppins", color: "#ffffff", size: "text-md" },
+  tagLine: { font: "pompiere", color: "#9ca3af", size: "text-xs" },
+  jobTitle: { font: "chakra", color: "#2dd4bf", size: "text-sm" },
+  company: { font: "chakra", color: "#9ca3af", size: "text-xs" },
+  location: { font: "chakra", color: "#9ca3af", size: "text-sm" },
   icon: { font: "", color: "#ffffff", size: "" },
 
   updateFont: (key: keyof State, font: string) =>

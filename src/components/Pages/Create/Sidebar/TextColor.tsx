@@ -1,15 +1,6 @@
 import { textColor } from "../../../../services/coverColor";
 import { useTextColorStore } from "../../../../store/useTextColorStore";
-
-type State = {
-  pronoun: Props;
-  name: Props;
-  tagLine: Props;
-  jobTitle: Props;
-  company: Props;
-  location: Props;
-  icon: Props;
-};
+import { State } from "../../../../store/useTextColorStore";
 
 interface Props {
   bg: string;

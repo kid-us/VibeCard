@@ -67,12 +67,18 @@ const Card = ({
               className=""
             />
           </div>
+          {/* Pronoun and Name */}
           <div className="content-center">
             <p
-              className={`absolute right-0 font-poppins me-1 w-48 text-center overflow-hidden text-ellipsis text-nowrap`}
+              className={`absolute right-0 me-1 w-48 text-center overflow-hidden text-ellipsis text-nowrap ${
+                name.font + " " + name.size
+              } `}
               style={{ color: name.color }}
             >
-              <span className={`text-xs`} style={{ color: pronoun.color }}>
+              <span
+                className={` ${pronoun.font + " " + pronoun.size}`}
+                style={{ color: pronoun.color }}
+              >
                 {pronounVal && "(" + pronounVal + ")"}{" "}
               </span>
 
@@ -80,7 +86,7 @@ const Card = ({
             </p>
           </div>
         </div>
-        <div className="px-5 mt-10 text-white text-sm">
+        <div className="px-5 mt-10 text-white">
           <div className="relative">
             {/* {cover && ( */}
             <img
@@ -89,37 +95,45 @@ const Card = ({
               className="absolute right-0 -top-2 w-14 h-14 rounded-full border-2 bg-white"
             />
             {/* )} */}
-
+            {/* Job Title */}
             <p
-              className={`font-poppins mb-1 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase ${
+              className={`${
+                jobTitle.font + " " + jobTitle.size
+              } mb-1 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase ${
                 !jobTitleVal && "invisible"
               } `}
               style={{ color: jobTitle.color }}
             >
               {jobTitleVal && jobTitleVal}
             </p>
-
+            {/* Company */}
             <p
-              className={`${!companyVal && "invisible"} text-xs`}
+              className={`${!companyVal && "invisible"} ${
+                company.font + " " + company.size
+              }`}
               style={{ color: company.color }}
             >
               {companyVal && "At " + companyVal}
             </p>
+            {/* Tag Line */}
             <p
-              className={`text-xs mt-3 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase ${
+              className={`mt-3 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase ${
                 !tagLineVal && "invisible"
-              }`}
+              } ${tagLine.font + " " + tagLine.size}`}
               style={{ color: tagLine.color }}
             >
               <span className="bi-info"></span>
               {tagLineVal && tagLineVal}
             </p>
+            {/* Location */}
             <p
-              className={`my-2 ${!locationVal && "invisible"}`}
+              className={`${location.font + " " + location.size} my-2 ${
+                !locationVal && "invisible"
+              }`}
               style={{ color: location.color }}
             >
               <span
-                className="bi-geo-alt-fill me-2 text-xs"
+                className="bi-geo-alt-fill me-2"
                 style={{ color: location.color }}
               ></span>
               {locationVal && locationVal}
