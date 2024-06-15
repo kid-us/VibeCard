@@ -32,8 +32,8 @@ const Navbar = () => {
       } ${isMenu && "menu-bg animate__animated animate__fadeInLeft"} `}
     >
       <nav className="container mx-auto relative">
-        <div className="lg:grid lg:grid-cols-10 lg:py-3 flex justify-between py-2 px-3">
-          <div className="col-span-9">
+        <div className="lg:grid lg:grid-cols-12 lg:py-3 flex justify-between py-2 px-3">
+          <div className="col-span-7">
             {nav.map((n) =>
               n.id === 1 ? (
                 <Link
@@ -64,7 +64,15 @@ const Navbar = () => {
               )
             )}
           </div>
-          <div className="col-1">
+          <div className="col-span-4 me-16">
+            <input
+              type="search"
+              name="search"
+              className="bg-gray-100 py-2 rounded-lg w-full focus:outline-none px-5 mt-1 block font-poppins text-sm"
+              placeholder="Search"
+            />
+          </div>
+          <div className="col-1 mt-2">
             <Link
               to={"/login"}
               className="lg:block hidden bg-teal-700 py-1 px-5 text-sm rounded-full text-white text-center transition ease-in-out delay-200 hover:scale-105 hover:bg-teal-900 duration-200 shadow shadow-zinc-950"
