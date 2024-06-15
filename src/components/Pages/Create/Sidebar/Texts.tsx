@@ -16,9 +16,9 @@ const Texts = () => {
     <>
       <p className="text-sm text-gray-300 mb-2 mx-2">Text Styles</p>
 
-      <div className="p-2 z-50">
+      <div className="z-50">
         <div className="relative text-sm border-teal-500 shadow shadow-stone-300 rounded">
-          <p className="px-2 py-2 text-gray-50">Choose Texts </p>
+          <p className="px-2 py-2 text-gray-50">Choose Text </p>
           <p
             onClick={() => setDropdown(!dropdown)}
             className={`${

@@ -39,8 +39,8 @@ const Colors = () => {
       <BackgroundColor bgColors={coverColorBg} cardType="cover" colorPicker />
 
       {/* Text Colors */}
-      <div className="relative text-xs mb-4 bg-teal-500 shadow shadow-stone-300 rounded">
-        <p className="px-2 py-2 text-gray-50">Text Colors</p>
+      <div className="relative text-sm mb-4 border-teal-500 shadow shadow-stone-300 rounded">
+        <p className="px-2 py-2 text-gray-50">Choose Text</p>
         <p
           onClick={() => setDropdown(!dropdown)}
           className={`${
@@ -49,7 +49,7 @@ const Colors = () => {
         ></p>
         {dropdown && (
           <div
-            className={`absolute bg-white w-full mt-1 rounded p-2 shadow shadow-zinc-900 space-y-1`}
+            className={`absolute bg-teal-700 w-full mt-1 rounded px-2 py-3 shadow-md shadow-zinc-900 space-y-1 z-10`}
           >
             {texts.map((text) => (
               <p
@@ -59,7 +59,7 @@ const Colors = () => {
                 }}
                 key={text}
                 className={`${
-                  view === text && "text-sky-700 text-sm"
+                  view === text && "text-white text-lg"
                 } hover:text-gray-400 w-full cursor-pointer`}
               >
                 {text}

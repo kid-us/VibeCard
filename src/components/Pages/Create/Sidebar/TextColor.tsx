@@ -13,7 +13,10 @@ const TextColor = ({ bg, name, title }: Props) => {
 
   return (
     <>
-      <p className="text-xs text-gray-300 mb-2 ms-2">{title} color</p>
+      <div className="flex my-5">
+        <p className="first-letter:uppercase text-teal-400">{title}</p>
+        <p className="ms-2 text-white text-xs"> Color</p>
+      </div>
       <div className="bg-white rounded p-2 mb-5">
         <p className="text-xs mt-2">Default</p>
         <div
