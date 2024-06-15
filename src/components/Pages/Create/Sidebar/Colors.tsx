@@ -10,7 +10,7 @@ const texts = [
   "Pronoun",
   "Name",
   "Location",
-  "Job Title",
+  "Website",
   "Icons",
   "Job Title",
   "Tag Line",

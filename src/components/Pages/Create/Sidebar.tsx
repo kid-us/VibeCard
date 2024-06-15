@@ -2,9 +2,10 @@ import { useState } from "react";
 import Colors from "./Sidebar/Colors";
 
 import { sidebarIcons } from "../../../services/sidebarIcons";
+import Texts from "./Sidebar/Texts";
 
 const Sidebar = () => {
-  const [selected, setSelected] = useState("Colors");
+  const [selected, setSelected] = useState("Text");
 
   return (
     <div className="grid grid-cols-5 bg-stone-800 -md w-full h-[100dvh] pt-[51px]">
@@ -31,6 +32,7 @@ const Sidebar = () => {
         {/* Color */}
         {selected === "Colors" && <Colors />}
         {/* Text */}
+        {selected === "Text" && <Texts />}
       </div>
     </div>
   );
