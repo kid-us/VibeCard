@@ -39,7 +39,7 @@ const Navbar = () => {
                 <Link
                   key={n.id}
                   to={n.path}
-                  className={`logo-font me-32 text-2xl ${
+                  className={`logo-font lg:me-32 text-2xl ${
                     isMenu
                       ? "text-black"
                       : isSticky
@@ -64,7 +64,7 @@ const Navbar = () => {
               )
             )}
           </div>
-          <div className="col-span-4 me-16">
+          <div className="lg:block hidden col-span-4 me-16">
             <input
               type="search"
               name="search"
@@ -72,6 +72,15 @@ const Navbar = () => {
               placeholder="Search"
             />
           </div>
+
+          <div className="lg:hidden md:hidden mt-1">
+            <p className="bi-person-fill text-white text-lg"></p>
+          </div>
+
+          <div className="lg:hidden md:hidden mt-1">
+            <p className="bi-search text-white text-lg"></p>
+          </div>
+
           <div className="col-1 mt-2">
             <Link
               to={"/login"}
