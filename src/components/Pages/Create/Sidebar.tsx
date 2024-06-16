@@ -6,7 +6,7 @@ import Texts from "./Sidebar/Texts";
 import Content from "./Sidebar/Content";
 
 const Sidebar = () => {
-  const [selected, setSelected] = useState("Content");
+  const [selected, setSelected] = useState("Colors");
 
   return (
     <div className="grid grid-cols-5 bg-stone-800 -md w-full h-[100dvh] pt-[51px]">
