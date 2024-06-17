@@ -60,7 +60,7 @@ const InputFields = ({
     }
   };
   return (
-    <div className="mb-4">
+    <div className="mb-3">
       <label className="text-xs text-gray-600 block" htmlFor={label}>
         {inputName}
         {required && <span className="text-red-700 text-2xl">*</span>}
@@ -68,7 +68,7 @@ const InputFields = ({
       <input
         type={type}
         name={label}
-        className={`bg-gray-100 py-3 rounded-xl focus:outline-none w-full mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm px-3`}
+        className={`bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3`}
         onChange={handleChange}
       />
     </div>

@@ -100,11 +100,11 @@ const Create = () => {
         </div>
         {/* Form */}
         <div className="col-span-5 w-full p-3 mt-14">
-          <div className="relative px-10 ">
-            <p className="text-xl font-poppins mt-7 ps-4">
+          <div className="relative px-5">
+            <p className="text-2xl font-poppins mt-2 ps-4">
               Create your Business card
             </p>
-            <div className="px-6 mt-12 h-[60dvh] overflow-y-scroll">
+            <div className="px-8 pt-10 pb-16 mt-6 h-[80dvh] overflow-y-scroll shadow shadow-zinc-400 rounded-2xl">
               {/* Images */}
               <div className="flex justify-between flex-shrink-0">
                 {/* Profile */}
@@ -122,7 +122,6 @@ const Create = () => {
                   onPreviewChange={handlePreviewChange}
                 />
               </div>
-
               {/* Inputs */}
               <div className="grid grid-cols-2 gap-x-8 mt-5">
                 {/* Pronoun */}
@@ -136,7 +135,7 @@ const Create = () => {
 
                   <select
                     name="pronoun"
-                    className="bg-gray-100 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm px-3"
+                    className="bg-gray-200 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3"
                     onChange={(event) => setPronoun(event.currentTarget.value)}
                     defaultValue=""
                   >
@@ -246,8 +245,14 @@ const Create = () => {
                   </div> */}
               </div>
             </div>
-
             {/* Button */}
+            <div className="absolute -bottom-3 pe-10 w-full">
+              <div className="flex justify-end rounded-b-xl bg-white py-4 shadow-xl shadow-zinc-900">
+                <button className="bg-sky-800 shadow-lg active:shadow-none shadow-gray-900 text-white rounded px-16 py-2 me-10">
+                  Update
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         {/* Card */}
