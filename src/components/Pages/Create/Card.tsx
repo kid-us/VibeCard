@@ -40,7 +40,7 @@ const Card = ({
   const { cardColorBg } = useCardColorStore();
   const { company, jobTitle, location, name, pronoun, tagLine, icon } =
     useTextColorStore();
-  const { companyLogo } = useContentStore();
+  const { companyLogo, socialMedia } = useContentStore();
 
   return (
     <div
@@ -164,21 +164,19 @@ const Card = ({
             ></Link>
           )}
         </div>
+
         {/* Social Media */}
-        <div className="grid grid-cols-3 gap-5 mt-5 mb-5">
-          <Link
-            to="/"
-            className="bi-twitter text-3xl text-center bg-sky-400 rounded-lg py-3 shadow-inner"
-          ></Link>
-          <Link
-            to="/"
-            className="bi-instagram text-3xl text-center bg-red-500 rounded-lg py-3"
-          ></Link>
-          <Link
-            to="/"
-            className="bi-github text-3xl text-center bg-zinc-600 rounded-lg py-3"
-          ></Link>
-        </div>
+        {socialMedia.length > 0 && (
+          <div className="grid grid-cols-3 gap-5 mt-5 mb-5">
+            {socialMedia.map((media) => (
+              <Link
+                key={media.icon}
+                to={`${media.link}`}
+                className={`${media.icon} ${media.color} text-3xl text-center rounded-lg py-3 shadow-inner`}
+              ></Link>
+            ))}
+          </div>
+        )}
         <button className="w-full bg-teal-500 rounded-lg py-4 mb-9 mt-5 shadow-md text-black font-poppins font-extrabold shadow-zinc-50">
           Save Contact
         </button>

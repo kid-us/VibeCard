@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from "react";
+import { useContentStore } from "../../../store/useContentStore";
 
 interface Props {
   type: "profile" | "cover" | "logo";
@@ -13,6 +14,8 @@ const InputImages = ({ type, title, onPreviewChange }: Props) => {
   const [, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
 
+  const { updateCoverLogo } = useContentStore();
+
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const selectedFile = e.target.files[0];
@@ -20,8 +23,8 @@ const InputImages = ({ type, title, onPreviewChange }: Props) => {
       const previewURL = URL.createObjectURL(selectedFile);
       setPreview(previewURL);
       onPreviewChange(type, previewURL);
-      if (type === "cover") {
-        console.log("Lorem");
+      if (type === "logo") {
+        updateCoverLogo(true);
       }
     }
   };
