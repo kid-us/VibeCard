@@ -166,17 +166,24 @@ const Card = ({
         </div>
 
         {/* Social Media */}
-        {socialMedia.length > 0 && (
-          <div className="grid grid-cols-3 gap-5 mt-5 mb-5">
-            {socialMedia.map((media) => (
-              <Link
-                key={media.icon}
-                to={`${media.link}`}
-                className={`${media.icon} ${media.color} text-3xl text-center rounded-lg py-3 shadow-inner`}
-              ></Link>
-            ))}
-          </div>
-        )}
+        <div
+          className={` ${
+            socialMedia.length > 0
+              ? `grid ${
+                  socialMedia.length <= 3 ? "grid-cols-3" : "grid-cols-4"
+                }  gap-5 my-5`
+              : "invisible"
+          }`}
+        >
+          {socialMedia.map((media) => (
+            <Link
+              key={media.icon}
+              to={`${media.link}`}
+              className={`${media.icon} text-3xl text-center rounded-lg py-2 shadow-inner`}
+              style={{ backgroundColor: media.color }}
+            ></Link>
+          ))}
+        </div>
         <button className="w-full bg-teal-500 rounded-lg py-4 mb-9 mt-5 shadow-md text-black font-poppins font-extrabold shadow-zinc-50">
           Save Contact
         </button>

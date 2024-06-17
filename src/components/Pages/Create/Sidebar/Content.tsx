@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   SocialMediaContent,
   socialMedias,
@@ -6,26 +6,57 @@ import {
 import { useContentStore } from "../../../../store/useContentStore";
 
 const Content = () => {
+  const { socialMedia, updateSocialMedia } = useContentStore();
+  const [links, setLinks] = useState([""]);
+
+  useEffect(() => {
+    if (socialMedia.length > 0) {
+      const icons = socialMedia.map((item) => item.icon);
+      setLinks(icons);
+    }
+  }, [socialMedia]);
+
   const [socialMediaId, setSocialMediaId] = useState<number>();
   const [socialMediaLink, setSocialMediaLink] = useState("");
   const [error, setError] = useState(false);
 
-  const { socialMedia, updateSocialMedia } = useContentStore();
-
   const handleSocialMedia = (socialInfo: SocialMediaContent) => {
     if (socialMediaLink) {
-      updateSocialMedia([
-        ...socialMedia,
-        {
-          link: socialMediaLink,
-          color: socialInfo.color.replace("text", "bg").toString(),
-          icon: socialInfo.icon,
-        },
-      ]);
+      const iconExists = socialMedia.some(
+        (media) => media.icon == socialInfo.icon
+      );
+
+      if (iconExists) {
+        updateSocialMedia(
+          socialMedia.map((media) =>
+            media.icon == socialInfo.icon
+              ? { ...media, link: socialMediaLink }
+              : media
+          )
+        );
+      } else {
+        updateSocialMedia([
+          ...socialMedia,
+          {
+            link: socialMediaLink,
+            color: socialInfo.color.replace("text", "bg").toString(),
+            icon: socialInfo.icon,
+          },
+        ]);
+      }
     } else {
       setError(true);
     }
   };
+
+  function handleDelete(iconToDelete: string) {
+    const filtered = socialMedia.filter((media) => media.icon !== iconToDelete);
+    const linkFilter = links.filter((link) => link !== iconToDelete);
+    setLinks(linkFilter);
+    updateSocialMedia(filtered);
+    setSocialMediaId(0);
+    setError(false);
+  }
 
   return (
     <div>
@@ -61,11 +92,18 @@ const Content = () => {
         {socialMedias.map((social) => (
           <div key={social.id}>
             <div
-              className={`relative flex justify-between p-2 bg-teal-100 rounded-lg mt-3 shadow shadow-zinc-800`}
+              className={`relative flex justify-between p-2 rounded-lg mt-3 shadow shadow-zinc-800`}
+              style={{ backgroundColor: social.color.replace("text", "bg") }}
             >
-              <p className={`${social.icon + " " + social.color} text-xl`}>
-                <span className="text-xs ms-5">{social.label}</span>
+              <p
+                className={`${social.icon} text-xl text-white ms-3`}
+                // style={{ color: social.color }}
+              >
+                <span className="text-xs ms-5 text-gray-200">
+                  {social.label}
+                </span>
               </p>
+
               {socialMediaId === social.id ? (
                 <p
                   onClick={() => {
@@ -74,26 +112,45 @@ const Content = () => {
                   }}
                   className="bi-x-lg bg-red-800 text-white rounded px-2 cursor-pointer shadow-red-600 shadow active:shadow-none pt-1"
                 ></p>
+              ) : links.includes(social.icon) ? (
+                <div className="flex space-x-2">
+                  <p
+                    onClick={() => handleDelete(social.icon)}
+                    className="bi-trash bg-red-800 text-white rounded px-2 cursor-pointer shadow-red-600 shadow active:shadow-none pt-1"
+                  ></p>
+                  <p
+                    onClick={() => setSocialMediaId(social.id)}
+                    className="bi-pen-fill bg-green-800 text-white rounded px-2 cursor-pointer shadow-red-600 shadow active:shadow-none pt-1"
+                  ></p>
+                </div>
               ) : (
                 <p
                   onClick={() => setSocialMediaId(social.id)}
-                  className="bi-plus bg-zinc-800 text-white rounded px-2 cursor-pointer shadow-red-600 shadow active:shadow-none pt-1"
+                  className="bi-plus-lg bg-white rounded-full w-8 h-8 px-2 cursor-pointer shadow-zinc-900 shadow-lg active:shadow-none pt-1"
                 ></p>
               )}
             </div>
+
+            {/* Link Input */}
             {social.id === socialMediaId && (
-              <div className="relative bg-white animate__animated animate__fadeInDown mt-2">
+              <div className="relative bg-white animate__animated animate__fadeInDown mt-1">
                 <input
                   type="text"
-                  className={`bg-gray-300 w-full py-2 px-3 rounded shadow shadow-zinc-900 placeholder:text-sky-900 text-sm focus:outline-none ${
-                    error && "border border-red-500"
+                  className={`bg-white w-full py-2 px-3 rounded shadow-md border border-black shadow-zinc-950 placeholder:text-sky-900 text-sm focus:outline-none ${
+                    error && "border border-red-500 font-poppins font-semibold"
                   }`}
-                  placeholder="Link"
+                  placeholder={
+                    socialMedia.find((s) => s.icon === social.icon)?.link ||
+                    "Link"
+                  }
                   onChange={(e) => setSocialMediaLink(e.currentTarget.value)}
                 />
                 <p
-                  onClick={() => handleSocialMedia(social)}
-                  className="absolute bi-check top-0 right-0 text-xl px-1 me-1 mt-1 text-center bg-sky-800 text-white rounded cursor-pointer shadow hover:bg-sky-900"
+                  onClick={() => {
+                    handleSocialMedia(social);
+                    setSocialMediaId(0);
+                  }}
+                  className="absolute bi-check top-0 right-0 text-xl px-3 me-1 mt-1 text-center bg-sky-800 text-white rounded cursor-pointer shadow-md shadow-zinc-900 hover:bg-sky-900"
                 ></p>
               </div>
             )}
