@@ -25,9 +25,6 @@ const Create = () => {
   const [jobTitle, setJobTitle] = useState("");
   const [company, setCompany] = useState("");
   const [pronoun, setPronoun] = useState("");
-  //   const [socialLink1, setSocialLink1] = useState("");
-  //   const [socialLink2, setSocialLink2] = useState("");
-  //   const [socialLink3, setSocialLink3] = useState("");
 
   const handlePreviewChange = (
     type: "profile" | "cover" | "logo",

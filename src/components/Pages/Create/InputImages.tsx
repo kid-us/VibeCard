@@ -20,6 +20,9 @@ const InputImages = ({ type, title, onPreviewChange }: Props) => {
       const previewURL = URL.createObjectURL(selectedFile);
       setPreview(previewURL);
       onPreviewChange(type, previewURL);
+      if (type === "cover") {
+        console.log("Lorem");
+      }
     }
   };
 
