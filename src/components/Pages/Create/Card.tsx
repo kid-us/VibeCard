@@ -3,6 +3,7 @@ import { qrCode, user } from "../../../assets";
 import { useCoverColorStore } from "../../../store/useCoverColorStore";
 import { useCardColorStore } from "../../../store/useCardColorStore";
 import { useTextColorStore } from "../../../store/useTextColorStore";
+import { useContentStore } from "../../../store/useContentStore";
 
 interface Preview {
   profile: string | null;
@@ -39,6 +40,7 @@ const Card = ({
   const { cardColorBg } = useCardColorStore();
   const { company, jobTitle, location, name, pronoun, tagLine, icon } =
     useTextColorStore();
+  const { companyLogo } = useContentStore();
 
   return (
     <div
@@ -87,13 +89,13 @@ const Card = ({
       </div>
       <div className="px-5 mt-10 text-white">
         <div className="relative">
-          {/* {cover && ( */}
-          <img
-            src={preview?.logo ? preview.logo : qrCode}
-            alt="Cover"
-            className="absolute right-0 -top-2 w-14 h-14 rounded-full border-2 bg-white"
-          />
-          {/* )} */}
+          {companyLogo && (
+            <img
+              src={preview?.logo ? preview.logo : qrCode}
+              alt="Cover"
+              className="absolute right-0 -top-2 w-14 h-14 rounded-full border-2 bg-white"
+            />
+          )}
           {/* Job Title */}
           <p
             className={`${
