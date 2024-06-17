@@ -6,9 +6,10 @@ interface Props {
     type: "profile" | "cover" | "logo",
     preview: string | null
   ) => void;
+  title: string;
 }
 
-const InputImages = ({ type, onPreviewChange }: Props) => {
+const InputImages = ({ type, title, onPreviewChange }: Props) => {
   const [, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
 
@@ -25,7 +26,7 @@ const InputImages = ({ type, onPreviewChange }: Props) => {
   return (
     <div>
       <p className="text-xs text-gray-800 mb-4 font-poppins first-letter:uppercase">
-        {type}
+        {title}
       </p>
       <div
         className={`border rounded-lg border-gray-300 bg-stone-200 ${

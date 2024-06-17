@@ -109,15 +109,18 @@ const Create = () => {
               <div className="flex justify-between flex-shrink-0">
                 {/* Profile */}
                 <InputImages
+                  title="Profile Picture"
                   type="profile"
                   onPreviewChange={handlePreviewChange}
                 />
                 {/* Cover */}
                 <InputImages
+                  title="Cover Photo"
                   type="cover"
                   onPreviewChange={handlePreviewChange}
                 />
                 <InputImages
+                  title="Company Logo"
                   type="logo"
                   onPreviewChange={handlePreviewChange}
                 />
