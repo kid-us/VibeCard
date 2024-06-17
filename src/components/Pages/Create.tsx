@@ -248,7 +248,7 @@ const Create = () => {
             {/* Button */}
             <div className="absolute -bottom-3 pe-10 w-full">
               <div className="flex justify-end rounded-b-xl bg-white py-4 shadow-xl shadow-zinc-900">
-                <button className="bg-sky-800 shadow-lg active:shadow-none shadow-gray-900 text-white rounded px-16 py-2 me-10">
+                <button className="bg-sky-800 shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 py-2 me-10">
                   Update
                 </button>
               </div>
