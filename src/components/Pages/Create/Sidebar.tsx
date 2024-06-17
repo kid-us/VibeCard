@@ -9,7 +9,7 @@ const Sidebar = () => {
   const [selected, setSelected] = useState("Colors");
 
   return (
-    <div className="grid grid-cols-5 bg-stone-800 -md w-full h-[100dvh] pt-[51px]">
+    <div className="grid grid-cols-5 bg-stone-800 -md w-full h-[100dvh] pt-[55px]">
       {/* Icon */}
       <div className="text-white bg-stone-900 shadow shadow-stone-400 overflow-hidden">
         {sidebarIcons.map((icons) => (
@@ -29,7 +29,7 @@ const Sidebar = () => {
       </div>
 
       {/* Contents */}
-      <div className="col-span-4 p-1 mt-3 overflow-y-scroll">
+      <div className="col-span-4 p-2 mt-3 overflow-y-scroll">
         {/* Color */}
         {selected === "Colors" && <Colors />}
         {/* Text */}
