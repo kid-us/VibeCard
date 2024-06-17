@@ -101,10 +101,10 @@ const Create = () => {
         {/* Form */}
         <div className="col-span-5 w-full p-3 mt-14">
           <div className="relative px-5">
-            <p className="text-2xl font-poppins mt-2 ps-4">
+            <p className="text-2xl font-poppins mt-2">
               Create your Business card
             </p>
-            <div className="px-8 pt-10 pb-16 mt-6 h-[80dvh] overflow-y-scroll shadow shadow-zinc-400 rounded-2xl">
+            <div className="px-8 pt-10 pb-16 mt-6 shadow shadow-zinc-400 rounded-xl">
               {/* Images */}
               <div className="flex justify-between flex-shrink-0">
                 {/* Profile */}
@@ -123,7 +123,7 @@ const Create = () => {
                 />
               </div>
               {/* Inputs */}
-              <div className="grid grid-cols-2 gap-x-8 mt-5">
+              <div className="grid grid-cols-2 gap-x-8 mt-5 p-4 h-[47dvh] overflow-y-scroll">
                 {/* Pronoun */}
                 <div className="mb-4">
                   <label
@@ -210,39 +210,6 @@ const Create = () => {
                   website={(website: string) => setWebsite(website)}
                   required={false}
                 />
-                {/* Social-media */}
-                {/* <div className="mb-4">
-                    <label
-                      className="text-xs text-gray-600 block"
-                      htmlFor="social-media"
-                    >
-                      Social Media
-                    </label>
-                    <input
-                      type="text"
-                      name="social-media"
-                      className={`bg-gray-100 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm px-3 mb-3 `}
-                      onChange={(event) =>
-                        setSocialLink1(event.currentTarget.value)
-                      }
-                    />
-                    <input
-                      type="text"
-                      name="social-media"
-                      className={`bg-gray-100 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm px-3 mb-3 `}
-                      onChange={(event) =>
-                        setSocialLink2(event.currentTarget.value)
-                      }
-                    />
-                    <input
-                      type="text"
-                      name="social-media"
-                      className={`bg-gray-100 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm px-3 mb-3 `}
-                      onChange={(event) =>
-                        setSocialLink3(event.currentTarget.value)
-                      }
-                    />
-                  </div> */}
               </div>
             </div>
             {/* Button */}
