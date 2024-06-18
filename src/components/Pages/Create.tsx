@@ -27,8 +27,9 @@ const Create = () => {
 
   const [modal, setModal] = useState(false);
   const [activeModal, setActiveModal] = useState("");
-
+  const [, setMenu] = useState(false);
   const [dropdown, setDropdown] = useState(false);
+
   //   Form Values
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -169,8 +170,8 @@ const Create = () => {
             </div>
 
             {/* Small Device */}
-            <div className="lg:hidden">
-              <p className="bi-list text-xl"></p>
+            <div className="lg:hidden relative">
+              <p onClick={() => setMenu(true)} className="bi-list text-2xl"></p>
             </div>
           </div>
         </nav>
@@ -302,7 +303,7 @@ const Create = () => {
         </div>
 
         {/* Card Layout*/}
-        <div className="lg:flex lg:col-span-2 lg:pe-5 pt-20 lg:pt-0 lg:pb-0 lg:h-auto pb-10 px-3 h-[95vh] overflow-scroll">
+        <div className="lg:flex lg:col-span-2 lg:pe-5 lg:pt-0 lg:pb-0 pt-20 lg:h-auto pb-10 px-3 h-[95vh] overflow-scroll">
           <div className="content-center w-full">
             {/* {layout} */}
             {layout === "default" && (

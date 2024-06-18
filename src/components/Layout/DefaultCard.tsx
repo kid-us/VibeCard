@@ -43,13 +43,13 @@ const DefaultCard = ({
 
   return (
     <div
-      className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800`}
+      className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 z-0`}
       style={{ backgroundColor: cardColorBg }}
     >
       <div
-        className={`h-24 relative flex justify-between p-2 ${
+        className={`h-24 relative flex justify-between p-2 z-0 ${
           !preview?.cover
-            ? coverColorBg === "gradient-cover" && coverColorBg
+            ? coverColorBg === "gradient-cover" && `${coverColorBg} z-0`
             : ""
         }`}
         style={{
@@ -60,7 +60,7 @@ const DefaultCard = ({
           backgroundColor: coverColorBg,
         }}
       >
-        <div className="absolute top-10 w-20 h-20 border-[4px] rounded-full border-white overflow-hidden">
+        <div className="absolute top-10 w-20 h-20 border-[4px] rounded-full border-white overflow-hidden z-0">
           <img src={preview?.profile ? preview.profile : user} alt="user" />
         </div>
         {/* Pronoun and Name */}
