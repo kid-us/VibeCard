@@ -20,7 +20,7 @@ const Texts = () => {
         <div className="relative text-sm border-teal-500 shadow shadow-stone-300 rounded">
           <div
             onClick={() => setDropdown(!dropdown)}
-            className="bg-white cursor-pointer"
+            className="bg-white cursor-pointer text-black"
           >
             <p className="px-2 py-2">Choose Text </p>
             <p
