@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <div>
       <p className="text-sm text-gray-300 mb-4">Card Layouts</p>
-      <div className="bg-white rounded p-4">
+      <div className="bg-white rounded py-5 px-2">
         {layout.map((layouts) => (
           <div
             key={layouts.id}
@@ -19,7 +19,7 @@ const Layout = () => {
             <img
               src={layouts.img}
               alt="Layout image"
-              className="shadow-md shadow-black rounded-2xl"
+              className="shadow-md shadow-black rounded-2xl h-96 w-full"
             />
           </div>
         ))}
