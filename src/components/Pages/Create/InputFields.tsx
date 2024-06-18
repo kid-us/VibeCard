@@ -63,7 +63,11 @@ const InputFields = ({
     <div className="mb-3">
       <label className="text-xs text-gray-600 block" htmlFor={label}>
         {inputName}
-        {required && <span className="text-red-700 text-2xl">*</span>}
+        {required ? (
+          <span className="text-red-700 text-2xl">*</span>
+        ) : (
+          <span className="text-transparent text-2xl">*</span>
+        )}
       </label>
       <input
         type={type}
