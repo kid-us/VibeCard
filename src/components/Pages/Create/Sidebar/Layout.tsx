@@ -19,7 +19,7 @@ const Layout = () => {
             <img
               src={layouts.img}
               alt="Layout image"
-              className="shadow-md shadow-black rounded-2xl h-96 w-full"
+              className="shadow-md shadow-black rounded-2xl lg:h-96 w-full"
             />
           </div>
         ))}
