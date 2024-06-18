@@ -4,9 +4,10 @@ import Colors from "./Sidebar/Colors";
 import { sidebarIcons } from "../../../services/sidebarIcons";
 import Texts from "./Sidebar/Texts";
 import Content from "./Sidebar/Content";
+import Layout from "./Sidebar/Layout";
 
 const Sidebar = () => {
-  const [selected, setSelected] = useState("Content");
+  const [selected, setSelected] = useState("Layout");
 
   return (
     <div className="grid grid-cols-5 bg-stone-800 -md w-full h-[100dvh] pt-[55px]">
@@ -30,6 +31,8 @@ const Sidebar = () => {
 
       {/* Contents */}
       <div className="col-span-4 p-2 mt-3 overflow-y-scroll">
+        {/* Layout */}
+        {selected === "Layout" && <Layout />}
         {/* Color */}
         {selected === "Colors" && <Colors />}
         {/* Text */}

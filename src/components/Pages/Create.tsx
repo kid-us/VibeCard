@@ -7,6 +7,7 @@ import Sidebar from "./Create/Sidebar";
 import { useContentStore } from "../../store/useContentStore";
 import { useLayoutStore } from "../../store/useLayoutStore";
 import DefaultCard from "../Layout/DefaultCard";
+import CenteredCard from "../Layout/CenteredCard";
 
 const Create = () => {
   const [previews, setPreviews] = useState({
@@ -281,7 +282,7 @@ const Create = () => {
           <div className="content-center w-full">
             {/* {layout} */}
             {layout === "default" && (
-              <DefaultCard
+              <CenteredCard
                 pronounVal={pronoun}
                 nameVal={name}
                 emailVal={email}
