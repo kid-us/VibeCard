@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
 import { qrCode, user } from "../../assets";
 import { useCoverColorStore } from "../../store/useCoverColorStore";
 import { useCardColorStore } from "../../store/useCardColorStore";
 import { useTextColorStore } from "../../store/useTextColorStore";
 import { useContentStore } from "../../store/useContentStore";
+import Button from "./Button";
+import SocialMedia from "./SocialMedia";
+import Contacts from "./Contacts";
 
 interface Preview {
   profile: string | null;
@@ -35,7 +37,7 @@ const DefaultCard = ({
 }: Props) => {
   const { coverColorBg } = useCoverColorStore();
   const { cardColorBg } = useCardColorStore();
-  const { company, jobTitle, location, name, pronoun, tagLine, button } =
+  const { company, jobTitle, location, name, pronoun, tagLine } =
     useTextColorStore();
   const { companyLogo, socialMedia, contact } = useContentStore();
 
@@ -135,60 +137,12 @@ const DefaultCard = ({
         </div>
 
         {/* Contacts */}
-        {contact.length > 0 && (
-          <>
-            <div
-              className={` ${
-                contact.length > 0
-                  ? `grid ${
-                      contact.length <= 3 ? "grid-cols-3" : "grid-cols-5"
-                    }  gap-5 my-5`
-                  : "invisible"
-              }`}
-            >
-              {contact.map((c) => (
-                <Link
-                  key={c.icon}
-                  to={`${c.link}`}
-                  className={`${c.icon} text-3xl text-center rounded-lg py-2 shadow-inner`}
-                  style={{ color: c.color.replace("bg", "text") }}
-                ></Link>
-              ))}
-            </div>
-          </>
-        )}
+        {contact.length > 0 && <Contacts />}
 
         {/* Social Media */}
-        {socialMedia.length > 0 && (
-          <>
-            <div
-              className={` ${
-                socialMedia.length > 0
-                  ? `grid ${
-                      socialMedia.length <= 3 ? "grid-cols-3" : "grid-cols-4"
-                    }  gap-5`
-                  : "invisible"
-              }`}
-            >
-              {socialMedia.map((media) => (
-                <Link
-                  key={media.icon}
-                  to={`${media.link}`}
-                  className={`${media.icon} text-3xl text-center rounded-lg py-2 shadow-inner`}
-                  style={{ backgroundColor: media.color }}
-                ></Link>
-              ))}
-            </div>
-          </>
-        )}
-        <button
-          className={`w-full rounded-lg py-4 mb-9 mt-5 ${
-            button.color === "#000000" ? "text-white" : "text-black"
-          }  shadow-md font-poppins font-extrabold shadow-zinc-50`}
-          style={{ backgroundColor: button.color }}
-        >
-          Save Contact
-        </button>
+        {socialMedia.length > 0 && <SocialMedia />}
+
+        <Button />
       </div>
     </div>
   );
