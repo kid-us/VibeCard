@@ -61,7 +61,7 @@ const ContentItems = ({
             ) : (
               <p
                 onClick={() => setId(content.id)}
-                className="bi-plus-lg bg-white rounded-full w-8 h-8 px-2 cursor-pointer shadow-zinc-900 shadow-lg active:shadow-none pt-1"
+                className="bi-plus-lg bg-white rounded-full w-8 h-8 px-2 cursor-pointer shadow-zinc-900 shadow-lg active:shadow-none pt-1 text-black"
               ></p>
             )}
           </div>

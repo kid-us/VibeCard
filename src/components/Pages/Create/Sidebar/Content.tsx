@@ -114,7 +114,7 @@ const Content = () => {
     <div>
       <p className="text-sm text-gray-300 mb-4">Contents</p>
       <div className="bg-white rounded p-2 mb-5">
-        <p className="text-xs my-5">Contact</p>
+        <p className="text-xs my-5 text-black">Contact</p>
 
         <ContentItems
           contents={contactContents}
@@ -128,7 +128,7 @@ const Content = () => {
           onLink={(value: string) => setContactAddress(value)}
         />
 
-        <p className="text-xs my-5">Social Media</p>
+        <p className="text-xs my-5 text-black">Social Media</p>
 
         <ContentItems
           contents={socialMedias}

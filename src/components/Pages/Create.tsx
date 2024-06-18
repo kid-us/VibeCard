@@ -12,6 +12,7 @@ import RightCard from "../Layout/RightCard";
 import SmallDeviceSidebar from "./Create/SmallDeviceSidebar";
 import Colors from "./Create/Sidebar/Colors";
 import Texts from "./Create/Sidebar/Texts";
+import Content from "./Create/Sidebar/Content";
 const Create = () => {
   const [previews, setPreviews] = useState({
     profile: null,
@@ -479,6 +480,13 @@ const Create = () => {
             {modal && activeModal === "Text" && (
               <div className="p-8">
                 <Texts />
+              </div>
+            )}
+
+            {/* Contents */}
+            {modal && activeModal === "Content" && (
+              <div className="p-8">
+                <Content />
               </div>
             )}
           </div>
