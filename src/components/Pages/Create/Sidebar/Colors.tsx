@@ -11,7 +11,7 @@ const texts = [
   "Name",
   "Location",
   "Website",
-  "Icons",
+  // "Icons",
   "Job Title",
   "Tag Line",
 ];
@@ -20,7 +20,7 @@ const Colors = () => {
   const [dropdown, setDropdown] = useState(false);
   const [view, setView] = useState("Pronoun");
 
-  const { company, jobTitle, location, name, pronoun, tagLine, icon } =
+  const { company, jobTitle, location, name, pronoun, tagLine } =
     useTextColorStore();
 
   const { cardColorBg } = useCardColorStore();
@@ -94,9 +94,9 @@ const Colors = () => {
         <TextColor name={"tagLine"} bg={tagLine.color} title={"Tag Line"} />
       )}
       {/* Icons */}
-      {view === "Icons" && (
+      {/* {view === "Icons" && (
         <TextColor name={"icon"} bg={icon.color} title={"Icons"} />
-      )}
+      )} */}
     </>
   );
 };
