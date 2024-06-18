@@ -14,6 +14,7 @@ import Colors from "./Create/Sidebar/Colors";
 import Texts from "./Create/Sidebar/Texts";
 import Content from "./Create/Sidebar/Content";
 import Layout from "./Create/Sidebar/Layout";
+
 const Create = () => {
   const [previews, setPreviews] = useState({
     profile: null,
@@ -25,7 +26,7 @@ const Create = () => {
   const { layout } = useLayoutStore();
 
   const [modal, setModal] = useState(false);
-  const [activeModal, setActiveModal] = useState("Forms");
+  const [activeModal, setActiveModal] = useState("");
 
   const [dropdown, setDropdown] = useState(false);
   //   Form Values
@@ -103,10 +104,15 @@ const Create = () => {
     }
   };
 
-  //
+  // Sidebar Small Device
   const handleModal = (value: string) => {
-    setModal(true);
-    setActiveModal(value);
+    if (value === activeModal) {
+      setModal(false);
+      setActiveModal("");
+    } else {
+      setModal(true);
+      setActiveModal(value);
+    }
   };
 
   return (
@@ -296,7 +302,7 @@ const Create = () => {
         </div>
 
         {/* Card Layout*/}
-        <div className="lg:flex lg:col-span-2 lg:pe-5 pt-20 px-3">
+        <div className="lg:flex lg:col-span-2 lg:pe-5 pt-20 lg:pt-0 lg:pb-0 lg:h-auto pb-10 px-3 h-[95vh] overflow-scroll">
           <div className="content-center w-full">
             {/* {layout} */}
             {layout === "default" && (
@@ -343,6 +349,7 @@ const Create = () => {
         </div>
       </div>
 
+      {/* Small Device Sidebars */}
       {modal && (
         <>
           <div className="overlay z-10" onClick={() => setModal(false)}></div>
@@ -479,21 +486,21 @@ const Create = () => {
 
             {/* Texts */}
             {modal && activeModal === "Text" && (
-              <div className="p-8">
+              <div className="p-5">
                 <Texts />
               </div>
             )}
 
             {/* Contents */}
             {modal && activeModal === "Content" && (
-              <div className="p-8">
+              <div className="p-5">
                 <Content />
               </div>
             )}
 
             {/* Layout */}
             {modal && activeModal === "Layout" && (
-              <div className="p-8">
+              <div className="p-5">
                 <Layout />
               </div>
             )}
@@ -502,7 +509,7 @@ const Create = () => {
       )}
 
       {/* Small Device Sidebar */}
-      <div className="absolute bottom-0 w-full z-50">
+      <div className="lg:hidden absolute bottom-0 w-full z-50">
         <SmallDeviceSidebar
           active={activeModal}
           handleClick={(value: string) => handleModal(value)}
