@@ -31,12 +31,12 @@ const InputImages = ({ type, title, onPreviewChange }: Props) => {
 
   return (
     <div>
-      <p className="text-xs text-gray-800 mb-4 font-poppins first-letter:uppercase">
+      <p className="text-xs lg:text-gray-800 mb-4 font-poppins first-letter:uppercase">
         {title}
       </p>
       <div
         className={`border rounded-lg border-gray-300 bg-stone-200 ${
-          type === "cover" ? "w-72 h-24" : "w-28 h-24"
+          type === "cover" ? "lg:w-72 w-full h-24" : "lg:w-28 w-full h-24"
         } p-1 relative overflow-hidden`}
       >
         <input

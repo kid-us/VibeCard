@@ -50,7 +50,7 @@ const Colors = () => {
       <div className="relative text-sm mb-4 border-teal-500 shadow shadow-stone-300 rounded">
         <div
           onClick={() => setDropdown(!dropdown)}
-          className="cursor-pointer bg-white"
+          className="cursor-pointer bg-white text-black"
         >
           <p className="px-2 py-2">Choose Text</p>
           <p
@@ -105,10 +105,6 @@ const Colors = () => {
       {view === "Tag Line" && (
         <TextColor name={"tagLine"} bg={tagLine.color} title={"Tag Line"} />
       )}
-      {/* Icons */}
-      {/* {view === "Icons" && (
-        <TextColor name={"icon"} bg={icon.color} title={"Icons"} />
-      )} */}
     </>
   );
 };

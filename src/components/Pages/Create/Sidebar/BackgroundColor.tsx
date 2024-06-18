@@ -27,7 +27,7 @@ const BackgroundColor = ({ colorPicker, bgColors, cardType }: Props) => {
 
   return (
     <div className="bg-white rounded p-2 mb-5">
-      <p className="text-xs mt-2">Default</p>
+      <p className="text-xs mt-2 text-black">Default</p>
       <div
         className={`${
           bgColors === "gradient-cover" && bgColors
@@ -60,7 +60,7 @@ const BackgroundColor = ({ colorPicker, bgColors, cardType }: Props) => {
       </div>
       {colorPicker && (
         <div className={`relative ${color}`}>
-          <p className="text-xs mb-2">Pick you Color here</p>
+          <p className="text-xs mb-2 text-black">Pick you Color here</p>
           <input
             type="color"
             className="w-full h-14 border-none outline-none shadow shadow-orange-900"

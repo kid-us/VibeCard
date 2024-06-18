@@ -61,7 +61,7 @@ const InputFields = ({
   };
   return (
     <div className="mb-3">
-      <label className="text-xs text-gray-600 block" htmlFor={label}>
+      <label className="text-xs lg:text-gray-600 block" htmlFor={label}>
         {inputName}
         {required ? (
           <span className="text-red-700 text-2xl">*</span>
@@ -72,7 +72,7 @@ const InputFields = ({
       <input
         type={type}
         name={label}
-        className={`bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3`}
+        className={`lg:bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black`}
         onChange={handleChange}
       />
     </div>
