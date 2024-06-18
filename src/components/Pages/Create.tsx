@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import InputFields from "./Create/InputFields";
-import Card from "./Create/Card";
 import { user } from "../../assets";
 import InputImages from "./Create/InputImages";
 import Sidebar from "./Create/Sidebar";
 import { useContentStore } from "../../store/useContentStore";
+import { useLayoutStore } from "../../store/useLayoutStore";
+import DefaultCard from "../Layout/DefaultCard";
 
 const Create = () => {
   const [previews, setPreviews] = useState({
@@ -15,9 +16,11 @@ const Create = () => {
   });
 
   const { contact, updateContacts } = useContentStore();
+  const { layout } = useLayoutStore();
+
+  console.log(layout);
 
   const [dropdown, setDropdown] = useState(false);
-
   //   Form Values
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -64,6 +67,7 @@ const Create = () => {
       updateContacts(filtered);
     }
   };
+
   // Phone
   const handlePhone = (val: string) => {
     setPhone(val);
@@ -94,6 +98,7 @@ const Create = () => {
 
   return (
     <div className="menu">
+      {/* Navbar */}
       <div className="fixed w-full bg-white shadow">
         <nav className="flex justify-between py-3 px-5">
           <div>
@@ -270,20 +275,24 @@ const Create = () => {
             </div>
           </div>
         </div>
-        {/* Card */}
+
+        {/* Card Layout*/}
         <div className="col-span-2 pe-5 flex">
           <div className="content-center w-full">
-            <Card
-              pronounVal={pronoun}
-              nameVal={name}
-              emailVal={email}
-              phoneVal={phone}
-              jobTitleVal={jobTitle}
-              tagLineVal={tagLine}
-              companyVal={company}
-              locationVal={location}
-              preview={previews}
-            />
+            {/* {layout} */}
+            {layout === "default" && (
+              <DefaultCard
+                pronounVal={pronoun}
+                nameVal={name}
+                emailVal={email}
+                phoneVal={phone}
+                jobTitleVal={jobTitle}
+                tagLineVal={tagLine}
+                companyVal={company}
+                locationVal={location}
+                preview={previews}
+              />
+            )}
           </div>
         </div>
       </div>
