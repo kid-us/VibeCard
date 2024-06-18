@@ -18,13 +18,17 @@ const Texts = () => {
 
       <div className="z-50">
         <div className="relative text-sm border-teal-500 shadow shadow-stone-300 rounded">
-          <p className="px-2 py-2 text-gray-50">Choose Text </p>
-          <p
+          <div
             onClick={() => setDropdown(!dropdown)}
-            className={`${
-              dropdown ? "bi-caret-up-fill" : "bi-caret-down-fill"
-            } absolute top-2 right-3 cursor-pointer text-white`}
-          ></p>
+            className="bg-white cursor-pointer"
+          >
+            <p className="px-2 py-2">Choose Text </p>
+            <p
+              className={`${
+                dropdown ? "bi-caret-up-fill" : "bi-caret-down-fill"
+              } absolute top-2 right-3`}
+            ></p>
+          </div>
           {dropdown && (
             <div
               className={`absolute bg-teal-700 w-full mt-1 rounded px-2 py-3 shadow-md shadow-zinc-900 space-y-1 z-10`}
@@ -37,7 +41,7 @@ const Texts = () => {
                   }}
                   key={text}
                   className={`${
-                    view === text && "text-white text-lg"
+                    view === text && "text-white text-xl"
                   } hover:text-gray-400 w-full cursor-pointer first-letter:uppercase text-sm pb-1`}
                 >
                   {text}
