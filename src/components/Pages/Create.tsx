@@ -282,6 +282,20 @@ const Create = () => {
           <div className="content-center w-full">
             {/* {layout} */}
             {layout === "default" && (
+              <DefaultCard
+                pronounVal={pronoun}
+                nameVal={name}
+                emailVal={email}
+                phoneVal={phone}
+                jobTitleVal={jobTitle}
+                tagLineVal={tagLine}
+                companyVal={company}
+                locationVal={location}
+                preview={previews}
+              />
+            )}
+
+            {layout === "centered" && (
               <CenteredCard
                 pronounVal={pronoun}
                 nameVal={name}

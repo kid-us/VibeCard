@@ -4,5 +4,14 @@ import google from "./google.png";
 import hero from "./hero.png";
 import pageNotFound from "./page404.gif";
 import defaultLayout from "./default.png";
+import centeredLayout from "./centered.png";
 
-export { qrCode, user, google, hero, pageNotFound, defaultLayout };
+export {
+  qrCode,
+  user,
+  google,
+  hero,
+  pageNotFound,
+  defaultLayout,
+  centeredLayout,
+};

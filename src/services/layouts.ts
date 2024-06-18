@@ -1,4 +1,4 @@
-import { defaultLayout } from "../assets";
+import { defaultLayout, centeredLayout } from "../assets";
 
 interface Layouts {
   id: number;
@@ -8,6 +8,6 @@ interface Layouts {
 
 export const layout: Layouts[] = [
   { id: 1, name: "default", img: defaultLayout },
-  { id: 1, name: "centered", img: defaultLayout },
+  { id: 1, name: "centered", img: centeredLayout },
   { id: 1, name: "right", img: defaultLayout },
 ];

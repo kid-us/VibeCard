@@ -58,7 +58,7 @@ const CenteredCard = ({
           backgroundColor: coverColorBg,
         }}
       >
-        <div className="absolute top-10 w-20 h-20 border-[4px] rounded-full border-white overflow-hidden">
+        <div className="absolute top-2 left-1/3 w-20 h-20 border-[4px] rounded-full border-white overflow-hidden">
           <img
             src={preview?.profile ? preview.profile : user}
             alt="user"
@@ -66,38 +66,40 @@ const CenteredCard = ({
           />
         </div>
         {/* Pronoun and Name */}
-        <div className="content-center">
-          <p
-            className={`absolute right-0 me-1 w-48 text-center overflow-hidden text-ellipsis text-nowrap ${
-              name.font + " " + name.size
-            } `}
-            style={{ color: name.color }}
-          >
-            <span
-              className={` ${pronoun.font + " " + pronoun.size}`}
-              style={{ color: pronoun.color }}
-            >
-              {pronounVal && "(" + pronounVal + ")"}{" "}
-            </span>
-
-            {nameVal && nameVal}
-          </p>
-        </div>
       </div>
-      <div className="px-5 mt-10 text-white">
+      <div className="px-5 mt-3 text-white">
         <div className="relative">
           {companyLogo && (
             <img
               src={preview?.logo ? preview.logo : qrCode}
               alt="Cover"
-              className="absolute right-0 -top-2 w-14 h-14 rounded-full border-2 bg-white"
+              className="absolute -right-5 -top-12 w-14 h-14 rounded-full border-2 bg-white"
             />
           )}
+          {/* Name and Pronoun */}
+          <div className="content-center">
+            <p
+              className={` text-center overflow-hidden text-ellipsis text-nowrap ${
+                name.font + " " + name.size
+              } `}
+              style={{ color: name.color }}
+            >
+              <span
+                className={` ${pronoun.font + " " + pronoun.size}`}
+                style={{ color: pronoun.color }}
+              >
+                {pronounVal && "(" + pronounVal + ")"}{" "}
+              </span>
+
+              {nameVal && nameVal}
+            </p>
+          </div>
+
           {/* Job Title */}
           <p
             className={`${
               jobTitle.font + " " + jobTitle.size
-            } mb-1 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase ${
+            } mb-1 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase text-center ${
               !jobTitleVal && "invisible"
             } `}
             style={{ color: jobTitle.color }}
@@ -108,14 +110,14 @@ const CenteredCard = ({
           <p
             className={`${!companyVal && "invisible"} ${
               company.font + " " + company.size
-            }`}
+            } text-center`}
             style={{ color: company.color }}
           >
             {companyVal && "At " + companyVal}
           </p>
           {/* Tag Line */}
           <p
-            className={`mt-3 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase ${
+            className={`mt-3 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase text-center ${
               !tagLineVal && "invisible"
             } ${tagLine.font + " " + tagLine.size}`}
             style={{ color: tagLine.color }}
@@ -125,9 +127,9 @@ const CenteredCard = ({
           </p>
           {/* Location */}
           <p
-            className={`${location.font + " " + location.size} my-2 ${
-              !locationVal && "invisible"
-            }`}
+            className={`${
+              location.font + " " + location.size
+            } my-2 text-center ${!locationVal && "invisible"}`}
             style={{ color: location.color }}
           >
             <span
