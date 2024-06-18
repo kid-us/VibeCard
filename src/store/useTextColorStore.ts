@@ -15,7 +15,7 @@ export type State = {
   jobTitle: Props;
   company: Props;
   location: Props;
-  icon: Props;
+  button: Props;
 };
 
 // Define the Action type
@@ -33,7 +33,7 @@ export const useTextColorStore = create<State & Action>((set) => ({
   jobTitle: { font: "chakra", color: "#2dd4bf", size: "text-sm" },
   company: { font: "chakra", color: "#9ca3af", size: "text-xs" },
   location: { font: "chakra", color: "#9ca3af", size: "text-sm" },
-  icon: { font: "", color: "#ffffff", size: "" },
+  button: { font: "", color: "#14b8a6", size: "" },
 
   updateFont: (key: keyof State, font: string) =>
     set((state) => ({

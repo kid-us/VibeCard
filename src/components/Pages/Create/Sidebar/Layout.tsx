@@ -6,17 +6,20 @@ const Layout = () => {
   return (
     <div>
       <p className="text-sm text-gray-300 mb-4">Card Layouts</p>
-      <div className="bg-white rounded p-2">
+      <div className="bg-white rounded p-4">
         {layout.map((layouts) => (
           <div
             key={layouts.id}
             className="cursor-pointer mb-5"
             onClick={() => updateLayout(layouts.name)}
           >
+            <p className="text-xs first-letter:uppercase mb-1">
+              {layouts.name}
+            </p>
             <img
               src={layouts.img}
               alt="Layout image"
-              className="shadow shadow-black rounded-2xl"
+              className="shadow-md shadow-black rounded-2xl"
             />
           </div>
         ))}

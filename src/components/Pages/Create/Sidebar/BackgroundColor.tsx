@@ -2,6 +2,7 @@ import { useState } from "react";
 import { cardColor, coverColor } from "../../../../services/coverColor";
 import { useCoverColorStore } from "../../../../store/useCoverColorStore";
 import { useCardColorStore } from "../../../../store/useCardColorStore";
+import { useTextColorStore } from "../../../../store/useTextColorStore";
 
 interface Props {
   cardType: string;
@@ -13,6 +14,7 @@ const BackgroundColor = ({ colorPicker, bgColors, cardType }: Props) => {
 
   const { updateCoverColor } = useCoverColorStore();
   const { updateCardColor } = useCardColorStore();
+  const { updateColor } = useTextColorStore();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newColor = event.target.value;
@@ -34,11 +36,15 @@ const BackgroundColor = ({ colorPicker, bgColors, cardType }: Props) => {
       ></div>
       <p className="text-xs mt-2">Trend Colors</p>
       <div className="grid grid-cols-6 gap-3 overflow-hidden py-5">
-        {cardType === "cover"
+        {cardType === "cover" || cardType === "button"
           ? coverColor.map((cover) => (
               <button
                 key={cover.id}
-                onClick={() => updateCoverColor(cover.value)}
+                onClick={
+                  cardType === "cover"
+                    ? () => updateCoverColor(cover.value)
+                    : () => updateColor("button", cover.value)
+                }
                 className={`p-3 rounded shadow-sm shadow-zinc-900 hover:shadow-none`}
                 style={{ backgroundColor: cover.value }}
               ></button>

@@ -35,7 +35,8 @@ const CenteredCard = ({
 }: Props) => {
   const { coverColorBg } = useCoverColorStore();
   const { cardColorBg } = useCardColorStore();
-  const { company, jobTitle, location, name, pronoun, tagLine } =
+
+  const { company, jobTitle, location, name, pronoun, tagLine, button } =
     useTextColorStore();
   const { companyLogo, socialMedia, contact } = useContentStore();
 
@@ -187,7 +188,10 @@ const CenteredCard = ({
             </div>
           </>
         )}
-        <button className="w-full bg-teal-500 rounded-lg py-4 mb-9 mt-5 shadow-md text-black font-poppins font-extrabold shadow-zinc-50">
+        <button
+          className={`w-full rounded-lg py-4 mb-9 mt-5 shadow-md text-black font-poppins font-extrabold shadow-zinc-50`}
+          style={{ backgroundColor: button.color }}
+        >
           Save Contact
         </button>
       </div>

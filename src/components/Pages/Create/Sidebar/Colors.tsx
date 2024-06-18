@@ -11,7 +11,6 @@ const texts = [
   "Name",
   "Location",
   "Website",
-  // "Icons",
   "Job Title",
   "Tag Line",
 ];
@@ -20,7 +19,7 @@ const Colors = () => {
   const [dropdown, setDropdown] = useState(false);
   const [view, setView] = useState("Pronoun");
 
-  const { company, jobTitle, location, name, pronoun, tagLine } =
+  const { company, jobTitle, location, name, pronoun, tagLine, button } =
     useTextColorStore();
 
   const { cardColorBg } = useCardColorStore();
@@ -37,6 +36,10 @@ const Colors = () => {
       {/* Cover Background */}
       <p className="text-xs text-gray-300 mb-2">Cover Background Color</p>
       <BackgroundColor bgColors={coverColorBg} cardType="cover" colorPicker />
+
+      {/* Button Color */}
+      <p className="text-xs text-gray-300 mb-2">Button Background Color</p>
+      <BackgroundColor bgColors={button.color} cardType="button" colorPicker />
 
       {/* Text Colors */}
       <div className="relative text-sm mb-4 border-teal-500 shadow shadow-stone-300 rounded">
