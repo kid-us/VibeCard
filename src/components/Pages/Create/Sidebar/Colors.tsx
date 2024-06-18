@@ -26,6 +26,7 @@ const Colors = () => {
   const { coverColorBg } = useCoverColorStore();
   return (
     <>
+      {/* Background */}
       <p className="text-sm text-gray-300 mb-4">Card Background Color</p>
       <BackgroundColor
         bgColors={cardColorBg}
@@ -39,7 +40,11 @@ const Colors = () => {
 
       {/* Button Color */}
       <p className="text-xs text-gray-300 mb-2">Button Background Color</p>
-      <BackgroundColor bgColors={button.color} cardType="button" colorPicker />
+      <BackgroundColor
+        bgColors={button.color}
+        cardType="button"
+        colorPicker={false}
+      />
 
       {/* Text Colors */}
       <div className="relative text-sm mb-4 border-teal-500 shadow shadow-stone-300 rounded">
