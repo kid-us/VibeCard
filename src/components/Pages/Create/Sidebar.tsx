@@ -13,20 +13,25 @@ const Sidebar = () => {
     <div className="grid grid-cols-5 bg-stone-800 -md w-full h-[100dvh] pt-[55px]">
       {/* Icon */}
       <div className="text-white bg-stone-900 shadow shadow-stone-400 overflow-hidden">
-        {sidebarIcons.map((icons) => (
-          <div
-            key={icons.id}
-            onClick={() => setSelected(icons.title)}
-            className={`py-5 text-center cursor-pointer ${
-              selected === icons.title ? "bg-stone-700" : "hover:bg-stone-800"
-            } p-3`}
-          >
-            <p className={`${icons.icon} text-xl`}></p>
-            <p className="text-[10px] font-poppins text-gray-300 py-1">
-              {icons.title}
-            </p>
-          </div>
-        ))}
+        {sidebarIcons.map(
+          (icons) =>
+            icons.id !== 5 && (
+              <div
+                key={icons.id}
+                onClick={() => setSelected(icons.title)}
+                className={`py-5 text-center cursor-pointer ${
+                  selected === icons.title
+                    ? "bg-stone-700"
+                    : "hover:bg-stone-800"
+                } p-3`}
+              >
+                <p className={`${icons.icon} text-xl`}></p>
+                <p className="text-[10px] font-poppins text-gray-300 py-1">
+                  {icons.title}
+                </p>
+              </div>
+            )
+        )}
       </div>
 
       {/* Contents */}
