@@ -353,7 +353,11 @@ const Create = () => {
       {modal && (
         <>
           <div className="overlay z-10" onClick={() => setModal(false)}></div>
-          <div className="z-50 bg-zinc-800 h-[90dvh] absolute bottom-0 w-full rounded text-white overflow-y-scroll pb-10">
+          <p
+            onClick={() => setModal(false)}
+            className="absolute top-2 z-50 right-1 bg-red-500 text-white text-xl bi-x px-2 rounded p-1"
+          ></p>
+          <div className="z-50 bg-zinc-800 h-[90dvh] absolute bottom-0 w-full rounded text-white overflow-y-scroll pb-10 animate__animated animate__fadeInUp">
             {/* Forms */}
             {modal && activeModal === "Forms" && (
               <div className="relative">
