@@ -5,6 +5,7 @@ import Card from "./Create/Card";
 import { user } from "../../assets";
 import InputImages from "./Create/InputImages";
 import Sidebar from "./Create/Sidebar";
+import { useContentStore } from "../../store/useContentStore";
 
 const Create = () => {
   const [previews, setPreviews] = useState({
@@ -12,6 +13,8 @@ const Create = () => {
     cover: null,
     logo: null,
   });
+
+  const { contact, updateContacts } = useContentStore();
 
   const [dropdown, setDropdown] = useState(false);
 
@@ -21,7 +24,6 @@ const Create = () => {
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
   const [tagLine, setTagLine] = useState("");
-  const [website, setWebsite] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [company, setCompany] = useState("");
   const [pronoun, setPronoun] = useState("");
@@ -34,6 +36,60 @@ const Create = () => {
       ...prevPreviews,
       [type]: preview,
     }));
+  };
+
+  // Email
+  const handleEmail = (val: string) => {
+    setEmail(val);
+    const iconExists = contact.some((c) => c.icon == "bi-envelope-fill");
+    if (val !== "") {
+      if (iconExists) {
+        updateContacts(
+          contact.map((c) =>
+            c.icon == "bi-envelope-fill" ? { ...c, link: val } : c
+          )
+        );
+      } else {
+        updateContacts([
+          ...contact,
+          {
+            link: val,
+            color: "bg-sky-900",
+            icon: "bi-envelope-fill",
+          },
+        ]);
+      }
+    } else {
+      const filtered = contact.filter((c) => c.icon !== "bi-envelope-fill");
+      updateContacts(filtered);
+    }
+  };
+  // Phone
+  const handlePhone = (val: string) => {
+    setPhone(val);
+    if (val !== "") {
+      const iconExists = contact.some((c) => c.icon == "bi-telephone-fill");
+
+      if (iconExists) {
+        updateContacts(
+          contact.map((c) =>
+            c.icon == "bi-telephone-fill" ? { ...c, link: val } : c
+          )
+        );
+      } else {
+        updateContacts([
+          ...contact,
+          {
+            link: val,
+            color: "#22c55e",
+            icon: "bi-telephone-fill",
+          },
+        ]);
+      }
+    } else {
+      const filtered = contact.filter((c) => c.icon !== "bi-telephone-fill");
+      updateContacts(filtered);
+    }
   };
 
   return (
@@ -159,7 +215,7 @@ const Create = () => {
                   label="email"
                   type="email"
                   inputName="Email"
-                  emailAddress={(email: string) => setEmail(email)}
+                  emailAddress={(email: string) => handleEmail(email)}
                   required
                 />
                 {/* Phone */}
@@ -167,7 +223,7 @@ const Create = () => {
                   label="phone"
                   type="tel"
                   inputName="Phone"
-                  phone={(phone: string) => setPhone(phone)}
+                  phone={(phone: string) => handlePhone(phone)}
                   required
                 />
                 {/* Job-Title */}
@@ -202,14 +258,6 @@ const Create = () => {
                   tag={(tag: string) => setTagLine(tag)}
                   required={false}
                 />
-                {/* Website */}
-                <InputFields
-                  label="website"
-                  type="url"
-                  inputName="Website"
-                  website={(website: string) => setWebsite(website)}
-                  required={false}
-                />
               </div>
             </div>
             {/* Button */}
@@ -230,7 +278,6 @@ const Create = () => {
               nameVal={name}
               emailVal={email}
               phoneVal={phone}
-              websiteVal={website}
               jobTitleVal={jobTitle}
               tagLineVal={tagLine}
               companyVal={company}
