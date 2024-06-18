@@ -1,8 +1,7 @@
-import cardBg from "./card-bg.webp";
 import qrCode from "./qr-code.png";
 import user from "./user.png";
 import google from "./google.png";
 import hero from "./hero.png";
 import pageNotFound from "./page404.gif";
 
-export { cardBg, qrCode, user, google, hero, pageNotFound };
+export { qrCode, user, google, hero, pageNotFound };
