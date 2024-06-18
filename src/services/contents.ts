@@ -17,7 +17,8 @@ export const socialMedias: SocialMediaContent[] = [
 ];
 
 export const contactContents: SocialMediaContent[] = [
-  { id: 9, icon: "bi-geo-alt", label: "Address", color: "#028487" },
+  // { id: 9, icon: "bi-geo-alt", label: "Address", color: "#028487" },
   { id: 10, icon: "bi-telegram", label: "Telegram", color: "#06b6d4" },
   { id: 11, icon: "bi-whatsapp", label: "Whatsapp", color: "#22c55e" },
+  { id: 12, icon: "bi-globe", label: "Website", color: "#08326e" },
 ];

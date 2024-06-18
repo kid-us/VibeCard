@@ -26,21 +26,18 @@ interface Props {
 
 const Card = ({
   companyVal,
-  emailVal,
   jobTitleVal,
   locationVal,
   nameVal,
-  phoneVal,
   tagLineVal,
-  websiteVal,
   pronounVal,
   preview,
 }: Props) => {
   const { coverColorBg } = useCoverColorStore();
   const { cardColorBg } = useCardColorStore();
-  const { company, jobTitle, location, name, pronoun, tagLine, icon } =
+  const { company, jobTitle, location, name, pronoun, tagLine } =
     useTextColorStore();
-  const { companyLogo, socialMedia } = useContentStore();
+  const { companyLogo, socialMedia, contact } = useContentStore();
 
   return (
     <div
@@ -141,49 +138,57 @@ const Card = ({
           </p>
         </div>
 
-        {/* Icons */}
-        <div
-          className={`grid grid-cols-3 gap-5 my-8 ${
-            !phoneVal && !emailVal && !websiteVal && "invisible"
-          }`}
-          style={{ color: icon.color }}
-        >
-          {emailVal && (
-            <Link
-              to={emailVal}
-              className="bi-envelope-fill text-center text-2xl"
-            ></Link>
-          )}
-          {phoneVal && (
-            <div className={`bi-telephone-fill text-center text-2xl`}></div>
-          )}
-          {websiteVal && (
-            <Link
-              to={websiteVal}
-              className="bi-globe text-center text-2xl"
-            ></Link>
-          )}
-        </div>
+        {/* Contacts */}
+        {contact.length > 0 && (
+          <>
+            <p className="text-[9px]">Contacts</p>
+
+            <div
+              className={` ${
+                contact.length > 0
+                  ? `grid ${
+                      contact.length <= 3 ? "grid-cols-3" : "grid-cols-5"
+                    }  gap-5 my-5`
+                  : "invisible"
+              }`}
+            >
+              {contact.map((c) => (
+                <Link
+                  key={c.icon}
+                  to={`${c.link}`}
+                  className={`${c.icon} text-3xl text-center rounded-lg py-2 shadow-inner`}
+                  style={{ color: c.color.replace("bg", "text") }}
+                ></Link>
+              ))}
+            </div>
+          </>
+        )}
 
         {/* Social Media */}
-        <div
-          className={` ${
-            socialMedia.length > 0
-              ? `grid ${
-                  socialMedia.length <= 3 ? "grid-cols-3" : "grid-cols-4"
-                }  gap-5 my-5`
-              : "invisible"
-          }`}
-        >
-          {socialMedia.map((media) => (
-            <Link
-              key={media.icon}
-              to={`${media.link}`}
-              className={`${media.icon} text-3xl text-center rounded-lg py-2 shadow-inner`}
-              style={{ backgroundColor: media.color }}
-            ></Link>
-          ))}
-        </div>
+        {socialMedia.length > 0 && (
+          <>
+            <p className="text-[9px]">Social Media</p>
+
+            <div
+              className={` ${
+                socialMedia.length > 0
+                  ? `grid ${
+                      socialMedia.length <= 3 ? "grid-cols-3" : "grid-cols-4"
+                    }  gap-5 my-5`
+                  : "invisible"
+              }`}
+            >
+              {socialMedia.map((media) => (
+                <Link
+                  key={media.icon}
+                  to={`${media.link}`}
+                  className={`${media.icon} text-3xl text-center rounded-lg py-2 shadow-inner`}
+                  style={{ backgroundColor: media.color }}
+                ></Link>
+              ))}
+            </div>
+          </>
+        )}
         <button className="w-full bg-teal-500 rounded-lg py-4 mb-9 mt-5 shadow-md text-black font-poppins font-extrabold shadow-zinc-50">
           Save Contact
         </button>

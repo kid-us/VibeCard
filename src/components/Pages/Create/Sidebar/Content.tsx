@@ -102,10 +102,8 @@ const Content = () => {
   };
 
   function handleContactDelete(iconToDelete: string) {
-    const filtered = socialMedia.filter((media) => media.icon !== iconToDelete);
-    const contactFilter = activeMedias.filter(
-      (media) => media !== iconToDelete
-    );
+    const filtered = contact.filter((c) => c.icon !== iconToDelete);
+    const contactFilter = contactsIcons.filter((c) => c !== iconToDelete);
     setContactsIcons(contactFilter);
     updateContacts(filtered);
     setContactId(0);
