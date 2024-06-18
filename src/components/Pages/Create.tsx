@@ -8,7 +8,7 @@ import { useContentStore } from "../../store/useContentStore";
 import { useLayoutStore } from "../../store/useLayoutStore";
 import DefaultCard from "../Layout/DefaultCard";
 import CenteredCard from "../Layout/CenteredCard";
-
+import RightCard from "../Layout/RightCard";
 const Create = () => {
   const [previews, setPreviews] = useState({
     profile: null,
@@ -18,8 +18,6 @@ const Create = () => {
 
   const { contact, updateContacts } = useContentStore();
   const { layout } = useLayoutStore();
-
-  console.log(layout);
 
   const [dropdown, setDropdown] = useState(false);
   //   Form Values
@@ -297,6 +295,19 @@ const Create = () => {
 
             {layout === "centered" && (
               <CenteredCard
+                pronounVal={pronoun}
+                nameVal={name}
+                emailVal={email}
+                phoneVal={phone}
+                jobTitleVal={jobTitle}
+                tagLineVal={tagLine}
+                companyVal={company}
+                locationVal={location}
+                preview={previews}
+              />
+            )}
+            {layout === "right" && (
+              <RightCard
                 pronounVal={pronoun}
                 nameVal={name}
                 emailVal={email}

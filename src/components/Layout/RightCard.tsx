@@ -24,7 +24,7 @@ interface Props {
   preview?: Preview;
 }
 
-const DefaultCard = ({
+const RightCard = ({
   companyVal,
   jobTitleVal,
   locationVal,
@@ -58,13 +58,17 @@ const DefaultCard = ({
           backgroundColor: coverColorBg,
         }}
       >
-        <div className="absolute top-10 w-20 h-20 border-[4px] rounded-full border-white overflow-hidden">
-          <img src={preview?.profile ? preview.profile : user} alt="user" />
+        <div className="absolute top-10 right-2 w-20 h-20 border-[4px] rounded-full border-white overflow-hidden">
+          <img
+            src={preview?.profile ? preview.profile : user}
+            alt="user"
+            className=""
+          />
         </div>
         {/* Pronoun and Name */}
         <div className="content-center">
           <p
-            className={`absolute right-0 me-1 w-48 text-center overflow-hidden text-ellipsis text-nowrap ${
+            className={`absolute left-0 w-48 text-center overflow-hidden text-ellipsis text-nowrap ${
               name.font + " " + name.size
             } `}
             style={{ color: name.color }}
@@ -86,14 +90,14 @@ const DefaultCard = ({
             <img
               src={preview?.logo ? preview.logo : qrCode}
               alt="Cover"
-              className="absolute right-0 -top-2 w-14 h-14 rounded-full border-2 bg-white"
+              className="absolute left-0 -top-2 w-14 h-14 rounded-full border-2 bg-white"
             />
           )}
           {/* Job Title */}
           <p
             className={`${
               jobTitle.font + " " + jobTitle.size
-            } mb-1 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase ${
+            } mb-1 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase text-end ${
               !jobTitleVal && "invisible"
             } `}
             style={{ color: jobTitle.color }}
@@ -104,14 +108,14 @@ const DefaultCard = ({
           <p
             className={`${!companyVal && "invisible"} ${
               company.font + " " + company.size
-            }`}
+            } text-end`}
             style={{ color: company.color }}
           >
             {companyVal && "At " + companyVal}
           </p>
           {/* Tag Line */}
           <p
-            className={`mt-3 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase ${
+            className={`mt-3 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase text-end ${
               !tagLineVal && "invisible"
             } ${tagLine.font + " " + tagLine.size}`}
             style={{ color: tagLine.color }}
@@ -121,7 +125,7 @@ const DefaultCard = ({
           </p>
           {/* Location */}
           <p
-            className={`${location.font + " " + location.size} my-2 ${
+            className={`${location.font + " " + location.size} my-2 text-end ${
               !locationVal && "invisible"
             }`}
             style={{ color: location.color }}
@@ -189,4 +193,4 @@ const DefaultCard = ({
   );
 };
 
-export default DefaultCard;
+export default RightCard;
