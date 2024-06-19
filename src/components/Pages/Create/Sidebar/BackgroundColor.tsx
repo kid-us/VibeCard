@@ -27,14 +27,14 @@ const BackgroundColor = ({ colorPicker, bgColors, cardType }: Props) => {
 
   return (
     <div className="bg-white rounded p-2 mb-5">
-      <p className="text-xs mt-2 text-black">Default</p>
+      <p className="chakra mt-2 text-black">Default</p>
       <div
         className={`${
           bgColors === "gradient-cover" && bgColors
         } w-full h-20 rounded-lg my-2 shadow shadow-zinc-900`}
         style={{ backgroundColor: bgColors }}
       ></div>
-      <p className="text-xs mt-2">Trend Colors</p>
+      <p className="chakra mt-2">Trend Colors</p>
       <div className="grid grid-cols-6 gap-3 overflow-hidden py-5">
         {cardType === "cover" || cardType === "button"
           ? coverColor.map((cover) => (

@@ -8,7 +8,7 @@ const Layout = () => {
       <p className="text-sm text-gray-400 mb-4">Card Layouts</p>
       <div className="bg-white rounded p-2">
         <div>
-          <p className="text-gray-600 chakra">Default</p>
+          <p className="chakra">Default</p>
           <div
             onClick={() => updateLayout("default")}
             className="relative shadow bg-gray-100 shadow-zinc-800 rounded-lg mt-3 cursor-pointer"
@@ -53,7 +53,7 @@ const Layout = () => {
           </div>
 
           {/* Right */}
-          <p className="mt-5 text-gray-600 chakra">Right</p>
+          <p className="mt-5 chakra">Right</p>
           <div
             onClick={() => updateLayout("right")}
             className="relative bg-gray-100 shadow shadow-zinc-800 rounded-lg mt-3 cursor-pointer"
@@ -98,10 +98,10 @@ const Layout = () => {
           </div>
 
           {/* Center */}
-          <p className="mt-5 text-gray-600 chakra">Center</p>
+          <p className="mt-5 chakra">Center</p>
           <div
             onClick={() => updateLayout("centered")}
-            className="relative bg-gray-100 shadow shadow-zinc-800 rounded-lg mt-3 cursor-pointer"
+            className="relative bg-gray-100 shadow shadow-zinc-800 rounded-lg mt-3 cursor-pointer mb-5"
           >
             <div className="w-full h-20 bg-gray-600 rounded ">
               <div className={`h-24 relative flex justify-between p-2 z-0`}>
