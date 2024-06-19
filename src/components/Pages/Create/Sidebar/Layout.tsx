@@ -19,9 +19,9 @@ const Layout = () => {
                   <img src={user} alt="user" />
                 </div>
                 {/* Pronoun and Name */}
-                <div className="content-center lg:mb-2 me-2">
+                <div className="content-center lg:mb-2">
                   <p
-                    className={`absolute lg:top-10 top-20 right-0 lg:w-36 lg:h-8 w-44 h-10 bg-gray-400 text-center rounded`}
+                    className={`absolute lg:top-10 top-20 right-0 lg:w-36 lg:h-8 w-44 h-10 bg-gray-400 text-center rounded me-2`}
                   ></p>
                 </div>
               </div>
