@@ -43,7 +43,7 @@ const RightCard = ({
 
   return (
     <div
-      className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 mb-10`}
+      className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 lg:mb-0 mb-10`}
       style={{ backgroundColor: cardColorBg }}
     >
       <div

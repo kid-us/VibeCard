@@ -43,7 +43,7 @@ const DefaultCard = ({
 
   return (
     <div
-      className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 z-0 mb-10`}
+      className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 z-0 lg:mb-0 mb-14`}
       style={{ backgroundColor: cardColorBg }}
     >
       <div
