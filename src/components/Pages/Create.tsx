@@ -365,7 +365,7 @@ const Create = () => {
                 <p className="text-xl font-poppins mt-4 mb-10">
                   Create your Business card
                 </p>
-                <div className="px-4">
+                <div>
                   {/* Images */}
                   <div className="grid grid-cols-3 gap-x-2">
                     {/* Profile */}
