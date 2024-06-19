@@ -6,6 +6,7 @@ import pageNotFound from "./page404.gif";
 import defaultLayout from "./default.png";
 import centeredLayout from "./centered.png";
 import rightLayout from "./right.png";
+import photo from "./photo.png";
 
 export {
   qrCode,
@@ -16,4 +17,5 @@ export {
   defaultLayout,
   centeredLayout,
   rightLayout,
+  photo,
 };
