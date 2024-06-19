@@ -131,7 +131,7 @@ const Create = () => {
             </Link>
           </div>
           <div className="flex justify-between">
-            {/* Large Device */}
+            {/* Large Device Nav*/}
             <div className="lg:block hidden space-x-16">
               <Link to={"/insight"} className="text-sm">
                 Insights
@@ -140,6 +140,8 @@ const Create = () => {
                 Settings
               </Link>
             </div>
+
+            {/* Large Device Dropdown */}
             <div
               onClick={() => setDropdown(!dropdown)}
               className="ms-28 lg:flex hidden cursor-pointer relative"
@@ -171,7 +173,7 @@ const Create = () => {
               )}
             </div>
 
-            {/* Small Device */}
+            {/* Small Device Nav*/}
             <div className="lg:hidden relative">
               <p
                 onClick={() => setMenu(!menu)}
@@ -202,6 +204,7 @@ const Create = () => {
                 )}
               </p>
             </div>
+            {/* Small Device menu */}
             {menu && (
               <div className="absolute menu-bg w-full h-[100vh] right-0 top-16 p-4">
                 <div className="flex cursor-pointer">
