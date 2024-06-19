@@ -362,7 +362,7 @@ const Create = () => {
             {/* Forms */}
             {modal && activeModal === "Forms" && (
               <div className="relative">
-                <p className="text-xl font-poppins mt-4 px-4 mb-10">
+                <p className="text-xl font-poppins mt-4 p-5 mb-10">
                   Create your Business card
                 </p>
                 <div className="px-3">
@@ -484,7 +484,7 @@ const Create = () => {
 
             {/* Colors */}
             {modal && activeModal === "Colors" && (
-              <div className="p-8">
+              <div className="p-5">
                 <Colors />
               </div>
             )}

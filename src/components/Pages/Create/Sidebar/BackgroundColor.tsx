@@ -34,8 +34,8 @@ const BackgroundColor = ({ colorPicker, bgColors, cardType }: Props) => {
         } w-full h-20 rounded-lg my-2 shadow shadow-zinc-900`}
         style={{ backgroundColor: bgColors }}
       ></div>
-      <p className="chakra mt-2">Trend Colors</p>
-      <div className="grid grid-cols-6 gap-3 overflow-hidden py-5">
+      <p className="chakra mt-2 text-black">Trend Colors</p>
+      <div className="grid lg:grid-cols-6 grid-cols-7 gap-3 overflow-hidden py-5">
         {cardType === "cover" || cardType === "button"
           ? coverColor.map((cover) => (
               <button
@@ -60,7 +60,7 @@ const BackgroundColor = ({ colorPicker, bgColors, cardType }: Props) => {
       </div>
       {colorPicker && (
         <div className={`relative ${color}`}>
-          <p className="text-xs mb-2 text-black">Pick you Color here</p>
+          <p className="chakra mb-2 text-black">Pick you Color here</p>
           <input
             type="color"
             className="w-full h-14 border-none outline-none shadow shadow-orange-900"

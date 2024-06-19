@@ -23,8 +23,8 @@ const TextColor = ({ bg, name, title }: Props) => {
           className={`w-full h-10 rounded-lg my-2 shadow shadow-zinc-900`}
           style={{ backgroundColor: bg }}
         ></div>
-        <p className="mt-3 chakra">Choose Colors</p>
-        <div className="grid grid-cols-6 gap-3 overflow-hidden py-5">
+        <p className="mt-3 chakra text-black">Choose Colors</p>
+        <div className="grid lg:grid-cols-6 grid-cols-7 gap-3 overflow-hidden py-5">
           {textColor.map((text) => (
             <button
               key={text.id}
