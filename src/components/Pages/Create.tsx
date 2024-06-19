@@ -182,6 +182,7 @@ const Create = () => {
         <div className="lg:block hidden col-span-2">
           <Sidebar />
         </div>
+
         {/* Form */}
         <div className="lg:block hidden col-span-5 w-full p-3 mt-14">
           <div className="relative px-5">
@@ -224,7 +225,7 @@ const Create = () => {
                     name="pronoun"
                     className="bg-gray-200 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3"
                     onChange={(event) => setPronoun(event.currentTarget.value)}
-                    defaultValue=""
+                    defaultValue={pronoun}
                   >
                     <option value="" hidden></option>
                     <option value="Mr">Mr</option>
@@ -239,6 +240,7 @@ const Create = () => {
                   type="text"
                   inputName="Name"
                   name={(name: string) => setName(name)}
+                  value={name}
                   required
                 />
                 {/* Email */}
@@ -247,6 +249,7 @@ const Create = () => {
                   type="email"
                   inputName="Email"
                   emailAddress={(email: string) => handleEmail(email)}
+                  value={email}
                   required
                 />
                 {/* Phone */}
@@ -255,6 +258,7 @@ const Create = () => {
                   type="tel"
                   inputName="Phone"
                   phone={(phone: string) => handlePhone(phone)}
+                  value={phone}
                   required
                 />
                 {/* Job-Title */}
@@ -263,6 +267,7 @@ const Create = () => {
                   type="text"
                   inputName="Job Title"
                   jobTitle={(job: string) => setJobTitle(job)}
+                  value={jobTitle}
                   required
                 />
                 {/* Location */}
@@ -271,6 +276,7 @@ const Create = () => {
                   type="text"
                   inputName="Location"
                   location={(location: string) => setLocation(location)}
+                  value={location}
                   required
                 />
                 {/* Company */}
@@ -279,6 +285,7 @@ const Create = () => {
                   type="text"
                   inputName="Company"
                   company={(company: string) => setCompany(company)}
+                  value={company}
                   required
                 />
                 {/* Tag-line */}
@@ -287,6 +294,7 @@ const Create = () => {
                   type="text"
                   inputName="Tag Line"
                   tag={(tag: string) => setTagLine(tag)}
+                  value={tagLine}
                   required={false}
                 />
               </div>
@@ -392,7 +400,7 @@ const Create = () => {
                     {/* Pronoun */}
                     <div className="mb-4">
                       <label
-                        className="text-xs lg:text-gray-600 block"
+                        className="text-xs text-gray-600 block"
                         htmlFor="pronoun"
                       >
                         Pronoun <span className="text-red-700 text-2xl">*</span>
@@ -400,11 +408,11 @@ const Create = () => {
 
                       <select
                         name="pronoun"
-                        className="lg:bg-gray-200 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black"
+                        className="bg-gray-200 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3"
                         onChange={(event) =>
                           setPronoun(event.currentTarget.value)
                         }
-                        defaultValue=""
+                        defaultValue={pronoun}
                       >
                         <option value="" hidden></option>
                         <option value="Mr">Mr</option>
@@ -419,6 +427,7 @@ const Create = () => {
                       type="text"
                       inputName="Name"
                       name={(name: string) => setName(name)}
+                      value={name}
                       required
                     />
                     {/* Email */}
@@ -427,6 +436,7 @@ const Create = () => {
                       type="email"
                       inputName="Email"
                       emailAddress={(email: string) => handleEmail(email)}
+                      value={email}
                       required
                     />
                     {/* Phone */}
@@ -435,6 +445,7 @@ const Create = () => {
                       type="tel"
                       inputName="Phone"
                       phone={(phone: string) => handlePhone(phone)}
+                      value={phone}
                       required
                     />
                     {/* Job-Title */}
@@ -443,6 +454,7 @@ const Create = () => {
                       type="text"
                       inputName="Job Title"
                       jobTitle={(job: string) => setJobTitle(job)}
+                      value={jobTitle}
                       required
                     />
                     {/* Location */}
@@ -451,6 +463,7 @@ const Create = () => {
                       type="text"
                       inputName="Location"
                       location={(location: string) => setLocation(location)}
+                      value={location}
                       required
                     />
                     {/* Company */}
@@ -459,6 +472,7 @@ const Create = () => {
                       type="text"
                       inputName="Company"
                       company={(company: string) => setCompany(company)}
+                      value={company}
                       required
                     />
                     {/* Tag-line */}
@@ -467,6 +481,7 @@ const Create = () => {
                       type="text"
                       inputName="Tag Line"
                       tag={(tag: string) => setTagLine(tag)}
+                      value={tagLine}
                       required={false}
                     />
                   </div>

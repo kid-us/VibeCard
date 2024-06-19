@@ -3,6 +3,7 @@ interface Props {
   type: string;
   inputName: string;
   required: boolean;
+  value: string;
   name?: (name: string) => void;
   emailAddress?: (email: string) => void;
   website?: (website: string) => void;
@@ -18,6 +19,7 @@ const InputFields = ({
   type,
   inputName,
   required,
+  value,
   name,
   location,
   website,
@@ -74,6 +76,7 @@ const InputFields = ({
         name={label}
         className={`lg:bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black`}
         onChange={handleChange}
+        value={value}
       />
     </div>
   );
