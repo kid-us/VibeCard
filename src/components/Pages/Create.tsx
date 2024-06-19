@@ -24,12 +24,11 @@ const Create = () => {
 
   const { contact, updateContacts } = useContentStore();
   const { layout } = useLayoutStore();
-
+  // States
   const [modal, setModal] = useState(false);
   const [activeModal, setActiveModal] = useState("");
   const [menu, setMenu] = useState(false);
   const [dropdown, setDropdown] = useState(false);
-
   //   Form Values
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
