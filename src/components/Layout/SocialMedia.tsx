@@ -6,7 +6,7 @@ const SocialMedia = () => {
 
   return (
     <div
-      className={` ${
+      className={`lg:mb-0 mb-5 ${
         socialMedia.length > 0
           ? `grid ${
               socialMedia.length <= 3 ? "grid-cols-3" : "grid-cols-4"
