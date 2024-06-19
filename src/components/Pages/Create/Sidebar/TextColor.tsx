@@ -24,12 +24,12 @@ const TextColor = ({ bg, name, title }: Props) => {
           style={{ backgroundColor: bg }}
         ></div>
         <p className="mt-3 chakra text-black">Choose Colors</p>
-        <div className="grid lg:grid-cols-6 grid-cols-7 gap-3 overflow-hidden py-5">
+        <div className="grid lg:grid-cols-6 grid-cols-7 lg:gap-3 gap-2 overflow-hidden py-5">
           {textColor.map((text) => (
             <button
               key={text.id}
               onClick={() => updateColor(name, text.value)}
-              className={`p-3 rounded shadow-sm shadow-zinc-900 hover:shadow-none`}
+              className={`lg:p-3 p-4 rounded shadow-sm shadow-zinc-900 hover:shadow-none`}
               style={{ backgroundColor: text.value }}
             ></button>
           ))}
