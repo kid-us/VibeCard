@@ -238,7 +238,7 @@ const Create = () => {
         </nav>
       </div>
 
-      {/* Large Device */}
+      {/* Large Device Page */}
       <div className="lg:grid lg:grid-cols-9">
         {/* Sidebar */}
         <div className="lg:block hidden col-span-2">
@@ -373,7 +373,7 @@ const Create = () => {
         </div>
 
         {/* Card Layout*/}
-        <div className="lg:flex lg:col-span-2 lg:pe-5 lg:pt-0 lg:pb-0 pt-20 lg:h-auto pb-10 px-3 h-[95vh] overflow-scroll lg:mt-20">
+        <div className="lg:flex lg:col-span-2 lg:pe-5 lg:pt-0 lg:pb-0 pt-24 lg:h-auto pb-10 px-3 h-[95vh] overflow-scroll lg:mt-20">
           <div className="content-center w-full">
             {/* {layout} */}
             {layout === "default" && (
@@ -420,6 +420,7 @@ const Create = () => {
         </div>
       </div>
 
+      {/* Small Device Page */}
       {/* Small Device Sidebars */}
       {modal && (
         <>
