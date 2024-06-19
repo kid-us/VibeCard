@@ -127,7 +127,7 @@ const Layout = () => {
                 <img
                   src={user}
                   alt="Cover"
-                  className="absolute lg:right-10 lg:top-20 lg:w-10 lg:h-10 w-14 h-14 right-20 top-28 rounded-full border-2 border-white"
+                  className="absolute lg:right-10 lg:top-20 lg:w-10 lg:h-10 w-14 h-14 right-24 top-28 rounded-full border-2 border-white"
                 />
               </div>
             </div>
