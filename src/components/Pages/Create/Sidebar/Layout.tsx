@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <div>
       <p className="chakra text-white mb-4">Card Layouts</p>
-      <div className="bg-white rounded p-2">
+      <div className="bg-white rounded p-2 lg:overflow-hidden lg:h-auto h-[75dvh] overflow-y-scroll lg:pb-0 pb-8">
         <div>
           <p className="chakra text-black">Default</p>
           <div

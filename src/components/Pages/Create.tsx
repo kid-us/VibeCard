@@ -430,18 +430,15 @@ const Create = () => {
               setActiveModal("");
             }}
           ></div>
-          {/* <p
-            onClick={() => setModal(false)}
-            className="absolute top-2 z-50 right-1 bg-red-500 text-white text-xl bi-x px-2 rounded p-1"
-          ></p> */}
-          <div className="z-50 bg-zinc-800 h-[90dvh] absolute bottom-0 w-full rounded text-white overflow-y-scroll pb-10 animate__animated animate__fadeInUp">
+
+          <div className="z-50 bg-zinc-800 h-[90dvh] absolute bottom-0 w-full rounded-t-3xl text-white pb-10 animate__animated animate__fadeInUp">
             {/* Forms */}
             {modal && activeModal === "Forms" && (
               <div className="relative p-5">
-                <p className="text-xl font-poppins mt-4 mb-10">
+                <p className="text-xl font-poppins mb-10">
                   Create your Business card
                 </p>
-                <div>
+                <div className="lg:overflow-hidden lg:h-auto h-[74dvh] overflow-y-scroll lg:pb-0 pb-20">
                   {/* Images */}
                   <div className="grid grid-cols-3 gap-x-2">
                     {/* Profile */}
@@ -552,14 +549,6 @@ const Create = () => {
                       value={tagLine}
                       required={false}
                     />
-                  </div>
-                </div>
-                {/* Button */}
-                <div className="px-2 w-full pb-12">
-                  <div className="flex justify-end py-4 shadow-xl rounded-xl shadow-zinc-900">
-                    <button className="bg-sky-800 shadow-md active:shadow-none shadow-gray-500 text-white rounded-xl px-24 py-3">
-                      Update
-                    </button>
                   </div>
                 </div>
               </div>

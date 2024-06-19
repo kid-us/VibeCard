@@ -16,7 +16,7 @@ const Texts = () => {
     <>
       <p className="chakra text-white mb-4">Text Styles</p>
 
-      <div className="z-50">
+      <div className="z-50 lg:overflow-hidden lg:h-auto h-[75dvh] overflow-y-scroll lg:pb-0 pb-10">
         <div className="relative text-sm border-teal-500 shadow shadow-stone-300 rounded-lg">
           <div
             onClick={() => setDropdown(!dropdown)}
