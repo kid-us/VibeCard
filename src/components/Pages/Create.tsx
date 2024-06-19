@@ -435,7 +435,7 @@ const Create = () => {
             {/* Forms */}
             {modal && activeModal === "Forms" && (
               <div className="relative p-5">
-                <p className="text-xl font-poppins mb-10">
+                <p className="text-xl font-poppins chakra mb-10">
                   Create your Business card
                 </p>
                 <div className="lg:overflow-hidden lg:h-auto h-[74dvh] overflow-y-scroll lg:pb-0 pb-20">
