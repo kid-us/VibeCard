@@ -43,7 +43,7 @@ const DefaultCard = ({
 
   return (
     <div
-      className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 z-0`}
+      className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 z-0 mb-10`}
       style={{ backgroundColor: cardColorBg }}
     >
       <div
@@ -60,7 +60,7 @@ const DefaultCard = ({
           backgroundColor: coverColorBg,
         }}
       >
-        <div className="absolute top-10 w-20 h-20 border-[4px] rounded-full border-white overflow-hidden z-0">
+        <div className="absolute top-10 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden z-0">
           <img src={preview?.profile ? preview.profile : user} alt="user" />
         </div>
         {/* Pronoun and Name */}
@@ -118,7 +118,6 @@ const DefaultCard = ({
             } ${tagLine.font + " " + tagLine.size}`}
             style={{ color: tagLine.color }}
           >
-            <span className="bi-info"></span>
             {tagLineVal && tagLineVal}
           </p>
           {/* Location */}

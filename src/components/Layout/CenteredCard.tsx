@@ -44,7 +44,7 @@ const CenteredCard = ({
 
   return (
     <div
-      className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800`}
+      className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 mb-10`}
       style={{ backgroundColor: cardColorBg }}
     >
       <div
@@ -61,7 +61,7 @@ const CenteredCard = ({
           backgroundColor: coverColorBg,
         }}
       >
-        <div className="absolute top-10 left-1/3 w-20 h-20 border-[4px] rounded-full border-white overflow-hidden">
+        <div className="absolute top-10 left-1/3 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden">
           <img
             src={preview?.profile ? preview.profile : user}
             alt="user"
@@ -125,7 +125,6 @@ const CenteredCard = ({
             } ${tagLine.font + " " + tagLine.size}`}
             style={{ color: tagLine.color }}
           >
-            <span className="bi-info"></span>
             {tagLineVal && tagLineVal}
           </p>
           {/* Location */}
