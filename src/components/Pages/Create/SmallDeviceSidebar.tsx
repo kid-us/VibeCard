@@ -15,7 +15,7 @@ const SmallDeviceSidebar = ({ active, handleClick }: Props) => {
           onClick={() => handleClick(icons.title)}
           className={`text-center cursor-pointer ${
             active === icons.title
-              ? "bg-stone-700 text-gray-400"
+              ? "bg-stone-700 text-gray-400 rounded-md"
               : "hover:bg-stone-800 text-white"
           } p-3`}
         >
