@@ -71,7 +71,7 @@ const ContentItems = ({
             <div className="relative bg-white animate__animated animate__fadeInDown mt-1">
               <input
                 type="text"
-                className={`bg-white w-full py-2 px-3 rounded shadow-md border border-black shadow-zinc-950 placeholder:text-sky-900 text-sm focus:outline-none text-black ${
+                className={`bg-white w-full py-2 px-3 rounded shadow-md border border-black shadow-zinc-950 placeholder:text-sky-900 text-sm focus:outline-none text-black lg:h-auto h-12 ${
                   error && "border border-red-500 font-poppins font-semibold"
                 }`}
                 placeholder={

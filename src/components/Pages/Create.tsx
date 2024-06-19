@@ -361,11 +361,11 @@ const Create = () => {
           <div className="z-50 bg-zinc-800 h-[90dvh] absolute bottom-0 w-full rounded text-white overflow-y-scroll pb-10 animate__animated animate__fadeInUp">
             {/* Forms */}
             {modal && activeModal === "Forms" && (
-              <div className="relative">
-                <p className="text-xl font-poppins mt-4 p-5 mb-10">
+              <div className="relative p-5">
+                <p className="text-xl font-poppins mt-4 mb-10">
                   Create your Business card
                 </p>
-                <div className="px-3">
+                <div className="px-4">
                   {/* Images */}
                   <div className="grid grid-cols-3 gap-x-2">
                     {/* Profile */}
