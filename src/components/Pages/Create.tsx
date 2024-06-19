@@ -284,7 +284,7 @@ const Create = () => {
 
                   <select
                     name="pronoun"
-                    className="bg-gray-200 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3"
+                    className="bg-gray-200 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black"
                     onChange={(event) => setPronoun(event.currentTarget.value)}
                     defaultValue={pronoun}
                   >
@@ -476,7 +476,7 @@ const Create = () => {
 
                       <select
                         name="pronoun"
-                        className="bg-gray-200 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3"
+                        className="bg-gray-200 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black"
                         onChange={(event) =>
                           setPronoun(event.currentTarget.value)
                         }
