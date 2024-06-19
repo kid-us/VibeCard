@@ -5,7 +5,7 @@ const Layout = () => {
   const { updateLayout } = useLayoutStore();
   return (
     <div>
-      <p className="text-sm text-gray-400 mb-4">Card Layouts</p>
+      <p className="chakra text-white mb-4">Card Layouts</p>
       <div className="bg-white rounded p-2">
         <div>
           <p className="chakra">Default</p>

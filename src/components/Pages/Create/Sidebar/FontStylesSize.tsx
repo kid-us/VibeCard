@@ -34,8 +34,10 @@ const FontStylesSize = ({ view, defaultFontSize, defaultFontStyle }: Props) => {
     <>
       {/* Font Styles */}
       <div className="flex my-5 text-sm ms-1">
-        <p className="first-letter:uppercase text-teal-400">{view}</p>
-        <p className="ms-2 text-white text-xs"> Font Style</p>
+        <p className="first-letter:uppercase text-teal-400 chakra text-lg">
+          {view}
+        </p>
+        <p className="ms-2 text-white chakra"> Font Style</p>
       </div>
 
       <div className="bg-white w-full rounded p-2">
@@ -56,10 +58,12 @@ const FontStylesSize = ({ view, defaultFontSize, defaultFontStyle }: Props) => {
       </div>
       {/* Font Sizes */}
       <div className="flex my-3 text-sm ms-1">
-        <p className="first-letter:uppercase text-teal-400">{view}</p>
-        <p className=" ms-2 text-white text-xs"> Font Size</p>
+        <p className="first-letter:uppercase text-teal-400 chakra text-lg">
+          {view}
+        </p>
+        <p className=" ms-2 text-white chakra"> Font Size</p>
       </div>
-      <div className="bg-white w-full rounded p-2">
+      <div className="bg-white w-full rounded p-2 mb-3">
         {fontSize.map((size) => (
           <p
             key={size.name}
