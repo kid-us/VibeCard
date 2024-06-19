@@ -20,7 +20,7 @@ const TextColor = ({ bg, name, title }: Props) => {
         <p className="ms-2 text-white chakra"> Color</p>
       </div>
       <div className="bg-white rounded p-2 mb-5">
-        <p className="mt-2 chakra">Default</p>
+        <p className="mt-2 chakra text-black">Default</p>
         <div
           className={`w-full h-10 rounded-lg my-2 shadow shadow-zinc-900`}
           style={{ backgroundColor: bg }}

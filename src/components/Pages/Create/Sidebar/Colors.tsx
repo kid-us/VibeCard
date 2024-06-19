@@ -65,7 +65,7 @@ const Colors = () => {
                 key={text}
                 className={`${
                   view === text && "text-teal-900 text-xl"
-                } hover:text-gray-400 w-full cursor-pointer chakra text-lg`}
+                } hover:text-gray-400 w-full cursor-pointer chakra text-lg text-black`}
               >
                 {text}
               </p>

@@ -42,7 +42,7 @@ const Texts = () => {
                   key={text}
                   className={`${
                     view === text && "text-teal-900 text-xl"
-                  } hover:text-gray-400 w-full cursor-pointer chakra text-lg first-letter:uppercase`}
+                  } hover:text-gray-400 w-full cursor-pointer chakra text-lg first-letter:uppercase text-black`}
                 >
                   {text}
                 </p>
