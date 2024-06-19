@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import InputFields from "./Create/InputFields";
 import { user } from "../../assets";
 import InputImages from "./Create/InputImages";
@@ -16,25 +16,6 @@ import Content from "./Create/Sidebar/Content";
 import Layout from "./Create/Sidebar/Layout";
 
 const Create = () => {
-  const [isSticky, setIsSticky] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const halfPageHeight = window.innerHeight / 2;
-      if (window.pageYOffset > halfPageHeight) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   const [previews, setPreviews] = useState({
     profile: null,
     cover: null,
@@ -139,7 +120,11 @@ const Create = () => {
     <div className="relative menu lg:h-auto h-[100dvh]">
       {/* Navbar */}
       <div className="fixed w-full bg-white shadow z-50">
-        <nav className="flex justify-between lg:py-3 py-4 px-5">
+        <nav
+          className={`flex justify-between lg:py-3 py-4 px-5 ${
+            menu && "menu-bg animate__animated animate__fadeInLeft"
+          }`}
+        >
           <div>
             <Link to={"/"} className="logo-font text-2xl">
               vibecard
@@ -218,7 +203,7 @@ const Create = () => {
               </p>
             </div>
             {menu && (
-              <div className="absolute bg-white w-full h-[100vh] right-0 top-16 p-4">
+              <div className="absolute menu-bg w-full h-[100vh] right-0 top-16 p-4">
                 <div className="flex cursor-pointer">
                   <img
                     src={previews.profile ? previews.profile : user}
@@ -226,17 +211,23 @@ const Create = () => {
                     className="w-16 h-16 overflow-hidden border-2 border-black rounded-full"
                   />
                   <div className="content-center">
-                    <p className="ms-4 text-xl">Lorem</p>
+                    <p className="ms-4 text-xl chakra">Lorem</p>
                   </div>
                 </div>
                 <p className="mt-5 mb-4">
-                  <Link to={"/insight"}>Insights</Link>
+                  <Link to={"/insight"} className="text-xl pb-2 font-poppins">
+                    Insights
+                  </Link>
                 </p>
                 <p>
-                  <Link to={"/setting"}>Settings</Link>
+                  <Link to={"/setting"} className="text-xl pb-2 font-poppins">
+                    Settings
+                  </Link>
                 </p>
                 <p className="mt-4">
-                  <Link to={"/logout"}>Logout</Link>
+                  <Link to={"/logout"} className="text-xl pb-2 font-poppins">
+                    Logout
+                  </Link>
                 </p>
               </div>
             )}
