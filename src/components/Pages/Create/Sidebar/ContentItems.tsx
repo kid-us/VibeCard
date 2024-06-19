@@ -33,7 +33,9 @@ const ContentItems = ({
             className={`relative flex justify-between p-2 rounded-lg mt-3 shadow-md shadow-zinc-800`}
             style={{ backgroundColor: content.color.replace("text", "bg") }}
           >
-            <p className={`${content.icon} text-xl text-white ms-3`}>
+            <p
+              className={`${content.icon} lg:text-xl text-3xl text-white ms-3`}
+            >
               <span className="text-xs ms-5 text-gray-200 chakra">
                 {content.label}
               </span>
