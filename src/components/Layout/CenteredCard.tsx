@@ -61,26 +61,26 @@ const CenteredCard = ({
           backgroundColor: coverColorBg,
         }}
       >
-        <div className="absolute top-2 left-1/3 w-20 h-20 border-[4px] rounded-full border-white overflow-hidden">
+        <div className="absolute top-10 left-1/3 w-20 h-20 border-[4px] rounded-full border-white overflow-hidden">
           <img
             src={preview?.profile ? preview.profile : user}
             alt="user"
             className=""
           />
         </div>
-        {/* Pronoun and Name */}
+        {companyLogo && (
+          <img
+            src={preview?.logo ? preview.logo : qrCode}
+            alt="Cover"
+            className="absolute top-20 right-28 w-12 h-12 rounded-full border-2 bg-white"
+          />
+        )}
       </div>
-      <div className="px-5 mt-3 text-white">
+      <div className="px-5 mt-10 text-white">
         <div className="relative">
-          {companyLogo && (
-            <img
-              src={preview?.logo ? preview.logo : qrCode}
-              alt="Cover"
-              className="absolute -right-5 -top-12 w-14 h-14 rounded-full border-2 bg-white"
-            />
-          )}
           {/* Name and Pronoun */}
           <div className="content-center">
+            {/* Pronoun and Name */}
             <p
               className={` text-center overflow-hidden text-ellipsis text-nowrap ${
                 name.font + " " + name.size
