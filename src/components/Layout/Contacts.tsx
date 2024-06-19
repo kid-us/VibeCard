@@ -6,7 +6,7 @@ const Contacts = () => {
 
   return (
     <div
-      className={`lg:my-0 my-5 ${
+      className={`lg:my-2 my-5 ${
         contact.length > 0
           ? `grid ${
               contact.length <= 3 ? "grid-cols-3" : "grid-cols-5"

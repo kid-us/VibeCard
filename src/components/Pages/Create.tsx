@@ -119,7 +119,7 @@ const Create = () => {
   return (
     <div className="relative menu lg:h-auto h-[100dvh]">
       {/* Navbar */}
-      <div className="fixed w-full bg-white shadow">
+      <div className="fixed w-full bg-white shadow z-50">
         <nav className="flex justify-between py-3 px-5">
           <div>
             <Link to={"/"} className="logo-font text-2xl">
@@ -177,6 +177,7 @@ const Create = () => {
         </nav>
       </div>
 
+      {/* Large Device */}
       <div className="lg:grid lg:grid-cols-9">
         {/* Sidebar */}
         <div className="lg:block hidden col-span-2">
@@ -311,7 +312,7 @@ const Create = () => {
         </div>
 
         {/* Card Layout*/}
-        <div className="lg:flex lg:col-span-2 lg:pe-5 lg:pt-0 lg:pb-0 pt-20 lg:h-auto pb-10 px-3 h-[95vh] overflow-scroll">
+        <div className="lg:flex lg:col-span-2 lg:pe-5 lg:pt-0 lg:pb-0 pt-20 lg:h-auto pb-10 px-3 h-[95vh] overflow-scroll lg:mt-20">
           <div className="content-center w-full">
             {/* {layout} */}
             {layout === "default" && (
