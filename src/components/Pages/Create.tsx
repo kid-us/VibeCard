@@ -423,7 +423,13 @@ const Create = () => {
       {/* Small Device Sidebars */}
       {modal && (
         <>
-          <div className="overlay z-50" onClick={() => setModal(false)}></div>
+          <div
+            className="overlay z-50"
+            onClick={() => {
+              setModal(false);
+              setActiveModal("");
+            }}
+          ></div>
           {/* <p
             onClick={() => setModal(false)}
             className="absolute top-2 z-50 right-1 bg-red-500 text-white text-xl bi-x px-2 rounded p-1"
