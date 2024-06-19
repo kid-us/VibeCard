@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import InputFields from "./Create/InputFields";
 import { user } from "../../assets";
 import InputImages from "./Create/InputImages";
@@ -15,7 +15,13 @@ import Texts from "./Create/Sidebar/Texts";
 import Content from "./Create/Sidebar/Content";
 import Layout from "./Create/Sidebar/Layout";
 
-const Create = () => {
+export const Create = () => {
+  const [previews, setPreviews] = useState({
+    profile: null,
+    cover: null,
+    logo: null,
+  });
+
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
@@ -34,12 +40,6 @@ const Create = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  const [previews, setPreviews] = useState({
-    profile: null,
-    cover: null,
-    logo: null,
-  });
 
   const { contact, updateContacts } = useContentStore();
   const { layout } = useLayoutStore();
@@ -188,34 +188,37 @@ const Create = () => {
 
             {/* Small Device */}
             <div className="lg:hidden relative">
-              <p
-                onClick={() => setMenu(!menu)}
-                className={`lg:hidden rounded-full border border-black font-poppins text-2xl text-teal-950 font-bold`}
-              >
-                {menu ? (
-                  <span className="px-3 flex">
-                    <span
-                      className={`text-sm font-light pt-[6px] pe-3 ${
-                        menu ? "text-black" : "text-white"
-                      } `}
-                    >
-                      Menu
-                    </span>
-                    <span
-                      className={`bi-x text-2xl ${
-                        menu ? "text-black" : "text-white"
-                      }`}
-                    ></span>
+              {menu ? (
+                <span className="px-3 flex">
+                  <span
+                    className={`text-sm font-light pt-[6px] pe-3 ${
+                      menu ? "text-black" : "text-white"
+                    } `}
+                  >
+                    Menu
                   </span>
-                ) : (
-                  <span className="px-3 flex">
-                    <span className={`text-sm font-light pt-[6px] pe-3`}>
-                      Menu
-                    </span>
-                    <span className={`bi-list text-2xl`}></span>
+                  <span
+                    className={`bi-x text-2xl ${
+                      menu ? "text-black" : "text-white"
+                    }`}
+                  ></span>
+                </span>
+              ) : (
+                <span className="px-3 flex">
+                  <span
+                    className={`text-sm font-light pt-[6px] pe-3 ${
+                      isSticky ? "text-black" : "text-white"
+                    }`}
+                  >
+                    Menu
                   </span>
-                )}
-              </p>
+                  <span
+                    className={`bi-list text-2xl ${
+                      isSticky ? "text-black" : "text-white"
+                    }`}
+                  ></span>
+                </span>
+              )}
             </div>
             {menu && (
               <div className="absolute bg-white w-full h-[100vh] right-0 top-16 p-4">
@@ -606,5 +609,3 @@ const Create = () => {
     </div>
   );
 };
-
-export default Create;

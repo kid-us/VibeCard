@@ -4,8 +4,8 @@ import { nav } from "../../services/navs";
 import Menu from "./Menu";
 
 const Navbar = () => {
-  const [isSticky, setIsSticky] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {

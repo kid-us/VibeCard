@@ -95,7 +95,7 @@ const DefaultCard = ({
           <p
             className={`${
               jobTitle.font + " " + jobTitle.size
-            } mb-1 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase ${
+            } mb-1 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase lg:mt-0 mt-4 ${
               !jobTitleVal && "invisible"
             } `}
             style={{ color: jobTitle.color }}

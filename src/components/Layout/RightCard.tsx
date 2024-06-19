@@ -99,7 +99,7 @@ const RightCard = ({
           <p
             className={`${
               jobTitle.font + " " + jobTitle.size
-            } mb-1 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase text-end ${
+            } mb-1 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase text-end lg:mt-0 mt-4 ${
               !jobTitleVal && "invisible"
             } `}
             style={{ color: jobTitle.color }}

@@ -10,7 +10,7 @@ const SocialMedia = () => {
         socialMedia.length > 0
           ? `grid ${
               socialMedia.length <= 3 ? "grid-cols-3" : "grid-cols-4"
-            }  gap-x-3 gap-y-2`
+            }  gap-3`
           : "invisible"
       }`}
     >
