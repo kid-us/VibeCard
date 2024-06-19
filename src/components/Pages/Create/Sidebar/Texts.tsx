@@ -17,12 +17,12 @@ const Texts = () => {
       <p className="chakra text-white mb-4">Text Styles</p>
 
       <div className="z-50">
-        <div className="relative text-sm border-teal-500 shadow shadow-stone-300 rounded">
+        <div className="relative text-sm border-teal-500 shadow shadow-stone-300 rounded-lg">
           <div
             onClick={() => setDropdown(!dropdown)}
-            className="bg-white cursor-pointer text-black"
+            className="bg-white cursor-pointer text-black rounded-lg"
           >
-            <p className="px-2 py-2 chakra">Choose Text </p>
+            <p className="px-2 py-2  chakra text-lg">Choose Text </p>
             <p
               className={`${
                 dropdown ? "bi-caret-up-fill" : "bi-caret-down-fill"
@@ -31,7 +31,7 @@ const Texts = () => {
           </div>
           {dropdown && (
             <div
-              className={`absolute bg-teal-700 w-full mt-1 rounded px-2 py-3 shadow-md shadow-zinc-900 space-y-1 z-10`}
+              className={`absolute bg-white w-full mt-1 rounded px-2 py-3 shadow-md shadow-zinc-900 space-y-1 z-10`}
             >
               {texts.map((text) => (
                 <p
@@ -41,8 +41,8 @@ const Texts = () => {
                   }}
                   key={text}
                   className={`${
-                    view === text && "text-white text-xl"
-                  } hover:text-gray-400 w-full cursor-pointer first-letter:uppercase text-sm pb-1 chakra`}
+                    view === text && "text-teal-900 text-xl"
+                  } hover:text-gray-400 w-full cursor-pointer chakra text-lg first-letter:uppercase`}
                 >
                   {text}
                 </p>

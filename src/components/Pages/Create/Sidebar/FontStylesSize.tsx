@@ -48,7 +48,7 @@ const FontStylesSize = ({ view, defaultFontSize, defaultFontStyle }: Props) => {
               handleFontStyle(font.style, font.name, view as keyof State)
             }
             className={`${font.style} hover:gray-300 hover:text-teal-400
-  cursor-pointer  pb-2 ${
+  cursor-pointer  pb-2 text-lg ${
     defaultFontStyle === font.style ? "text-sky-600" : "text-black"
   }`}
           >
@@ -56,6 +56,7 @@ const FontStylesSize = ({ view, defaultFontSize, defaultFontStyle }: Props) => {
           </p>
         ))}
       </div>
+
       {/* Font Sizes */}
       <div className="flex my-3 text-sm ms-1">
         <p className="first-letter:uppercase text-teal-400 chakra text-lg">

@@ -45,7 +45,7 @@ const BackgroundColor = ({ colorPicker, bgColors, cardType }: Props) => {
                     ? () => updateCoverColor(cover.value)
                     : () => updateColor("button", cover.value)
                 }
-                className={`lg:p-3 p-4 rounded shadow-sm shadow-zinc-900 hover:shadow-none`}
+                className={`lg:p-3 px-4 py-5 rounded shadow-sm shadow-zinc-900 hover:shadow-none`}
                 style={{ backgroundColor: cover.value }}
               ></button>
             ))
@@ -53,7 +53,7 @@ const BackgroundColor = ({ colorPicker, bgColors, cardType }: Props) => {
               <button
                 key={card.id}
                 onClick={() => updateCardColor(card.value)}
-                className={`lg:p-3 p-4 rounded shadow-sm shadow-zinc-900 hover:shadow-none`}
+                className={`lg:p-3 px-4 py-5 rounded shadow-sm shadow-zinc-900 hover:shadow-none`}
                 style={{ backgroundColor: card.value }}
               ></button>
             ))}
