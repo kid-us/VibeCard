@@ -47,7 +47,7 @@ const DefaultCard = ({
       style={{ backgroundColor: cardColorBg }}
     >
       <div
-        className={`h-24 relative flex justify-between p-2 z-0 ${
+        className={`lg:h-24 h-32 relative flex justify-between p-2 z-0 ${
           !preview?.cover
             ? coverColorBg === "gradient-cover" && `${coverColorBg} z-0`
             : ""
