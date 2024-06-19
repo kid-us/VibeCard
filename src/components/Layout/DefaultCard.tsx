@@ -88,7 +88,7 @@ const DefaultCard = ({
             <img
               src={preview?.logo ? preview.logo : qrCode}
               alt="Cover"
-              className="absolute right-0 -top-2 w-14 h-14 rounded-full border-2 bg-white"
+              className="absolute right-0 -top-6 w-14 h-14 rounded-full border-2 bg-white"
             />
           )}
           {/* Job Title */}
