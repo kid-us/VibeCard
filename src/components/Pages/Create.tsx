@@ -118,7 +118,7 @@ const Create = () => {
   return (
     <div className="relative menu lg:h-auto h-[100dvh]">
       {/* Navbar */}
-      <div className="fixed w-full bg-white shadow z-50">
+      <div className="fixed w-full bg-white shadow z-40">
         <nav
           className={`flex justify-between lg:py-3 py-4 px-5 ${
             menu && "menu-bg animate__animated animate__fadeInLeft"
@@ -423,7 +423,7 @@ const Create = () => {
       {/* Small Device Sidebars */}
       {modal && (
         <>
-          <div className="overlay z-10" onClick={() => setModal(false)}></div>
+          <div className="overlay z-50" onClick={() => setModal(false)}></div>
           <p
             onClick={() => setModal(false)}
             className="absolute top-2 z-50 right-1 bg-red-500 text-white text-xl bi-x px-2 rounded p-1"
