@@ -121,13 +121,13 @@ const Layout = () => {
           >
             <div className="w-full lg:h-20 h-32 bg-gray-600 rounded">
               <div className={`h-24 relative flex justify-between p-2 z-0`}>
-                <div className="absolute lg:top-10 lg:right-20 lg:w-16 lg:h-16 top-10 w-24 h-24 left-28 border-[4px] rounded-full border-white overflow-hidden z-0">
+                <div className="absolute lg:top-10 lg:left-20 lg:w-16 lg:h-16 top-10 w-24 h-24 left-28 border-[4px] rounded-full border-white overflow-hidden z-0">
                   <img src={user} alt="user" />
                 </div>
                 <img
                   src={user}
                   alt="Cover"
-                  className="absolute lg:right-10 lg:top-20 lg:w-10 lg:h-10 w-14 h-14 right-24 top-28 rounded-full border-2 border-white"
+                  className="absolute lg:right-20 lg:top-20 lg:w-10 lg:h-10 w-14 h-14 right-24 top-28 rounded-full border-2 border-white"
                 />
               </div>
             </div>
