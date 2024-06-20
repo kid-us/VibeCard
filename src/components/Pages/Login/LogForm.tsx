@@ -63,7 +63,7 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
         <div className="relative">
           <p className="absolute -top-10 text-red-600 text-sm">
             <span className="bi-exclamation-triangle-fill me-4"></span>
-            Invalid Email and Password
+            {loginError}
           </p>
         </div>
       )}

@@ -34,6 +34,8 @@ const Form = ({
 }: Props) => {
   const navigate = useNavigate();
 
+  const [registerError, setRegisterError] = useState("");
+
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
 
@@ -53,22 +55,42 @@ const Form = ({
       buttonClicked(true);
 
       axios
-        .post(`${baseUrl}/api/v1/auth/register`, data, {
+        .get(`${baseUrl}/api/v1/auth/check-email/${data.email}`, {
           headers: {
             "Content-Type": "application/json",
           },
         })
         .then(() => {
-          navigate(`/verify?email=${data.email}`);
+          axios
+            .post(`${baseUrl}/api/v1/auth/register`, data, {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            })
+            .then(() => {
+              navigate(`/verify?email=${data.email}`);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
+          setRegisterError("Email already exist.");
         });
     }
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      {/* Email exist error */}
+      {registerError !== "" && (
+        <div className="relative">
+          <p className="absolute -top-7 text-red-600 text-sm">
+            <span className="bi-exclamation-triangle-fill me-4"></span>
+            {registerError}
+          </p>
+        </div>
+      )}
       {/* Username */}
       <div className="mb-5">
         <label className="text-sm text-gray-500 block" htmlFor="username">
