@@ -1,11 +1,11 @@
 const Footer = () => {
   return (
-    <div className="bg-zinc-800 text-white w-full mt-28 p-16">
+    <div className="bg-zinc-800 text-white w-full lg:mt-28 mt-20 lg:p-16 p-10">
       <div className="container mx-auto">
-        <div className="grid grid-cols-4">
+        <div className="lg:grid grid-cols-4">
           <div>
             <p className="logo-font text-3xl">vibecard</p>
-            <p className="text-sm mt-20">
+            <p className="text-sm lg:mt-20">
               2024 <span className="logo-font">vibecard</span> inc.
             </p>
           </div>
