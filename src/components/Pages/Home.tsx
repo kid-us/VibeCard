@@ -28,7 +28,7 @@ const Home = () => {
 
       {/* Video */}
       <div className="container mx-auto lg:mt-32 mt-20">
-        <p className="lg:mb-10 mb-5 text-center lg:text-3xl text-2xl font-extrabold font-poppins">
+        <p className="lg:mb-10 mb-5 text-center lg:text-3xl text-2xl lg:px-0 px-4 font-extrabold font-poppins">
           Designing a Smart Business Card Made Simple
         </p>
         <div className="lg:p-0 p-3">
