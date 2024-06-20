@@ -11,6 +11,7 @@ const Verify = () => {
   const token = searchParams.get("token");
   const uid = searchParams.get("uid");
 
+  // vibe-card.vercel.app/verify?token=TOKEN&uid=UID
   useEffect(() => {
     if (token && uid) {
       const verify = {

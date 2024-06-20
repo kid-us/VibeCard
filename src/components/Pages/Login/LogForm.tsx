@@ -16,8 +16,8 @@ interface Props {
 
 const schema = z.object({
   email: z.string().email({ message: "Email address required." }),
-  password: z.string().min(8, {
-    message: "Password must be greater than 8 characters.",
+  password: z.string().min(1, {
+    message: "Password required.",
   }),
 });
 
@@ -59,6 +59,7 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      {/* Login error */}
       {loginError !== "" && (
         <div className="relative">
           <p className="absolute -top-10 text-red-600 text-sm">

@@ -3,8 +3,8 @@ import Button from "../Button/Button";
 import { z } from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
-import { baseUrl } from "../../store/request";
+// import axios from "axios";
+// import { baseUrl } from "../../store/request";
 
 const schema = z.object({
   email: z.string().email({ message: "Email address required." }),
@@ -23,19 +23,19 @@ const ForgotPassword = () => {
 
   const onSubmit = (data: FieldValues) => {
     console.log(data);
-    axios
-      .post(`${baseUrl}/api/v1/auth/password-reset-request`, data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        console.log(response);
-        navigate("/check-email");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // axios
+    //   .post(`${baseUrl}/api/v1/auth/password-reset-request`, data, {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   })
+    //   .then((response) => {
+    // console.log(response);
+    navigate("/check-email");
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    // });
   };
 
   return (
