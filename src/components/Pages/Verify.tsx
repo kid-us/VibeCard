@@ -31,6 +31,9 @@ const Verify = () => {
               </>
             ) : (
               <>
+                <h1 className="text-3xl">
+                  Welcome to <span className="logo-font">vibecard</span>
+                </h1>
                 <p className="text-center pt-10 text-2xl">
                   <span className="bi-check-circle-fill text-blue-500 me-5 text-xl"></span>
                   Your account is Verified.
