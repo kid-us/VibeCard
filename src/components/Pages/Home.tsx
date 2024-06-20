@@ -1,16 +1,20 @@
+import { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Hero from "./Home/Hero";
 import Gradient from "../Gradient/Gradient";
-import { useEffect, useState } from "react";
 import Loading from "../Loading/Loading";
+import Footer from "../Footer/Footer";
+import { video } from "../../assets";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 3000);
   }, []);
+
   return (
     <>
       {loading && <Loading />}
@@ -21,6 +25,19 @@ const Home = () => {
           <Hero />
         </div>
       </div>
+
+      {/* Video */}
+      <div className="container mx-auto mt-24">
+        <div className="grid grid-cols-4">
+          <div></div>
+          <div className="col-span-4 shadow-md shadow-zinc-50 rounded overflow-hidden">
+            <video autoPlay muted loop>
+              <source src={video} type="video/webm" />
+            </video>
+          </div>
+        </div>
+      </div>
+      <Footer />
     </>
   );
 };

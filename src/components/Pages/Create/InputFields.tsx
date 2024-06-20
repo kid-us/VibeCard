@@ -77,6 +77,8 @@ const InputFields = ({
         className={`lg:bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black`}
         onChange={handleChange}
         value={value}
+        // autoComplete={false}
+        autoComplete="off"
       />
     </div>
   );

@@ -7,6 +7,7 @@ import defaultLayout from "./default.png";
 import centeredLayout from "./centered.png";
 import rightLayout from "./right.png";
 import photo from "./photo.png";
+import video from "./demo.webm";
 
 export {
   qrCode,
@@ -18,4 +19,5 @@ export {
   centeredLayout,
   rightLayout,
   photo,
+  video,
 };
