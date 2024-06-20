@@ -3,8 +3,9 @@ import Button from "../Button/Button";
 import { z } from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-// import axios from "axios";
-// import { baseUrl } from "../../store/request";
+import axios from "axios";
+import { baseUrl } from "../../store/request";
+import { useState } from "react";
 
 const schema = z.object({
   email: z.string().email({ message: "Email address required." }),
@@ -13,29 +14,32 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const ForgotPassword = () => {
+  const [forgotPasswordError, setForgotPasswordError] = useState("");
+
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  const navigate = useNavigate();
-
   const onSubmit = (data: FieldValues) => {
     console.log(data);
-    // axios
-    //   .post(`${baseUrl}/api/v1/auth/password-reset-request`, data, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   })
-    //   .then((response) => {
-    // console.log(response);
-    navigate("/check-email");
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    // });
+    axios
+      .put(`${baseUrl}/api/v1/auth/password-reset-request`, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        navigate("/check-email");
+      })
+      .catch((error) => {
+        console.log(error);
+        setForgotPasswordError("Email address not found");
+      });
   };
 
   return (
@@ -62,6 +66,12 @@ const ForgotPassword = () => {
               If you don't receive the email, please check your spam folder or
               contact our support team for help.
             </p>
+            {forgotPasswordError !== "" && (
+              <p className="text-red-600 text-sm mt-5">
+                <span className="bi-exclamation-triangle-fill me-4"></span>
+                {forgotPasswordError}
+              </p>
+            )}
 
             <form onSubmit={handleSubmit(onSubmit)} className="my-5">
               <label className="text-sm text-gray-500 block" htmlFor="email">
