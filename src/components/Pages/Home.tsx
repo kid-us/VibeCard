@@ -27,15 +27,17 @@ const Home = () => {
       </div>
 
       {/* Video */}
-      <div className="container mx-auto lg:mt-32 mt-20">
-        <p className="lg:mb-10 mb-5 text-center lg:text-3xl text-2xl lg:px-0 px-4 font-extrabold font-poppins">
-          Designing a Smart Business Card Made Simple
-        </p>
-        <div className="lg:p-0 p-3">
-          <div className="shadow-md shadow-zinc-900 lg:rounded-lg rounded overflow-hidden">
-            <video autoPlay muted loop className="">
-              <source src={video} type="video/webm" />
-            </video>
+      <div className="menu-bg lg:mt-28 mt-16 py-10">
+        <div className="container mx-auto">
+          <p className="lg:mb-10 mb-5 text-center lg:text-3xl text-2xl lg:px-0 px-4 font-extrabold font-poppins">
+            Designing a Smart Business Card Made Simple
+          </p>
+          <div className="lg:p-0 p-3">
+            <div className="shadow-md shadow-zinc-900 lg:rounded-lg rounded overflow-hidden">
+              <video autoPlay muted loop className="">
+                <source src={video} type="video/webm" />
+              </video>
+            </div>
           </div>
         </div>
       </div>
