@@ -27,11 +27,11 @@ const Home = () => {
       </div>
 
       {/* Video */}
-      <div className="container mx-auto mt-24">
+      <div className="container mx-auto mt-32">
         <div className="grid grid-cols-4">
           <div></div>
-          <div className="col-span-4 shadow-md shadow-zinc-50 rounded overflow-hidden">
-            <video autoPlay muted loop>
+          <div className="col-span-4 shadow-md shadow-zinc-900 rounded-lg overflow-hidden">
+            <video autoPlay muted loop className="">
               <source src={video} type="video/webm" />
             </video>
           </div>
