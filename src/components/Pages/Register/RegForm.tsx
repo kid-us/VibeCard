@@ -139,7 +139,7 @@ const Form = ({
           type={showPassword ? "text" : "password"}
           name="password"
           className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
-            errors.email && "border-red-600 border-1 border"
+            errors.password && "border-red-600 border-1 border"
           }`}
           onChange={(event) => passwordLen(event.currentTarget.value.length)}
         />

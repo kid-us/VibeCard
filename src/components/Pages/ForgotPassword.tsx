@@ -34,7 +34,7 @@ const ForgotPassword = () => {
       })
       .then((response) => {
         console.log(response);
-        navigate("/check-email");
+        navigate(`/check-email?email=${data.email}`);
       })
       .catch((error) => {
         console.log(error);
