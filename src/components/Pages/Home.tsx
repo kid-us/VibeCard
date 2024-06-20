@@ -21,16 +21,18 @@ const Home = () => {
       <Navbar />
       <Gradient />
       <div className="container mx-auto">
-        <div className="lg:mt-44 mt-28">
+        <div className="lg:mt-44 mt-24">
           <Hero />
         </div>
       </div>
 
       {/* Video */}
-      <div className="container mx-auto mt-32">
-        <div className="grid grid-cols-4">
-          <div></div>
-          <div className="col-span-4 shadow-md shadow-zinc-900 rounded-lg overflow-hidden">
+      <div className="container mx-auto lg:mt-32 mt-20">
+        <p className="lg:mb-10 mb-5 text-center lg:text-3xl text-2xl font-extrabold font-poppins">
+          Designing a Smart Business Card Made Simple
+        </p>
+        <div className="lg:p-0 p-3">
+          <div className="shadow-md shadow-zinc-900 lg:rounded-lg rounded overflow-hidden">
             <video autoPlay muted loop className="">
               <source src={video} type="video/webm" />
             </video>
