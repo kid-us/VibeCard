@@ -7,6 +7,7 @@ import ForgotPassword from "./components/Pages/ForgotPassword";
 import Page404 from "./components/Pages/Page404";
 import CheckEmail from "./components/Pages/CheckEmail";
 import Create from "./components/Pages/Create";
+import Verify from "./components/Pages/Verify";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/verify" element={<Verify />} />
         <Route path="/request" element={<ForgotPassword />} />
         <Route path="/check-email" element={<CheckEmail />} />
         <Route path="/create" element={<Create />} />

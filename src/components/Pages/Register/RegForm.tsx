@@ -3,6 +3,9 @@ import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import Button from "../../Button/Button";
+import axios from "axios";
+import { baseUrl } from "../../../store/request";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   emailAddress: (email: string) => void;
@@ -29,6 +32,8 @@ const Form = ({
   buttonClicked,
   username,
 }: Props) => {
+  const navigate = useNavigate();
+
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
 
@@ -46,7 +51,19 @@ const Form = ({
     } else {
       setConfirmPasswordError(false);
       buttonClicked(true);
-      console.log(data);
+
+      axios
+        .post(`${baseUrl}/api/v1/auth/register`, data, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then(() => {
+          navigate(`/verify?email=${data.email}`);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   };
 

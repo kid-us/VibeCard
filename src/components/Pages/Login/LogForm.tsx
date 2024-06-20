@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import Button from "../../Button/Button";
+import axios from "axios";
+import { baseUrl } from "../../../store/request";
 
 interface Props {
   emailAddress: (email: string) => void;
@@ -22,6 +24,10 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
+  const navigate = useNavigate();
+
+  const [loginError, setLoginError] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -32,11 +38,35 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
 
   const onSubmit = (data: FieldValues) => {
     buttonClicked(true);
-    console.log(data);
+
+    axios
+      .post(`${baseUrl}/api/v1/auth/login`, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.response.status === 401) {
+          setLoginError("Invalid Email and Password");
+        }
+      });
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      {loginError !== "" && (
+        <div className="relative">
+          <p className="absolute -top-10 text-red-600 text-sm">
+            <span className="bi-exclamation-triangle-fill me-4"></span>
+            Invalid Email and Password
+          </p>
+        </div>
+      )}
       {/* Email */}
       <div className="mb-5">
         <label className="text-sm text-gray-500 block" htmlFor="email">
