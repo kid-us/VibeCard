@@ -31,7 +31,7 @@ const Navbar = () => {
   return (
     <>
       <header
-        className={`lg:p-0 py-1 ${
+        className={`lg:py-4 py-2 ${
           isSticky &&
           "sticky top-0 shadow animate__animated animate__fadeInDown bg-white z-50"
         }`}
