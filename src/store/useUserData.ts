@@ -10,6 +10,7 @@ type Action = {
   updateUsername: (username: string) => void;
   updateEmail: (email: string) => void;
   updateType: (type: string) => void;
+  logout: () => void;
 };
 
 export const useUserData = create<State & Action>((set) => ({
@@ -19,4 +20,5 @@ export const useUserData = create<State & Action>((set) => ({
   updateUsername: (username) => set(() => ({ username })),
   updateEmail: (email) => set(() => ({ email })),
   updateType: (type) => set(() => ({ type })),
+  logout: () => set(() => ({ username: null, email: null, type: null })),
 }));

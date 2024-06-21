@@ -22,4 +22,9 @@ export const nav: Nav[] = [
     title: "Pricing",
     path: "/pricing",
   },
+  {
+    id: 5,
+    title: "Features",
+    path: "/features",
+  },
 ];
