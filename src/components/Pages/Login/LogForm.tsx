@@ -31,7 +31,6 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
   const [showPassword, setShowPassword] = useState(false);
 
   // Zustand
-
   const { updateEmail, updateUsername, updateType } = useUserData();
 
   // Form Data and Validation
