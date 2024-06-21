@@ -80,15 +80,36 @@ textarea {
 
 .gradient-bg {
   position: absolute;
-  width: 300%;
-  transform: rotate(-10deg);
-  height: 100vh;
   z-index: -1;
   right: -2em;
   top: -20em;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #efef);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
+}
+
+@media (max-width: 576px) {
+  .gradient-bg {
+    height: 100vh;
+    width: 200%;
+    transform: rotate(-20deg);
+  }
+}
+
+@media (min-width: 768px) {
+  .gradient-bg {
+    height: 130vh;
+    width: 200%;
+    transform: rotate(-10deg);
+  }
+}
+
+@media (min-width: 992px) {
+  .gradient-bg {
+    height: 130vh;
+    width: 300%;
+    transform: rotate(-10deg);
+  }
 }
 
 .glass-effect {

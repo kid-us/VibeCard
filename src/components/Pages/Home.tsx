@@ -44,7 +44,7 @@ const Home = () => {
       </div>
 
       {/* Video */}
-      <div className="menu-bg lg:mt-28 mt-16 py-10">
+      <div className="menu- lg:mt-28 mt-16 py-10">
         <div className="container mx-auto">
           <p className="lg:mb-10 mb-5 text-center lg:text-3xl text-2xl lg:px-0 px-4 font-extrabold font-poppins">
             Designing a Smart Business Card Made Simple
