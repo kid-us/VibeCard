@@ -137,8 +137,8 @@ const Navbar = () => {
 
       {/* Menu */}
       {isMenu && (
-        <div className="fixed h-[100dvh] z-50 top-0 w-full menu-bg overflow-hidden animate__animated animate__fadeInLeft">
-          <Menu nav={nav} menu={(value: boolean) => setIsMenu(value)} />
+        <div className="fixed h-[100dvh] z-50 top-0 w-full menu-bg">
+          <Menu nav={nav} menu={() => setIsMenu(false)} />
         </div>
       )}
     </>

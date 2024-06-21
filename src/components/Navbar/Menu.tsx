@@ -5,7 +5,7 @@ import Logout from "../Logout/Logout";
 
 interface Props {
   nav: Nav[];
-  menu: (value: boolean) => void;
+  menu: () => void;
 }
 
 const Menu = ({ nav, menu }: Props) => {
@@ -13,7 +13,7 @@ const Menu = ({ nav, menu }: Props) => {
   return (
     <>
       <div className="flex justify-between py-3 px-3">
-        <div onClick={() => menu(false)}>
+        <div onClick={() => menu()}>
           <p
             className={`lg:hidden rounded-full border border-black font-poppins text-2xl text-teal-950 font-bold`}
           >
