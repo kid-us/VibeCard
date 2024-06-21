@@ -5,7 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import Button from "../../Button/Button";
 import axios from "axios";
-import { baseUrl } from "../../../store/request";
+import { baseUrl } from "../../../services/request";
+import { useUserData } from "../../../store/useUserData";
 
 interface Props {
   emailAddress: (email: string) => void;
@@ -25,29 +26,48 @@ type FormData = z.infer<typeof schema>;
 
 const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
   const navigate = useNavigate();
-
+  // States
   const [loginError, setLoginError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
+  // Zustand
+
+  const { updateEmail, updateUsername, updateType } = useUserData();
+
+  // Form Data and Validation
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  const [showPassword, setShowPassword] = useState(false);
-
+  // On Form Submit
   const onSubmit = (data: FieldValues) => {
     buttonClicked(true);
-
     axios
       .post(`${baseUrl}/api/v1/auth/login`, data, {
         headers: {
           "Content-Type": "application/json",
         },
+        withCredentials: true,
       })
-      .then((response) => {
-        console.log(response);
-        navigate("/");
+      .then(() => {
+        axios
+          .get(`${baseUrl}/api/v1/auth/me`, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          })
+          .then((response) => {
+            updateEmail(response.data.email);
+            updateUsername(response.data.username);
+            updateType(response.data.type);
+            navigate("/");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -97,7 +117,7 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
           type={showPassword ? "text" : "password"}
           name="password"
           className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
-            errors.email && "border-red-600 border-1 border"
+            errors.password && "border-red-600 border-1 border"
           }`}
           onChange={(event) => passwordLen(event.currentTarget.value.length)}
         />

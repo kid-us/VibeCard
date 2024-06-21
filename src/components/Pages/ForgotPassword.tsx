@@ -4,7 +4,7 @@ import { z } from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
-import { baseUrl } from "../../store/request";
+import { baseUrl } from "../../services/request";
 import { useState } from "react";
 
 const schema = z.object({
@@ -25,19 +25,22 @@ const ForgotPassword = () => {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (data: FieldValues) => {
-    console.log(data);
+    console.log(data.email);
+
     axios
-      .put(`${baseUrl}/api/v1/auth/password-reset-request`, data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      .put(
+        `${baseUrl}/api/v1/auth/password-reset-request?email=${data.email}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((response) => {
         console.log(response);
         navigate(`/check-email?email=${data.email}`);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
         setForgotPasswordError("Email address not found");
       });
   };

@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import Button from "../../Button/Button";
 import axios from "axios";
-import { baseUrl } from "../../../store/request";
+import { baseUrl } from "../../../services/request";
 import { useNavigate } from "react-router-dom";
 
 interface Props {

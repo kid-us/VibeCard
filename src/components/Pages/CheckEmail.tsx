@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { baseUrl } from "../../store/request";
+import { baseUrl } from "../../services/request";
 import { z } from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -31,6 +31,7 @@ const CheckEmail = () => {
 
   const searchParams = new URLSearchParams(location.search);
   const emailAddress = searchParams.get("email");
+  const token = searchParams.get("token");
 
   // New Password
   const onSubmit = (data: FieldValues) => {
@@ -39,15 +40,20 @@ const CheckEmail = () => {
     } else {
       setConfirmPasswordError(false);
 
-      console.log(data);
+      const reset = {
+        token: token,
+        new_password: data.password,
+      };
+
+      console.log(reset);
+
       axios
-        .post(`${baseUrl}/api/v1/auth/password-reset-request`, data, {
+        .put(`${baseUrl}/api/v1/auth/reset`, reset, {
           headers: {
             "Content-Type": "application/json",
           },
         })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           navigate("/login");
         })
         .catch((error) => {
@@ -69,7 +75,7 @@ const CheckEmail = () => {
       <div className="flex justify-center lg:px-40 md:px-36 px-2 lg:mt-28 md:mt-28">
         <div className="content-center lg:w-3/6 md:w-5/6 w-full h-96">
           <div className="lg:p-10 md:p-9 p-8 shadow-lg bg-white rounded-lg">
-            {emailAddress ? (
+            {emailAddress && (
               <>
                 <h1 className="text-4xl">Password reset email sent</h1>
                 <p className="text-gray-500 text-sm mt-6">
@@ -86,11 +92,12 @@ const CheckEmail = () => {
                   .
                 </p>
               </>
-            ) : (
+            )}
+            {token && (
               <>
                 <h1 className="text-2xl">Enter your new Password</h1>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="my-5">
+                <form onSubmit={handleSubmit(onSubmit)} className="my-8 px-5">
                   <div className="mb-5 relative">
                     <label
                       className="text-sm text-gray-500 block"
@@ -119,7 +126,6 @@ const CheckEmail = () => {
                     )}
                   </div>
 
-                  {/* http://localhost:5174/check-email?email=kidushh29@gmail.com */}
                   {/* Confirm password */}
                   <label
                     className="text-sm text-gray-500 block mt-5"
