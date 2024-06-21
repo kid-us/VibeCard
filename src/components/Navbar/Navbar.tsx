@@ -72,7 +72,7 @@ const Navbar = () => {
                   <Link
                     key={n.id}
                     to={n.path}
-                    className={`logo-font lg:me-32 lg:text-2xl text-3xl ${
+                    className={`logo-font lg:me-32 lg:text-3xl text-3xl ${
                       isMenu
                         ? "text-black"
                         : isSticky

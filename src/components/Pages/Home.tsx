@@ -10,7 +10,7 @@ const Home = () => {
       <Navbar />
       <Gradient />
       <div className="container mx-auto">
-        <div className="lg:mt-44 mt-24">
+        <div className="lg:mt-48 mt-24">
           <Hero />
         </div>
       </div>
