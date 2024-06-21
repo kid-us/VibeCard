@@ -82,7 +82,7 @@ textarea {
   position: absolute;
   width: 300%;
   transform: rotate(-10deg);
-  height: 130vh;
+  height: 100vh;
   z-index: -1;
   right: -2em;
   top: -20em;
