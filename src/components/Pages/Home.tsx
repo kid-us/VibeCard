@@ -26,16 +26,16 @@ const Home = () => {
         updateType(response.data.type);
         setLoading(false);
       })
-      .catch((err) => {
+      .catch(() => {
         setLoading(false);
-        console.log(err);
+        // console.log(err);
       });
   }, []);
   return (
     <>
       {loading && <Loading />}
 
-      <Navbar />
+      {/* <Navbar /> */}
       <Gradient />
       <div className="container mx-auto">
         <div className="lg:mt-48 mt-24">
