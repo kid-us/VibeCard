@@ -35,7 +35,7 @@ const Home = () => {
     <>
       {loading && <Loading />}
 
-      {/* <Navbar /> */}
+      <Navbar />
       <Gradient />
       <div className="container mx-auto">
         <div className="lg:mt-48 mt-24">
