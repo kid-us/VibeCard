@@ -20,7 +20,6 @@ const CenteredCard = () => {
     preview,
     pronounVal,
   } = useCardData();
-
   const { company, jobTitle, location, name, pronoun, tagLine } =
     useTextColorStore();
   const { companyLogo, socialMedia, contact } = useContentStore();
