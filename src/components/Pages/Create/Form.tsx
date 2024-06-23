@@ -60,7 +60,7 @@ const Form = () => {
     logo: null,
   });
 
-  const [name, setName] = useState("Lorem");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("lore@gmail.com");
   const [phone, setPhone] = useState("0993866658");
   const [location, setLocation] = useState("Ethiopia");
