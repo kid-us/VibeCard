@@ -98,10 +98,32 @@ const Form = () => {
       setProfilePhotoError(true);
       return;
     }
-    console.log({ ...data, pronoun: pronoun, profile: previews.profile });
+
+    const create = {
+      pronouns: pronoun,
+      full_name: data.name,
+      email: data.email,
+      phone: data.quantity,
+      job_title: data.job,
+      bio: tagLine,
+      company_name: data.description,
+      cover_picture: previews.cover,
+      company_logo: previews.logo,
+    };
+
+    const formData = new FormData();
+
+    formData.append("main_picture", previews.profile);
+
+    Object.entries(create).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+
+    console.log(JSON.stringify(formData));
+    // console.log({ ...data, pronoun: pronoun, profile: previews.profile });
   };
 
-  console.log(previews.profile);
+  console.log(previews);
 
   return (
     <div className="relative px-5">
@@ -326,7 +348,7 @@ const Form = () => {
         </div>
 
         {/* Button */}
-        <div className="absolute -bottom-3 pe-10 w-full">
+        <div className="absolute -bottom-3 pe-10 w-full left-5">
           <div className="flex justify-end rounded-b-xl bg-white py-4 shadow shadow-zinc-400">
             <button className="bg-sky-800 shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 py-2 me-10">
               Update
