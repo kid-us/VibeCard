@@ -1,10 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-// import InputFields from "./Create/InputFields";
-// import { user } from "../../assets";
-// import InputImages from "./Create/InputImages";
 import Sidebar from "./Create/Sidebar";
-// import { useContentStore } from "../../store/useContentStore";
 import { useLayoutStore } from "../../store/useLayoutStore";
 import DefaultCard from "../Layout/DefaultCard";
 import CenteredCard from "../Layout/CenteredCard";
@@ -17,29 +13,12 @@ import Layout from "./Create/Sidebar/Layout";
 import Form from "./Create/Form";
 
 const Create = () => {
-  // const [previews, setPreviews] = useState({
-  //   profile: null,
-  //   cover: null,
-  //   logo: null,
-  // });
-
-  // const { contact, updateContacts } = useContentStore();
   const { layout } = useLayoutStore();
   // States
   const [modal, setModal] = useState(false);
   const [activeModal, setActiveModal] = useState("");
   const [menu, setMenu] = useState(false);
   const [dropdown, setDropdown] = useState(false);
-  //   Form Values
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [phone, setPhone] = useState("");
-  // const [location, setLocation] = useState("");
-  // const [tagLine, setTagLine] = useState("");
-  // const [jobTitle, setJobTitle] = useState("");
-  // const [company, setCompany] = useState("");
-  // const [pronoun, setPronoun] = useState("");
-
   // Sidebar Small Device
   const handleModal = (value: string) => {
     if (value === activeModal) {
@@ -179,56 +158,17 @@ const Create = () => {
         <div className="lg:block hidden col-span-2">
           <Sidebar />
         </div>
-
         {/* Form */}
         <div className="lg:block hidden col-span-5 w-full p-3 mt-14">
           <Form />
         </div>
-
         {/* Card Layout*/}
         <div className="lg:flex lg:col-span-2 lg:pe-5 lg:pt-0 lg:pb-0 pt-24 lg:h-auto pb-10 px-3 h-[95vh] overflow-scroll lg:mt-20">
           <div className="content-center w-full">
             {/* {layout} */}
-            {layout === "default" && (
-              <DefaultCard
-              // pronounVal={pronoun}
-              // nameVal={name}
-              // emailVal={email}
-              // phoneVal={phone}
-              // jobTitleVal={jobTitle}
-              // tagLineVal={tagLine}
-              // companyVal={company}
-              // locationVal={location}
-              // preview={previews}
-              />
-            )}
-
-            {layout === "centered" && (
-              <CenteredCard
-              // pronounVal={pronoun}
-              // nameVal={name}
-              // emailVal={email}
-              // phoneVal={phone}
-              // jobTitleVal={jobTitle}
-              // tagLineVal={tagLine}
-              // companyVal={company}
-              // locationVal={location}
-              // preview={previews}
-              />
-            )}
-            {layout === "right" && (
-              <RightCard
-              // pronounVal={pronoun}
-              // nameVal={name}
-              // emailVal={email}
-              // phoneVal={phone}
-              // jobTitleVal={jobTitle}
-              // tagLineVal={tagLine}
-              // companyVal={company}
-              // locationVal={location}
-              // preview={previews}
-              />
-            )}
+            {layout === "default" && <DefaultCard />}
+            {layout === "centered" && <CenteredCard />}
+            {layout === "right" && <RightCard />}
           </div>
         </div>
       </div>
@@ -248,13 +188,8 @@ const Create = () => {
           <div className="z-50 bg-zinc-800 h-[90dvh] absolute bottom-0 w-full rounded-t-3xl text-white pb-10 animate__animated animate__fadeInUp">
             {/* Forms */}
             {modal && activeModal === "Forms" && (
-              <div className="relative p-5">
-                <p className="text-xl font-poppins chakra mb-10">
-                  Create your Business card
-                </p>
-                <div className="lg:overflow-hidden lg:h-auto h-[74dvh] overflow-y-scroll lg:pb-0 pb-20">
-                  <Form />
-                </div>
+              <div className="overflow-y-scroll h-[78dvh] p-5">
+                <Form />
               </div>
             )}
 

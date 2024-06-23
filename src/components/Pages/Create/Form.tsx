@@ -5,9 +5,8 @@ import { z } from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useCardData } from "../../../store/useCardData";
-
-import axios from "axios";
-import { baseUrl } from "../../../services/request";
+// import axios from "axios";
+// import { baseUrl } from "../../../services/request";
 
 interface FilePreviews {
   profile: File | null;
@@ -39,7 +38,6 @@ const Form = () => {
     setCardPronoun,
     setCardTagLine,
   } = useCardData();
-
   // Form Hook
   const {
     register,
@@ -60,14 +58,22 @@ const Form = () => {
     logo: null,
   });
 
+  //   const [name, setName] = useState("Lorem");
+  //   const [email, setEmail] = useState("lore@gmail.com");
+  //   const [phone, setPhone] = useState("0993866658");
+  //   const [location, setLocation] = useState("Ethiopia");
+  //   const [tagLine, setTagLine] = useState("Lorem ipsum dolor");
+  //   const [jobTitle, setJobTitle] = useState("Developer");
+  //   const [company, setCompany] = useState("Vibecard");
+  //   const [pronoun, setPronoun] = useState("Mr");
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("lore@gmail.com");
-  const [phone, setPhone] = useState("0993866658");
-  const [location, setLocation] = useState("Ethiopia");
-  const [tagLine, setTagLine] = useState("Lorem ipsum dolor");
-  const [jobTitle, setJobTitle] = useState("Developer");
-  const [company, setCompany] = useState("Vibecard");
-  const [pronoun, setPronoun] = useState("Mr");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [location, setLocation] = useState("");
+  const [tagLine, setTagLine] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
+  const [company, setCompany] = useState("");
+  const [pronoun, setPronoun] = useState("");
   const [pronounError, setPronounError] = useState(false);
   const [profilePhotoError, setProfilePhotoError] = useState(false);
 
@@ -194,14 +200,16 @@ const Form = () => {
   };
 
   return (
-    <div className="relative px-5">
-      <p className="text-2xl font-poppins mt-2">Create your Business card</p>
+    <div className="relative lg:px-5">
+      <p className="lg:text-2xl text-xl font-poppins mt-2">
+        Create your Business card
+      </p>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="px-8 pt-10 pb-16 mt-6 shadow shadow-zinc-400 rounded-xl"
+        className="lg:px-8 pt-10 pb-16 lg:mt-6 shadow lg:shadow-zinc-400 lg:rounded-xl"
       >
         {/* Images */}
-        <div className="flex justify-between flex-shrink-0">
+        <div className="lg:flex justify-between flex-shrink-0 grid grid-cols-3 gap-1">
           {/* Profile */}
           <InputImages
             title="Profile Picture"
@@ -226,10 +234,10 @@ const Form = () => {
         </div>
 
         {/* Inputs Fields */}
-        <div className="grid grid-cols-2 gap-x-8 mt-5 p-4 h-[47dvh] overflow-y-scroll">
+        <div className="grid grid-cols-2 gap-x-8 mt-5 lg:p-4 lg:h-[47dvh] overflow-y-scroll">
           {/* Pronoun */}
           <div className="mb-4">
-            <label className="text-xs text-gray-600 block" htmlFor="pronoun">
+            <label className="text-xs lg:text-gray-600 block" htmlFor="pronoun">
               Pronoun <span className="text-red-700 text-2xl">*</span>
             </label>
 
@@ -436,8 +444,8 @@ const Form = () => {
         </div>
 
         {/* Button */}
-        <div className="absolute -bottom-3 pe-10 w-full left-5">
-          <div className="flex justify-end rounded-b-xl bg-white py-4 shadow shadow-zinc-400">
+        <div className="absolute -bottom-3 lg:pe-10 w-full lg:left-5">
+          <div className="flex justify-end rounded-b-xl lg:bg-white py-2 shadow shadow-zinc-400">
             <button className="bg-sky-800 shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 py-2 me-10">
               Update
             </button>
