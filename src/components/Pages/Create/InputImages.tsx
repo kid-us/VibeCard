@@ -8,9 +8,10 @@ interface Props {
     preview: string | null
   ) => void;
   title: string;
+  error?: boolean;
 }
 
-const InputImages = ({ type, title, onPreviewChange }: Props) => {
+const InputImages = ({ type, title, error, onPreviewChange }: Props) => {
   const [, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
 
@@ -37,7 +38,7 @@ const InputImages = ({ type, title, onPreviewChange }: Props) => {
       <div
         className={`border rounded-lg border-gray-300 bg-stone-200 ${
           type === "cover" ? "lg:w-72 w-full h-24" : "lg:w-28 w-full h-24"
-        } p-1 relative overflow-hidden`}
+        } p-1 relative overflow-hidden ${error && "border border-red-600"}`}
       >
         <input
           type="file"
@@ -65,6 +66,11 @@ const InputImages = ({ type, title, onPreviewChange }: Props) => {
           </label>
         )}
       </div>
+      {error && (
+        <p className="text-[10px] mt-2 text-red-500">
+          Profile picture required
+        </p>
+      )}
     </div>
   );
 };

@@ -14,6 +14,7 @@ import Colors from "./Create/Sidebar/Colors";
 import Texts from "./Create/Sidebar/Texts";
 import Content from "./Create/Sidebar/Content";
 import Layout from "./Create/Sidebar/Layout";
+import Form from "./Create/Form";
 
 const Create = () => {
   const [previews, setPreviews] = useState({
@@ -49,60 +50,95 @@ const Create = () => {
     }));
   };
 
-  // Email
-  const handleEmail = (val: string) => {
-    setEmail(val);
-    const iconExists = contact.some((c) => c.icon == "bi-envelope-fill");
+  function updateIcons(val: string, icons: string, IconColor: string) {
+    const iconExists = contact.some((c) => c.icon == icons);
     if (val !== "") {
       if (iconExists) {
         updateContacts(
-          contact.map((c) =>
-            c.icon == "bi-envelope-fill" ? { ...c, link: val } : c
-          )
+          contact.map((c) => (c.icon == icons ? { ...c, link: val } : c))
         );
       } else {
         updateContacts([
           ...contact,
           {
             link: val,
-            color: "bg-sky-900",
-            icon: "bi-envelope-fill",
+            color: IconColor,
+            icon: icons,
           },
         ]);
       }
     } else {
-      const filtered = contact.filter((c) => c.icon !== "bi-envelope-fill");
+      const filtered = contact.filter((c) => c.icon !== icons);
       updateContacts(filtered);
     }
+  }
+
+  // Email
+  const handleEmail = (val: string) => {
+    setEmail(val);
+    updateIcons(val, "bi-envelope-fill", "bg-sky-900");
   };
 
   // Phone
   const handlePhone = (val: string) => {
     setPhone(val);
-    if (val !== "") {
-      const iconExists = contact.some((c) => c.icon == "bi-telephone-fill");
-
-      if (iconExists) {
-        updateContacts(
-          contact.map((c) =>
-            c.icon == "bi-telephone-fill" ? { ...c, link: val } : c
-          )
-        );
-      } else {
-        updateContacts([
-          ...contact,
-          {
-            link: val,
-            color: "#22c55e",
-            icon: "bi-telephone-fill",
-          },
-        ]);
-      }
-    } else {
-      const filtered = contact.filter((c) => c.icon !== "bi-telephone-fill");
-      updateContacts(filtered);
-    }
+    updateIcons(val, "bi-telephone-fill", "#22c55e");
   };
+
+  // // Email
+  // const handleEmail = (val: string) => {
+  //   setEmail(val);
+  //   const iconExists = contact.some((c) => c.icon == "bi-envelope-fill");
+  //   if (val !== "") {
+  //     if (iconExists) {
+  //       updateContacts(
+  //         contact.map((c) =>
+  //           c.icon == "bi-envelope-fill" ? { ...c, link: val } : c
+  //         )
+  //       );
+  //     } else {
+  //       updateContacts([
+  //         ...contact,
+  //         {
+  //           link: val,
+  //           color: "bg-sky-900",
+  //           icon: "bi-envelope-fill",
+  //         },
+  //       ]);
+  //     }
+  //   } else {
+  //     const filtered = contact.filter((c) => c.icon !== "bi-envelope-fill");
+  //     updateContacts(filtered);
+  //   }
+  // };
+
+  // // Phone
+  // const handlePhone = (val: string) => {
+  //   setPhone(val);
+  //   if (val !== "") {
+  //     const iconExists = contact.some((c) => c.icon == "bi-telephone-fill");
+
+  //     if (iconExists) {
+  //       updateContacts(
+  //         contact.map((c) =>
+  //           c.icon == "bi-telephone-fill" ? { ...c, link: val } : c
+  //         )
+  //       );
+  //     } else {
+  //       updateContacts([
+  //         ...contact,
+  //         {
+  //           link: val,
+  //           color: "#22c55e",
+  //           icon: "bi-telephone-fill",
+  //         },
+  //       ]);
+  //     }
+  //   } else {
+  //     const filtered = contact.filter((c) => c.icon !== "bi-telephone-fill");
+  //     updateContacts(filtered);
+  //   }
+  // };
 
   // Sidebar Small Device
   const handleModal = (value: string) => {
@@ -246,129 +282,8 @@ const Create = () => {
 
         {/* Form */}
         <div className="lg:block hidden col-span-5 w-full p-3 mt-14">
-          <div className="relative px-5">
-            <p className="text-2xl font-poppins mt-2">
-              Create your Business card
-            </p>
-            <div className="px-8 pt-10 pb-16 mt-6 shadow shadow-zinc-400 rounded-xl">
-              {/* Images */}
-              <div className="flex justify-between flex-shrink-0">
-                {/* Profile */}
-                <InputImages
-                  title="Profile Picture"
-                  type="profile"
-                  onPreviewChange={handlePreviewChange}
-                />
-                {/* Cover */}
-                <InputImages
-                  title="Cover Photo"
-                  type="cover"
-                  onPreviewChange={handlePreviewChange}
-                />
-                <InputImages
-                  title="Company Logo"
-                  type="logo"
-                  onPreviewChange={handlePreviewChange}
-                />
-              </div>
-              {/* Inputs */}
-              <div className="grid grid-cols-2 gap-x-8 mt-5 p-4 h-[47dvh] overflow-y-scroll">
-                {/* Pronoun */}
-                <div className="mb-4">
-                  <label
-                    className="text-xs text-gray-600 block"
-                    htmlFor="pronoun"
-                  >
-                    Pronoun <span className="text-red-700 text-2xl">*</span>
-                  </label>
-
-                  <select
-                    name="pronoun"
-                    className="bg-gray-200 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black"
-                    onChange={(event) => setPronoun(event.currentTarget.value)}
-                    defaultValue={pronoun}
-                  >
-                    <option value="" hidden></option>
-                    <option value="Mr">Mr</option>
-                    <option value="Mrs">Mrs</option>
-                    <option value="Prof">Professor</option>
-                    <option value="Dr">Dr</option>
-                  </select>
-                </div>
-                {/* Name */}
-                <InputFields
-                  label="name"
-                  type="text"
-                  inputName="Name"
-                  name={(name: string) => setName(name)}
-                  value={name}
-                  required
-                />
-                {/* Email */}
-                <InputFields
-                  label="email"
-                  type="email"
-                  inputName="Email"
-                  emailAddress={(email: string) => handleEmail(email)}
-                  value={email}
-                  required
-                />
-                {/* Phone */}
-                <InputFields
-                  label="phone"
-                  type="tel"
-                  inputName="Phone"
-                  phone={(phone: string) => handlePhone(phone)}
-                  value={phone}
-                  required
-                />
-                {/* Job-Title */}
-                <InputFields
-                  label="job-title"
-                  type="text"
-                  inputName="Job Title"
-                  jobTitle={(job: string) => setJobTitle(job)}
-                  value={jobTitle}
-                  required
-                />
-                {/* Location */}
-                <InputFields
-                  label="location"
-                  type="text"
-                  inputName="Location"
-                  location={(location: string) => setLocation(location)}
-                  value={location}
-                  required
-                />
-                {/* Company */}
-                <InputFields
-                  label="company"
-                  type="text"
-                  inputName="Company"
-                  company={(company: string) => setCompany(company)}
-                  value={company}
-                  required
-                />
-                {/* Tag-line */}
-                <InputFields
-                  label="tag-line"
-                  type="text"
-                  inputName="Tag Line"
-                  tag={(tag: string) => setTagLine(tag)}
-                  value={tagLine}
-                  required={false}
-                />
-              </div>
-            </div>
-            {/* Button */}
-            <div className="absolute -bottom-3 pe-10 w-full">
-              <div className="flex justify-end rounded-b-xl bg-white py-4 shadow shadow-zinc-400">
-                <button className="bg-sky-800 shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 py-2 me-10">
-                  Update
-                </button>
-              </div>
-            </div>
-          </div>
+          {/*  */}
+          <Form />
         </div>
 
         {/* Card Layout*/}
