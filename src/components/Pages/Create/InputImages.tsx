@@ -7,12 +7,19 @@ interface Props {
     type: "profile" | "cover" | "logo",
     preview: string | null
   ) => void;
+  onHandleFile: (type: "profile" | "cover" | "logo", file: File | null) => void;
   title: string;
   error?: boolean;
 }
 
-const InputImages = ({ type, title, error, onPreviewChange }: Props) => {
-  const [, setFile] = useState<File | null>(null);
+const InputImages = ({
+  type,
+  title,
+  error,
+  onPreviewChange,
+  onHandleFile,
+}: Props) => {
+  // const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
 
   const { updateCoverLogo } = useContentStore();
@@ -20,10 +27,11 @@ const InputImages = ({ type, title, error, onPreviewChange }: Props) => {
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const selectedFile = e.target.files[0];
-      setFile(selectedFile);
+      // setFile(selectedFile);
       const previewURL = URL.createObjectURL(selectedFile);
       setPreview(previewURL);
       onPreviewChange(type, previewURL);
+      onHandleFile(type, selectedFile);
       if (type === "logo") {
         updateCoverLogo(true);
       }

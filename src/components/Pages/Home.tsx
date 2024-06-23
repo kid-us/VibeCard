@@ -28,7 +28,6 @@ const Home = () => {
       })
       .catch(() => {
         setLoading(false);
-        // console.log(err);
       });
   }, []);
   return (

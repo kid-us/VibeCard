@@ -4,6 +4,16 @@ import { useContentStore } from "../../../store/useContentStore";
 import { z } from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useCardData } from "../../../store/useCardData";
+
+import axios from "axios";
+import { baseUrl } from "../../../services/request";
+
+interface FilePreviews {
+  profile: File | null;
+  cover: File | null;
+  logo: File | null;
+}
 
 const schema = z.object({
   name: z.string().min(3, { message: "Name required." }),
@@ -18,6 +28,17 @@ type FormData = z.infer<typeof schema>;
 
 const Form = () => {
   const { contact, updateContacts } = useContentStore();
+  const {
+    setCardCompany,
+    setPreview,
+    setCardEmail,
+    setCardJob,
+    setCardLocation,
+    setCardName,
+    setCardPhone,
+    setCardPronoun,
+    setCardTagLine,
+  } = useCardData();
 
   // Form Hook
   const {
@@ -32,14 +53,21 @@ const Form = () => {
     cover: null,
     logo: null,
   });
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [location, setLocation] = useState("");
-  const [tagLine, setTagLine] = useState("");
-  const [jobTitle, setJobTitle] = useState("");
-  const [company, setCompany] = useState("");
-  const [pronoun, setPronoun] = useState("");
+
+  const [pictures, setPictures] = useState<FilePreviews>({
+    profile: null,
+    cover: null,
+    logo: null,
+  });
+
+  const [name, setName] = useState("Lorem");
+  const [email, setEmail] = useState("lore@gmail.com");
+  const [phone, setPhone] = useState("0993866658");
+  const [location, setLocation] = useState("Ethiopia");
+  const [tagLine, setTagLine] = useState("Lorem ipsum dolor");
+  const [jobTitle, setJobTitle] = useState("Developer");
+  const [company, setCompany] = useState("Vibecard");
+  const [pronoun, setPronoun] = useState("Mr");
   const [pronounError, setPronounError] = useState(false);
   const [profilePhotoError, setProfilePhotoError] = useState(false);
 
@@ -50,6 +78,17 @@ const Form = () => {
     setPreviews((prevPreviews) => ({
       ...prevPreviews,
       [type]: preview,
+    }));
+    setPreview(type, preview);
+  };
+
+  const handleFile = (
+    type: "profile" | "cover" | "logo",
+    file: File | null
+  ) => {
+    setPictures((prevPreviews) => ({
+      ...prevPreviews,
+      [type]: file,
     }));
   };
 
@@ -78,12 +117,14 @@ const Form = () => {
 
   // Email
   const handleEmail = (val: string) => {
+    setCardEmail(val);
     setEmail(val);
     updateIcons(val, "bi-envelope-fill", "bg-sky-900");
   };
 
   // Phone
   const handlePhone = (val: string) => {
+    setCardPhone(val);
     setPhone(val);
     updateIcons(val, "bi-telephone-fill", "#22c55e");
   };
@@ -99,31 +140,58 @@ const Form = () => {
       return;
     }
 
-    const create = {
-      pronouns: pronoun,
-      full_name: data.name,
-      email: data.email,
-      phone: data.quantity,
-      job_title: data.job,
-      bio: tagLine,
-      company_name: data.description,
-      cover_picture: previews.cover,
-      company_logo: previews.logo,
-    };
-
+    // Prepare form data
     const formData = new FormData();
 
-    formData.append("main_picture", previews.profile);
+    // Append profile pictures if available
+    if (pictures.profile) {
+      formData.append("main_picture", pictures.profile);
+    }
+    if (pictures.cover) {
+      formData.append("cover_picture", pictures.cover);
+    }
+    if (pictures.logo) {
+      formData.append("company_logo", pictures.logo);
+    }
 
-    Object.entries(create).forEach(([key, value]) => {
-      formData.append(key, value);
-    });
+    // Append other form fields
+    formData.append("pronouns", pronoun);
+    formData.append("full_name", data.name);
+    formData.append("email", data.email);
+    formData.append("phone", data.phone);
+    formData.append("job_title", data.job);
+    formData.append("bio", tagLine);
+    formData.append("company_name", data.company);
+    formData.append("card_type", "business");
 
-    console.log(JSON.stringify(formData));
-    // console.log({ ...data, pronoun: pronoun, profile: previews.profile });
+    console.log(Object.fromEntries(formData));
+
+    // axios
+    //   .post(`${baseUrl}//api/v1/cards/create`, formData, {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     withCredentials: true,
+    //   })
+    //   .then((response) => {
+    //     console.log(response);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+
+    //     bio: "Lorem ipsum dolor"
+    // card_type: "business"
+    // company_logo: File {name: '2023-10-13 00.59.56 127.0.0.1 67475a89e620.png', lastModified: 1697147996376, lastModifiedDate: Fri Oct 13 2023 00:59:56 GMT+0300 (East Africa Time), webkitRelativePath: '', size: 2662, …}
+    // company_name: "Vibecard"
+    // cover_picture: File {name: '2023-10-12 23.48.37 127.0.0.1 efa36a86fa2f.png', lastModified: 1697143717534, lastModifiedDate: Thu Oct 12 2023 23:48:37 GMT+0300 (East Africa Time), webkitRelativePath: '', size: 294608, …}
+    // email: "lore@gmail.com"
+    // full_name: "Lorem"
+    // job_title: "Developer"
+    // main_picture: File {name: '2023-10-15 10.38.09 github.com bff66448c7dc.png', lastModified: 1697355489434, lastModifiedDate: Sun Oct 15 2023 10:38:09 GMT+0300 (East Africa Time), webkitRelativePath: '', size: 154795, …}
+    // phone: "993866658"
+    // pronouns: "Mr"
   };
-
-  console.log(previews);
 
   return (
     <div className="relative px-5">
@@ -139,19 +207,21 @@ const Form = () => {
             title="Profile Picture"
             type="profile"
             onPreviewChange={handlePreviewChange}
+            onHandleFile={handleFile}
             error={profilePhotoError}
           />
-
           {/* Cover */}
           <InputImages
             title="Cover Photo"
             type="cover"
             onPreviewChange={handlePreviewChange}
+            onHandleFile={handleFile}
           />
           <InputImages
             title="Company Logo"
             type="logo"
             onPreviewChange={handlePreviewChange}
+            onHandleFile={handleFile}
           />
         </div>
 
@@ -166,7 +236,10 @@ const Form = () => {
             <select
               name="pronoun"
               className="bg-gray-200 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black"
-              onChange={(event) => setPronoun(event.currentTarget.value)}
+              onChange={(event) => {
+                setPronoun(event.currentTarget.value);
+                setCardPronoun(event.currentTarget.value);
+              }}
               defaultValue={pronoun}
             >
               <option value="" hidden></option>
@@ -194,7 +267,10 @@ const Form = () => {
               className={`lg:bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
                 errors.name && "border-red-600 border-1 border"
               }`}
-              onChange={(e) => setName(e.currentTarget.value)}
+              onChange={(e) => {
+                setName(e.currentTarget.value);
+                setCardName(e.currentTarget.value);
+              }}
               value={name}
               // autoComplete="off"
             />
@@ -267,7 +343,10 @@ const Form = () => {
               className={`lg:bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
                 errors.job && "border-red-600 border-1 border"
               }`}
-              onChange={(e) => setJobTitle(e.currentTarget.value)}
+              onChange={(e) => {
+                setJobTitle(e.currentTarget.value);
+                setCardJob(e.currentTarget.value);
+              }}
               value={jobTitle}
               // autoComplete="off"
             />
@@ -292,7 +371,10 @@ const Form = () => {
               className={`lg:bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
                 errors.location && "border-red-600 border-1 border"
               }`}
-              onChange={(e) => setLocation(e.currentTarget.value)}
+              onChange={(e) => {
+                setLocation(e.currentTarget.value);
+                setCardLocation(e.currentTarget.value);
+              }}
               value={location}
               // autoComplete="off"
             />
@@ -316,7 +398,10 @@ const Form = () => {
               className={`lg:bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
                 errors.company && "border-red-600 border-1 border"
               }`}
-              onChange={(e) => setCompany(e.currentTarget.value)}
+              onChange={(e) => {
+                setCompany(e.currentTarget.value);
+                setCardCompany(e.currentTarget.value);
+              }}
               value={company}
               // autoComplete="off"
             />
@@ -340,7 +425,10 @@ const Form = () => {
               type="text"
               name="tag-line"
               className={`lg:bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black`}
-              onChange={(e) => setTagLine(e.currentTarget.value)}
+              onChange={(e) => {
+                setTagLine(e.currentTarget.value);
+                setCardTagLine(e.currentTarget.value);
+              }}
               value={tagLine}
               // autoComplete="off"
             />

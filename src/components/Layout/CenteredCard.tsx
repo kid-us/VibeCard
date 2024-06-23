@@ -6,6 +6,7 @@ import { useContentStore } from "../../store/useContentStore";
 import Button from "./Button";
 import Contacts from "./Contacts";
 import SocialMedia from "./SocialMedia";
+import { useCardData } from "../../store/useCardData";
 
 interface Preview {
   profile: string | null;
@@ -37,6 +38,8 @@ const CenteredCard = ({
 }: Props) => {
   const { coverColorBg } = useCoverColorStore();
   const { cardColorBg } = useCardColorStore();
+  const { company, email, jobTitle, location, name, phone, preview, pronoun } =
+    useCardData();
 
   const { company, jobTitle, location, name, pronoun, tagLine } =
     useTextColorStore();

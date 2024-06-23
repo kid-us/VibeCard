@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import InputFields from "./Create/InputFields";
-import { user } from "../../assets";
-import InputImages from "./Create/InputImages";
+// import InputFields from "./Create/InputFields";
+// import { user } from "../../assets";
+// import InputImages from "./Create/InputImages";
 import Sidebar from "./Create/Sidebar";
-import { useContentStore } from "../../store/useContentStore";
+// import { useContentStore } from "../../store/useContentStore";
 import { useLayoutStore } from "../../store/useLayoutStore";
 import DefaultCard from "../Layout/DefaultCard";
 import CenteredCard from "../Layout/CenteredCard";
@@ -17,13 +17,13 @@ import Layout from "./Create/Sidebar/Layout";
 import Form from "./Create/Form";
 
 const Create = () => {
-  const [previews, setPreviews] = useState({
-    profile: null,
-    cover: null,
-    logo: null,
-  });
+  // const [previews, setPreviews] = useState({
+  //   profile: null,
+  //   cover: null,
+  //   logo: null,
+  // });
 
-  const { contact, updateContacts } = useContentStore();
+  // const { contact, updateContacts } = useContentStore();
   const { layout } = useLayoutStore();
   // States
   const [modal, setModal] = useState(false);
@@ -31,114 +31,14 @@ const Create = () => {
   const [menu, setMenu] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   //   Form Values
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [location, setLocation] = useState("");
-  const [tagLine, setTagLine] = useState("");
-  const [jobTitle, setJobTitle] = useState("");
-  const [company, setCompany] = useState("");
-  const [pronoun, setPronoun] = useState("");
-
-  const handlePreviewChange = (
-    type: "profile" | "cover" | "logo",
-    preview: string | null
-  ) => {
-    setPreviews((prevPreviews) => ({
-      ...prevPreviews,
-      [type]: preview,
-    }));
-  };
-
-  function updateIcons(val: string, icons: string, IconColor: string) {
-    const iconExists = contact.some((c) => c.icon == icons);
-    if (val !== "") {
-      if (iconExists) {
-        updateContacts(
-          contact.map((c) => (c.icon == icons ? { ...c, link: val } : c))
-        );
-      } else {
-        updateContacts([
-          ...contact,
-          {
-            link: val,
-            color: IconColor,
-            icon: icons,
-          },
-        ]);
-      }
-    } else {
-      const filtered = contact.filter((c) => c.icon !== icons);
-      updateContacts(filtered);
-    }
-  }
-
-  // Email
-  const handleEmail = (val: string) => {
-    setEmail(val);
-    updateIcons(val, "bi-envelope-fill", "bg-sky-900");
-  };
-
-  // Phone
-  const handlePhone = (val: string) => {
-    setPhone(val);
-    updateIcons(val, "bi-telephone-fill", "#22c55e");
-  };
-
-  // // Email
-  // const handleEmail = (val: string) => {
-  //   setEmail(val);
-  //   const iconExists = contact.some((c) => c.icon == "bi-envelope-fill");
-  //   if (val !== "") {
-  //     if (iconExists) {
-  //       updateContacts(
-  //         contact.map((c) =>
-  //           c.icon == "bi-envelope-fill" ? { ...c, link: val } : c
-  //         )
-  //       );
-  //     } else {
-  //       updateContacts([
-  //         ...contact,
-  //         {
-  //           link: val,
-  //           color: "bg-sky-900",
-  //           icon: "bi-envelope-fill",
-  //         },
-  //       ]);
-  //     }
-  //   } else {
-  //     const filtered = contact.filter((c) => c.icon !== "bi-envelope-fill");
-  //     updateContacts(filtered);
-  //   }
-  // };
-
-  // // Phone
-  // const handlePhone = (val: string) => {
-  //   setPhone(val);
-  //   if (val !== "") {
-  //     const iconExists = contact.some((c) => c.icon == "bi-telephone-fill");
-
-  //     if (iconExists) {
-  //       updateContacts(
-  //         contact.map((c) =>
-  //           c.icon == "bi-telephone-fill" ? { ...c, link: val } : c
-  //         )
-  //       );
-  //     } else {
-  //       updateContacts([
-  //         ...contact,
-  //         {
-  //           link: val,
-  //           color: "#22c55e",
-  //           icon: "bi-telephone-fill",
-  //         },
-  //       ]);
-  //     }
-  //   } else {
-  //     const filtered = contact.filter((c) => c.icon !== "bi-telephone-fill");
-  //     updateContacts(filtered);
-  //   }
-  // };
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [phone, setPhone] = useState("");
+  // const [location, setLocation] = useState("");
+  // const [tagLine, setTagLine] = useState("");
+  // const [jobTitle, setJobTitle] = useState("");
+  // const [company, setCompany] = useState("");
+  // const [pronoun, setPronoun] = useState("");
 
   // Sidebar Small Device
   const handleModal = (value: string) => {
@@ -181,11 +81,11 @@ const Create = () => {
               onClick={() => setDropdown(!dropdown)}
               className="ms-28 lg:flex hidden cursor-pointer relative"
             >
-              <img
+              {/* <img
                 src={previews.profile ? previews.profile : user}
                 alt="user"
                 className="w-8 h-8 overflow-hidden border-2 border-black rounded-full"
-              />
+              /> */}
               <span
                 className={`${
                   dropdown ? "bi-caret-up-fill" : "bi-caret-down-fill"
@@ -243,11 +143,11 @@ const Create = () => {
             {menu && (
               <div className="absolute menu-bg w-full h-[100vh] right-0 top-16 p-4">
                 <div className="flex cursor-pointer">
-                  <img
+                  {/* <img
                     src={previews.profile ? previews.profile : user}
                     alt="user"
                     className="w-16 h-16 overflow-hidden border-2 border-black rounded-full"
-                  />
+                  /> */}
                   <div className="content-center">
                     <p className="ms-4 text-xl chakra">Lorem</p>
                   </div>
@@ -282,7 +182,6 @@ const Create = () => {
 
         {/* Form */}
         <div className="lg:block hidden col-span-5 w-full p-3 mt-14">
-          {/*  */}
           <Form />
         </div>
 
@@ -292,42 +191,42 @@ const Create = () => {
             {/* {layout} */}
             {layout === "default" && (
               <DefaultCard
-                pronounVal={pronoun}
-                nameVal={name}
-                emailVal={email}
-                phoneVal={phone}
-                jobTitleVal={jobTitle}
-                tagLineVal={tagLine}
-                companyVal={company}
-                locationVal={location}
-                preview={previews}
+              // pronounVal={pronoun}
+              // nameVal={name}
+              // emailVal={email}
+              // phoneVal={phone}
+              // jobTitleVal={jobTitle}
+              // tagLineVal={tagLine}
+              // companyVal={company}
+              // locationVal={location}
+              // preview={previews}
               />
             )}
 
             {layout === "centered" && (
               <CenteredCard
-                pronounVal={pronoun}
-                nameVal={name}
-                emailVal={email}
-                phoneVal={phone}
-                jobTitleVal={jobTitle}
-                tagLineVal={tagLine}
-                companyVal={company}
-                locationVal={location}
-                preview={previews}
+              // pronounVal={pronoun}
+              // nameVal={name}
+              // emailVal={email}
+              // phoneVal={phone}
+              // jobTitleVal={jobTitle}
+              // tagLineVal={tagLine}
+              // companyVal={company}
+              // locationVal={location}
+              // preview={previews}
               />
             )}
             {layout === "right" && (
               <RightCard
-                pronounVal={pronoun}
-                nameVal={name}
-                emailVal={email}
-                phoneVal={phone}
-                jobTitleVal={jobTitle}
-                tagLineVal={tagLine}
-                companyVal={company}
-                locationVal={location}
-                preview={previews}
+              // pronounVal={pronoun}
+              // nameVal={name}
+              // emailVal={email}
+              // phoneVal={phone}
+              // jobTitleVal={jobTitle}
+              // tagLineVal={tagLine}
+              // companyVal={company}
+              // locationVal={location}
+              // preview={previews}
               />
             )}
           </div>
@@ -354,117 +253,7 @@ const Create = () => {
                   Create your Business card
                 </p>
                 <div className="lg:overflow-hidden lg:h-auto h-[74dvh] overflow-y-scroll lg:pb-0 pb-20">
-                  {/* Images */}
-                  <div className="grid grid-cols-3 gap-x-2">
-                    {/* Profile */}
-                    <InputImages
-                      title="Profile Picture"
-                      type="profile"
-                      onPreviewChange={handlePreviewChange}
-                    />
-                    {/* Logo */}
-                    <InputImages
-                      title="Company Logo"
-                      type="logo"
-                      onPreviewChange={handlePreviewChange}
-                    />
-                    {/* Cover */}
-                    <InputImages
-                      title="Cover Photo"
-                      type="cover"
-                      onPreviewChange={handlePreviewChange}
-                    />
-                  </div>
-                  {/* Inputs */}
-                  <div className="grid grid-cols-2 gap-2 mt-4">
-                    {/* Pronoun */}
-                    <div className="mb-4">
-                      <label
-                        className="text-xs text-gray-600 block"
-                        htmlFor="pronoun"
-                      >
-                        Pronoun <span className="text-red-700 text-2xl">*</span>
-                      </label>
-
-                      <select
-                        name="pronoun"
-                        className="bg-gray-200 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black"
-                        onChange={(event) =>
-                          setPronoun(event.currentTarget.value)
-                        }
-                        defaultValue={pronoun}
-                      >
-                        <option value="" hidden></option>
-                        <option value="Mr">Mr</option>
-                        <option value="Mrs">Mrs</option>
-                        <option value="Prof">Professor</option>
-                        <option value="Dr">Dr</option>
-                      </select>
-                    </div>
-                    {/* Name */}
-                    <InputFields
-                      label="name"
-                      type="text"
-                      inputName="Name"
-                      name={(name: string) => setName(name)}
-                      value={name}
-                      required
-                    />
-                    {/* Email */}
-                    <InputFields
-                      label="email"
-                      type="email"
-                      inputName="Email"
-                      emailAddress={(email: string) => handleEmail(email)}
-                      value={email}
-                      required
-                    />
-                    {/* Phone */}
-                    <InputFields
-                      label="phone"
-                      type="tel"
-                      inputName="Phone"
-                      phone={(phone: string) => handlePhone(phone)}
-                      value={phone}
-                      required
-                    />
-                    {/* Job-Title */}
-                    <InputFields
-                      label="job-title"
-                      type="text"
-                      inputName="Job Title"
-                      jobTitle={(job: string) => setJobTitle(job)}
-                      value={jobTitle}
-                      required
-                    />
-                    {/* Location */}
-                    <InputFields
-                      label="location"
-                      type="text"
-                      inputName="Location"
-                      location={(location: string) => setLocation(location)}
-                      value={location}
-                      required
-                    />
-                    {/* Company */}
-                    <InputFields
-                      label="company"
-                      type="text"
-                      inputName="Company"
-                      company={(company: string) => setCompany(company)}
-                      value={company}
-                      required
-                    />
-                    {/* Tag-line */}
-                    <InputFields
-                      label="tag-line"
-                      type="text"
-                      inputName="Tag Line"
-                      tag={(tag: string) => setTagLine(tag)}
-                      value={tagLine}
-                      required={false}
-                    />
-                  </div>
+                  <Form />
                 </div>
               </div>
             )}
