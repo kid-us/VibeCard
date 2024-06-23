@@ -234,7 +234,7 @@ const Form = () => {
         </div>
 
         {/* Inputs Fields */}
-        <div className="grid grid-cols-2 gap-x-8 mt-5 lg:p-4 lg:h-[47dvh] overflow-y-scroll">
+        <div className="grid grid-cols-2 lg:gap-x-8 gap-x-3 mt-5 lg:p-4 lg:h-[47dvh] overflow-y-scroll">
           {/* Pronoun */}
           <div className="mb-4">
             <label className="text-xs lg:text-gray-600 block" htmlFor="pronoun">
@@ -445,9 +445,9 @@ const Form = () => {
 
         {/* Button */}
         <div className="absolute -bottom-3 lg:pe-10 w-full lg:left-5">
-          <div className="flex justify-end rounded-b-xl lg:bg-white py-2 shadow shadow-zinc-400">
-            <button className="bg-sky-800 shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 py-2 me-10">
-              Update
+          <div className="flex justify-end rounded-b-xl lg:bg-white bg-zinc-800 py-2 lg:shadow shadow-zinc-400">
+            <button className="bg-sky-800 shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-2 py-3 me-1 w-full">
+              Create
             </button>
           </div>
         </div>
