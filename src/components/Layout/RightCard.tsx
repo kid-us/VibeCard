@@ -6,40 +6,23 @@ import { useContentStore } from "../../store/useContentStore";
 import Button from "./Button";
 import Contacts from "./Contacts";
 import SocialMedia from "./SocialMedia";
+import { useCardData } from "../../store/useCardData";
 
-interface Preview {
-  profile: string | null;
-  cover: string | null;
-  logo: string | null;
-}
-
-interface Props {
-  pronounVal?: string;
-  emailVal?: string;
-  phoneVal?: string;
-  websiteVal?: string;
-  tagLineVal?: string;
-  jobTitleVal?: string;
-  companyVal?: string;
-  nameVal?: string;
-  locationVal?: string;
-  preview?: Preview;
-}
-
-const RightCard = ({
-  companyVal,
-  jobTitleVal,
-  locationVal,
-  nameVal,
-  tagLineVal,
-  pronounVal,
-  preview,
-}: Props) => {
+const RightCard = () => {
   const { coverColorBg } = useCoverColorStore();
   const { cardColorBg } = useCardColorStore();
   const { company, jobTitle, location, name, pronoun, tagLine } =
     useTextColorStore();
   const { companyLogo, socialMedia, contact } = useContentStore();
+  const {
+    companyVal,
+    jobTitleVal,
+    tagLineVal,
+    locationVal,
+    nameVal,
+    preview,
+    pronounVal,
+  } = useCardData();
 
   return (
     <div
