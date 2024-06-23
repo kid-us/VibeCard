@@ -14,6 +14,7 @@ interface FilePreviews {
   logo: File | null;
 }
 
+// Zod
 const schema = z.object({
   name: z.string().min(3, { message: "Name required." }),
   company: z.string().min(3, { message: "Company required." }),
@@ -26,6 +27,7 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const Form = () => {
+  // Zustand
   const { contact, updateContacts } = useContentStore();
   const {
     setCardCompany,
@@ -38,6 +40,7 @@ const Form = () => {
     setCardPronoun,
     setCardTagLine,
   } = useCardData();
+
   // Form Hook
   const {
     register,
@@ -77,6 +80,7 @@ const Form = () => {
   const [pronounError, setPronounError] = useState(false);
   const [profilePhotoError, setProfilePhotoError] = useState(false);
 
+  //   Preview Images
   const handlePreviewChange = (
     type: "profile" | "cover" | "logo",
     preview: string | null
@@ -87,7 +91,7 @@ const Form = () => {
     }));
     setPreview(type, preview);
   };
-
+  // Image Fiels
   const handleFile = (
     type: "profile" | "cover" | "logo",
     file: File | null
@@ -98,6 +102,7 @@ const Form = () => {
     }));
   };
 
+  //   Icon Update
   function updateIcons(val: string, icons: string, IconColor: string) {
     const iconExists = contact.some((c) => c.icon == icons);
     if (val !== "") {
