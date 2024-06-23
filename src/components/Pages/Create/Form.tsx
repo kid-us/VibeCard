@@ -211,7 +211,7 @@ const Form = () => {
       </p>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="lg:px-8 pt-10 pb-16 lg:mt-6 shadow lg:shadow-zinc-400 lg:rounded-xl"
+        className="lg:px-8 pt-10 pb-16 lg:mt-6 shadow lg:shadow-zinc-400 lg:rounded-xl bg-white"
       >
         {/* Images */}
         <div className="lg:flex justify-between flex-shrink-0 grid grid-cols-3 gap-1">
@@ -451,7 +451,7 @@ const Form = () => {
         {/* Button */}
         <div className="absolute -bottom-3 lg:pe-10 w-full lg:left-5">
           <div className="flex justify-end rounded-b-xl lg:bg-white bg-zinc-800 py-2 lg:shadow shadow-zinc-400">
-            <button className="bg-sky-800 shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-2 py-3 me-1 w-full">
+            <button className="bg-sky-800 shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full">
               Create
             </button>
           </div>

@@ -7,7 +7,7 @@ import Content from "./Sidebar/Content";
 import Layout from "./Sidebar/Layout";
 
 const Sidebar = () => {
-  const [selected, setSelected] = useState("Layout");
+  const [selected, setSelected] = useState("Content");
 
   return (
     <div className="grid grid-cols-5 bg-stone-800 -md w-full h-[100dvh] pt-[55px]">

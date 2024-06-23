@@ -11,6 +11,8 @@ import Texts from "./Create/Sidebar/Texts";
 import Content from "./Create/Sidebar/Content";
 import Layout from "./Create/Sidebar/Layout";
 import Form from "./Create/Form";
+import { useCardData } from "../../store/useCardData";
+import { user } from "../../assets";
 
 const Create = () => {
   const { layout } = useLayoutStore();
@@ -19,6 +21,9 @@ const Create = () => {
   const [activeModal, setActiveModal] = useState("");
   const [menu, setMenu] = useState(false);
   const [dropdown, setDropdown] = useState(false);
+
+  const { preview } = useCardData();
+
   // Sidebar Small Device
   const handleModal = (value: string) => {
     if (value === activeModal) {
@@ -31,7 +36,7 @@ const Create = () => {
   };
 
   return (
-    <div className="relative menu lg:h-auto h-[100dvh]">
+    <div className="menu-bg relative menu lg:h-auto h-[100dvh]">
       {/* Navbar */}
       <div className="fixed w-full bg-white shadow z-40">
         <nav
@@ -60,11 +65,11 @@ const Create = () => {
               onClick={() => setDropdown(!dropdown)}
               className="ms-28 lg:flex hidden cursor-pointer relative"
             >
-              {/* <img
-                src={previews.profile ? previews.profile : user}
+              <img
+                src={preview.profile ? preview.profile : user}
                 alt="user"
                 className="w-8 h-8 overflow-hidden border-2 border-black rounded-full"
-              /> */}
+              />
               <span
                 className={`${
                   dropdown ? "bi-caret-up-fill" : "bi-caret-down-fill"
@@ -122,11 +127,11 @@ const Create = () => {
             {menu && (
               <div className="absolute menu-bg w-full h-[100vh] right-0 top-16 p-4">
                 <div className="flex cursor-pointer">
-                  {/* <img
-                    src={previews.profile ? previews.profile : user}
+                  <img
+                    src={preview.profile ? preview.profile : user}
                     alt="user"
                     className="w-16 h-16 overflow-hidden border-2 border-black rounded-full"
-                  /> */}
+                  />
                   <div className="content-center">
                     <p className="ms-4 text-xl chakra">Lorem</p>
                   </div>
