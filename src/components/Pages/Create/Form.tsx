@@ -12,6 +12,7 @@ import { useCoverColorStore } from "../../../store/useCoverColorStore";
 
 import axios from "axios";
 import { baseUrl } from "../../../services/request";
+import Modal from "../../Modal/Modal";
 
 interface FilePreviews {
   profile: File | null;
@@ -82,6 +83,8 @@ const Form = () => {
   const [pronounError, setPronounError] = useState(false);
   const [profilePhotoError, setProfilePhotoError] = useState(false);
   const [loader, setLoader] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [cardLink, setCardLink] = useState("");
 
   //   Preview Images
   const handlePreviewChange = (
@@ -144,6 +147,7 @@ const Form = () => {
     updateIcons(val, "bi-telephone-fill", "#22c55e");
   };
 
+  // OnFormSubmit
   const onSubmit = async (data: FieldValues) => {
     // Reset errors and loader state
     setPronounError(false);
@@ -238,7 +242,10 @@ const Form = () => {
           withCredentials: true,
         }
       );
+
       console.log(response);
+      setModal(true);
+      setCardLink(response.data.link);
       // Optionally handle success here
     } catch (error) {
       console.error(error);
@@ -250,6 +257,9 @@ const Form = () => {
 
   return (
     <div className="relative lg:px-5">
+      {modal && (
+        <Modal link={cardLink} onModal={(val: boolean) => setModal(val)} />
+      )}
       <p className="lg:text-2xl text-xl font-poppins mt-2">
         Create your Business card
       </p>

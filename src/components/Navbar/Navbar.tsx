@@ -8,6 +8,7 @@ const Navbar = () => {
   // States
   const [isMenu, setIsMenu] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+
   // Zustand
   const { username } = useUserData();
 
