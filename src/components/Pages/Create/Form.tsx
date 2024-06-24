@@ -525,6 +525,11 @@ const Form = () => {
         <div className="absolute -bottom-3 lg:pe-10 w-full lg:left-5">
           <div className="flex justify-end rounded-b-xl lg:bg-white bg-zinc-800 py-2 lg:shadow shadow-zinc-400">
             <button className="bg-sky-800 shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full">
+              {/* <div className="loader">
+                <span className="bar"></span>
+                <span className="bar"></span>
+                <span className="bar"></span>
+              </div> */}
               Create
             </button>
           </div>
