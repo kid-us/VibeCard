@@ -6,8 +6,12 @@ import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useCardData } from "../../../store/useCardData";
 import Loader from "../../Loader/Loader";
-// import axios from "axios";
-// import { baseUrl } from "../../../services/request";
+import { useTextColorStore } from "../../../store/useTextColorStore";
+import { useCardColorStore } from "../../../store/useCardColorStore";
+import { useCoverColorStore } from "../../../store/useCoverColorStore";
+
+import axios from "axios";
+import { baseUrl } from "../../../services/request";
 
 interface FilePreviews {
   profile: File | null;
@@ -29,7 +33,11 @@ type FormData = z.infer<typeof schema>;
 
 const Form = () => {
   // Zustand
-  const { contact, updateContacts } = useContentStore();
+  const { contact, updateContacts, socialMedia } = useContentStore();
+  const { button, company, jobTitle, location, name, pronoun, tagLine } =
+    useTextColorStore();
+  const { cardColorBg } = useCardColorStore();
+  const { coverColorBg } = useCoverColorStore();
   const {
     setCardCompany,
     setPreview,
@@ -62,22 +70,15 @@ const Form = () => {
     logo: null,
   });
 
-  //   const [name, setName] = useState("Lorem");
-  //   const [email, setEmail] = useState("lore@gmail.com");
-  //   const [phone, setPhone] = useState("0993866658");
-  //   const [location, setLocation] = useState("Ethiopia");
-  //   const [tagLine, setTagLine] = useState("Lorem ipsum dolor");
-  //   const [jobTitle, setJobTitle] = useState("Developer");
-  //   const [company, setCompany] = useState("Vibecard");
-  //   const [pronoun, setPronoun] = useState("Mr");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [location, setLocation] = useState("");
-  const [tagLine, setTagLine] = useState("");
-  const [jobTitle, setJobTitle] = useState("");
-  const [company, setCompany] = useState("");
-  const [pronoun, setPronoun] = useState("");
+  const [fullName, setFullName] = useState("Lorem");
+  const [email, setEmail] = useState("lore@example.com");
+  const [phone, setPhone] = useState("098765432");
+  const [userLocation, setUserLocation] = useState("Ethiopia");
+  const [bio, setBio] = useState("Lorem Ipsun dolor");
+  const [job, setJob] = useState("Developer");
+  const [userCompany, setUserCompany] = useState("Vibecard");
+  const [userPronoun, setUserPronoun] = useState("Mr");
+
   const [pronounError, setPronounError] = useState(false);
   const [profilePhotoError, setProfilePhotoError] = useState(false);
   const [loader, setLoader] = useState(false);
@@ -93,6 +94,7 @@ const Form = () => {
     }));
     setPreview(type, preview);
   };
+
   // Image Fiels
   const handleFile = (
     type: "profile" | "cover" | "logo",
@@ -105,7 +107,6 @@ const Form = () => {
   };
 
   //   Icon Update
-
   function updateIcons(val: string, icons: string, IconColor: string) {
     const iconExists = contact.some((c) => c.icon == icons);
     if (val !== "") {
@@ -143,58 +144,108 @@ const Form = () => {
     updateIcons(val, "bi-telephone-fill", "#22c55e");
   };
 
-  // On Form Submit
-  const onSubmit = (data: FieldValues) => {
-    if (pronoun === "") {
+  const onSubmit = async (data: FieldValues) => {
+    // Reset errors and loader state
+    setPronounError(false);
+    setProfilePhotoError(false);
+
+    // Validate required fields
+    if (!userPronoun) {
       setPronounError(true);
       return;
     }
-    if (previews.profile === null) {
+    if (!previews.profile) {
       setProfilePhotoError(true);
       return;
     }
 
-    // Prepare form data
-    const formData = new FormData();
-
-    // Append profile pictures if available
-    if (pictures.profile) {
-      formData.append("main_picture", pictures.profile);
-    }
-    if (pictures.cover) {
-      formData.append("cover_picture", pictures.cover);
-    }
-    if (pictures.logo) {
-      formData.append("company_logo", pictures.logo);
-    }
-
     setLoader(true);
 
-    // Append other form fields
-    formData.append("pronouns", pronoun);
+    // Define card styles
+    const cardStyles = {
+      // TEXT
+      pronoun: {
+        font_size: pronoun.size,
+        font_style: pronoun.font,
+        font_color: pronoun.color,
+      },
+      jobTitle: {
+        font_size: jobTitle.size,
+        font_style: jobTitle.font,
+        font_color: jobTitle.color,
+      },
+      bio: {
+        font_size: tagLine.size,
+        font_style: tagLine.font,
+        font_color: tagLine.color,
+      },
+      company: {
+        font_size: company.size,
+        font_style: company.font,
+        font_color: company.color,
+      },
+      location: {
+        font_size: location.size,
+        font_style: location.font,
+        font_color: location.color,
+      },
+      name: {
+        font_size: name.size,
+        font_style: name.font,
+        font_color: name.color,
+      },
+      button: {
+        text_color: button.font,
+        bg_color: button.color,
+      },
+      // Card BG
+      cardBg: { bg_color: cardColorBg },
+      // Cover BG
+      coverBG: { bg_color: coverColorBg },
+      // Contact
+      contacts: contact,
+      // Social Media
+      socialMedia: socialMedia,
+    };
+
+    // Prepare form data
+    const formData = new FormData();
+    if (pictures.profile) formData.append("main_picture", pictures.profile);
+    if (pictures.cover) formData.append("cover_picture", pictures.cover);
+    if (pictures.logo) formData.append("company_logo", pictures.logo);
+
+    formData.append("pronouns", userPronoun);
     formData.append("full_name", data.name);
     formData.append("email", data.email);
     formData.append("phone", data.phone);
     formData.append("job_title", data.job);
-    formData.append("bio", tagLine);
+    formData.append("bio", bio);
     formData.append("company_name", data.company);
+    formData.append("card_layout", "1");
     formData.append("card_type", "business");
+    formData.append("card_style_schema", JSON.stringify(cardStyles));
 
     console.log(Object.fromEntries(formData));
 
-    // axios
-    //   .post(`${baseUrl}//api/v1/cards/create`, formData, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     withCredentials: true,
-    //   })
-    //   .then((response) => {
-    //     console.log(response);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    try {
+      const response = await axios.post(
+        `${baseUrl}/api/v1/cards/create`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true,
+        }
+      );
+      console.log(response);
+      // Optionally handle success here
+    } catch (error) {
+      console.error(error);
+      // Optionally show error message to user
+    } finally {
+      setLoader(false);
+    }
   };
 
   return (
@@ -243,10 +294,10 @@ const Form = () => {
               name="pronoun"
               className="bg-gray-200 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black"
               onChange={(event) => {
-                setPronoun(event.currentTarget.value);
+                setUserPronoun(event.currentTarget.value);
                 setCardPronoun(event.currentTarget.value);
               }}
-              defaultValue={pronoun}
+              defaultValue={userPronoun}
             >
               <option value="" hidden></option>
               <option value="Mr">Mr</option>
@@ -274,10 +325,10 @@ const Form = () => {
                 errors.name && "border-red-600 border-1 border"
               }`}
               onChange={(e) => {
-                setName(e.currentTarget.value);
+                setFullName(e.currentTarget.value);
                 setCardName(e.currentTarget.value);
               }}
-              value={name}
+              value={fullName}
               // autoComplete="off"
             />
             {errors.name && (
@@ -350,10 +401,10 @@ const Form = () => {
                 errors.job && "border-red-600 border-1 border"
               }`}
               onChange={(e) => {
-                setJobTitle(e.currentTarget.value);
+                setJob(e.currentTarget.value);
                 setCardJob(e.currentTarget.value);
               }}
-              value={jobTitle}
+              value={job}
               // autoComplete="off"
             />
             {errors.job && (
@@ -378,10 +429,10 @@ const Form = () => {
                 errors.location && "border-red-600 border-1 border"
               }`}
               onChange={(e) => {
-                setLocation(e.currentTarget.value);
+                setUserLocation(e.currentTarget.value);
                 setCardLocation(e.currentTarget.value);
               }}
-              value={location}
+              value={userLocation}
               // autoComplete="off"
             />
             {errors.location && (
@@ -405,10 +456,10 @@ const Form = () => {
                 errors.company && "border-red-600 border-1 border"
               }`}
               onChange={(e) => {
-                setCompany(e.currentTarget.value);
+                setUserCompany(e.currentTarget.value);
                 setCardCompany(e.currentTarget.value);
               }}
-              value={company}
+              value={userCompany}
               // autoComplete="off"
             />
             {errors.company && (
@@ -432,10 +483,10 @@ const Form = () => {
               name="tag-line"
               className={`lg:bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black`}
               onChange={(e) => {
-                setTagLine(e.currentTarget.value);
+                setBio(e.currentTarget.value);
                 setCardTagLine(e.currentTarget.value);
               }}
-              value={tagLine}
+              value={bio}
               // autoComplete="off"
             />
           </div>
