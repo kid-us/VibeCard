@@ -26,7 +26,7 @@ const ContentItems = ({
 }: Props) => {
   const { socialMedia } = useContentStore();
   return (
-    <div>
+    <div className="pb-5">
       {contents.map((content) => (
         <div key={content.id}>
           <div

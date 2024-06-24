@@ -79,6 +79,7 @@ const Form = () => {
   const [pronoun, setPronoun] = useState("");
   const [pronounError, setPronounError] = useState(false);
   const [profilePhotoError, setProfilePhotoError] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   //   Preview Images
   const handlePreviewChange = (
@@ -102,80 +103,8 @@ const Form = () => {
     }));
   };
 
-  // function lol() {
-  //   const styles = {
-  //     // TEXT
-  //     pronoun: {
-  //       font_size: "text-xl",
-  //       font_style: "font-poppins",
-  //       font_color: "#ffffff",
-  //     },
-  //     jobTitle: {
-  //       font_size: "text-xl",
-  //       font_style: "font-poppins",
-  //       font_color: "#ffffff",
-  //     },
-  //     bio: {
-  //       font_size: "text-xl",
-  //       font_style: "font-poppins",
-  //       font_color: "#ffffff",
-  //     },
-  //     company: {
-  //       font_size: "text-xl",
-  //       font_style: "font-poppins",
-  //       font_color: "#ffffff",
-  //     },
-  //     location: {
-  //       font_size: "text-xl",
-  //       font_style: "font-poppins",
-  //       font_color: "#ffffff",
-  //     },
-  //     name: {
-  //       font_size: "text-xl",
-  //       font_style: "font-poppins",
-  //       font_color: "#ffffff",
-  //     },
-  //     // Card BG
-  //     cardBg: { bg_color: "#000000" },
-  //     // Cover BG
-  //     coverBG: { bg_color: "#000000" },
-  //     // Contact
-  //     contacts: [
-  //       {
-  //         icon_color: "#ffffff",
-  //         icon: "bi-envelope-fill",
-  //         address: "lorem@gmail.com",
-  //       },
-  //       {
-  //         icon_color: "#ffffff",
-  //         icon: "bi-telegram-fill",
-  //         address: "https://telegram/kid_uss",
-  //       },
-  //       {
-  //         icon_color: "#ffffff",
-  //         icon: "bi-telephone-fill",
-  //         address: "+251993866658",
-  //       },
-  //     ],
-  //     // Social Media
-  //     socialMedia: [
-  //       {
-  //         name: "instagram",
-  //         link: "lorem@gmail.com",
-  //       },
-  //       {
-  //         name: "twitter",
-  //         link: "https://telegram/kid_uss",
-  //       },
-  //       {
-  //         name: "facebook",
-  //         link: "+251993866658",
-  //       },
-  //     ],
-  //   };
-  // }
-
   //   Icon Update
+
   function updateIcons(val: string, icons: string, IconColor: string) {
     const iconExists = contact.some((c) => c.icon == icons);
     if (val !== "") {
@@ -238,6 +167,8 @@ const Form = () => {
       formData.append("company_logo", pictures.logo);
     }
 
+    setLoader(true);
+
     // Append other form fields
     formData.append("pronouns", pronoun);
     formData.append("full_name", data.name);
@@ -263,18 +194,6 @@ const Form = () => {
     //   .catch((error) => {
     //     console.log(error);
     //   });
-
-    //     bio: "Lorem ipsum dolor"
-    // card_type: "business"
-    // company_logo: File {name: '2023-10-13 00.59.56 127.0.0.1 67475a89e620.png', lastModified: 1697147996376, lastModifiedDate: Fri Oct 13 2023 00:59:56 GMT+0300 (East Africa Time), webkitRelativePath: '', size: 2662, …}
-    // company_name: "Vibecard"
-    // cover_picture: File {name: '2023-10-12 23.48.37 127.0.0.1 efa36a86fa2f.png', lastModified: 1697143717534, lastModifiedDate: Thu Oct 12 2023 23:48:37 GMT+0300 (East Africa Time), webkitRelativePath: '', size: 294608, …}
-    // email: "lore@gmail.com"
-    // full_name: "Lorem"
-    // job_title: "Developer"
-    // main_picture: File {name: '2023-10-15 10.38.09 github.com bff66448c7dc.png', lastModified: 1697355489434, lastModifiedDate: Sun Oct 15 2023 10:38:09 GMT+0300 (East Africa Time), webkitRelativePath: '', size: 154795, …}
-    // phone: "993866658"
-    // pronouns: "Mr"
   };
 
   return (
@@ -522,15 +441,18 @@ const Form = () => {
         </div>
 
         {/* Button */}
-        <div className="absolute -bottom-3 lg:pe-10 w-full lg:left-5">
-          <div className="flex justify-end rounded-b-xl lg:bg-white bg-zinc-800 py-2 lg:shadow shadow-zinc-400">
-            <button className="bg-sky-800 shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full">
-              {/* <div className="loader">
-                <span className="bar"></span>
-                <span className="bar"></span>
-                <span className="bar"></span>
-              </div> */}
-              Create
+        <div className="absolute -bottom-2 lg:pe-10 w-full lg:left-5">
+          <div className="flex justify-end rounded-b-xl lg:bg-white bg-zinc-800 py-3 lg:shadow border">
+            <button className="bg-sky-800 shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 py-3 lg:me-10 lg:w-auto w-full">
+              {loader ? (
+                <div className="loader">
+                  <span className="bar"></span>
+                  <span className="bar"></span>
+                  <span className="bar"></span>
+                </div>
+              ) : (
+                "Create"
+              )}
             </button>
           </div>
         </div>
