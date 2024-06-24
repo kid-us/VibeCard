@@ -74,11 +74,11 @@ const InputImages = ({
           </label>
         )}
       </div>
-      {error && (
+      {/* {error && (
         <p className="text-[10px] mt-2 text-red-500">
           Profile picture required
         </p>
-      )}
+      )} */}
     </div>
   );
 };
