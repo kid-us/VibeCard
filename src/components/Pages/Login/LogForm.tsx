@@ -25,13 +25,14 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
+  // Zustand
+  const { updateEmail, updateUsername, updateType } = useUserData();
+  // RRD
   const navigate = useNavigate();
   // States
   const [loginError, setLoginError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
-  // Zustand
-  const { updateEmail, updateUsername, updateType } = useUserData();
+  const [loader, setLoader] = useState(false);
 
   // Form Data and Validation
   const {
@@ -43,6 +44,7 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
   // On Form Submit
   const onSubmit = (data: FieldValues) => {
     buttonClicked(true);
+    setLoader(true);
     axios
       .post(`${baseUrl}/api/v1/auth/login`, data, {
         headers: {
@@ -69,6 +71,7 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
           });
       })
       .catch((error) => {
+        setLoader(false);
         console.log(error);
         if (error.response.status === 401) {
           setLoginError("Invalid Email and Password");
@@ -137,7 +140,7 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
       </div>
 
       {/* Button */}
-      <Button label="Login" />
+      <Button loader={loader} label="Login" />
     </form>
   );
 };

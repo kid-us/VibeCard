@@ -138,6 +138,7 @@ textarea {
 .loader {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .bar {
@@ -161,7 +162,7 @@ textarea {
 
 @keyframes scale-up4 {
   20% {
-    background-color: #ffff;
+    background-color: #fff;
     transform: scaleY(1.5);
   }
 
