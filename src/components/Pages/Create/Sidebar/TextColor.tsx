@@ -5,19 +5,24 @@ import { State } from "../../../../store/useTextColorStore";
 interface Props {
   bg: string;
   name: keyof State;
-  title: string;
+  title?: string;
 }
 
 const TextColor = ({ bg, name, title }: Props) => {
-  const { updateColor } = useTextColorStore();
+  const { updateColor, updateFont } = useTextColorStore();
 
   return (
     <>
-      <div className="flex my-5 text-sm ms-1">
-        <p className="first-letter:uppercase text-teal-400 chakra text-xl">
-          {title}
-        </p>
-        <p className="ms-2 text-white chakra"> Color</p>
+      <div className={`flex ${title ? "my-5" : ""} text-sm ms-1`}>
+        {title && (
+          <>
+            <p className="first-letter:uppercase text-teal-400 chakra text-xl">
+              {title}
+            </p>
+
+            <p className="ms-2 text-white chakra"> Color</p>
+          </>
+        )}
       </div>
       <div className="bg-white rounded p-2 mb-5">
         <p className="mt-2 chakra text-black">Default</p>
@@ -30,7 +35,11 @@ const TextColor = ({ bg, name, title }: Props) => {
           {textColor.map((text) => (
             <button
               key={text.id}
-              onClick={() => updateColor(name, text.value)}
+              onClick={
+                title
+                  ? () => updateColor(name, text.value)
+                  : () => updateFont(name, text.value)
+              }
               className={`lg:p-3 px-4 py-5 rounded shadow-sm shadow-zinc-900 hover:shadow-none`}
               style={{ backgroundColor: text.value }}
             ></button>

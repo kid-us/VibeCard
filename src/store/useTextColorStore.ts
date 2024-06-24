@@ -33,7 +33,7 @@ export const useTextColorStore = create<State & Action>((set) => ({
   jobTitle: { font: "syne", color: "#2dd4bf", size: "text-lg" },
   company: { font: "metamorphous", color: "#9ca3af", size: "text-sm" },
   location: { font: "roboto", color: "#9ca3af", size: "text-sm" },
-  button: { font: "", color: "#14b8a6", size: "" },
+  button: { font: "#000000", color: "#14b8a6", size: "" },
 
   updateFont: (key: keyof State, font: string) =>
     set((state) => ({

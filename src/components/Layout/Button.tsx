@@ -4,10 +4,8 @@ const Button = () => {
   const { button } = useTextColorStore();
   return (
     <button
-      className={`w-full rounded-lg py-4 mb-14 mt-6 ${
-        button.color === "#000000" ? "text-white" : "text-black"
-      }  shadow-md font-poppins font-extrabold shadow-zinc-50`}
-      style={{ backgroundColor: button.color }}
+      className={`w-full rounded-lg py-4 mb-14 mt-6 shadow-md font-poppins font-extrabold shadow-zinc-50`}
+      style={{ backgroundColor: button.color, color: button.font }}
     >
       Save Contact
     </button>

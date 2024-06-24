@@ -40,6 +40,8 @@ const Colors = () => {
           colorPicker={false}
         />
 
+        <p className="chakra text-white mb-3">Button Text Color</p>
+        <TextColor name={"button"} bg={button.font} />
         {/* Text Colors */}
         <div className="relative text-sm mb-4 border-teal-500 shadow shadow-stone-300 rounded-lg">
           <div
