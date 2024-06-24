@@ -33,7 +33,6 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
   const [loginError, setLoginError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loader, setLoader] = useState(false);
-
   // Form Data and Validation
   const {
     register,

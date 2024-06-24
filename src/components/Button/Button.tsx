@@ -2,7 +2,7 @@ import Loader from "../Loader/Loader";
 
 interface Props {
   label: string;
-  loader: boolean;
+  loader?: boolean;
 }
 
 const Button = ({ label, loader }: Props) => {

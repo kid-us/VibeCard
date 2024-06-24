@@ -38,6 +38,7 @@ const Form = ({
 
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const {
     register,
@@ -53,7 +54,7 @@ const Form = ({
     } else {
       setConfirmPasswordError(false);
       buttonClicked(true);
-
+      setLoader(true);
       axios
         .get(`${baseUrl}/api/v1/auth/check-email/${data.email}`, {
           headers: {
@@ -75,6 +76,7 @@ const Form = ({
             });
         })
         .catch(() => {
+          setLoader(false);
           setRegisterError("Email already exist.");
         });
     }
@@ -174,7 +176,7 @@ const Form = ({
       </div>
 
       {/* Button */}
-      <Button label="Register" />
+      <Button loader={loader} label="Register" />
     </form>
   );
 };
