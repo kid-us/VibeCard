@@ -15,6 +15,7 @@ type FormData = z.infer<typeof schema>;
 
 const ForgotPassword = () => {
   const [forgotPasswordError, setForgotPasswordError] = useState("");
+  const [loader, setLoader] = useState(false);
 
   const navigate = useNavigate();
 
@@ -25,8 +26,7 @@ const ForgotPassword = () => {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (data: FieldValues) => {
-    console.log(data.email);
-
+    setLoader(true);
     axios
       .put(
         `${baseUrl}/api/v1/auth/password-reset-request?email=${data.email}`,
@@ -41,6 +41,7 @@ const ForgotPassword = () => {
         navigate(`/check-email?email=${data.email}`);
       })
       .catch(() => {
+        setLoader(false);
         setForgotPasswordError("Email address not found");
       });
   };
@@ -94,7 +95,7 @@ const ForgotPassword = () => {
                 </p>
               )}
               {/* Button */}
-              <Button label="Reset Password" />
+              <Button loader={loader} label="Reset Password" />
             </form>
           </div>
         </div>
