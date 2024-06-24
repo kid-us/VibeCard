@@ -5,6 +5,7 @@ import { z } from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useCardData } from "../../../store/useCardData";
+import Loader from "../../Loader/Loader";
 // import axios from "axios";
 // import { baseUrl } from "../../../services/request";
 
@@ -444,15 +445,7 @@ const Form = () => {
         <div className="absolute -bottom-2 lg:pe-10 w-full lg:left-5">
           <div className="flex justify-end rounded-b-xl lg:bg-white bg-zinc-800 py-3 lg:shadow border">
             <button className="bg-sky-800 shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 py-3 lg:me-10 lg:w-auto w-full">
-              {loader ? (
-                <div className="loader">
-                  <span className="bar"></span>
-                  <span className="bar"></span>
-                  <span className="bar"></span>
-                </div>
-              ) : (
-                "Create"
-              )}
+              {loader ? <Loader /> : "Create"}
             </button>
           </div>
         </div>
