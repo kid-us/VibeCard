@@ -102,6 +102,79 @@ const Form = () => {
     }));
   };
 
+  // function lol() {
+  //   const styles = {
+  //     // TEXT
+  //     pronoun: {
+  //       font_size: "text-xl",
+  //       font_style: "font-poppins",
+  //       font_color: "#ffffff",
+  //     },
+  //     jobTitle: {
+  //       font_size: "text-xl",
+  //       font_style: "font-poppins",
+  //       font_color: "#ffffff",
+  //     },
+  //     bio: {
+  //       font_size: "text-xl",
+  //       font_style: "font-poppins",
+  //       font_color: "#ffffff",
+  //     },
+  //     company: {
+  //       font_size: "text-xl",
+  //       font_style: "font-poppins",
+  //       font_color: "#ffffff",
+  //     },
+  //     location: {
+  //       font_size: "text-xl",
+  //       font_style: "font-poppins",
+  //       font_color: "#ffffff",
+  //     },
+  //     name: {
+  //       font_size: "text-xl",
+  //       font_style: "font-poppins",
+  //       font_color: "#ffffff",
+  //     },
+  //     // Card BG
+  //     cardBg: { bg_color: "#000000" },
+  //     // Cover BG
+  //     coverBG: { bg_color: "#000000" },
+  //     // Contact
+  //     contacts: [
+  //       {
+  //         icon_color: "#ffffff",
+  //         icon: "bi-envelope-fill",
+  //         address: "lorem@gmail.com",
+  //       },
+  //       {
+  //         icon_color: "#ffffff",
+  //         icon: "bi-telegram-fill",
+  //         address: "https://telegram/kid_uss",
+  //       },
+  //       {
+  //         icon_color: "#ffffff",
+  //         icon: "bi-telephone-fill",
+  //         address: "+251993866658",
+  //       },
+  //     ],
+  //     // Social Media
+  //     socialMedia: [
+  //       {
+  //         name: "instagram",
+  //         link: "lorem@gmail.com",
+  //       },
+  //       {
+  //         name: "twitter",
+  //         link: "https://telegram/kid_uss",
+  //       },
+  //       {
+  //         name: "facebook",
+  //         link: "+251993866658",
+  //       },
+  //     ],
+  //   };
+  // }
+
   //   Icon Update
   function updateIcons(val: string, icons: string, IconColor: string) {
     const iconExists = contact.some((c) => c.icon == icons);
