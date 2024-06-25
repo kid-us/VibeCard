@@ -71,14 +71,14 @@ const Form = () => {
     logo: null,
   });
 
-  const [fullName, setFullName] = useState("Lorem");
-  const [email, setEmail] = useState("lore@example.com");
-  const [phone, setPhone] = useState("098765432");
-  const [userLocation, setUserLocation] = useState("Ethiopia");
-  const [bio, setBio] = useState("Lorem Ipsun dolor");
-  const [job, setJob] = useState("Developer");
-  const [userCompany, setUserCompany] = useState("Vibecard");
-  const [userPronoun, setUserPronoun] = useState("Mr");
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [userLocation, setUserLocation] = useState("");
+  const [bio, setBio] = useState("");
+  const [job, setJob] = useState("");
+  const [userCompany, setUserCompany] = useState("");
+  const [userPronoun, setUserPronoun] = useState("");
 
   const [pronounError, setPronounError] = useState(false);
   const [profilePhotoError, setProfilePhotoError] = useState(false);
