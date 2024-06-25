@@ -242,7 +242,7 @@ const Form = () => {
       );
       console.log(response);
       setModal(true);
-      setCardLink(response.data.card_link);
+      setCardLink(response.data.card_url);
     } catch (error) {
       console.error(error);
     } finally {

@@ -120,7 +120,7 @@ const ViewCard = () => {
             </Link>
           </div>
 
-          <div className="flex justify-center mt-16">
+          <div className="flex justify-center lg:mt-16 mt-5">
             <div className="w-80">
               {data && styles && (
                 <Magnetic>
