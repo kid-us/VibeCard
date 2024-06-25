@@ -7,6 +7,7 @@ import { qrCode, user } from "../../assets";
 import Contacts from "../Layout/Contacts";
 import SocialMedia from "../Layout/SocialMedia";
 import Magnetic from "../GsapMagnetic/Magnetic";
+import Loading from "../Loading/Loading";
 
 interface Pronoun {
   font_size: string;
@@ -97,11 +98,13 @@ const ViewCard = () => {
 
   const [data, setData] = useState<Data>();
   const [styles, setStyles] = useState<StyleData>();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get(`${baseUrl}/api/v1/cards/card/${id}`)
       .then((response) => {
+        setLoading(false);
         setData(response.data);
         setStyles(JSON.parse(response.data.styles));
       })
@@ -112,6 +115,7 @@ const ViewCard = () => {
 
   return (
     <>
+      {loading && <Loading />}
       <div className="h-[100vh] menu-bg">
         <div className="lg:px-40 md:px-36 px-2">
           <div className="lg:pt-10 md:pt-10 py-5 lg:ps-24">
