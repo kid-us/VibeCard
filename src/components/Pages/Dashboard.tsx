@@ -1,14 +1,10 @@
-// import { useEffect, useState } from "react";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { baseUrl } from "../../services/request";
-// import { Link, useNavigate } from "react-router-dom";
-// import { useUserData } from "../../store/useUserData";
-// import axios from "axios";
-// import { baseUrl } from "../../services/request";
 
 const Dashboard = () => {
+  const [links, setLinks] = useState<string[]>([]);
   useEffect(() => {
     axios
       .get(`${baseUrl}/api/v1/cards/my-cards`, {
@@ -18,21 +14,15 @@ const Dashboard = () => {
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response.data.length);
+        const cardUrls = response.data.map(
+          (card: { card_url: string }) => card.card_url
+        );
+        setLinks(cardUrls);
       })
       .then((err) => {
         console.log(err);
       });
   }, []);
-
-  // const { username } = useUserData();
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (username === null) {
-  //     navigate("/login");
-  //   }
-  // }, []);
 
   return (
     <div className="bg-white h-[100vh]">
@@ -53,6 +43,19 @@ const Dashboard = () => {
                   Elevate your business and career to the next level with our
                   services.
                 </p>
+                {links.length > 0 && (
+                  <div className="mt-5">
+                    <p className="text-xl mb-4">See your Previous Cards</p>
+                    {links.map((link) => (
+                      <Link
+                        to={`/card/${link}`}
+                        className="block chakra mb-2 text-sky-800"
+                      >
+                        View your card
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
 
