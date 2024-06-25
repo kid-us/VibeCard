@@ -2,7 +2,6 @@ import axios from "axios";
 import { baseUrl } from "../../services/request";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Button from "../Button/Button";
 import { qrCode, user } from "../../assets";
 import Contacts from "../Layout/Contacts";
 import SocialMedia from "../Layout/SocialMedia";
@@ -13,6 +12,11 @@ interface Pronoun {
   font_size: string;
   font_style: string;
   font_color: string;
+}
+
+interface Buttton {
+  bg_color: string;
+  text_color: string;
 }
 
 interface JobTitle {
@@ -67,6 +71,7 @@ interface SocialMedia {
 
 interface StyleData {
   pronoun: Pronoun;
+  button: Buttton;
   jobTitle: JobTitle;
   bio: Bio;
   name: Name;
@@ -113,6 +118,8 @@ const ViewCard = () => {
       });
   }, []);
 
+  console.log(styles);
+
   return (
     <>
       {loading && <Loading />}
@@ -129,7 +136,7 @@ const ViewCard = () => {
               {data && styles && (
                 <Magnetic>
                   <div
-                    className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 z-0 lg:mb-0 mb-14 pb-10`}
+                    className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 z-0 lg:mb-0 mb-14`}
                     style={{ backgroundColor: styles.cardBg.bg_color }}
                   >
                     <div
@@ -288,7 +295,15 @@ const ViewCard = () => {
                         </div>
                       )}
 
-                      <Button label="Save Contact" />
+                      <button
+                        className={`w-full rounded-lg py-4 mb-14 mt-6 shadow-md font-poppins font-extrabold shadow-zinc-950`}
+                        style={{
+                          backgroundColor: styles.button.bg_color,
+                          color: styles.button.text_color,
+                        }}
+                      >
+                        Save Contact
+                      </button>
                     </div>
                   </div>
                 </Magnetic>
