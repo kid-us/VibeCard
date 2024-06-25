@@ -228,9 +228,7 @@ const Form = () => {
     formData.append("card_layout", "1");
     formData.append("card_type", "business");
     formData.append("card_style_schema", JSON.stringify(cardStyles));
-
-    console.log(Object.fromEntries(formData));
-
+// "ey5KX3jjfMKp2N0Lvcel5HheJrCIxX3SmscPtVb7R8ackEnBFPEsR3ta-MHtivIjyv3Pf8zyco8JjE2a5WLlaQ"
     try {
       const response = await axios.post(
         `${baseUrl}/api/v1/cards/create`,
@@ -242,14 +240,11 @@ const Form = () => {
           withCredentials: true,
         }
       );
-
       console.log(response);
       setModal(true);
       setCardLink(response.data.link);
-      // Optionally handle success here
     } catch (error) {
       console.error(error);
-      // Optionally show error message to user
     } finally {
       setLoader(false);
     }

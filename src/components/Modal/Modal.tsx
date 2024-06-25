@@ -8,12 +8,12 @@ interface Props {
 
 const Modal = ({ link, onModal }: Props) => {
   return (
-    // v1/cards/card/id
     <>
       <div
         onClick={() => onModal(false)}
         className="overlay z-40 top-0 w-full"
       ></div>
+
       <div className="modals p-10">
         <button
           onClick={() => onModal(false)}
