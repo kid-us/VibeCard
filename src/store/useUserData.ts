@@ -23,14 +23,7 @@
 //   logout: () => set(() => ({ username: null, email: null, type: null })),
 // }));
 
-// authStore.ts
 import create from "zustand";
-
-// interface User {
-//   name: string;
-//   email: string;
-//   // type: string;
-// }
 
 interface AuthState {
   user: string | null;
