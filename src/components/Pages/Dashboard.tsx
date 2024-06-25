@@ -1,11 +1,30 @@
 // import { useEffect, useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { baseUrl } from "../../services/request";
 // import { Link, useNavigate } from "react-router-dom";
 // import { useUserData } from "../../store/useUserData";
 // import axios from "axios";
 // import { baseUrl } from "../../services/request";
 
 const Dashboard = () => {
+  useEffect(() => {
+    axios
+      .get(`${baseUrl}/api/v1/cards/my-cards`, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response.data.length);
+      })
+      .then((err) => {
+        console.log(err);
+      });
+  }, []);
+
   // const { username } = useUserData();
   // const navigate = useNavigate();
 

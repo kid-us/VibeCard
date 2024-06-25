@@ -228,7 +228,7 @@ const Form = () => {
     formData.append("card_layout", "1");
     formData.append("card_type", "business");
     formData.append("card_style_schema", JSON.stringify(cardStyles));
-// "ey5KX3jjfMKp2N0Lvcel5HheJrCIxX3SmscPtVb7R8ackEnBFPEsR3ta-MHtivIjyv3Pf8zyco8JjE2a5WLlaQ"
+    // "ey5KX3jjfMKp2N0Lvcel5HheJrCIxX3SmscPtVb7R8ackEnBFPEsR3ta-MHtivIjyv3Pf8zyco8JjE2a5WLlaQ"
     try {
       const response = await axios.post(
         `${baseUrl}/api/v1/cards/create`,
@@ -242,7 +242,7 @@ const Form = () => {
       );
       console.log(response);
       setModal(true);
-      setCardLink(response.data.link);
+      setCardLink(response.data.card_link);
     } catch (error) {
       console.error(error);
     } finally {

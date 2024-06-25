@@ -10,6 +10,7 @@ import Create from "./components/Pages/Create";
 import Verify from "./components/Pages/Verify";
 import Dashboard from "./components/Pages/Dashboard";
 import Protected from "./components/Protected/Protected";
+import ViewCard from "./components/Pages/ViewCard";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/verify" element={<Verify />} />
         <Route path="/request" element={<ForgotPassword />} />
         <Route path="/check-email" element={<CheckEmail />} />
+        <Route path="/card/:id" element={<ViewCard />} />
         <Route
           path="/dashboard"
           element={
