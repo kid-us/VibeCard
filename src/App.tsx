@@ -9,6 +9,7 @@ import CheckEmail from "./components/Pages/CheckEmail";
 import Create from "./components/Pages/Create";
 import Verify from "./components/Pages/Verify";
 import Dashboard from "./components/Pages/Dashboard";
+import Protected from "./components/Protected/Protected";
 
 function App() {
   return (
@@ -20,8 +21,22 @@ function App() {
         <Route path="/verify" element={<Verify />} />
         <Route path="/request" element={<ForgotPassword />} />
         <Route path="/check-email" element={<CheckEmail />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/create" element={<Create />} />
+        <Route
+          path="/dashboard"
+          element={
+            <Protected>
+              <Dashboard />
+            </Protected>
+          }
+        />
+        <Route
+          path="/create"
+          element={
+            <Protected>
+              <Create />
+            </Protected>
+          }
+        />
         <Route path="/404" element={<Page404 />} />
         <Route path="*" element={<Navigate to="/404" />}></Route>
       </Routes>

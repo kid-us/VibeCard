@@ -2,15 +2,35 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { nav } from "../../services/navs";
 import Menu from "./Menu";
-import { useUserData } from "../../store/useUserData";
+import useAuthStore from "../../store/useUserData";
+import axios from "axios";
+import { baseUrl } from "../../services/request";
+import Loading from "../Loading/Loading";
 
 const Navbar = () => {
   // States
   const [isMenu, setIsMenu] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
 
-  // Zustand
-  const { username } = useUserData();
+  const { login, user } = useAuthStore();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios
+      .get(`${baseUrl}/api/v1/auth/me`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        login(response.data.username, response.data.email);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +51,8 @@ const Navbar = () => {
 
   return (
     <>
+      {loading && <Loading />}
+
       <header
         className={`lg:py-0 py-2 ${
           isSticky
@@ -66,9 +88,7 @@ const Navbar = () => {
             </div>
 
             {/* Large Device */}
-            <div
-              className={`col-span-11 ${username === null ? "pe-5" : "pe-0"}`}
-            >
+            <div className={`col-span-11 ${user === null ? "pe-5" : "pe-0"}`}>
               {nav.map((n) =>
                 n.id === 1 ? (
                   <Link
@@ -102,11 +122,11 @@ const Navbar = () => {
 
             <div className="lg:block hidden col-1 mt-2">
               {/* Large Device */}
-              {username !== null ? (
+              {user !== null ? (
                 <Link to={"/dashboard"}>
                   <p className="lg:block hidden bg-gray-100 py-1 text-sm rounded text-blck text-center transition ease-in-out delay-200 hover:scale-105 hover:bg-teal-900 hover:text-white duration-200 shadow shadow-zinc-400 chakra px-2">
                     <span className="bi-person-fill me-2"></span>
-                    {username}
+                    {user}
                   </p>
                 </Link>
               ) : (
@@ -120,7 +140,7 @@ const Navbar = () => {
             </div>
 
             {/* Small device user Icon */}
-            {username !== null && (
+            {user !== null && (
               <div className="lg:hidden md:hidden mt-1">
                 <Link to={"/dashboard"}>
                   <span className="px-3 flex">
@@ -140,7 +160,7 @@ const Navbar = () => {
       {/* Menu */}
       {isMenu && (
         <div className="fixed h-[100dvh] z-50 top-0 w-full menu-bg animate__animated animate__fadeInLeft">
-          <Menu nav={nav} menu={() => setIsMenu(false)} />
+          <Menu nav={nav} username={user} menu={() => setIsMenu(false)} />
         </div>
       )}
     </>

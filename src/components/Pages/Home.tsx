@@ -1,39 +1,12 @@
-import { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Hero from "./Home/Hero";
 import Gradient from "../Gradient/Gradient";
 import Footer from "../Footer/Footer";
 import { video } from "../../assets";
-import axios from "axios";
-import { baseUrl } from "../../services/request";
-import { useUserData } from "../../store/useUserData";
-import Loading from "../Loading/Loading";
 
 const Home = () => {
-  const { updateEmail, updateUsername, updateType } = useUserData();
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    axios
-      .get(`${baseUrl}/api/v1/auth/me`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      })
-      .then((response) => {
-        updateEmail(response.data.email);
-        updateUsername(response.data.username);
-        updateType(response.data.type);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
-  }, []);
   return (
     <>
-      {loading && <Loading />}
-
       <Navbar />
       <Gradient />
       <div className="container mx-auto">

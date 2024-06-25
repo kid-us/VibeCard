@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
 import { Nav } from "../../services/navs";
-import { useUserData } from "../../store/useUserData";
 import Logout from "../Logout/Logout";
 
 interface Props {
   nav: Nav[];
   menu: () => void;
+  username: string | null;
 }
 
-const Menu = ({ nav, menu }: Props) => {
-  const { username } = useUserData();
+const Menu = ({ nav, menu, username }: Props) => {
   return (
     <>
       <div className="flex justify-between py-3 px-3">

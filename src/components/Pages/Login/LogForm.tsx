@@ -6,7 +6,7 @@ import { useState } from "react";
 import Button from "../../Button/Button";
 import axios from "axios";
 import { baseUrl } from "../../../services/request";
-import { useUserData } from "../../../store/useUserData";
+import useAuthStore from "../../../store/useUserData";
 
 interface Props {
   emailAddress: (email: string) => void;
@@ -26,7 +26,7 @@ type FormData = z.infer<typeof schema>;
 
 const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
   // Zustand
-  const { updateEmail, updateUsername, updateType } = useUserData();
+  const { login } = useAuthStore();
   // RRD
   const navigate = useNavigate();
   // States
@@ -60,9 +60,7 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
             withCredentials: true,
           })
           .then((response) => {
-            updateEmail(response.data.email);
-            updateUsername(response.data.username);
-            updateType(response.data.type);
+            login(response.data.username, response.data.email);
             navigate("/");
           })
           .catch((err) => {
