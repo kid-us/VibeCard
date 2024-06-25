@@ -6,7 +6,14 @@ import { useCardColorStore } from "../../../../store/useCardColorStore";
 import { useCoverColorStore } from "../../../../store/useCoverColorStore";
 import { useState } from "react";
 
-const texts = ["Pronoun", "Name", "Location", "Job Title", "Tag Line"];
+const texts = [
+  "Pronoun",
+  "Name",
+  "Location",
+  "Job Title",
+  "Company",
+  "Tag Line",
+];
 
 const Colors = () => {
   const [dropdown, setDropdown] = useState(false);
