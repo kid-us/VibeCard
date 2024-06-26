@@ -228,7 +228,6 @@ const Form = () => {
     formData.append("card_layout", "1");
     formData.append("card_type", "business");
     formData.append("card_style_schema", JSON.stringify(cardStyles));
-    // "ey5KX3jjfMKp2N0Lvcel5HheJrCIxX3SmscPtVb7R8ackEnBFPEsR3ta-MHtivIjyv3Pf8zyco8JjE2a5WLlaQ"
     try {
       const response = await axios.post(
         `${baseUrl}/api/v1/cards/create`,
@@ -255,12 +254,12 @@ const Form = () => {
       {modal && (
         <Modal link={cardLink} onModal={(val: boolean) => setModal(val)} />
       )}
-      <p className="lg:text-2xl text-xl font-poppins mt-2">
+      <p className="lg:text-2xl text-xl font-poppins mt-2 mb-4">
         Create your Business card
       </p>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="lg:px-8 pt-10 pb-16 lg:mt-6 shadow lg:shadow-zinc-400 lg:rounded-xl bg-white"
+        className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-5 px-3 shadow lg:shadow-zinc-400 lg:rounded-xl lg:bg-white menu-bg rounded lg:overflow-auto lg:h-auto overflow-y-scroll h-[74dvh]"
       >
         {/* Images */}
         <div className="lg:flex justify-between flex-shrink-0 grid grid-cols-3 gap-1">
@@ -291,7 +290,10 @@ const Form = () => {
         <div className="grid grid-cols-2 lg:gap-x-8 gap-x-3 mt-5 lg:p-4 lg:h-[48dvh] overflow-y-scroll">
           {/* Pronoun */}
           <div className="mb-4">
-            <label className="text-xs lg:text-gray-600 block" htmlFor="pronoun">
+            <label
+              className="text-xs lg:text-gray-600 text-black block"
+              htmlFor="pronoun"
+            >
               Pronoun <span className="text-red-700 text-2xl">*</span>
             </label>
 
@@ -318,7 +320,10 @@ const Form = () => {
 
           {/* Name */}
           <div className="mb-3">
-            <label className="text-xs lg:text-gray-600 block" htmlFor="name">
+            <label
+              className="text-xs lg:text-gray-600 block text-black"
+              htmlFor="name"
+            >
               Name
               <span className="text-red-700 text-2xl">*</span>
             </label>
@@ -343,7 +348,10 @@ const Form = () => {
 
           {/* Email */}
           <div className="mb-3">
-            <label className="text-xs lg:text-gray-600 block" htmlFor="email">
+            <label
+              className="text-xs lg:text-gray-600 block text-black"
+              htmlFor="email"
+            >
               Email
               <span className="text-red-700 text-2xl">*</span>
             </label>
@@ -367,7 +375,10 @@ const Form = () => {
 
           {/* Phone */}
           <div className="mb-3">
-            <label className="text-xs lg:text-gray-600 block" htmlFor="phone">
+            <label
+              className="text-xs lg:text-gray-600 block text-black"
+              htmlFor="phone"
+            >
               Phone
               <span className="text-red-700 text-2xl">*</span>
             </label>
@@ -392,7 +403,7 @@ const Form = () => {
           {/* Job-Title */}
           <div className="mb-3">
             <label
-              className="text-xs lg:text-gray-600 block"
+              className="text-xs lg:text-gray-600 block text-black"
               htmlFor="job-title"
             >
               Job Title
@@ -420,7 +431,7 @@ const Form = () => {
           {/* Location */}
           <div className="mb-3">
             <label
-              className="text-xs lg:text-gray-600 block"
+              className="text-xs lg:text-gray-600 block text-black"
               htmlFor="location"
             >
               Location
@@ -449,7 +460,10 @@ const Form = () => {
 
           {/* Company */}
           <div className="mb-3">
-            <label className="text-xs lg:text-gray-600 block" htmlFor="company">
+            <label
+              className="text-xs lg:text-gray-600 block text-black"
+              htmlFor="company"
+            >
               Company
               <span className="text-red-700 text-2xl">*</span>
             </label>
@@ -477,7 +491,7 @@ const Form = () => {
           {/* Tag-line || Bio*/}
           <div className="mb-3">
             <label
-              className="text-xs lg:text-gray-600 block"
+              className="text-xs lg:text-gray-600 block text-black"
               htmlFor="tag-line"
             >
               Bio
@@ -498,9 +512,9 @@ const Form = () => {
         </div>
 
         {/* Button */}
-        <div className="absolute -bottom-2 lg:pe-10 w-full lg:left-5">
-          <div className="flex justify-end rounded-b-xl lg:bg-white bg-zinc-800 py-3 lg:shadow border">
-            <button className="bg-sky-800 shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 lg:me-10 lg:w-auto w-full">
+        <div className="lg:absolute -bottom-2 lg:pe-10 w-full lg:left-5 mb-10">
+          <div className="flex justify-end rounded-b-xl lg:bg-white py-3 lg:shadow border">
+            <button className="bg-sky-800 shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full">
               {loader ? <Loader /> : "Create"}
             </button>
           </div>

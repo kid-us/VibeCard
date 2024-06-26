@@ -193,7 +193,7 @@ const Create = () => {
           <div className="z-50 bg-zinc-800 h-[90dvh] absolute bottom-0 w-full rounded-t-3xl text-white pb-10 animate__animated animate__fadeInUp">
             {/* Forms */}
             {modal && activeModal === "Forms" && (
-              <div className="overflow-y-scroll h-[78dvh] p-5">
+              <div className="p-3">
                 <Form />
               </div>
             )}
