@@ -12,6 +12,7 @@ interface Card {
 const Dashboard = () => {
   const { user } = useAuthStore();
   const [links, setLinks] = useState<Card[]>([]);
+  const [copy, setCopy] = useState("Copy");
   useEffect(() => {
     axios
       .get(`${baseUrl}/api/v1/cards/my-cards`, {
@@ -32,17 +33,25 @@ const Dashboard = () => {
       });
   }, []);
 
+  const handleCopy = (card_url: string) => {
+    navigator.clipboard
+      .writeText(`vibe-card.vercel.app/card/${card_url}`)
+      .then(() => {
+        setCopy("Copied");
+      });
+  };
+
   return (
-    <div className="bg-white h-[100vh]">
+    <div className="menu-bg h-[100vh]">
       <div className="container mx-auto">
         <div className="lg:mb-10 lg:pt-10 md:mb-10 md:pt-10 py-5 lg:ps-20 ps-4">
           <Link to={"/"} className="text-2xl text-teal-950 logo-font">
             vibecard
           </Link>
         </div>
-        <div className="flex justify-center lg:mt-20 lg:shadow lg:pb-20 lg:rounded">
+        <div className="flex justify-center bg-white lg:mt-20 lg:shadow lg:pb-20 lg:rounded">
           <div className="lg:grid grid-cols-10 gap-4">
-            <div className="lg:col-span-6 lg:p-16 md:p-9 p-5">
+            <div className="lg:col-span-6 lg:px-16 md:p-9 p-5">
               <div className="content-center">
                 <h1 className="text-4xl">
                   Welcome Back <span className="text-teal-400">{user}</span>
@@ -52,16 +61,30 @@ const Dashboard = () => {
                   services.
                 </p>
                 {links.length > 0 && (
-                  <div className="mt-5">
+                  <div className="mt-5 p-5 shadow rounded shadow-zinc-900">
                     <p className="text-xl mb-4">See your Previous Cards</p>
                     {links.map((link) => (
-                      <Link
-                        key={link.card_url}
-                        to={`/card/${link.card_url}`}
-                        className="block chakra mb-2 text-sky-800"
-                      >
-                        {link.job_title}
-                      </Link>
+                      <div className="flex justify-between">
+                        <div>
+                          <p className="chakra">Card Title: {link.job_title}</p>
+                          <Link
+                            key={link.card_url}
+                            to={`/card/${link.card_url}`}
+                            className="block chakra mb-2 text-sky-800"
+                          >
+                            View Card
+                          </Link>
+                        </div>
+                        <div>
+                          <button
+                            onClick={() => handleCopy(link.card_url)}
+                            className="bg-teal-500 w-32 p-1 mb-2 rounded shadow shadow-zinc-900 text-white"
+                          >
+                            <span className="bi-c-circle me-2"></span>
+                            {copy}
+                          </button>
+                        </div>
+                      </div>
                     ))}
                   </div>
                 )}
