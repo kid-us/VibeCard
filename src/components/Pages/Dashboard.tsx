@@ -2,8 +2,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { baseUrl } from "../../services/request";
+import useAuthStore from "../../store/useUserData";
 
 const Dashboard = () => {
+  const { user } = useAuthStore();
   const [links, setLinks] = useState<string[]>([]);
   useEffect(() => {
     axios
@@ -37,7 +39,7 @@ const Dashboard = () => {
             <div className="lg:col-span-6 lg:p-16 md:p-9 p-5">
               <div className="content-center">
                 <h1 className="text-4xl">
-                  Welcome Back <span className="text-teal-400">username</span>
+                  Welcome Back <span className="text-teal-400">{user}</span>
                 </h1>
                 <p className="lg:mb-0 text-3xl mt-10 mb-5">
                   Elevate your business and career to the next level with our
