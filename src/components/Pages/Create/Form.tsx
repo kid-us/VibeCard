@@ -222,6 +222,7 @@ const Form = () => {
     formData.append("full_name", data.name);
     formData.append("email", data.email);
     formData.append("phone", data.phone);
+    formData.append("location", data.location);
     formData.append("job_title", data.job);
     formData.append("bio", bio);
     formData.append("company_name", data.company);
