@@ -213,9 +213,10 @@ const Form = () => {
     };
 
     // Prepare form data
+
     const formData = new FormData();
     if (pictures.profile) formData.append("main_picture", pictures.profile);
-    if (pictures.cover) formData.append("cover_picture", pictures.cover);
+    if (pictures.cover) formData.append("covor_picture", pictures.cover);
     if (pictures.logo) formData.append("company_logo", pictures.logo);
 
     formData.append("pronouns", userPronoun);

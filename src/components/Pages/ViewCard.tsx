@@ -89,8 +89,9 @@ interface Data {
   card_url: string;
   company_logo: string;
   company_name: string;
-  cover_picture: string;
+  covor_picture: string;
   email: string;
+  location: string;
   full_name: string;
   job_title: string;
   main_picture: string;
@@ -119,6 +120,7 @@ const ViewCard = () => {
   }, []);
 
   console.log(styles);
+  console.log(data);
 
   return (
     <>
@@ -141,15 +143,15 @@ const ViewCard = () => {
                   >
                     <div
                       className={`lg:h-24 h-32 relative flex justify-between p-2 z-0 ${
-                        !data?.cover_picture
+                        !data?.covor_picture
                           ? styles.coverBG.bg_color === "gradient-cover" &&
                             `${styles.coverBG.bg_color} z-0`
                           : ""
                       }`}
                       style={{
                         backgroundImage:
-                          data?.cover_picture && data?.cover_picture
-                            ? `url("${data.cover_picture}")`
+                          data?.covor_picture && data?.covor_picture
+                            ? `url("${data.covor_picture}")`
                             : undefined,
                         backgroundColor: styles.coverBG.bg_color,
                       }}
@@ -240,8 +242,8 @@ const ViewCard = () => {
                             className="bi-geo-alt-fill me-2"
                             style={{ color: styles.location.font_color }}
                           ></span>
-                          Lorem
-                          {/* {locationVal && locationVal} */}
+
+                          {data.location && data.location}
                         </p>
                       </div>
 
