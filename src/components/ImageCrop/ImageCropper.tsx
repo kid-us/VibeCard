@@ -34,8 +34,8 @@ const ImageCropper = ({ imageSrc, onCropComplete, aspect }: Props) => {
 
   return (
     <>
-      <div className="overlay z-40"></div>
-      <div className="absolute top-20 w-[90%] h-[80%] left-0 z-40">
+      <div className="overlay z-50"></div>
+      <div className="absolute lg:top-20 lg:w-[90%] top-0 w-full lg:h-[80%] h-[100%] left-0 z-50">
         <Cropper
           image={imageSrc}
           crop={crop}

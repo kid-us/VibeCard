@@ -259,10 +259,10 @@ const Form = () => {
       </p>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-10 px-5 shadow lg:shadow-zinc-400 lg:rounded-xl bg-white rounded lg:overflow-auto lg:h-auto overflow-y-scroll h-[74dvh]"
+        className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-10  shadow lg:shadow-zinc-400 lg:rounded-xl bg-white rounded lg:overflow-auto lg:h-auto overflow-y-scroll h-[74dvh]"
       >
         {/* Images */}
-        <div className="lg:flex justify-between flex-shrink-0 grid grid-cols-3 gap-1">
+        <div className="lg:flex justify-between flex-shrink-0 grid grid-cols-3 gap-1 lg:px-0 px-1">
           {/* Profile */}
           <InputImages
             title="Profile Picture"
@@ -287,7 +287,7 @@ const Form = () => {
         </div>
 
         {/* Inputs Fields */}
-        <div className="grid grid-cols-2 lg:gap-x-8 gap-x-3 mt-5 lg:p-4 lg:h-[48dvh] overflow-y-scroll">
+        <div className="grid grid-cols-2 lg:gap-x-8 gap-x-3 mt-5 lg:p-4 lg:px-0 px-2 lg:h-[48dvh] overflow-y-scroll">
           {/* Pronoun */}
           <div className="mb-4">
             <label
