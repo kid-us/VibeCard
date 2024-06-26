@@ -22,7 +22,7 @@ const CenteredCard = () => {
   } = useCardData();
   const { company, jobTitle, location, name, pronoun, tagLine } =
     useTextColorStore();
-  const { companyLogo, socialMedia, contact } = useContentStore();
+  const { socialMedia, contact } = useContentStore();
 
   return (
     <div
@@ -30,27 +30,25 @@ const CenteredCard = () => {
       style={{ backgroundColor: cardColorBg }}
     >
       <div
-        className={`lg:h-24 h-32 relative flex justify-between p-2 ${
+        className={`lg:h-24 h-32 relative flex justify-between ${
           !preview?.cover
             ? coverColorBg === "gradient-cover" && coverColorBg
             : ""
         }`}
-        style={{
-          backgroundImage:
-            preview?.cover && preview?.cover
-              ? `url("${preview.cover}")`
-              : undefined,
-          backgroundColor: coverColorBg,
-        }}
       >
-        <div className="absolute lg:top-10 top-16 left-1/3 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden">
+        {preview.cover && (
           <img
-            src={preview?.profile ? preview.profile : user}
-            alt="user"
-            className=""
+            src={preview.cover}
+            alt="cover"
+            className="w-full object-cover
+            "
           />
+        )}
+
+        <div className="absolute lg:top-10 top-16 left-1/3 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden">
+          <img src={preview?.profile ? preview.profile : user} alt="user" />
         </div>
-        {companyLogo && (
+        {preview.logo && (
           <img
             src={preview?.logo ? preview.logo : qrCode}
             alt="Cover"

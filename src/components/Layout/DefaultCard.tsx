@@ -13,7 +13,7 @@ const DefaultCard = () => {
   const { cardColorBg } = useCardColorStore();
   const { company, jobTitle, location, name, pronoun, tagLine } =
     useTextColorStore();
-  const { companyLogo, socialMedia, contact } = useContentStore();
+  const { socialMedia, contact } = useContentStore();
   const {
     companyVal,
     jobTitleVal,
@@ -69,7 +69,7 @@ const DefaultCard = () => {
       </div>
       <div className="px-5 mt-10 text-white">
         <div className="relative">
-          {companyLogo && (
+          {preview.logo && (
             <img
               src={preview?.logo ? preview.logo : qrCode}
               alt="Cover"
