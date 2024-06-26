@@ -299,7 +299,7 @@ const Form = () => {
 
             <select
               name="pronoun"
-              className="lg:bg-gray-200 bg-white py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black"
+              className="bg-gray-200 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black"
               onChange={(event) => {
                 setUserPronoun(event.currentTarget.value);
                 setCardPronoun(event.currentTarget.value);
@@ -331,7 +331,7 @@ const Form = () => {
               {...register("name")}
               type="text"
               name="name"
-              className={`lg:bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
+              className={`bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
                 errors.name && "border-red-600 border-1 border"
               }`}
               onChange={(e) => {
@@ -359,7 +359,7 @@ const Form = () => {
               {...register("email")}
               type="email"
               name="email"
-              className={`lg:bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
+              className={`bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
                 errors.email && "border-red-600 border-1 border"
               }`}
               onChange={(e) => handleEmail(e.currentTarget.value)}
@@ -386,7 +386,7 @@ const Form = () => {
               {...register("phone", { valueAsNumber: true })}
               type="tel"
               name="phone"
-              className={`lg:bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
+              className={`bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
                 errors.phone && "border-red-600 border-1 border"
               }`}
               onChange={(e) => handlePhone(e.currentTarget.value)}
@@ -413,7 +413,7 @@ const Form = () => {
               {...register("job")}
               type="text"
               name="job"
-              className={`lg:bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
+              className={`bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
                 errors.job && "border-red-600 border-1 border"
               }`}
               onChange={(e) => {
@@ -441,7 +441,7 @@ const Form = () => {
               {...register("location")}
               type="text"
               name="location"
-              className={`lg:bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
+              className={`bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
                 errors.location && "border-red-600 border-1 border"
               }`}
               onChange={(e) => {
@@ -471,7 +471,7 @@ const Form = () => {
               {...register("company")}
               type="text"
               name="company"
-              className={`lg:bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
+              className={`bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
                 errors.company && "border-red-600 border-1 border"
               }`}
               onChange={(e) => {
@@ -500,7 +500,7 @@ const Form = () => {
             <input
               type="text"
               name="tag-line"
-              className={`lg:bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black`}
+              className={`bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black`}
               onChange={(e) => {
                 setBio(e.currentTarget.value);
                 setCardTagLine(e.currentTarget.value);
