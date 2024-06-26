@@ -22,6 +22,8 @@ const Create = () => {
   const [menu, setMenu] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
+  const [previewCard, setPreviewCard] = useState(false);
+
   const { preview } = useCardData();
 
   // Sidebar Small Device
@@ -163,12 +165,29 @@ const Create = () => {
         <div className="lg:block hidden col-span-2">
           <Sidebar />
         </div>
+
+        {/* Preview on Small Device */}
+        <div
+          onClick={() => setPreviewCard(!previewCard)}
+          className="lg:hidden fixed bottom-24 right-5 bg-sky-800 text-white shadow shadow-zinc-900 rounded px-2 py-1 z-50"
+        >
+          <p className="bi-eye-fill text-2xl"></p>
+        </div>
+
         {/* Form */}
-        <div className="lg:block hidden col-span-5 w-full p-3 mt-14">
+        <div
+          className={`lg:block ${
+            previewCard && "hidden"
+          } col-span-5 w-full lg:p-3 lg:mt-14 lg:pt-0 p-3 pt-20`}
+        >
           <Form />
         </div>
         {/* Card Layout*/}
-        <div className="lg:flex lg:col-span-2 lg:pe-5 lg:pt-0 lg:pb-0 pt-24 lg:h-auto pb-10 px-3 h-[95vh] overflow-scroll lg:mt-20">
+        <div
+          className={`lg:flex  ${
+            !previewCard && "hidden"
+          } lg:col-span-2 lg:pe-5 lg:pt-0 lg:pb-0 pt-24 lg:h-auto pb-10 px-3 h-[95vh] overflow-scroll lg:mt-20`}
+        >
           <div className="content-center w-full">
             {/* {layout} */}
             {layout === "default" && <DefaultCard />}
@@ -192,11 +211,11 @@ const Create = () => {
 
           <div className="z-50 bg-zinc-800 h-[90dvh] absolute bottom-0 w-full rounded-t-3xl text-white pb-10 animate__animated animate__fadeInUp">
             {/* Forms */}
-            {modal && activeModal === "Forms" && (
+            {/* {modal && activeModal === "Forms" && (
               <div className="p-3">
                 <Form />
               </div>
-            )}
+            )} */}
 
             {/* Colors */}
             {modal && activeModal === "Colors" && (

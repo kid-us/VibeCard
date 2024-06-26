@@ -7,7 +7,7 @@ interface Props {
 
 const SmallDeviceSidebar = ({ active, handleClick }: Props) => {
   return (
-    <div className="grid grid-cols-5 bg-stone-800 w-full">
+    <div className="grid grid-cols-4 bg-stone-800 w-full">
       {/* Icon */}
       {sidebarIcons.map((icons) => (
         <div
