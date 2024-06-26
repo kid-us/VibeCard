@@ -121,7 +121,7 @@ const ViewCard = () => {
   }, []);
 
   // console.log(styles);
-  console.log(data);
+  // console.log(data);
 
   return (
     <>

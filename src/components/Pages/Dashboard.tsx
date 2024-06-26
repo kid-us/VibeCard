@@ -4,9 +4,14 @@ import { Link } from "react-router-dom";
 import { baseUrl } from "../../services/request";
 import useAuthStore from "../../store/useUserData";
 
+interface Card {
+  card_url: string;
+  job_title: string;
+}
+
 const Dashboard = () => {
   const { user } = useAuthStore();
-  const [links, setLinks] = useState<string[]>([]);
+  const [links, setLinks] = useState<Card[]>([]);
   useEffect(() => {
     axios
       .get(`${baseUrl}/api/v1/cards/my-cards`, {
@@ -16,10 +21,11 @@ const Dashboard = () => {
         withCredentials: true,
       })
       .then((response) => {
-        const cardUrls = response.data.map(
-          (card: { card_url: string }) => card.card_url
-        );
-        setLinks(cardUrls);
+        const cards = response.data.map((card: Card) => ({
+          card_url: card.card_url,
+          job_title: card.job_title,
+        }));
+        setLinks(cards);
       })
       .then((err) => {
         console.log(err);
@@ -50,10 +56,11 @@ const Dashboard = () => {
                     <p className="text-xl mb-4">See your Previous Cards</p>
                     {links.map((link) => (
                       <Link
-                        to={`/card/${link}`}
+                        key={link.card_url}
+                        to={`/card/${link.card_url}`}
                         className="block chakra mb-2 text-sky-800"
                       >
-                        View your card
+                        {link.job_title}
                       </Link>
                     ))}
                   </div>
