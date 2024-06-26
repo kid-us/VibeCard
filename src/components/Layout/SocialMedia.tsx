@@ -18,7 +18,7 @@ const SocialMedia = () => {
         <Link
           key={media.icon}
           to={`${media.link}`}
-          className={`${media.icon} text-3xl text-center rounded-md py-2 shadow-inner`}
+          className={`${media.icon} text-white text-3xl text-center rounded-md py-2 shadow-inner`}
           style={{ backgroundColor: media.color }}
         ></Link>
       ))}

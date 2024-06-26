@@ -75,14 +75,14 @@ const Form = ({ layout }: Props) => {
     logo: null,
   });
 
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [userLocation, setUserLocation] = useState("");
-  const [bio, setBio] = useState("");
-  const [job, setJob] = useState("");
-  const [userCompany, setUserCompany] = useState("");
-  const [userPronoun, setUserPronoun] = useState("");
+  const [fullName, setFullName] = useState("Lorem");
+  const [email, setEmail] = useState("lorem@example.com");
+  const [phone, setPhone] = useState("0987654321");
+  const [userLocation, setUserLocation] = useState("Ethiopia");
+  const [bio, setBio] = useState("Lorem Ipsum Dolor");
+  const [job, setJob] = useState("Developer");
+  const [userCompany, setUserCompany] = useState("vibecard");
+  const [userPronoun, setUserPronoun] = useState("Mr");
 
   const [pronounError, setPronounError] = useState(false);
   const [profilePhotoError, setProfilePhotoError] = useState(false);
@@ -156,7 +156,6 @@ const Form = ({ layout }: Props) => {
     // Reset errors and loader state
     setPronounError(false);
     setProfilePhotoError(false);
-
     // Validate required fields
     if (!userPronoun) {
       setPronounError(true);
@@ -166,9 +165,7 @@ const Form = ({ layout }: Props) => {
       setProfilePhotoError(true);
       return;
     }
-
     setLoader(true);
-
     // Define card styles
     const cardStyles = {
       // TEXT
@@ -215,13 +212,11 @@ const Form = ({ layout }: Props) => {
       // Social Media
       socialMedia: socialMedia,
     };
-
     // Prepare form data
     const formData = new FormData();
     if (pictures.profile) formData.append("main_picture", pictures.profile);
     if (pictures.cover) formData.append("covor_picture", pictures.cover);
     if (pictures.logo) formData.append("company_logo", pictures.logo);
-
     formData.append("pronouns", userPronoun);
     formData.append("full_name", data.name);
     formData.append("email", data.email);

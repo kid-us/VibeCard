@@ -124,14 +124,16 @@ const RightCard = () => {
           </p>
         </div>
 
-        {/* Contacts */}
-        {contact.length > 0 && <Contacts />}
+        <div className="px-2">
+          {/* Contacts */}
+          {contact.length > 0 && <Contacts />}
 
-        {/* Social Media */}
-        {socialMedia.length > 0 && <SocialMedia />}
+          {/* Social Media */}
+          {socialMedia.length > 0 && <SocialMedia />}
 
-        {/* Button */}
-        <Button />
+          {/* Button */}
+          <Button />
+        </div>
       </div>
     </div>
   );

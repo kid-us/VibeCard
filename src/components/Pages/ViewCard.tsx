@@ -121,7 +121,7 @@ const ViewCard = () => {
   }, []);
 
   // console.log(styles);
-  // console.log(data);
+  console.log(data);
 
   return (
     <>
@@ -137,28 +137,29 @@ const ViewCard = () => {
           <div className="flex justify-center lg:mt-16 mt-5">
             <div className="w-80">
               {/* Default / Left */}
-              {data && styles && data.card_layout === 1 && (
+              {data && styles && data.card_layout === "default" && (
                 <Magnetic>
                   <div
                     className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 z-0 lg:mb-0 mb-14`}
                     style={{ backgroundColor: styles.cardBg.bg_color }}
                   >
                     <div
-                      className={`lg:h-24 h-32 relative flex justify-between p-2 z-0 ${
+                      className={`lg:h-24 h-32 relative flex justify-between z-0 ${
                         !data?.covor_picture
                           ? styles.coverBG.bg_color === "gradient-cover" &&
                             `${styles.coverBG.bg_color} z-0`
                           : ""
                       }`}
-                      style={{
-                        backgroundImage:
-                          data?.covor_picture && data?.covor_picture
-                            ? `url("${data.covor_picture}")`
-                            : undefined,
-                        backgroundColor: styles.coverBG.bg_color,
-                      }}
                     >
-                      <div className="absolute lg:top-10 top-16 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden z-0">
+                      {data.covor_picture && (
+                        <img
+                          src={data.covor_picture}
+                          alt="cover"
+                          className="w-full object-cover
+            "
+                        />
+                      )}
+                      <div className="absolute lg:top-10 top-16 left-2 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden z-0">
                         <img
                           src={data.main_picture ? data.main_picture : user}
                           alt="user"
@@ -169,7 +170,9 @@ const ViewCard = () => {
                         <p
                           className={`absolute right-0 me-1 w-48 text-center overflow-hidden text-ellipsis text-nowrap ${
                             styles.name.font_style + " " + styles.name.font_size
-                          } `}
+                          } ${
+                            data.covor_picture && "glass-effect text-shadow"
+                          }`}
                           style={{ color: styles.name.font_color }}
                         >
                           <span
@@ -300,7 +303,7 @@ const ViewCard = () => {
                       )}
 
                       <button
-                        className={`w-full rounded-lg py-4 mb-14 mt-6 shadow-md font-poppins font-extrabold shadow-zinc-950`}
+                        className={`w-full rounded-lg py-4 mb-8 mt-5 shadow-md font-poppins font-extrabold shadow-zinc-950`}
                         style={{
                           backgroundColor: styles.button.bg_color,
                           color: styles.button.text_color,
@@ -481,7 +484,7 @@ const ViewCard = () => {
                       )}
 
                       <button
-                        className={`w-full rounded-lg py-4 mb-14 mt-6 shadow-md font-poppins font-extrabold shadow-zinc-950`}
+                        className={`w-full rounded-lg py-4 mb-8 mt-5 shadow-md font-poppins font-extrabold shadow-zinc-950`}
                         style={{
                           backgroundColor: styles.button.bg_color,
                           color: styles.button.text_color,
@@ -494,7 +497,7 @@ const ViewCard = () => {
                 </Magnetic>
               )}
               {/* Right */}
-              {data && styles && data.card_layout === "centered" && (
+              {data && styles && data.card_layout === "right" && (
                 <Magnetic>
                   <div
                     className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 lg:mb-0 mb-10`}
@@ -610,65 +613,67 @@ const ViewCard = () => {
                         </p>
                       </div>
                     </div>
-                    {/* Contacts */}
-                    {styles.contacts.length > 0 && (
-                      <div
-                        className={`lg:my-2 my-5 ${
-                          styles.contacts.length > 0
-                            ? `grid ${
-                                styles.contacts.length <= 3
-                                  ? "grid-cols-3"
-                                  : "grid-cols-5"
-                              }  gap-5 my-5`
-                            : "invisible"
-                        }`}
-                      >
-                        {styles.contacts.map((c) => (
-                          <Link
-                            key={c.icon}
-                            to={`${c.link}`}
-                            className={`${c.icon} text-3xl text-center rounded-lg py-2 shadow-inner`}
-                            style={{
-                              color: c.color.replace("bg", "text"),
-                            }}
-                          ></Link>
-                        ))}
-                      </div>
-                    )}
+                    <div className="px-4">
+                      {/* Contacts */}
+                      {styles.contacts.length > 0 && (
+                        <div
+                          className={`lg:my-2 my-5 ${
+                            styles.contacts.length > 0
+                              ? `grid ${
+                                  styles.contacts.length <= 3
+                                    ? "grid-cols-3"
+                                    : "grid-cols-5"
+                                }  gap-5 my-5`
+                              : "invisible"
+                          }`}
+                        >
+                          {styles.contacts.map((c) => (
+                            <Link
+                              key={c.icon}
+                              to={`${c.link}`}
+                              className={`${c.icon} text-3xl text-center rounded-lg py-2 shadow-inner`}
+                              style={{
+                                color: c.color.replace("bg", "text"),
+                              }}
+                            ></Link>
+                          ))}
+                        </div>
+                      )}
 
-                    {/* Social Media */}
-                    {styles.socialMedia.length > 0 && (
-                      <div
-                        className={`lg:mb-0 mb-5 ${
-                          styles.socialMedia.length > 0
-                            ? `grid ${
-                                styles.socialMedia.length <= 3
-                                  ? "grid-cols-3"
-                                  : "grid-cols-4"
-                              }  gap-3`
-                            : "invisible"
-                        }`}
-                      >
-                        {styles.socialMedia.map((media) => (
-                          <Link
-                            key={media.icon}
-                            to={`${media.link}`}
-                            className={`${media.icon} text-3xl text-center rounded-md py-2 shadow-inner`}
-                            style={{ backgroundColor: media.color }}
-                          ></Link>
-                        ))}
-                      </div>
-                    )}
+                      {/* Social Media */}
+                      {styles.socialMedia.length > 0 && (
+                        <div
+                          className={`lg:mb-0 mb-5 ${
+                            styles.socialMedia.length > 0
+                              ? `grid ${
+                                  styles.socialMedia.length <= 3
+                                    ? "grid-cols-3"
+                                    : "grid-cols-4"
+                                }  gap-3`
+                              : "invisible"
+                          }`}
+                        >
+                          {styles.socialMedia.map((media) => (
+                            <Link
+                              key={media.icon}
+                              to={`${media.link}`}
+                              className={`${media.icon} text-white text-3xl text-center rounded-md py-2 shadow-inner`}
+                              style={{ backgroundColor: media.color }}
+                            ></Link>
+                          ))}
+                        </div>
+                      )}
 
-                    <button
-                      className={`w-full rounded-lg py-4 mb-14 mt-6 shadow-md font-poppins font-extrabold shadow-zinc-950`}
-                      style={{
-                        backgroundColor: styles.button.bg_color,
-                        color: styles.button.text_color,
-                      }}
-                    >
-                      Save Contact
-                    </button>
+                      <button
+                        className={`w-full rounded-lg py-4 mb-8 mt-5 shadow-md font-poppins font-extrabold shadow-zinc-950`}
+                        style={{
+                          backgroundColor: styles.button.bg_color,
+                          color: styles.button.text_color,
+                        }}
+                      >
+                        Save Contact
+                      </button>
+                    </div>
                   </div>
                 </Magnetic>
               )}
