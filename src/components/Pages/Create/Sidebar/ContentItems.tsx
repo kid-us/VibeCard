@@ -82,7 +82,6 @@ const ContentItems = ({
                 }
                 onChange={(e) => onLink(e.currentTarget.value)}
                 autoFocus
-                value="@lorem"
               />
               <p
                 onClick={() => update(content)}
