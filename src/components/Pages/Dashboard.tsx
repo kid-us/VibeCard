@@ -12,7 +12,7 @@ interface Card {
 const Dashboard = () => {
   const { user } = useAuthStore();
   const [links, setLinks] = useState<Card[]>([]);
-  const [copy, setCopy] = useState("Copy");
+  // const [copy, setCopy] = useState("Copy");
   useEffect(() => {
     axios
       .get(`${baseUrl}/api/v1/cards/my-cards`, {
@@ -33,13 +33,13 @@ const Dashboard = () => {
       });
   }, []);
 
-  const handleCopy = (card_url: string) => {
-    navigator.clipboard
-      .writeText(`vibe-card.vercel.app/card/${card_url}`)
-      .then(() => {
-        setCopy("Copied");
-      });
-  };
+  // const handleCopy = (card_url: string) => {
+  //   navigator.clipboard
+  //     .writeText(`vibe-card.vercel.app/card/${card_url}`)
+  //     .then(() => {
+  //       setCopy("Copied");
+  //     });
+  // };
 
   return (
     <div className="menu-bg h-[100vh]">
@@ -66,23 +66,24 @@ const Dashboard = () => {
                     {links.map((link) => (
                       <div className="flex justify-between">
                         <div>
-                          <p className="chakra">Card Title: {link.job_title}</p>
+                          <p className="chakra">Title: {link.job_title}</p>
+                        </div>
+                        <div>
                           <Link
                             key={link.card_url}
                             to={`/card/${link.card_url}`}
-                            className="block chakra mb-2 text-sky-800"
+                            className="block chakra mb-2 bg-teal-500 px-10 p-1 rounded shadow shadow-zinc-900 text-black"
                           >
-                            View Card
+                            View Card{" "}
+                            <span className="bi-arrow-up-right-square-fill ms-1"></span>
                           </Link>
-                        </div>
-                        <div>
-                          <button
+                          {/* <button
                             onClick={() => handleCopy(link.card_url)}
                             className="bg-teal-500 w-32 p-1 mb-2 rounded shadow shadow-zinc-900 text-white"
                           >
                             <span className="bi-c-circle me-2"></span>
                             {copy}
-                          </button>
+                          </button> */}
                         </div>
                       </div>
                     ))}
