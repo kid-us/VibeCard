@@ -299,7 +299,7 @@ const Form = () => {
 
             <select
               name="pronoun"
-              className="bg-gray-200 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black"
+              className="lg:bg-gray-200 bg-white py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black"
               onChange={(event) => {
                 setUserPronoun(event.currentTarget.value);
                 setCardPronoun(event.currentTarget.value);
