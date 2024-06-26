@@ -184,7 +184,7 @@ const Create = () => {
             previewCard && "hidden"
           } col-span-5 w-full lg:p-3 lg:mt-14 lg:pt-0 p-3 pt-20`}
         >
-          <Form />
+          <Form layout={layout} />
         </div>
         {/* Card Layout*/}
         <div

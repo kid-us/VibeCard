@@ -14,6 +14,10 @@ import axios from "axios";
 import { baseUrl } from "../../../services/request";
 import Modal from "../../Modal/Modal";
 
+interface Props {
+  layout: string;
+}
+
 interface FilePreviews {
   profile: File | null;
   cover: File | null;
@@ -32,7 +36,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const Form = () => {
+const Form = ({ layout }: Props) => {
   // Zustand
   const { contact, updateContacts, socialMedia } = useContentStore();
   const { button, company, jobTitle, location, name, pronoun, tagLine } =
@@ -213,7 +217,6 @@ const Form = () => {
     };
 
     // Prepare form data
-
     const formData = new FormData();
     if (pictures.profile) formData.append("main_picture", pictures.profile);
     if (pictures.cover) formData.append("covor_picture", pictures.cover);
@@ -227,7 +230,7 @@ const Form = () => {
     formData.append("job_title", data.job);
     formData.append("bio", bio);
     formData.append("company_name", data.company);
-    formData.append("card_layout", "1");
+    formData.append("card_layout", layout);
     formData.append("card_type", "business");
     formData.append("card_style_schema", JSON.stringify(cardStyles));
     try {
