@@ -169,7 +169,7 @@ const Create = () => {
         {/* Preview on Small Device */}
         <div
           onClick={() => setPreviewCard(!previewCard)}
-          className={`lg:hidden fixed bottom-16 right-1 bg-teal-800 text-white shadow shadow-zinc-900 rounded px-2 py-1 z-50`}
+          className={`lg:hidden fixed bottom-20 right-2 bg-gray-50 text-black shadow shadow-zinc-900 rounded px-2 py-1 z-50`}
         >
           <p
             className={`${
