@@ -30,20 +30,22 @@ const DefaultCard = () => {
       style={{ backgroundColor: cardColorBg }}
     >
       <div
-        className={`lg:h-24 h-32 relative flex justify-between p-2 z-0 ${
-          !preview?.cover
+        className={`lg:h-24 h-32 w-full relative flex justify-between z-0 ${
+          !preview.cover
             ? coverColorBg === "gradient-cover" && `${coverColorBg} z-0`
             : ""
         }`}
-        style={{
-          backgroundImage:
-            preview?.cover && preview?.cover
-              ? `url("${preview.cover}")`
-              : undefined,
-          backgroundColor: coverColorBg,
-        }}
       >
-        <div className="absolute lg:top-10 top-16 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden z-0">
+        {preview.cover && (
+          <img
+            src={preview.cover}
+            alt="cover"
+            className="w-full object-cover
+            "
+          />
+        )}
+
+        <div className="absolute lg:top-10 left-2 top-16 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden z-0">
           <img src={preview?.profile ? preview.profile : user} alt="user" />
         </div>
         {/* Pronoun and Name */}
@@ -51,7 +53,7 @@ const DefaultCard = () => {
           <p
             className={`absolute right-0 me-1 w-48 text-center overflow-hidden text-ellipsis text-nowrap ${
               name.font + " " + name.size
-            } `}
+            } ${preview.cover && "glass-effect text-shadow"} `}
             style={{ color: name.color }}
           >
             <span
