@@ -2,7 +2,6 @@ import { useState, useCallback } from "react";
 import Cropper from "react-easy-crop";
 import { Area } from "react-easy-crop";
 import { getCroppedImg } from "../../services/cropImage";
-// You need to create this utility function
 
 interface Props {
   imageSrc: string;
@@ -20,7 +19,7 @@ const ImageCropper = ({ imageSrc, onCropComplete, aspect }: Props) => {
   };
 
   const onCropCompleteInternal = useCallback(
-    (croppedAreaPercentage: Area, croppedAreaPixels: Area) => {
+    (_: Area, croppedAreaPixels: Area) => {
       setCroppedArea(croppedAreaPixels);
     },
     []
