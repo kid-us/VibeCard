@@ -68,7 +68,7 @@ const InputImages = ({
       </p>
       <div
         className={`border rounded-lg border-gray-300 bg-stone-200 ${
-          type === "cover" ? "lg:w-72 w-full h-24" : "lg:w-28 w-full h-24"
+          type === "cover" ? "lg:w-72 w-full h-auto" : "lg:w-28 w-full h-auto"
         } p-1 relative ${error && "border border-red-600"}`}
       >
         <input
@@ -101,9 +101,9 @@ const InputImages = ({
         {preview && (
           <div
             onClick={() => handleFileRemoved(type)}
-            className="absolute -top-4 -right-1 z-50"
+            className="absolute -top-4 -right-3 z-20"
           >
-            <p className="bi-x bg-sky-950 h-5 w-5 rounded text-center p-1 cursor-pointer text-white text-xs"></p>
+            <p className="bi-x bg-red-700 shadow shadow-zinc-900 h-6 w-6 pt-1 rounded-full text-center cursor-pointer text-white text-sm"></p>
           </div>
         )}
       </div>

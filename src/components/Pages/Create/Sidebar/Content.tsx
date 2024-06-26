@@ -113,7 +113,7 @@ const Content = () => {
   return (
     <div>
       <p className="chakra text-white mb-4">Contents</p>
-      <div className="bg-white rounded p-2 mb-5 lg:overflow-hidden lg:h-auto h-[75dvh] overflow-y-scroll lg:pb-0 pb-10">
+      <div className="bg-white rounded p-2 mb-5 lg:overflow-hidden lg:h-auto h-[75dvh] overflow-y-scroll lg:pb-0 pb-5">
         <p className="chakra mb-3 text-black">Contact</p>
 
         <ContentItems

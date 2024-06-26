@@ -169,9 +169,13 @@ const Create = () => {
         {/* Preview on Small Device */}
         <div
           onClick={() => setPreviewCard(!previewCard)}
-          className="lg:hidden fixed bottom-24 right-5 bg-sky-800 text-white shadow shadow-zinc-900 rounded px-2 py-1 z-50"
+          className={`lg:hidden fixed bottom-14 right-1 bg-teal-800 text-white shadow shadow-zinc-900 rounded px-2 py-1 z-50`}
         >
-          <p className="bi-eye-fill text-2xl"></p>
+          <p
+            className={`${
+              previewCard ? "bi-eye-slash-fill" : "bi-eye-fill"
+            } text-xl`}
+          ></p>
         </div>
 
         {/* Form */}
@@ -197,7 +201,6 @@ const Create = () => {
         </div>
       </div>
 
-      {/* Small Device Page */}
       {/* Small Device Sidebars */}
       {modal && (
         <>
@@ -210,13 +213,6 @@ const Create = () => {
           ></div>
 
           <div className="z-50 bg-zinc-800 h-[90dvh] absolute bottom-0 w-full rounded-t-3xl text-white pb-10 animate__animated animate__fadeInUp">
-            {/* Forms */}
-            {/* {modal && activeModal === "Forms" && (
-              <div className="p-3">
-                <Form />
-              </div>
-            )} */}
-
             {/* Colors */}
             {modal && activeModal === "Colors" && (
               <div className="p-5">

@@ -17,7 +17,7 @@ const SmallDeviceSidebar = ({ active, handleClick }: Props) => {
             active === icons.title
               ? "bg-stone-700 text-gray-400"
               : "hover:bg-stone-800 text-white"
-          } p-3`}
+          } p-1`}
         >
           <p className={`${icons.icon} text-xl`}></p>
           <p className="text-[10px] font-poppins text-gray-300">

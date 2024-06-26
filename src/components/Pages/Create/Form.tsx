@@ -259,7 +259,7 @@ const Form = () => {
       </p>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-10 px-5 shadow lg:shadow-zinc-400 lg:rounded-xl bg-white  rounded lg:overflow-auto lg:h-auto overflow-y-scroll h-[74dvh]"
+        className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-10 px-5 shadow lg:shadow-zinc-400 lg:rounded-xl bg-white rounded lg:overflow-auto lg:h-auto overflow-y-scroll h-[74dvh]"
       >
         {/* Images */}
         <div className="lg:flex justify-between flex-shrink-0 grid grid-cols-3 gap-1">
@@ -512,7 +512,7 @@ const Form = () => {
         </div>
 
         {/* Button */}
-        <div className="lg:absolute -bottom-2 lg:pe-10 w-full lg:left-5 lg:mb-10">
+        <div className="lg:absolute -bottom-2 lg:pe-10 w-full lg:left-5 lg:mb-0 mb-10">
           <div className="flex justify-end rounded-b-xl lg:bg-white py-3 lg:shadow border">
             <button className="bg-sky-800 shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full">
               {loader ? <Loader /> : "Create"}

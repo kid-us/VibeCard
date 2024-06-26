@@ -28,7 +28,7 @@ const Colors = () => {
     <>
       {/* Background */}
       <p className="chakra text-white mb-4">Card Background Color</p>
-      <div className="lg:overflow-hidden lg:h-auto h-[75dvh] overflow-y-scroll lg:pb-0 pb-8">
+      <div className="lg:overflow-hidden lg:h-auto h-[75dvh] overflow-y-scroll lg:pb-0 pb-3">
         <BackgroundColor
           bgColors={cardColorBg}
           cardType="card"
