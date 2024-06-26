@@ -291,7 +291,7 @@ const Form = () => {
           {/* Pronoun */}
           <div className="mb-4">
             <label
-              className="text-xs lg:text-gray-600 text-black block"
+              className="lg:text-xs text-sm lg:text-gray-600 block text-black"
               htmlFor="pronoun"
             >
               Pronoun <span className="text-red-700 text-2xl">*</span>
@@ -321,7 +321,7 @@ const Form = () => {
           {/* Name */}
           <div className="mb-3">
             <label
-              className="text-xs lg:text-gray-600 block text-black"
+              className="lg:text-xs text-sm lg:text-gray-600 block text-black"
               htmlFor="name"
             >
               Name
@@ -349,7 +349,7 @@ const Form = () => {
           {/* Email */}
           <div className="mb-3">
             <label
-              className="text-xs lg:text-gray-600 block text-black"
+              className="lg:text-xs text-sm lg:text-gray-600 block text-black"
               htmlFor="email"
             >
               Email
@@ -376,7 +376,7 @@ const Form = () => {
           {/* Phone */}
           <div className="mb-3">
             <label
-              className="text-xs lg:text-gray-600 block text-black"
+              className="lg:text-xs text-sm lg:text-gray-600 block text-black"
               htmlFor="phone"
             >
               Phone
@@ -403,7 +403,7 @@ const Form = () => {
           {/* Job-Title */}
           <div className="mb-3">
             <label
-              className="text-xs lg:text-gray-600 block text-black"
+              className="lg:text-xs text-sm lg:text-gray-600 block text-black"
               htmlFor="job-title"
             >
               Job Title
@@ -431,7 +431,7 @@ const Form = () => {
           {/* Location */}
           <div className="mb-3">
             <label
-              className="text-xs lg:text-gray-600 block text-black"
+              className="lg:text-xs text-sm lg:text-gray-600 block text-black"
               htmlFor="location"
             >
               Location
@@ -461,7 +461,7 @@ const Form = () => {
           {/* Company */}
           <div className="mb-3">
             <label
-              className="text-xs lg:text-gray-600 block text-black"
+              className="lg:text-xs text-sm lg:text-gray-600 block text-black"
               htmlFor="company"
             >
               Company
@@ -491,7 +491,7 @@ const Form = () => {
           {/* Tag-line || Bio*/}
           <div className="mb-3">
             <label
-              className="text-xs lg:text-gray-600 block text-black"
+              className="lg:text-xs text-sm lg:text-gray-600 block text-black"
               htmlFor="tag-line"
             >
               Bio

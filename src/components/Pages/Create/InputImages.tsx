@@ -63,7 +63,7 @@ const InputImages = ({
 
   return (
     <div>
-      <p className="lg:text-xs text-[11px] lg:text-gray-800 mb-4 font-poppins first-letter:uppercase text-black">
+      <p className="text-xs lg:text-gray-800 mb-4 font-poppins first-letter:uppercase text-black text-center">
         {title}
       </p>
       <div
