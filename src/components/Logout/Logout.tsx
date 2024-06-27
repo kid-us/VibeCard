@@ -1,10 +1,12 @@
 import axios from "axios";
 import { baseUrl } from "../../services/request";
 import useUserData from "../../store/useUserData";
+import { useNavigate } from "react-router-dom";
 
 const Logout = () => {
   const { logout } = useUserData();
 
+  const navigate = useNavigate();
   const handleLogout = () => {
     console.log("logout");
     axios
@@ -14,8 +16,10 @@ const Logout = () => {
         },
         withCredentials: true,
       })
-      .then(() => {
+      .then((response) => {
+        console.log(response);
         logout();
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);

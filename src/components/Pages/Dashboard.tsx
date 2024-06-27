@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { baseUrl } from "../../services/request";
 import useAuthStore from "../../store/useUserData";
+import Logout from "../Logout/Logout";
 
 interface Card {
   card_url: string;
@@ -48,6 +49,7 @@ const Dashboard = () => {
           <Link to={"/"} className="text-2xl text-teal-950 logo-font">
             vibecard
           </Link>
+          <Logout />
         </div>
         <div className="flex justify-center bg-white lg:mt-20 lg:shadow lg:pb-20 lg:rounded">
           <div className="lg:grid grid-cols-10 gap-4">
