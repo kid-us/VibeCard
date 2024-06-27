@@ -117,7 +117,7 @@ const Create = () => {
       </div>
 
       {/* Large Device Page */}
-      <div className="lg:grid lg:grid-cols-9 bg-white">
+      <div className="lg:grid lg:grid-cols-9">
         {/* Sidebar */}
         <div className="lg:block hidden col-span-2">
           <Sidebar />
@@ -127,40 +127,32 @@ const Create = () => {
         <div className="absolute lg:block hidden w-full">
           <div className="grid grid-cols-9">
             <div className="col-span-2"></div>
-            <div className="col-span-7 menu-bg">
-              <div className="flex justify-between px-7 py-2">
-                <div className="flex">
-                  {/* Vibecard */}
-                  <div className="me-10">
-                    <Link to="/">
-                      <p className="text-3xl ps-3 logo-font text-black py-3">
-                        vibecard
-                      </p>
-                    </Link>
-                  </div>
+            <div className="col-span-7 bg-white shadow">
+              <div className="flex justify-between px-5">
+                {/* Vibecard */}
+                <div>
+                  <Link to="/">
+                    <p className="text-3xl ps-3 logo-font text-black py-3">
+                      vibecard
+                    </p>
+                  </Link>
                 </div>
-                {/*  */}
-                <div className="mt-4">
-                  <Link
-                    to="/setting"
-                    className="me-10 chakra bg-white rounded  py-2 px-10"
-                  >
+                {/* Links */}
+                <div className="mt-4 flex me-4">
+                  <Link to="/setting" className="me-16 chakra">
                     Insights
                   </Link>
-                  <Link
-                    to="/setting"
-                    className="me-10 chakra bg-white rounded py-2 px-10"
-                  >
+                  <Link to="/setting" className="me-5 chakra">
                     Setting
                   </Link>
-                </div>
-                <div className="flex">
-                  <img
-                    src={preview.profile ? preview.profile : userPic}
-                    alt="user"
-                    className="w-10 h-10 overflow-hidden rounded-full"
-                  />
-                  <p className="uppercase ms-3 text-gray-500 mt-2">Lorem</p>
+                  <div className="flex ms-10">
+                    <img
+                      src={preview.profile ? preview.profile : userPic}
+                      alt="user"
+                      className="w-8 h-8 overflow-hidden rounded-full"
+                    />
+                    <p className="ms-3 text-gray-500 mt-1">Lorem</p>
+                  </div>
                 </div>
               </div>
             </div>

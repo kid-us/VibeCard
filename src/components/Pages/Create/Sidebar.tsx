@@ -14,7 +14,7 @@ const Sidebar = () => {
   const { preview } = useCardData();
   const { user } = useAuthStore();
   return (
-    <div className="grid grid-cols-5 bg-stone-800 -md w-full h-[100dvh] border border-stone-900 rounded">
+    <div className="grid grid-cols-5 bg-stone-800 -md w-full h-[100dvh] border border-stone-900 rounded-r">
       {/* Icon */}
       <div className="relative text-white bg-stone-900 shadow shadow-stone-400 overflow-hidden">
         {sidebarIcons.map((icons) => (
