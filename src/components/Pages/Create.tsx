@@ -175,7 +175,7 @@ const Create = () => {
         <div
           className={`lg:block ${
             previewCard && "hidden"
-          } col-span-5 w-full lg:p-3 lg:mt-24 lg:pt-0 p-3 pt-20`}
+          } col-span-5 w-full lg:p-3 lg:mt-20 lg:pt-0 p-3 pt-20`}
         >
           <Form layout={layout} />
         </div>
@@ -186,6 +186,7 @@ const Create = () => {
           } lg:col-span-2 lg:pe-5 lg:pt-0 lg:pb-0 pt-24 lg:h-auto pb-10 px-3 h-[95vh] overflow-scroll lg:mt-20`}
         >
           <div className="content-center w-full">
+            <p className="mb-4 chakra">Card Preview</p>
             {/* {layout} */}
             {layout === "default" && <DefaultCard />}
             {layout === "centered" && <CenteredCard />}

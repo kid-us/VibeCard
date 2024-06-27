@@ -135,7 +135,7 @@ const ViewCard = () => {
           </div>
 
           <div className="flex justify-center lg:mt-16 mt-5">
-            <div className="w-80">
+            <div className="lg:w-80">
               {/* Default / Left */}
               {data && styles && data.card_layout === "default" && (
                 <Magnetic>
