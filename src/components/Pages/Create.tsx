@@ -20,7 +20,6 @@ const Create = () => {
   const [modal, setModal] = useState(false);
   const [activeModal, setActiveModal] = useState("");
   const [menu, setMenu] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
 
   const [previewCard, setPreviewCard] = useState(false);
 
@@ -38,9 +37,9 @@ const Create = () => {
   };
 
   return (
-    <div className="menu-bg relative menu lg:h-auto h-[100dvh]">
-      {/* Navbar */}
-      <div className="fixed w-full bg-white shadow z-40">
+    <div className="menu-bg relative lg:h-auto h-[100dvh]">
+      {/* Small Device Navbar */}
+      <div className="lg:hidden fixed w-full bg-white shadow z-40">
         <nav
           className={`flex justify-between lg:py-3 py-4 px-5 ${
             menu && "menu-bg animate__animated animate__fadeInLeft"
@@ -52,48 +51,6 @@ const Create = () => {
             </Link>
           </div>
           <div className="flex justify-between">
-            {/* Large Device Nav*/}
-            <div className="lg:block hidden space-x-16">
-              <Link to={"/insight"} className="text-sm">
-                Insights
-              </Link>
-              <Link to={"/setting"} className="text-sm">
-                Settings
-              </Link>
-            </div>
-
-            {/* Large Device Dropdown */}
-            <div
-              onClick={() => setDropdown(!dropdown)}
-              className="ms-28 lg:flex hidden cursor-pointer relative"
-            >
-              <img
-                src={preview.profile ? preview.profile : userPic}
-                alt="user"
-                className="w-8 h-8 overflow-hidden border-2 border-black rounded-full"
-              />
-              <span
-                className={`${
-                  dropdown ? "bi-caret-up-fill" : "bi-caret-down-fill"
-                }  mt-1 ms-1`}
-              ></span>
-
-              {/* Dropdown */}
-              {dropdown && (
-                <div className="absolute w-44 h-20 bg-white shadow shadow-zinc-800 top-11 -left-28 rounded px-4 pt-2">
-                  <p className="text sm font-poppins mb-3 text-gray-500">
-                    @Lorem
-                  </p>
-                  <Link
-                    to="/logout"
-                    className="bi-box-arrow-in-left bg-teal-500 px-8 text-white py-1 rounded shadow shadow-zinc-800"
-                  >
-                    Logout
-                  </Link>
-                </div>
-              )}
-            </div>
-
             {/* Small Device Nav*/}
             <div className="lg:hidden relative">
               <p
@@ -160,10 +117,54 @@ const Create = () => {
       </div>
 
       {/* Large Device Page */}
-      <div className="lg:grid lg:grid-cols-9">
+      <div className="lg:grid lg:grid-cols-9 bg-white">
         {/* Sidebar */}
         <div className="lg:block hidden col-span-2">
           <Sidebar />
+        </div>
+
+        {/* Large device Navbar */}
+        <div className="absolute lg:block hidden w-full">
+          <div className="grid grid-cols-9">
+            <div className="col-span-2"></div>
+            <div className="col-span-7 menu-bg">
+              <div className="flex justify-between px-7 py-2">
+                <div className="flex">
+                  {/* Vibecard */}
+                  <div className="me-10">
+                    <Link to="/">
+                      <p className="text-3xl ps-3 logo-font text-black py-3">
+                        vibecard
+                      </p>
+                    </Link>
+                  </div>
+                </div>
+                {/*  */}
+                <div className="mt-4">
+                  <Link
+                    to="/setting"
+                    className="me-10 chakra bg-white rounded  py-2 px-10"
+                  >
+                    Insights
+                  </Link>
+                  <Link
+                    to="/setting"
+                    className="me-10 chakra bg-white rounded py-2 px-10"
+                  >
+                    Setting
+                  </Link>
+                </div>
+                <div className="flex">
+                  <img
+                    src={preview.profile ? preview.profile : userPic}
+                    alt="user"
+                    className="w-10 h-10 overflow-hidden rounded-full"
+                  />
+                  <p className="uppercase ms-3 text-gray-500 mt-2">Lorem</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Preview on Small Device */}
@@ -182,7 +183,7 @@ const Create = () => {
         <div
           className={`lg:block ${
             previewCard && "hidden"
-          } col-span-5 w-full lg:p-3 lg:mt-14 lg:pt-0 p-3 pt-20`}
+          } col-span-5 w-full lg:p-3 lg:mt-24 lg:pt-0 p-3 pt-20`}
         >
           <Form layout={layout} />
         </div>

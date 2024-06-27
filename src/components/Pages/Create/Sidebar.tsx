@@ -7,13 +7,14 @@ import Layout from "./Sidebar/Layout";
 import { useCardData } from "../../../store/useCardData";
 import { userPic } from "../../../assets";
 import useAuthStore from "../../../store/useUserData";
+// import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const [selected, setSelected] = useState("Content");
   const { preview } = useCardData();
   const { user } = useAuthStore();
   return (
-    <div className="grid grid-cols-5 bg-stone-800 -md w-full h-[100dvh] pt-[55px]">
+    <div className="grid grid-cols-5 bg-stone-800 -md w-full h-[100dvh] border border-stone-900 rounded">
       {/* Icon */}
       <div className="relative text-white bg-stone-900 shadow shadow-stone-400 overflow-hidden">
         {sidebarIcons.map((icons) => (
