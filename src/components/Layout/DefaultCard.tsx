@@ -1,4 +1,4 @@
-import { qrCode, user } from "../../assets";
+import { qrCode, userPic } from "../../assets";
 import { useCoverColorStore } from "../../store/useCoverColorStore";
 import { useCardColorStore } from "../../store/useCardColorStore";
 import { useTextColorStore } from "../../store/useTextColorStore";
@@ -46,7 +46,7 @@ const DefaultCard = () => {
         )}
 
         <div className="absolute lg:top-10 left-2 top-16 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden z-0">
-          <img src={preview?.profile ? preview.profile : user} alt="user" />
+          <img src={preview?.profile ? preview.profile : userPic} alt="user" />
         </div>
         {/* Pronoun and Name */}
         <div className="content-center">

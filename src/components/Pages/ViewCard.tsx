@@ -2,7 +2,7 @@ import axios from "axios";
 import { baseUrl } from "../../services/request";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { qrCode, user } from "../../assets";
+import { qrCode, userPic } from "../../assets";
 import Contacts from "../Layout/Contacts";
 import SocialMedia from "../Layout/SocialMedia";
 import Magnetic from "../GsapMagnetic/Magnetic";
@@ -161,7 +161,7 @@ const ViewCard = () => {
                       )}
                       <div className="absolute lg:top-10 top-16 left-2 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden z-0">
                         <img
-                          src={data.main_picture ? data.main_picture : user}
+                          src={data.main_picture ? data.main_picture : userPic}
                           alt="user"
                         />
                       </div>
@@ -341,7 +341,7 @@ const ViewCard = () => {
 
                       <div className="absolute lg:top-10 top-16 left-1/3 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden">
                         <img
-                          src={data.main_picture ? data.main_picture : user}
+                          src={data.main_picture ? data.main_picture : userPic}
                           alt="user"
                         />
                       </div>
@@ -522,7 +522,7 @@ const ViewCard = () => {
 
                       <div className="absolute lg:top-10 top-16 right-2 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden">
                         <img
-                          src={data.main_picture ? data.main_picture : user}
+                          src={data.main_picture ? data.main_picture : userPic}
                           alt="user"
                           className=""
                         />

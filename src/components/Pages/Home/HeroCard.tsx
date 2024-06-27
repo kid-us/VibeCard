@@ -1,4 +1,4 @@
-import { qrCode, user } from "../../../assets";
+import { qrCode, userPic } from "../../../assets";
 import Magnetic from "../../GsapMagnetic/Magnetic";
 const HeroCard = () => {
   return (
@@ -8,7 +8,7 @@ const HeroCard = () => {
         <div className="absolute bg-white w-52 h-[380px] rounded-xl -top-24 left-10 overflow-hidden border shadow-lg shadow-black hover:z-30">
           <div className="flex justify-center bg-black  w-full h-28 relative">
             <div className="absolute border-4 border-white w-24 h-24 rounded-full mt-4">
-              <img src={user} alt="user" className="blur-sm" />
+              <img src={userPic} alt="user" className="blur-sm" />
             </div>
           </div>
           {/* Info */}
@@ -49,7 +49,7 @@ const HeroCard = () => {
             <div className="grid grid-cols-3">
               <div className="col-span-2 mt-4">
                 <div className="flex mb-5">
-                  <img src={user} alt="user" className="w-10 blur-sm" />
+                  <img src={userPic} alt="user" className="w-10 blur-sm" />
                   <span className="text-gray-200 ms-6 mt-3">Lorem</span>
                 </div>
                 <p className="text-gray-400 text-xs mb-2">
@@ -84,7 +84,7 @@ const HeroCard = () => {
         <div className="absolute bg-stone-600 w-56 h-36 bottom-0 right-14 rounded shadow-lg shadow-black hover:z-50 z-10">
           <div className="flex justify-center">
             <div className="w-16 h-16 rounded-full border-2 mt-1">
-              <img src={user} alt="user" className="blur-sm" />
+              <img src={userPic} alt="user" className="blur-sm" />
             </div>
           </div>
           <p className="text-sm text-center font-poppins mt-1">Lorem Ipsum</p>

@@ -1,4 +1,4 @@
-import { qrCode, user } from "../../assets";
+import { qrCode, userPic } from "../../assets";
 import { useCoverColorStore } from "../../store/useCoverColorStore";
 import { useCardColorStore } from "../../store/useCardColorStore";
 import { useTextColorStore } from "../../store/useTextColorStore";
@@ -47,7 +47,7 @@ const RightCard = () => {
 
         <div className="absolute lg:top-10 top-16 right-2 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden">
           <img
-            src={preview?.profile ? preview.profile : user}
+            src={preview?.profile ? preview.profile : userPic}
             alt="user"
             className=""
           />

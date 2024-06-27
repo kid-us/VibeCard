@@ -1,5 +1,5 @@
 import qrCode from "./qr-code.png";
-import user from "./user.png";
+import userPic from "./user.png";
 import google from "./google.png";
 import hero from "./hero.png";
 import pageNotFound from "./page404.gif";
@@ -11,7 +11,7 @@ import video from "./demo.webm";
 
 export {
   qrCode,
-  user,
+  userPic,
   google,
   hero,
   pageNotFound,

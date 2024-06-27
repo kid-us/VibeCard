@@ -1,4 +1,4 @@
-import { qrCode, user } from "../../assets";
+import { qrCode, userPic } from "../../assets";
 import Magnetic from "../GsapMagnetic/Magnetic";
 
 interface Props {
@@ -40,7 +40,7 @@ const Card = ({ passLength, email, submitted, username }: Props) => {
               <div className={`${username && "flex"}`}>
                 <div>
                   <img
-                    src={user}
+                    src={userPic}
                     alt="User Icon"
                     className="aspect-square w-14 blur-sm mt-4"
                   />

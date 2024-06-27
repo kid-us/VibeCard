@@ -1,4 +1,4 @@
-import { user } from "../../../../assets";
+import { userPic } from "../../../../assets";
 import { useLayoutStore } from "../../../../store/useLayoutStore";
 
 const Layout = () => {
@@ -16,7 +16,7 @@ const Layout = () => {
             <div className="w-full lg:h-20 h-32 bg-gray-600 rounded ">
               <div className={`h-24 relative flex justify-between p-2 z-0`}>
                 <div className="absolute lg:top-10 top-16 lg:h-16 lg:w-16 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden z-0">
-                  <img src={user} alt="user" />
+                  <img src={userPic} alt="user" />
                 </div>
                 {/* Pronoun and Name */}
                 <div className="content-center lg:mb-2">
@@ -29,7 +29,7 @@ const Layout = () => {
             <div className="px-5 mt-10 ">
               <div className="relative">
                 <img
-                  src={user}
+                  src={userPic}
                   alt="Cover"
                   className="absolute right-0 -top-7 lg:w-14 lg:h-14 w-16 h-16 rounded-full border-2 border-white"
                 />
@@ -69,7 +69,7 @@ const Layout = () => {
             <div className="w-full lg:h-20 h-32 bg-gray-600 rounded ">
               <div className={`h-24 relative flex justify-between p-2 z-0`}>
                 <div className="absolute right-2 lg:top-10 top-16 lg:h-16 lg:w-16 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden z-0">
-                  <img src={user} alt="user" />
+                  <img src={userPic} alt="user" />
                 </div>
                 {/* Pronoun and Name */}
                 <div className="content-center mb-2">
@@ -82,7 +82,7 @@ const Layout = () => {
             <div className="px-5 mt-10 text-white">
               <div className="relative">
                 <img
-                  src={user}
+                  src={userPic}
                   alt="Cover"
                   className="absolute left-0 -top-7 lg:w-14 lg:h-14 w-16 h-16 rounded-full border-2 border-white"
                 />
@@ -122,10 +122,10 @@ const Layout = () => {
             <div className="w-full lg:h-20 h-32 bg-gray-600 rounded">
               <div className={`h-24 relative flex justify-between p-2 z-0`}>
                 <div className="absolute lg:top-10 lg:left-20 lg:w-16 lg:h-16 top-10 w-24 h-24 left-28 border-[4px] rounded-full border-white overflow-hidden z-0">
-                  <img src={user} alt="user" />
+                  <img src={userPic} alt="userPic" />
                 </div>
                 <img
-                  src={user}
+                  src={userPic}
                   alt="Cover"
                   className="absolute lg:right-20 lg:top-20 lg:w-10 lg:h-10 w-14 h-14 right-24 top-28 rounded-full border-2 border-white"
                 />

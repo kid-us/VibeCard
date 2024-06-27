@@ -12,7 +12,7 @@ import Content from "./Create/Sidebar/Content";
 import Layout from "./Create/Sidebar/Layout";
 import Form from "./Create/Form";
 import { useCardData } from "../../store/useCardData";
-import { user } from "../../assets";
+import { userPic } from "../../assets";
 
 const Create = () => {
   const { layout } = useLayoutStore();
@@ -68,7 +68,7 @@ const Create = () => {
               className="ms-28 lg:flex hidden cursor-pointer relative"
             >
               <img
-                src={preview.profile ? preview.profile : user}
+                src={preview.profile ? preview.profile : userPic}
                 alt="user"
                 className="w-8 h-8 overflow-hidden border-2 border-black rounded-full"
               />
@@ -130,7 +130,7 @@ const Create = () => {
               <div className="absolute menu-bg w-full h-[100vh] right-0 top-16 p-4">
                 <div className="flex cursor-pointer">
                   <img
-                    src={preview.profile ? preview.profile : user}
+                    src={preview.profile ? preview.profile : userPic}
                     alt="user"
                     className="w-16 h-16 overflow-hidden border-2 border-black rounded-full"
                   />
