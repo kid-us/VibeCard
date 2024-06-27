@@ -7,12 +7,35 @@ import Layout from "./Sidebar/Layout";
 import { useCardData } from "../../../store/useCardData";
 import { userPic } from "../../../assets";
 import useAuthStore from "../../../store/useUserData";
-// import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { baseUrl } from "../../../services/request";
 
 const Sidebar = () => {
   const [selected, setSelected] = useState("Content");
   const { preview } = useCardData();
-  const { user } = useAuthStore();
+  const { user, logout } = useAuthStore();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    console.log("logout");
+    axios
+      .post(`${baseUrl}/api/v1/auth/logout`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response);
+        logout();
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="grid grid-cols-5 bg-stone-800 -md w-full h-[100dvh] border border-stone-900 rounded-r">
       {/* Icon */}
@@ -41,6 +64,7 @@ const Sidebar = () => {
             {user}
           </p>
           <p
+            onClick={() => handleLogout()}
             className="text-center mt-2 bi-arrow-bar-right text-xl cursor-pointer"
             title="Logout"
           ></p>
