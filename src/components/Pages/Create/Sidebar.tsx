@@ -1,18 +1,15 @@
 import { useState } from "react";
 import Colors from "./Sidebar/Colors";
-
 import { sidebarIcons } from "../../../services/sidebarIcons";
 import Texts from "./Sidebar/Texts";
 import Content from "./Sidebar/Content";
 import Layout from "./Sidebar/Layout";
 import { useCardData } from "../../../store/useCardData";
 import { userPic } from "../../../assets";
-import { Link } from "react-router-dom";
 import useAuthStore from "../../../store/useUserData";
 
 const Sidebar = () => {
   const [selected, setSelected] = useState("Content");
-  const [dropdown, setDropdown] = useState(false);
   const { preview } = useCardData();
   const { user } = useAuthStore();
   return (
@@ -33,32 +30,19 @@ const Sidebar = () => {
             </p>
           </div>
         ))}
-        <div className="absolute bottom-8 py-5 p-3">
-          <div
-            onClick={() => setDropdown(!dropdown)}
-            className="cursor-pointer"
-          >
-            <img
-              src={preview.profile ? preview.profile : userPic}
-              alt="user"
-              className="w-full overflow-hidden border-2 border-black rounded-full"
-            />
-
-            {/* Dropdown */}
-            {dropdown && (
-              <div className="absolute w-44 h-20 bg-white shadow shadow-zinc-800 top-11 -left-28 rounded px-4 pt-2">
-                <p className="text sm font-poppins mb-3 text-gray-500">
-                  @Lorem
-                </p>
-                <Link
-                  to="/logout"
-                  className="bi-box-arrow-in-left bg-teal-500 px-8 text-white py-1 rounded shadow shadow-zinc-800"
-                >
-                  Logout
-                </Link>
-              </div>
-            )}
-          </div>
+        <div className="absolute bottom-0 p-2">
+          <img
+            src={preview.profile ? preview.profile : userPic}
+            alt="user"
+            className="w-full overflow-hidden border-2 border-black rounded-full"
+          />
+          <p className="uppercase text-xs text-center mt-2 text-gray-400">
+            {user}
+          </p>
+          <p
+            className="text-center mt-2 bi-arrow-bar-right text-xl cursor-pointer"
+            title="Logout"
+          ></p>
         </div>
       </div>
 
