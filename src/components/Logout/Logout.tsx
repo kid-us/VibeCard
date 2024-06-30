@@ -11,7 +11,7 @@ const Logout = () => {
     axios
       .post(
         `${baseUrl}/api/v1/auth/logout`,
-        {}, // No body needed for logout
+        {},
         {
           headers: {
             "Content-Type": "application/json",

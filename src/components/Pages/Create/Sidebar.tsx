@@ -18,21 +18,23 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    console.log("logout");
     axios
-      .post(`${baseUrl}/api/v1/auth/logout`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      })
-      .then((response) => {
-        console.log(response);
+      .post(
+        `${baseUrl}/api/v1/auth/logout`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      )
+      .then(() => {
         logout();
         navigate("/");
       })
       .catch((err) => {
-        console.log(err);
+        console.error("Logout failed: ", err);
       });
   };
 
