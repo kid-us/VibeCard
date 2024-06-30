@@ -23,7 +23,7 @@ const Products = () => {
             {product.map((pro) => (
               <div
                 key={pro.id}
-                className="lg:bg-transparent bg-white shadow-gray-500 mb-10 hover:scale-105"
+                className="lg:hover:bg-white lg:bg-transparent bg-white shadow-gray-500 mb-10 hover:scale-105"
               >
                 <Link to={`/product/${pro.id}`}>
                   <img
@@ -31,7 +31,7 @@ const Products = () => {
                     alt="card picture"
                     className="shadow shadow-zinc-800 rounded"
                   />
-                  <div className="py-5 px-3">
+                  <div className="py-5 px-3 border-b-2 rounded shadow">
                     <p className="font-poppins text-xl font-extrabold">
                       {pro.name}
                     </p>
