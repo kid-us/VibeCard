@@ -68,7 +68,7 @@ function Pay() {
               />
             )}
           </div>
-          <div className="mt-20">
+          <div className="my-20 px-5">
             {clientSecret && (
               <>
                 <p className="mb-8 font-poppins">Powered by Stripe.</p>
