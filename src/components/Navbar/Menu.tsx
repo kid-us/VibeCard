@@ -6,10 +6,9 @@ interface Props {
   nav: Nav[];
   menu: () => void;
   username: string | null;
-  bg?: string;
 }
 
-const Menu = ({ nav, menu, username, bg }: Props) => {
+const Menu = ({ nav, menu, username }: Props) => {
   return (
     <>
       <div className="flex justify-between py-3 px-3">
@@ -44,12 +43,7 @@ const Menu = ({ nav, menu, username, bg }: Props) => {
         {username !== null && (
           <div className="lg:hidden md:hidden mt-1">
             <Link to={"/dashboard"}>
-              <p className={`bi-person-fill text-red-700 text-xl`}>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Voluptate minima, quasi nulla nobis eveniet maxime! Suscipit,
-                cum qui aspernatur deleniti officia totam pariatur esse
-                veritatis soluta corrupti commodi, maxime aliquam!
-              </p>
+              <p className={`bi-person-fill text-text-black text-xl`}></p>
             </Link>
           </div>
         )}
@@ -80,15 +74,21 @@ const Menu = ({ nav, menu, username, bg }: Props) => {
             </Link>
 
             <Link
-              to={"/setting"}
+              to={"/"}
               className="block text-xl pb-2 font-poppins font-extrabold mb-3"
             >
               Setting
             </Link>
+            <Link
+              to={"/"}
+              className="block text-xl pb-2 font-poppins font-extrabold mb-3"
+            >
+              Insights
+            </Link>
           </>
         )}
 
-        <div className="absolute bottom-10">
+        <div className="absolute -bottom-8">
           <div className="w-80 bg-stone-400 rounded px-4 py-4 mb-14">
             <p className="chakra font-extrabold text-white">
               <span className="bi-telephone-fill me-5"></span> Contact Us

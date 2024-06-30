@@ -6,6 +6,7 @@ import useAuthStore from "../../store/useUserData";
 import axios from "axios";
 import { baseUrl } from "../../services/request";
 import Loading from "../Loading/Loading";
+import Logout from "../Logout/Logout";
 
 interface Props {
   bg?: string;
@@ -61,6 +62,8 @@ const Navbar = ({ bg }: Props) => {
         className={`lg:py-0 py-2 ${bg && bg}  ${
           isSticky
             ? "sticky top-0 shadow animate__animated animate__fadeInDown bg-white z-50"
+            : bg
+            ? "py-0"
             : "lg:py-3"
         }`}
       >
@@ -134,19 +137,54 @@ const Navbar = ({ bg }: Props) => {
               )}
             </div>
 
+            {/* Large Device */}
             <div className="lg:block hidden col-1 mt-2">
-              {/* Large Device */}
               {user !== null ? (
-                <Link to={"/dashboard"}>
-                  <p className="lg:block hidden py-1 text-xl rounded text-black text-center transition ease-in-out delay-200 hover:scale-105 hover:bg-teal-900 hover:text-white duration-200 chakra px-2">
+                <div className="relative">
+                  <p
+                    onClick={() => setIsMenu(!isMenu)}
+                    className="lg:block hidden py-1 rounded text-black text-center transition ease-in-out delay-200 hover:scale-105 hover:bg-teal-900 hover:text-white duration-200 chakra font-poppins text-xl cursor-pointer"
+                  >
                     <span className="bi-person-fill me-2"></span>
                     {user}
                   </p>
-                </Link>
+
+                  {/* Menu  */}
+                  {isMenu && (
+                    <div className="lg:block hidden absolute shadow-lg bg-white w-44 p-4 rounded mt-3">
+                      <Link
+                        to={"/dashboard"}
+                        className="block font-poppins mb-2 hover:text-gray-400 chakra"
+                      >
+                        Dashboard
+                      </Link>
+                      <Link
+                        to={"/create"}
+                        className="block font-poppins mb-2 hover:text-gray-400 chakra"
+                      >
+                        Create Card
+                      </Link>
+                      <Link
+                        to={"/setting"}
+                        className="block font-poppins mb-2 hover:text-gray-400 chakra"
+                      >
+                        Setting
+                      </Link>
+                      <Link
+                        to={"/create"}
+                        className="block font-poppins mb-2 hover:text-gray-400 chakra"
+                      >
+                        Insights
+                      </Link>
+                      <hr className="my-2" />
+                      <Logout />
+                    </div>
+                  )}
+                </div>
               ) : (
                 <Link
                   to={"/login"}
-                  className="lg:block hidden bg-gray-100 py-1 px-5 text-sm rounded text-blck text-center transition ease-in-out delay-200 hover:scale-105 hover:bg-teal-900 duration-200 shadow shadow-zinc-400 chakra"
+                  className="lg:block hidden py-1 text-black text-center rounded transition ease-in-out delay-200 hover:scale-105 hover:bg-teal-900 hover:text-white hover:shadow hover:shadow-zinc-400  duration-200 chakra font-poppins text-lg"
                 >
                   Sign In
                 </Link>
@@ -155,12 +193,16 @@ const Navbar = ({ bg }: Props) => {
 
             {/* Small device user Icon */}
             {user !== null && (
-              <div className="lg:hidden md:hidden mt-1">
+              <div className="lg:hidden mt-1">
                 <Link to={"/dashboard"}>
                   <span className="px-3 flex">
                     <p
                       className={`bi-person-fill ${
-                        isSticky ? "text-black" : "text-white"
+                        bg
+                          ? "text-black"
+                          : isSticky
+                          ? "text-black"
+                          : "text-white"
                       } text-xl`}
                     ></p>
                   </span>
@@ -173,13 +215,8 @@ const Navbar = ({ bg }: Props) => {
 
       {/* Menu */}
       {isMenu && (
-        <div className="fixed h-[100dvh] z-50 top-0 w-full menu-bg animate__animated animate__fadeInLeft">
-          <Menu
-            bg={bg}
-            nav={nav}
-            username={user}
-            menu={() => setIsMenu(false)}
-          />
+        <div className="lg:hidden fixed h-[100dvh] z-50 top-0 w-full menu-bg animate__animated animate__fadeInLeft">
+          <Menu nav={nav} username={user} menu={() => setIsMenu(false)} />
         </div>
       )}
     </>

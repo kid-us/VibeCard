@@ -19,7 +19,7 @@ const Products = () => {
       </div>
       <div className="menu-bg ">
         <div className="container mx-auto lg:mt-10">
-          <div className="lg:grid grid-cols-3 gap-x-10 lg:pt-20 pt-10 px-2">
+          <div className="lg:grid md:grid lg:grid-cols-3 md:grid-cols-2 gap-x-10 lg:pt-20 pt-10 px-2">
             {product.map((pro) => (
               <div
                 key={pro.id}
