@@ -27,11 +27,11 @@ const ProductDetail = () => {
       <div className="container mx-auto lg:mt-28 mt-5">
         {product && (
           <div className="lg:grid grid-cols-2 justify-between gap-x-20">
-            <div className="flex justify-center py-10 lg:mx-0 mx-1">
+            <div className="mt-10 lg:mx-0 mx-1">
               <img
                 src={product[0].image}
                 alt="Card"
-                className="shadow shadow-zinc-900 rounded-xl lg:w-[90%]"
+                className="lg:w-full object-contain rounded lg:shadow-2xl shadow-zinc-950 lg:mb-0 mb-10"
               />
             </div>
             <div className="lg:px-0 px-2">
@@ -45,15 +45,13 @@ const ProductDetail = () => {
                 <div className="col-span-1">
                   <button
                     onClick={() => handleMinus()}
-                    className="bi-minus bg-black w-full h-full text-white text-2xl"
-                  >
-                    -
-                  </button>
+                    className="bi-dash bg-black w-full h-full text-white text-2xl"
+                  ></button>
                 </div>
                 <div className="col-span-2">
                   <input
                     type="number"
-                    className="h-12 border w-full text-center chakra text-3xl"
+                    className="h-14 border w-full text-center chakra text-3xl"
                     value={quantity}
                     onChange={() => console.log("lol")}
                   />
