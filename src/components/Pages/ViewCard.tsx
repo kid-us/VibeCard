@@ -98,6 +98,7 @@ interface Data {
   main_picture: string;
   phone: string;
   pronouns: string;
+  qr_code: string;
 }
 
 const ViewCard = () => {
@@ -135,7 +136,14 @@ const ViewCard = () => {
           </div>
 
           <div className="flex justify-center lg:mt-16 mt-5">
-            <div className="lg:w-80">
+            <div className="me-28 content-center">
+              <img
+                src={data?.qr_code}
+                alt="Qr code"
+                className="w-80 rounded-2xl shadow-2xl shadow-zinc-950"
+              />
+            </div>
+            <div className="lg:w-[28%]">
               {/* Default / Left */}
               {data && styles && data.card_layout === "default" && (
                 <Magnetic>
