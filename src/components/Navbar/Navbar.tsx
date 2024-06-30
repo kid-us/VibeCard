@@ -138,7 +138,7 @@ const Navbar = ({ bg }: Props) => {
               {/* Large Device */}
               {user !== null ? (
                 <Link to={"/dashboard"}>
-                  <p className="lg:block hidden bg-gray-100 py-1 text-sm rounded text-blck text-center transition ease-in-out delay-200 hover:scale-105 hover:bg-teal-900 hover:text-white duration-200 shadow shadow-zinc-400 chakra px-2">
+                  <p className="lg:block hidden py-1 text-xl rounded text-black text-center transition ease-in-out delay-200 hover:scale-105 hover:bg-teal-900 hover:text-white duration-200 chakra px-2">
                     <span className="bi-person-fill me-2"></span>
                     {user}
                   </p>
