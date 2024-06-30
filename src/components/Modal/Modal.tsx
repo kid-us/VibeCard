@@ -10,6 +10,7 @@ interface Props {
 const Modal = ({ link, onModal }: Props) => {
   const navigate = useNavigate();
   const [copy, setCopy] = useState("Copy Card Link");
+  
   const handleCopy = (card_url: string) => {
     navigator.clipboard
       .writeText(`vibe-card.vercel.app/card/${card_url}`)
@@ -17,6 +18,7 @@ const Modal = ({ link, onModal }: Props) => {
         setCopy("Copied");
       });
   };
+  
   return (
     <>
       <div

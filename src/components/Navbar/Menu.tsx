@@ -6,9 +6,10 @@ interface Props {
   nav: Nav[];
   menu: () => void;
   username: string | null;
+  bg?: string;
 }
 
-const Menu = ({ nav, menu, username }: Props) => {
+const Menu = ({ nav, menu, username, bg }: Props) => {
   return (
     <>
       <div className="flex justify-between py-3 px-3">
@@ -43,7 +44,12 @@ const Menu = ({ nav, menu, username }: Props) => {
         {username !== null && (
           <div className="lg:hidden md:hidden mt-1">
             <Link to={"/dashboard"}>
-              <p className={`bi-person-fill text-black text-xl`}></p>
+              <p className={`bi-person-fill text-red-700 text-xl`}>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Voluptate minima, quasi nulla nobis eveniet maxime! Suscipit,
+                cum qui aspernatur deleniti officia totam pariatur esse
+                veritatis soluta corrupti commodi, maxime aliquam!
+              </p>
             </Link>
           </div>
         )}

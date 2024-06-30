@@ -9,12 +9,17 @@ import Navbar from "../Navbar/Navbar";
 interface Card {
   card_url: string;
   job_title: string;
+  company_name: string;
+  full_name: string;
+  main_picture: string;
+  pronouns: string;
 }
 
 const Dashboard = () => {
   const { user } = useAuthStore();
   const [links, setLinks] = useState<Card[]>([]);
-  // const [copy, setCopy] = useState("Copy");
+  const [copiedUrls, setCopiedUrls] = useState<string[]>([]);
+
   useEffect(() => {
     axios
       .get(`${baseUrl}/api/v1/cards/my-cards`, {
@@ -27,13 +32,28 @@ const Dashboard = () => {
         const cards = response.data.map((card: Card) => ({
           card_url: card.card_url,
           job_title: card.job_title,
+          full_name: card.full_name,
+          main_picture: card.main_picture,
+          pronouns: card.pronouns,
+          company_name: card.company_name,
         }));
         setLinks(cards);
       })
-      .then((err) => {
+      .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  const handleCopy = (card_url: string) => {
+    navigator.clipboard
+      .writeText(`vibe-card.vercel.app/card/${card_url}`)
+      .then(() => {
+        setCopiedUrls((prev) => [...prev, card_url]);
+        setTimeout(() => {
+          setCopiedUrls((prev) => prev.filter((url) => url !== card_url));
+        }, 10000);
+      });
+  };
 
   return (
     <>
@@ -59,25 +79,44 @@ const Dashboard = () => {
                           key={link.card_url}
                           className="flex justify-between"
                         >
-                          <div>
-                            <p className="chakra">Title: {link.job_title}</p>
-                          </div>
-                          <div>
-                            <Link
-                              key={link.card_url}
-                              to={`/card/${link.card_url}`}
-                              className="block chakra mb-2 bg-teal-500 px-10 p-1 rounded shadow shadow-zinc-900 text-black"
-                            >
-                              View Card{" "}
-                              <span className="bi-arrow-up-right-square-fill ms-1"></span>
-                            </Link>
-                            {/* <button
-                            onClick={() => handleCopy(link.card_url)}
-                            className="bg-teal-500 w-32 p-1 mb-2 rounded shadow shadow-zinc-900 text-white"
-                          >
-                            <span className="bi-c-circle me-2"></span>
-                            {copy}
-                          </button> */}
+                          <div className="flex justify-between w-full bg-zinc-900 text-white px-5 py-5 mb-4 rounded shadow shadow-zinc-900">
+                            <div className="flex">
+                              <img
+                                src={link.main_picture}
+                                alt=""
+                                className="rounded-full lg:w-16 w-14 h-14"
+                              />
+                              <div className="content-center ms-3">
+                                <p className="font-poppins">
+                                  {link.pronouns} {link.full_name}
+                                </p>
+                                <p className="chakra text-sm">
+                                  Job:{link.job_title}
+                                </p>
+                                <p className="chakra text-xs">
+                                  Works at: {link.company_name}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex">
+                              <Link
+                                key={link.card_url}
+                                to={`/card/${link.card_url}`}
+                                className="block chakra mb-2 pt-5 px-5 hover:text-gray-400"
+                              >
+                                View{" "}
+                                <span className="bi-arrow-up-right ms-1"></span>
+                              </Link>
+                              <button
+                                onClick={() => handleCopy(link.card_url)}
+                                className={` pt-2 px-5 ms-5`}
+                              >
+                                <span className="bi-clipboard me-2"></span>
+                                {copiedUrls.includes(link.card_url)
+                                  ? "Copied"
+                                  : "Copy"}
+                              </button>
+                            </div>
                           </div>
                         </div>
                       ))}
