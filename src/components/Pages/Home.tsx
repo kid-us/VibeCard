@@ -1,13 +1,21 @@
+import { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Hero from "./Home/Hero";
 import Gradient from "../Gradient/Gradient";
 import Footer from "../Footer/Footer";
 import { video } from "../../assets";
-// import App from "../Payment/Index";
+import Loading from "../Loading/Loading";
 
 const Home = () => {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
   return (
     <>
+      {loading && <Loading />}
       <Navbar />
       <Gradient />
       <div className="container mx-auto">
@@ -32,8 +40,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Payment */}
-      {/* <App /> */}
       <Footer />
     </>
   );
