@@ -16,7 +16,7 @@ export const nav: Nav[] = [
     title: "Resources",
     path: "/",
   },
-  { id: 3, title: "Products", path: "/" },
+  { id: 3, title: "Buy Products", path: "/products" },
   {
     id: 4,
     title: "Pricing",

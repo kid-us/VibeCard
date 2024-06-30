@@ -12,6 +12,9 @@ import Dashboard from "./components/Pages/Dashboard";
 import Protected from "./components/Protected/Protected";
 import ViewCard from "./components/Pages/ViewCard";
 import Pricing from "./components/Pages/Pricing";
+import Products from "./components/Pages/Products";
+import ProductDetail from "./components/Pages/ProductDetail";
+import Pay from "./components/Pages/Pay";
 
 function App() {
   return (
@@ -21,7 +24,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/pricing" element={<Pricing />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/verify" element={<Verify />} />
+        <Route path="/pay" element={<Pay />} />
         <Route path="/request" element={<ForgotPassword />} />
         <Route path="/check-email" element={<CheckEmail />} />
         <Route path="/card/:id" element={<ViewCard />} />

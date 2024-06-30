@@ -3,6 +3,7 @@ import Hero from "./Home/Hero";
 import Gradient from "../Gradient/Gradient";
 import Footer from "../Footer/Footer";
 import { video } from "../../assets";
+// import App from "../Payment/Index";
 
 const Home = () => {
   return (
@@ -30,6 +31,9 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {/* Payment */}
+      {/* <App /> */}
       <Footer />
     </>
   );
