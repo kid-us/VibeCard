@@ -135,12 +135,12 @@ const ViewCard = () => {
             </Link>
           </div>
 
-          <div className="flex justify-center lg:mt-16 mt-5">
-            <div className="me-28 content-center">
+          <div className="lg:flex justify-center lg:mt-16 mt-5 lg:pb-0 pb-5">
+            <div className="lg:block flex justify-center lg:me-28 lg:mb-0 mb-10 lg:content-center">
               <img
                 src={data?.qr_code}
                 alt="Qr code"
-                className="w-80 rounded-2xl shadow-2xl shadow-zinc-950"
+                className="lg:w-80 w-72 rounded-2xl shadow-2xl shadow-zinc-950"
               />
             </div>
             <div className="lg:w-[28%]">
