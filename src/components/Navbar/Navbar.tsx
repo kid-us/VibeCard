@@ -7,7 +7,11 @@ import axios from "axios";
 import { baseUrl } from "../../services/request";
 import Loading from "../Loading/Loading";
 
-const Navbar = () => {
+interface Props {
+  bg?: string;
+}
+
+const Navbar = ({ bg }: Props) => {
   // States
   const [isMenu, setIsMenu] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
@@ -54,7 +58,7 @@ const Navbar = () => {
       {loading && <Loading />}
 
       <header
-        className={`lg:py-0 py-2 ${
+        className={`lg:py-0 py-2 ${bg && bg}  ${
           isSticky
             ? "sticky top-0 shadow animate__animated animate__fadeInDown bg-white z-50"
             : "lg:py-3"
@@ -67,18 +71,22 @@ const Navbar = () => {
               <p
                 onClick={() => setIsMenu(true)}
                 className={`lg:hidden rounded-full border ${
-                  isSticky ? "border-black" : "border-white"
+                  bg
+                    ? "text-black border-black"
+                    : isSticky
+                    ? "border-black"
+                    : "border-white"
                 } font-poppins text-2xl text-teal-950 font-bold`}
               >
                 <span className="px-3 flex">
                   <span
                     className={`bi-list text-2xl ${
-                      isSticky ? "text-black" : "text-white"
+                      bg ? "text-black" : isSticky ? "text-black" : "text-white"
                     }`}
                   ></span>
                   <span
                     className={`text-sm font-light pt-[6px] ps-3 ${
-                      isSticky ? "text-black" : "text-white"
+                      bg ? "text-black" : isSticky ? "text-black" : "text-white"
                     }`}
                   >
                     Menu
@@ -94,13 +102,17 @@ const Navbar = () => {
                   <Link
                     key={n.id}
                     to={n.path}
-                    className={`logo-font lg:me-32 lg:text-3xl text-3xl ${
-                      isMenu
+                    className={`logo-font lg:me-32 lg:text-3xl text-3xl 
+                    ${
+                      bg
+                        ? "text-black"
+                        : isMenu
                         ? "text-black"
                         : isSticky
                         ? "text-black"
                         : "text-white"
-                    } `}
+                    } 
+                    `}
                   >
                     {n.title}
                   </Link>
@@ -109,7 +121,9 @@ const Navbar = () => {
                     key={n.id}
                     to={n.path}
                     className={`lg:inline-block hidden font-poppins me-16 ${
-                      isSticky
+                      bg
+                        ? "text-black"
+                        : isSticky
                         ? "text-black hover:text-gray-500"
                         : "text-white hover:text-gray-300"
                     }`}

@@ -11,6 +11,7 @@ import Verify from "./components/Pages/Verify";
 import Dashboard from "./components/Pages/Dashboard";
 import Protected from "./components/Protected/Protected";
 import ViewCard from "./components/Pages/ViewCard";
+import Pricing from "./components/Pages/Pricing";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/pricing" element={<Pricing />} />
         <Route path="/verify" element={<Verify />} />
         <Route path="/request" element={<ForgotPassword />} />
         <Route path="/check-email" element={<CheckEmail />} />
