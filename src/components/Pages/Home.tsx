@@ -4,6 +4,7 @@ import Hero from "./Home/Hero";
 import Gradient from "../Gradient/Gradient";
 import Footer from "../Footer/Footer";
 import { video } from "../../assets";
+import { video2 } from "../../assets";
 import Loading from "../Loading/Loading";
 
 const Home = () => {
@@ -32,9 +33,19 @@ const Home = () => {
           </p>
           <div className="lg:p-0 p-3">
             <div className="shadow-md shadow-zinc-900 lg:rounded-lg rounded overflow-hidden">
-              <video autoPlay muted loop className="">
+              <div className="lg:p-0 p-3">
+                <div className="shadow-md shadow-zinc-900 lg:rounded-lg rounded overflow-hidden">
+                  <video autoPlay muted loop playsInline className="">
+                    <source src={video} type="video/webm" />
+                    <source src={video2} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+
+              {/* <video autoPlay muted loop className="">
                 <source src={video} type="video/webm" />
-              </video>
+              </video> */}
             </div>
           </div>
         </div>
