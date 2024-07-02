@@ -12,7 +12,7 @@ import axios from "axios";
 import { baseUrl } from "../../../services/request";
 
 const Sidebar = () => {
-  const [selected, setSelected] = useState("Content");
+  const [selected, setSelected] = useState("Colors");
   const { preview } = useCardData();
   const { user, logout } = useAuthStore();
   const navigate = useNavigate();
@@ -56,13 +56,13 @@ const Sidebar = () => {
             </p>
           </div>
         ))}
-        <div className="absolute bottom-0 p-2">
+        <div className="absolute bottom-0 p-2 w-16">
           <img
             src={preview.profile ? preview.profile : userPic}
             alt="user"
             className="w-full overflow-hidden border-2 border-black rounded-full"
           />
-          <p className="uppercase text-xs text-center mt-2 text-gray-400">
+          <p className="uppercase text-xs text-center mt-2 text-gray-400 text-ellipsis text-nowrap overflow-hidden">
             {user}
           </p>
           <p

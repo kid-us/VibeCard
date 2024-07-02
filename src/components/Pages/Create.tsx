@@ -13,13 +13,15 @@ import Layout from "./Create/Sidebar/Layout";
 import Form from "./Create/Form";
 import { useCardData } from "../../store/useCardData";
 import { userPic } from "../../assets";
+import Navbar from "../Navbar/Navbar";
+import useAuthStore from "../../store/useUserData";
 
 const Create = () => {
   const { layout } = useLayoutStore();
+  const { user } = useAuthStore();
   // States
   const [modal, setModal] = useState(false);
   const [activeModal, setActiveModal] = useState("");
-  const [menu, setMenu] = useState(false);
 
   const [previewCard, setPreviewCard] = useState(false);
 
@@ -39,81 +41,8 @@ const Create = () => {
   return (
     <div className="menu-bg relative lg:h-auto h-[100dvh]">
       {/* Small Device Navbar */}
-      <div className="lg:hidden fixed w-full bg-white shadow z-40">
-        <nav
-          className={`flex justify-between lg:py-3 py-4 px-5 ${
-            menu && "menu-bg animate__animated animate__fadeInLeft"
-          }`}
-        >
-          <div>
-            <Link to={"/"} className="logo-font text-2xl">
-              vibecard
-            </Link>
-          </div>
-          <div className="flex justify-between">
-            {/* Small Device Nav*/}
-            <div className="lg:hidden relative">
-              <p
-                onClick={() => setMenu(!menu)}
-                className={`lg:hidden rounded-full border border-black font-poppins text-2xl text-teal-950 font-bold`}
-              >
-                {menu ? (
-                  <span className="px-3 flex">
-                    <span
-                      className={`text-sm font-light pt-[6px] pe-3 ${
-                        menu ? "text-black" : "text-white"
-                      } `}
-                    >
-                      Menu
-                    </span>
-                    <span
-                      className={`bi-x text-2xl ${
-                        menu ? "text-black" : "text-white"
-                      }`}
-                    ></span>
-                  </span>
-                ) : (
-                  <span className="px-3 flex">
-                    <span className={`text-sm font-light pt-[6px] pe-3`}>
-                      Menu
-                    </span>
-                    <span className={`bi-list text-2xl`}></span>
-                  </span>
-                )}
-              </p>
-            </div>
-            {/* Small Device menu */}
-            {menu && (
-              <div className="absolute menu-bg w-full h-[100vh] right-0 top-16 p-4">
-                <div className="flex cursor-pointer">
-                  <img
-                    src={preview.profile ? preview.profile : userPic}
-                    alt="user"
-                    className="w-16 h-16 overflow-hidden border-2 border-black rounded-full"
-                  />
-                  <div className="content-center">
-                    <p className="ms-4 text-xl chakra">Lorem</p>
-                  </div>
-                </div>
-                <p className="mt-5 mb-4">
-                  <Link to={"/insight"} className="text-xl pb-2 font-poppins">
-                    Insights
-                  </Link>
-                </p>
-                <p>
-                  <Link to={"/setting"} className="text-xl pb-2 font-poppins">
-                    Settings
-                  </Link>
-                </p>
-                <p className="mt-4">
-                  <Link to={"/logout"} className="text-xl pb-2 font-poppins">
-                    Logout
-                  </Link>
-                </p>
-              </div>
-            )}
-          </div>
-        </nav>
+      <div className="lg:hidden">
+        <Navbar bg="bg-white" />
       </div>
 
       {/* Large Device Page */}
@@ -151,7 +80,9 @@ const Create = () => {
                       alt="user"
                       className="w-8 h-8 overflow-hidden rounded-full"
                     />
-                    <p className="ms-3 text-gray-500 mt-1">Lorem</p>
+                    <p className="ms-3 text-gray-500 mt-1 text-ellipsis text-nowrap overflow-hidden">
+                      {user}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -175,7 +106,7 @@ const Create = () => {
         <div
           className={`lg:block ${
             previewCard && "hidden"
-          } col-span-5 w-full lg:p-3 lg:mt-20 lg:pt-0 p-3 pt-20`}
+          } col-span-5 w-full lg:p-3 lg:mt-20 lg:pt-0 p-3 pt-2`}
         >
           <Form layout={layout} />
         </div>

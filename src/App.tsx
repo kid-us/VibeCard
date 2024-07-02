@@ -15,6 +15,7 @@ import Pricing from "./components/Pages/Pricing";
 import Products from "./components/Pages/Products";
 import ProductDetail from "./components/Pages/ProductDetail";
 import Pay from "./components/Pages/Pay";
+import Setting from "./components/Pages/Setting";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/verify" element={<Verify />} />
         <Route path="/pay" element={<Pay />} />
+        <Route path="/setting" element={<Setting />} />
         <Route path="/request" element={<ForgotPassword />} />
         <Route path="/check-email" element={<CheckEmail />} />
         <Route path="/card/:id" element={<ViewCard />} />
