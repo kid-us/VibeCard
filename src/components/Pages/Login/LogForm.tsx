@@ -9,22 +9,22 @@ import { baseUrl } from "../../../services/request";
 import useAuthStore from "../../../store/useUserData";
 
 interface Props {
-  emailAddress: (email: string) => void;
-  passwordLen: (len: number) => void;
+  // emailAddress: (email: string) => void;
+  // passwordLen: (len: number) => void;
   buttonClicked: (value: boolean) => void;
   username?: (username: string) => void;
 }
 
 const schema = z.object({
-  email: z.string().email({ message: "Email address required." }),
-  password: z.string().min(1, {
+  password: z.string().min(4, {
     message: "Password required.",
   }),
+  email: z.string().email({ message: "Email is required." }),
 });
 
 type FormData = z.infer<typeof schema>;
 
-const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
+const Form = ({ buttonClicked }: Props) => {
   // Zustand
   const { login } = useAuthStore();
   // RRD
@@ -96,11 +96,7 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
           {...register("email")}
           type="email"
           name="email"
-          className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
-            errors.email && "border-red-600 border-1 border"
-          }`}
-          onChange={(event) => emailAddress(event.currentTarget.value)}
-          autoComplete="off"
+          className="font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded-lg focus:outline-none px-5 shadow shadow-gray-300"
         />
         {errors.email && (
           <p className="text-red-600 text-xs pt-1">{errors.email.message}</p>
@@ -112,15 +108,12 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
         <label className="text-sm text-gray-500 block" htmlFor="password">
           Password
         </label>
+
         <input
           {...register("password")}
-          type={showPassword ? "text" : "password"}
+          type="password"
           name="password"
-          className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
-            errors.password && "border-red-600 border-1 border"
-          }`}
-          onChange={(event) => passwordLen(event.currentTarget.value.length)}
-          autoComplete="off"
+          className="font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded-lg focus:outline-none px-5 shadow shadow-gray-300"
         />
         <span
           onClick={() => setShowPassword(!showPassword)}

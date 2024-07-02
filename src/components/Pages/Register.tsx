@@ -5,9 +5,7 @@ import RegForm from "./Register/RegForm";
 import SignUpOption from "../SignUpOption/SignUpOption";
 
 const Register = () => {
-  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState(0);
   const [submitButtonClicked, setSubmitButtonClicked] = useState(false);
 
   return (
@@ -26,8 +24,6 @@ const Register = () => {
 
               {/* Form */}
               <RegForm
-                emailAddress={(email: string) => setEmail(email)}
-                passwordLen={(len: number) => setPassword(len)}
                 username={(username: string) => setUsername(username)}
                 buttonClicked={(value: boolean) =>
                   setSubmitButtonClicked(value)
@@ -46,12 +42,7 @@ const Register = () => {
               </p>
             </div>
             {/* Card */}
-            <Card
-              email={email}
-              passLength={password}
-              submitted={submitButtonClicked}
-              username={username}
-            />
+            <Card submitted={submitButtonClicked} username={username} />
           </div>
         </div>
       </div>

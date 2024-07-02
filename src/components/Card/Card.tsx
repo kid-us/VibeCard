@@ -2,22 +2,11 @@ import { qrCode, userPic } from "../../assets";
 import Magnetic from "../GsapMagnetic/Magnetic";
 
 interface Props {
-  passLength: number;
-  email: string;
   submitted: boolean;
   username?: string;
 }
 
-const Card = ({ passLength, email, submitted, username }: Props) => {
-  const renderPasswordLength = () => {
-    let spans = [];
-    for (let i = 0; i < passLength; i++) {
-      spans.push(
-        <span key={i} className="text-stone-400 text-[10px] bi-asterisk"></span>
-      );
-    }
-    return spans;
-  };
+const Card = ({ submitted, username }: Props) => {
   return (
     <div className="flex justify-center ms-5">
       <div className="content-center">
@@ -58,12 +47,18 @@ const Card = ({ passLength, email, submitted, username }: Props) => {
                   <p className="mt-5 mb-3 font-poppins text-orange-500">
                     <span className="bi-envelope-fill text-blue-400 me-3"></span>
                     Email:{" "}
-                    <span className="text-sm text-stone-400">{email}</span>
+                    <span className="text-sm text-stone-400 font-poppins">
+                      vibecard@example.com
+                    </span>
                   </p>
 
                   <p className="font-poppins text-orange-500 text-nowrap overflow-hidden">
-                    <span className="bi-lock-fill text-blue-400 me-3"></span>
-                    Password : {passLength === 0 ? "" : renderPasswordLength()}
+                    <span className="bi-lock-fill text-blue-400 me-3">
+                      Password :
+                    </span>
+                    <span className="text-sm text-stone-400 font-poppins">
+                      *****************
+                    </span>
                   </p>
                 </div>
                 <div className={`${submitted && "animate-pulse"}`}>

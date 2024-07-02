@@ -8,8 +8,6 @@ import { baseUrl } from "../../../services/request";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
-  emailAddress: (email: string) => void;
-  passwordLen: (len: number) => void;
   buttonClicked: (value: boolean) => void;
   username: (username: string) => void;
 }
@@ -26,12 +24,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const Form = ({
-  emailAddress,
-  passwordLen,
-  buttonClicked,
-  username,
-}: Props) => {
+const Form = ({ buttonClicked, username }: Props) => {
   const navigate = useNavigate();
 
   const [registerError, setRegisterError] = useState("");
@@ -105,8 +98,7 @@ const Form = ({
           className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
             errors.email && "border-red-600 border-1 border"
           }`}
-          onChange={(event) => username(event.currentTarget.value)}
-          autoComplete="off"
+          onChange={(e) => username(e.currentTarget.value)}
         />
         {errors.username && (
           <p className="text-red-600 text-xs pt-1">{errors.username.message}</p>
@@ -125,8 +117,6 @@ const Form = ({
           className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
             errors.email && "border-red-600 border-1 border"
           }`}
-          onChange={(event) => emailAddress(event.currentTarget.value)}
-          autoComplete="off"
         />
         {errors.email && (
           <p className="text-red-600 text-xs pt-1">{errors.email.message}</p>
@@ -145,8 +135,6 @@ const Form = ({
           className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
             errors.password && "border-red-600 border-1 border"
           }`}
-          onChange={(event) => passwordLen(event.currentTarget.value.length)}
-          autoComplete="off"
         />
         <span
           onClick={() => setShowPassword(!showPassword)}
@@ -171,7 +159,6 @@ const Form = ({
             confirmPasswordError && "border-red-600 border-1 border"
           }`}
           onChange={(event) => setConfirmPassword(event.currentTarget.value)}
-          autoComplete="off"
         />
 
         {confirmPasswordError && (

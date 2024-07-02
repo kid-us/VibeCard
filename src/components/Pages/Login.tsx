@@ -5,15 +5,12 @@ import LogForm from "./Login/LogForm";
 import SignUpOption from "../SignUpOption/SignUpOption";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState(0);
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState(0);
   const [submitButtonClicked, setSubmitButtonClicked] = useState(false);
 
   return (
-    <div
-      className="lg:px-40 md:px-36 px-2 h-[100vh] menu-bg"
-      // style={{ backgroundColor: "#effe" }}
-    >
+    <div className="lg:px-40 md:px-36 px-2 h-[100vh] menu-bg">
       <div className="lg:mb-10 lg:pt-10 md:mb-10 md:pt-10 py-5 lg:ps-24">
         <Link to={"/"} className="text-2xl text-teal-950 logo-font">
           vibecard
@@ -30,8 +27,8 @@ const Login = () => {
 
               {/* Form */}
               <LogForm
-                emailAddress={(email: string) => setEmail(email)}
-                passwordLen={(len: number) => setPassword(len)}
+                // emailAddress={(email: string) => setEmail(email)}
+                // passwordLen={(len: number) => setPassword(len)}
                 buttonClicked={(value: boolean) =>
                   setSubmitButtonClicked(value)
                 }
@@ -50,8 +47,8 @@ const Login = () => {
             </div>
             {/* Card */}
             <Card
-              email={email}
-              passLength={password}
+              // email={email}
+              // passLength={password}
               submitted={submitButtonClicked}
             />
           </div>
