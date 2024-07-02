@@ -100,6 +100,7 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
             errors.email && "border-red-600 border-1 border"
           }`}
           onChange={(event) => emailAddress(event.currentTarget.value)}
+          autoComplete="off"
         />
         {errors.email && (
           <p className="text-red-600 text-xs pt-1">{errors.email.message}</p>
@@ -119,6 +120,7 @@ const Form = ({ emailAddress, passwordLen, buttonClicked }: Props) => {
             errors.password && "border-red-600 border-1 border"
           }`}
           onChange={(event) => passwordLen(event.currentTarget.value.length)}
+          autoComplete="off"
         />
         <span
           onClick={() => setShowPassword(!showPassword)}

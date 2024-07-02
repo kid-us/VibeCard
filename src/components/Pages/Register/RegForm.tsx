@@ -106,6 +106,7 @@ const Form = ({
             errors.email && "border-red-600 border-1 border"
           }`}
           onChange={(event) => username(event.currentTarget.value)}
+          autoComplete="off"
         />
         {errors.username && (
           <p className="text-red-600 text-xs pt-1">{errors.username.message}</p>
@@ -125,6 +126,7 @@ const Form = ({
             errors.email && "border-red-600 border-1 border"
           }`}
           onChange={(event) => emailAddress(event.currentTarget.value)}
+          autoComplete="off"
         />
         {errors.email && (
           <p className="text-red-600 text-xs pt-1">{errors.email.message}</p>
@@ -144,6 +146,7 @@ const Form = ({
             errors.password && "border-red-600 border-1 border"
           }`}
           onChange={(event) => passwordLen(event.currentTarget.value.length)}
+          autoComplete="off"
         />
         <span
           onClick={() => setShowPassword(!showPassword)}
@@ -168,6 +171,7 @@ const Form = ({
             confirmPasswordError && "border-red-600 border-1 border"
           }`}
           onChange={(event) => setConfirmPassword(event.currentTarget.value)}
+          autoComplete="off"
         />
 
         {confirmPasswordError && (
