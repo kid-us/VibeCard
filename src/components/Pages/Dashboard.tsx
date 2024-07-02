@@ -78,7 +78,7 @@ const Dashboard = () => {
                           key={link.card_url}
                           className="flex justify-between"
                         >
-                          <div className="flex justify-between w-full bg-zinc-900 text-white px-5 py-5 mb-4 rounded shadow shadow-zinc-900">
+                          <div className="lg:flex justify-between w-full bg-zinc-900 text-white px-5 py-5 mb-4 rounded shadow shadow-zinc-900">
                             <div className="flex">
                               <img
                                 src={link.main_picture}
@@ -124,7 +124,7 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <div className="lg:col-span-2">
+              <div className="lg:col-span-4">
                 <Link to={"/create"}>
                   <div className="mx-4 lg:mb-2 mb-8">
                     <div className="bg-sky-900 lg:mt-28 lg:py-16 lg:px-6 p-6 rounded-lg shadow-md shadow-zinc-600">
@@ -135,7 +135,7 @@ const Dashboard = () => {
                 </Link>
               </div>
 
-              <div className="lg:col-span-2 lg:mb-0 mb-10">
+              {/* <div className="lg:col-span-2 lg:mb-0 mb-10">
                 <Link to={"/create"}>
                   <div className="mx-4 mb-2">
                     <div className="bg-sky-900 lg:mt-28 lg:py-16 lg:px-10 p-6 rounded-lg shadow-md shadow-zinc-600">
@@ -144,7 +144,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
