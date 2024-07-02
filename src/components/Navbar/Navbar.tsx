@@ -99,7 +99,7 @@ const Navbar = ({ bg }: Props) => {
             </div>
 
             {/* Large Device */}
-            <div className={`col-span-11 ${user === null ? "pe-5" : "pe-0"}`}>
+            <div className={`col-span-10 ${user === null ? "pe-5" : "pe-0"}`}>
               {nav.map((n) =>
                 n.id === 1 ? (
                   <Link
@@ -138,12 +138,12 @@ const Navbar = ({ bg }: Props) => {
             </div>
 
             {/* Large Device */}
-            <div className="lg:block hidden col-1 mt-2">
+            <div className="lg:block hidden mt-2 col-span-2">
               {user !== null ? (
                 <div className="relative">
                   <p
                     onClick={() => setIsMenu(!isMenu)}
-                    className="lg:block hidden py-1 rounded text-black text-center transition ease-in-out delay-200 hover:scale-105 hover:bg-teal-900 hover:text-white duration-200 chakra font-poppins text-xl cursor-pointer"
+                    className="lg:block hidden py-1 rounded text-black text-center transition ease-in-out delay-200 hover:scale-105 hover:bg-teal-900 hover:text-white duration-200 chakra font-poppins text-xl cursor-pointer text-ellipsis text-nowrap overflow-hidden"
                   >
                     <span className="bi-person-fill me-2"></span>
                     {user}
