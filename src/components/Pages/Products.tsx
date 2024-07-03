@@ -38,14 +38,10 @@ const Products = () => {
                     <div className="flex justify-between">
                       <div className="flex justify-between gap-x-10 mt-2">
                         <div>
-                          <p className="font-poppins">Recycled Paper</p>
-                          <p className="font-poppins">Bamboo Cards</p>
-                          <p className="font-poppins">Metal Cards</p>
+                          <p className="font-poppins">{pro.type}</p>
                         </div>
                         <div>
-                          <p className="font-poppins"> €10</p>
-                          <p className="font-poppins"> €25</p>
-                          <p className="font-poppins"> €35</p>
+                          <p className="font-poppins">{pro.price}</p>
                         </div>
                       </div>
                       <div className="flex gap-x-10">

@@ -39,6 +39,7 @@ const ProductDetail = () => {
                 {product[0].name}
               </h1>
               <p className="chakra mb-5">{product[0].description}</p>
+              <p className="text-xl chakra">Type: {product[0].type}</p>
               <p className="text-xl chakra">Price: {product[0].price}</p>
               {/*Quantity */}
               <div className="grid grid-cols-4 border border-gray-400 rounded-xl me-44 mt-10 overflow-hidden lg:w-auto w-full">

@@ -9,6 +9,7 @@ export interface Products {
   id: number;
   price: string;
   name: string;
+  type: string;
   image: string;
   color: Colors[];
   description: string;
@@ -18,7 +19,8 @@ export const product: Products[] = [
   {
     id: 312,
     name: "Vibecard",
-    price: "$29",
+    type: "Recycled Paper",
+    price: "€10",
     image: card1,
     color: [
       { id: 1, color: "#000000" },
@@ -30,7 +32,8 @@ export const product: Products[] = [
   {
     id: 324,
     name: "Vibecard",
-    price: "$29",
+    type: "Bamboo Card",
+    price: "€25",
     image: card2,
     color: [
       { id: 1, color: "#000000" },
@@ -42,7 +45,8 @@ export const product: Products[] = [
   {
     id: 123,
     name: "Vibecard",
-    price: "$29",
+    type: "Metal Card",
+    price: "€35",
     image: card1,
     color: [
       { id: 1, color: "#000000" },
@@ -54,7 +58,8 @@ export const product: Products[] = [
   {
     id: 435,
     name: "Vibecard",
-    price: "$29",
+    type: "Recycled Papers Card",
+    price: "€10",
     image: card2,
     color: [
       { id: 1, color: "#000000" },
@@ -66,7 +71,8 @@ export const product: Products[] = [
   {
     id: 132,
     name: "Vibecard",
-    price: "$29",
+    type: "Bamboo Card",
+    price: "€25",
     image: card1,
     color: [
       { id: 1, color: "#000000" },
@@ -78,7 +84,8 @@ export const product: Products[] = [
   {
     id: 789,
     name: "Vibecard",
-    price: "$29",
+    type: "Metal Card",
+    price: "€35",
     image: card2,
     color: [
       { id: 1, color: "#000000" },
