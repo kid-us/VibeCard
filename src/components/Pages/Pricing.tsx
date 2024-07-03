@@ -93,15 +93,8 @@ const Pricing = () => {
             </p>
             <div className="py-10 text-center border rounded-xl bg-teal-100 my-5">
               <div className="flex justify-center gap-x-10 mb-4">
-                <div>
-                  <h1 className="text-2xl font-extrabold ">$9.99</h1>
-                  <p className="text-sm chakra py-2">per month</p>
-                </div>
-                <div className="border-r border-gray-300"></div>
-                <div>
-                  <h1 className="text-2xl font-extrabold ">$7.99</h1>
-                  <p className="text-sm chakra py-2">per year</p>
-                </div>
+                <h1 className="text-2xl font-extrabold ">€5.49</h1>
+                <p className="text-sm chakra py-2">per month</p>
               </div>
               <Link
                 to="/"
@@ -165,15 +158,8 @@ const Pricing = () => {
             </p>
             <div className="py-10 text-center border rounded-xl bg-teal-100 my-5">
               <div className="flex justify-center gap-x-10 mb-4">
-                <div>
-                  <h1 className="text-2xl font-extrabold ">$19.99</h1>
-                  <p className="text-sm chakra py-2">per month</p>
-                </div>
-                <div className="border-r border-gray-300"></div>
-                <div>
-                  <h1 className="text-2xl font-extrabold ">$12.99</h1>
-                  <p className="text-sm chakra py-2">per year</p>
-                </div>
+                <h1 className="text-2xl font-extrabold ">€6.99</h1>
+                <p className="text-sm chakra py-2">per year</p>
               </div>
               <Link
                 to="/"
