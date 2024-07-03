@@ -44,9 +44,9 @@ function App() {
         <Route
           path="/create"
           element={
-            <Protected>
-              <Create />
-            </Protected>
+            // <Protected>
+            <Create />
+            // </Protected>
           }
         />
         <Route path="/404" element={<Page404 />} />

@@ -12,7 +12,7 @@ const Hero = () => {
         </h1>
 
         <div className="lg:mt-16 mt-14 lg:w-72 w-52 text-center">
-          <Link to="/dashboard">
+          <Link to="/create">
             <div className="bg-sky-800 py-4 lg:w-72 w-52 lg:text-center rounded-lg shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 text-white">
               Get started
             </div>
