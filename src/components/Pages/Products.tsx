@@ -36,7 +36,18 @@ const Products = () => {
                       {pro.name}
                     </p>
                     <div className="flex justify-between">
-                      <p className="chakra text-xl">{pro.price}</p>
+                      <div className="flex justify-between gap-x-10 mt-2">
+                        <div>
+                          <p className="font-poppins">Recycled Paper</p>
+                          <p className="font-poppins">Bamboo Cards</p>
+                          <p className="font-poppins">Metal Cards</p>
+                        </div>
+                        <div>
+                          <p className="font-poppins"> €10</p>
+                          <p className="font-poppins"> €25</p>
+                          <p className="font-poppins"> €35</p>
+                        </div>
+                      </div>
                       <div className="flex gap-x-10">
                         {pro.color.map((c) => (
                           <div
