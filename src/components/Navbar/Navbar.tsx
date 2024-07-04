@@ -171,7 +171,7 @@ const Navbar = ({ bg }: Props) => {
                         Setting
                       </Link>
                       <Link
-                        to={"/create"}
+                        to={"/insights"}
                         className="block font-poppins mb-2 hover:text-gray-400 chakra"
                       >
                         Insights
