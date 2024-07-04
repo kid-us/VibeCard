@@ -30,8 +30,22 @@ function App() {
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/verify" element={<Verify />} />
         <Route path="/pay" element={<Pay />} />
-        <Route path="/setting" element={<Setting />} />
-        <Route path="/insights" element={<Insights />} />
+        <Route
+          path="/setting"
+          element={
+            <Protected>
+              <Setting />
+            </Protected>
+          }
+        />
+        <Route
+          path="/insights"
+          element={
+            <Protected>
+              <Insights />
+            </Protected>
+          }
+        />
         <Route path="/request" element={<ForgotPassword />} />
         <Route path="/check-email" element={<CheckEmail />} />
         <Route path="/card/:id" element={<ViewCard />} />
