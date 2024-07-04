@@ -16,6 +16,7 @@ import Products from "./components/Pages/Products";
 import ProductDetail from "./components/Pages/ProductDetail";
 import Pay from "./components/Pages/Pay";
 import Setting from "./components/Pages/Setting";
+import Insights from "./components/Pages/Insights";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/verify" element={<Verify />} />
         <Route path="/pay" element={<Pay />} />
         <Route path="/setting" element={<Setting />} />
+        <Route path="/insights" element={<Insights />} />
         <Route path="/request" element={<ForgotPassword />} />
         <Route path="/check-email" element={<CheckEmail />} />
         <Route path="/card/:id" element={<ViewCard />} />

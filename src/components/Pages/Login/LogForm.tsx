@@ -9,8 +9,6 @@ import { baseUrl } from "../../../services/request";
 import useAuthStore from "../../../store/useUserData";
 
 interface Props {
-  // emailAddress: (email: string) => void;
-  // passwordLen: (len: number) => void;
   buttonClicked: (value: boolean) => void;
   username?: (username: string) => void;
 }
@@ -33,6 +31,7 @@ const Form = ({ buttonClicked }: Props) => {
   const [loginError, setLoginError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loader, setLoader] = useState(false);
+  const [passwordType, setPasswordType] = useState(true);
   // Form Data and Validation
   const {
     register,
@@ -111,15 +110,18 @@ const Form = ({ buttonClicked }: Props) => {
 
         <input
           {...register("password")}
-          type="password"
+          type={passwordType ? "password" : "text"}
           name="password"
           className="font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded-lg focus:outline-none px-5 shadow shadow-gray-300"
         />
         <span
-          onClick={() => setShowPassword(!showPassword)}
+          onClick={() => {
+            setShowPassword(!showPassword);
+            setPasswordType(!passwordType);
+          }}
           className={`absolute ${
             showPassword ? "bi-eye" : "bi-eye-slash"
-          } right-2 top-8 cursor-pointer`}
+          } right-2 top-10 cursor-pointer`}
         ></span>
         {errors.password && (
           <p className="text-red-600 text-xs pt-1">{errors.password.message}</p>
