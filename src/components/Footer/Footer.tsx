@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <div className="bg-teal-950 mt-10">
       <div className="container mx-auto py-10">
-        <div className="grid lg:grid-cols-6 md:grid-cols-3 lg:px-0 md:px-0 px-10">
+        <div className="grid lg:grid-cols-6 md:grid-cols-3 grid-cols-3 lg:px-0 md:px-0 px-10">
           <div className="relative lg:col-span-2 md:col-span-2 col-span-3">
             <h1 className="text-white text-4xl logo-font">vibecard</h1>
             <p className="text-gray-400 text-sm pe-10 mt-4">
@@ -39,7 +39,7 @@ const Footer = () => {
             </div>
           </div>
           {/* Explore */}
-          <div className="lg:col-span-4 md:col-span-2 lg:my-0 md:my-0 my-6">
+          <div className="lg:col-span-4 md:col-span-2 col-span-3 lg:my-0 md:my-0 my-6">
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2 lg:gap-x-0 md:gap-x-0 gap-x-24">
               {/* Explore */}
               <div>
@@ -54,7 +54,7 @@ const Footer = () => {
                   </Link>
                 ))}
               </div>
-              {/* Categories */}
+              {/* Shop */}
               <div>
                 <h1 className="text-gray-400 text-lg mb-5">Shop</h1>
                 {shop.map((c) => (
