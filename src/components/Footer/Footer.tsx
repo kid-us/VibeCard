@@ -114,7 +114,7 @@ const Footer = () => {
             )}
             <button
               onClick={() => handleSubscription()}
-              className="w-full text-white btn-bg rounded h-12 mt-5"
+              className="w-full text-white bg-teal-700 rounded h-12 mt-5"
             >
               Subscribe
             </button>
@@ -124,7 +124,7 @@ const Footer = () => {
             </p>
           </div>
 
-          <p className="text-gray-300 text-sm mt-8 lg:hidden md:hidden">
+          <p className="text-gray-300 text-sm mt-8 lg:hidden md:hidden col-span-3">
             All right reserved. &copy; vibecad 2024
           </p>
         </div>

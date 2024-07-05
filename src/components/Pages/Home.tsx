@@ -31,7 +31,7 @@ const Home = () => {
           {/* <h1 className="text-2xl">Customize, Connect, and Conquer</h1> */}
           <div className="lg:grid grid-cols-9 gap-x-5">
             {/* <div></div> */}
-            <div className="col-span-3 border rounded-3xl p-7 shadow transition ease-in-out delay-200 hover:scale-105 hover:bg-teal-500 hover:text-white hover:shadow hover:shadow-zinc-400  duration-200 lg:mb-0 mb-8">
+            <div className="col-span-3 border rounded-3xl p-7 shadow transition ease-in-out delay-200 hover:scale-[1.01] hover:bg-teal-500 hover:text-white hover:shadow hover:shadow-zinc-400  duration-200 lg:mb-0 mb-8">
               <h1 className="text-xl font-extrabold">Design Your Own:</h1>
               <p className="text-md mt-4 text-gray-600">
                 Unleash your creativity with our customizable NFC cards. Choose
@@ -39,14 +39,14 @@ const Home = () => {
                 are.
               </p>
             </div>
-            <div className="col-span-3 border rounded-3xl p-7 shadow transition ease-in-out delay-200 hover:scale-105 hover:bg-teal-500 hover:text-white hover:shadow hover:shadow-zinc-400  duration-200 lg:mb-0 mb-8">
+            <div className="col-span-3 border rounded-3xl p-7 shadow transition ease-in-out delay-200 hover:scale-[1.01] hover:bg-teal-500 hover:text-white hover:shadow hover:shadow-zinc-400  duration-200 lg:mb-0 mb-8">
               <h1 className="text-xl font-extrabold">Effortless Sharing:</h1>
               <p className="text-md mt-4 text-gray-600">
                 Just tap your VibeCard against any smartphone – no app needed.
                 It’s networking made simple and swift.
               </p>
             </div>
-            <div className="col-span-3 border rounded-3xl p-7 shadow transition ease-in-out delay-200 hover:scale-105 hover:bg-teal-500 hover:text-white hover:shadow hover:shadow-zinc-400  duration-200 lg:mb-0 mb-8">
+            <div className="col-span-3 border rounded-3xl p-7 shadow transition ease-in-out delay-200 hover:scale-[1.01] hover:bg-teal-500 hover:text-white hover:shadow hover:shadow-zinc-400  duration-200 lg:mb-0 mb-8">
               <h1 className="text-xl font-extrabold">Sustainable Choices:</h1>
               <p className="text-md mt-4 text-gray-600">
                 Go green with our eco-friendly card options made from recycled

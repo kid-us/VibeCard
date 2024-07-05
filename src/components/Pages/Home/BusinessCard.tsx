@@ -51,7 +51,7 @@ const BusinessCard = () => {
           <h1 className="font-extrabold ">
             Transform Your Connections with a Tap
           </h1>
-          <p className="mt-4 text-md text-gray-800">
+          <p className="text-lg mt-4 text-gray-600">
             Discover VibeCard, your ultimate tool for seamless networking. Our
             innovative NFC business cards and RFID solutions revolutionize the
             way you share your professional and personal information. Say
