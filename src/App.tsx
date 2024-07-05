@@ -18,6 +18,7 @@ import Pay from "./components/Pages/Pay";
 import Setting from "./components/Pages/Setting";
 import Insights from "./components/Pages/Insights";
 import AboutUs from "./components/Pages/AboutUs";
+import PrivacyPolicy from "./components/Pages/PrivacyPolicy";
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
         />
         <Route path="/create" element={<Create />} />
         <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/404" element={<Page404 />} />
         <Route path="*" element={<Navigate to="/404" />}></Route>
       </Routes>
