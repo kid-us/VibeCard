@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer";
 import { video } from "../../assets";
 import { video2 } from "../../assets";
 import Loading from "../Loading/Loading";
+import BusinessCard from "./Home/BusinessCard";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -23,6 +24,9 @@ const Home = () => {
         <div className="lg:mt-48 mt-24">
           <Hero />
         </div>
+
+        {/* Business Card */}
+        <BusinessCard />
       </div>
 
       {/* Video */}
@@ -42,10 +46,6 @@ const Home = () => {
                   </video>
                 </div>
               </div>
-
-              {/* <video autoPlay muted loop className="">
-                <source src={video} type="video/webm" />
-              </video> */}
             </div>
           </div>
         </div>

@@ -11,6 +11,7 @@ import video from "./demo.webm";
 import video2 from "./Demo.mp4";
 import card1 from "./card1.png";
 import card2 from "./card2.png";
+import ceo from "./ceo.png";
 
 export {
   qrCode,
@@ -26,4 +27,5 @@ export {
   video2,
   card1,
   card2,
+  ceo,
 };
