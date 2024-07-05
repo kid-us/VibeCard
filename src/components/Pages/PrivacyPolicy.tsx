@@ -5,7 +5,7 @@ const PrivacyPolicy = () => {
   return (
     <>
       <Navbar bg="bbg-white shadow" />
-      <div className="container mx-auto my-10">
+      <div className="container mx-auto mt-10">
         <h1 className="text-4xl font-extrabold">Legal Notices</h1>
         <h2 className="my-5 text-xl font-extrabold">Privacy Policy</h2>
         <p className="chakra text-lg">
