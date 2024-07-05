@@ -215,7 +215,7 @@ const Navbar = ({ bg }: Props) => {
 
       {/* Menu */}
       {isMenu && (
-        <div className="lg:hidden fixed h-[100dvh] z-50 top-0 w-full menu-bg animate__animated animate__fadeInLeft">
+        <div className="lg:hidden fixed h-[100dvh] z-50 top-0 w-full bg-teal-950 animate__animated animate__fadeInLeft">
           <Menu nav={nav} username={user} menu={() => setIsMenu(false)} />
         </div>
       )}

@@ -14,7 +14,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="bg-gray-900 mt-10">
+    <div className="bg-teal-950 mt-10">
       <div className="container mx-auto py-10">
         <div className="grid lg:grid-cols-6 md:grid-cols-3 lg:px-0 md:px-0 px-10">
           <div className="relative lg:col-span-2 md:col-span-2 col-span-3">
@@ -87,7 +87,7 @@ const Footer = () => {
                 )}
                 <button
                   onClick={() => handleSubscription()}
-                  className="w-full text-white bg-teal-900 rounded h-12 mt-5"
+                  className="w-full text-white bg-teal-700 rounded h-12 mt-5"
                 >
                   Subscribe
                 </button>

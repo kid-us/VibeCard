@@ -14,15 +14,15 @@ const Menu = ({ nav, menu, username }: Props) => {
       <div className="flex justify-between py-3 px-3">
         <div onClick={() => menu()}>
           <p
-            className={`lg:hidden rounded-full border border-black font-poppins text-2xl text-teal-950 font-bold`}
+            className={`lg:hidden rounded-full border border-white font-poppins text-2xl text-teal-950 font-bold`}
           >
             <span className="px-3 flex">
               <span
-                className={`bi-x text-2xl text-black
+                className={`bi-x text-2xl text-white
               `}
               ></span>
               <span
-                className={`text-sm font-light pt-[6px] ps-3 text-black
+                className={`text-sm font-light pt-[6px] ps-3 text-white
                `}
               >
                 Menu
@@ -34,7 +34,7 @@ const Menu = ({ nav, menu, username }: Props) => {
         <div>
           <Link
             to={"/"}
-            className={`logo-font lg:me-32 lg:text-2xl text-3xl text-black`}
+            className={`logo-font lg:me-32 lg:text-2xl text-3xl text-white`}
           >
             vibecard
           </Link>
@@ -43,7 +43,7 @@ const Menu = ({ nav, menu, username }: Props) => {
         {username !== null && (
           <div className="lg:hidden md:hidden mt-1">
             <Link to={"/dashboard"}>
-              <p className={`bi-person-fill text-text-black text-xl`}></p>
+              <p className={`bi-person-fill text-white text-xl`}></p>
             </Link>
           </div>
         )}
@@ -57,7 +57,7 @@ const Menu = ({ nav, menu, username }: Props) => {
               <Link
                 key={n.id}
                 to={n.path}
-                className="block text-xl pb-2 font-poppins font-extrabold mb-3"
+                className="block text-xl text-white pb-2 font-poppins font-extrabold mb-3"
               >
                 {n.title}
               </Link>
@@ -68,36 +68,36 @@ const Menu = ({ nav, menu, username }: Props) => {
           <>
             <Link
               to={"/dashboard"}
-              className="block text-xl pb-2 font-poppins font-extrabold mb-3"
+              className="block text-white text-xl pb-2 font-poppins font-extrabold mb-3"
             >
               Dashboard
             </Link>
 
             <Link
               to={"/"}
-              className="block text-xl pb-2 font-poppins font-extrabold mb-3"
+              className="block text-white text-xl pb-2 font-poppins font-extrabold mb-3"
             >
               Setting
             </Link>
             <Link
               to={"/"}
-              className="block text-xl pb-2 font-poppins font-extrabold mb-3"
+              className="block text-white text-xl pb-2 font-poppins font-extrabold mb-3"
             >
               Insights
             </Link>
           </>
         )}
 
-        <div className="absolute -bottom-8">
-          <div className="w-80 bg-stone-400 rounded px-4 py-4 mb-14">
-            <p className="chakra font-extrabold text-white">
+        <div className="absolute">
+          <div className="w-80 bg-teal-800 rounded px-4 py-4 mb-14">
+            <p className="chakra font-extrabold text-white text-sm">
               <span className="bi-telephone-fill me-5"></span> Contact Us
             </p>
-            <p className="text-sm mt-4 text-gray-200">
+            <p className="text-xs mt-2 text-gray-200">
               Get in touch with our 24/7 customer service
             </p>
             <Link to={"/contact-us"}>
-              <p className="bg-sky-700 text-center mt-5 rounded p-2 shadow shadow-gray-50 text-white">
+              <p className="bg-sky-900 text-center text-xs mt-5 rounded p-2 shadow shadow-gray-50 text-white">
                 Contact Us
               </p>
             </Link>
