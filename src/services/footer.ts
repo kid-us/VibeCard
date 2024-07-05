@@ -14,7 +14,7 @@ export const explore: Footer[] = [
 ];
 
 export const shop: Footer[] = [
-  { id: 7, name: "Sho All", path: "/products" },
+  { id: 7, name: "Shop All", path: "/products" },
   { id: 71, name: "Bamboo Card", path: "/" },
   { id: 8, name: "Metal Card", path: "/" },
   { id: 9, name: "Leather  Wallets", path: "/" },

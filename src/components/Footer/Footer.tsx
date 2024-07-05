@@ -48,7 +48,7 @@ const Footer = () => {
                   <Link
                     key={e.id}
                     to={e.path}
-                    className="block text-gray-200 mb-4 hover:text-gray-500 text-sm chakra"
+                    className="block text-gray-200 mb-4 hover:text-gray-500 text-sm"
                   >
                     {e.name}
                   </Link>
@@ -61,7 +61,7 @@ const Footer = () => {
                   <Link
                     key={c.id}
                     to={c.path}
-                    className="block text-gray-200 mb-4 hover:text-gray-500 text-sm chakra"
+                    className="block text-gray-200 mb-4 hover:text-gray-500 text-sm"
                   >
                     {c.name}
                   </Link>
