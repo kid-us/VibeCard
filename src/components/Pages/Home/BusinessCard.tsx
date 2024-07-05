@@ -48,10 +48,10 @@ const BusinessCard = () => {
           <h1 className="chakra font-poppins text-3xl mb-4">
             Welcome to VibeCard – The Future of Networking
           </h1>
-          <h1 className="text-xl font-extrabold ">
+          <h1 className="font-extrabold ">
             Transform Your Connections with a Tap
           </h1>
-          <p className="font-poppins mt-4 text-md">
+          <p className="mt-4 text-md text-gray-800">
             Discover VibeCard, your ultimate tool for seamless networking. Our
             innovative NFC business cards and RFID solutions revolutionize the
             way you share your professional and personal information. Say
