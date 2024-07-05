@@ -12,6 +12,7 @@ import video2 from "./Demo.mp4";
 import card1 from "./card1.png";
 import card2 from "./card2.png";
 import ceo from "./ceo.png";
+import why from "./why.png";
 
 export {
   qrCode,
@@ -28,4 +29,5 @@ export {
   card1,
   card2,
   ceo,
+  why,
 };

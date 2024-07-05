@@ -3,7 +3,7 @@ import Magnetic from "../../GsapMagnetic/Magnetic";
 
 const BusinessCard = () => {
   return (
-    <div className="lg:pt-40 pt-24 pb-10 rounded px-2">
+    <div className="lg:pt-20 pt-24 pb-10 rounded px-2 mt-14">
       <div className="lg:grid grid-cols-2">
         <Magnetic>
           <div className="content-center hover:z-40">
@@ -46,12 +46,15 @@ const BusinessCard = () => {
         </Magnetic>
         <div className="lg:mt-0 mt-10">
           <h1 className="chakra font-poppins text-3xl mb-4">
-            Welcome to VibeCard – The Future of Networking
+            The{" "}
+            <span className="bg-teal-700 rounded-3xl px-5 py-1 text-white">
+              Future of Networking
+            </span>
           </h1>
           <h1 className="font-extrabold ">
             Transform Your Connections with a Tap
           </h1>
-          <p className="text-lg mt-4 text-gray-600 bg-teal-200 p-3">
+          <p className="text-lg mt-4 text-gray-600">
             Discover VibeCard, your ultimate tool for seamless networking. Our
             innovative NFC business cards and RFID solutions revolutionize the
             way you share your professional and personal information. Say
