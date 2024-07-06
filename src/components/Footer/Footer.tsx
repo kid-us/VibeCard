@@ -14,8 +14,8 @@ const Footer = () => {
   };
 
   return (
-    <div className="bg-secondary mt-10">
-      <div className="container mx-auto py-10">
+    <div className="mt-10">
+      <div className="container mx-auto py-10 border-t border-gray-800">
         <div className="grid lg:grid-cols-6 md:grid-cols-3 grid-cols-3 lg:px-0 md:px-0 px-3">
           <div className="relative lg:col-span-2 md:col-span-2 col-span-3">
             <h1 className="text-white text-4xl logo-font">vibecard</h1>

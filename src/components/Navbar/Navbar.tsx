@@ -41,7 +41,7 @@ const Navbar = () => {
           {/* Large Device */}
           <div>
             <div
-              className={`flex lg:pe-10 text-white lg:bg-transparent bg-secondary rounded-r-2xl lg:border-none border-r border-t border-b border-gray-200 ${
+              className={`flex lg:pe-10 text-white lg:bg-transparent nav-bg rounded-r-2xl lg:border-none border-r border-t border-b border-gray-200 ${
                 user === null && "pe-28"
               }`}
             >
@@ -62,7 +62,7 @@ const Navbar = () => {
                 </p>
               </div>
               <div
-                className={`lg:pe-10 text-white bg-secondary p-2 rounded-r-2xl lg:border-r lg:border-t lg:border-b border-gray-200 lg:ps-24`}
+                className={`lg:pe-10 text-white nav-bg p-2 rounded-r-2xl lg:border-r lg:border-t lg:border-b border-gray-200 lg:ps-24`}
               >
                 <Link to={"/"} className={`logo-font lg:text-3xl text-3xl`}>
                   vibecard
@@ -70,7 +70,7 @@ const Navbar = () => {
               </div>
 
               <div
-                className={`ms-5 lg:inline-block hidden  text-white bg-secondary pt-3 rounded-2xl border border-gray-200 space-x-12 px-10`}
+                className={`ms-5 lg:inline-block hidden  text-white nav-bg pt-3 rounded-2xl border border-gray-200 space-x-12 px-10`}
               >
                 {nav.map((n) => (
                   <Link
@@ -86,7 +86,7 @@ const Navbar = () => {
           </div>
 
           {/* Large Device */}
-          <div className="lg:block hidden me-24 text-white bg-secondary pt-3 rounded-2xl border border-gray-200 space-x-12 w-44">
+          <div className="lg:block hidden me-24 text-white nav-bg pt-3 rounded-2xl border border-gray-200 space-x-12 w-44">
             {user !== null ? (
               <div className="relative">
                 <p

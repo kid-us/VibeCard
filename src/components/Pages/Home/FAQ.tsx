@@ -34,7 +34,7 @@ const Faq = () => {
                 </div>
               </div>
               {id === faqs.id && (
-                <div className="text-sm bg-secondary px-3 py-5 mb-4 rounded lg:mx-10 mx-2">
+                <div className="text-sm px-3 py-5 mb-4 rounded lg:mx-10 mx-2">
                   <p className="text-white chakra text-lg">{faqs.answer}</p>
                 </div>
               )}

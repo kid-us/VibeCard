@@ -29,7 +29,7 @@ const Home = () => {
       </div>
 
       {/* Video */}
-      <div className="relative bg-secondary pb-14">
+      <div className="relative pb-14">
         <div className="absolute bg-teal-500 border shadow shadow-zinc-900 rounded-full px-4 py-1 left-[45%] top-6">
           <p className="text-center text-sm font-extrabold text-white chakra">
             As simple as this
@@ -89,7 +89,7 @@ const Home = () => {
             </div>
           </div> */}
 
-      <div className="main-bg">
+      <div className="">
         <div className="container mx-auto">
           <div className="py-1 px-2 lg:px-0">
             <div className="flex justify-center w-full text-center">
@@ -101,7 +101,7 @@ const Home = () => {
               {homeCard.map((card) => (
                 <div
                   key={card.id}
-                  className="bg-secondary col-span-3 border border-gray-500 rounded-2xl p-7 text-white lg:mb-5 mb-8"
+                  className="col-span-3 border border-gray-500 rounded-2xl p-7 text-white lg:mb-5 mb-8"
                 >
                   <img src={card.image} alt="Image" className="w-12 mb-5" />
                   <h1 className="text-xl font-extrabold">{card.title}</h1>

@@ -56,7 +56,7 @@ const Create = () => {
         <div className="absolute lg:block hidden w-full">
           <div className="grid grid-cols-9">
             <div className="col-span-2"></div>
-            <div className="col-span-7 bg-secondary shadow shadow-gray-800">
+            <div className="col-span-7 nav-bg shadow shadow-gray-800">
               <div className="flex justify-between px-5 text-white">
                 {/* Vibecard */}
                 <div>

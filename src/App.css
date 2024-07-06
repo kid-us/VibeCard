@@ -7,15 +7,15 @@
 // 1A1A1F */
 
 body {
-  background-color: #1c1d1e;
+  background-color: #0a0a23;
 }
 
-.main-bg {
-  background-color: #1c1d1e;
+.nav-bg {
+  background-color: #004225;
 }
 
-.bg-secondary {
-  background-color: #151718;
+.btn-bg {
+  background-color: #4cc9f0;
 }
 
 h1,
