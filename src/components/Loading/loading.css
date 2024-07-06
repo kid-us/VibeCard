@@ -1,7 +1,14 @@
 /* Loading */
 :root {
-  --loader-text-color: #000;
-  --loader-bg: #fffce1;
+  --loader-text-color: #fff;
+  --loader-bg: #1c1d1e;
+}
+.main-bg {
+  background-color: #1c1d1e;
+}
+
+.bg-secondary {
+  background-color: #151718;
 }
 
 .loader-container {
@@ -35,7 +42,7 @@ svg text.text-body {
 
 @keyframes loading {
   0% {
-    fill: #33323229;
+    fill: #fffce1;
     stroke: var(--loader-text-color);
     stroke-width: 2;
     stroke-dashoffset: 25%;
@@ -43,7 +50,7 @@ svg text.text-body {
   }
 
   50% {
-    fill: #33323229;
+    fill: #1c1d1e;
     stroke: var(--loader-text-color);
     stroke-width: 2;
   }

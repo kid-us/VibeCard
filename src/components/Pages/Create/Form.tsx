@@ -254,7 +254,7 @@ const Form = ({ layout }: Props) => {
       {modal && (
         <Modal link={cardLink} onModal={(val: boolean) => setModal(val)} />
       )}
-      <p className="mb-4 chakra">Create your Business card</p>
+      <p className="mb-4">Create your Business card</p>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-10  shadow lg:shadow-zinc-400 lg:rounded-xl bg-white rounded lg:overflow-auto lg:h-auto overflow-y-scroll h-[74dvh]"

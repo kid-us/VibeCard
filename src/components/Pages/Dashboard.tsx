@@ -56,13 +56,13 @@ const Dashboard = () => {
 
   return (
     <>
-      <Navbar bg="bg-white shadow" />
+      <Navbar />
       <div className="h-[100vh]">
         <div className="container mx-auto">
           <div className="flex justify-center lg:mt-20 mt-10 lg:shadow lg:pb-20 lg:rounded">
             <div className="lg:grid grid-cols-10 gap-4">
               <div className="lg:col-span-6 lg:px-16 md:p-9 p-5">
-                <div className="content-center">
+                <div className="content-center text-white">
                   <h1 className="text-4xl">
                     Welcome Back <span className="text-teal-400">{user}</span>
                   </h1>

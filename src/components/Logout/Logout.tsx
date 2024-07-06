@@ -29,7 +29,10 @@ const Logout = () => {
   };
 
   return (
-    <button onClick={handleLogout} className="chakra text-red-700 rounded">
+    <button
+      onClick={handleLogout}
+      className="font-poppins text-gray-300 rounded"
+    >
       <span className="bi-arrow-bar-right"></span> Logout
     </button>
   );

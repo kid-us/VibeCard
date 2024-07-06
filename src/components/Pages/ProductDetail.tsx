@@ -22,7 +22,7 @@ const ProductDetail = () => {
 
   return (
     <>
-      <Navbar bg={"bg-white shadow"} />
+      <Navbar />
 
       <div className="container mx-auto lg:mt-28 mt-5">
         {product && (
@@ -34,7 +34,7 @@ const ProductDetail = () => {
                 className="lg:w-full object-contain rounded lg:shadow-2xl shadow-zinc-950 lg:mb-0 mb-10"
               />
             </div>
-            <div className="lg:px-0 px-2">
+            <div className="lg:px-0 px-2 text-white">
               <h1 className="text-3xl font-extrabold mb-8">
                 {product[0].name}
               </h1>
@@ -52,7 +52,7 @@ const ProductDetail = () => {
                 <div className="col-span-2">
                   <input
                     type="number"
-                    className="h-14 border w-full text-center chakra text-3xl"
+                    className="h-14 border w-full text-center chakra text-3xl text-black"
                     value={quantity}
                     onChange={() => console.log("lol")}
                   />

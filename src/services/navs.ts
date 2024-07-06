@@ -6,11 +6,11 @@ export interface Nav {
 }
 
 export const nav: Nav[] = [
-  {
-    id: 1,
-    title: "vibecard",
-    path: "/",
-  },
+  // {
+  //   id: 1,
+  //   title: "vibecard",
+  //   path: "/",
+  // },
   {
     id: 2,
     title: "Resources",

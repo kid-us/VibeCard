@@ -74,14 +74,14 @@ const Setting = () => {
 
   return (
     <>
-      <Navbar bg="bg-white shadow" />
-      <div className="menu-bg">
+      <Navbar />
+      <div className="">
         <div className="container mx-auto lg:p-10">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="bg-white py-10 lg:px-40 px-10 rounded shadow"
+            className="bg-secondary py-10 lg:px-40 px-10 rounded shadow"
           >
-            <h1 className="mb-10 text-2xl">Account Settings</h1>
+            <h1 className="mb-10 text-2xl text-white">Account Settings</h1>
             {/* Email exist error */}
             {/* {registerError !== "" && (
               <div className="relative">

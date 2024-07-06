@@ -26,7 +26,7 @@ const RightCard = () => {
 
   return (
     <div
-      className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 lg:mb-0 mb-10`}
+      className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 lg:mb-0 mb-10 border-gray-700`}
       style={{ backgroundColor: cardColorBg }}
     >
       <div

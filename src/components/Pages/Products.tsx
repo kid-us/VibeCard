@@ -6,10 +6,10 @@ import Footer from "../Footer/Footer";
 const Products = () => {
   return (
     <>
-      <Navbar bg={"bg-white shadow"} />
+      <Navbar />
 
       <div className="container mx-auto lg:mt-16 mt-14">
-        <h1 className="lg:text-4xl text-2xl text-center font-extrabold">
+        <h1 className="lg:text-4xl text-2xl text-center font-extrabold text-white">
           Vibecard Digital Business Card Accessories
         </h1>
 
@@ -17,21 +17,18 @@ const Products = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
       </div>
-      <div className="menu-bg ">
+      <div className="">
         <div className="container mx-auto lg:mt-10">
           <div className="lg:grid md:grid lg:grid-cols-3 md:grid-cols-2 gap-x-10 lg:pt-20 pt-10 px-2">
             {product.map((pro) => (
-              <div
-                key={pro.id}
-                className="lg:hover:bg-white lg:bg-transparent bg-white shadow-gray-500 mb-10 hover:scale-105"
-              >
+              <div key={pro.id} className="mb-10 text-white">
                 <Link to={`/product/${pro.id}`}>
                   <img
                     src={pro.image}
                     alt="card picture"
                     className="shadow shadow-zinc-800 rounded"
                   />
-                  <div className="py-5 px-3 border-b-2 rounded shadow">
+                  <div className="py-5 px-3 rounded shadow">
                     <p className="font-poppins text-xl font-extrabold">
                       {pro.name}
                     </p>

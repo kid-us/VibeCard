@@ -3,6 +3,20 @@
 /* Logo */
 @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+/* // 151718
+// 1A1A1F */
+
+body {
+  background-color: #1c1d1e;
+}
+
+.main-bg {
+  background-color: #1c1d1e;
+}
+
+.bg-secondary {
+  background-color: #151718;
+}
 
 h1,
 h2,
@@ -174,3 +188,30 @@ textarea {
     transform: scaleY(1);
   }
 }
+
+/* .gd {
+  position: absolute;
+  z-index: 3;
+  background: rgba(17, 17, 17, 0.895);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgb(0, 0, 0);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border: 1px solid rgba(17, 17, 17, 0.02);
+  height: 40px;
+  width: 100%;
+} */
+
+/* .gs {
+  position: absolute;
+  z-index: 999;
+  background: "#151718";
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgb(0, 0, 0);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border: 1px solid rgba(17, 17, 17, 0.02);
+  height: 120px;
+  width: 100%;
+  bottom: -44em;
+} */

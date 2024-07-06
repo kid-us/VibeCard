@@ -39,10 +39,10 @@ const Create = () => {
   };
 
   return (
-    <div className="menu-bg relative lg:h-auto h-[100dvh]">
+    <div className="text-white relative lg:h-auto h-[100dvh]">
       {/* Small Device Navbar */}
       <div className="lg:hidden">
-        <Navbar bg="bg-white" />
+        <Navbar />
       </div>
 
       {/* Large Device Page */}
@@ -56,12 +56,12 @@ const Create = () => {
         <div className="absolute lg:block hidden w-full">
           <div className="grid grid-cols-9">
             <div className="col-span-2"></div>
-            <div className="col-span-7 bg-white shadow">
-              <div className="flex justify-between px-5">
+            <div className="col-span-7 bg-secondary shadow shadow-gray-800">
+              <div className="flex justify-between px-5 text-white">
                 {/* Vibecard */}
                 <div>
                   <Link to="/">
-                    <p className="text-3xl ps-3 logo-font text-black py-3">
+                    <p className="text-3xl ps-3 logo-font text-white py-3">
                       vibecard
                     </p>
                   </Link>
@@ -117,7 +117,7 @@ const Create = () => {
           } lg:col-span-2 lg:pe-5 lg:pt-0 lg:pb-0 pt-24 lg:h-auto pb-10 px-3 h-[95vh] overflow-scroll lg:mt-20`}
         >
           <div className="content-center w-full">
-            <p className="mb-4 chakra">Card Preview</p>
+            <p className="mb-4">Card Preview</p>
             {/* {layout} */}
             {layout === "default" && <DefaultCard />}
             {layout === "centered" && <CenteredCard />}

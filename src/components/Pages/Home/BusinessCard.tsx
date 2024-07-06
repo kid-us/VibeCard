@@ -46,10 +46,7 @@ const BusinessCard = () => {
         </Magnetic>
         <div className="lg:mt-0 mt-10">
           <h1 className="chakra font-poppins text-3xl mb-4">
-            The{" "}
-            <span className="bg-teal-700 rounded-3xl px-5 py-1 text-white">
-              Future of Networking
-            </span>
+            The Future of Networking
           </h1>
           <h1 className="font-extrabold ">
             Transform Your Connections with a Tap

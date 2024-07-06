@@ -13,6 +13,15 @@ import card1 from "./card1.png";
 import card2 from "./card2.png";
 import ceo from "./ceo.png";
 import why from "./why.png";
+// Home
+import design from "./design.svg";
+import impression from "./impression.svg";
+import secure from "./secure.svg";
+import share from "./share.svg";
+import arrow from "./arrows.svg";
+import adapt from "./adapt.svg";
+
+import browse from "./browser.png";
 
 export {
   qrCode,
@@ -30,4 +39,12 @@ export {
   card2,
   ceo,
   why,
+  // Home
+  design,
+  adapt,
+  arrow,
+  impression,
+  secure,
+  share,
+  browse,
 };
