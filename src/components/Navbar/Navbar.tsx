@@ -132,7 +132,7 @@ const Navbar = () => {
 
           {/* Small device user Icon */}
           {user !== null && (
-            <div className="lg:hidden mt-1 pt-3 me-2">
+            <div className="lg:hidden mt-1 pt-2 me-2">
               <Link to={"/dashboard"}>
                 <span className="px-3 flex">
                   <p className={`bi-person-fill text-2xl text-white`}></p>
