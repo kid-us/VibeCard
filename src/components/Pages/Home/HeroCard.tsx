@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ceo } from "../../../assets";
+import { ceo, logo } from "../../../assets";
 // import { bgColors } from "./Products";
 import { useState } from "react";
 
@@ -113,9 +113,9 @@ const HeroCard = () => {
               <div className="px-5 mt-10 text-white">
                 <div className="relative">
                   <img
-                    src={ceo}
+                    src={logo}
                     alt="Cover"
-                    className="absolute right-0 -top-6 w-14 h-14 rounded-full border-2 bg-white object-cover"
+                    className="absolute right-0 -top-6 w-14 h-14 rounded-full border-gradient bg-white object-cover"
                   />
                   {/* Job Title */}
                   <p className={`mb-1 lg:mt-0 mt-4 text-xl ${cardBg.color}`}>

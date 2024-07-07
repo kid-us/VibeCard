@@ -22,6 +22,7 @@ import arrow from "./arrows.svg";
 import adapt from "./adapt.svg";
 
 import browse from "./browser.png";
+import logo from "./facicon.png";
 
 export {
   qrCode,
@@ -47,4 +48,5 @@ export {
   secure,
   share,
   browse,
+  logo,
 };
