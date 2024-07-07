@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Hero from "./Home/Hero";
-// import Gradient from "../Gradient/Gradient";
 import Footer from "../Footer/Footer";
 import { video, video2 } from "../../assets";
-// import { video2 } from "../../assets";
 import Loading from "../Loading/Loading";
-// import BusinessCard from "./Home/BusinessCard";
 import homeCard from "../../services/homeCard";
 import Faq from "./Home/FAQ";
 import Products from "./Home/Products";
@@ -21,9 +18,6 @@ const Home = () => {
   return (
     <>
       {loading && <Loading />}
-      <div className="relative right-64 top-10">
-        <div className="absolute w-[5%] lg:w-[25%] lg:right-20 -right-40 bulb"></div>
-      </div>
       <div>
         <Navbar />
         <div className="container mx-auto lg:mt-40 mt-32 lg:pb-32 pb-14">
@@ -56,11 +50,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      {/* Business Card */}
-      {/* <div className="container mx-auto">
-        <BusinessCard />
-      </div> */}
 
       {/* Cards */}
       <div className="border-t border-gray-800 mt-10 overflow-hidden">

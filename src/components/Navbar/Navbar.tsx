@@ -37,6 +37,9 @@ const Navbar = () => {
       {loading && <Loading />}
 
       <header className={`lg:py-3 py-2 top-0 z-50 w-full nav-bg`}>
+        <div className="relative right-64 top-10">
+          <div className="absolute w-[5%] lg:w-[25%] lg:right-20 -right-40 bulb"></div>
+        </div>
         <div className="container mx-auto flex justify-between">
           {/* Large Device */}
           <div>
