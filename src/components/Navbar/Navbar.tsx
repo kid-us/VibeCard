@@ -50,10 +50,8 @@ const Navbar = () => {
                   className={`lg:hidden font-poppins text-2xl text-teal-950 font-bold pt-2`}
                 >
                   <span className="px-3 flex">
-                    <span className={`bi-list text-2xl text-white`}></span>
-                    <span
-                      className={`text-sm font-light pt-[6px] ps-3 text-white`}
-                    >
+                    <span className={`bi-list text-3xl text-white`}></span>
+                    <span className={`font-light pt-[6px] ps-3 text-white`}>
                       Menu
                     </span>
                   </span>
