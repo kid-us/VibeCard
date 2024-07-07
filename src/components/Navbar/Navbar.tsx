@@ -73,7 +73,7 @@ const Navbar = () => {
                   <Link
                     key={n.id}
                     to={n.path}
-                    className={`text-md text-gray-300 font-bold`}
+                    className={`text-sm text-gray-300 font- `}
                   >
                     {n.title}
                   </Link>

@@ -7,13 +7,14 @@ import Loading from "../Loading/Loading";
 import homeCard from "../../services/homeCard";
 import Faq from "./Home/FAQ";
 import Products from "./Home/Products";
+import HeroCard from "./Home/HeroCard";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 100);
   }, []);
   return (
     <>
@@ -49,6 +50,12 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* hero */}
+
+      <div className="relative container mx-auto">
+        <HeroCard />
       </div>
 
       {/* Cards */}

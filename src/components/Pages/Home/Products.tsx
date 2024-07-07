@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Card from "./Card";
 
-const bgColors = [
+export const bgColors = [
   { style: "bg-teal-600", textColor: "text-black" },
   { style: "bg-red-600", textColor: "text-white" },
   { style: "bg-gray-500", textColor: "text-black" },

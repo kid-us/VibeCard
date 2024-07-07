@@ -1,100 +1,213 @@
-import { qrCode, userPic } from "../../../assets";
-import Magnetic from "../../GsapMagnetic/Magnetic";
+import { Link } from "react-router-dom";
+import { ceo } from "../../../assets";
+// import { bgColors } from "./Products";
+import { useState } from "react";
+
+const socials = [
+  { id: 1, icon: "bi-instagram", bg: "bg-red-500" },
+  { id: 2, icon: "bi-facebook", bg: "bg-blue-500" },
+  { id: 4, icon: "bi-github", bg: "bg-zinc-700" },
+  { id: 5, icon: "bi-tiktok", bg: "bg-black" },
+  { id: 3, icon: "bi-linkedin", bg: "bg-sky-700" },
+  { id: 6, icon: "bi-snapchat", bg: "bg-yellow-500" },
+  { id: 7, icon: "bi-twitter", bg: "bg-cyan-600" },
+  { id: 8, icon: "bi-youtube", bg: "bg-red-700" },
+];
+
+const bgCover = [
+  { style: "bg-gray-500", textColor: "text-black" },
+  { style: "bg-lime-500", textColor: "text-black" },
+  { style: "bg-cyan-600", textColor: "text-black" },
+  { style: "bg-amber-500", textColor: "text-white" },
+  { style: "bg-fuchsia-700", textColor: "text-black" },
+];
+
+const bgColors = [
+  { style: "bg-teal-900", textColor: "text-white" },
+  { style: "bg-black", textColor: "text-white" },
+  { style: "bg-sky-900", textColor: "text-white" },
+  { style: "bg-zinc-900", textColor: "text-white" },
+  { style: "bg-rose-900", textColor: "text-white" },
+  { style: "bg-white", textColor: "text-black" },
+];
+
 const HeroCard = () => {
+  const [coverBg, setCoverBg] = useState("bg-amber-500");
+  const [cardBg, setCardBg] = useState({
+    bg: "bg-zinc-900",
+    color: "text-white",
+  });
+
   return (
     <>
-      {/* Phone Card*/}
-      <Magnetic>
-        <div className="absolute bg-white w-52 h-[380px] rounded-xl -top-24 left-10 overflow-hidden border shadow-lg shadow-black hover:z-30">
-          <div className="flex justify-center bg-black  w-full h-28 relative">
-            <div className="absolute border-4 border-white w-24 h-24 rounded-full mt-4">
-              <img src={userPic} alt="user" className="blur-sm" />
+      <div className="lg:grid grid-cols-3 lg:my-32 my-24 px-3">
+        <div className="relative lg:block hidden">
+          <p className="absolute w-44 border border-teal-500 -right-10 top-8"></p>
+          <div className="absolute right-32 top-0 bg-white w-52 rounded py-3 px-3">
+            <div>
+              {bgCover.map((bg) => (
+                <button
+                  onClick={() => setCoverBg(bg.style)}
+                  key={bg.style}
+                  className={`${bg.style} w-6 h-6 border border-black me-3 rounded`}
+                  // style={{ background: bg.value }}
+                ></button>
+              ))}
             </div>
           </div>
-          {/* Info */}
-          <div className="text-black mt-2 text-xs text-center">
-            <p className="text-[10px] font-poppins font-extrabold">
-              Lorem Ipsum
-            </p>
-            <p className="text-[7px] font-poppins font-extrabold">
-              Developer at <span className="logo-font">vibecard</span> Co.
-            </p>
-            <p className="text-[6px] font-poppins font-extrabold">
-              lorem@gmail.com
-            </p>
-          </div>
-          {/* Button */}
-          <div className="text-center mt-4">
-            <button className="bg-teal-600 rounded px-3 py-1 font-poppins shadow shadow-zinc-800">
-              Save Contact
-            </button>
-          </div>
-          {/* Social */}
-          <div className="flex px-3 flex-wrap mt-8">
-            <p className="bi-twitter text-sky-600 text-4xl border rounded p-1 bg-sky-100 me-5"></p>
-            <p className="bi-instagram text-red-600 text-4xl border rounded p-1 bg-red-100 me-5"></p>
-            <p className="bi-facebook text-blue-700 text-4xl border rounded p-1 bg-blue-200 "></p>
-            <p className="bi-github text-zinc-900 text-4xl border rounded p-1 bg-zinc-200 me-5 mt-5"></p>
-            <p className="bi-linkedin text-blue-700 text-4xl border rounded p-1 bg-blue-200 me-5 mt-5"></p>
-            <p className="bi-telegram text-sky-500 text-4xl border rounded p-1 bg-blue-200 mt-5"></p>
-          </div>
-        </div>
-      </Magnetic>
-
-      {/* Business Card */}
-      <Magnetic>
-        <div className="content-center hover:z-40">
-          <div className="bg-zinc-900 rounded-md h-56 p-5 w-[400px] text-sm relative shadow-lg shadow-black">
-            <p className="text-2xl text-teal-400 logo-font">vibecard</p>
-            <div className="grid grid-cols-3">
-              <div className="col-span-2 mt-4">
-                <div className="flex mb-5">
-                  <img src={userPic} alt="user" className="w-10 blur-sm" />
-                  <span className="text-gray-200 ms-6 mt-3">Lorem</span>
-                </div>
-                <p className="text-gray-400 text-xs mb-2">
-                  {" "}
-                  <span className="bi-geo-alt-fill text-xs text-yellow-400 font-poppins">
-                    {" "}
-                    Developer at VibeCard
-                  </span>{" "}
-                </p>
-                <p className="mb-2">
-                  <span className="bi-envelope-fill text-xs text-sky-500 font-poppins">
-                    {" "}
-                    lorem@gmail.com
-                  </span>
-                </p>
-                <p>
-                  <span className="bi-phone-fill text-xs text-gray-400 font-poppins">
-                    {" "}
-                    +25199090889
-                  </span>
-                </p>
-              </div>
-              <div className="p-1 bg-white rounded mt-4">
-                <img src={qrCode} alt="qr code" className="w-32 pt-2 blur-sm" />
-              </div>
+          <p className="absolute w-64 border border-teal-500 -right-10 bottom-40"></p>
+          <div className="absolute right-52 bottom-32 bg-white w-60 rounded py-3 px-3">
+            <div>
+              {bgColors.map((bg) => (
+                <button
+                  onClick={() =>
+                    setCardBg({ bg: bg.style, color: bg.textColor })
+                  }
+                  key={bg.style}
+                  className={`${bg.style} w-6 h-6 border border-black me-3 rounded`}
+                  style={{ background: bg.style }}
+                ></button>
+              ))}
             </div>
           </div>
         </div>
-      </Magnetic>
-      {/* Contact Card */}
-      <Magnetic>
-        <div className="absolute bg-stone-600 w-56 h-36 bottom-0 right-14 rounded shadow-lg shadow-black hover:z-50 z-10">
+        {/* Card */}
+        <div>
+          {/* Cover Bg */}
+          <div className="ms-2 mb-3 flex lg:hidden justify-center">
+            {bgCover.map((bg) => (
+              <button
+                onClick={() => setCoverBg(bg.style)}
+                key={bg.style}
+                className={`${bg.style} w-6 h-6 border border-white me-3 rounded`}
+              ></button>
+            ))}
+          </div>
+          {/* Card */}
           <div className="flex justify-center">
-            <div className="w-16 h-16 rounded-full border-2 mt-1">
-              <img src={userPic} alt="user" className="blur-sm" />
+            <div
+              className={`rounded-2xl overflow-hidden shadow-md shadow-black z-0 lg:mb-0 lg:h-[70vh] w-80 secondary-bg lg:pb-0 pb-10 ${cardBg.bg}`}
+            >
+              <div
+                className={`lg:h-28 h-32 w-full relative flex justify-between z-0 ${coverBg}`}
+              >
+                <div className="absolute lg:top-16 left-2 top-16">
+                  <img
+                    src={ceo}
+                    alt="user"
+                    className="lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-gradient object-cover"
+                  />
+                </div>
+                <p className="text-xs logo-font ps-3 pt-1">vibecard</p>
+
+                {/* Pronoun and Name */}
+                <div className="content-center">
+                  <p
+                    className={`absolute right-0 me-1 w-48 text-center text-xl ${cardBg.color} chakra`}
+                  >
+                    <span className="">Mr </span>
+                    Omar
+                  </p>
+                </div>
+              </div>
+              <div className="px-5 mt-10 text-white">
+                <div className="relative">
+                  <img
+                    src={ceo}
+                    alt="Cover"
+                    className="absolute right-0 -top-6 w-14 h-14 rounded-full border-2 bg-white object-cover"
+                  />
+                  {/* Job Title */}
+                  <p className={`mb-1 lg:mt-0 mt-4 text-xl ${cardBg.color}`}>
+                    CEO
+                  </p>
+                  {/* Company */}
+                  <p className={`text-lg ${cardBg.color}`}>vibecard</p>
+                  {/* Tag Line */}
+                  <p className={`mt-3 text-xs ${cardBg.color}`}>
+                    YourPersonalized Networking Companion
+                  </p>
+
+                  {/* Location */}
+                  <p className={`my-2 text-md ${cardBg.color}`}>
+                    <span
+                      className={`bi-geo-alt-fill me-2 ${cardBg.color}`}
+                    ></span>
+                    Germany
+                  </p>
+                </div>
+
+                {/* Contacts */}
+                <div className={`flex gap-4 justify-center lg:my-6 my-5`}>
+                  <Link
+                    to={`/`}
+                    className={`bi-envelope-fill text-4xl text-center rounded-lg py-2 shadow-inner text-zinc-400`}
+                  ></Link>
+                  <Link
+                    to={`/`}
+                    className={`bi-globe text-4xl text-center rounded-lg py-2 shadow-inner text-violet-700`}
+                  ></Link>
+                  <Link
+                    to={`/`}
+                    className={`bi-telephone-fill text-4xl text-center rounded-lg py-2 shadow-inner text-yellow-400`}
+                  ></Link>
+                  <Link
+                    to={`/`}
+                    className={`bi-telegram text-4xl text-center rounded-lg py-2 shadow-inner text-cyan-400`}
+                  ></Link>
+                  <Link
+                    to={`/`}
+                    className={`bi-whatsapp text-4xl text-center rounded-lg py-2 shadow-inner text-green-500`}
+                  ></Link>
+                </div>
+
+                {/* Social Media */}
+                <div className="grid grid-cols-4 gap-3 justify-center">
+                  {socials.map((s) => (
+                    <div
+                      key={s.id}
+                      className={`${s.bg} text-center p-2 rounded-lg shadow shadow-zinc-900`}
+                    >
+                      <Link
+                        to={`/`}
+                        className={`${s.icon} text-3xl text-center rounded-lg py-2`}
+                      ></Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
-          <p className="text-sm text-center font-poppins mt-1">Lorem Ipsum</p>
-          <div className="text-center mt-2">
-            <button className="font-poppins bg-sky-800 p-2 text-xs rounded shadow shadow-zinc-800">
-              Save Contact
-            </button>
+          {/* Card Bg */}
+          <div className="flex lg:hidden justify-center mt-5 mb-14">
+            {bgColors.map((bg) => (
+              <button
+                onClick={() => setCardBg({ bg: bg.style, color: bg.textColor })}
+                key={bg.style}
+                className={`${bg.style} w-6 h-6 border border-white me-3 rounded`}
+                style={{ background: bg.style }}
+              ></button>
+            ))}
           </div>
         </div>
-      </Magnetic>
+        {/* Note */}
+        <div className="lg:text-start text-center mt-16">
+          <h1 className="bi-hand-index-fill text-4xl text-teal-500 mb-3 mt-10"></h1>
+          <h1 className="font-extrabold text-white text-3xl mb-5">
+            Transform Your Connections with a Tap
+          </h1>
+          <div className="relative lg:-top-32 -top-40">
+            <div className="absolute lg:right-[15em] w-full right-36 top-40 bulb"></div>
+          </div>
+          <p className="text-white lg:text-xl">
+            Discover VibeCard, your ultimate tool for seamless networking. Our
+            innovative NFC business cards and RFID solutions revolutionize the
+            way you share your professional and personal information. Say
+            goodbye to traditional business cards and embrace a sustainable,
+            smart networking experience that leaves a lasting impression.
+          </p>
+        </div>
+      </div>
     </>
   );
 };
