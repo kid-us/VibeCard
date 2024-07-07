@@ -26,7 +26,7 @@ const Home = () => {
       </div>
       <div>
         <Navbar />
-        <div className="container mx-auto mt-40 lg:pb-32 pb-14">
+        <div className="container mx-auto lg:mt-40 mt-32 lg:pb-32 pb-14">
           <Hero />
         </div>
       </div>
