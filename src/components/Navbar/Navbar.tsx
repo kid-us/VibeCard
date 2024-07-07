@@ -36,20 +36,18 @@ const Navbar = () => {
     <>
       {loading && <Loading />}
 
-      <header className={`py-4 top-0 z-50 w-full`}>
-        <div className="flex justify-between">
+      <header className={`py-1 top-0 z-50 w-full nav-bg`}>
+        <div className="container mx-auto flex justify-between">
           {/* Large Device */}
           <div>
             <div
-              className={`flex lg:pe-10 text-white lg:bg-transparent nav-bg rounded-r-2xl lg:border-none border-r border-t border-b border-gray-200 ${
-                user === null && "pe-28"
-              }`}
+              className={`flex lg:pe-10 text-white ${user === null && "pe-28"}`}
             >
               {/* Small Device Menu */}
               <div className="lg:hidden">
                 <p
                   onClick={() => setIsMenu(true)}
-                  className={`lg:hidden  font-poppins text-2xl text-teal-950 font-bold pt-2`}
+                  className={`lg:hidden font-poppins text-2xl text-teal-950 font-bold pt-2`}
                 >
                   <span className="px-3 flex">
                     <span className={`bi-list text-2xl text-white`}></span>
@@ -61,16 +59,14 @@ const Navbar = () => {
                   </span>
                 </p>
               </div>
-              <div
-                className={`lg:pe-10 text-white nav-bg p-2 rounded-r-2xl lg:border-r lg:border-t lg:border-b border-gray-200 lg:ps-24`}
-              >
+              <div className={`lg:pe-10 text-white nav-bg p-2 `}>
                 <Link to={"/"} className={`logo-font lg:text-3xl text-3xl`}>
                   vibecard
                 </Link>
               </div>
 
               <div
-                className={`ms-5 lg:inline-block hidden  text-white nav-bg pt-3 rounded-2xl border border-gray-200 space-x-12 px-10`}
+                className={`ms-5 lg:inline-block hidden text-white pt-3 space-x-12 px-10`}
               >
                 {nav.map((n) => (
                   <Link
@@ -86,7 +82,7 @@ const Navbar = () => {
           </div>
 
           {/* Large Device */}
-          <div className="lg:block hidden me-24 text-white nav-bg pt-3 rounded-2xl border border-gray-200 space-x-12 w-44">
+          <div className="lg:block hidden me-24 text-white nav-bg pt-3">
             {user !== null ? (
               <div className="relative">
                 <p
