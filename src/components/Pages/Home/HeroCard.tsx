@@ -196,7 +196,7 @@ const HeroCard = () => {
           <h1 className="font-extrabold text-white text-3xl mb-5">
             Transform Your Connections with a Tap
           </h1>
-          <div className="relative lg:-top-32 -top-40">
+          <div className="relative lg:block hidden lg:-top-32 -top-40">
             <div className="absolute lg:right-[15em] w-full right-36 top-40 bulb"></div>
           </div>
           <p className="text-white lg:text-xl">
