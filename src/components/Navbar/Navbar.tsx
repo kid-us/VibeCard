@@ -95,7 +95,7 @@ const Navbar = () => {
 
                 {/* Menu  */}
                 {isMenu && (
-                  <div className="secondary-bg lg:block hidden absolute z-50 shadow-lg w-44 p-4 rounded mt-6 border-gradient2">
+                  <div className="secondary-bg lg:block hidden absolute z-50 shadow-lg w-44 p-4 rounded mt-6 border-gradient-2">
                     <Link
                       to={"/dashboard"}
                       className="block font-poppins mb-2 hover:text-gray-400"

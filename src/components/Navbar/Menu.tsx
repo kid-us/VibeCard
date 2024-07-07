@@ -113,7 +113,7 @@ const Menu = ({ nav, menu, username }: Props) => {
               /{" "}
               <Link
                 to={"/register"}
-                className="border-teal-700 py-2 px-5 rounded-full border-2"
+                className="py-2 px-5 rounded-full text-white"
               >
                 Create Account
               </Link>
