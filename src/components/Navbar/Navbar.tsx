@@ -40,9 +40,7 @@ const Navbar = () => {
         <div className="relative right-64 top-10">
           <div className="absolute w-[5%] lg:w-[25%] lg:right-20 -right-40 bulb"></div>
         </div>
-        <p className="text-white absolute text-8xl right-52 top-16 logo-font">
-          v
-        </p>
+
         <div className="container mx-auto flex justify-between">
           {/* Large Device */}
           <div>
