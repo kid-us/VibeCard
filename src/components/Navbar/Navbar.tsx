@@ -72,7 +72,7 @@ const Navbar = () => {
                   <Link
                     key={n.id}
                     to={n.path}
-                    className={`font-poppins text-md text-gray-300`}
+                    className={`text-md text-gray-300 font-bold`}
                   >
                     {n.title}
                   </Link>
@@ -87,15 +87,15 @@ const Navbar = () => {
               <div className="relative">
                 <p
                   onClick={() => setIsMenu(!isMenu)}
-                  className="text-center cursor-pointer"
+                  className="text-center cursor-pointer uppercase"
                 >
-                  <span className="bi-person-fill me-2"></span>
+                  <span className="bi-person-fill text-xl me-2"></span>
                   {user}
                 </p>
 
                 {/* Menu  */}
                 {isMenu && (
-                  <div className="secondary-bg lg:block hidden absolute z-50 shadow-lg w-44 p-4 rounded mt-6 border-gradient">
+                  <div className="secondary-bg lg:block hidden absolute z-50 shadow-lg w-44 p-4 rounded mt-6 border-gradient2">
                     <Link
                       to={"/dashboard"}
                       className="block font-poppins mb-2 hover:text-gray-400"
@@ -137,7 +137,7 @@ const Navbar = () => {
             <div className="lg:hidden mt-1 pt-3 me-2">
               <Link to={"/dashboard"}>
                 <span className="px-3 flex">
-                  <p className={`bi-person-fill text-xl text-white`}></p>
+                  <p className={`bi-person-fill text-2xl text-white`}></p>
                 </span>
               </Link>
             </div>
