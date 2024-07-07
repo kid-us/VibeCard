@@ -95,28 +95,28 @@ const Navbar = () => {
 
                 {/* Menu  */}
                 {isMenu && (
-                  <div className="bg-secondary lg:block hidden absolute shadow-lg w-44 p-4 rounded mt-6 border border-gray-200">
+                  <div className="secondary-bg lg:block hidden absolute z-50 shadow-lg w-44 p-4 rounded mt-6 border-gradient">
                     <Link
                       to={"/dashboard"}
-                      className="block font-poppins mb-2 hover:text-gray-400 chakra"
+                      className="block font-poppins mb-2 hover:text-gray-400"
                     >
                       Dashboard
                     </Link>
                     <Link
                       to={"/create"}
-                      className="block font-poppins mb-2 hover:text-gray-400 chakra"
+                      className="block font-poppins mb-2 hover:text-gray-400"
                     >
                       Create Card
                     </Link>
                     <Link
                       to={"/setting"}
-                      className="block font-poppins mb-2 hover:text-gray-400 chakra"
+                      className="block font-poppins mb-2 hover:text-gray-400"
                     >
                       Setting
                     </Link>
                     <Link
                       to={"/insights"}
-                      className="block font-poppins mb-2 hover:text-gray-400 chakra"
+                      className="block font-poppins mb-2 hover:text-gray-400"
                     >
                       Insights
                     </Link>

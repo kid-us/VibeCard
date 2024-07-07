@@ -90,7 +90,7 @@ const Menu = ({ nav, menu, username }: Props) => {
 
         <div className="absolute">
           <div className="w-80 bg-teal-800 rounded px-4 py-4 mb-14">
-            <p className="chakra font-extrabold text-white text-sm">
+            <p className="font-extrabold text-white text-sm">
               <span className="bi-telephone-fill me-5"></span> Contact Us
             </p>
             <p className="text-xs mt-2 text-gray-200">

@@ -246,3 +246,20 @@ textarea {
   border-radius: 10px;
   border: 2px solid transparent;
 }
+
+.border-gradient-2 {
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  border-width: 3px;
+  border-image: linear-gradient(
+      to right,
+      #12172a,
+      #12172a,
+      darkblue,
+      rgb(157, 8, 231),
+      #12172a,
+      #12172a
+    )
+    10;
+}

@@ -32,7 +32,7 @@ const Hero = () => {
         {/* <HeroCard /> */}
         <Magnetic>
           <div className="content-center rounded-2xl overflow-hidden">
-            <div className="bg-zinc-900 px-5 py-6 w-[100%] lg:h-auto h-[95%] text-sm relative shadow-lg shadow-black border-gradient">
+            <div className="relative bg-zinc-900 px-5 py-6 w-[100%] lg:h-auto h-[95%] text-sm shadow-lg shadow-black border-gradient">
               <p className="lg:text-3xl text-xl logo-font">vibecard</p>
               <div className="grid grid-cols-3">
                 <div className="col-span-2 mt-4">

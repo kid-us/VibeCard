@@ -78,7 +78,7 @@ const Home = () => {
               {homeCard.map((card) => (
                 <div
                   key={card.id}
-                  className="col-span-3 hover:border hover:border-gray-500 rounded-2xl p-7 text-white lg:mb-5 mb-8 secondary-bg"
+                  className="col-span-3 border-gradient-2 hover:border hover:border-gray-500 rounded-2xl p-7 text-white lg:mb-5 mb-8 secondary-bg"
                 >
                   <img src={card.image} alt="Image" className="w-12 mb-5" />
                   <h1 className="text-xl font-extrabold">{card.title}</h1>
