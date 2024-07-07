@@ -3,12 +3,13 @@ import Navbar from "../Navbar/Navbar";
 import Hero from "./Home/Hero";
 // import Gradient from "../Gradient/Gradient";
 import Footer from "../Footer/Footer";
-import { browse } from "../../assets";
+import { video, video2 } from "../../assets";
 // import { video2 } from "../../assets";
 import Loading from "../Loading/Loading";
 // import BusinessCard from "./Home/BusinessCard";
 import homeCard from "../../services/homeCard";
 import Faq from "./Home/FAQ";
+import Products from "./Home/Products";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -43,14 +44,14 @@ const Home = () => {
         <div className="container mx-auto pt-10 lg:px-0 px-3">
           <div className="border-gradient border-2 rounded-xl overflow-hidden">
             <div className=" lg:rounded-lg rounded overflow-hidden">
-              <img src={browse} alt="" />
-              {/* <div className=" lg:rounded-lg rounded overflow-hidden">
+              {/* <img src={browse} alt="" /> */}
+              <div className="lg:rounded-lg rounded overflow-hidden">
                 <video autoPlay muted loop playsInline className="">
                   <source src={video} type="video/webm" />
                   <source src={video2} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
@@ -70,9 +71,9 @@ const Home = () => {
             </div>
             <p className="text-center mt-16 mb-8 text-gray-500">Features</p>
             <div className="flex justify-center w-full text-center">
-              <h1 className="text-gray-100 font-extrabold lg:text-4xl text-3xl text-center mb-16 lg:w-96 w-80">
+              <p className="text-gray-100 font-extrabold lg:text-4xl text-3xl text-center mb-16 lg:w-96 w-80">
                 Customize, Connect, and Conquer
-              </h1>
+              </p>
             </div>
             <div className="lg:grid grid-cols-9 gap-x-5">
               {homeCard.map((card) => (
@@ -89,6 +90,9 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {/* Products */}
+      <Products />
 
       <Faq />
 
