@@ -15,28 +15,33 @@ const Home = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 100);
   }, []);
   return (
     <>
       {loading && <Loading />}
+      <div className="relative right-64 top-10">
+        <div className="absolute w-[5%] lg:w-[25%] lg:right-20 -right-40 bulb"></div>
+      </div>
       <div>
         <Navbar />
-        {/* <Gradient /> */}
-        <div className="container mx-auto lg:mt-56 mt-32 pb-20">
+        <div className="container mx-auto mt-40 pb-32">
           <Hero />
         </div>
       </div>
 
       {/* Video */}
       <div className="relative pb-14">
-        <div className="absolute bg-teal-500 border shadow shadow-zinc-900 rounded-full px-4 py-1 left-[45%] top-6">
-          <p className="text-center text-sm font-extrabold text-white chakra">
+        <div className="relative right-20 -top-52">
+          <div className="absolute w-[5%] lg:w-[10%] lg:right-20 -right-40 bulb"></div>
+        </div>
+        <div className="absolute secondary-bg border-gradient shadow shadow-zinc-900 rounded-full px-4 py-1 left-[45%] top-6">
+          <p className="text-center text-xs font-extrabold text-white ">
             As simple as this
           </p>
         </div>
         <div className="container mx-auto pt-10 lg:px-0 px-3">
-          <div className="border border-gray-600 rounded-xl overflow-hidden">
+          <div className="border-gradient border-2 rounded-xl overflow-hidden">
             <div className=" lg:rounded-lg rounded overflow-hidden">
               <img src={browse} alt="" />
               {/* <div className=" lg:rounded-lg rounded overflow-hidden">
@@ -101,7 +106,7 @@ const Home = () => {
               {homeCard.map((card) => (
                 <div
                   key={card.id}
-                  className="col-span-3 border border-gray-500 rounded-2xl p-7 text-white lg:mb-5 mb-8"
+                  className="col-span-3 hover:border hover:border-gray-500 rounded-2xl p-7 text-white lg:mb-5 mb-8 secondary-bg"
                 >
                   <img src={card.image} alt="Image" className="w-12 mb-5" />
                   <h1 className="text-xl font-extrabold">{card.title}</h1>

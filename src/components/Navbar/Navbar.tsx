@@ -36,7 +36,7 @@ const Navbar = () => {
     <>
       {loading && <Loading />}
 
-      <header className={`py-1 top-0 z-50 w-full nav-bg`}>
+      <header className={`py-3 top-0 z-50 w-full nav-bg`}>
         <div className="container mx-auto flex justify-between">
           {/* Large Device */}
           <div>
@@ -59,7 +59,7 @@ const Navbar = () => {
                   </span>
                 </p>
               </div>
-              <div className={`lg:pe-10 text-white nav-bg p-2 `}>
+              <div className={`lg:pe-10 text-white p-2 `}>
                 <Link to={"/"} className={`logo-font lg:text-3xl text-3xl`}>
                   vibecard
                 </Link>
@@ -72,7 +72,7 @@ const Navbar = () => {
                   <Link
                     key={n.id}
                     to={n.path}
-                    className={`font-poppins text-sm`}
+                    className={`font-poppins text-md text-gray-300`}
                   >
                     {n.title}
                   </Link>
@@ -82,7 +82,7 @@ const Navbar = () => {
           </div>
 
           {/* Large Device */}
-          <div className="lg:block hidden me-24 text-white nav-bg pt-3">
+          <div className="lg:block hidden me-24 text-white pt-3">
             {user !== null ? (
               <div className="relative">
                 <p
@@ -134,7 +134,7 @@ const Navbar = () => {
 
           {/* Small device user Icon */}
           {user !== null && (
-            <div className="lg:hidden mt-1 bg-secondary pt-3 rounded-xl border border-gray-500 me-2">
+            <div className="lg:hidden mt-1 pt-3 me-2">
               <Link to={"/dashboard"}>
                 <span className="px-3 flex">
                   <p className={`bi-person-fill text-xl text-white`}></p>
@@ -147,7 +147,7 @@ const Navbar = () => {
 
       {/* Menu */}
       {isMenu && (
-        <div className="lg:hidden fixed h-[100dvh] z-50 top-0 w-full bg-teal-950 animate__animated animate__fadeInLeft">
+        <div className="lg:hidden fixed h-[100dvh] z-50 top-0 w-full secondary-bg animate__animated animate__fadeInLeft">
           <Menu nav={nav} username={user} menu={() => setIsMenu(false)} />
         </div>
       )}

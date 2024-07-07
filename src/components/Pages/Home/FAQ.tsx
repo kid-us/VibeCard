@@ -27,7 +27,7 @@ const Faq = () => {
                 <div>
                   <button
                     onClick={() => handleFaq(faqs.id)}
-                    className={`btn-bg text-white rounded px-2 cursor-pointer pt-1 ${
+                    className={`btn-bg text-white rounded px-2 py-0 shadow-none cursor-pointer pt-1 ${
                       id === faqs.id ? "bi-caret-up-fill" : "bi-caret-down-fill"
                     } text-2xl`}
                   ></button>
@@ -35,7 +35,7 @@ const Faq = () => {
               </div>
               {id === faqs.id && (
                 <div className="text-sm px-3 py-5 mb-4 rounded lg:mx-10 mx-2">
-                  <p className="text-white chakra text-lg">{faqs.answer}</p>
+                  <p className="text-white text-lg">{faqs.answer}</p>
                 </div>
               )}
               {/* <hr className="border-gray-400 rounded-full border mb-4 mx-5" /> */}

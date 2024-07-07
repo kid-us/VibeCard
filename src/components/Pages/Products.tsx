@@ -21,7 +21,10 @@ const Products = () => {
         <div className="container mx-auto lg:mt-10">
           <div className="lg:grid md:grid lg:grid-cols-3 md:grid-cols-2 gap-x-10 lg:pt-20 pt-10 px-2">
             {product.map((pro) => (
-              <div key={pro.id} className="mb-10 text-white">
+              <div
+                key={pro.id}
+                className="mb-10 text-white secondary-bg rounded-lg"
+              >
                 <Link to={`/product/${pro.id}`}>
                   <img
                     src={pro.image}
