@@ -36,7 +36,7 @@ const Navbar = () => {
     <>
       {loading && <Loading />}
 
-      <header className={`py-3 top-0 z-50 w-full nav-bg`}>
+      <header className={`lg:py-3 py-2 top-0 z-50 w-full nav-bg`}>
         <div className="container mx-auto flex justify-between">
           {/* Large Device */}
           <div>
@@ -49,11 +49,11 @@ const Navbar = () => {
                   onClick={() => setIsMenu(true)}
                   className={`lg:hidden font-poppins text-2xl text-teal-950 font-bold pt-2`}
                 >
-                  <span className="px-3 flex">
-                    <span className={`bi-list text-3xl text-white`}></span>
-                    <span className={`font-light pt-[6px] ps-3 text-white`}>
+                  <span className="px-3 flex me-">
+                    <span className={`bi-list text-2xl pt-1 text-white`}></span>
+                    {/* <span className={`font-light pt-[6px] ps-3 text-white`}>
                       Menu
-                    </span>
+                    </span> */}
                   </span>
                 </p>
               </div>
