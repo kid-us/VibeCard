@@ -199,7 +199,7 @@ const HeroCard = () => {
           <div className="relative lg:block hidden lg:-top-32 -top-40">
             <div className="absolute lg:right-[15em] w-full right-36 top-40 bulb"></div>
           </div>
-          <p className="text-white lg:text-xl text-start ">
+          <p className="text-white lg:text-xl text-lg">
             Discover VibeCard, your ultimate tool for seamless networking. Our
             innovative NFC business cards and RFID solutions revolutionize the
             way you share your professional and personal information. Say
