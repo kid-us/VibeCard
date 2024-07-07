@@ -25,17 +25,17 @@ const Home = () => {
       </div>
       <div>
         <Navbar />
-        <div className="container mx-auto mt-40 pb-32">
+        <div className="container mx-auto mt-40 lg:pb-32 pb-14">
           <Hero />
         </div>
       </div>
 
       {/* Video */}
-      <div className="relative pb-14">
+      <div className="relative lg:pb-14 pb-8">
         <div className="relative right-20 -top-52">
           <div className="absolute w-[5%] lg:w-[10%] lg:right-20 -right-40 bulb"></div>
         </div>
-        <div className="absolute secondary-bg border-gradient shadow shadow-zinc-900 rounded-full px-4 py-1 left-[45%] top-6">
+        <div className="absolute lg:left-[45%] left-36 top-6 secondary-bg border-gradient shadow shadow-zinc-900 rounded-full px-4 py-1">
           <p className="text-center text-xs font-extrabold text-white ">
             As simple as this
           </p>
@@ -61,44 +61,16 @@ const Home = () => {
         <BusinessCard />
       </div> */}
 
-      {/* Why vibecard */}
-      {/* <div className="container mx-auto lg:px-0 px-2 mt-10">
-            <div className="flex justify-between">
-              <div>
-                <h1 className="text-3xl font-extrabold mb-4">
-                  Why{" "}
-                  <span className="bg-teal-700 rounded-3xl px-5 py-1 text-white">
-                    {" "}
-                    Choose VibeCard?
-                  </span>
-                </h1>
-                <p className="lg:text-xl text-lg mb-3 text-gray-700">
-                  Instant Impact: Make a memorable impact at every meeting with
-                  a card that carries not just your contact details but your
-                  professional brand.
-                </p>
-                <p className="lg:text-xl text-lg mb-3 text-gray-700">
-                  Enhanced Security: Protect your information with
-                  state-of-the-art encryption and security features that come
-                  standard with our RFID wallets.
-                </p>
-                <p className="lg:text-xl text-lg mb-3 text-gray-700">
-                  Versatile Solutions: From individual entrepreneurs to large
-                  enterprises, our products meet the needs of every professional
-                  environment.
-                </p>
-              </div>
-              <div className="lg:block hidden ">
-                <img src={why} alt="why" />
-              </div>
-            </div>
-          </div> */}
-
-      <div className="">
+      {/* Cards */}
+      <div className="border-t border-gray-800 mt-10 overflow-hidden">
         <div className="container mx-auto">
           <div className="py-1 px-2 lg:px-0">
+            <div className="relative right-20 lg:-top-28 -top-40">
+              <div className="absolute lg:right-[35em]  right-36 top-40 bulb"></div>
+            </div>
+            <p className="text-center mt-16 mb-8 text-gray-500">Features</p>
             <div className="flex justify-center w-full text-center">
-              <h1 className="text-gray-100 font-extrabold lg:text-4xl text-2xl text-center my-16 w-96">
+              <h1 className="text-gray-100 font-extrabold lg:text-4xl text-3xl text-center mb-16 lg:w-96 w-80">
                 Customize, Connect, and Conquer
               </h1>
             </div>
