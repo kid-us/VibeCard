@@ -27,7 +27,7 @@ const Faq = () => {
                 <div>
                   <button
                     onClick={() => handleFaq(faqs.id)}
-                    className={`btn-bg text-white rounded px-2 py-0 shadow-none cursor-pointer pt-1 ${
+                    className={`text-white rounded px-2 py-0 shadow-none cursor-pointer pt-1 ${
                       id === faqs.id ? "bi-caret-up-fill" : "bi-caret-down-fill"
                     } text-2xl`}
                   ></button>
