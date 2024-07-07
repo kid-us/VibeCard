@@ -86,7 +86,7 @@ const HeroCard = () => {
           {/* Card */}
           <div className="flex justify-center">
             <div
-              className={`rounded-2xl overflow-hidden shadow-md shadow-black z-0 lg:mb-0 lg:h-[70vh] w-80 secondary-bg lg:pb-0 pb-10 ${cardBg.bg}`}
+              className={`rounded-2xl overflow-hidden shadow-md lg:shadow-black shadow-gray-400 z-0 lg:mb-0 lg:h-[70vh] w-80 secondary-bg lg:pb-0 pb-10 ${cardBg.bg}`}
             >
               <div
                 className={`lg:h-28 h-32 w-full relative flex justify-between z-0 ${coverBg}`}
