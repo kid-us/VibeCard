@@ -49,9 +49,7 @@ const Login = () => {
             </div>
 
             {/* Card */}
-            <Card
-              submitted={submitButtonClicked}
-            />
+            <Card submitted={submitButtonClicked} />
           </div>
         </div>
       </div>

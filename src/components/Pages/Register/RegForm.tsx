@@ -95,7 +95,7 @@ const Form = ({ buttonClicked, username }: Props) => {
           {...register("username")}
           type="text"
           name="username"
-          className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+          className={`text-black bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
             errors.email && "border-red-600 border-1 border"
           }`}
           onChange={(e) => username(e.currentTarget.value)}
@@ -114,7 +114,7 @@ const Form = ({ buttonClicked, username }: Props) => {
           {...register("email")}
           type="email"
           name="email"
-          className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+          className={`text-black bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
             errors.email && "border-red-600 border-1 border"
           }`}
         />
@@ -132,7 +132,7 @@ const Form = ({ buttonClicked, username }: Props) => {
           {...register("password")}
           type={showPassword ? "text" : "password"}
           name="password"
-          className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+          className={`text-black bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
             errors.password && "border-red-600 border-1 border"
           }`}
         />
@@ -155,7 +155,7 @@ const Form = ({ buttonClicked, username }: Props) => {
         <input
           type="password"
           name="confirm-password"
-          className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+          className={`text-black bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
             confirmPasswordError && "border-red-600 border-1 border"
           }`}
           onChange={(event) => setConfirmPassword(event.currentTarget.value)}
