@@ -7,7 +7,7 @@ interface Props {
 
 const SmallDeviceSidebar = ({ active, handleClick }: Props) => {
   return (
-    <div className="grid grid-cols-4 bg-stone-800 w-full">
+    <div className="grid grid-cols-4 secondary-bg w-full">
       {/* Icon */}
       {sidebarIcons.map((icons) => (
         <div
@@ -15,8 +15,8 @@ const SmallDeviceSidebar = ({ active, handleClick }: Props) => {
           onClick={() => handleClick(icons.title)}
           className={`text-center cursor-pointer ${
             active === icons.title
-              ? "bg-stone-700 text-gray-400"
-              : "hover:bg-stone-800 text-white"
+              ? "hover:bg-sky-950 text-gray-400"
+              : "secondary-bg text-white"
           } p-2`}
         >
           <p className={`${icons.icon} text-xl`}></p>

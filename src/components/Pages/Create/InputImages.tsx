@@ -63,11 +63,11 @@ const InputImages = ({
 
   return (
     <div>
-      <p className="text-xs lg:text-gray-800 mb-4 font-poppins first-letter:uppercase text-black text-center">
+      <p className="text-xs text-gray-100 mb-4 font-poppins first-letter:uppercase text-center">
         {title}
       </p>
       <div
-        className={`border rounded-lg border-gray-300 bg-stone-200 ${
+        className={`border shadow shadow-gray-600 rounded-lg border-gray-600 ${
           type === "cover" ? "lg:w-72 w-full h-auto" : "lg:w-28 w-full h-auto"
         } p-1 relative ${error && "border border-red-600"}`}
       >
@@ -90,8 +90,8 @@ const InputImages = ({
         ) : (
           <label htmlFor={`${type}-file`} className="cursor-pointer">
             <div className="flex flex-col text-center mt-5">
-              <i className="bi-image text-xl text-gray-800"></i>
-              <span className="text-[8px] text-gray-600">
+              <i className="bi-image text-xl text-gray-200"></i>
+              <span className="text-[8px] text-gray-200">
                 Select image or video file or drag and drop one here
               </span>
             </div>

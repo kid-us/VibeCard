@@ -56,7 +56,7 @@ const Create = () => {
         <div className="absolute lg:block hidden w-full">
           <div className="grid grid-cols-9">
             <div className="col-span-2"></div>
-            <div className="col-span-7 nav-bg shadow shadow-gray-800">
+            <div className="col-span-7 nav-bg shadow shadow-gray-800 secondary-bg">
               <div className="flex justify-between px-5 text-white">
                 {/* Vibecard */}
                 <div>
@@ -104,17 +104,18 @@ const Create = () => {
 
         {/* Form */}
         <div
-          className={`lg:block ${
+          className={`block ${
             previewCard && "hidden"
           } col-span-5 w-full lg:p-3 lg:mt-20 lg:pt-0 p-3 pt-2`}
         >
           <Form layout={layout} />
         </div>
+
         {/* Card Layout*/}
         <div
           className={`lg:flex  ${
             !previewCard && "hidden"
-          } lg:col-span-2 lg:pe-5 lg:pt-0 lg:pb-0 pt-24 lg:h-auto pb-10 px-3 h-[95vh] overflow-scroll lg:mt-20`}
+          } lg:col-span-2 lg:pe-5 lg:pt-0 lg:pb-0 pt-5 lg:h-auto pb-10 px-3 h-[95vh] overflow-scroll lg:mt-20`}
         >
           <div className="content-center w-full">
             <p className="mb-4">Card Preview</p>
@@ -137,7 +138,7 @@ const Create = () => {
             }}
           ></div>
 
-          <div className="z-50 bg-zinc-800 h-[90dvh] absolute bottom-0 w-full rounded-t-3xl text-white pb-10 animate__animated animate__fadeInUp">
+          <div className="z-50 secondary-bg h-[90dvh] absolute bottom-0 w-full rounded-t-3xl text-white pb-10 animate__animated animate__fadeInUp">
             {/* Colors */}
             {modal && activeModal === "Colors" && (
               <div className="p-5">
@@ -170,7 +171,7 @@ const Create = () => {
       )}
 
       {/* Small Device Sidebar */}
-      <div className="lg:hidden absolute bottom-0 w-full z-50">
+      <div className="lg:hidden absolute bottom-0 w-full z-50 border-t border-gray-600">
         <SmallDeviceSidebar
           active={activeModal}
           handleClick={(value: string) => handleModal(value)}

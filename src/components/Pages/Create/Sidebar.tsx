@@ -39,15 +39,15 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="grid grid-cols-5 bg-stone-800 -md w-full h-[100dvh] border border-stone-900 rounded-r">
+    <div className="grid grid-cols-5 bg-[#050a19] -md w-full h-[100dvh] border border-stone-900 rounded-r">
       {/* Icon */}
-      <div className="relative text-white bg-stone-900 shadow shadow-stone-400 overflow-hidden">
+      <div className="relative z-50 text-white bg-[#050a19] shadow shadow-stone-400 overflow-hidden">
         {sidebarIcons.map((icons) => (
           <div
             key={icons.id}
             onClick={() => setSelected(icons.title)}
             className={`py-5 text-center cursor-pointer ${
-              selected === icons.title ? "bg-stone-700" : "hover:bg-stone-800"
+              selected === icons.title ? "secondary-bg" : "hover:bg-blue-950"
             } p-3`}
           >
             <p className={`${icons.icon} text-xl`}></p>

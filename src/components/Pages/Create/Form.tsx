@@ -257,7 +257,7 @@ const Form = ({ layout }: Props) => {
       <p className="mb-4">Create your Business card</p>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-10  shadow lg:shadow-zinc-400 lg:rounded-xl bg-white rounded lg:overflow-auto lg:h-auto overflow-y-scroll h-[74dvh]"
+        className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-10 shadow lg:shadow-zinc-400 rounded-xl secondary-bg lg:overflow-auto lg:h-auto h-[69dvh] overflow-y-scroll border border-gray-700 mb-10"
       >
         {/* Images */}
         <div className="lg:flex justify-between flex-shrink-0 grid grid-cols-3 gap-1 lg:px-0 px-1">
@@ -289,7 +289,7 @@ const Form = ({ layout }: Props) => {
           {/* Pronoun */}
           <div className="mb-4">
             <label
-              className="lg:text-xs text-sm lg:text-gray-600 block text-black"
+              className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="pronoun"
             >
               Pronoun <span className="text-red-700 text-2xl">*</span>
@@ -297,7 +297,7 @@ const Form = ({ layout }: Props) => {
 
             <select
               name="pronoun"
-              className="bg-gray-200 py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black"
+              className="bg-transparent secondary-bg border border-gray-600 text-white py-3 rounded-lg focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3"
               onChange={(event) => {
                 setUserPronoun(event.currentTarget.value);
                 setCardPronoun(event.currentTarget.value);
@@ -319,7 +319,7 @@ const Form = ({ layout }: Props) => {
           {/* Name */}
           <div className="mb-3">
             <label
-              className="lg:text-xs text-sm lg:text-gray-600 block text-black"
+              className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="name"
             >
               Name
@@ -329,7 +329,7 @@ const Form = ({ layout }: Props) => {
               {...register("name")}
               type="text"
               name="name"
-              className={`bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
+              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 ${
                 errors.name && "border-red-600 border-1 border"
               }`}
               onChange={(e) => {
@@ -347,7 +347,7 @@ const Form = ({ layout }: Props) => {
           {/* Email */}
           <div className="mb-3">
             <label
-              className="lg:text-xs text-sm lg:text-gray-600 block text-black"
+              className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="email"
             >
               Email
@@ -357,7 +357,7 @@ const Form = ({ layout }: Props) => {
               {...register("email")}
               type="email"
               name="email"
-              className={`bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
+              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 ${
                 errors.email && "border-red-600 border-1 border"
               }`}
               onChange={(e) => handleEmail(e.currentTarget.value)}
@@ -374,7 +374,7 @@ const Form = ({ layout }: Props) => {
           {/* Phone */}
           <div className="mb-3">
             <label
-              className="lg:text-xs text-sm lg:text-gray-600 block text-black"
+              className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="phone"
             >
               Phone
@@ -384,7 +384,7 @@ const Form = ({ layout }: Props) => {
               {...register("phone", { valueAsNumber: true })}
               type="tel"
               name="phone"
-              className={`bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
+              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 ${
                 errors.phone && "border-red-600 border-1 border"
               }`}
               onChange={(e) => handlePhone(e.currentTarget.value)}
@@ -401,7 +401,7 @@ const Form = ({ layout }: Props) => {
           {/* Job-Title */}
           <div className="mb-3">
             <label
-              className="lg:text-xs text-sm lg:text-gray-600 block text-black"
+              className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="job-title"
             >
               Job Title
@@ -411,7 +411,7 @@ const Form = ({ layout }: Props) => {
               {...register("job")}
               type="text"
               name="job"
-              className={`bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
+              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 ${
                 errors.job && "border-red-600 border-1 border"
               }`}
               onChange={(e) => {
@@ -429,7 +429,7 @@ const Form = ({ layout }: Props) => {
           {/* Location */}
           <div className="mb-3">
             <label
-              className="lg:text-xs text-sm lg:text-gray-600 block text-black"
+              className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="location"
             >
               Location
@@ -439,7 +439,7 @@ const Form = ({ layout }: Props) => {
               {...register("location")}
               type="text"
               name="location"
-              className={`bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
+              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 ${
                 errors.location && "border-red-600 border-1 border"
               }`}
               onChange={(e) => {
@@ -459,7 +459,7 @@ const Form = ({ layout }: Props) => {
           {/* Company */}
           <div className="mb-3">
             <label
-              className="lg:text-xs text-sm lg:text-gray-600 block text-black"
+              className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="company"
             >
               Company
@@ -469,7 +469,7 @@ const Form = ({ layout }: Props) => {
               {...register("company")}
               type="text"
               name="company"
-              className={`bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black ${
+              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 ${
                 errors.company && "border-red-600 border-1 border"
               }`}
               onChange={(e) => {
@@ -489,7 +489,7 @@ const Form = ({ layout }: Props) => {
           {/* Tag-line || Bio*/}
           <div className="mb-3">
             <label
-              className="lg:text-xs text-sm lg:text-gray-600 block text-black"
+              className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="tag-line"
             >
               Bio
@@ -498,7 +498,7 @@ const Form = ({ layout }: Props) => {
             <input
               type="text"
               name="tag-line"
-              className={`bg-gray-200 py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 text-black`}
+              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3`}
               onChange={(e) => {
                 setBio(e.currentTarget.value);
                 setCardTagLine(e.currentTarget.value);
@@ -510,9 +510,9 @@ const Form = ({ layout }: Props) => {
         </div>
 
         {/* Button */}
-        <div className="lg:absolute -bottom-2 lg:pe-10 w-full lg:left-5 lg:mb-0 mb-5">
-          <div className="flex justify-end rounded-b-xl lg:bg-white py-3 lg:shadow border">
-            <button className="bg-sky-800 shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full lg:mx-0 mx-5">
+        <div className="lg:absolute -bottom-2 lg:pe-10 w-full lg:left-5 lg:mb-0">
+          <div className="flex justify-end rounded-b-xl secondary-bg py-3 lg:shadow border border-gray-700">
+            <button className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full lg:mx-0 mx-5">
               {loader ? <Loader /> : "Create"}
             </button>
           </div>

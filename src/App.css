@@ -15,13 +15,15 @@ body {
   font-style: normal;
 }
 
+option {
+  background-color: #0d1224;
+}
+
 .nav-bg {
   background-color: transparent;
 }
 
 .btn-bg {
-  /* background-color: #4cc9f0; */
-
   background-image: linear-gradient(
     to right,
     #24c6dc 0%,
