@@ -7,12 +7,16 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { Products, fetchProducts } from "../../services/products";
 import Loading from "../Loading/Loading";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const stripePromise = loadStripe(
   "pk_test_51PWdFdP6UOHlMztHLMRA87lAsgfC4OuAxPR9C454dcBjjfaBlGgTKzG4I0nnKyCbwM2mcyt7Exs7F5pgfi3rhG9q00BmRURbuZ"
 );
 
 function Pay() {
+  const [title] = useState("Pay");
+  useDocumentTitle(title);
+
   const location = useLocation();
 
   const searchParams = new URLSearchParams(location.search);

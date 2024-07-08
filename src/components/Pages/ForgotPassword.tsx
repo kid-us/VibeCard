@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { baseUrl } from "../../services/request";
 import { useState } from "react";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const schema = z.object({
   email: z.string().email({ message: "Email address required." }),
@@ -14,6 +15,9 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const ForgotPassword = () => {
+  const [title] = useState("Forgot Password?");
+  useDocumentTitle(title);
+
   const [forgotPasswordError, setForgotPasswordError] = useState("");
   const [loader, setLoader] = useState(false);
 

@@ -9,6 +9,4 @@ export const sidebarIcons: Icons[] = [
   { id: 2, icon: "bi-palette-fill", title: "Colors" },
   { id: 3, icon: "bi-fonts", title: "Text" },
   { id: 4, icon: "bi-body-text", title: "Content" },
-  // { id: 5, icon: "bi-gear-fill", title: "Setting" },
-  // { id: 5, icon: "bi-input-cursor-text", title: "Forms" }, //
 ];

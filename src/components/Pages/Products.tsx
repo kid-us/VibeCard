@@ -1,8 +1,12 @@
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import SampleProducts from "../Home/SampleProducts";
+import { useState } from "react";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const Products = () => {
+  const [title] = useState("Shop our Products");
+  useDocumentTitle(title);
   return (
     <>
       <Navbar />

@@ -5,8 +5,12 @@ import { useEffect, useState } from "react";
 import { Products } from "../../services/products";
 import Card from "../Home/Card";
 import { bgColors } from "../Home/SampleProducts";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const ProductDetail = () => {
+  const [title] = useState("Product");
+  useDocumentTitle(title);
+
   const { id } = useParams();
   const [, setProduct] = useState<Products[]>();
 

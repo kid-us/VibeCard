@@ -1,16 +1,21 @@
 import { Link } from "react-router-dom";
 import { pageNotFound } from "../../assets";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
+import { useState } from "react";
 
 const Page404 = () => {
+  const [title] = useState("404:Page not Found");
+  useDocumentTitle(title);
+
   return (
-    <div className="lg:px-40 px-2 menu-bg">
+    <div className="lg:px-40 px-2">
       <div className="flex justify-center h-[100dvh]">
         <div className="content-center">
           <div className="lg:w-[500px] lg:h-64 bg-zinc-800 rounded relative p-3 shadow-lg shadow-zinc-950">
             <Link to="/" className="logo-font text-teal-400 text-2xl">
               vibecard
             </Link>
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-2 gap-5 secondary-bg rounded">
               <div className="mt-3">
                 <img
                   src={pageNotFound}

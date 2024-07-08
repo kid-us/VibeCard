@@ -15,8 +15,11 @@ import { useCardData } from "../../store/useCardData";
 import { userPic } from "../../assets";
 import Navbar from "../Navbar/Navbar";
 import useAuthStore from "../../store/useUserData";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const Create = () => {
+  const [title] = useState("Create Card");
+  useDocumentTitle(title);
   const { layout } = useLayoutStore();
   const { user } = useAuthStore();
   // States

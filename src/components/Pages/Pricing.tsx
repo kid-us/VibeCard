@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import { useState } from "react";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const Pricing = () => {
+  const [title] = useState("Pricing");
+  useDocumentTitle(title);
+
   return (
     <>
       <Navbar />

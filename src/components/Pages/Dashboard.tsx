@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { baseUrl } from "../../services/request";
 import useAuthStore from "../../store/useUserData";
 import Navbar from "../Navbar/Navbar";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 interface Card {
   card_url: string;
@@ -15,6 +16,9 @@ interface Card {
 }
 
 const Dashboard = () => {
+  const [title] = useState("Dashboard");
+  useDocumentTitle(title);
+
   const { user } = useAuthStore();
   const [links, setLinks] = useState<Card[]>([]);
   const [copiedUrls, setCopiedUrls] = useState<string[]>([]);

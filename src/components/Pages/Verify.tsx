@@ -1,5 +1,10 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 const Verify = () => {
+  const [title] = useState("Verify");
+  useDocumentTitle(title);
+
   const location = useLocation();
 
   const searchParams = new URLSearchParams(location.search);

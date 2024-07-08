@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import Card from "../Card/Card";
 import RegForm from "../Register/RegForm";
 import SignUpOption from "../SignUpOption/SignUpOption";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const Register = () => {
+  const [title] = useState("Register");
+  useDocumentTitle(title);
+
   const [username, setUsername] = useState("");
   const [submitButtonClicked, setSubmitButtonClicked] = useState(false);
 

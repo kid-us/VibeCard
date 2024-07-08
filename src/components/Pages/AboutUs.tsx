@@ -1,7 +1,11 @@
+import { useState } from "react";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 
 const AboutUs = () => {
+  const [title] = useState("About Us");
+  useDocumentTitle(title);
   return (
     <>
       <Navbar />

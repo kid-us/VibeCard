@@ -8,8 +8,12 @@ import homeCard from "../../services/homeCard";
 import Faq from "../Home/FAQ";
 import Products from "../Home/SampleProducts";
 import HeroCard from "../Home/HeroCard";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const Home = () => {
+  const [title] = useState("Vibecard - Digital Business Cards");
+  useDocumentTitle(title);
+
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {

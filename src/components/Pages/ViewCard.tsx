@@ -3,107 +3,16 @@ import { baseUrl } from "../../services/request";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { userPic } from "../../assets";
-import Contacts from "../Layout/Contacts";
-import SocialMedia from "../Layout/SocialMedia";
 import Magnetic from "../GsapMagnetic/Magnetic";
 import Loading from "../Loading/Loading";
-
-interface Pronoun {
-  font_size: string;
-  font_style: string;
-  font_color: string;
-}
-
-interface Buttton {
-  bg_color: string;
-  text_color: string;
-}
-
-interface JobTitle {
-  font_size: string;
-  font_style: string;
-  font_color: string;
-}
-
-interface Bio {
-  font_size: string;
-  font_style: string;
-  font_color: string;
-}
-
-interface Company {
-  font_size: string;
-  font_style: string;
-  font_color: string;
-}
-
-interface Location {
-  font_size: string;
-  font_style: string;
-  font_color: string;
-}
-
-interface Name {
-  font_size: string;
-  font_style: string;
-  font_color: string;
-}
-
-interface CardBg {
-  bg_color: string;
-}
-
-interface CoverBg {
-  bg_color: string;
-}
-
-interface Contacts {
-  color: string;
-  icon: string;
-  link: string;
-}
-
-interface SocialMedia {
-  color: string;
-  icon: string;
-  link: string;
-}
-
-interface StyleData {
-  pronoun: Pronoun;
-  button: Buttton;
-  jobTitle: JobTitle;
-  bio: Bio;
-  name: Name;
-  company: Company;
-  location: Location;
-  coverBG: CoverBg;
-  cardBg: CardBg;
-  contacts: Contacts[];
-  socialMedia: SocialMedia[];
-}
-
-interface Data {
-  owner: string;
-  bio: string;
-  card_url: string;
-  company_logo: string;
-  company_name: string;
-  covor_picture: string;
-  email: string;
-  card_layout: string | number;
-  location: string;
-  full_name: string;
-  job_title: string;
-  main_picture: string;
-  phone: string;
-  pronouns: string;
-  qr_code: string;
-}
+import { Data, StyleData } from "../../services/viewCard";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const ViewCard = () => {
-  const { id } = useParams();
+  const [title] = useState("My Card");
+  useDocumentTitle(title);
 
+  const { id } = useParams();
   const [data, setData] = useState<Data>();
   const [styles, setStyles] = useState<StyleData>();
   const [loading, setLoading] = useState(true);
@@ -121,16 +30,13 @@ const ViewCard = () => {
       });
   }, []);
 
-  // console.log(styles);
-  // console.log(data);
-
   return (
     <>
       {loading && <Loading />}
-      <div className="h-[100vh] menu-bg">
+      <div className="h-[100vh]">
         <div className="lg:px-40 md:px-36 px-2">
           <div className="lg:pt-10 md:pt-10 py-5 lg:ps-24">
-            <Link to={"/"} className="text-2xl text-teal-950 logo-font">
+            <Link to={"/"} className="text-2xl text-white logo-font">
               vibecard
             </Link>
           </div>

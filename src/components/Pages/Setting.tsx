@@ -9,6 +9,7 @@ import { useState } from "react";
 // import { baseUrl } from "../../services/request";
 import Button from "../Button/Button";
 import Navbar from "../Navbar/Navbar";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const schema = z.object({
   username: z
@@ -23,6 +24,9 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const Setting = () => {
+  const [title] = useState("Setting");
+  useDocumentTitle(title);
+
   // const navigate = useNavigate();
 
   // const [registerError, setRegisterError] = useState("");

@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import Card from "../Card/Card";
 import LogForm from "../Login/LogForm";
 import SignUpOption from "../SignUpOption/SignUpOption";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const Login = () => {
+  const [title] = useState("Login");
+  useDocumentTitle(title);
+
   const [submitButtonClicked, setSubmitButtonClicked] = useState(false);
 
   return (

@@ -1,7 +1,12 @@
+import { useState } from "react";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const PrivacyPolicy = () => {
+  const [title] = useState("Privacy Policy");
+  useDocumentTitle(title);
+
   return (
     <>
       <Navbar />

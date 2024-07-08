@@ -2,8 +2,12 @@ import Navbar from "../Navbar/Navbar";
 import { baseUrl } from "../../services/request";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const Insights = () => {
+  const [title] = useState("Insight");
+  useDocumentTitle(title);
+
   const [cards, setCards] = useState();
   useEffect(() => {
     axios
