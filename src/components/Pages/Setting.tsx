@@ -76,10 +76,10 @@ const Setting = () => {
     <>
       <Navbar />
       <div className="">
-        <div className="container mx-auto lg:p-10">
+        <div className="container mx-auto lg:p-10 secondary-bg mt-10">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="bg-secondary py-10 lg:px-40 px-10 rounded shadow"
+            className=" py-10 lg:px-40 px-10 rounded shadow"
           >
             <h1 className="mb-10 text-2xl text-white">Account Settings</h1>
             {/* Email exist error */}
@@ -180,9 +180,10 @@ const Setting = () => {
                 </p>
               )}
             </div>
-
-            {/* Button */}
-            <Button loader={loader} label="Update" />
+            <div className="mt-10">
+              {/* Button */}
+              <Button loader={loader} label="Update" />
+            </div>
           </form>
         </div>
       </div>
