@@ -11,7 +11,7 @@ interface Props {
 const Menu = ({ nav, menu, username }: Props) => {
   return (
     <>
-      <div className="flex justify-between py-3 px-3">
+      <div className="flex justify-between py-3 px-3 z-50">
         <div onClick={() => menu()}>
           <p
             className={`lg:hidden rounded-full border border-white font-poppins text-2xl text-teal-950 font-bold`}
@@ -89,7 +89,7 @@ const Menu = ({ nav, menu, username }: Props) => {
         )}
 
         <div className="absolute">
-          <div className="w-80 bg-teal-800 rounded px-4 py-4 mb-14">
+          <div className="w-80 main-bg rounded px-4 py-4 mb-14 border border-gray-700">
             <p className="font-extrabold text-white text-sm">
               <span className="bi-telephone-fill me-5"></span> Contact Us
             </p>
@@ -106,7 +106,7 @@ const Menu = ({ nav, menu, username }: Props) => {
             <p>
               <Link
                 to={"/login"}
-                className="bg-teal-700 py-2 px-5 rounded-full text-white"
+                className="btn-bg py-2 px-5 rounded-full text-white"
               >
                 Login
               </Link>{" "}

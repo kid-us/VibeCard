@@ -93,7 +93,7 @@ const Create = () => {
         {/* Preview on Small Device */}
         <div
           onClick={() => setPreviewCard(!previewCard)}
-          className={`lg:hidden fixed bottom-20 right-2 bg-gray-50 text-black shadow shadow-zinc-900 rounded px-2 py-1 z-50`}
+          className={`lg:hidden fixed bottom-20 right-2 text-white px-2 py-1 z-40`}
         >
           <p
             className={`${
@@ -171,7 +171,7 @@ const Create = () => {
       )}
 
       {/* Small Device Sidebar */}
-      <div className="lg:hidden absolute bottom-0 w-full z-50 border-t border-gray-600">
+      <div className="lg:hidden absolute bottom-0 w-full z-40 border-t border-gray-600">
         <SmallDeviceSidebar
           active={activeModal}
           handleClick={(value: string) => handleModal(value)}

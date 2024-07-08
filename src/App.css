@@ -23,6 +23,10 @@ option {
   background-color: transparent;
 }
 
+.main-bg {
+  background-color: #0d1224 !important;
+}
+
 .btn-bg {
   background-image: linear-gradient(
     to right,
@@ -69,9 +73,6 @@ h6 {
 }
 
 .logo-font {
-  /* font-family: "Permanent Marker", cursive;
-  font-weight: 400;
-  font-style: normal; */
   font-family: "Audiowide", sans-serif;
   font-weight: 400;
   font-style: normal;
