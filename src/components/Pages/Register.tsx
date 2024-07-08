@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "../Card/Card";
-import RegForm from "./Register/RegForm";
+import RegForm from "../Register/RegForm";
 import SignUpOption from "../SignUpOption/SignUpOption";
 
 const Register = () => {

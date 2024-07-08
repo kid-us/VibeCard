@@ -1,5 +1,5 @@
 import { useState } from "react";
-import faq from "../../../services/faq";
+import faq from "../../services/faq";
 
 const Faq = () => {
   const [id, setId] = useState<number>(0);

@@ -38,9 +38,9 @@ const CheckoutForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <PaymentElement className="" />
+      <PaymentElement />
       <button
-        className="bg-sky-800 w-full mt-10 rounded text-white py-3 shadow shadow-zinc-900"
+        className="btn-bg w-full mt-10 rounded text-white py-3 shadow shadow-zinc-900"
         disabled={!stripe || isLoading}
       >
         {isLoading ? "Processing..." : "Submit"}

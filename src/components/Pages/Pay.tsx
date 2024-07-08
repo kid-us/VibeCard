@@ -17,7 +17,7 @@ function Pay() {
 
   const searchParams = new URLSearchParams(location.search);
   const productId = searchParams.get("id");
-  const [product, setProduct] = useState<Products[]>();
+  const [, setProduct] = useState<Products[]>();
 
   useEffect(() => {
     if (productId) {
@@ -57,36 +57,38 @@ function Pay() {
   return (
     <>
       {!clientSecret && <Loading />}
-      <div className="lg:grid grid-cols-5 gap-x-10 h-[100dvh menu-bg">
-        <div className="lg:col-span-2 lg:px-20 lg:py-32 px-2 py-10 rounded shadow w-full bg-white h-[100dvh]">
+      <div className="lg:grid grid-cols-5 gap-x-10 h-[100dvh">
+        <div className="lg:col-span-2 lg:px-20 lg:py-32 px-2 py-10 rounded shadow w-full secondary-bg text-white h-[100dvh]">
           <div className="lg:hidden">
-            {product && (
+            {/* {product && (
               <img
                 src={product[0].image}
                 alt=""
                 className="w-full rounded shadow-2xl shadow-gray-500"
               />
-            )}
+            )} */}
           </div>
-          <div className="my-20 px-5">
+          <div className="my-20 px-5 text-white">
             {clientSecret && (
               <>
                 <p className="mb-8 font-poppins">Powered by Stripe.</p>
-                <Elements stripe={stripePromise} options={options}>
-                  <CheckoutForm />
-                </Elements>
+                <div className="text-white">
+                  <Elements stripe={stripePromise} options={options}>
+                    <CheckoutForm />
+                  </Elements>
+                </div>
               </>
             )}
           </div>
         </div>
         <div className="lg:block hidden col-span-3 mx-32 mt-44">
-          {product && (
+          {/* {product && (
             <img
               src={product[0].image}
               alt=""
               className="w-full rounded shadow-2xl shadow-gray-500"
             />
-          )}
+          )} */}
         </div>
       </div>
     </>

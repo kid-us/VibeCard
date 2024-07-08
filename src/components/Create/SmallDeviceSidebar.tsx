@@ -1,4 +1,4 @@
-import { sidebarIcons } from "../../../services/sidebarIcons";
+import { sidebarIcons } from "../../services/sidebarIcons";
 
 interface Props {
   active: string;

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { cardColor, coverColor } from "../../../../services/coverColor";
-import { useCoverColorStore } from "../../../../store/useCoverColorStore";
-import { useCardColorStore } from "../../../../store/useCardColorStore";
-import { useTextColorStore } from "../../../../store/useTextColorStore";
+import { cardColor, coverColor } from "../../../services/coverColor";
+import { useCoverColorStore } from "../../../store/useCoverColorStore";
+import { useCardColorStore } from "../../../store/useCardColorStore";
+import { useTextColorStore } from "../../../store/useTextColorStore";
 
 interface Props {
   cardType: string;

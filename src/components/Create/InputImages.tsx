@@ -1,6 +1,6 @@
 import { ChangeEvent, useRef, useState } from "react";
-import { useContentStore } from "../../../store/useContentStore";
-import ImageCropper from "../../ImageCrop/ImageCropper";
+import { useContentStore } from "../../store/useContentStore";
+import ImageCropper from "../ImageCrop/ImageCropper";
 
 interface Props {
   type: "profile" | "cover" | "logo";

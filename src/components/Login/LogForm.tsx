@@ -3,10 +3,10 @@ import { z } from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import Button from "../../Button/Button";
+import Button from "../Button/Button";
 import axios from "axios";
-import { baseUrl } from "../../../services/request";
-import useAuthStore from "../../../store/useUserData";
+import { baseUrl } from "../../services/request";
+import useAuthStore from "../../store/useUserData";
 
 interface Props {
   buttonClicked: (value: boolean) => void;

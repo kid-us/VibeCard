@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { fontSize, fonts } from "../../../../services/fonts";
-import { State, useTextColorStore } from "../../../../store/useTextColorStore";
+import { fontSize, fonts } from "../../../services/fonts";
+import { State, useTextColorStore } from "../../../store/useTextColorStore";
 
 interface Props {
   defaultFontStyle: string;

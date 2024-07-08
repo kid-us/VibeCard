@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import Magnetic from "../../GsapMagnetic/Magnetic";
-import { ceo } from "../../../assets";
+import Magnetic from "../GsapMagnetic/Magnetic";
+import { ceo } from "../../assets";
 
 const Hero = () => {
   return (

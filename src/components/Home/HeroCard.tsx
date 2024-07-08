@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ceo, logo } from "../../../assets";
+import { ceo, logo } from "../../assets";
 // import { bgColors } from "./Products";
 import { useState } from "react";
 

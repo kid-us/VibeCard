@@ -1,6 +1,6 @@
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import SampleProducts from "./Home/SampleProducts";
+import SampleProducts from "../Home/SampleProducts";
 
 const Products = () => {
   return (

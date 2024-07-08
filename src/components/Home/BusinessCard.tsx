@@ -1,5 +1,5 @@
-import { ceo } from "../../../assets";
-import Magnetic from "../../GsapMagnetic/Magnetic";
+import { ceo } from "../../assets";
+import Magnetic from "../GsapMagnetic/Magnetic";
 
 const BusinessCard = () => {
   return (

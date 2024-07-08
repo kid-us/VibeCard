@@ -3,8 +3,8 @@ import {
   SocialMediaContent,
   contactContents,
   socialMedias,
-} from "../../../../services/contents";
-import { useContentStore } from "../../../../store/useContentStore";
+} from "../../../services/contents";
+import { useContentStore } from "../../../store/useContentStore";
 import ContentItems from "./ContentItems";
 
 const Content = () => {

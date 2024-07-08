@@ -1,9 +1,9 @@
 import BackgroundColor from "./BackgroundColor";
 import TextColor from "./TextColor";
 // Zustand store
-import { useTextColorStore } from "../../../../store/useTextColorStore";
-import { useCardColorStore } from "../../../../store/useCardColorStore";
-import { useCoverColorStore } from "../../../../store/useCoverColorStore";
+import { useTextColorStore } from "../../../store/useTextColorStore";
+import { useCardColorStore } from "../../../store/useCardColorStore";
+import { useCoverColorStore } from "../../../store/useCoverColorStore";
 import { useState } from "react";
 
 const texts = [

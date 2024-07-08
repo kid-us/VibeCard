@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "../Card/Card";
-import LogForm from "./Login/LogForm";
+import LogForm from "../Login/LogForm";
 import SignUpOption from "../SignUpOption/SignUpOption";
 
 const Login = () => {

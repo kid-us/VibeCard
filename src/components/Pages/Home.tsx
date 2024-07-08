@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
-import Hero from "./Home/Hero";
+import Hero from "../Home/Hero";
 import Footer from "../Footer/Footer";
 import { video, video2 } from "../../assets";
 import Loading from "../Loading/Loading";
 import homeCard from "../../services/homeCard";
-import Faq from "./Home/FAQ";
-import Products from "./Home/SampleProducts";
-import HeroCard from "./Home/HeroCard";
+import Faq from "../Home/FAQ";
+import Products from "../Home/SampleProducts";
+import HeroCard from "../Home/HeroCard";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);

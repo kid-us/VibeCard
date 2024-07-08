@@ -1,6 +1,6 @@
-import { textColor } from "../../../../services/coverColor";
-import { useTextColorStore } from "../../../../store/useTextColorStore";
-import { State } from "../../../../store/useTextColorStore";
+import { textColor } from "../../../services/coverColor";
+import { useTextColorStore } from "../../../store/useTextColorStore";
+import { State } from "../../../store/useTextColorStore";
 
 interface Props {
   bg: string;

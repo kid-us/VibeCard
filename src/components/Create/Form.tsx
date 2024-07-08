@@ -1,18 +1,18 @@
 import { useState } from "react";
 import InputImages from "./InputImages";
-import { useContentStore } from "../../../store/useContentStore";
+import { useContentStore } from "../../store/useContentStore";
 import { z } from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useCardData } from "../../../store/useCardData";
-import Loader from "../../Loader/Loader";
-import { useTextColorStore } from "../../../store/useTextColorStore";
-import { useCardColorStore } from "../../../store/useCardColorStore";
-import { useCoverColorStore } from "../../../store/useCoverColorStore";
+import { useCardData } from "../../store/useCardData";
+import Loader from "../Loader/Loader";
+import { useTextColorStore } from "../../store/useTextColorStore";
+import { useCardColorStore } from "../../store/useCardColorStore";
+import { useCoverColorStore } from "../../store/useCoverColorStore";
 
 import axios from "axios";
-import { baseUrl } from "../../../services/request";
-import Modal from "../../Modal/Modal";
+import { baseUrl } from "../../services/request";
+import Modal from "../Modal/Modal";
 
 interface Props {
   layout: string;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../fonts.css";
-import { useTextColorStore } from "../../../../store/useTextColorStore";
+import { useTextColorStore } from "../../../store/useTextColorStore";
 import FontStylesSize from "./FontStylesSize";
 
 const texts = ["pronoun", "name", "location", "jobTitle", "tagLine", "company"];

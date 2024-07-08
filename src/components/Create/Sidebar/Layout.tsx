@@ -1,5 +1,5 @@
-import { userPic } from "../../../../assets";
-import { useLayoutStore } from "../../../../store/useLayoutStore";
+import { userPic } from "../../../assets";
+import { useLayoutStore } from "../../../store/useLayoutStore";
 
 const Layout = () => {
   const { updateLayout } = useLayoutStore();

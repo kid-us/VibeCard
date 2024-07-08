@@ -1,15 +1,15 @@
 import { useState } from "react";
 import Colors from "./Sidebar/Colors";
-import { sidebarIcons } from "../../../services/sidebarIcons";
+import { sidebarIcons } from "../../services/sidebarIcons";
 import Texts from "./Sidebar/Texts";
 import Content from "./Sidebar/Content";
 import Layout from "./Sidebar/Layout";
-import { useCardData } from "../../../store/useCardData";
-import { userPic } from "../../../assets";
-import useAuthStore from "../../../store/useUserData";
+import { useCardData } from "../../store/useCardData";
+import { userPic } from "../../assets";
+import useAuthStore from "../../store/useUserData";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { baseUrl } from "../../../services/request";
+import { baseUrl } from "../../services/request";
 
 const Sidebar = () => {
   const [selected, setSelected] = useState("Colors");

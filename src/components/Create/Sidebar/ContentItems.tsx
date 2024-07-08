@@ -1,5 +1,5 @@
-import { SocialMediaContent } from "../../../../services/contents";
-import { useContentStore } from "../../../../store/useContentStore";
+import { SocialMediaContent } from "../../../services/contents";
+import { useContentStore } from "../../../store/useContentStore";
 
 interface Props {
   id: number;

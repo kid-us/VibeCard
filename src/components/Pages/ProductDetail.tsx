@@ -3,8 +3,8 @@ import { Link, useParams } from "react-router-dom";
 import { fetchProducts } from "../../services/products";
 import { useEffect, useState } from "react";
 import { Products } from "../../services/products";
-import Card from "./Home/Card";
-import { bgColors } from "./Home/SampleProducts";
+import Card from "../Home/Card";
+import { bgColors } from "../Home/SampleProducts";
 
 const ProductDetail = () => {
   const { id } = useParams();
