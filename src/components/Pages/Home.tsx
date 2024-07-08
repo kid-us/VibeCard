@@ -6,7 +6,7 @@ import { video, video2 } from "../../assets";
 import Loading from "../Loading/Loading";
 import homeCard from "../../services/homeCard";
 import Faq from "./Home/FAQ";
-import Products from "./Home/Products";
+import Products from "./Home/SampleProducts";
 import HeroCard from "./Home/HeroCard";
 
 const Home = () => {
@@ -88,8 +88,19 @@ const Home = () => {
       </div>
 
       {/* Products */}
-      <Products />
-
+      <div className="border-t border-gray-800 mt-10 lg:pb-14 pt-10 overflow-hidden">
+        <div className="container mx-auto">
+          <div className="relative right-20 lg:-top-28 -top-40">
+            <div className="absolute lg:right-[35em]  right-36 top-40 bulb"></div>
+          </div>
+          <div className="flex justify-center w-full text-center">
+            <p className="text-gray-100 font-extrabold lg:text-4xl text-3xl text-center mb-16 lg:w-96 w-80">
+              All Digital Business Cards
+            </p>
+          </div>
+          <Products />
+        </div>
+      </div>
       <Faq />
 
       <Footer />

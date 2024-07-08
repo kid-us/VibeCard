@@ -7,8 +7,8 @@ const Pricing = () => {
     <>
       <Navbar />
 
-      <div className="container mx-auto lg:mt-16 mt-14">
-        <h1 className="text-3xl text-center text-white">
+      <div className="container mx-auto lg:mt-24 mt-14">
+        <h1 className="lg:text-4xl text-2xl text-center font-extrabold text-white">
           Choose the best plan for you or your business.
         </h1>
 
@@ -80,7 +80,7 @@ const Pricing = () => {
             </p>
           </div>
           {/* Pro */}
-          <div className="border-2 border-teal-500 rounded-xl lg:px-10 px-2 lg:mb-0 mb-2 py-6 text-white">
+          <div className="border-2 border-teal-500 rounded-xl lg:px-10 px-2 lg:mb-0 mb-2 py-6 text-white secondary-bg">
             <div className="flex justify-between">
               <p className="text-2xl font-extrabold mb-5">Pro</p>
               <p className="text-xs text-white uppercase">
@@ -100,8 +100,7 @@ const Pricing = () => {
                 to="/"
                 className="text-center bg-sky-800 py-3 px-10 shadow shadow-zinc-900 text-white rounded chakra"
               >
-                Start 14 day free trial{" "}
-                <span className="bi-caret-right-fill"></span>
+                Subscribe <span className="bi-caret-right-fill"></span>
               </Link>
             </div>
             <p className="mb-3 lg:text-md text-sm">
@@ -165,8 +164,7 @@ const Pricing = () => {
                 to="/"
                 className="text-center bg-sky-800 py-3 px-10 shadow shadow-zinc-900 text-white rounded chakra"
               >
-                Start 14 day free trial{" "}
-                <span className="bi-caret-right-fill"></span>
+                Subscribe <span className="bi-caret-right-fill"></span>
               </Link>
             </div>
             <p className="mb-3 lg:text-md text-sm">
