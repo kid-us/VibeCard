@@ -95,7 +95,7 @@ const Form = ({ buttonClicked }: Props) => {
           {...register("email")}
           type="email"
           name="email"
-          className="font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded-lg focus:outline-none px-5 shadow shadow-gray-300"
+          className="text-black font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded-lg focus:outline-none px-5 shadow shadow-gray-300"
         />
         {errors.email && (
           <p className="text-red-600 text-xs pt-1">{errors.email.message}</p>
@@ -112,7 +112,7 @@ const Form = ({ buttonClicked }: Props) => {
           {...register("password")}
           type={passwordType ? "password" : "text"}
           name="password"
-          className="font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded-lg focus:outline-none px-5 shadow shadow-gray-300"
+          className="text-black font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded-lg focus:outline-none px-5 shadow shadow-gray-300"
         />
         <span
           onClick={() => {

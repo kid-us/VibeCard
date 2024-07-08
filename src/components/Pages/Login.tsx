@@ -10,16 +10,16 @@ const Login = () => {
   const [submitButtonClicked, setSubmitButtonClicked] = useState(false);
 
   return (
-    <div className="lg:px-40 md:px-36 px-2 h-[100vh] menu-bg">
+    <div className="lg:px-40 md:px-36 px-2 h-[100vh]">
       <div className="lg:mb-10 lg:pt-10 md:mb-10 md:pt-10 py-5 lg:ps-24">
-        <Link to={"/"} className="text-2xl text-teal-950 logo-font">
+        <Link to={"/"} className="text-2xl text-white logo-font">
           vibecard
         </Link>
       </div>
       <div className="flex justify-center w-full">
         <div className="lg:w-5/6 md:w-5/6 w-full">
           <div className="lg:grid grid-cols-2 gap-5">
-            <div className="lg:p-10 md:p-9 p-8 shadow-lg bg-white">
+            <div className="lg:p-10 md:p-9 p-8 shadow-lg secondary-bg rounded-lg text-white border border-violet-800">
               <h1 className="text-2xl">Welcome Back</h1>
               <p className="text-sm mb-14 mt-2">
                 Log in to your VibeCard account.
@@ -27,12 +27,14 @@ const Login = () => {
 
               {/* Form */}
               <LogForm
-                // emailAddress={(email: string) => setEmail(email)}
-                // passwordLen={(len: number) => setPassword(len)}
                 buttonClicked={(value: boolean) =>
                   setSubmitButtonClicked(value)
                 }
               />
+
+              <div className="relative lg:block hidden lg:-top-64 left-[30em] -top-40">
+                <div className="absolute lg:right-[15em] w-full right-36 top-40 bulb"></div>
+              </div>
 
               {/* Sign up option */}
               <SignUpOption />
@@ -45,10 +47,9 @@ const Login = () => {
                 </Link>
               </p>
             </div>
+
             {/* Card */}
             <Card
-              // email={email}
-              // passLength={password}
               submitted={submitButtonClicked}
             />
           </div>

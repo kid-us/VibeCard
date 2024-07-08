@@ -11,7 +11,7 @@ const Card = ({ submitted, username }: Props) => {
     <div className="flex justify-center ms-5">
       <div className="content-center">
         <Magnetic>
-          <div className="bg-teal-600 w-[95%] rounded text-white p-5 shadow-xl shadow-teal-950 relative overflow-hidden lg:block md:block hidden">
+          <div className="bg-teal-600 w-[95%] rounded text-white p-5 shadow-xl shadow-teal-950 relative overflow-hidden lg:block md:block hidden border border-indigo-900">
             <div className="z-10">
               <div className="z-10 absolute -bottom-11 -left-2 w-14 h-14 bg-slate-100 blur-sm rounded-full"></div>
               <div className="z-10 absolute -bottom-11 left-9 w-14 h-14 bg-slate-100 blur-sm rounded-full"></div>
