@@ -47,10 +47,10 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="h-[100vh] menu-bg">
+    <div className="h-[100vh]">
       <div className="lg:px-40 md:px-36 px-2">
         <div className="lg:pt-10 md:pt-10 py-5 lg:ps-24">
-          <Link to={"/"} className="text-2xl text-teal-950 logo-font">
+          <Link to={"/"} className="text-2xl text-white logo-font">
             vibecard
           </Link>
         </div>
@@ -58,15 +58,15 @@ const ForgotPassword = () => {
 
       <div className="flex justify-center lg:px-40 md:px-36 px-2 lg:mt-28 md:mt-24 mt-20">
         <div className="content-center lg:w-3/6 md:w-5/6 w-full h-96">
-          <div className="lg:p-10 md:p-9 p-8 shadow-lg bg-white rounded-lg">
+          <div className="lg:p-10 md:p-9 p-8 shadow-lg secondary-bg rounded-lg text-white border border-violet-800">
             <h1 className="text-2xl">Rest your Password</h1>
-            <p className="text-gray-500 text-sm mt-6">
+            <p className="text-gray-400 text-sm mt-6">
               Forgot your password? No problem! Just enter the email address
               associated with your account, and we'll send you a link to reset
               your password. Follow the instructions in the email to create a
               new password and regain access to your account.
             </p>
-            <p className="text-gray-500 text-sm mt-2">
+            <p className="text-gray-400 text-sm mt-2">
               If you don't receive the email, please check your spam folder or
               contact our support team for help.
             </p>

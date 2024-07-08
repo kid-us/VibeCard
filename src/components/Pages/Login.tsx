@@ -5,8 +5,6 @@ import LogForm from "./Login/LogForm";
 import SignUpOption from "../SignUpOption/SignUpOption";
 
 const Login = () => {
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState(0);
   const [submitButtonClicked, setSubmitButtonClicked] = useState(false);
 
   return (
