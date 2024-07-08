@@ -89,7 +89,7 @@ const Navbar = () => {
               <div className="relative">
                 <p
                   onClick={() => setIsMenu(!isMenu)}
-                  className="text-center cursor-pointer uppercase"
+                  className="text-center font-extrabold cursor-pointer uppercase"
                 >
                   <span className="bi-person-fill text-xl me-2"></span>
                   {user}
@@ -100,25 +100,25 @@ const Navbar = () => {
                   <div className="secondary-bg lg:block hidden absolute z-50 shadow-lg w-44 p-4 rounded mt-6 border-gradient-2">
                     <Link
                       to={"/dashboard"}
-                      className="block font-poppins mb-2 hover:text-gray-400"
+                      className="block text-sm mb-2 hover:text-gray-400 hover:text-lg"
                     >
                       Dashboard
                     </Link>
                     <Link
                       to={"/create"}
-                      className="block font-poppins mb-2 hover:text-gray-400"
+                      className="block text-sm mb-2 hover:text-gray-400 hover:text-lg"
                     >
                       Create Card
                     </Link>
                     <Link
                       to={"/setting"}
-                      className="block font-poppins mb-2 hover:text-gray-400"
+                      className="block text-sm mb-2 hover:text-gray-400 hover:text-lg"
                     >
                       Setting
                     </Link>
                     <Link
                       to={"/insights"}
-                      className="block font-poppins mb-2 hover:text-gray-400"
+                      className="block text-sm mb-2 hover:text-gray-400 hover:text-lg"
                     >
                       Insights
                     </Link>
@@ -128,9 +128,11 @@ const Navbar = () => {
                 )}
               </div>
             ) : (
-              <div className="text-center">
-                <Link to={"/login"}>Sign In</Link>
-              </div>
+              <Link to={"/login"}>
+                <div className="btn-bg shadow-none p-2 text-sm lowercase first-letter:uppercase rounded-full px-10">
+                  Sign In
+                </div>
+              </Link>
             )}
           </div>
 
