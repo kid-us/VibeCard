@@ -36,102 +36,102 @@ const SampleProducts = () => {
       <div className="lg:mb-0 mb-10">
         <Link to={"/product/29"}>
           <Card textColor={metalBg.color} bg={metalBg.bg} />
-          <div className="mt-4 secondary-bg rounded-xl px-3 py-5 shadow shadow-zinc-950">
-            <div className="flex justify-between">
-              <p className="text-lg text-white">
-                Vibecard{" "}
-                <span className="text-teal-400 font-extrabold">Metal</span>{" "}
-                Cards
-              </p>
-              <p className="text-white font-poppins">€35</p>
-            </div>
-            <div className="flex justify-center gap-x-2 mt-4">
-              {bgColors.map((bg) => (
-                <div
-                  key={bg.style}
-                  className={`border ${
-                    bg.style === metalBg.bg && "border-black"
-                  } rounded-full w-7 h-7 text-center`}
-                >
-                  <button
-                    onClick={() =>
-                      setMetalBg({ bg: bg.style, color: bg.textColor })
-                    }
-                    className={`${bg.style} rounded-full w-5 h-5 mt-[3px]`}
-                  ></button>
-                </div>
-              ))}
-            </div>
-          </div>
         </Link>
+        <div className="mt-4 secondary-bg rounded-xl px-3 py-5 shadow shadow-zinc-950">
+          <div className="flex justify-between">
+            <p className="text-lg text-white">
+              Vibecard{" "}
+              <span className="text-teal-400 font-extrabold">Metal</span> Cards
+            </p>
+            <p className="text-white font-poppins">€35</p>
+          </div>
+          <div className="flex justify-center gap-x-2 mt-4">
+            {bgColors.map((bg) => (
+              <div
+                key={bg.style}
+                className={`border ${
+                  bg.style === metalBg.bg && "border-black"
+                } rounded-full w-7 h-7 text-center`}
+              >
+                <button
+                  onClick={() =>
+                    setMetalBg({ bg: bg.style, color: bg.textColor })
+                  }
+                  className={`${bg.style} rounded-full w-5 h-5 mt-[3px]`}
+                ></button>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
       {/* Plastic */}
       <div className="lg:mb-0 mb-10">
         <Link to={"/product/29"}>
           <Card textColor={plasticBg.color} bg={plasticBg.bg} />
-          <div className="mt-4 secondary-bg rounded-xl px-3 py-5 shadow shadow-zinc-950">
-            <div className="flex justify-between">
-              <p className="text-white">
-                Vibecard{" "}
-                <span className="text-teal-400 font-extrabold">
-                  Recycled Papers
-                </span>{" "}
-                Cards
-              </p>
-              <p className="text-white font-poppins">€10</p>
-            </div>
-            <div className="flex justify-center gap-x-2 mt-4">
-              {bgColors.map((bg) => (
-                <div
-                  key={bg.style}
-                  className={`border ${
-                    bg.style === plasticBg.bg && "border-black"
-                  } rounded-full w-7 h-7 text-center`}
-                >
-                  <button
-                    onClick={() =>
-                      setPlasticBg({ bg: bg.style, color: bg.textColor })
-                    }
-                    className={`${bg.style} rounded-full w-5 h-5 mt-[3px]`}
-                  ></button>
-                </div>
-              ))}
-            </div>
-          </div>
         </Link>
+        <div className="mt-4 secondary-bg rounded-xl px-3 py-5 shadow shadow-zinc-950">
+          <div className="flex justify-between">
+            <p className="text-white">
+              Vibecard{" "}
+              <span className="text-teal-400 font-extrabold">
+                Recycled Papers
+              </span>{" "}
+              Cards
+            </p>
+            <p className="text-white font-poppins">€10</p>
+          </div>
+          <div className="flex justify-center gap-x-2 mt-4">
+            {bgColors.map((bg) => (
+              <div
+                key={bg.style}
+                className={`border ${
+                  bg.style === plasticBg.bg && "border-black"
+                } rounded-full w-7 h-7 text-center`}
+              >
+                <button
+                  onClick={() =>
+                    setPlasticBg({ bg: bg.style, color: bg.textColor })
+                  }
+                  className={`${bg.style} rounded-full w-5 h-5 mt-[3px]`}
+                ></button>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
       {/* Bamboo */}
       <div className="lg:mb-0 mb-10">
         <Link to={"/product/29"}>
           <Card textColor={bambooBg.color} bg={bambooBg.bg} />
-          <div className="mt-4 secondary-bg rounded-xl px-3 py-5 shadow shadow-zinc-950">
-            <div className="flex justify-between">
-              <p className="text-white">
-                Vibecard{" "}
-                <span className="text-teal-400 font-extrabold">Bamboo </span>
-                Cards
-              </p>
-              <p className="text-white font-poppins">€25</p>
-            </div>
-            <div className="flex justify-center gap-x-2 mt-4">
-              {bgColors.map((bg) => (
-                <div
-                  key={bg.style}
-                  className={`border ${
-                    bg.style === bambooBg.bg && "border-black"
-                  } rounded-full w-7 h-7 text-center`}
-                >
-                  <button
-                    onClick={() =>
-                      setBambooBg({ bg: bg.style, color: bg.textColor })
-                    }
-                    className={`${bg.style} rounded-full w-5 h-5 mt-[3px]`}
-                  ></button>
-                </div>
-              ))}
-            </div>
-          </div>
         </Link>
+
+        <div className="mt-4 secondary-bg rounded-xl px-3 py-5 shadow shadow-zinc-950">
+          <div className="flex justify-between">
+            <p className="text-white">
+              Vibecard{" "}
+              <span className="text-teal-400 font-extrabold">Bamboo </span>
+              Cards
+            </p>
+            <p className="text-white font-poppins">€25</p>
+          </div>
+          <div className="flex justify-center gap-x-2 mt-4">
+            {bgColors.map((bg) => (
+              <div
+                key={bg.style}
+                className={`border ${
+                  bg.style === bambooBg.bg && "border-black"
+                } rounded-full w-7 h-7 text-center`}
+              >
+                <button
+                  onClick={() =>
+                    setBambooBg({ bg: bg.style, color: bg.textColor })
+                  }
+                  className={`${bg.style} rounded-full w-5 h-5 mt-[3px]`}
+                ></button>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
