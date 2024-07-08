@@ -1,4 +1,4 @@
-import { qrCode, userPic } from "../../assets";
+import { userPic } from "../../assets";
 import Magnetic from "../GsapMagnetic/Magnetic";
 
 interface Props {
@@ -62,7 +62,8 @@ const Card = ({ submitted, username }: Props) => {
                   </p>
                 </div>
                 <div className={`${submitted && "animate-pulse"}`}>
-                  <img src={qrCode} alt="qr code" className="blur-sm" />
+                  <p className="bi-qr-code text-8xl"></p>
+                  {/* <img src={} alt="qr code" className="blur-sm" /> */}
                 </div>
               </div>
             </div>

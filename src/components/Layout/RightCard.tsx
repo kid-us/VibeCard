@@ -1,4 +1,4 @@
-import { qrCode, userPic } from "../../assets";
+import { userPic } from "../../assets";
 import { useCoverColorStore } from "../../store/useCoverColorStore";
 import { useCardColorStore } from "../../store/useCardColorStore";
 import { useTextColorStore } from "../../store/useTextColorStore";
@@ -75,7 +75,7 @@ const RightCard = () => {
         <div className="relative">
           {preview.logo && (
             <img
-              src={preview?.logo ? preview.logo : qrCode}
+              src={preview?.logo}
               alt="Cover"
               className="absolute left-0 -top-6 w-14 h-14 rounded-full border-2 bg-white"
             />

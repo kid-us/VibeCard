@@ -1,4 +1,4 @@
-import { qrCode, userPic } from "../../assets";
+import { userPic } from "../../assets";
 import { useCoverColorStore } from "../../store/useCoverColorStore";
 import { useCardColorStore } from "../../store/useCardColorStore";
 import { useTextColorStore } from "../../store/useTextColorStore";
@@ -50,7 +50,7 @@ const CenteredCard = () => {
         </div>
         {preview.logo && (
           <img
-            src={preview?.logo ? preview.logo : qrCode}
+            src={preview?.logo}
             alt="Cover"
             className="absolute top-20 right-28 w-12 h-12 rounded-full border-2 bg-white"
           />

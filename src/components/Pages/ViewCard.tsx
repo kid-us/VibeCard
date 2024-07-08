@@ -2,7 +2,7 @@ import axios from "axios";
 import { baseUrl } from "../../services/request";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { qrCode, userPic } from "../../assets";
+import { userPic } from "../../assets";
 import Contacts from "../Layout/Contacts";
 import SocialMedia from "../Layout/SocialMedia";
 import Magnetic from "../GsapMagnetic/Magnetic";
@@ -202,7 +202,7 @@ const ViewCard = () => {
                       <div className="relative">
                         {data.company_logo && (
                           <img
-                            src={data.company_logo ? data.company_logo : qrCode}
+                            src={data.company_logo}
                             alt="Cover"
                             className="absolute right-0 -top-6 w-14 h-14 rounded-full border-2 bg-white"
                           />
@@ -355,7 +355,7 @@ const ViewCard = () => {
                       </div>
                       {data.company_logo && (
                         <img
-                          src={data.company_logo ? data.company_logo : qrCode}
+                          src={data.company_logo}
                           alt="Cover"
                           className="absolute top-20 right-28 w-12 h-12 rounded-full border-2 bg-white"
                         />
@@ -564,7 +564,7 @@ const ViewCard = () => {
                       <div className="relative">
                         {data.company_logo && (
                           <img
-                            src={data.company_logo ? data.company_logo : qrCode}
+                            src={data.company_logo}
                             alt="Cover"
                             className="absolute left-0 -top-6 w-14 h-14 rounded-full border-2 bg-white"
                           />
