@@ -75,19 +75,21 @@ const Dashboard = () => {
                     services.
                   </p>
                   {links.length > 0 && (
-                    <div className="mt-5 p-5 shadow rounded shadow-zinc-900">
-                      <p className="text-xl mb-4">See your Previous Cards</p>
+                    <div className="mt-10 shadow rounded-x">
+                      <p className="text-2xl mb-4 py-5">
+                        See your Previous Cards
+                      </p>
                       {links.map((link) => (
                         <div
                           key={link.card_url}
-                          className="flex justify-between"
+                          className="flex justify-between secondary-bg mb-3 rounded-xl shadow shadow-zinc-900"
                         >
-                          <div className="lg:flex justify-between w-full bg-zinc-900 text-white px-5 py-5 mb-4 rounded shadow shadow-zinc-900">
+                          <div className="lg:flex justify-between w-full text-white px-5 py-5 mb-4 rounded shadow shadow-zinc-900">
                             <div className="flex">
                               <img
                                 src={link.main_picture}
-                                alt=""
-                                className="rounded-full lg:w-16 w-14 h-14"
+                                alt="Card Image"
+                                className="rounded-full lg:w-14 w-14 h-14 object-cover"
                               />
                               <div className="content-center ms-3">
                                 <p className="font-poppins">
@@ -108,7 +110,7 @@ const Dashboard = () => {
                                 className="block chakra mb-2 pt-5 px-5 hover:text-gray-400"
                               >
                                 View{" "}
-                                <span className="bi-arrow-up-right ms-1"></span>
+                                <span className="bi-arrow-up-right text-sky-600 ms-1"></span>
                               </Link>
                               <button
                                 onClick={() => handleCopy(link.card_url)}
@@ -119,6 +121,24 @@ const Dashboard = () => {
                                   ? "Copied"
                                   : "Copy"}
                               </button>
+
+                              <Link
+                                key={link.card_url}
+                                to={`/card/${link.card_url}`}
+                                className="block chakra mb-2 pt-5 px-5 hover:text-gray-400"
+                              >
+                                <span className="bi-pen-fill text-green-600"></span>{" "}
+                                Edit
+                              </Link>
+
+                              <Link
+                                key={link.card_url}
+                                to={`/card/${link.card_url}`}
+                                className="text-white rounded-lg chakra mb-2 pt-5 px-3 hover:text-gray-400"
+                              >
+                                <span className="bi-trash-fill text-red-600"></span>{" "}
+                                Delete
+                              </Link>
                             </div>
                           </div>
                         </div>
@@ -131,24 +151,15 @@ const Dashboard = () => {
               <div className="lg:col-span-4">
                 <Link to={"/create"}>
                   <div className="mx-4 lg:mb-2 mb-8">
-                    <div className="bg-sky-900 lg:mt-28 lg:py-16 lg:px-6 p-6 rounded-lg shadow-md shadow-zinc-600">
+                    {/* <div className=""> */}
+                    <div className="btn-bg lg:mt-28 lg:py-16 lg:px-6 p-6 rounded-lg shadow-md shadow-zinc-600">
                       <p className="text-center bi-plus-lg mb-8 bg-white w-10 h-10 rounded-full pt-2 text-black shadow-lg"></p>
                       <p className="text-white">Create Business Card</p>
                     </div>
+                    {/* </div> */}
                   </div>
                 </Link>
               </div>
-
-              {/* <div className="lg:col-span-2 lg:mb-0 mb-10">
-                <Link to={"/create"}>
-                  <div className="mx-4 mb-2">
-                    <div className="bg-sky-900 lg:mt-28 lg:py-16 lg:px-10 p-6 rounded-lg shadow-md shadow-zinc-600">
-                      <p className="text-center bi-plus-lg mb-8 bg-white w-10 h-10 rounded-full pt-2 text-black shadow-lg"></p>
-                      <p className="text-white">Create Resume</p>
-                    </div>
-                  </div>
-                </Link>
-              </div> */}
             </div>
           </div>
         </div>
