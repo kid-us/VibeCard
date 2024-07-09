@@ -62,7 +62,7 @@ const Dashboard = () => {
     <>
       <Navbar />
       <div className="h-[100vh]">
-        <div className="container mx-auto">
+        <div className="lg:container mx-auto">
           <div className="flex justify-center lg:mt-20 mt-10 lg:shadow lg:pb-20 lg:rounded">
             <div className="lg:grid grid-cols-10 gap-4">
               <div className="lg:col-span-6 lg:px-16 md:p-9 p-5">

@@ -25,7 +25,7 @@ const Home = () => {
       {loading && <Loading />}
       <div>
         <Navbar />
-        <div className="container mx-auto lg:mt-40 mt-32 lg:pb-32 pb-14">
+        <div className="lg:container mx-auto lg:mt-40 mt-32 lg:pb-32 pb-14">
           <Hero />
         </div>
       </div>
@@ -64,7 +64,7 @@ const Home = () => {
 
       {/* Cards */}
       <div className="border-t border-gray-800 mt-10 overflow-hidden">
-        <div className="container mx-auto">
+        <div className="lg:container mx-auto">
           <div className="py-1 px-2 lg:px-0">
             <div className="relative right-20 lg:-top-28 -top-40">
               <div className="absolute lg:right-[35em]  right-36 top-40 bulb"></div>
@@ -93,7 +93,7 @@ const Home = () => {
 
       {/* Products */}
       <div className="border-t border-gray-800 mt-10 lg:pb-14 pt-10 overflow-hidden">
-        <div className="container mx-auto">
+        <div className="lg:container mx-auto">
           <div className="relative right-20 lg:-top-28 -top-40">
             <div className="absolute lg:right-[35em]  right-36 top-40 bulb"></div>
           </div>

@@ -80,7 +80,7 @@ const Setting = () => {
     <>
       <Navbar />
       <div className="">
-        <div className="container mx-auto lg:p-10 secondary-bg mt-10">
+        <div className="lg:container mx-auto lg:p-10 secondary-bg mt-10">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className=" py-10 lg:px-40 px-10 rounded shadow"

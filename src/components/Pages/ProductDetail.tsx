@@ -36,7 +36,7 @@ const ProductDetail = () => {
       <Navbar />
 
       <div className="lg:px-0 px-2">
-        <div className="container mx-auto lg:mt-20 mt-5 secondary-bg shadow-lg shadow-gray-400 rounded overflow-hidden">
+        <div className="lg:container mx-auto lg:mt-20 mt-5 secondary-bg shadow-lg shadow-gray-400 rounded overflow-hidden">
           <div className="lg:grid grid-cols-2 justify-between gap-x-10">
             <div className="mt-10 lg:mx-0 mx-1 lg:px-20 pb-10">
               <Card textColor={metalBg.color} bg={metalBg.bg} />

@@ -18,7 +18,7 @@ const Footer = () => {
       <div className="relative right-20 lg:-top-40 -top-40">
         <div className="absolute lg:right-[43em]  right-36 top-40 bulb"></div>
       </div>
-      <div className="container mx-auto py-10">
+      <div className="lg:container mx-auto py-10">
         <div className="grid lg:grid-cols-6 md:grid-cols-3 grid-cols-3 lg:px-0 md:px-0 px-3">
           <div className="relative lg:col-span-2 md:col-span-2 col-span-3">
             <h1 className="text-white text-4xl logo-font">vibecard</h1>

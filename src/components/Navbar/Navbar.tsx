@@ -41,7 +41,7 @@ const Navbar = () => {
           <div className="absolute w-[5%] lg:w-[25%] lg:right-20 -right-40 bulb"></div>
         </div>
 
-        <div className="container mx-auto flex justify-between">
+        <div className="lg:container mx-auto flex justify-between">
           {/* Large Device */}
           <div>
             <div

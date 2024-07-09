@@ -12,7 +12,7 @@ const Pricing = () => {
     <>
       <Navbar />
 
-      <div className="container mx-auto lg:mt-24 mt-14">
+      <div className="lg:container mx-auto lg:mt-24 mt-14">
         <h1 className="lg:text-4xl text-2xl text-center font-extrabold text-white">
           Choose the best plan for you or your business.
         </h1>
