@@ -103,10 +103,10 @@ const Menu = ({ nav, menu, username }: Props) => {
             </Link>
           </div>
           {username === null ? (
-            <p>
+            <div className="flex gap-x-3">
               <Link
                 to={"/login"}
-                className="btn-bg shadow-none py-2 px-3 rounded text-white"
+                className="btn-bg shadow-none py-2 rounded text-white"
               >
                 Login
               </Link>{" "}
@@ -114,7 +114,7 @@ const Menu = ({ nav, menu, username }: Props) => {
               <Link to={"/register"} className="py-2 rounded-full text-white">
                 Create Account
               </Link>
-            </p>
+            </div>
           ) : (
             <Logout />
           )}
