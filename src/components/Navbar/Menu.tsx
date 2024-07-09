@@ -74,13 +74,13 @@ const Menu = ({ nav, menu, username }: Props) => {
             </Link>
 
             <Link
-              to={"/"}
+              to={"/setting"}
               className="block text-white text-xl pb-2 font-poppins font-extrabold mb-3"
             >
               Setting
             </Link>
             <Link
-              to={"/"}
+              to={"/insights"}
               className="block text-white text-xl pb-2 font-poppins font-extrabold mb-3"
             >
               Insights
@@ -106,15 +106,12 @@ const Menu = ({ nav, menu, username }: Props) => {
             <p>
               <Link
                 to={"/login"}
-                className="btn-bg py-2 px-5 rounded-full text-white"
+                className="btn-bg shadow-none py-2 px-3 rounded text-white"
               >
                 Login
               </Link>{" "}
               /{" "}
-              <Link
-                to={"/register"}
-                className="py-2 px-5 rounded-full text-white"
-              >
+              <Link to={"/register"} className="py-2 rounded-full text-white">
                 Create Account
               </Link>
             </p>
