@@ -14,15 +14,15 @@ const Menu = ({ nav, menu, username }: Props) => {
       <div className="flex justify-between py-3 px-3 z-50">
         <div onClick={() => menu()}>
           <p
-            className={`lg:hidden rounded-full border border-white font-poppins text-2xl text-teal-950 font-bold`}
+            className={`lg:hidden rounded-full border border-white font-poppins text-3xl text-teal-950 font-bold`}
           >
             <span className="px-3 flex">
               <span
-                className={`bi-x text-2xl text-white
+                className={`bi-x text-3xl text-white
               `}
               ></span>
               <span
-                className={`text-sm font-light pt-[6px] ps-3 text-white
+                className={`text-lg font-light pt-[6px] ps-3 text-white
                `}
               >
                 Menu
@@ -34,7 +34,7 @@ const Menu = ({ nav, menu, username }: Props) => {
         <div>
           <Link
             to={"/"}
-            className={`logo-font lg:me-32 lg:text-2xl text-3xl text-white`}
+            className={`logo-font lg:me-32 lg:text-2xl text-4xl text-white`}
           >
             vibecard
           </Link>

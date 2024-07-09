@@ -54,7 +54,7 @@ const Navbar = () => {
                   className={`lg:hidden font-poppins text-2xl text-teal-950 font-bold pt-2`}
                 >
                   <span className="px-3 flex me-">
-                    <span className={`bi-list text-2xl pt-1 text-white`}></span>
+                    <span className={`bi-list text-3xl pt-1 text-white`}></span>
                     {/* <span className={`font-light pt-[6px] ps-3 text-white`}>
                       Menu
                     </span> */}
@@ -62,7 +62,7 @@ const Navbar = () => {
                 </p>
               </div>
               <div className={`lg:pe-10 text-white p-2 `}>
-                <Link to={"/"} className={`logo-font lg:text-3xl text-3xl`}>
+                <Link to={"/"} className={`logo-font lg:text-4xl text-4xl`}>
                   vibecard
                 </Link>
               </div>
@@ -141,7 +141,7 @@ const Navbar = () => {
             <div className="lg:hidden mt-1 pt-2 me-2">
               <Link to={"/dashboard"}>
                 <span className="px-3 flex">
-                  <p className={`bi-person-fill text-2xl text-white`}></p>
+                  <p className={`bi-person-fill text-3xl text-white`}></p>
                 </span>
               </Link>
             </div>
