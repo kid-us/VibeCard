@@ -82,22 +82,20 @@ const Dashboard = () => {
                       {links.map((link) => (
                         <div
                           key={link.card_url}
-                          className="flex justify-between secondary-bg mb-3 rounded-xl shadow shadow-zinc-900"
+                          className="flex justify-between secondary-bg mb-5 rounded-xl shadow border-gradient-2 border shadow-zinc-900"
                         >
                           <div className="lg:flex justify-between w-full text-white px-5 py-5 mb-4 rounded shadow shadow-zinc-900">
                             <div className="flex">
                               <img
                                 src={link.main_picture}
                                 alt="Card Image"
-                                className="rounded-full lg:w-14 w-14 h-14 object-cover"
+                                className="rounded-full lg:w-14 w-14 h-14 object-cover border-gradient"
                               />
                               <div className="content-center ms-3">
-                                <p className="font-poppins">
+                                <p className="font-poppins font-extrabold">
                                   {link.pronouns} {link.full_name}
                                 </p>
-                                <p className="chakra text-sm">
-                                  Job:{link.job_title}
-                                </p>
+                                <p className="text-sm">Job:{link.job_title}</p>
                                 <p className="chakra text-xs">
                                   Works at: {link.company_name}
                                 </p>
