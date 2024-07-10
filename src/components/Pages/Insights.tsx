@@ -9,13 +9,22 @@ import { baseUrl } from "@/services/request";
 import History from "../Insights/History";
 import LinkTaps from "../Insights/LinkTaps";
 
+export interface Accounts {
+  account_type: string;
+  click_count: number;
+}
+
 const Insights = () => {
+  const [title] = useState("Insight");
+  useDocumentTitle(title);
+
   const { activeCard } = useInsightStore();
+  const [accounts, setAccounts] = useState<Accounts[] | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
+        const response = await axios.get<Accounts[]>(
           `${baseUrl}/api/v1/cards/insights?card_url=${activeCard}&filter=this_month`,
           {
             headers: {
@@ -24,19 +33,28 @@ const Insights = () => {
             withCredentials: true,
           }
         );
-        console.log(response.data); // Assuming you want to log the response data
+
+        const accountCounts = response.data.map((acc: Accounts) => ({
+          account_type: acc.account_type,
+          click_count: acc.click_count,
+        }));
+        setAccounts(accountCounts);
+
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
-    fetchData(); // Call the async function
+    if (activeCard) {
+      fetchData(); // Call the async function if activeCard is defined
+    }
   }, [activeCard]);
 
-  // console.log(activeCard);
-
-  const [title] = useState("Insight");
-  useDocumentTitle(title);
+  // if (accounts) {
+  const totalClicks =
+    accounts?.reduce((acc, curr) => acc + curr.click_count, 0) || 0;
+  // }
 
   return (
     <>
@@ -49,12 +67,17 @@ const Insights = () => {
           </div>
           <div className="col-span-3">
             {/* History */}
-            <History />
+            <History totLinkTaps={totalClicks} />
             <div className="border-gradient rounded-lg">
               <Chart />
             </div>
             {/* Link Taps */}
-            {activeCard && <LinkTaps cardUrl={activeCard} />}
+            {activeCard && (
+              <LinkTaps
+                cardUrl={activeCard}
+                socialClicked={accounts?.length ? accounts : null}
+              />
+            )}
           </div>
         </div>
       </div>

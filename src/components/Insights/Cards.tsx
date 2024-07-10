@@ -108,7 +108,7 @@ const Cards: React.FC = () => {
   return (
     <>
       {cardsLength && cardsLength.length > 0 && (
-        <div className="bg-white mb-4 rounded text-black p-3">
+        <div className="secondary-bg mb-4 rounded text-white p-3">
           <p className="text-2xl font-extrabold">
             Welcome {user} you track you cards
           </p>
@@ -137,9 +137,9 @@ const Cards: React.FC = () => {
         </div>
       )}
 
-      <div className="flex justify-center sticky top-24 pt-10 bg-white lg:pb-10 rounded-2xl overflow-hidden">
+      <div className="flex justify-center sticky top-24 pt-10 secondary-bg lg:pb-10 rounded-2xl overflow-hidden">
         {cards.length > 0 && cards[dataIndex].card_layout === "default" && (
-          <div className="lg:w-[68%] w-[92%]">
+          <div className="lg:w-[60%] w-[92%]">
             <div
               className={`rounded-2xl overflow-hidden shadow-lg shadow-zinc-800 z-0 lg:mb-0 mb-14`}
               style={{
@@ -285,13 +285,15 @@ const Cards: React.FC = () => {
                     className={`lg:my-2 my-5 ${
                       cards[dataIndex].styles.contacts.length > 0
                         ? `grid ${
-                            cards[dataIndex].styles.contacts.length <= 3
+                            cards[dataIndex].styles.contacts.length + 2 <= 3
                               ? "grid-cols-3"
                               : "grid-cols-5"
                           }  gap-5 my-5`
                         : "invisible"
                     }`}
                   >
+                    <p className="text-3xl text-center rounded-lg py-2 shadow-inner bi-envelope-fill text-white"></p>
+                    <p className="text-3xl text-center rounded-lg py-2 shadow-inner bi-telephone-fill text-green-600"></p>
                     {cards[dataIndex].styles.contacts.map((c) => (
                       <p
                         key={c.icon}
@@ -342,7 +344,7 @@ const Cards: React.FC = () => {
         )}
 
         {cards.length > 0 && cards[dataIndex].card_layout === "centered" && (
-          <div className="lg:w-[68%] w-[92%]">
+          <div className="lg:w-[60%] w-[92%]">
             <div
               className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 lg:mb-0 mb-14`}
               style={{
@@ -487,13 +489,15 @@ const Cards: React.FC = () => {
                     className={`lg:my-2 my-5 ${
                       cards[dataIndex].styles.contacts.length > 0
                         ? `grid ${
-                            cards[dataIndex].styles.contacts.length <= 3
+                            cards[dataIndex].styles.contacts.length + 2 <= 3
                               ? "grid-cols-3"
                               : "grid-cols-5"
                           }  gap-5 my-5`
                         : "invisible"
                     }`}
                   >
+                    <p className="text-3xl text-center rounded-lg py-2 shadow-inner bi-envelope-fill text-white"></p>
+                    <p className="text-3xl text-center rounded-lg py-2 shadow-inner bi-telephone-fill text-green-600"></p>
                     {cards[dataIndex].styles.contacts.map((c) => (
                       <p
                         key={c.icon}
@@ -544,7 +548,7 @@ const Cards: React.FC = () => {
         )}
 
         {cards.length > 0 && cards[dataIndex].card_layout === "right" && (
-          <div className="lg:w-[68%] w-[92%]">
+          <div className="lg:w-[60%] w-[92%]">
             <div
               className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 lg:mb-0 mb-10`}
               style={{
@@ -692,13 +696,15 @@ const Cards: React.FC = () => {
                     className={`lg:my-2 my-5 ${
                       cards[dataIndex].styles.contacts.length > 0
                         ? `grid ${
-                            cards[dataIndex].styles.contacts.length <= 3
+                            cards[dataIndex].styles.contacts.length + 2 <= 3
                               ? "grid-cols-3"
                               : "grid-cols-5"
                           }  gap-5 my-5`
                         : "invisible"
                     }`}
                   >
+                    <p className="text-3xl text-center rounded-lg py-2 shadow-inner bi-envelope-fill text-white"></p>
+                    <p className="text-3xl text-center rounded-lg py-2 shadow-inner bi-telephone-fill text-green-600"></p>
                     {cards[dataIndex].styles.contacts.map((c) => (
                       <p
                         key={c.icon}
