@@ -70,8 +70,6 @@ const Create = () => {
             }
           }
 
-          console.log(styles);
-
           // Layout
           updateLayout(data.card_layout);
           // Cards
