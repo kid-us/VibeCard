@@ -97,28 +97,28 @@ const Navbar = () => {
 
                 {/* Menu  */}
                 {isMenu && (
-                  <div className="secondary-bg lg:block hidden absolute z-50 shadow-lg w-44 p-4 rounded mt-6 border-gradient-2">
+                  <div className="secondary-bg lg:block shadow shadow-gray-600 hidden absolute z-50 w-44 px-4 py-5 rounded-lg mt-3">
                     <Link
                       to={"/dashboard"}
-                      className="block text-sm mb-2 hover:text-gray-400 hover:text-lg"
+                      className="block text-md mb-3 hover:text-gray-400 hover:text-sm"
                     >
                       Dashboard
                     </Link>
                     <Link
                       to={"/create"}
-                      className="block text-sm mb-2 hover:text-gray-400 hover:text-lg"
+                      className="block text-md mb-3 hover:text-gray-400 hover:text-sm"
                     >
                       Create Card
                     </Link>
                     <Link
                       to={"/setting"}
-                      className="block text-sm mb-2 hover:text-gray-400 hover:text-lg"
+                      className="block text-md mb-3 hover:text-gray-400 hover:text-sm"
                     >
                       Setting
                     </Link>
                     <Link
                       to={"/insights"}
-                      className="block text-sm mb-2 hover:text-gray-400 hover:text-lg"
+                      className="block text-md mb-3 hover:text-gray-400 hover:text-sm"
                     >
                       Insights
                     </Link>
