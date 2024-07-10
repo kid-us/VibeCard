@@ -31,7 +31,7 @@ interface Actions {
 }
 
 export const useCardData = create<State & Actions>((set) => ({
-  nameVal: null,
+  nameVal: "",
   phoneVal: null,
   emailVal: null,
   tagLineVal: null,

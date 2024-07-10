@@ -103,7 +103,6 @@ const Dashboard = () => {
                             </div>
                             <div className="flex">
                               <Link
-                                key={link.card_url}
                                 to={`/card/${link.card_url}`}
                                 className="block chakra mb-2 pt-5 px-5 hover:text-gray-400"
                               >
@@ -121,8 +120,7 @@ const Dashboard = () => {
                               </button>
 
                               <Link
-                                key={link.card_url}
-                                to={`/card/${link.card_url}`}
+                                to={`/create?edit=${link.card_url}`}
                                 className="block chakra mb-2 pt-5 px-5 hover:text-gray-400"
                               >
                                 <span className="bi-pen-fill text-green-600"></span>{" "}
@@ -130,7 +128,6 @@ const Dashboard = () => {
                               </Link>
 
                               <Link
-                                key={link.card_url}
                                 to={`/card/${link.card_url}`}
                                 className="text-white rounded-lg chakra mb-2 pt-5 px-3 hover:text-gray-400"
                               >
@@ -148,13 +145,10 @@ const Dashboard = () => {
 
               <div className="lg:col-span-4">
                 <Link to={"/create"}>
-                  <div className="mx-4 lg:mb-2 mb-8">
-                    {/* <div className=""> */}
-                    <div className="btn-bg lg:mt-28 lg:py-16 lg:px-6 p-6 rounded-lg shadow-md shadow-zinc-600">
-                      <p className="text-center bi-plus-lg mb-8 bg-white w-10 h-10 rounded-full pt-2 text-black shadow-lg"></p>
-                      <p className="text-white">Create Business Card</p>
-                    </div>
-                    {/* </div> */}
+                  <div className="flex justify-center gap-x-10 btn-bg mx-10 py-20 mt-14 shadow-none">
+                    <p className="text-center bi-plus-lg mb-8  bg-white w-10 h-10 rounded-full pt-2 text-black shadow-lg"></p>
+
+                    <p className="text-white mt-2">Create Business Card</p>
                   </div>
                 </Link>
               </div>

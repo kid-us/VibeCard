@@ -13,6 +13,7 @@ import { useCoverColorStore } from "../../store/useCoverColorStore";
 import axios from "axios";
 import { baseUrl } from "../../services/request";
 import Modal from "../Modal/Modal";
+import { useLocation } from "react-router-dom";
 
 interface Props {
   layout: string;
@@ -28,7 +29,7 @@ interface FilePreviews {
 const schema = z.object({
   name: z.string().min(3, { message: "Name required." }),
   company: z.string().min(3, { message: "Company required." }),
-  phone: z.number().min(10, { message: "Phone number required." }),
+  phone: z.number({ invalid_type_error: "Phone number required" }).min(10),
   job: z.string().min(3, { message: "Job title required." }),
   location: z.string().min(3, { message: "Location required." }),
   email: z.string().email({ message: "Email address required." }),
@@ -37,6 +38,10 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const Form = ({ layout }: Props) => {
+  const pageLocation = useLocation();
+  const searchParams = new URLSearchParams(pageLocation.search);
+  const editedUrl = searchParams.get("edit");
+
   // Zustand
   const { contact, updateContacts, socialMedia } = useContentStore();
   const { button, company, jobTitle, location, name, pronoun, tagLine } =
@@ -44,6 +49,14 @@ const Form = ({ layout }: Props) => {
   const { cardColorBg } = useCardColorStore();
   const { coverColorBg } = useCoverColorStore();
   const {
+    companyVal,
+    emailVal,
+    jobTitleVal,
+    locationVal,
+    nameVal,
+    phoneVal,
+    pronounVal,
+    tagLineVal,
     setCardCompany,
     setPreview,
     setCardEmail,
@@ -228,20 +241,42 @@ const Form = ({ layout }: Props) => {
     formData.append("card_layout", layout);
     formData.append("card_type", "business");
     formData.append("card_style_schema", JSON.stringify(cardStyles));
+
     try {
-      const response = await axios.post(
-        `${baseUrl}/api/v1/cards/create`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          withCredentials: true,
-        }
-      );
-      console.log(response);
-      setModal(true);
-      setCardLink(response.data.card_url);
+      // Update
+      if (editedUrl) {
+        // const response = await axios.post(
+        //   `${baseUrl}/api/v1/cards/edit/${editedUrl}`,
+        //   formData,
+        //   {
+        //     headers: {
+        //       "Content-Type": "multipart/form-data",
+        //     },
+        //     withCredentials: true,
+        //   }
+        // );
+        // console.log(response);
+        // setModal(true);
+        // setCardLink(response.data.card_url);
+
+        console.log("Edit");
+
+        // Create
+      } else {
+        const response = await axios.post(
+          `${baseUrl}/api/v1/cards/create`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+            withCredentials: true,
+          }
+        );
+        // console.log(response);
+        setModal(true);
+        setCardLink(response.data.card_url);
+      }
     } catch (error) {
       console.error(error);
     } finally {
@@ -255,6 +290,7 @@ const Form = ({ layout }: Props) => {
         <Modal link={cardLink} onModal={(val: boolean) => setModal(val)} />
       )}
       <p className="mb-4">Create your Business card</p>
+
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-10 shadow lg:shadow-zinc-400 rounded-xl secondary-bg lg:overflow-auto lg:h-auto h-[69dvh] overflow-y-scroll border border-gray-700 mb-10"
@@ -292,7 +328,8 @@ const Form = ({ layout }: Props) => {
               className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="pronoun"
             >
-              Pronoun <span className="text-red-700 text-2xl">*</span>
+              Pronoun <span className="text-red-700 text-2xl">*</span>{" "}
+              <span className="ms-5">{pronounVal}</span>
             </label>
 
             <select
@@ -302,7 +339,7 @@ const Form = ({ layout }: Props) => {
                 setUserPronoun(event.currentTarget.value);
                 setCardPronoun(event.currentTarget.value);
               }}
-              defaultValue={userPronoun}
+              defaultValue={pronounVal !== null ? pronounVal : userPronoun}
             >
               <option value="" hidden></option>
               <option value="Mr">Mr</option>
@@ -326,7 +363,7 @@ const Form = ({ layout }: Props) => {
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
-              {...register("name")}
+              {...register("name", { required: true })}
               type="text"
               name="name"
               className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 ${
@@ -336,7 +373,8 @@ const Form = ({ layout }: Props) => {
                 setFullName(e.currentTarget.value);
                 setCardName(e.currentTarget.value);
               }}
-              value={fullName}
+              // value={fullName}
+              value={nameVal !== null ? nameVal : fullName}
               // autoComplete="off"
             />
             {errors.name && (
@@ -361,7 +399,7 @@ const Form = ({ layout }: Props) => {
                 errors.email && "border-red-600 border-1 border"
               }`}
               onChange={(e) => handleEmail(e.currentTarget.value)}
-              value={email}
+              value={emailVal !== null ? emailVal : email}
               // autoComplete="off"
             />
             {errors.email && (
@@ -388,7 +426,7 @@ const Form = ({ layout }: Props) => {
                 errors.phone && "border-red-600 border-1 border"
               }`}
               onChange={(e) => handlePhone(e.currentTarget.value)}
-              value={phone}
+              value={phoneVal !== null ? phoneVal : phone}
               // autoComplete="off"
             />
             {errors.phone && (
@@ -418,7 +456,7 @@ const Form = ({ layout }: Props) => {
                 setJob(e.currentTarget.value);
                 setCardJob(e.currentTarget.value);
               }}
-              value={job}
+              value={jobTitleVal !== null ? jobTitleVal : job}
               // autoComplete="off"
             />
             {errors.job && (
@@ -446,7 +484,7 @@ const Form = ({ layout }: Props) => {
                 setUserLocation(e.currentTarget.value);
                 setCardLocation(e.currentTarget.value);
               }}
-              value={userLocation}
+              value={locationVal !== null ? locationVal : userLocation}
               // autoComplete="off"
             />
             {errors.location && (
@@ -476,7 +514,7 @@ const Form = ({ layout }: Props) => {
                 setUserCompany(e.currentTarget.value);
                 setCardCompany(e.currentTarget.value);
               }}
-              value={userCompany}
+              value={companyVal !== null ? companyVal : userCompany}
               // autoComplete="off"
             />
             {errors.company && (
@@ -503,7 +541,7 @@ const Form = ({ layout }: Props) => {
                 setBio(e.currentTarget.value);
                 setCardTagLine(e.currentTarget.value);
               }}
-              value={bio}
+              value={tagLineVal !== null ? tagLineVal : bio}
               // autoComplete="off"
             />
           </div>
@@ -512,9 +550,15 @@ const Form = ({ layout }: Props) => {
         {/* Button */}
         <div className="lg:absolute -bottom-2 lg:pe-10 w-full lg:left-5 lg:mb-0">
           <div className="flex justify-end rounded-b-xl secondary-bg py-3 lg:shadow border border-gray-700">
-            <button className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full lg:mx-0 mx-5">
-              {loader ? <Loader /> : "Create"}
-            </button>
+            {editedUrl ? (
+              <button className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full lg:mx-0 mx-5">
+                {loader ? <Loader /> : "Update"}
+              </button>
+            ) : (
+              <button className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full lg:mx-0 mx-5">
+                {loader ? <Loader /> : "Create"}
+              </button>
+            )}
           </div>
         </div>
       </form>

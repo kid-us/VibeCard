@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { useLayoutStore } from "../../store/useLayoutStore";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import DefaultCard from "../Layout/DefaultCard";
 import CenteredCard from "../Layout/CenteredCard";
 import RightCard from "../Layout/RightCard";
@@ -11,15 +10,124 @@ import Texts from "../Create/Sidebar/Texts";
 import Content from "../Create/Sidebar/Content";
 import Layout from "../Create/Sidebar/Layout";
 import Form from "../Create/Form";
-import { useCardData } from "../../store/useCardData";
 import { userPic } from "../../assets";
 import Navbar from "../Navbar/Navbar";
-import useAuthStore from "../../store/useUserData";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import { baseUrl } from "@/services/request";
+import axios from "axios";
+import { useCardData } from "../../store/useCardData";
+import useAuthStore from "../../store/useUserData";
+import { BusinessCardData, SocialMedia } from "../Insights/Cards";
+import { useContentStore } from "@/store/useContentStore";
+import { useTextColorStore } from "@/store/useTextColorStore";
+import { useLayoutStore } from "../../store/useLayoutStore";
 
 const Create = () => {
   const [title] = useState("Create Card");
   useDocumentTitle(title);
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const editedUrl = searchParams.get("edit");
+
+  const {
+    preview,
+    setCardCompany,
+    setCardEmail,
+    setCardJob,
+    setCardLocation,
+    setCardName,
+    setPreview,
+    setCardTagLine,
+    setCardPronoun,
+    setCardPhone,
+  } = useCardData();
+
+  const { updateContacts, updateCoverLogo, updateSocialMedia } =
+    useContentStore();
+
+  const { updateColor, updateFont, updateSize } = useTextColorStore();
+  const { updateLayout } = useLayoutStore();
+
+  useEffect(() => {
+    if (editedUrl) {
+      axios
+        .get<BusinessCardData>(`${baseUrl}/api/v1/cards/card/${editedUrl}`)
+        .then((response) => {
+          const data = response.data;
+          // Parse the styles JSON string
+          let styles;
+          if (typeof data.styles === "string") {
+            try {
+              styles = JSON.parse(data.styles);
+            } catch (e) {
+              return;
+            }
+          }
+          // Layout
+          updateLayout(data.card_layout);
+          // Cards
+          setCardName(data.full_name);
+          setCardPronoun(data.pronouns);
+          setCardCompany(data.company_name);
+          setCardEmail(data.email);
+          setCardJob(data.job_title);
+          setCardLocation(data.location);
+          setCardPhone(data.phone);
+          setCardTagLine(data.bio);
+          setPreview("cover", data.covor_picture);
+          setPreview("logo", data.company_logo);
+          setPreview("profile", data.main_picture);
+          // Contact
+          updateContacts(
+            styles.contacts.map((c: SocialMedia) => ({
+              link: c.link,
+              icon: c.icon,
+              color: c.color,
+            }))
+          );
+          // Social Media
+          updateSocialMedia(
+            styles.socialMedia.map((c: SocialMedia) => ({
+              link: c.link,
+              icon: c.icon,
+              color: c.color,
+            }))
+          );
+          //  Company Logo
+          if (data.company_logo !== "" || null) {
+            updateCoverLogo(true);
+          }
+          // Font Color
+          updateColor("tagLine", styles.bio.font_color);
+          updateColor("company", styles.company.font_color);
+          updateColor("jobTitle", styles.jobTitle.font_color);
+          updateColor("name", styles.name.font_color);
+          updateColor("pronoun", styles.pronoun.font_color);
+          updateColor("location", styles.location.font_color);
+          updateColor("button", styles.button.text_color);
+          // Font Style
+          updateFont("tagLine", styles.bio.font_style);
+          updateFont("company", styles.company.font_style);
+          updateFont("jobTitle", styles.jobTitle.font_style);
+          updateFont("name", styles.name.font_style);
+          updateFont("pronoun", styles.pronoun.font_style);
+          updateFont("location", styles.location.font_style);
+          updateFont("button", styles.button.bg_color);
+          // Font Size
+          updateSize("tagLine", styles.bio.font_size);
+          updateSize("company", styles.company.font_size);
+          updateSize("jobTitle", styles.jobTitle.font_size);
+          updateSize("name", styles.name.font_size);
+          updateSize("pronoun", styles.pronoun.font_size);
+          updateSize("location", styles.location.font_size);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);
+
   const { layout } = useLayoutStore();
   const { user } = useAuthStore();
   // States
@@ -27,8 +135,6 @@ const Create = () => {
   const [activeModal, setActiveModal] = useState("");
 
   const [previewCard, setPreviewCard] = useState(false);
-
-  const { preview } = useCardData();
 
   // Sidebar Small Device
   const handleModal = (value: string) => {

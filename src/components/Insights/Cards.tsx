@@ -15,13 +15,13 @@ interface Styles {
   font_color: string;
 }
 
-interface SocialMedia {
+export interface SocialMedia {
   link: string;
   color: string;
   icon: string;
 }
 
-interface BusinessCardData {
+export interface BusinessCardData {
   bio: string;
   card_layout: string;
   card_type: string;
