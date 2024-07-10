@@ -21,6 +21,8 @@ import { BusinessCardData, SocialMedia } from "../Insights/Cards";
 import { useContentStore } from "@/store/useContentStore";
 import { useTextColorStore } from "@/store/useTextColorStore";
 import { useLayoutStore } from "../../store/useLayoutStore";
+import { useCoverColorStore } from "@/store/useCoverColorStore";
+import { useCardColorStore } from "@/store/useCardColorStore";
 
 const Create = () => {
   const [title] = useState("Create Card");
@@ -48,6 +50,8 @@ const Create = () => {
 
   const { updateColor, updateFont, updateSize } = useTextColorStore();
   const { updateLayout } = useLayoutStore();
+  const { updateCoverColor } = useCoverColorStore();
+  const { updateCardColor } = useCardColorStore();
 
   useEffect(() => {
     if (editedUrl) {
@@ -56,6 +60,7 @@ const Create = () => {
         .then((response) => {
           const data = response.data;
           // Parse the styles JSON string
+
           let styles;
           if (typeof data.styles === "string") {
             try {
@@ -64,6 +69,9 @@ const Create = () => {
               return;
             }
           }
+
+          console.log(styles);
+
           // Layout
           updateLayout(data.card_layout);
           // Cards
@@ -98,6 +106,9 @@ const Create = () => {
           if (data.company_logo !== "" || null) {
             updateCoverLogo(true);
           }
+          // Card BG and Cover
+          updateCoverColor(styles.coverBG.bg_color);
+          updateCardColor(styles.cardBg.bg_color);
           // Font Color
           updateColor("tagLine", styles.bio.font_color);
           updateColor("company", styles.company.font_color);
@@ -125,6 +136,51 @@ const Create = () => {
         .catch((err) => {
           console.log(err);
         });
+    } else {
+      // Layout
+      updateLayout("default");
+      // Cards
+      setCardName(null);
+      setCardPronoun(null);
+      setCardCompany(null);
+      setCardEmail(null);
+      setCardJob(null);
+      setCardLocation(null);
+      setCardPhone(null);
+      setCardTagLine(null);
+      setPreview("cover", null);
+      setPreview("logo", null);
+      setPreview("profile", null);
+      // Contacts
+      updateContacts([]);
+      // Social Media
+      updateSocialMedia([]);
+      updateColor("tagLine", "#9ca3af");
+      updateColor("company", "#9ca3af");
+      updateColor("jobTitle", "#2dd4bf");
+      updateColor("name", "#ffffff");
+      updateColor("pronoun", "#9ca3af");
+      updateColor("location", "#9ca3af");
+      updateColor("button", "#14b8a6");
+      // Font Style
+      updateFont("tagLine", "ubuntu");
+      updateFont("company", "metamorphous");
+      updateFont("jobTitle", "syne");
+      updateFont("name", "font-poppins");
+      updateFont("pronoun", "font-monospace");
+      updateFont("location", "roboto");
+      updateFont("button", "#000000");
+      // Card BG and Cover
+      updateCoverColor("gradient-cover");
+      updateCardColor("#222222");
+      // Font Size
+      updateSize("tagLine", "text-sm");
+      updateSize("company", "text-sm");
+      updateSize("jobTitle", "text-lg");
+      updateSize("name", "text-xl");
+      updateSize("pronoun", "text-sm");
+      updateSize("location", "text-sm");
+      updateSize("button", "");
     }
   }, []);
 

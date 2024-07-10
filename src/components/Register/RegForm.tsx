@@ -140,7 +140,7 @@ const Form = ({ buttonClicked, username }: Props) => {
           onClick={() => setShowPassword(!showPassword)}
           className={`absolute ${
             showPassword ? "bi-eye" : "bi-eye-slash"
-          } right-2 top-8 cursor-pointer`}
+          } right-2 top-8 cursor-pointer text-black px-2 text-lg border-l border-gray-500`}
         ></span>
         {errors.password && (
           <p className="text-red-600 text-xs pt-1">{errors.password.message}</p>

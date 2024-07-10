@@ -121,7 +121,7 @@ const Form = ({ buttonClicked }: Props) => {
           }}
           className={`absolute ${
             showPassword ? "bi-eye" : "bi-eye-slash"
-          } right-2 top-10 cursor-pointer`}
+          } right-2 top-9 cursor-pointer text-black px-2 text-lg border-l border-gray-500`}
         ></span>
         {errors.password && (
           <p className="text-red-600 text-xs pt-1">{errors.password.message}</p>
