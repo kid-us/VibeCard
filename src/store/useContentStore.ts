@@ -22,7 +22,18 @@ type Actions = {
 export const useContentStore = create<State & Actions>((set) => ({
   companyLogo: false,
   socialMedia: [],
-  contact: [],
+  contact: [
+    {
+      link: "",
+      icon: "bi-envelope-fill",
+      color: "#ffffff",
+    },
+    {
+      link: "",
+      icon: "bi-telephone-fill",
+      color: "#22c55e",
+    },
+  ],
   updateCoverLogo: (companyLogo: boolean) => set(() => ({ companyLogo })),
   updateSocialMedia: (socialMedia: Props[]) => set(() => ({ socialMedia })),
   updateContacts: (contact: Props[]) => set(() => ({ contact })),

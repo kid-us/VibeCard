@@ -14,6 +14,7 @@ const DefaultCard = () => {
   const { company, jobTitle, location, name, pronoun, tagLine } =
     useTextColorStore();
   const { socialMedia, contact } = useContentStore();
+
   const {
     companyVal,
     jobTitleVal,

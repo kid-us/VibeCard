@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import InputImages from "./InputImages";
 import { useContentStore } from "../../store/useContentStore";
 import { z } from "zod";
@@ -28,8 +28,8 @@ interface FilePreviews {
 // Zod
 const schema = z.object({
   name: z.string().min(3, { message: "Name required." }),
-  company: z.string().min(3, { message: "Company required." }),
-  phone: z.number({ invalid_type_error: "Phone number required" }).min(10),
+  company: z.string().min(1, { message: "Company required." }),
+  phone: z.number({ invalid_type_error: "Phone number required" }).min(6),
   job: z.string().min(3, { message: "Job title required." }),
   location: z.string().min(3, { message: "Location required." }),
   email: z.string().email({ message: "Email address required." }),
@@ -37,7 +37,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const Form = ({ layout }: Props) => {
+const CreateForm = ({ layout }: Props) => {
   const pageLocation = useLocation();
   const searchParams = new URLSearchParams(pageLocation.search);
   const editedUrl = searchParams.get("edit");
@@ -49,14 +49,6 @@ const Form = ({ layout }: Props) => {
   const { cardColorBg } = useCardColorStore();
   const { coverColorBg } = useCoverColorStore();
   const {
-    companyVal,
-    emailVal,
-    jobTitleVal,
-    locationVal,
-    nameVal,
-    phoneVal,
-    pronounVal,
-    tagLineVal,
     setCardCompany,
     setPreview,
     setCardEmail,
@@ -102,14 +94,6 @@ const Form = ({ layout }: Props) => {
   const [loader, setLoader] = useState(false);
   const [modal, setModal] = useState(false);
   const [cardLink, setCardLink] = useState("");
-
-  const [formReadOnly, setFormReadOnly] = useState(false);
-
-  useEffect(() => {
-    if (editedUrl) {
-      setFormReadOnly(true);
-    }
-  }, [editedUrl]);
 
   //   Preview Images
   const handlePreviewChange = (
@@ -160,16 +144,20 @@ const Form = ({ layout }: Props) => {
 
   // Email
   const handleEmail = (val: string) => {
-    setCardEmail(val);
     setEmail(val);
-    updateIcons(val, "bi-envelope-fill", "bg-sky-900");
+    if (val !== "") {
+      setCardEmail(val);
+      updateIcons(val, "bi-envelope-fill", "bg-sky-900");
+    }
   };
 
   // Phone
   const handlePhone = (val: string) => {
-    setCardPhone(val);
     setPhone(val);
-    updateIcons(val, "bi-telephone-fill", "#22c55e");
+    if (val !== "") {
+      setCardPhone(val);
+      updateIcons(val, "bi-telephone-fill", "#22c55e");
+    }
   };
 
   // OnFormSubmit
@@ -251,40 +239,19 @@ const Form = ({ layout }: Props) => {
     formData.append("card_style_schema", JSON.stringify(cardStyles));
 
     try {
-      // Update
-      if (editedUrl) {
-        // const response = await axios.post(
-        //   `${baseUrl}/api/v1/cards/edit/${editedUrl}`,
-        //   formData,
-        //   {
-        //     headers: {
-        //       "Content-Type": "multipart/form-data",
-        //     },
-        //     withCredentials: true,
-        //   }
-        // );
-        // console.log(response);
-        // setModal(true);
-        // setCardLink(response.data.card_url);
-
-        console.log("Edit");
-
-        // Create
-      } else {
-        const response = await axios.post(
-          `${baseUrl}/api/v1/cards/create`,
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-            withCredentials: true,
-          }
-        );
-        // console.log(response);
-        setModal(true);
-        setCardLink(response.data.card_url);
-      }
+      const response = await axios.post(
+        `${baseUrl}/api/v1/cards/create`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true,
+        }
+      );
+      // console.log(response);
+      setModal(true);
+      setCardLink(response.data.card_url);
     } catch (error) {
       console.error(error);
     } finally {
@@ -334,7 +301,6 @@ const Form = ({ layout }: Props) => {
               htmlFor="pronoun"
             >
               Pronoun <span className="text-red-700 text-2xl">*</span>{" "}
-              <span className="ms-5">{pronounVal}</span>
             </label>
 
             <select
@@ -344,7 +310,7 @@ const Form = ({ layout }: Props) => {
                 setUserPronoun(event.currentTarget.value);
                 setCardPronoun(event.currentTarget.value);
               }}
-              defaultValue={pronounVal !== null ? pronounVal : userPronoun}
+              defaultValue={userPronoun}
             >
               <option value="" hidden></option>
               <option value="Mr">Mr</option>
@@ -378,8 +344,7 @@ const Form = ({ layout }: Props) => {
                 setFullName(e.currentTarget.value);
                 setCardName(e.currentTarget.value);
               }}
-              value={nameVal ? nameVal : fullName}
-              readOnly={formReadOnly}
+              value={fullName}
               // autoComplete="off"
             />
             {errors.name && (
@@ -404,8 +369,7 @@ const Form = ({ layout }: Props) => {
                 errors.email && "border-red-600 border-1 border"
               }`}
               onChange={(e) => handleEmail(e.currentTarget.value)}
-              value={emailVal !== null ? emailVal : email}
-              readOnly={formReadOnly}
+              value={email}
               // autoComplete="off"
             />
             {errors.email && (
@@ -432,8 +396,7 @@ const Form = ({ layout }: Props) => {
                 errors.phone && "border-red-600 border-1 border"
               }`}
               onChange={(e) => handlePhone(e.currentTarget.value)}
-              value={phoneVal !== null ? phoneVal : phone}
-              readOnly={formReadOnly}
+              value={phone}
               // autoComplete="off"
             />
             {errors.phone && (
@@ -463,8 +426,7 @@ const Form = ({ layout }: Props) => {
                 setJob(e.currentTarget.value);
                 setCardJob(e.currentTarget.value);
               }}
-              value={jobTitleVal !== null ? jobTitleVal : job}
-              readOnly={formReadOnly}
+              value={job}
               // autoComplete="off"
             />
             {errors.job && (
@@ -492,8 +454,7 @@ const Form = ({ layout }: Props) => {
                 setUserLocation(e.currentTarget.value);
                 setCardLocation(e.currentTarget.value);
               }}
-              value={locationVal !== null ? locationVal : userLocation}
-              // autoComplete="off"
+              value={userLocation}
             />
             {errors.location && (
               <p className="text-red-600 text-xs pt-1">
@@ -522,8 +483,7 @@ const Form = ({ layout }: Props) => {
                 setUserCompany(e.currentTarget.value);
                 setCardCompany(e.currentTarget.value);
               }}
-              value={companyVal !== null ? companyVal : userCompany}
-              readOnly={formReadOnly}
+              value={userCompany}
               // autoComplete="off"
             />
             {errors.company && (
@@ -550,8 +510,7 @@ const Form = ({ layout }: Props) => {
                 setBio(e.currentTarget.value);
                 setCardTagLine(e.currentTarget.value);
               }}
-              value={tagLineVal !== null ? tagLineVal : bio}
-              readOnly={formReadOnly}
+              value={bio}
               // autoComplete="off"
             />
           </div>
@@ -565,27 +524,13 @@ const Form = ({ layout }: Props) => {
             } rounded-b-xl secondary-bg py-3 lg:shadow border border-gray-700`}
           >
             {editedUrl ? (
-              <>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setFormReadOnly(false);
-                  }}
-                  type="submit"
-                  className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:ms-10 lg:w-auto w-full lg:mx-0 mx-5"
-                >
-                  {loader ? <Loader /> : "Start Editing"}
-                </button>
-                {!formReadOnly && (
-                  <button
-                    onClick={handleSubmit(onSubmit)}
-                    type="submit"
-                    className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full lg:mx-0 mx-5"
-                  >
-                    {loader ? <Loader /> : "Update"}
-                  </button>
-                )}
-              </>
+              <button
+                onClick={handleSubmit(onSubmit)}
+                type="submit"
+                className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full lg:mx-0 mx-5"
+              >
+                {loader ? <Loader /> : "Update"}
+              </button>
             ) : (
               <button
                 onClick={handleSubmit(onSubmit)}
@@ -602,4 +547,4 @@ const Form = ({ layout }: Props) => {
   );
 };
 
-export default Form;
+export default CreateForm;

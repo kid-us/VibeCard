@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import InputImages from "./InputImages";
 import { useContentStore } from "../../store/useContentStore";
-import { z } from "zod";
-import { FieldValues, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useCardData } from "../../store/useCardData";
 import Loader from "../Loader/Loader";
 import { useTextColorStore } from "../../store/useTextColorStore";
@@ -25,19 +22,7 @@ interface FilePreviews {
   logo: File | null;
 }
 
-// Zod
-const schema = z.object({
-  name: z.string().min(3, { message: "Name required." }),
-  company: z.string().min(3, { message: "Company required." }),
-  phone: z.number({ invalid_type_error: "Phone number required" }).min(10),
-  job: z.string().min(3, { message: "Job title required." }),
-  location: z.string().min(3, { message: "Location required." }),
-  email: z.string().email({ message: "Email address required." }),
-});
-
-type FormData = z.infer<typeof schema>;
-
-const Form = ({ layout }: Props) => {
+const EditForm = ({ layout }: Props) => {
   const pageLocation = useLocation();
   const searchParams = new URLSearchParams(pageLocation.search);
   const editedUrl = searchParams.get("edit");
@@ -68,15 +53,8 @@ const Form = ({ layout }: Props) => {
     setCardTagLine,
   } = useCardData();
 
-  // Form Hook
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(schema) });
-
   //   States
-  const [previews, setPreviews] = useState({
+  const [, setPreviews] = useState({
     profile: null,
     cover: null,
     logo: null,
@@ -97,19 +75,9 @@ const Form = ({ layout }: Props) => {
   const [userCompany, setUserCompany] = useState("");
   const [userPronoun, setUserPronoun] = useState("");
 
-  const [pronounError, setPronounError] = useState(false);
-  const [profilePhotoError, setProfilePhotoError] = useState(false);
   const [loader, setLoader] = useState(false);
   const [modal, setModal] = useState(false);
   const [cardLink, setCardLink] = useState("");
-
-  const [formReadOnly, setFormReadOnly] = useState(false);
-
-  useEffect(() => {
-    if (editedUrl) {
-      setFormReadOnly(true);
-    }
-  }, [editedUrl]);
 
   //   Preview Images
   const handlePreviewChange = (
@@ -173,20 +141,71 @@ const Form = ({ layout }: Props) => {
   };
 
   // OnFormSubmit
-  const onSubmit = async (data: FieldValues) => {
-    // Reset errors and loader state
-    setPronounError(false);
-    setProfilePhotoError(false);
-    // Validate required fields
-    if (!userPronoun) {
-      setPronounError(true);
+
+  //   Form Errors
+  const [fullNameError, setFullNameError] = useState(false);
+  const [companyError, setCompanyError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
+  const [locationError, setLocationError] = useState(false);
+  const [jobError, setJobError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  //   Validate
+  const validateInput = () => {
+    if (fullName !== "" && fullName.length < 3) {
+      setFullNameError(true);
+      setLoader(false);
       return;
+    } else {
+      setFullNameError(false);
     }
-    if (!previews.profile) {
-      setProfilePhotoError(true);
+    if (userCompany !== "" && userCompany.length < 1) {
+      setCompanyError(true);
+      setLoader(false);
       return;
+    } else {
+      setCompanyError(false);
     }
+
+    if (phone !== "" && phone.length < 6) {
+      setPhoneError(true);
+      setLoader(false);
+      return;
+    } else {
+      setPhoneError(false);
+    }
+    if (userLocation !== "" && userLocation.length < 3) {
+      setLocationError(true);
+      setLoader(false);
+      return;
+    } else {
+      setLocationError(false);
+    }
+    if (job !== "" && job.length < 3) {
+      setJobError(true);
+      setLoader(false);
+      return;
+    } else {
+      setJobError(false);
+    }
+    if (emailRegex.test(email)) {
+      setEmailError(true);
+      setLoader(false);
+      return;
+    } else {
+      setEmailError(false);
+    }
+  };
+
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setLoader(true);
+
+    // Validate Inputs
+    validateInput();
+
     // Define card styles
     const cardStyles = {
       // TEXT
@@ -233,58 +252,52 @@ const Form = ({ layout }: Props) => {
       // Social Media
       socialMedia: socialMedia,
     };
+
     // Prepare form data
     const formData = new FormData();
     if (pictures.profile) formData.append("main_picture", pictures.profile);
     if (pictures.cover) formData.append("covor_picture", pictures.cover);
     if (pictures.logo) formData.append("company_logo", pictures.logo);
     formData.append("pronouns", userPronoun);
-    formData.append("full_name", data.name);
-    formData.append("email", data.email);
-    formData.append("phone", data.phone);
-    formData.append("location", data.location);
-    formData.append("job_title", data.job);
+    formData.append("full_name", fullName);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("location", userLocation);
+    formData.append("job_title", job);
     formData.append("bio", bio);
-    formData.append("company_name", data.company);
+    formData.append("company_name", userCompany);
     formData.append("card_layout", layout);
     formData.append("card_type", "business");
     formData.append("card_style_schema", JSON.stringify(cardStyles));
 
-    try {
-      // Update
-      if (editedUrl) {
-        // const response = await axios.post(
-        //   `${baseUrl}/api/v1/cards/edit/${editedUrl}`,
-        //   formData,
-        //   {
-        //     headers: {
-        //       "Content-Type": "multipart/form-data",
-        //     },
-        //     withCredentials: true,
-        //   }
-        // );
-        // console.log(response);
-        // setModal(true);
-        // setCardLink(response.data.card_url);
-
-        console.log("Edit");
-
-        // Create
+    const formDataObject: { [key: string]: any } = {};
+    formData.forEach((value, key) => {
+      if (value instanceof File) {
+        formDataObject[key] = {
+          name: value.name,
+          type: value.type,
+          size: value.size,
+        };
       } else {
-        const response = await axios.post(
-          `${baseUrl}/api/v1/cards/create`,
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-            withCredentials: true,
-          }
-        );
-        // console.log(response);
-        setModal(true);
-        setCardLink(response.data.card_url);
+        formDataObject[key] = value;
       }
+    });
+    console.log(formDataObject);
+
+    try {
+      const response = await axios.put(
+        `${baseUrl}/api/v1/cards/edit/${editedUrl}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true,
+        }
+      );
+      console.log(response);
+      //   setModal(true);
+      //   setCardLink(response.data.card_url);
     } catch (error) {
       console.error(error);
     } finally {
@@ -299,7 +312,10 @@ const Form = ({ layout }: Props) => {
       )}
       <p className="mb-4">Create your Business card</p>
 
-      <form className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-10 shadow lg:shadow-zinc-400 rounded-xl secondary-bg lg:overflow-auto lg:h-auto h-[69dvh] overflow-y-scroll border border-gray-700 mb-10">
+      <form
+        onSubmit={handleFormSubmit}
+        className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-10 shadow lg:shadow-zinc-400 rounded-xl secondary-bg lg:overflow-auto lg:h-auto h-[69dvh] overflow-y-scroll border border-gray-700 mb-10"
+      >
         {/* Images */}
         <div className="lg:flex justify-between flex-shrink-0 grid grid-cols-3 gap-1 lg:px-0 px-1">
           {/* Profile */}
@@ -308,7 +324,6 @@ const Form = ({ layout }: Props) => {
             type="profile"
             onPreviewChange={handlePreviewChange}
             onHandleFile={handleFile}
-            error={profilePhotoError}
           />
           {/* Cover */}
           <InputImages
@@ -334,7 +349,6 @@ const Form = ({ layout }: Props) => {
               htmlFor="pronoun"
             >
               Pronoun <span className="text-red-700 text-2xl">*</span>{" "}
-              <span className="ms-5">{pronounVal}</span>
             </label>
 
             <select
@@ -352,10 +366,6 @@ const Form = ({ layout }: Props) => {
               <option value="Prof">Professor</option>
               <option value="Dr">Dr</option>
             </select>
-
-            {pronounError && (
-              <p className="text-red-600 text-xs pt-1">Pronoun required.</p>
-            )}
           </div>
 
           {/* Name */}
@@ -368,22 +378,20 @@ const Form = ({ layout }: Props) => {
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
-              {...register("name")}
               type="text"
               name="name"
-              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 ${
-                errors.name && "border-red-600 border-1 border"
-              }`}
+              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3`}
               onChange={(e) => {
                 setFullName(e.currentTarget.value);
                 setCardName(e.currentTarget.value);
               }}
-              value={nameVal ? nameVal : fullName}
-              readOnly={formReadOnly}
-              // autoComplete="off"
+              value={nameVal !== null ? nameVal : fullName}
             />
-            {errors.name && (
-              <p className="text-red-600 text-xs pt-1">{errors.name.message}</p>
+
+            {fullNameError && (
+              <p className="text-red-600 text-xs pt-1">
+                Name must be greater than 3 chars.
+              </p>
             )}
           </div>
 
@@ -397,20 +405,16 @@ const Form = ({ layout }: Props) => {
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
-              {...register("email")}
               type="email"
               name="email"
-              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 ${
-                errors.email && "border-red-600 border-1 border"
-              }`}
+              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3`}
               onChange={(e) => handleEmail(e.currentTarget.value)}
               value={emailVal !== null ? emailVal : email}
-              readOnly={formReadOnly}
-              // autoComplete="off"
             />
-            {errors.email && (
+
+            {emailError && (
               <p className="text-red-600 text-xs pt-1">
-                {errors.email.message}
+                Email must be a valid address.
               </p>
             )}
           </div>
@@ -425,20 +429,17 @@ const Form = ({ layout }: Props) => {
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
-              {...register("phone", { valueAsNumber: true })}
               type="tel"
               name="phone"
-              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 ${
-                errors.phone && "border-red-600 border-1 border"
-              }`}
+              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3`}
               onChange={(e) => handlePhone(e.currentTarget.value)}
               value={phoneVal !== null ? phoneVal : phone}
-              readOnly={formReadOnly}
               // autoComplete="off"
             />
-            {errors.phone && (
+
+            {phoneError && (
               <p className="text-red-600 text-xs pt-1">
-                {errors.phone.message}
+                Phone must be at least 10 chars.
               </p>
             )}
           </div>
@@ -453,22 +454,20 @@ const Form = ({ layout }: Props) => {
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
-              {...register("job")}
               type="text"
               name="job"
-              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 ${
-                errors.job && "border-red-600 border-1 border"
-              }`}
+              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3`}
               onChange={(e) => {
                 setJob(e.currentTarget.value);
                 setCardJob(e.currentTarget.value);
               }}
               value={jobTitleVal !== null ? jobTitleVal : job}
-              readOnly={formReadOnly}
-              // autoComplete="off"
             />
-            {errors.job && (
-              <p className="text-red-600 text-xs pt-1">{errors.job.message}</p>
+
+            {jobError && (
+              <p className="text-red-600 text-xs pt-1">
+                Job title must be greater than 3 chars.
+              </p>
             )}
           </div>
 
@@ -482,22 +481,19 @@ const Form = ({ layout }: Props) => {
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
-              {...register("location")}
               type="text"
               name="location"
-              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 ${
-                errors.location && "border-red-600 border-1 border"
-              }`}
+              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3`}
               onChange={(e) => {
                 setUserLocation(e.currentTarget.value);
                 setCardLocation(e.currentTarget.value);
               }}
               value={locationVal !== null ? locationVal : userLocation}
-              // autoComplete="off"
             />
-            {errors.location && (
+
+            {locationError && (
               <p className="text-red-600 text-xs pt-1">
-                {errors.location.message}
+                Location must be greater than 3 chars.
               </p>
             )}
           </div>
@@ -512,23 +508,19 @@ const Form = ({ layout }: Props) => {
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
-              {...register("company")}
               type="text"
               name="company"
-              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 ${
-                errors.company && "border-red-600 border-1 border"
-              }`}
+              className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3`}
               onChange={(e) => {
                 setUserCompany(e.currentTarget.value);
                 setCardCompany(e.currentTarget.value);
               }}
               value={companyVal !== null ? companyVal : userCompany}
-              readOnly={formReadOnly}
-              // autoComplete="off"
             />
-            {errors.company && (
+
+            {companyError && (
               <p className="text-red-600 text-xs pt-1">
-                {errors.company.message}
+                Company name must be at least 1 chars.
               </p>
             )}
           </div>
@@ -551,8 +543,6 @@ const Form = ({ layout }: Props) => {
                 setCardTagLine(e.currentTarget.value);
               }}
               value={tagLineVal !== null ? tagLineVal : bio}
-              readOnly={formReadOnly}
-              // autoComplete="off"
             />
           </div>
         </div>
@@ -560,41 +550,14 @@ const Form = ({ layout }: Props) => {
         {/* Button */}
         <div className="lg:absolute -bottom-2 lg:pe-10 w-full lg:left-5 lg:mb-0">
           <div
-            className={`flex ${
-              editedUrl ? "justify-between" : "justify-end"
-            } rounded-b-xl secondary-bg py-3 lg:shadow border border-gray-700`}
+            className={`flex justify-end rounded-b-xl secondary-bg py-3 lg:shadow border border-gray-700`}
           >
-            {editedUrl ? (
-              <>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setFormReadOnly(false);
-                  }}
-                  type="submit"
-                  className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:ms-10 lg:w-auto w-full lg:mx-0 mx-5"
-                >
-                  {loader ? <Loader /> : "Start Editing"}
-                </button>
-                {!formReadOnly && (
-                  <button
-                    onClick={handleSubmit(onSubmit)}
-                    type="submit"
-                    className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full lg:mx-0 mx-5"
-                  >
-                    {loader ? <Loader /> : "Update"}
-                  </button>
-                )}
-              </>
-            ) : (
-              <button
-                onClick={handleSubmit(onSubmit)}
-                type="submit"
-                className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full lg:mx-0 mx-5"
-              >
-                {loader ? <Loader /> : "Create"}
-              </button>
-            )}
+            <button
+              type="submit"
+              className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full lg:mx-0 mx-5"
+            >
+              {loader ? <Loader /> : "Update"}
+            </button>
           </div>
         </div>
       </form>
@@ -602,4 +565,4 @@ const Form = ({ layout }: Props) => {
   );
 };
 
-export default Form;
+export default EditForm;

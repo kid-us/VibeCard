@@ -4,7 +4,7 @@ import { useCardData } from "@/store/useCardData";
 
 const Contacts = () => {
   const { contact } = useContentStore();
-  const { emailVal, phoneVal } = useCardData();
+  // const { emailVal, phoneVal } = useCardData();
 
   return (
     <div
@@ -16,7 +16,7 @@ const Contacts = () => {
           : "invisible"
       }`}
     >
-      {emailVal !== "" && phoneVal !== "" && (
+      {/* {emailVal !== "" && phoneVal !== "" && (
         <>
           <a
             href={`mailto:${emailVal}`}
@@ -24,7 +24,7 @@ const Contacts = () => {
           ></a>
           <p className="bi-telephone-fill text-green-500 text-3xl text-center rounded-lg py-2 shadow-inner"></p>
         </>
-      )}
+      )} */}
       {contact.map((c) => (
         <Link
           key={c.icon}
