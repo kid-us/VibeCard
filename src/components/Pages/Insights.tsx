@@ -7,7 +7,7 @@ import { useInsightStore } from "@/store/useInsightStore";
 import axios from "axios";
 import { baseUrl } from "@/services/request";
 import History from "../Insights/History";
-import LinkTaps from "../Insights/LinkTaps";
+// import LinkTaps from "../Insights/LinkTaps";
 
 export interface Accounts {
   // card_view: number;
