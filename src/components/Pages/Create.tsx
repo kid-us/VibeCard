@@ -89,7 +89,7 @@ const Create = () => {
           setPreview("cover", data.covor_picture);
           setPreview("logo", data.company_logo);
           setPreview("profile", data.main_picture);
-          // Contact
+
           updateContacts(
             styles.contacts.map((c: SocialMedia) => ({
               link: c.link,
@@ -119,7 +119,7 @@ const Create = () => {
           updateColor("name", styles.name.font_color);
           updateColor("pronoun", styles.pronoun.font_color);
           updateColor("location", styles.location.font_color);
-          updateColor("button", styles.button.text_color);
+          updateColor("button", styles.button.bg_color);
           // Font Style
           updateFont("tagLine", styles.bio.font_style);
           updateFont("company", styles.company.font_style);
@@ -127,7 +127,7 @@ const Create = () => {
           updateFont("name", styles.name.font_style);
           updateFont("pronoun", styles.pronoun.font_style);
           updateFont("location", styles.location.font_style);
-          updateFont("button", styles.button.bg_color);
+          updateFont("button", styles.button.text_color);
           // Font Size
           updateSize("tagLine", styles.bio.font_size);
           updateSize("company", styles.company.font_size);
@@ -362,12 +362,14 @@ const Create = () => {
         )}
 
         {/* Small Device Sidebar */}
-        <div className="lg:hidden absolute bottom-0 w-full z-40 border-t border-gray-600">
-          <SmallDeviceSidebar
-            active={activeModal}
-            handleClick={(value: string) => handleModal(value)}
-          />
-        </div>
+        {!previewCard && (
+          <div className="lg:hidden absolute bottom-0 w-full z-40 border-t border-gray-600">
+            <SmallDeviceSidebar
+              active={activeModal}
+              handleClick={(value: string) => handleModal(value)}
+            />
+          </div>
+        )}
       </div>
     </>
   );

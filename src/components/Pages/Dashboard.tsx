@@ -5,6 +5,7 @@ import { baseUrl } from "../../services/request";
 import useAuthStore from "../../store/useUserData";
 import Navbar from "../Navbar/Navbar";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import Loader from "../Loader/Loader";
 
 interface Card {
   card_url: string;
@@ -18,6 +19,11 @@ interface Card {
 const Dashboard = () => {
   const [title] = useState("Dashboard");
   useDocumentTitle(title);
+
+  const [deleteCard, setDeleteCard] = useState(false);
+  const [deletedCardUrl, setDeletedCardUrl] = useState("");
+  const [loader, setLoader] = useState(false);
+  const [deleteConfirmed, setDeleteConfirmed] = useState(false);
 
   const { user } = useAuthStore();
   const [links, setLinks] = useState<Card[]>([]);
@@ -58,14 +64,89 @@ const Dashboard = () => {
       });
   };
 
+  const handleDelete = () => {
+    setLoader(true);
+    axios
+      .get(`${baseUrl}/api/v1/cards/delete/${deletedCardUrl}`, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      })
+      .then(() => {
+        setDeleteConfirmed(true);
+      })
+      .catch((err) => {
+        setLoader(false);
+        console.log(err);
+      });
+  };
+
   return (
     <>
+      {deleteCard && (
+        <>
+          <div className="overlay w-full z-50"></div>
+          <div className="flex justify-center align-center">
+            <div className="fixed lg:top-60 top-44 z-50 lg:w-[30%] lg:mx-0 mx-1 secondary-bg rounded-xl border-gradient-2">
+              <button
+                onClick={() =>
+                  deleteConfirmed
+                    ? window.location.reload()
+                    : setDeleteCard(false)
+                }
+                className="absolute right-5 top-3 bi-x-lg text-white"
+              ></button>
+              <div className="p-8">
+                {!deleteConfirmed ? (
+                  <>
+                    <h1 className="text-gray-400 text-xl ">Delete Card</h1>
+                    <p className="text-sm  text-gray-300 my-5">
+                      Are you sure you want to delete the card? This action
+                      cannot be undone. Do you want to proceed?
+                    </p>
+                    <div className="flex justify-between gap-x-10">
+                      <button
+                        onClick={() => setDeleteCard(false)}
+                        className="w-full bg-sky-600 rounded text-white shadow-none h-12"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        onClick={() => handleDelete()}
+                        className="w-full bg-red-500 rounded text-white shadow-none h-12"
+                      >
+                        {loader ? (
+                          <Loader />
+                        ) : (
+                          <p>
+                            Delete
+                            <span className="bi-trash-fill ms-3"></span>
+                          </p>
+                        )}
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <div className="text-center mt-4">
+                    <p className="bi-check-circle-fill text-green-500 text-4xl"></p>
+                    <p className="text-white mt-5 text-xl chakra">
+                      Card Deleted Successfully!
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
       <Navbar />
       <div className="h-[100vh]">
         <div className="lg:container mx-auto">
           <div className="flex justify-center lg:mt-20 mt-10 lg:shadow lg:pb-20 lg:rounded">
             <div className="lg:grid grid-cols-10 gap-4">
-              <div className="lg:col-span-6 lg:px-16 md:p-9 p-5">
+              <div className="lg:col-span-6 lg:px-16 md:p-9 py-5 px-2">
                 <div className="content-center text-white">
                   <h1 className="text-4xl">
                     Welcome Back <span className="text-teal-400">{user}</span>
@@ -127,13 +208,16 @@ const Dashboard = () => {
                                 Edit
                               </Link>
 
-                              <Link
-                                to={`/card/${link.card_url}`}
+                              <button
+                                onClick={() => {
+                                  setDeletedCardUrl(link.card_url);
+                                  setDeleteCard(true);
+                                }}
                                 className="text-white rounded-lg chakra mb-2 pt-5 px-3 hover:text-gray-400"
                               >
                                 <span className="bi-trash-fill text-red-600"></span>{" "}
                                 Delete
-                              </Link>
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -143,9 +227,9 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <div className="lg:col-span-4">
+              <div className="lg:col-span-4 mb-5">
                 <Link to={"/create"}>
-                  <div className="flex justify-center gap-x-10 btn-bg mx-10 py-20 mt-14 shadow-none">
+                  <div className="flex justify-center mx-2 gap-x-10 btn-bg px-0 lg:mx-10 py-20 lg:mt-14 shadow-none">
                     <p className="text-center bi-plus-lg mb-8  bg-white w-10 h-10 rounded-full pt-2 text-black shadow-lg"></p>
 
                     <p className="text-white mt-2">Create Business Card</p>

@@ -129,15 +129,19 @@ const EditForm = ({ layout }: Props) => {
   // Email
   const handleEmail = (val: string) => {
     setCardEmail(val);
-    setEmail(val);
-    updateIcons(val, "bi-envelope-fill", "bg-sky-900");
+    if (val !== "") {
+      setEmail(val);
+      updateIcons(val, "bi-envelope-fill", "bg-sky-900");
+    }
   };
 
   // Phone
   const handlePhone = (val: string) => {
     setCardPhone(val);
-    setPhone(val);
-    updateIcons(val, "bi-telephone-fill", "#22c55e");
+    if (val !== "") {
+      setPhone(val);
+      updateIcons(val, "bi-telephone-fill", "#22c55e");
+    }
   };
 
   //   Form Errors
@@ -150,8 +154,12 @@ const EditForm = ({ layout }: Props) => {
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  //   Validate
-  const validateInput = () => {
+  // OnFormSubmit
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setLoader(true);
+
+    // Validate Inputs
     if (fullName !== "" && fullName.length < 3) {
       setFullNameError(true);
       setLoader(false);
@@ -195,16 +203,6 @@ const EditForm = ({ layout }: Props) => {
     } else {
       setEmailError(false);
     }
-  };
-
-  // OnFormSubmit
-  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setLoader(true);
-
-    // Validate Inputs
-    validateInput();
-
     // Define card styles
     const cardStyles = {
       // TEXT

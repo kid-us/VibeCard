@@ -5,12 +5,10 @@ import { Link } from "react-router-dom";
 
 interface Props {
   styles: StyleData;
-  email: string;
-  phone: string;
   cardUrl: string;
 }
 
-const BottomContent = ({ styles, email, phone, cardUrl }: Props) => {
+const BottomContent = ({ styles, cardUrl }: Props) => {
   // //   Social Media
   const handleSocialMedia = (icon: string) => {
     let clickedIcon = icon.replace("bi-", "");
@@ -36,8 +34,9 @@ const BottomContent = ({ styles, email, phone, cardUrl }: Props) => {
   // //   Contact
   const handleContact = (phone?: string) => {
     if (phone) {
-      alert("worked");
+      navigator.clipboard.writeText(`${phone}`);
     }
+
     axios
       .post(
         `${baseUrl}/api/v1/cards/click-count?card_url=${cardUrl}&account_type=contacts`,
@@ -49,9 +48,7 @@ const BottomContent = ({ styles, email, phone, cardUrl }: Props) => {
           withCredentials: true,
         }
       )
-      .then((response) => {
-        console.log(response.data);
-      })
+      .then(() => {})
       .catch((error) => {
         console.log(error);
       });
@@ -71,24 +68,30 @@ const BottomContent = ({ styles, email, phone, cardUrl }: Props) => {
               : "invisible"
           }`}
         >
-          <a
-            onClick={() => handleContact()}
-            href={`mailto:${email}`}
-            className="text-3xl text-center rounded-lg py-2 shadow-inner bi-envelope-fill text-white"
-          ></a>
-          <p
-            onClick={() => handleContact(phone)}
-            className="text-3xl text-center rounded-lg py-2 shadow-inner bi-telephone-fill text-green-600"
-          ></p>
           {styles.contacts.map((c) => (
-            <Link
-              key={c.icon}
-              to={`${c.link}`}
-              className={`${c.icon} text-3xl text-center rounded-lg py-2 shadow-inner`}
-              style={{
-                color: c.color.replace("bg", "text"),
-              }}
-            ></Link>
+            <div key={c.icon} className="my-2">
+              {c.icon === "bi-envelope-fill" ? (
+                <a
+                  onClick={() => handleContact()}
+                  href={`mailto:${c.link}`}
+                  className="text-3xl text-center rounded-lg shadow-inner bi-envelope-fill text-white"
+                ></a>
+              ) : c.icon === "bi-telephone-fill" ? (
+                <p
+                  onClick={() => handleContact(c.link)}
+                  className="text-3xl text-center rounded-lg shadow-inner bi-telephone-fill text-green-600 cursor-pointer"
+                ></p>
+              ) : (
+                <Link
+                  onClick={() => handleContact()}
+                  to={`${c.link}`}
+                  className={`${c.icon} text-3xl text-center rounded-lg shadow-inner`}
+                  style={{
+                    color: c.color.replace("bg", "text"),
+                  }}
+                ></Link>
+              )}
+            </div>
           ))}
         </div>
       )}

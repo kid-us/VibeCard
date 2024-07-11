@@ -115,8 +115,8 @@ const Center = ({ data, styles }: Props) => {
         <BottomContent
           styles={styles}
           cardUrl={data.card_url}
-          email={data.email}
-          phone={data.phone}
+          // email={data.email}
+          // phone={data.phone}
         />
       </div>
     </div>
