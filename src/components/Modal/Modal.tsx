@@ -1,16 +1,15 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./modals.css";
 import { useState } from "react";
 
 interface Props {
-  link?: string;
-  onModal: (val: boolean) => void;
+  link: string;
+  // onModal: (val: boolean) => void;
 }
 
-const Modal = ({ link, onModal }: Props) => {
-  const navigate = useNavigate();
-  const [copy, setCopy] = useState("Copy Card Link");
-  
+const Modal = ({ link }: Props) => {
+  const [copy, setCopy] = useState("Copy card Link");
+
   const handleCopy = (card_url: string) => {
     navigator.clipboard
       .writeText(`vibe-card.vercel.app/card/${card_url}`)
@@ -18,43 +17,36 @@ const Modal = ({ link, onModal }: Props) => {
         setCopy("Copied");
       });
   };
-  
+
   return (
     <>
-      <div
-        onClick={() => {
-          onModal(false);
-          navigate("/dashboard");
-        }}
-        className="overlay z-40 top-0 w-full"
-      ></div>
-
-      <div className="modals p-10">
-        <button
-          onClick={() => {
-            onModal(false);
-            navigate("/dashboard");
-          }}
-          className="absolute -top-2 -right-2 rounded-lg h-8 w-8 bi-x shadow shadow-zinc-900 text-white bg-red-500"
-        ></button>
-        <h1 className="text-2xl text-center mb-5 mt-2">
-          <span className="bi-check-circle-fill text-green-600 me-5"></span>
-          You have created your business card Successfully!
-        </h1>
-        <div className="flex justify-between px-10 ">
-          {link && (
-            <p
-              onClick={() => handleCopy(link)}
-              className="chakra bg-zinc-700 rounded px-10 text-white shadow shadow-teal-400 py-2 mt-5"
-            >
-              {copy}
-            </p>
-          )}
-          <Link to={`/card/${link}`}>
-            <p className="chakra bg-blue-900 rounded px-10 text-white shadow-md shadow-teal-400 py-2 mt-5">
-              Preview Card
-            </p>
-          </Link>
+      <div className="overlay w-full z-50"></div>
+      <div className="flex justify-center align-center">
+        <div className="absolute lg:top-40 top-28 z-50 lg:w-[60%] secondary-bg rounded-xl border-gradient-2">
+          <Link
+            to={"/dashboard"}
+            className="absolute right-5 top-3 bi-x-lg cursor-pointer"
+          ></Link>
+          <div className="p-8">
+            <h1 className="text-gray-400 text-xl ">Well Done :{")"}</h1>
+            <p className="text-lg  text-gray-300 my-5">Your Card is ready</p>
+            <div className="flex justify-between gap-x-10">
+              <p
+                onClick={() => handleCopy(link)}
+                className="bg-black rounded w-full text-center text-white text-sm shadow shadow-teal-500 pt-3 cursor-pointer"
+              >
+                <span className="bi-clipboard text-lg me-4"></span>
+                {copy}
+              </p>
+              <Link
+                to={`/card/${link}`}
+                className="w-full btn-bg rounded text-white shadow-none cursor-pointer"
+              >
+                Preview Card
+                <span className="bi-arrow-up-right ms-3"></span>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </>

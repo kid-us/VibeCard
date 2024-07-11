@@ -261,9 +261,9 @@ const CreateForm = ({ layout }: Props) => {
 
   return (
     <div className="relative lg:px-5">
-      {modal && (
-        <Modal link={cardLink} onModal={(val: boolean) => setModal(val)} />
-      )}
+      {/* Modal */}
+      {modal && <Modal link={cardLink} />}
+
       <p className="mb-4">Create your Business card</p>
 
       <form className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-10 shadow lg:shadow-zinc-400 rounded-xl secondary-bg lg:overflow-auto lg:h-auto h-[69dvh] overflow-y-scroll border border-gray-700 mb-10">
