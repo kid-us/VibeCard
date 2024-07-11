@@ -21,7 +21,7 @@ const Login = () => {
       <div className="flex justify-center w-full">
         <div className="lg:w-5/6 md:w-5/6 w-full">
           <div className="lg:grid grid-cols-2 gap-5">
-            <div className="lg:p-10 md:p-9 p-8 shadow-lg secondary-bg rounded-lg text-white border border-violet-800">
+            <div className="lg:p-10 md:p-9 p-8 shadow-lg secondary-bg rounded-lg text-white border border-violet-800 mb-3">
               <h1 className="text-2xl">Welcome Back</h1>
               <p className="text-sm mb-14 mt-2">
                 Log in to your VibeCard account.
