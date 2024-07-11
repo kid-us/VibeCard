@@ -2,20 +2,18 @@ import { z } from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-// import Button from "../../Button/Button";
-// import axios from "axios";
-// import { baseUrl } from "../../../services/request";
-// import { useNavigate } from "react-router-dom";
-// import { baseUrl } from "../../services/request";
+import useAuthStore from "@/store/useUserData";
 import Button from "../Button/Button";
 import Navbar from "../Navbar/Navbar";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import { baseUrl } from "@/services/request";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const schema = z.object({
   username: z
     .string()
     .min(3, { message: "Username must be greater than 3 characters." }),
-  email: z.string().email({ message: "Email address required." }),
   password: z.string().min(8, {
     message: "Password must be greater than 8 characters.",
   }),
@@ -27,12 +25,15 @@ const Setting = () => {
   const [title] = useState("Setting");
   useDocumentTitle(title);
 
-  // const navigate = useNavigate();
+  const { user, email, logout } = useAuthStore();
 
-  // const [registerError, setRegisterError] = useState("");
+  const navigate = useNavigate();
+
+  const [errorMsg, setErrorMsg] = useState(false);
 
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+
   const [loader, setLoader] = useState(false);
 
   const {
@@ -44,35 +45,49 @@ const Setting = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = (data: FieldValues) => {
+    console.log(data);
+
     if (data.password !== confirmPassword) {
       return setConfirmPasswordError(true);
     } else {
       setConfirmPasswordError(false);
       setLoader(true);
-      // axios
-      //   .get(`${baseUrl}/api/v1/auth/check-email/${data.email}`, {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //   })
-      //   .then(() => {
-      //     axios
-      //       .post(`${baseUrl}/api/v1/auth/register`, data, {
-      //         headers: {
-      //           "Content-Type": "application/json",
-      //         },
-      //       })
-      //       .then(() => {
-      //         navigate(`/verify?email=${data.email}`);
-      //       })
-      //       .catch((error) => {
-      //         console.log(error);
-      //       });
-      // })
-      // .catch(() => {
-      //   setLoader(false);
-      //   setRegisterError("Email already exist.");
-      // });
+
+      axios
+        .post(`${baseUrl}/api/v1/auth/update`, data, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        })
+        .then((response) => {
+          console.log(response);
+          // Logout
+          axios
+            .post(
+              `${baseUrl}/api/v1/auth/logout`,
+              {},
+              {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                withCredentials: true,
+              }
+            )
+            .then(() => {
+              logout();
+              navigate("/login");
+            })
+            .catch((err) => {
+              console.error("Logout failed: ", err);
+            });
+
+          // navigate(`/login}`);
+        })
+        .catch((error) => {
+          console.log(error);
+          setErrorMsg(true);
+        });
     }
   };
 
@@ -80,115 +95,126 @@ const Setting = () => {
     <>
       <Navbar />
       <div className="">
-        <div className="lg:container mx-auto lg:p-10 secondary-bg mt-10">
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className=" py-10 lg:px-40 px-10 rounded shadow"
-          >
-            <h1 className="mb-10 text-2xl text-white">Account Settings</h1>
-            {/* Email exist error */}
-            {/* {registerError !== "" && (
-              <div className="relative">
-                <p className="absolute -top-7 text-red-600 text-sm">
-                  <span className="bi-exclamation-triangle-fill me-4"></span>
-                  {registerError}
+        <div className="lg:container mx-auto lg:p-10 mt-10">
+          <div className="flex justify-center">
+            <div className="py-10 lg:px-10 px-5 rounded secondary-bg shadow">
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <h1 className="mb-5 text-2xl text-white">Account Settings</h1>
+                <p className="text-gray-400 mb-5">
+                  Hello <span className="text-teal-500">{user} </span>
+                  you can change your username and Password here but you can't
+                  change your email address.
                 </p>
-              </div>
-            )} */}
 
-            {/* Username */}
-            <div className="mb-5">
-              <label className="text-sm text-gray-500 block" htmlFor="username">
-                Username
-              </label>
-              <input
-                {...register("username")}
-                type="text"
-                name="username"
-                className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
-                  errors.email && "border-red-600 border-1 border"
-                }`}
-              />
-              {errors.username && (
-                <p className="text-red-600 text-xs pt-1">
-                  {errors.username.message}
-                </p>
-              )}
-            </div>
+                {/* Error message */}
+                {errorMsg && (
+                  <p className="text-red-600 my-5 text-lg">
+                    Something went wrong!
+                  </p>
+                )}
 
-            {/* Email */}
-            <div className="mb-5">
-              <label className="text-sm text-gray-500 block" htmlFor="email">
-                Email
-              </label>
-              <input
-                {...register("email")}
-                type="email"
-                name="email"
-                className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
-                  errors.email && "border-red-600 border-1 border"
-                }`}
-              />
-              {errors.email && (
-                <p className="text-red-600 text-xs pt-1">
-                  {errors.email.message}
-                </p>
-              )}
-            </div>
+                {/* Username */}
+                <div className="mb-5">
+                  <label
+                    className="text-sm text-gray-500 block"
+                    htmlFor="username"
+                  >
+                    Username
+                  </label>
+                  <input
+                    {...register("username")}
+                    type="text"
+                    name="username"
+                    className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                      errors.username && "border-red-600 border-1 border"
+                    }`}
+                  />
+                  {errors.username && (
+                    <p className="text-red-600 text-xs pt-1">
+                      {errors.username.message}
+                    </p>
+                  )}
+                </div>
 
-            {/* Password */}
-            <div className="mb-5 relative">
-              <label className="text-sm text-gray-500 block" htmlFor="password">
-                Password
-              </label>
-              <input
-                {...register("password")}
-                type={showPassword ? "text" : "password"}
-                name="password"
-                className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
-                  errors.password && "border-red-600 border-1 border"
-                }`}
-              />
-              <span
-                onClick={() => setShowPassword(!showPassword)}
-                className={`absolute ${
-                  showPassword ? "bi-eye" : "bi-eye-slash"
-                } right-2 top-8 cursor-pointer`}
-              ></span>
-              {errors.password && (
-                <p className="text-red-600 text-xs pt-1">
-                  {errors.password.message}
-                </p>
-              )}
-            </div>
+                {/* Email */}
+                <div className="mb-5">
+                  <label
+                    className="text-sm text-gray-500 block"
+                    htmlFor="email"
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    className={`bg-gray-400 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm`}
+                    value={email ? email : ""}
+                    readOnly
+                    disabled
+                  />
+                </div>
 
-            {/* Confirm Password */}
-            <div className="mb-5">
-              <label className="text-sm text-gray-500 block" htmlFor="password">
-                Confirm Password
-              </label>
-              <input
-                type="password"
-                name="confirm-password"
-                className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
-                  confirmPasswordError && "border-red-600 border-1 border"
-                }`}
-                onChange={(event) =>
-                  setConfirmPassword(event.currentTarget.value)
-                }
-              />
+                {/* Password */}
+                <div className="mb-5 relative">
+                  <label
+                    className="text-sm text-gray-500 block"
+                    htmlFor="password"
+                  >
+                    Password
+                  </label>
+                  <input
+                    {...register("password")}
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                      errors.password && "border-red-600 border-1 border"
+                    }`}
+                  />
+                  <span
+                    onClick={() => setShowPassword(!showPassword)}
+                    className={`absolute ${
+                      showPassword ? "bi-eye" : "bi-eye-slash"
+                    } right-2 top-8 cursor-pointer`}
+                  ></span>
+                  {errors.password && (
+                    <p className="text-red-600 text-xs pt-1">
+                      {errors.password.message}
+                    </p>
+                  )}
+                </div>
 
-              {confirmPasswordError && (
-                <p className="text-red-600 text-xs pt-1">
-                  Password does not match!
-                </p>
-              )}
+                {/* Confirm Password */}
+                <div className="mb-5">
+                  <label
+                    className="text-sm text-gray-500 block"
+                    htmlFor="password"
+                  >
+                    Confirm Password
+                  </label>
+                  <input
+                    type="password"
+                    name="confirm-password"
+                    className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                      confirmPasswordError && "border-red-600 border-1 border"
+                    }`}
+                    onChange={(event) =>
+                      setConfirmPassword(event.currentTarget.value)
+                    }
+                  />
+
+                  {confirmPasswordError && (
+                    <p className="text-red-600 text-xs pt-1">
+                      Password does not match!
+                    </p>
+                  )}
+                </div>
+                <div className="mt-10">
+                  {/* Button */}
+                  <Button loader={loader} label="Update" />
+                </div>
+              </form>
             </div>
-            <div className="mt-10">
-              {/* Button */}
-              <Button loader={loader} label="Update" />
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </>

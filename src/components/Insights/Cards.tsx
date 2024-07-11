@@ -292,8 +292,6 @@ const Cards: React.FC = () => {
                         : "invisible"
                     }`}
                   >
-                    <p className="text-3xl text-center rounded-lg py-2 shadow-inner bi-envelope-fill text-white"></p>
-                    <p className="text-3xl text-center rounded-lg py-2 shadow-inner bi-telephone-fill text-green-600"></p>
                     {cards[dataIndex].styles.contacts.map((c) => (
                       <p
                         key={c.icon}
@@ -496,8 +494,6 @@ const Cards: React.FC = () => {
                         : "invisible"
                     }`}
                   >
-                    <p className="text-3xl text-center rounded-lg py-2 shadow-inner bi-envelope-fill text-white"></p>
-                    <p className="text-3xl text-center rounded-lg py-2 shadow-inner bi-telephone-fill text-green-600"></p>
                     {cards[dataIndex].styles.contacts.map((c) => (
                       <p
                         key={c.icon}
@@ -703,8 +699,6 @@ const Cards: React.FC = () => {
                         : "invisible"
                     }`}
                   >
-                    <p className="text-3xl text-center rounded-lg py-2 shadow-inner bi-envelope-fill text-white"></p>
-                    <p className="text-3xl text-center rounded-lg py-2 shadow-inner bi-telephone-fill text-green-600"></p>
                     {cards[dataIndex].styles.contacts.map((c) => (
                       <p
                         key={c.icon}
