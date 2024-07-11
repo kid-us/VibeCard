@@ -42,21 +42,21 @@ const HeroCard = () => {
     <>
       <div className="lg:grid grid-cols-3 lg:my-32 my-24 px-3">
         <div className="relative lg:block hidden">
-          <p className="absolute w-44 border border-teal-500 -right-10 top-8"></p>
-          <div className="absolute right-32 top-0 bg-white w-52 rounded py-3 px-3">
+          <p className="absolute w-52 border border-teal-500 -right-20 top-8"></p>
+          <div className="absolute right-20 top-0 bg-white w-52 rounded py-3 px-3">
             <div>
               {bgCover.map((bg) => (
                 <button
                   onClick={() => setCoverBg(bg.style)}
                   key={bg.style}
                   className={`${bg.style} w-6 h-6 border border-black me-3 rounded`}
-                  // style={{ background: bg.value }}
                 ></button>
               ))}
             </div>
           </div>
-          <p className="absolute w-64 border border-teal-500 -right-10 bottom-40"></p>
-          <div className="absolute right-52 bottom-32 bg-white w-60 rounded py-3 px-3">
+
+          <p className="absolute w-64 border border-teal-500 -right-14 bottom-40"></p>
+          <div className="absolute right-32 bottom-32 bg-white w-60 rounded py-3 px-3">
             <div>
               {bgColors.map((bg) => (
                 <button
