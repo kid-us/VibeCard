@@ -106,7 +106,15 @@ const Home = () => {
           <Products />
         </div>
       </div>
-      <Faq />
+      {/* Faq */}
+      <div className="mt-16 lg:px-0 px-4">
+        <h1 className="text-center text-2xl text-white">FAQ</h1>
+        <div className="mt-10 flex justify-center">
+          <div className="lg:w-[60%] w-full">
+            <Faq />
+          </div>
+        </div>
+      </div>
 
       <Footer />
     </>
