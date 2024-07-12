@@ -251,13 +251,13 @@ const Create = () => {
                   </div>
                   {/* Links */}
                   <div className="mt-4 flex me-4">
-                    <Link to="/dashboard" className="me-16 chakra">
+                    <Link to="/dashboard" className="me-16 text-md">
                       Dashboard
                     </Link>
-                    <Link to="/insights" className="me-16 chakra">
+                    <Link to="/insights" className="me-16 text-md">
                       Insights
                     </Link>
-                    <Link to="/setting" className="me-5 chakra">
+                    <Link to="/setting" className="me-5 text-md">
                       Setting
                     </Link>
                     <div className="flex ms-10">

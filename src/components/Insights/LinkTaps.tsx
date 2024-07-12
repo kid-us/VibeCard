@@ -2,14 +2,14 @@ import { baseUrl } from "@/services/request";
 import { Data, StyleData } from "@/services/viewCard";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Accounts } from "../Pages/Insights";
+import { Insights } from "../Pages/Insights";
 
 interface Props {
   cardUrl: string | null;
-  socialClicked: Accounts[] | null;
+  socialMedia: Insights[];
 }
 
-const LinkTaps = ({ cardUrl, socialClicked }: Props) => {
+const LinkTaps = ({ cardUrl, socialMedia }: Props) => {
   const [data, setData] = useState<Data>();
   const [styles, setStyles] = useState<StyleData>();
 
@@ -28,10 +28,10 @@ const LinkTaps = ({ cardUrl, socialClicked }: Props) => {
   }, [cardUrl]);
 
   const getClickCount = (icon: string) => {
-    const account = socialClicked?.find(
-      (social) => social.account_type === icon.replace("bi-", "")
+    const account = socialMedia?.find(
+      (social) => social.social_media_name === icon.replace("bi-", "")
     );
-    return account ? account.click_count : 0;
+    return account ? account.clicked_value : 0;
   };
 
   return (

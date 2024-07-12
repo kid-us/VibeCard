@@ -19,8 +19,10 @@ const ViewCard = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log(id);
+
     axios
-      .get(`${baseUrl}/api/v1/cards/card/${id}`)
+      .get(`${baseUrl}/api/v1/cards/card/${id}?increment=true`)
       .then((response) => {
         setLoading(false);
         setData(response.data);

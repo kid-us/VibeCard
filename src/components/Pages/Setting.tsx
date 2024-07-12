@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAuthStore from "@/store/useUserData";
 import Button from "../Button/Button";
 import Navbar from "../Navbar/Navbar";
@@ -24,6 +24,27 @@ type FormData = z.infer<typeof schema>;
 const Setting = () => {
   const [title] = useState("Setting");
   useDocumentTitle(title);
+
+  const [username, setUsername] = useState("");
+  const [usernameError, setUsernameError] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get(`${baseUrl}/api/v1/auth/check-username/${username}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then(() => {
+        setUsernameError(false);
+      })
+      .catch((error) => {
+        if (error.response.status === 409) {
+          setUsernameError(true);
+        }
+      });
+  }, [username]);
 
   const { user, email, logout } = useAuthStore();
 
@@ -126,12 +147,18 @@ const Setting = () => {
                     type="text"
                     name="username"
                     className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
-                      errors.username && "border-red-600 border-1 border"
+                      errors.username && "border-red-400 border-1 border"
                     }`}
+                    onChange={(e) => setUsername(e.currentTarget.value)}
                   />
                   {errors.username && (
-                    <p className="text-red-600 text-xs pt-1">
+                    <p className="text-red-400 text-xs pt-1">
                       {errors.username.message}
+                    </p>
+                  )}
+                  {usernameError && (
+                    <p className="text-red-400 text-sm pt-2">
+                      Username already exist!
                     </p>
                   )}
                 </div>
@@ -167,7 +194,7 @@ const Setting = () => {
                     type={showPassword ? "text" : "password"}
                     name="password"
                     className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
-                      errors.password && "border-red-600 border-1 border"
+                      errors.password && "border-red-400 border-1 border"
                     }`}
                   />
                   <span
@@ -177,7 +204,7 @@ const Setting = () => {
                     } right-2 top-8 cursor-pointer`}
                   ></span>
                   {errors.password && (
-                    <p className="text-red-600 text-xs pt-1">
+                    <p className="text-red-400 text-xs pt-1">
                       {errors.password.message}
                     </p>
                   )}
@@ -195,7 +222,7 @@ const Setting = () => {
                     type="password"
                     name="confirm-password"
                     className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
-                      confirmPasswordError && "border-red-600 border-1 border"
+                      confirmPasswordError && "border-red-400 border-1 border"
                     }`}
                     onChange={(event) =>
                       setConfirmPassword(event.currentTarget.value)
