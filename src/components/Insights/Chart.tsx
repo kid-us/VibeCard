@@ -44,7 +44,20 @@ function Chart({ cardChartData, contact, social, view }: Prop) {
     <Card>
       <CardHeader>
         <CardTitle>Track your Record</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <div className="flex space-x-10 pt-3">
+          <CardDescription className="flex">
+            <div className="bg-[#dc2626] h-5 w-5"></div>
+            <p className="ms-3">Card View</p>
+          </CardDescription>
+          <CardDescription className="flex">
+            <div className="bg-[#f59e0b] h-5 w-5"></div>
+            <p className="ms-3">Contact Download</p>
+          </CardDescription>
+          <CardDescription className="flex">
+            <div className="bg-[#059669] h-5 w-5"></div>
+            <p className="ms-3">Social Media Tap</p>
+          </CardDescription>
+        </div>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>

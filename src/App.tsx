@@ -19,6 +19,7 @@ import Setting from "./components/Pages/Setting";
 import Insights from "./components/Pages/Insights";
 import AboutUs from "./components/Pages/AboutUs";
 import PrivacyPolicy from "./components/Pages/PrivacyPolicy";
+import ContactUs from "./components/Pages/ContactUs";
 
 function App() {
   return (
@@ -61,6 +62,7 @@ function App() {
         />
         <Route path="/create" element={<Create />} />
         <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/404" element={<Page404 />} />
         <Route path="*" element={<Navigate to="/404" />}></Route>
