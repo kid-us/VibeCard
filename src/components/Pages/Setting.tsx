@@ -9,6 +9,7 @@ import useDocumentTitle from "../../hooks/useDocumentTitle";
 import { baseUrl } from "@/services/request";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Footer from "../Footer/Footer";
 
 const schema = z.object({
   username: z
@@ -244,6 +245,7 @@ const Setting = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
