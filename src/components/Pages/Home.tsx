@@ -9,6 +9,7 @@ import Faq from "../Home/FAQ";
 import Products from "../Home/SampleProducts";
 import HeroCard from "../Home/HeroCard";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import Chat from "../ChatBot/Chat";
 
 const Home = () => {
   const [title] = useState("Vibecard - Digital Business Cards");
@@ -23,6 +24,7 @@ const Home = () => {
   return (
     <>
       {loading && <Loading />}
+      <Chat></Chat>
       <div>
         <Navbar />
         <div className="lg:container mx-auto lg:mt-40 mt-32 lg:pb-32 pb-14">
@@ -57,7 +59,6 @@ const Home = () => {
       </div>
 
       {/* hero */}
-
       <div className="relative container mx-auto">
         <HeroCard />
       </div>
