@@ -71,7 +71,7 @@ const Insights = () => {
               withCredentials: true,
             }
           );
-          console.log(response.data);
+          // console.log(response.data);
           // Card Views
           setCardInsight(response.data);
           const totalCardViewSum = response.data
