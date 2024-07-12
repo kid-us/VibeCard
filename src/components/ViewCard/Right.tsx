@@ -111,12 +111,7 @@ const Right = ({ data, styles }: Props) => {
         </div>
       </div>
       <div className="px-4">
-        <BottomContent
-          styles={styles}
-          cardUrl={data.card_url}
-          // email={data.email}
-          // phone={data.phone}
-        />
+        <BottomContent styles={styles} data={data} />
       </div>
     </div>
   );

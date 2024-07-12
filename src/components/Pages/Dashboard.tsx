@@ -6,6 +6,7 @@ import useAuthStore from "../../store/useUserData";
 import Navbar from "../Navbar/Navbar";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Loader from "../Loader/Loader";
+import ShareComponent from "../Share/ShareComponent";
 
 interface Card {
   card_url: string;
@@ -28,6 +29,8 @@ const Dashboard = () => {
   const { user } = useAuthStore();
   const [links, setLinks] = useState<Card[]>([]);
   const [copiedUrls, setCopiedUrls] = useState<string[]>([]);
+  const [cardUrl, setCardUrl] = useState("");
+  const [viewShare, setViewShare] = useState(false);
 
   useEffect(() => {
     axios
@@ -81,6 +84,10 @@ const Dashboard = () => {
         console.log(err);
       });
   };
+
+  const shareTitle = "Vibecard Digital Business Card";
+  const description =
+    "Check out my new digital business card created with Vibecard!";
 
   return (
     <>
@@ -145,8 +152,8 @@ const Dashboard = () => {
       <div className="h-[100vh]">
         <div className="lg:container mx-auto">
           <div className="flex justify-center lg:mt-20 mt-10 lg:shadow lg:pb-20 lg:rounded">
-            <div className="lg:grid grid-cols-10 gap-4">
-              <div className="lg:col-span-6 lg:px-16 md:p-9 py-5 px-2">
+            <div className="lg:grid grid-cols-10 gap-">
+              <div className="lg:col-span-6 lg:px-1 md:p-9 py-5 px-2 ">
                 <div className="content-center text-white">
                   <h1 className="text-4xl">
                     Welcome Back <span className="text-teal-400">{user}</span>
@@ -165,14 +172,36 @@ const Dashboard = () => {
                           key={link.card_url}
                           className="flex justify-between secondary-bg mb-5 rounded-xl shadow border-gradient-2 border shadow-zinc-900"
                         >
-                          <div className="lg:flex justify-between w-full text-white px-5 py-5 mb-4 rounded shadow shadow-zinc-900">
-                            <div className="flex">
+                          <div className="relative lg:flex grid grid-cols-2 justify-between w-full text-white px-5 py-5 mb-4 rounded shadow shadow-zinc-900">
+                            {/* Share Social Medias */}
+                            {viewShare && (
+                              <div className="absolute lg:right-32 right-0 lg:px-0 px-5 z-50 top-10 lg:-top-20 secondary-bg border-gradient py-1 space-x-2">
+                                <div className="flex justify-between px-5 mt-2 mb-4">
+                                  <p className="text-sm">Share your card</p>
+                                  <button
+                                    onClick={() => setViewShare(false)}
+                                    className="bi-x text-xl text-red-400"
+                                  ></button>
+                                </div>
+
+                                <div className="space-x-3 flex mb-3">
+                                  <ShareComponent
+                                    url={cardUrl}
+                                    title={shareTitle}
+                                    description={description}
+                                  />
+                                </div>
+                              </div>
+                            )}
+
+                            {/* Card Preview */}
+                            <div className="lg:flex lg:border-r border-gray-700 pe-6 lg:mb-0 mb-4">
                               <img
                                 src={link.main_picture}
                                 alt="Card Image"
                                 className="rounded-full lg:w-14 w-14 h-14 object-cover border-gradient"
                               />
-                              <div className="content-center ms-3">
+                              <div className="content-center lg:ms-3">
                                 <p className="font-poppins font-extrabold">
                                   {link.pronouns} {link.full_name}
                                 </p>
@@ -182,43 +211,61 @@ const Dashboard = () => {
                                 </p>
                               </div>
                             </div>
-                            <div className="flex">
+
+                            {/* View */}
+                            <div>
                               <Link
                                 to={`/card/${link.card_url}`}
-                                className="block chakra mb-2 pt-5 px-5 hover:text-gray-400"
+                                className="block chakra mb-2 pt-5 hover:text-gray-400"
                               >
                                 View{" "}
                                 <span className="bi-arrow-up-right text-sky-600 ms-1"></span>
                               </Link>
-                              <button
-                                onClick={() => handleCopy(link.card_url)}
-                                className={` pt-2 px-5 ms-5`}
-                              >
-                                <span className="bi-clipboard me-2"></span>
-                                {copiedUrls.includes(link.card_url)
-                                  ? "Copied"
-                                  : "Copy"}
-                              </button>
-
-                              <Link
-                                to={`/create?edit=${link.card_url}`}
-                                className="block chakra mb-2 pt-5 px-5 hover:text-gray-400"
-                              >
-                                <span className="bi-pen-fill text-green-600"></span>{" "}
-                                Edit
-                              </Link>
-
-                              <button
-                                onClick={() => {
-                                  setDeletedCardUrl(link.card_url);
-                                  setDeleteCard(true);
-                                }}
-                                className="text-white rounded-lg chakra mb-2 pt-5 px-3 hover:text-gray-400"
-                              >
-                                <span className="bi-trash-fill text-red-600"></span>{" "}
-                                Delete
-                              </button>
                             </div>
+
+                            {/* Copy */}
+                            <p
+                              onClick={() => handleCopy(link.card_url)}
+                              className={`lg:px-5 pt-5 lg:ms-5 cursor-pointer`}
+                            >
+                              <span className="bi-clipboard me-2"></span>
+                              {copiedUrls.includes(link.card_url)
+                                ? "Copied"
+                                : "Copy"}
+                            </p>
+
+                            {/* Share */}
+                            <button
+                              onClick={() => {
+                                setViewShare(true);
+                                setCardUrl(link.card_url);
+                              }}
+                              className={`pt-2 lg:ms-5`}
+                            >
+                              <span className="bi-share-fill me-2"></span>
+                              Share
+                            </button>
+
+                            {/* Edit */}
+                            <Link
+                              to={`/create?edit=${link.card_url}`}
+                              className="block chakra mb-2 pt-6 lg:px-5 hover:text-gray-400"
+                            >
+                              <span className="bi-pen-fill text-green-600"></span>{" "}
+                              Edit
+                            </Link>
+
+                            {/* Delete */}
+                            <button
+                              onClick={() => {
+                                setDeletedCardUrl(link.card_url);
+                                setDeleteCard(true);
+                              }}
+                              className="text-white rounded-lg chakra mb-2 pt-5 hover:text-gray-400"
+                            >
+                              <span className="bi-trash-fill text-red-600"></span>{" "}
+                              Delete
+                            </button>
                           </div>
                         </div>
                       ))}

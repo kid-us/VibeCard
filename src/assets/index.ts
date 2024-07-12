@@ -14,6 +14,8 @@ import arrow from "./arrows.svg";
 import adapt from "./adapt.svg";
 
 import logo from "./facicon.png";
+// Content
+import deezer from "./deezer.png";
 
 export {
   userPic,
@@ -31,4 +33,6 @@ export {
   secure,
   share,
   logo,
+  // Content
+  deezer,
 };

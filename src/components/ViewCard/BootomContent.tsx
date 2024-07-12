@@ -1,20 +1,50 @@
+import { deezer } from "@/assets";
 import { baseUrl } from "@/services/request";
-import { StyleData } from "@/services/viewCard";
+import { Data, StyleData } from "@/services/viewCard";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import vCardsJS from "vcards-js";
 
 interface Props {
   styles: StyleData;
-  cardUrl: string;
+  data: Data;
 }
 
-const BottomContent = ({ styles, cardUrl }: Props) => {
+const BottomContent = ({ styles, data }: Props) => {
+  const generateVCard = () => {
+    const vCard = vCardsJS();
+
+    vCard.firstName = data.full_name;
+    vCard.organization = data.company_name;
+    vCard.title = data.job_title;
+    vCard.email = data.email;
+    vCard.namePrefix = data.pronouns;
+    vCard.cellPhone = data.phone;
+    vCard.note = data.bio;
+    vCard.workAddress.countryRegion = data.location;
+    // Generate vCard as a string
+    const vCardString = vCard.getFormattedString();
+
+    // Create a blob from the vCard string
+    const blob = new Blob([vCardString], { type: "text/vcard" });
+    const url = URL.createObjectURL(blob);
+
+    // Create a link to download the vCard
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${data.full_name}.vcf`;
+    a.click();
+
+    // Clean up
+    URL.revokeObjectURL(url);
+  };
+
   // //   Social Media
   const handleSocialMedia = (icon: string) => {
     let clickedIcon = icon.replace("bi-", "");
     axios
       .post(
-        `${baseUrl}/api/v1/cards/click-count?card_url=${cardUrl}&account_type=${clickedIcon}`,
+        `${baseUrl}/api/v1/cards/click-count?card_url=${data.card_url}&account_type=${clickedIcon}`,
         {},
         {
           headers: {
@@ -23,8 +53,8 @@ const BottomContent = ({ styles, cardUrl }: Props) => {
           withCredentials: true,
         }
       )
-      .then((response) => {
-        console.log(response.data);
+      .then(() => {
+        // console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -39,7 +69,7 @@ const BottomContent = ({ styles, cardUrl }: Props) => {
 
     axios
       .post(
-        `${baseUrl}/api/v1/cards/click-count?card_url=${cardUrl}&account_type=contacts`,
+        `${baseUrl}/api/v1/cards/click-count?card_url=${data.card_url}&account_type=contacts`,
         {},
         {
           headers: {
@@ -107,20 +137,36 @@ const BottomContent = ({ styles, cardUrl }: Props) => {
               : "invisible"
           }`}
         >
-          {styles.socialMedia.map((media) => (
-            <p
-              onClick={() => handleSocialMedia(media.icon)}
-              key={media.icon}
-              // to={`${media.link}`}
-              className={`${media.icon} text-white text-3xl text-center rounded-md py-2 shadow-inner`}
-              style={{ backgroundColor: media.color }}
-            ></p>
-          ))}
+          {styles.socialMedia.map((media) =>
+            media.icon === "deezer" ? (
+              <div
+                className={`flex rounded-md py-2 justify-center shadow-inner`}
+                style={{
+                  backgroundColor: media.color,
+                }}
+              >
+                <img
+                  src={deezer}
+                  alt="Deezer Logo"
+                  className="w-8 h-8 me-0 pe-0"
+                />
+              </div>
+            ) : (
+              <p
+                onClick={() => handleSocialMedia(media.icon)}
+                key={media.icon}
+                // to={`${media.link}`}
+                className={`${media.icon} text-white text-3xl text-center rounded-md py-2 shadow-inner`}
+                style={{ backgroundColor: media.color }}
+              ></p>
+            )
+          )}
         </div>
       )}
 
       <button
         className={`w-full rounded-lg py-4 mb-8 mt-5 shadow-md font-poppins font-extrabold shadow-zinc-950`}
+        onClick={generateVCard}
         style={{
           backgroundColor: styles.button.bg_color,
           color: styles.button.text_color,
