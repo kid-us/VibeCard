@@ -6,10 +6,12 @@ import { video, video2 } from "../../assets";
 import Loading from "../Loading/Loading";
 import homeCard from "../../services/homeCard";
 import Faq from "../Home/FAQ";
-import Products from "../Home/SampleProducts";
 import HeroCard from "../Home/HeroCard";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Chat from "../ChatBot/Chat";
+import Product1 from "../Product/Product1";
+import Product2 from "../Product/Product2";
+import Product3 from "../Product/Product3";
 
 const Home = () => {
   const [title] = useState("Vibecard - Digital Business Cards");
@@ -103,7 +105,12 @@ const Home = () => {
               All Digital Business Cards
             </p>
           </div>
-          <Products />
+          {/* <Products /> */}
+          <div className="lg:grid lg:grid-cols-3 md:grid md:grid-cols-2 gap-x-5 px-2">
+            <Product1></Product1>
+            <Product2></Product2>
+            <Product3></Product3>
+          </div>
         </div>
       </div>
       {/* Faq */}

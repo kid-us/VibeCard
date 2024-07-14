@@ -2,36 +2,24 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import ProductColor from "./ProductColor";
 
-export const bgColors = [
-  { style: "bg-teal-600", textColor: "text-black" },
-  { style: "bg-red-600", textColor: "text-white" },
-  { style: "bg-gray-500", textColor: "text-black" },
-  { style: "bg-lime-500", textColor: "text-black" },
-  { style: "bg-yellow-300", textColor: "text-black" },
-  { style: "bg-cyan-600", textColor: "text-black" },
-  { style: "bg-amber-500", textColor: "text-white" },
-  { style: "bg-fuchsia-700", textColor: "text-black" },
-  { style: "bg-black", textColor: "text-white" },
-];
-
 const Product4 = () => {
-  const [metalBg, setMetalBg] = useState({
-    bg: "bg-cyan-600",
+  const [cardBg, setCardBg] = useState({
+    bg: "bg-white",
     color: "text-black",
   });
 
   return (
     <div className="lg:mb-0 mb-10">
       <Link to="/products/4">
-        <div className="flex justify-center items-center relative px-8 py-5 bg-white rounded h-[460px]">
+        <div className="flex justify-center items-center relative lg:px-8 px-2 py-5 bg-gray-200 rounded h-[460px]">
           <p className="absolute top-2 left-2 bg-indigo-900 text-white text-sm py-1 px-10 rounded shadow shadow-zinc-900">
             Best Seller
           </p>
           <div
-            className={`rounded-md w-full h-[225px] ${metalBg.bg} mb-5 shadow-lg shadow-zinc-900`}
+            className={`rounded-md w-full h-[225px] ${cardBg.bg} mb-5 shadow-lg shadow-zinc-900`}
           >
             <div className="flex justify-center items-center h-full px-10">
-              <p className={`${metalBg.color} logo-font text-center text-4xl`}>
+              <p className={`${cardBg.color} logo-font text-center text-4xl`}>
                 vibecard
               </p>
             </div>
@@ -40,9 +28,8 @@ const Product4 = () => {
       </Link>
       {/* Color */}
       <ProductColor
-        defaultBg={metalBg.bg}
-        setBg={(style, color) => setMetalBg({ bg: style, color })}
-        bgColors={bgColors}
+        defaultBg={cardBg.bg}
+        setBg={(style, color) => setCardBg({ bg: style, color })}
         title="Vibecard"
         price="€35"
       />
