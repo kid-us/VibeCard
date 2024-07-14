@@ -32,7 +32,7 @@ const ProductDetail = () => {
       setOrderError(true);
       return;
     }
-    navigate(`pay/${id}`);
+    navigate(`/pay?${id}`);
   };
 
   return (
@@ -134,7 +134,7 @@ const ProductDetail = () => {
                   <input
                     type="number"
                     className="h-14 border w-full text-center chakra text-3xl text-black"
-                    defaultValue={quantity}
+                    value={quantity}
                   />
                 </div>
                 <div className="text-center w-full">
@@ -145,16 +145,23 @@ const ProductDetail = () => {
                 </div>
               </div>
 
-              {/* Button */}
-              <div className="lg:mt-14 mt-10 mb-10 lg:w-72 text-center">
-                {orderError && (
-                  <p className="mb-3 text-red-500 text-sm text-start">
-                    You must to choose your card type
-                  </p>
-                )}
+              {orderError && (
+                <p className="mb-3 text-red-500 text-sm text-start pt-5">
+                  You must to choose your card type
+                </p>
+              )}
+              <div className="flex justify-between gap-x-10 w-full mt-14">
+                {/* Design */}
+                <button className="bg-white py-3  lg:text-center rounded shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 w-full">
+                  <span className="bi-palette-fill me-2"></span>
+                  Design your Card
+                </button>
+                {/* Button */}
+
+                {/* Order */}
                 <button
                   onClick={() => handleOrder()}
-                  className="btn-bg py-4 lg:w-72  lg:text-center rounded-lg shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 text-white w-full"
+                  className="btn-bg py-3  lg:text-center rounded shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 w-full"
                 >
                   Order
                 </button>

@@ -13,7 +13,7 @@ const Products = () => {
   useDocumentTitle(title);
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
 
       <div className="lg:container mx-auto lg:mt-24 mt-14">
         <h1 className="lg:text-4xl text-2xl text-center font-extrabold text-white">

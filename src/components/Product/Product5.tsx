@@ -16,7 +16,7 @@ const Product5 = () => {
             Best Seller
           </p>
           <div
-            className={`rounded-md lg:w-[290px] w-[280px] h-[400px] ${cardBg.bg} mb-5 shadow-lg shadow-zinc-900`}
+            className={`rounded-md lg:w-[270px] w-[20px] h-[400px] ${cardBg.bg} mb-5 shadow-lg shadow-zinc-900`}
           >
             <div className="flex justify-center items-center h-full px-10">
               <p className={`${cardBg.color} logo-font text-center text-4xl`}>
