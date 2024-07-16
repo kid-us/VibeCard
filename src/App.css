@@ -90,6 +90,11 @@ textarea {
   font-family: "Raleway", sans-serif;
 }
 
+option {
+  background-color: #fff;
+  color: #09090b;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
 }

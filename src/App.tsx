@@ -20,12 +20,14 @@ import Insights from "./components/Pages/Insights";
 import AboutUs from "./components/Pages/AboutUs";
 import PrivacyPolicy from "./components/Pages/PrivacyPolicy";
 import ContactUs from "./components/Pages/ContactUs";
+import ImageEditor from "./components/Unknown/ImageEditor";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/img" element={<ImageEditor />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/pricing" element={<Pricing />} />
