@@ -1,38 +1,22 @@
-import React, { ChangeEvent, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Cropper from "react-easy-crop";
 import { getCroppedImg } from "./cropUtils";
 import CustomSlider from "./Slider";
-import { userPic } from "@/assets";
 import { fonts } from "@/services/fonts";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import Preview from "./Preview";
+import { fontSize, imageSize, textAlignment } from "@/services/editor";
 
-const imageWidth = ["w-44", "w-52", "w-56", "w-60", "w-64", "w-72", "w-80"];
-const imageHeight = ["h-36", "h-40", "h-44", "h-52", "h-56"];
-const fontSize = ["sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "5xl", "6xl"];
-const textAlignment = [
-  { name: "Default", style: "relative" },
-  {
-    name: "Center Center",
-    style: "absolute",
-  },
-  {
-    name: "Top Left",
-    style: "absolute top-2 left-2",
-  },
-  {
-    name: "Top Right",
-    style: "absolute top-2 right-2",
-  },
-  {
-    name: "Bottom Left",
-    style: "absolute bottom-2 left-2",
-  },
-  {
-    name: "Bottom Right",
-    style: "absolute bottom-2 right-2",
-  },
-];
+export interface Image {
+  width: string;
+  height: string;
+}
+
+export interface Style {
+  name: string;
+  style: string;
+}
 
 const ImageEditor: React.FC = () => {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
@@ -52,7 +36,7 @@ const ImageEditor: React.FC = () => {
   const [bg, setBg] = useState<string>("bg-white");
   const [align, setAlign] = useState({
     name: "Center Center",
-    style: "",
+    style: "text-center",
   });
   const [backAlign, setBackAlign] = useState({
     name: "Center Center",
@@ -62,22 +46,17 @@ const ImageEditor: React.FC = () => {
   const [backName, setBackName] = useState<string>("");
   const [font, setFontSize] = useState<string>("4xl");
   const [backFont, setBackFontSize] = useState<string>("4xl");
-  const [fontStyle, setFontStyle] = useState({
+
+  const [fontStyle, setFontStyle] = useState<Style>({
     style: "syne",
     name: "Syne",
   });
-  const [backFontStyle, setBackFontStyle] = useState({
+  const [backFontStyle, setBackFontStyle] = useState<Style>({
     style: "syne",
     name: "Syne",
   });
-  const [image, setImage] = useState({
-    width: "w-52",
-    height: "h-32",
-  });
-  const [backImage, setBackImage] = useState({
-    width: "w-52",
-    height: "h-32",
-  });
+  const [image, setImage] = useState("8");
+  const [backImage, setBackImage] = useState("8");
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -85,6 +64,7 @@ const ImageEditor: React.FC = () => {
     setCroppedAreaPixels(croppedAreaPixels);
   };
 
+  // Showing Cropped Image
   const showCroppedImage = async () => {
     try {
       if (active === "front") {
@@ -109,6 +89,7 @@ const ImageEditor: React.FC = () => {
     }
   };
 
+  // On File Cahnge
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
@@ -125,22 +106,6 @@ const ImageEditor: React.FC = () => {
     }
   };
 
-  // Width
-  const handleWidthChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const newWidth = e.currentTarget.value;
-    active === "front"
-      ? setImage((prevImage) => ({ ...prevImage, width: newWidth }))
-      : setBackImage((prevImage) => ({ ...prevImage, width: newWidth }));
-  };
-
-  // Height
-  const handleHeightChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const newHeight = e.currentTarget.value;
-    active === "front"
-      ? setImage((prevImage) => ({ ...prevImage, height: newHeight }))
-      : setBackImage((prevImage) => ({ ...prevImage, height: newHeight }));
-  };
-
   const handleSubmit = () => {
     console.log(frontFile, backFile);
   };
@@ -151,23 +116,23 @@ const ImageEditor: React.FC = () => {
       <div className="container mx-auto">
         <div className="grid grid-cols-10 secondary-bg rounded mt-10 relative">
           {/* Edit */}
-          <div className={`col-span-5 relative px-5`}>
+          <div className={`col-span-5 relative px-5 `}>
             <div className="grid grid-cols-12 gap-x-10">
               <div className="col-span-2 w-full border-r border-gray-600 pt-10">
                 <p
                   onClick={() => setTab("image")}
                   className={`${
-                    tab === "image" && "bg-blue-950 py-5 rounded me-1"
+                    tab === "image" && "bg-blue-950 py-3 rounded me-1"
                   }  px-3 bi-image text-center text-5xl text-white cursor-pointer`}
                 ></p>
                 <p
                   onClick={() => setTab("text")}
                   className={`${
-                    tab === "text" && "bg-blue-950 py-5 rounded me-1"
+                    tab === "text" && "bg-blue-950 py-3 rounded me-1"
                   } px-3 bi-fonts mt-10 text-center text-5xl text-white cursor-pointer`}
                 ></p>
               </div>
-              <div className="col-span-10 pb-10 h-[90dvh] overflow-y-scroll pe-20">
+              <div className="col-span-10 pb-10 h-[90dvh] overflow-y-scroll pe-20 pt-5">
                 {/* image */}
                 {tab === "image" && (
                   <div className="w-full">
@@ -202,7 +167,7 @@ const ImageEditor: React.FC = () => {
                           image={imageSrc}
                           crop={crop}
                           zoom={zoom}
-                          aspect={4 / 3}
+                          aspect={4 / 4}
                           rotation={rotation}
                           onCropChange={setCrop}
                           onZoomChange={setZoom}
@@ -220,7 +185,7 @@ const ImageEditor: React.FC = () => {
                           image={backImageSrc}
                           crop={crop}
                           zoom={zoom}
-                          aspect={4 / 3}
+                          aspect={4 / 4}
                           rotation={rotation}
                           onCropChange={setCrop}
                           onZoomChange={setZoom}
@@ -239,11 +204,19 @@ const ImageEditor: React.FC = () => {
                       step={0.1}
                       onChange={setZoom}
                     />
+
                     <button
                       className="bg-white border-2 border-black w-full rounded p-2 mb-3"
                       onClick={() => setRotation((rotation + 90) % 360)}
                     >
                       Rotate <i className="bi-arrow-repeat"></i>
+                    </button>
+
+                    <button
+                      className="btn-bg shadow w-full rounded p-2 text-white"
+                      onClick={() => showCroppedImage()}
+                    >
+                      Save <i className="bi-save2-fill"></i>
                     </button>
 
                     <div className="my-8">
@@ -252,66 +225,36 @@ const ImageEditor: React.FC = () => {
                           htmlFor="width"
                           className="text-white block text-sm"
                         >
-                          Image Width
+                          Image Size
                         </label>
                         <select
                           name="width"
                           className="w-full h-10 rounded p-1 mt-2 focus:outline-none"
-                          onChange={handleWidthChange}
-                          value={
-                            active === "front" ? image.width : backImage.width
+                          onChange={(e) =>
+                            active === "front"
+                              ? setImage(e.currentTarget.value)
+                              : setBackImage(e.currentTarget.value)
                           }
-                          style={{ backgroundColor: "#f0f0f0", color: "#333" }}
+                          value={active === "front" ? image : backImage}
+                          style={{
+                            backgroundColor: "#f0f0f0",
+                            color: "#333",
+                          }}
                         >
-                          {imageWidth.map((w) =>
-                            w !== image.width ? (
-                              <option key={w} value={`${w}`}>
-                                {w.replace("w-", "")}
+                          {imageSize.map((size) =>
+                            size !== image ? (
+                              <option key={size} value={`${size}`}>
+                                {size}
                               </option>
                             ) : (
-                              <option selected value={image.width}>
-                                {image.width.replace("w-", "")}
-                              </option>
-                            )
-                          )}
-                        </select>
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="height"
-                          className="text-white block text-sm"
-                        >
-                          Image Height
-                        </label>
-                        <select
-                          name="height"
-                          className="w-full h-10 rounded p-1 mt-2 focus:outline-none"
-                          onChange={handleHeightChange}
-                          value={
-                            active === "front" ? image.height : backImage.height
-                          }
-                        >
-                          {imageHeight.map((h) =>
-                            h !== image.height ? (
-                              <option key={h} value={`${h}`}>
-                                {h.replace("h-", "")}
-                              </option>
-                            ) : (
-                              <option selected value={image.height}>
-                                {image.height.replace("h-", "")}
+                              <option selected value={image}>
+                                {image}
                               </option>
                             )
                           )}
                         </select>
                       </div>
                     </div>
-
-                    <button
-                      className="btn-bg shadow w-full rounded p-2 text-white"
-                      onClick={() => showCroppedImage()}
-                    >
-                      Save <i className="bi-save2-fill"></i>
-                    </button>
                   </div>
                 )}
 
@@ -326,7 +269,7 @@ const ImageEditor: React.FC = () => {
                     </p>
                     <input
                       type="text"
-                      className="rounded w-full h-11 px-4 focus:outline-none mb-4 placeholder:font-thin placeholder:text-sm"
+                      className="rounded w-full h-11 px-4 focus:outline-none mb-4 placeholder:font-bold placeholder:text-sm"
                       placeholder="Name goes here"
                       onChange={
                         active === "front"
@@ -346,7 +289,7 @@ const ImageEditor: React.FC = () => {
                               ? setFontSize(e.currentTarget.value)
                               : setBackFontSize(e.currentTarget.value)
                           }
-                          value={font}
+                          value={active === "front" ? font : backFont}
                         >
                           {fontSize.map((f) =>
                             f !== font ? (
@@ -438,7 +381,6 @@ const ImageEditor: React.FC = () => {
           </div>
 
           {/* Order */}
-
           <div className="absolute -bottom-5 left-[45%] z-50">
             <button
               onClick={() => handleSubmit()}
@@ -450,80 +392,30 @@ const ImageEditor: React.FC = () => {
 
           {/* Preivew */}
           <div className="col-span-5">
-            <div className="relative lg:px-20 px-2 py-5 bg-gray-200 rounded">
-              <div className="absolute top-0 left-0 flex text-sm gap-x-2 p-2">
-                <p>Color</p>
-                <p
-                  onClick={() => setBg("bg-white")}
-                  className="bg-white rounded border border-gray-600 w-8 cursor-pointer"
-                ></p>
-                <p
-                  onClick={() => setBg("bg-black")}
-                  className="bg-black rounded border border-gray-600 w-8 cursor-pointer"
-                ></p>
-              </div>
-              {/* Front */}
-              <p className="mt-8 text-sm mb-2">Front</p>
-              <div
-                onClick={() => setActive("front")}
-                className={`${bg} ${
-                  active === "front" && "border-2 border-sky-600"
-                } relative rounded-md w-full h-[285px] mb-5 shadow-lg shadow-zinc-900 cursor-pointer`}
-              >
-                <div
-                  className={`flex justify-center items-center h-full px-10`}
-                >
-                  {croppedImage && (
-                    <img
-                      src={croppedImage ? croppedImage : userPic}
-                      alt="user"
-                      className={`${image.width} ${image.height} object-cover`}
-                    />
-                  )}
-                  {name !== "" && (
-                    <p
-                      className={`${
-                        bg === "bg-white" ? "text-black" : "text-white"
-                      } ${align.style} ${
-                        fontStyle.style
-                      } text-${font} overflow-hidden text-ellipsis px-2`}
-                    >
-                      {name}
-                    </p>
-                  )}
-                </div>
-              </div>
-              {/* Back */}
-              <p className="mt-8 text-sm mb-2">Back</p>
-              <div
-                onClick={() => setActive("back")}
-                className={`${bg} ${
-                  active === "back" && "border-2 border-sky-500"
-                } relative rounded-md w-full h-[285px] mb-5 shadow-lg shadow-zinc-900 cursor-pointer`}
-              >
-                <div
-                  className={`flex justify-center items-center h-full px-10`}
-                >
-                  {backCroppedImage && (
-                    <img
-                      src={backCroppedImage ? backCroppedImage : userPic}
-                      alt="user"
-                      className={`${backImage.width} ${backImage.height} object-cover`}
-                    />
-                  )}
-                  {backName !== "" && (
-                    <p
-                      className={`${
-                        bg === "bg-white" ? "text-black" : "text-white"
-                      } ${backAlign.style} ${
-                        backFontStyle.style
-                      } text-${backFont} overflow-hidden text-ellipsis px-2`}
-                    >
-                      {backName}
-                    </p>
-                  )}
-                </div>
-              </div>
+            <div
+              className={`relative lg:px-0 px-2 py-5 bg-gray-200 h-full rounded`}
+            >
+              <Preview
+                product={2}
+                bg={bg}
+                setBg={(value: string) => setBg(value)}
+                active={active}
+                activeCard={(value: string) => setActive(value)}
+                // Front
+                align={align}
+                croppedImage={croppedImage ? croppedImage : ""}
+                fSize={font}
+                fontStyle={fontStyle}
+                image={image}
+                name={name}
+                // Back
+                backAlign={backAlign}
+                backCroppedImage={backCroppedImage ? backCroppedImage : ""}
+                backFontSize={backFont}
+                backFontStyle={backFontStyle}
+                backImage={backImage}
+                backName={backName}
+              />
             </div>
           </div>
         </div>
