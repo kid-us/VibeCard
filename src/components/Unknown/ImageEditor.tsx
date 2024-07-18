@@ -195,37 +195,7 @@ const ImageEditor: React.FC = () => {
                         </label>
                       </div>
                     </div>
-                    {/* 
-                    <p className="mt-10 mb-3 text-white">
-                      Do you want to edit /crop/ rotate you logo?
-                      <span
-                        onClick={() => setCropImage(!cropImage)}
-                        className={`mx-2 cursor-pointer text-sm ${
-                          cropImage && "text-blue-500"
-                        }`}
-                      >
-                        Yes
-                      </span>
-                      /
-                      <span
-                        onClick={() => setCropImage(!cropImage)}
-                        className={`mx-2 cursor-pointer text-sm ${
-                          !cropImage && "text-blue-500"
-                        }`}
-                      >
-                        {" "}
-                        No
-                      </span>
-                    </p>
-                    <p>
-                      Remember cropping you logo will add a black background
-                      color so we recommend you to upload you logo without
-                      cropping it but if you want to crop it okay with black
-                      background color you can u that.
-                    </p> */}
 
-                    {/* {cropImage && ( */}
-                    {/* <> */}
                     {imageSrc && (
                       <div className="h-[400px] w-full relative mt-4 mb-10 rounded overflow-hidden">
                         <Cropper
@@ -281,8 +251,6 @@ const ImageEditor: React.FC = () => {
                     >
                       Save <i className="bi-save2-fill"></i>
                     </button>
-                    {/* </> */}
-                    {/* )} */}
 
                     <div className="my-8">
                       <div className="mb-5">
