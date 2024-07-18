@@ -59,65 +59,67 @@ const Preview = ({
       {/* Product 1 */}
       {product === 1 && (
         <>
-          <p className="mt-8 text-sm mb-2">Front</p>
-          <div
-            onClick={() => activeCard("front")}
-            className={`${bg} ${
-              active === "front" && "border-2 border-sky-600"
-            } relative rounded-md w-full h-[285px] mb-5 shadow-lg shadow-zinc-900 cursor-pointer`}
-          >
+          <div className="px-20">
+            <p className="mt-8 text-sm mb-2">Front</p>
             <div
-              className={`flex justify-center items-center h-full px-5 overflow-hidden`}
+              onClick={() => activeCard("front")}
+              className={`${bg} ${
+                active === "front" && "border-2 border-sky-600"
+              } relative rounded-md w-full h-[275px] mb-5 shadow-md shadow-zinc-900 cursor-pointer`}
             >
-              {croppedImage && (
-                <img
-                  src={croppedImage ? croppedImage : userPic}
-                  alt="user"
-                  className={`h-${image} w-${image} object-cover`}
-                />
-              )}
-              {name !== "" && (
-                <p
-                  className={`${
-                    bg === "bg-white" ? "text-black" : "text-white"
-                  } ${align.style} ${
-                    fontStyle.style
-                  } text-${fSize} overflow-hidden text-ellipsis px-2`}
-                >
-                  {name}
-                </p>
-              )}
+              <div
+                className={`flex justify-center items-center h-full px-5 overflow-hidden`}
+              >
+                {croppedImage && (
+                  <img
+                    src={croppedImage ? croppedImage : userPic}
+                    alt="user"
+                    className={`h-${image} w-${image} object-cover`}
+                  />
+                )}
+                {name !== "" && (
+                  <p
+                    className={`${
+                      bg === "bg-white" ? "text-black" : "text-white"
+                    } ${align.style} ${
+                      fontStyle.style
+                    } text-${fSize} overflow-hidden text-ellipsis px-2`}
+                  >
+                    {name}
+                  </p>
+                )}
+              </div>
             </div>
-          </div>
-          {/* Back */}
-          <p className="mt-8 text-sm mb-2">Back</p>
-          <div
-            onClick={() => activeCard("back")}
-            className={`${bg} ${
-              active === "back" && "border-2 border-sky-500"
-            } relative rounded-md w-full h-[285px] mb-5 shadow-lg shadow-zinc-900 cursor-pointer`}
-          >
+            {/* Back */}
+            <p className="mt-8 text-sm mb-2">Back</p>
             <div
-              className={`flex justify-center items-center h-full px-5 overflow-hidden`}
+              onClick={() => activeCard("back")}
+              className={`${bg} ${
+                active === "back" && "border-2 border-sky-500"
+              } relative rounded-md w-full h-[275px] mb-5 shadow-md shadow-zinc-900 cursor-pointer`}
             >
-              {backCroppedImage && (
-                <img
-                  src={backCroppedImage ? backCroppedImage : userPic}
-                  alt="user"
-                  className={`h-${backImage} w-${backImage} object-cover`}
-                />
-              )}
-              {backName !== "" && (
-                <p
-                  className={`${
-                    bg === "bg-white" ? "text-black" : "text-white"
-                  } ${backAlign.style} ${
-                    backFontStyle.style
-                  } text-${backFontSize} overflow-hidden text-ellipsis px-2`}
-                >
-                  {backName}
-                </p>
-              )}
+              <div
+                className={`flex justify-center items-center h-full px-5 overflow-hidden`}
+              >
+                {backCroppedImage && (
+                  <img
+                    src={backCroppedImage ? backCroppedImage : userPic}
+                    alt="user"
+                    className={`h-${backImage} w-${backImage} object-cover`}
+                  />
+                )}
+                {backName !== "" && (
+                  <p
+                    className={`${
+                      bg === "bg-white" ? "text-black" : "text-white"
+                    } ${backAlign.style} ${
+                      backFontStyle.style
+                    } text-${backFontSize} overflow-hidden text-ellipsis px-2`}
+                  >
+                    {backName}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         </>
