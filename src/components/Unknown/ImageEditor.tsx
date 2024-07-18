@@ -30,6 +30,8 @@ const ImageEditor: React.FC = () => {
   const [frontFile, setFrontFile] = useState<File | null>();
   const [backFile, setBackFile] = useState<File | null>();
   const [tab, setTab] = useState<string>("image");
+  const [aspect, setAspect] = useState<number>();
+  // const [cropImage, setCropImage] = useState(false);
 
   //
   const [active, setActive] = useState<string>("front");
@@ -55,8 +57,8 @@ const ImageEditor: React.FC = () => {
     style: "syne",
     name: "Syne",
   });
-  const [image, setImage] = useState("8");
-  const [backImage, setBackImage] = useState("8");
+  const [image, setImage] = useState("36");
+  const [backImage, setBackImage] = useState("36");
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -94,14 +96,29 @@ const ImageEditor: React.FC = () => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
 
-      active === "front" ? setFrontFile(file) : setBackFile(file);
+      // Set the file to the respective state
+      if (active === "front") {
+        setFrontFile(file);
+      } else {
+        setBackFile(file);
+      }
 
       const reader = new FileReader();
-      reader.addEventListener("load", () =>
-        active === "front"
-          ? setImageSrc(reader.result as string)
-          : setBackImageSrc(reader.result as string)
-      );
+      reader.addEventListener("load", () => {
+        const result = reader.result as string;
+        if (active === "front") {
+          setImageSrc(result);
+        } else {
+          setBackImageSrc(result);
+        }
+
+        // Create an Image object and set the aspect ratio
+        const img = new Image();
+        img.src = result;
+        img.onload = () => {
+          setAspect(img.width / img.height);
+        };
+      });
       reader.readAsDataURL(file);
     }
   };
@@ -139,7 +156,25 @@ const ImageEditor: React.FC = () => {
                     <p className="text-font py-5 text-white">
                       Design with Image
                     </p>
-                    <p className="text-white">Image / Logo</p>
+                    <div className="flex justify-between">
+                      <p className="text-white">Image / Logo</p>
+                      {active === "front" && croppedImage && (
+                        <button
+                          onClick={() => setCroppedImage(null)}
+                          className="bg-red-500 rounded text-xs w-14 text-white"
+                        >
+                          Reset
+                        </button>
+                      )}
+                      {active === "back" && backCroppedImage && (
+                        <button
+                          onClick={() => setBackCroppedImage(null)}
+                          className="bg-red-500 rounded text-xs w-14 text-white"
+                        >
+                          Reset
+                        </button>
+                      )}
+                    </div>
                     <div className="flex justify-between">
                       <div className="bg-white border w-full h-32 mt-5 rounded pb-3 ps-3 text-center">
                         <input
@@ -160,14 +195,44 @@ const ImageEditor: React.FC = () => {
                         </label>
                       </div>
                     </div>
+                    {/* 
+                    <p className="mt-10 mb-3 text-white">
+                      Do you want to edit /crop/ rotate you logo?
+                      <span
+                        onClick={() => setCropImage(!cropImage)}
+                        className={`mx-2 cursor-pointer text-sm ${
+                          cropImage && "text-blue-500"
+                        }`}
+                      >
+                        Yes
+                      </span>
+                      /
+                      <span
+                        onClick={() => setCropImage(!cropImage)}
+                        className={`mx-2 cursor-pointer text-sm ${
+                          !cropImage && "text-blue-500"
+                        }`}
+                      >
+                        {" "}
+                        No
+                      </span>
+                    </p>
+                    <p>
+                      Remember cropping you logo will add a black background
+                      color so we recommend you to upload you logo without
+                      cropping it but if you want to crop it okay with black
+                      background color you can u that.
+                    </p> */}
 
+                    {/* {cropImage && ( */}
+                    {/* <> */}
                     {imageSrc && (
                       <div className="h-[400px] w-full relative mt-4 mb-10 rounded overflow-hidden">
                         <Cropper
                           image={imageSrc}
                           crop={crop}
                           zoom={zoom}
-                          aspect={4 / 4}
+                          aspect={aspect}
                           rotation={rotation}
                           onCropChange={setCrop}
                           onZoomChange={setZoom}
@@ -204,20 +269,20 @@ const ImageEditor: React.FC = () => {
                       step={0.1}
                       onChange={setZoom}
                     />
-
                     <button
                       className="bg-white border-2 border-black w-full rounded p-2 mb-3"
                       onClick={() => setRotation((rotation + 90) % 360)}
                     >
                       Rotate <i className="bi-arrow-repeat"></i>
                     </button>
-
                     <button
                       className="btn-bg shadow w-full rounded p-2 text-white"
                       onClick={() => showCroppedImage()}
                     >
                       Save <i className="bi-save2-fill"></i>
                     </button>
+                    {/* </> */}
+                    {/* )} */}
 
                     <div className="my-8">
                       <div className="mb-5">
