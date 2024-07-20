@@ -36,6 +36,7 @@ const ImageEditor: React.FC = () => {
   //
   const [active, setActive] = useState<string>("front");
   const [bg, setBg] = useState<string>("bg-white");
+  const [backBg, setBackBg] = useState<string>("bg-white");
   const [align, setAlign] = useState({
     name: "Center Center",
     style: "text-center",
@@ -473,18 +474,20 @@ const ImageEditor: React.FC = () => {
             >
               <Preview
                 product={2}
-                bg={bg}
-                setBg={(value: string) => setBg(value)}
                 active={active}
                 activeCard={(value: string) => setActive(value)}
                 // Front
                 align={align}
+                bg={bg}
+                setBg={(value: string) => setBg(value)}
                 croppedImage={croppedImage ? croppedImage : ""}
                 fSize={font}
                 fontStyle={fontStyle}
                 image={image}
                 name={name}
                 // Back
+                backBg={backBg}
+                setBackBg={(value: string) => setBackBg(value)}
                 backAlign={backAlign}
                 backCroppedImage={backCroppedImage ? backCroppedImage : ""}
                 backFontSize={backFont}

@@ -1,13 +1,15 @@
 import { userPic } from "@/assets";
 import { Style } from "./ImageEditor";
+import { bgColors } from "../Product/ProductColor";
 
 interface Props {
   product?: number;
   setBg: (value: string) => void;
+  setBackBg: (value: string) => void;
   activeCard: (value: string) => void;
   active: string;
-  bg: string;
   //   Front
+  bg: string;
   fontStyle: Style;
   croppedImage: string;
   name: string;
@@ -15,6 +17,7 @@ interface Props {
   align: Style;
   fSize: string;
   //   Back
+  backBg: string;
   backFontStyle: Style;
   backImage: string;
   backName: string;
@@ -27,6 +30,8 @@ const Preview = ({
   product,
   bg,
   setBg,
+  backBg,
+  setBackBg,
   activeCard,
   active,
   fontStyle,
@@ -46,14 +51,16 @@ const Preview = ({
     <>
       <div className="absolute top-0 left-0 flex text-sm gap-x-2 p-2">
         <p>Color</p>
-        <p
-          onClick={() => setBg("bg-white")}
-          className="bg-white rounded border border-gray-600 w-8 cursor-pointer"
-        ></p>
-        <p
-          onClick={() => setBg("bg-black")}
-          className="bg-black rounded border border-gray-600 w-8 cursor-pointer"
-        ></p>
+
+        {bgColors.map((b) => (
+          <p
+            key={b.style}
+            onClick={() =>
+              active === "front" ? setBg(b.style) : setBackBg(b.style)
+            }
+            className={`${b.style} rounded border border-gray-600 w-6 cursor-pointer`}
+          ></p>
+        ))}
       </div>
 
       {/* Product 1 */}
@@ -94,7 +101,7 @@ const Preview = ({
             <p className="mt-8 text-sm mb-2">Back</p>
             <div
               onClick={() => activeCard("back")}
-              className={`${bg} ${
+              className={`${backBg} ${
                 active === "back" && "border-2 border-sky-500"
               } relative rounded-md w-full h-[275px] mb-5 shadow-md shadow-zinc-900 cursor-pointer overflow-hidden`}
             >
@@ -166,7 +173,7 @@ const Preview = ({
             {/* Back */}
             <div
               onClick={() => activeCard("back")}
-              className={`${bg} ${
+              className={`${backBg} ${
                 active === "back" && "border-2 border-sky-500"
               } relative rounded-md lg:w-[310px] w-[20px] h-[470px] mb-5 shadow-lg shadow-zinc-900 cursor-pointer overflow-hidden`}
             >

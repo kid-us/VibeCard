@@ -1,7 +1,11 @@
-const bgColors = [
+export const bgColors = [
   { style: "bg-black", textColor: "text-white" },
   { style: "bg-white", textColor: "text-black" },
   { style: "bg-amber-500", textColor: "text-white" },
+  { style: "bg-cyan-600", textColor: "text-black" },
+  { style: "bg-gray-600", textColor: "text-white" },
+  { style: "bg-fuchsia-900", textColor: "text-white" },
+  { style: "bg-indigo-700", textColor: "text-white" },
 ];
 
 interface Props {
