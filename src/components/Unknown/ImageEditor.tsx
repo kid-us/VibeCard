@@ -472,7 +472,7 @@ const ImageEditor: React.FC = () => {
               className={`relative lg:px-0 px-2 py-5 bg-gray-200 h-full rounded`}
             >
               <Preview
-                product={1}
+                product={2}
                 bg={bg}
                 setBg={(value: string) => setBg(value)}
                 active={active}

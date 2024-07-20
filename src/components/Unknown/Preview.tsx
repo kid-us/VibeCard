@@ -138,10 +138,10 @@ const Preview = ({
               onClick={() => activeCard("front")}
               className={`${bg} ${
                 active === "front" && "border-2 border-sky-600"
-              } relative rounded-md lg:w-[310px] w-[20px] h-[470px] mb-5 shadow-lg shadow-zinc-900 cursor-pointer`}
+              } relative rounded-md lg:w-[310px] w-[20px] h-[470px] mb-5 shadow-lg shadow-zinc-900 cursor-pointer overflow-hidden`}
             >
               <div
-                className={`flex justify-center items-center h-full px-5 overflow-hidden`}
+                className={`flex justify-center items-center h-full overflow-hidden`}
               >
                 {croppedImage && (
                   <img
@@ -168,10 +168,10 @@ const Preview = ({
               onClick={() => activeCard("back")}
               className={`${bg} ${
                 active === "back" && "border-2 border-sky-500"
-              } relative rounded-md lg:w-[310px] w-[20px] h-[470px] mb-5 shadow-lg shadow-zinc-900 cursor-pointer`}
+              } relative rounded-md lg:w-[310px] w-[20px] h-[470px] mb-5 shadow-lg shadow-zinc-900 cursor-pointer overflow-hidden`}
             >
               <div
-                className={`flex justify-center items-center h-full px-5 overflow-hidden`}
+                className={`flex justify-center items-center h-full overflow-hidden`}
               >
                 {backCroppedImage && (
                   <img
@@ -202,9 +202,9 @@ const Preview = ({
         <div className="flex justify-center items-center h-full">
           <div
             onClick={() => activeCard("front")}
-            className={`${bg} relative rounded-md  w-full h-[285px] shadow-lg shadow-zinc-900`}
+            className={`${bg} relative rounded-md  w-full h-[290px] shadow-lg shadow-zinc-900 mx-20 overflow-hidden`}
           >
-            <div className={`px-10 h-full`}>
+            <div className={`h-full`}>
               <div className={`flex justify-center items-center h-full`}>
                 {croppedImage && (
                   <img
@@ -235,9 +235,9 @@ const Preview = ({
         <div className="flex justify-center items-center h-full">
           <div
             onClick={() => activeCard("front")}
-            className={`${bg} relative rounded-md  w-full h-[285px] shadow-lg shadow-zinc-900`}
+            className={`${bg} relative rounded-md  w-full h-[290px] shadow-lg shadow-zinc-900 mx-20 overflow-hidden`}
           >
-            <div className={`px-10 h-full`}>
+            <div className={`h-full`}>
               <div className={`flex justify-center items-center h-full`}>
                 {name !== "" && (
                   <p
@@ -268,9 +268,9 @@ const Preview = ({
         <div className="flex justify-center items-center h-full">
           <div
             onClick={() => activeCard("front")}
-            className={`${bg} relative rounded-md lg:w-[310px] w-[20px] h-[470px] shadow-lg shadow-zinc-900`}
+            className={`${bg} relative rounded-md lg:w-[310px] w-[20px] h-[470px] shadow-lg shadow-zinc-900 overflow-hidden`}
           >
-            <div className={`px-10 h-full`}>
+            <div className={`h-full`}>
               <div className={`flex justify-center items-center h-full`}>
                 {croppedImage && (
                   <img

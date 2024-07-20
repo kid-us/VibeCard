@@ -1,6 +1,7 @@
 const bgColors = [
   { style: "bg-black", textColor: "text-white" },
   { style: "bg-white", textColor: "text-black" },
+  { style: "bg-amber-500", textColor: "text-white" },
 ];
 
 interface Props {
