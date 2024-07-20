@@ -1,6 +1,7 @@
 import { userPic } from "@/assets";
 import { Style } from "./ImageEditor";
 import { bgColors } from "../Product/ProductColor";
+import "./switch.css";
 
 interface Props {
   product?: number;
@@ -8,6 +9,8 @@ interface Props {
   setBackBg: (value: string) => void;
   activeCard: (value: string) => void;
   active: string;
+  setPickBg: (value: string) => void;
+  setBackPickBg: (value: string) => void;
   //   Front
   bg: string;
   fontStyle: Style;
@@ -16,7 +19,9 @@ interface Props {
   image: string;
   align: Style;
   fSize: string;
+  pickedBg: string;
   //   Back
+  backPickedBg: string;
   backBg: string;
   backFontStyle: Style;
   backImage: string;
@@ -24,6 +29,9 @@ interface Props {
   backAlign: Style;
   backCroppedImage: string;
   backFontSize: string;
+  // Other
+  setSwitch: (value: boolean) => void;
+  switchBtn: boolean;
 }
 
 const Preview = ({
@@ -46,21 +54,52 @@ const Preview = ({
   backName,
   backFontSize,
   backFontStyle,
+  setSwitch,
+  switchBtn,
+  backPickedBg,
+  pickedBg,
+  setPickBg,
+  setBackPickBg,
 }: Props) => {
   return (
     <>
-      <div className="absolute top-0 left-0 flex text-sm gap-x-2 p-2">
-        <p>Color</p>
+      <div className="absolute top-0 flex justify-between gap-x-2 p-2 w-full">
+        {switchBtn ? (
+          <div className={`relative`}>
+            <p className="text-xs mb-2 text-black">Pick you Color here</p>
+            <input
+              type="color"
+              className="w-full h-14 border-none outline-none shadow shadow-orange-900"
+              onChange={(e) =>
+                switchBtn && active === "front"
+                  ? setPickBg(e.currentTarget.value)
+                  : setBackPickBg(e.currentTarget.value)
+              }
+            />
+          </div>
+        ) : (
+          <div className="flex gap-x-1">
+            {bgColors.map((b) => (
+              <p
+                key={b.style}
+                onClick={() =>
+                  active === "front" ? setBg(b.style) : setBackBg(b.style)
+                }
+                className={`${b.style} rounded border border-gray-600 w-6 h-6 cursor-pointer`}
+              ></p>
+            ))}
+          </div>
+        )}
 
-        {bgColors.map((b) => (
-          <p
-            key={b.style}
-            onClick={() =>
-              active === "front" ? setBg(b.style) : setBackBg(b.style)
-            }
-            className={`${b.style} rounded border border-gray-600 w-6 cursor-pointer`}
-          ></p>
-        ))}
+        <div>
+          <label className="switch">
+            <input
+              onClick={() => setSwitch(switchBtn ? false : true)}
+              type="checkbox"
+            />
+            <span className="slider"></span>
+          </label>
+        </div>
       </div>
 
       {/* Product 1 */}
@@ -68,11 +107,15 @@ const Preview = ({
         <>
           <div className="px-20">
             <p className="mt-8 text-sm mb-2">Front</p>
+            {/* Front */}
             <div
               onClick={() => activeCard("front")}
-              className={`${bg} ${
+              className={`${!switchBtn && bg} ${
                 active === "front" && "border-2 border-sky-600"
               } relative rounded-md w-full h-[275px] mb-5 shadow-md shadow-zinc-900 cursor-pointer overflow-hidden`}
+              style={{
+                backgroundColor: switchBtn ? pickedBg : "",
+              }}
             >
               <div
                 className={`flex justify-center items-center h-full overflow-hidden`}
@@ -101,9 +144,12 @@ const Preview = ({
             <p className="mt-8 text-sm mb-2">Back</p>
             <div
               onClick={() => activeCard("back")}
-              className={`${backBg} ${
+              className={`${!switchBtn && backBg} ${
                 active === "back" && "border-2 border-sky-500"
               } relative rounded-md w-full h-[275px] mb-5 shadow-md shadow-zinc-900 cursor-pointer overflow-hidden`}
+              style={{
+                backgroundColor: switchBtn ? backPickedBg : "",
+              }}
             >
               <div
                 className={`flex justify-center items-center h-full overflow-hidden`}
@@ -141,11 +187,15 @@ const Preview = ({
             <p className="mt-8 text-sm mb-2">Back</p>
           </div>
           <div className="flex justify-center gap-x-5">
+            {/* Front */}
             <div
               onClick={() => activeCard("front")}
-              className={`${bg} ${
+              className={`${!switchBtn && bg} ${
                 active === "front" && "border-2 border-sky-600"
               } relative rounded-md lg:w-[310px] w-[20px] h-[470px] mb-5 shadow-lg shadow-zinc-900 cursor-pointer overflow-hidden`}
+              style={{
+                backgroundColor: switchBtn ? pickedBg : "",
+              }}
             >
               <div
                 className={`flex justify-center items-center h-full overflow-hidden`}
@@ -173,9 +223,12 @@ const Preview = ({
             {/* Back */}
             <div
               onClick={() => activeCard("back")}
-              className={`${backBg} ${
+              className={`${!switchBtn && backBg} ${
                 active === "back" && "border-2 border-sky-500"
               } relative rounded-md lg:w-[310px] w-[20px] h-[470px] mb-5 shadow-lg shadow-zinc-900 cursor-pointer overflow-hidden`}
+              style={{
+                backgroundColor: switchBtn ? backPickedBg : "",
+              }}
             >
               <div
                 className={`flex justify-center items-center h-full overflow-hidden`}
@@ -207,9 +260,13 @@ const Preview = ({
       {/* Product 3 */}
       {product === 3 && (
         <div className="flex justify-center items-center h-full">
+          {/* Front */}
           <div
             onClick={() => activeCard("front")}
             className={`${bg} relative rounded-md  w-full h-[290px] shadow-lg shadow-zinc-900 mx-20 overflow-hidden`}
+            style={{
+              backgroundColor: switchBtn ? pickedBg : "",
+            }}
           >
             <div className={`h-full`}>
               <div className={`flex justify-center items-center h-full`}>
@@ -243,6 +300,9 @@ const Preview = ({
           <div
             onClick={() => activeCard("front")}
             className={`${bg} relative rounded-md  w-full h-[290px] shadow-lg shadow-zinc-900 mx-20 overflow-hidden`}
+            style={{
+              backgroundColor: switchBtn ? pickedBg : "",
+            }}
           >
             <div className={`h-full`}>
               <div className={`flex justify-center items-center h-full`}>
@@ -276,6 +336,9 @@ const Preview = ({
           <div
             onClick={() => activeCard("front")}
             className={`${bg} relative rounded-md lg:w-[310px] w-[20px] h-[470px] shadow-lg shadow-zinc-900 overflow-hidden`}
+            style={{
+              backgroundColor: switchBtn ? pickedBg : "",
+            }}
           >
             <div className={`h-full`}>
               <div className={`flex justify-center items-center h-full`}>

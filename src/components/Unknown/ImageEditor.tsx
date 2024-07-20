@@ -31,7 +31,9 @@ const ImageEditor: React.FC = () => {
   const [backFile, setBackFile] = useState<File | null>();
   const [tab, setTab] = useState<string>("image");
   const [aspect, setAspect] = useState<number>();
-  // const [cropImage, setCropImage] = useState(false);
+  const [switchBtn, setSwitchBtn] = useState(false);
+  const [pickedBg, setPickBg] = useState("#ffffff");
+  const [backPickedBg, setBackPickBg] = useState("#ffffff");
 
   //
   const [active, setActive] = useState<string>("front");
@@ -472,11 +474,15 @@ const ImageEditor: React.FC = () => {
             <div
               className={`relative lg:px-0 px-2 py-5 bg-gray-200 h-full rounded`}
             >
+              {/* const [pickedBg, setPickBg] = useState("");
+                const [backPickedBg, setBackPickBg] = useState(""); */}
               <Preview
                 product={2}
                 active={active}
                 activeCard={(value: string) => setActive(value)}
                 // Front
+                pickedBg={pickedBg}
+                setPickBg={(value) => setPickBg(value)}
                 align={align}
                 bg={bg}
                 setBg={(value: string) => setBg(value)}
@@ -486,6 +492,8 @@ const ImageEditor: React.FC = () => {
                 image={image}
                 name={name}
                 // Back
+                backPickedBg={backPickedBg}
+                setBackPickBg={(value) => setBackPickBg(value)}
                 backBg={backBg}
                 setBackBg={(value: string) => setBackBg(value)}
                 backAlign={backAlign}
@@ -494,6 +502,9 @@ const ImageEditor: React.FC = () => {
                 backFontStyle={backFontStyle}
                 backImage={backImage}
                 backName={backName}
+                // Switch
+                setSwitch={(value) => setSwitchBtn(value)}
+                switchBtn={switchBtn}
               />
             </div>
           </div>
