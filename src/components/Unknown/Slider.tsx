@@ -22,9 +22,9 @@ const CustomSlider: React.FC<CustomSliderProps> = ({
 
   return (
     <div className="relative mt-10">
-      <label htmlFor="zoom" className="text-white text-sm">
+      {/* <label htmlFor="zoom" className="text-white text-sm">
         Zoom in / out
-      </label>
+      </label> */}
       <input
         type="range"
         className="custom-slider myt-10 mb-5 w-full bg-sky-900"

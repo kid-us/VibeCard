@@ -17,6 +17,7 @@ export const imageSize = [
   "64",
   "72",
   "80",
+  "full",
 ];
 
 export const fontSize = [

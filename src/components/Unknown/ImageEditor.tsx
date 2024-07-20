@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Cropper from "react-easy-crop";
 import { getCroppedImg } from "./cropUtils";
 import CustomSlider from "./Slider";
@@ -57,8 +57,8 @@ const ImageEditor: React.FC = () => {
     style: "syne",
     name: "Syne",
   });
-  const [image, setImage] = useState("36");
-  const [backImage, setBackImage] = useState("36");
+  const [image, setImage] = useState("64");
+  const [backImage, setBackImage] = useState("64");
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -90,6 +90,35 @@ const ImageEditor: React.FC = () => {
       console.error(e);
     }
   };
+
+  // Live Preview
+  const updateCroppedImage = useCallback(async () => {
+    if (croppedAreaPixels) {
+      try {
+        if (active === "front") {
+          const croppedImage = await getCroppedImg(
+            imageSrc!,
+            croppedAreaPixels,
+            rotation
+          );
+          setCroppedImage(croppedImage as string);
+        } else if (active === "back") {
+          const croppedImage = await getCroppedImg(
+            backImageSrc!,
+            croppedAreaPixels,
+            rotation
+          );
+          setBackCroppedImage(croppedImage as string);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }, [imageSrc, croppedAreaPixels, rotation]);
+
+  useEffect(() => {
+    updateCroppedImage();
+  }, [updateCroppedImage]);
 
   // On File Cahnge
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -211,6 +240,23 @@ const ImageEditor: React.FC = () => {
                           cropShape="rect"
                           showGrid={true}
                         />
+                        <div className="absolute w-full bottom-7">
+                          <CustomSlider
+                            value={zoom}
+                            min={1}
+                            max={3}
+                            step={0.1}
+                            onChange={setZoom}
+                          />
+                        </div>
+                        <p
+                          onClick={() => showCroppedImage()}
+                          className="absolute  bottom-0 z-50 bg-green-400 bi-check text- text-xl cursor-pointer rounded px-3"
+                        ></p>
+                        <p
+                          onClick={() => setRotation((rotation + 90) % 360)}
+                          className="absolute right-0 bottom-0 z-50 bg-gray-400 bi-arrow-repeat text- text-xl cursor-pointer rounded px-3"
+                        ></p>
                       </div>
                     )}
 
@@ -220,7 +266,7 @@ const ImageEditor: React.FC = () => {
                           image={backImageSrc}
                           crop={crop}
                           zoom={zoom}
-                          aspect={4 / 4}
+                          aspect={aspect}
                           rotation={rotation}
                           onCropChange={setCrop}
                           onZoomChange={setZoom}
@@ -229,28 +275,25 @@ const ImageEditor: React.FC = () => {
                           cropShape="rect"
                           showGrid={true}
                         />
+                        <div className="absolute w-full bottom-7">
+                          <CustomSlider
+                            value={zoom}
+                            min={1}
+                            max={3}
+                            step={0.1}
+                            onChange={setZoom}
+                          />
+                        </div>
+                        <p
+                          onClick={() => showCroppedImage()}
+                          className="absolute  bottom-0 z-50 bg-green-400 bi-check text- text-xl cursor-pointer rounded px-3"
+                        ></p>
+                        <p
+                          onClick={() => setRotation((rotation + 90) % 360)}
+                          className="absolute right-0 bottom-0 z-50 bg-gray-400 bi-arrow-repeat text- text-xl cursor-pointer rounded px-3"
+                        ></p>
                       </div>
                     )}
-
-                    <CustomSlider
-                      value={zoom}
-                      min={1}
-                      max={3}
-                      step={0.1}
-                      onChange={setZoom}
-                    />
-                    <button
-                      className="bg-white border-2 border-black w-full rounded p-2 mb-3"
-                      onClick={() => setRotation((rotation + 90) % 360)}
-                    >
-                      Rotate <i className="bi-arrow-repeat"></i>
-                    </button>
-                    <button
-                      className="btn-bg shadow w-full rounded p-2 text-white"
-                      onClick={() => showCroppedImage()}
-                    >
-                      Save <i className="bi-save2-fill"></i>
-                    </button>
 
                     <div className="my-8">
                       <div className="mb-5">

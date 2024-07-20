@@ -65,10 +65,10 @@ const Preview = ({
               onClick={() => activeCard("front")}
               className={`${bg} ${
                 active === "front" && "border-2 border-sky-600"
-              } relative rounded-md w-full h-[275px] mb-5 shadow-md shadow-zinc-900 cursor-pointer`}
+              } relative rounded-md w-full h-[275px] mb-5 shadow-md shadow-zinc-900 cursor-pointer overflow-hidden`}
             >
               <div
-                className={`flex justify-center items-center h-full px-5 overflow-hidden`}
+                className={`flex justify-center items-center h-full overflow-hidden`}
               >
                 {croppedImage && (
                   <img
@@ -96,10 +96,10 @@ const Preview = ({
               onClick={() => activeCard("back")}
               className={`${bg} ${
                 active === "back" && "border-2 border-sky-500"
-              } relative rounded-md w-full h-[275px] mb-5 shadow-md shadow-zinc-900 cursor-pointer`}
+              } relative rounded-md w-full h-[275px] mb-5 shadow-md shadow-zinc-900 cursor-pointer overflow-hidden`}
             >
               <div
-                className={`flex justify-center items-center h-full px-5 overflow-hidden`}
+                className={`flex justify-center items-center h-full overflow-hidden`}
               >
                 {backCroppedImage && (
                   <img
