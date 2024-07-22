@@ -300,7 +300,7 @@ const Preview = ({
         </div>
       )}
 
-      {/* Product 4 */}
+      {/* Product 4 for small and laptop */}
       {product === 4 && (
         <div className="flex justify-center items-center h-full lg:mt-0 mt-10">
           <div

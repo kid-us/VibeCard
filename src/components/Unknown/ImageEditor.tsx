@@ -7,6 +7,7 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import Preview from "./Preview";
 import { fontSize, imageSize, textAlignment } from "@/services/editor";
+import SmallDevicePreview from "./SmallDevicePreview";
 
 export interface Image {
   width: string;
@@ -472,15 +473,53 @@ const ImageEditor: React.FC = () => {
             </button>
           </div>
 
-          {/* Preivew */}
+          {/* Large Preview */}
           <div className="col-span-5">
             <div
-              className={`relative lg:px-0 px-2 py-5 bg-gray-200 h-full rounded`}
+              className={`lg:block hidden relative lg:px-0 px-2 py-5 bg-gray-200 h-full rounded`}
             >
               {/* const [pickedBg, setPickBg] = useState("");
                 const [backPickedBg, setBackPickBg] = useState(""); */}
               <Preview
-                product={4}
+                product={3}
+                active={active}
+                activeCard={(value: string) => setActive(value)}
+                // Front
+                pickedBg={pickedBg}
+                setPickBg={(value) => setPickBg(value)}
+                align={align}
+                bg={bg}
+                setBg={(value: string) => setBg(value)}
+                croppedImage={croppedImage ? croppedImage : ""}
+                fSize={font}
+                fontStyle={fontStyle}
+                image={image}
+                name={name}
+                // Back
+                backPickedBg={backPickedBg}
+                setBackPickBg={(value) => setBackPickBg(value)}
+                backBg={backBg}
+                setBackBg={(value: string) => setBackBg(value)}
+                backAlign={backAlign}
+                backCroppedImage={backCroppedImage ? backCroppedImage : ""}
+                backFontSize={backFont}
+                backFontStyle={backFontStyle}
+                backImage={backImage}
+                backName={backName}
+                // Switch
+                setSwitch={(value) => setSwitchBtn(value)}
+                switchBtn={switchBtn}
+              />
+            </div>
+          </div>
+
+          {/* Small Device Preview */}
+          <div className="col-span-5">
+            <div
+              className={`lg:hidden relative lg:px-0 px-2 py-5 bg-gray-200 h-full rounded`}
+            >
+              <SmallDevicePreview
+                product={3}
                 active={active}
                 activeCard={(value: string) => setActive(value)}
                 // Front
