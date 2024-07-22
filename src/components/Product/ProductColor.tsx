@@ -9,11 +9,11 @@ export const bgColors = [
   { style: "bg-red-700", textColor: "text-white" },
   { style: "bg-yellow-400", textColor: "text-white" },
   { style: "bg-green-600", textColor: "text-white" },
-  { style: "bg-teal-900", textColor: "text-white" },
-  { style: "bg-lime-500", textColor: "text-white" },
-  { style: "bg-orange-500", textColor: "text-white" },
-  { style: "bg-purple-700", textColor: "text-white" },
-  { style: "bg-pink-500", textColor: "text-white" },
+  // { style: "bg-teal-900", textColor: "text-white" },
+  // { style: "bg-lime-500", textColor: "text-white" },
+  // { style: "bg-orange-500", textColor: "text-white" },
+  // { style: "bg-purple-700", textColor: "text-white" },
+  // { style: "bg-pink-500", textColor: "text-white" },
 ];
 
 interface Props {

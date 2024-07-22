@@ -162,11 +162,11 @@ const ImageEditor: React.FC = () => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto">
-        <div className="grid grid-cols-10 secondary-bg rounded mt-10 relative">
+      <div className="lg:container mx-auto lg:px-0 px-2">
+        <div className="lg:grid grid-cols-10 secondary-bg rounded mt-10 relative">
           {/* Edit */}
           <div className={`col-span-5 relative px-5 `}>
-            <div className="grid grid-cols-12 gap-x-10">
+            <div className="lg:grid hidden grid-cols-12 gap-x-10">
               <div className="col-span-2 w-full border-r border-gray-600 pt-10">
                 <p
                   onClick={() => setTab("image")}
@@ -460,7 +460,7 @@ const ImageEditor: React.FC = () => {
           </div>
 
           {/* Order */}
-          <div className="absolute -bottom-5 left-[45%] z-50">
+          <div className="absolute lg:block hidden -bottom-5 left-[45%] z-50">
             <button
               onClick={() => handleSubmit()}
               className="btn-bg rounded shadow-xl py-3 shadow-zinc-950"
@@ -477,7 +477,7 @@ const ImageEditor: React.FC = () => {
               {/* const [pickedBg, setPickBg] = useState("");
                 const [backPickedBg, setBackPickBg] = useState(""); */}
               <Preview
-                product={2}
+                product={4}
                 active={active}
                 activeCard={(value: string) => setActive(value)}
                 // Front

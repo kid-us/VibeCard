@@ -181,18 +181,18 @@ const Preview = ({
       {/* Product 2  */}
       {product === 2 && (
         <>
-          <div className="flex justify-between px-4 mt-10">
+          <div className="lg:flex hidden justify-between px-4 mt-10">
             <p className="mt-8 text-sm mb-2">Front</p>
 
             <p className="mt-8 text-sm mb-2">Back</p>
           </div>
-          <div className="flex justify-center gap-x-5">
+          <div className="flex justify-center gap-x-5 lg:mt-0 mt-10">
             {/* Front */}
             <div
               onClick={() => activeCard("front")}
               className={`${!switchBtn && bg} ${
                 active === "front" && "border-2 border-sky-600"
-              } relative rounded-md lg:w-[310px] w-[20px] h-[470px] mb-5 shadow-lg shadow-zinc-900 cursor-pointer overflow-hidden`}
+              } relative flex rounded-md lg:w-[310px] w-[300px] h-[470px] mb-5 shadow-lg shadow-zinc-900 cursor-pointer overflow-hidden`}
               style={{
                 backgroundColor: switchBtn ? pickedBg : "",
               }}
@@ -296,10 +296,10 @@ const Preview = ({
 
       {/* Product 4 */}
       {product === 4 && (
-        <div className="flex justify-center items-center h-full">
+        <div className="flex justify-center items-center h-full lg:mt-0 mt-10">
           <div
             onClick={() => activeCard("front")}
-            className={`${bg} relative rounded-md  w-full h-[290px] shadow-lg shadow-zinc-900 mx-20 overflow-hidden`}
+            className={`${bg} relative rounded-md  w-full lg:h-[290px] h-[250px] shadow-lg shadow-zinc-900 lg:mx-20 overflow-hidden`}
             style={{
               backgroundColor: switchBtn ? pickedBg : "",
             }}
