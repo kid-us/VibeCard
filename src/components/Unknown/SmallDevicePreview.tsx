@@ -4,7 +4,7 @@ import { bgColors } from "../Product/ProductColor";
 import "./switch.css";
 
 interface Props {
-  product?: number;
+  product?: number | string;
   setBg: (value: string) => void;
   setBackBg: (value: string) => void;
   activeCard: (value: string) => void;
@@ -109,7 +109,7 @@ const SmallDevicePreview = ({
       </div>
 
       {/* Product 1 */}
-      {product === 1 && (
+      {Number(product) === 1 && (
         <>
           <div>
             <div className="flex justify-end gap-x-10 mt-6">
@@ -205,7 +205,7 @@ const SmallDevicePreview = ({
       )}
 
       {/* Product 2  */}
-      {product === 2 && (
+      {Number(product) === 2 && (
         <>
           <div className="flex justify-end gap-x-10 mt-6">
             <p
@@ -301,7 +301,7 @@ const SmallDevicePreview = ({
       )}
 
       {/* Product 3 */}
-      {product === 3 && (
+      {Number(product) === 3 && (
         <div className="flex justify-center items-center h-full mt-7">
           {/* Front */}
           <div
@@ -338,7 +338,7 @@ const SmallDevicePreview = ({
       )}
 
       {/* Product 4 for small and laptop */}
-      {product === 4 && (
+      {Number(product) === 4 && (
         <div className="flex justify-center items-center h-full mt-10">
           <div
             onClick={() => activeCard("front")}
@@ -374,7 +374,7 @@ const SmallDevicePreview = ({
       )}
 
       {/* Front */}
-      {product === 5 && (
+      {Number(product) === 5 && (
         <div>
           <div className="flex justify-center h-full mt-5">
             <div

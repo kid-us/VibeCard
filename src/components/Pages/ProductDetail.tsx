@@ -1,5 +1,5 @@
 import Navbar from "../Navbar/Navbar";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Product1 from "../Product/Product1";
 import Product2 from "../Product/Product2";
@@ -152,10 +152,13 @@ const ProductDetail = () => {
               )}
               <div className="flex justify-between gap-x-10 w-full mt-14">
                 {/* Design */}
-                <button className="bg-white py-3  lg:text-center rounded shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 w-full">
+                <Link
+                  to={`/img/${id}`}
+                  className="bg-white py-3  lg:text-center rounded shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 w-full"
+                >
                   <span className="bi-palette-fill me-2"></span>
                   Design your Card
-                </button>
+                </Link>
                 {/* Button */}
 
                 {/* Order */}

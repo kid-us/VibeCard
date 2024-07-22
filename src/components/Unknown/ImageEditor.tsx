@@ -8,6 +8,7 @@ import Footer from "../Footer/Footer";
 import Preview from "./Preview";
 import { fontSize, imageSize, textAlignment } from "@/services/editor";
 import SmallDevicePreview from "./SmallDevicePreview";
+import { useParams } from "react-router-dom";
 
 export interface Image {
   width: string;
@@ -20,6 +21,8 @@ export interface Style {
 }
 
 const ImageEditor: React.FC = () => {
+  const { productId } = useParams<{ productId: string }>();
+
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [backImageSrc, setBackImageSrc] = useState<string | null>(null);
   const [crop, setCrop] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -481,7 +484,7 @@ const ImageEditor: React.FC = () => {
               {/* const [pickedBg, setPickBg] = useState("");
                 const [backPickedBg, setBackPickBg] = useState(""); */}
               <Preview
-                product={3}
+                product={productId}
                 active={active}
                 activeCard={(value: string) => setActive(value)}
                 // Front
@@ -519,7 +522,7 @@ const ImageEditor: React.FC = () => {
               className={`lg:hidden relative lg:px-0 px-2 py-5 bg-gray-200 h-full rounded`}
             >
               <SmallDevicePreview
-                product={3}
+                product={productId}
                 active={active}
                 activeCard={(value: string) => setActive(value)}
                 // Front
