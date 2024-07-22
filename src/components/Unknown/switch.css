@@ -7,8 +7,6 @@
   align-items: center;
   position: relative;
   display: block;
-  width: 51px;
-  height: 20px;
   box-shadow: rgba(0, 0, 0, 0.62) 0px 0px 5px inset,
     rgba(0, 0, 0, 0.21) 0px 0px 0px 24px inset, #22cc3f 0px 0px 0px 0px inset,
     rgba(224, 224, 224, 0.45) 0px 1px 0px 0px;

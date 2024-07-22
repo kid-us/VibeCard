@@ -161,9 +161,11 @@ const ImageEditor: React.FC = () => {
 
   return (
     <>
-      <Navbar />
+      <div className="lg:block hidden">
+        <Navbar />
+      </div>
       <div className="lg:container mx-auto lg:px-0 px-2">
-        <div className="lg:grid grid-cols-10 secondary-bg rounded mt-10 relative">
+        <div className="lg:grid grid-cols-10 secondary-bg rounded lg:mt-10 mt-1 relative">
           {/* Edit */}
           <div className={`col-span-5 relative px-5 `}>
             <div className="lg:grid hidden grid-cols-12 gap-x-10">
@@ -181,6 +183,7 @@ const ImageEditor: React.FC = () => {
                   } px-3 bi-fonts mt-10 text-center text-5xl text-white cursor-pointer`}
                 ></p>
               </div>
+              {/* Editor */}
               <div className="col-span-10 pb-10 h-[90dvh] overflow-y-scroll pe-20 pt-5">
                 {/* image */}
                 {tab === "image" && (
@@ -510,7 +513,301 @@ const ImageEditor: React.FC = () => {
           </div>
         </div>
       </div>
-      <Footer />
+
+      {/* Small Device Editors */}
+      <div className="lg:hidden absolute w-full px-5 bg-secondary border border-gray-600 rounded-xl bottom-10 h-[280px] overflow-y-scroll">
+        {/* Image */}
+        {tab === "image" && (
+          <div className="w-full">
+            <div className="flex justify-between mt-2">
+              <p className="text-gray-400 text-sm">Image / Logo</p>
+              {active === "front" && croppedImage && (
+                <button
+                  onClick={() => setCroppedImage(null)}
+                  className="bg-red-500 rounded text-xs w-14 text-white"
+                >
+                  Reset
+                </button>
+              )}
+              {active === "back" && backCroppedImage && (
+                <button
+                  onClick={() => setBackCroppedImage(null)}
+                  className="bg-red-500 rounded text-xs w-14 text-white"
+                >
+                  Reset
+                </button>
+              )}
+            </div>
+            {!imageSrc && (
+              <div className="flex justify-between">
+                <div className="bg-white border w-full h-20 mt-3 rounded pb-3 ps-3 text-center">
+                  <input
+                    type="file"
+                    id={`logo-file`}
+                    className="hidden"
+                    onChange={onFileChange}
+                    accept="image/*"
+                    ref={inputRef}
+                  />
+
+                  <label htmlFor={`logo-file`} className="cursor-pointer">
+                    <div className="flex flex-col pt-3">
+                      <i className="bi-image text-2xl"></i>
+                      <span className="text-sm">Upload front / back Image</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            )}
+
+            {/* Front Card */}
+            {imageSrc && (
+              <div className="h-[400px] w-full relative mt-4 mb-10 rounded overflow-hidden">
+                <Cropper
+                  image={imageSrc}
+                  crop={crop}
+                  zoom={zoom}
+                  aspect={aspect}
+                  rotation={rotation}
+                  onCropChange={setCrop}
+                  onZoomChange={setZoom}
+                  onRotationChange={setRotation}
+                  onCropComplete={onCropComplete}
+                  cropShape="rect"
+                  showGrid={true}
+                />
+                <div className="absolute w-full bottom-7">
+                  <CustomSlider
+                    value={zoom}
+                    min={1}
+                    max={3}
+                    step={0.1}
+                    onChange={setZoom}
+                  />
+                </div>
+                <p
+                  onClick={() => showCroppedImage()}
+                  className="absolute  bottom-0 z-50 bg-green-400 bi-check text- text-xl cursor-pointer rounded px-3"
+                ></p>
+                <p
+                  onClick={() => setRotation((rotation + 90) % 360)}
+                  className="absolute right-0 bottom-0 z-50 bg-gray-400 bi-arrow-repeat text- text-xl cursor-pointer rounded px-3"
+                ></p>
+              </div>
+            )}
+
+            {/* Card Back */}
+            {backImageSrc && (
+              <div className="h-[400px] w-full relative mt-4 mb-10 rounded overflow-hidden">
+                <Cropper
+                  image={backImageSrc}
+                  crop={crop}
+                  zoom={zoom}
+                  aspect={aspect}
+                  rotation={rotation}
+                  onCropChange={setCrop}
+                  onZoomChange={setZoom}
+                  onRotationChange={setRotation}
+                  onCropComplete={onCropComplete}
+                  cropShape="rect"
+                  showGrid={true}
+                />
+                <div className="absolute w-full bottom-7">
+                  <CustomSlider
+                    value={zoom}
+                    min={1}
+                    max={3}
+                    step={0.1}
+                    onChange={setZoom}
+                  />
+                </div>
+                <p
+                  onClick={() => showCroppedImage()}
+                  className="absolute  bottom-0 z-50 bg-green-400 bi-check text- text-xl cursor-pointer rounded px-3"
+                ></p>
+                <p
+                  onClick={() => setRotation((rotation + 90) % 360)}
+                  className="absolute right-0 bottom-0 z-50 bg-gray-400 bi-arrow-repeat text- text-xl cursor-pointer rounded px-3"
+                ></p>
+              </div>
+            )}
+
+            <div className="mt-3">
+              <div className="mb-5">
+                <label htmlFor="width" className="text-gray-400 block text-xs">
+                  Image Size
+                </label>
+                <select
+                  name="width"
+                  className="w-full h-10 rounded p-1 mt-2 focus:outline-none"
+                  onChange={(e) =>
+                    active === "front"
+                      ? setImage(e.currentTarget.value)
+                      : setBackImage(e.currentTarget.value)
+                  }
+                  value={active === "front" ? image : backImage}
+                  style={{
+                    backgroundColor: "#f0f0f0",
+                    color: "#333",
+                  }}
+                >
+                  {imageSize.map((size) =>
+                    size !== image ? (
+                      <option key={size} value={`${size}`}>
+                        {size}
+                      </option>
+                    ) : (
+                      <option selected value={image}>
+                        {image}
+                      </option>
+                    )
+                  )}
+                </select>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* text */}
+        {tab === "text" && (
+          <div className="w-full">
+            <p className="text-gray-400 text-xs mb-3 mt-3">
+              Company Name / Your Name
+            </p>
+            <input
+              type="text"
+              className="rounded w-full h-11 px-4 focus:outline-none mb-4 placeholder:font-bold placeholder:text-sm placeholder:text-gray-600"
+              placeholder="name goes here"
+              onChange={
+                active === "front"
+                  ? (e) => setName(e.currentTarget.value)
+                  : (e) => setBackName(e.currentTarget.value)
+              }
+            />
+            <div>
+              {/* Font Size */}
+              <div>
+                <p className="text-gray-400 text-xs">Font Size</p>
+                <select
+                  name="height"
+                  className="w-full h-10 rounded p-1 mt-2 focus:outline-none"
+                  onChange={(e) =>
+                    active === "front"
+                      ? setFontSize(e.currentTarget.value)
+                      : setBackFontSize(e.currentTarget.value)
+                  }
+                  value={active === "front" ? font : backFont}
+                >
+                  {fontSize.map((f) =>
+                    f !== font ? (
+                      <option key={f} value={f}>
+                        {f}
+                      </option>
+                    ) : (
+                      <option
+                        selected
+                        value={active === "front" ? font : backFont}
+                      >
+                        {active === "front" ? font : backFont}
+                      </option>
+                    )
+                  )}
+                </select>
+              </div>
+            </div>
+            <div className="mt-3">
+              {/* Text Align */}
+              <div>
+                <p className="text-gray-400 text-xs">Text Align</p>
+                <div className="relative">
+                  <p className="bg-white rounded py-2 px-1 text-sm my-2 w-36">
+                    {active === "front" ? align.name : backAlign.name}
+                  </p>
+                  <div className=" w-full bg-white rounded p-2 text-sm">
+                    {textAlignment.map((textAlign) => (
+                      <p
+                        onClick={() =>
+                          active === "front"
+                            ? setAlign({
+                                name: textAlign.name,
+                                style: textAlign.style,
+                              })
+                            : setBackAlign({
+                                name: textAlign.name,
+                                style: textAlign.style,
+                              })
+                        }
+                        className={`${
+                          textAlign.style === align.style && "text-teal-500"
+                        } cursor-pointer mb-1`}
+                      >
+                        {textAlign.name}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              {/* Font Style */}
+              <div>
+                <p className="text-gray-400 text-xs mt-3">Font Style</p>
+                <div className="relative">
+                  <p className="bg-white rounded py-2 px-1 text-sm my-2 w-40">
+                    {active === "front" ? fontStyle.name : backFontStyle.name}
+                  </p>
+                  <div className="w-full bg-white rounded p-2 text-sm mb-5">
+                    {fonts.map((font) => (
+                      <p
+                        onClick={() =>
+                          active === "front"
+                            ? setFontStyle({
+                                name: font.name,
+                                style: font.style,
+                              })
+                            : setBackFontStyle({
+                                name: font.name,
+                                style: font.style,
+                              })
+                        }
+                        className={`cursor-pointer mb-1`}
+                      >
+                        {font.name}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Small device Card Taps*/}
+      <div className="lg:hidden absolute bottom-0 w-full">
+        <div className="flex justify-between px-10 secondary-bg py-2 border rounded border-gray-800">
+          <p
+            onClick={() => setTab("image")}
+            className={`${
+              tab === "image" && "text-white text-3xl"
+            } bi-image text-2xl text-gray-500`}
+          ></p>
+          <button
+            onClick={() => handleSubmit()}
+            className="rounded shadow-none px-8  text-center py-0 btn-bg text-sm text-white"
+          >
+            Order
+          </button>
+          <p
+            onClick={() => setTab("text")}
+            className={`${
+              tab === "text" && "text-white text-3xl"
+            } bi-fonts text-2xl text-gray-500`}
+          ></p>
+        </div>
+      </div>
+      {/*Footer  */}
+      <div className="lg:block hidden">
+        <Footer />
+      </div>
     </>
   );
 };

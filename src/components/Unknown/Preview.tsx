@@ -63,19 +63,25 @@ const Preview = ({
 }: Props) => {
   return (
     <>
+      {/* Colors */}
       <div className="absolute top-0 flex justify-between gap-x-2 p-2 w-full">
         {switchBtn ? (
           <div className={`relative`}>
-            <p className="text-xs mb-2 text-black">Pick you Color here</p>
-            <input
-              type="color"
-              className="w-full h-14 border-none outline-none shadow shadow-orange-900"
-              onChange={(e) =>
-                switchBtn && active === "front"
-                  ? setPickBg(e.currentTarget.value)
-                  : setBackPickBg(e.currentTarget.value)
-              }
-            />
+            <p className="text-xs mb-2 text-black lg:block hidden">
+              Pick you Color here
+            </p>
+            <div className="lg:0 w-32 h-32">
+              <input
+                type="color"
+                className="w-full lg:h-16 h-12 border-none outline-none shadow shadow-orange-900"
+                onChange={(e) =>
+                  switchBtn && active === "front"
+                    ? setPickBg(e.currentTarget.value)
+                    : setBackPickBg(e.currentTarget.value)
+                }
+                value={pickedBg}
+              />
+            </div>
           </div>
         ) : (
           <div className="flex gap-x-1">
@@ -85,19 +91,19 @@ const Preview = ({
                 onClick={() =>
                   active === "front" ? setBg(b.style) : setBackBg(b.style)
                 }
-                className={`${b.style} rounded border border-gray-600 w-6 h-6 cursor-pointer`}
+                className={`${b.style} rounded border border-gray-600 lg:w-6 lg:h-6 w-5 h-5 cursor-pointer`}
               ></p>
             ))}
           </div>
         )}
 
-        <div>
+        <div className="lg:me-0 me-1">
           <label className="switch">
             <input
               onClick={() => setSwitch(switchBtn ? false : true)}
               type="checkbox"
             />
-            <span className="slider"></span>
+            <span className="slider w-11 h-5"></span>
           </label>
         </div>
       </div>
@@ -299,7 +305,7 @@ const Preview = ({
         <div className="flex justify-center items-center h-full lg:mt-0 mt-10">
           <div
             onClick={() => activeCard("front")}
-            className={`${bg} relative rounded-md  w-full lg:h-[290px] h-[250px] shadow-lg shadow-zinc-900 lg:mx-20 overflow-hidden`}
+            className={`${bg} relative rounded-md  w-full lg:h-[290px] h-[200px] shadow-lg shadow-zinc-900 lg:mx-20 overflow-hidden`}
             style={{
               backgroundColor: switchBtn ? pickedBg : "",
             }}
