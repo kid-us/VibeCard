@@ -203,7 +203,7 @@ const SmallEditor: React.FC = () => {
       </div>
 
       {/* Small Device Editors */}
-      <div className="absolute w-full px-5 bg-secondary border border-gray-600 rounded-xl bottom-10 h-[280px] overflow-y-scroll">
+      <div className="absolute w-full px-5 bg-secondary border border-gray-600 rounded-xl bottom-10 h-[300px] overflow-y-scroll">
         {/* Image */}
         {tab === "image" && (
           <div className="w-full">
