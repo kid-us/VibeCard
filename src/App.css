@@ -272,3 +272,17 @@ option {
     )
     10;
 }
+
+/* Small Editor Scrollbar */
+.sm-scrollbar::-webkit-scrollbar {
+  width: 20px;
+}
+
+.sm-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.sm-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
