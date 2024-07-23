@@ -1,5 +1,5 @@
 import { userPic } from "@/assets";
-import { Style } from "./ImageEditor";
+import { Style } from "./LargeEditor";
 import { bgColors } from "../Product/ProductColor";
 import "./switch.css";
 
