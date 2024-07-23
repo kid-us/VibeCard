@@ -1,5 +1,5 @@
 import { userPic } from "@/assets";
-import { Style } from "./ImageEditor";
+import { Style } from "./SmallEditor";
 import { bgColors } from "../Product/ProductColor";
 import "./switch.css";
 
@@ -136,7 +136,7 @@ const SmallDevicePreview = ({
               <div
                 className={`${
                   !switchBtn && bg
-                } relative rounded-md w-full h-[200px] mb-5 shadow-md shadow-zinc-900 cursor-pointer overflow-hidden`}
+                } relative rounded-md w-full h-[220px] mb-5 shadow-md shadow-zinc-900 cursor-pointer overflow-hidden`}
                 style={{
                   backgroundColor: switchBtn ? pickedBg : "",
                 }}
@@ -171,7 +171,7 @@ const SmallDevicePreview = ({
               <div
                 className={`${
                   !switchBtn && backBg
-                } relative rounded-md w-full h-[200px] mb-5 shadow-md shadow-zinc-900 cursor-pointer overflow-hidden`}
+                } relative rounded-md w-full h-[220px] mb-5 shadow-md shadow-zinc-900 cursor-pointer overflow-hidden`}
                 style={{
                   backgroundColor: switchBtn ? backPickedBg : "",
                 }}
@@ -232,7 +232,7 @@ const SmallDevicePreview = ({
                 onClick={() => activeCard("front")}
                 className={`${
                   !switchBtn && bg
-                } relative rounded-md w-48 h-[240px] shadow-lg shadow-zinc-900 overflow-hidden`}
+                } relative rounded-md w-48 h-[260px] shadow-lg shadow-zinc-900 overflow-hidden`}
                 style={{
                   backgroundColor: switchBtn ? pickedBg : "",
                 }}
@@ -267,7 +267,7 @@ const SmallDevicePreview = ({
                 onClick={() => activeCard("back")}
                 className={`${
                   !switchBtn && backBg
-                } relative rounded-md w-48 h-[240px] shadow-lg shadow-zinc-900 overflow-hidden`}
+                } relative rounded-md w-48 h-[260px] shadow-lg shadow-zinc-900 overflow-hidden`}
                 style={{
                   backgroundColor: switchBtn ? backPickedBg : "",
                 }}
@@ -306,7 +306,7 @@ const SmallDevicePreview = ({
           {/* Front */}
           <div
             onClick={() => activeCard("front")}
-            className={`${bg} relative rounded-md w-full h-[200px] shadow-lg shadow-zinc-900  overflow-hidden`}
+            className={`${bg} relative rounded-md w-full h-[220px] shadow-lg shadow-zinc-900  overflow-hidden`}
             style={{
               backgroundColor: switchBtn ? pickedBg : "",
             }}
@@ -342,7 +342,7 @@ const SmallDevicePreview = ({
         <div className="flex justify-center items-center h-full mt-10">
           <div
             onClick={() => activeCard("front")}
-            className={`${bg} relative rounded-md w-full h-[200px] shadow-lg shadow-zinc-900 overflow-hidden`}
+            className={`${bg} relative rounded-md w-full h-[220px] shadow-lg shadow-zinc-900 overflow-hidden`}
             style={{
               backgroundColor: switchBtn ? pickedBg : "",
             }}
@@ -378,7 +378,7 @@ const SmallDevicePreview = ({
         <div>
           <div className="flex justify-center h-full mt-5">
             <div
-              className={`${bg} relative rounded-md w-48 h-[240px] shadow-lg shadow-zinc-900 overflow-hidden`}
+              className={`${bg} relative rounded-md w-48 h-[260px] shadow-lg shadow-zinc-900 overflow-hidden`}
               style={{
                 backgroundColor: switchBtn ? pickedBg : "",
               }}
