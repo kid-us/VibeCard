@@ -61,8 +61,8 @@ const SmallEditor: React.FC = () => {
     style: "syne",
     name: "Syne",
   });
-  const [image, setImage] = useState("64");
-  const [backImage, setBackImage] = useState("64");
+  const [image, setImage] = useState("40");
+  const [backImage, setBackImage] = useState("40");
 
   const inputRef = useRef<HTMLInputElement>(null);
 
