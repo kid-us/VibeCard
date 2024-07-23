@@ -20,7 +20,7 @@ import Insights from "./components/Pages/Insights";
 import AboutUs from "./components/Pages/AboutUs";
 import PrivacyPolicy from "./components/Pages/PrivacyPolicy";
 import ContactUs from "./components/Pages/ContactUs";
-import ImageEditor from "./components/Unknown/ImageEditor";
+import ImageEditor from "./components/Editor/ImageEditor";
 
 function App() {
   return (
