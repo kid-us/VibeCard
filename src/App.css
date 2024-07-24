@@ -274,6 +274,13 @@ option {
 }
 
 /* Small Editor Scrollbar */
+
+.sm-scroll {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; /* Enable momentum scrolling on iOS */
+  height: 320px;
+}
+
 .sm-scrollbar::-webkit-scrollbar {
   width: 20px;
 }
