@@ -203,10 +203,17 @@ const SmallEditor: React.FC = () => {
     }
   };
 
+  // Error hide
+  useEffect(() => {
+    setTimeout(() => {
+      setError(false);
+    }, 10000);
+  }, [error]);
+
   return (
     <>
       {error && (
-        <div className="absolute flex top-3 right-0 z-50 text-white bg-red-500 rounded ps-5 text-sm py-2">
+        <div className="fixed flex top-3 right-0 z-50 text-white bg-red-500 rounded ps-5 text-sm py-2">
           <p>Please at least insert your logo </p>
           <p
             onClick={() => setError(false)}

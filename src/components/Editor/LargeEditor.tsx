@@ -7,7 +7,8 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import Preview from "./Preview";
 import { fontSize, imageSize, textAlignment } from "@/services/editor";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import useProduct from "@/store/useProduct";
 
 export interface Image {
   width: string;
@@ -20,54 +21,69 @@ export interface Style {
 }
 
 const LargeEditor: React.FC = () => {
+  // Product Id
   const { productId } = useParams<{ productId: string }>();
 
-  const [imageSrc, setImageSrc] = useState<string | null>(null);
-  const [backImageSrc, setBackImageSrc] = useState<string | null>(null);
+  // Zustand
+  const { setProductId, updateBack, updateFront } = useProduct();
+
+  const navigate = useNavigate();
+
+  // Cropper
   const [crop, setCrop] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<any>(null);
-  const [croppedImage, setCroppedImage] = useState<string | null>(null);
-  const [backCroppedImage, setBackCroppedImage] = useState<string | null>(null);
-  const [frontFile, setFrontFile] = useState<File | null>();
-  const [backFile, setBackFile] = useState<File | null>();
-  const [tab, setTab] = useState<string>("image");
   const [aspect, setAspect] = useState<number>();
-  const [switchBtn, setSwitchBtn] = useState(false);
-  const [pickedBg, setPickBg] = useState("#ffffff");
-  const [backPickedBg, setBackPickBg] = useState("#ffffff");
 
-  //
+  // Input Ref
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Front and Back
+  const [switchBtn, setSwitchBtn] = useState(false);
+  const [tab, setTab] = useState<string>("image");
+  const [pickedBg, setPickBg] = useState("#ffffff");
   const [active, setActive] = useState<string>("front");
+
+  // Front Card
+  const [croppedImage, setCroppedImage] = useState<string | null>(null);
+  const [frontFile, setFrontFile] = useState<File | null>();
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [bg, setBg] = useState<string>("bg-white");
-  const [backBg, setBackBg] = useState<string>("bg-white");
+  const [name, setName] = useState<string>("");
+  const [font, setFontSize] = useState<string>("4xl");
+  const [image, setImage] = useState("40");
   const [align, setAlign] = useState({
     name: "Center Center",
     style: "text-center",
   });
-  const [backAlign, setBackAlign] = useState({
-    name: "Center Center",
-    style: "",
-  });
-  const [name, setName] = useState<string>("");
-  const [backName, setBackName] = useState<string>("");
-  const [font, setFontSize] = useState<string>("4xl");
-  const [backFont, setBackFontSize] = useState<string>("4xl");
-
   const [fontStyle, setFontStyle] = useState<Style>({
     style: "syne",
     name: "Syne",
+  });
+
+  // Back Card
+  const [backImageSrc, setBackImageSrc] = useState<string | null>(null);
+  const [backCroppedImage, setBackCroppedImage] = useState<string | null>(null);
+  const [backFile, setBackFile] = useState<File | null>();
+  const [backPickedBg, setBackPickBg] = useState("#ffffff");
+  const [backBg, setBackBg] = useState<string>("bg-white");
+  const [backName, setBackName] = useState<string>("");
+  const [backFont, setBackFontSize] = useState<string>("4xl");
+  const [backImage, setBackImage] = useState("40");
+  const [backAlign, setBackAlign] = useState({
+    name: "Center Center",
+    style: "",
   });
   const [backFontStyle, setBackFontStyle] = useState<Style>({
     style: "syne",
     name: "Syne",
   });
-  const [image, setImage] = useState("64");
-  const [backImage, setBackImage] = useState("64");
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  // Error
+  const [error, setError] = useState<boolean>(false);
 
+  // On crop complete
   const onCropComplete = (_: any, croppedAreaPixels: any) => {
     setCroppedAreaPixels(croppedAreaPixels);
   };
@@ -121,7 +137,6 @@ const LargeEditor: React.FC = () => {
       }
     }
   }, [imageSrc, croppedAreaPixels, rotation]);
-
   useEffect(() => {
     updateCroppedImage();
   }, [updateCroppedImage]);
@@ -158,12 +173,56 @@ const LargeEditor: React.FC = () => {
     }
   };
 
+  // On order asked
   const handleSubmit = () => {
-    console.log(frontFile, backFile);
+    if (backFile || frontFile) {
+      // Product
+      setProductId(productId ? productId : "");
+      // Set Front
+      updateFront({
+        bgColor: bg,
+        fontStyle: fontStyle.style,
+        image: frontFile,
+        text: name,
+        textAlignment: align.style,
+        textSize: font,
+        imageSize: image,
+      });
+      // Set Back
+      updateBack({
+        bgColor: backBg,
+        fontStyle: backFontStyle.style,
+        image: backFile,
+        text: backName,
+        textAlignment: backAlign.style,
+        textSize: backFont,
+        imageSize: backImage,
+      });
+
+      navigate("/pay");
+    } else {
+      setError(true);
+    }
   };
+
+  // Error hide
+  useEffect(() => {
+    setTimeout(() => {
+      setError(false);
+    }, 10000);
+  }, [error]);
 
   return (
     <>
+      {error && (
+        <div className="fixed flex top-2 right-0 z-50 text-white bg-red-500 rounded ps-10 text-sm py-3">
+          <p>Please at least insert your logo </p>
+          <p
+            onClick={() => setError(false)}
+            className="text-white ms-5 me-2 text- bi-x-lg bg-black rounded px-2 py-1 cursor-pointer"
+          ></p>
+        </div>
+      )}
       <Navbar />
       <div className="container mx-auto">
         <div className="grid grid-cols-10 secondary-bg rounded mt-10 relative">
