@@ -150,16 +150,16 @@ const ProductDetail = () => {
                   You must to choose your card type
                 </p>
               )}
-              <div className="flex justify-between gap-x-10 w-full mt-14">
+              <div className="lg:flex justify-between gap-x-10 w-full mt-14">
                 {/* Design */}
-                <Link
-                  to={`/img/${id}`}
-                  className="bg-white py-3  lg:text-center rounded shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 w-full"
-                >
-                  <span className="bi-palette-fill me-2"></span>
-                  Design your Card
-                </Link>
-                {/* Button */}
+                <div className="w-full lg:mb-0 mb-5">
+                  <Link to={`/img/${id}`}>
+                    <p className="bg-white py-3  lg:text-center rounded shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 text-center">
+                      <span className="bi-palette-fill me-2"></span>
+                      Design your Card
+                    </p>
+                  </Link>
+                </div>
 
                 {/* Order */}
                 <button
