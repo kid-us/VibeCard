@@ -5,7 +5,8 @@ import CustomSlider from "./Slider";
 import { fonts } from "@/services/fonts";
 import { fontSize, imageSize, textAlignment } from "@/services/editor";
 import SmallDevicePreview from "./SmallDevicePreview";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import useProduct from "@/store/useProduct";
 
 export interface Image {
   width: string;
@@ -18,60 +19,75 @@ export interface Style {
 }
 
 const SmallEditor: React.FC = () => {
+  // Product Id
   const { productId } = useParams<{ productId: string }>();
-  //
-  const [imageSrc, setImageSrc] = useState<string | null>(null);
-  const [backImageSrc, setBackImageSrc] = useState<string | null>(null);
+
+  // Zustand
+  const { setProductId, updateBack, updateFront } = useProduct();
+
+  const navigate = useNavigate();
+
+  // Cropper
   const [crop, setCrop] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<any>(null);
-  const [croppedImage, setCroppedImage] = useState<string | null>(null);
-  const [backCroppedImage, setBackCroppedImage] = useState<string | null>(null);
-  const [frontFile, setFrontFile] = useState<File | null>();
-  const [backFile, setBackFile] = useState<File | null>();
-  const [tab, setTab] = useState<string>("image");
   const [aspect, setAspect] = useState<number>();
-  const [switchBtn, setSwitchBtn] = useState(false);
-  const [pickedBg, setPickBg] = useState("#ffffff");
-  const [backPickedBg, setBackPickBg] = useState("#ffffff");
 
-  //
+  // Input Ref
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Front and Back
+  const [switchBtn, setSwitchBtn] = useState(false);
+  const [tab, setTab] = useState<string>("image");
+  const [pickedBg, setPickBg] = useState("#ffffff");
   const [active, setActive] = useState<string>("front");
+
+  // Front Card
+  const [croppedImage, setCroppedImage] = useState<string | null>(null);
+  const [frontFile, setFrontFile] = useState<File | null>();
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [bg, setBg] = useState<string>("bg-white");
-  const [backBg, setBackBg] = useState<string>("bg-white");
+  const [name, setName] = useState<string>("");
+  const [font, setFontSize] = useState<string>("4xl");
+  const [image, setImage] = useState("40");
   const [align, setAlign] = useState({
     name: "Center Center",
     style: "text-center",
   });
-  const [backAlign, setBackAlign] = useState({
-    name: "Center Center",
-    style: "",
-  });
-  const [name, setName] = useState<string>("");
-  const [backName, setBackName] = useState<string>("");
-  const [font, setFontSize] = useState<string>("4xl");
-  const [backFont, setBackFontSize] = useState<string>("4xl");
-
   const [fontStyle, setFontStyle] = useState<Style>({
     style: "syne",
     name: "Syne",
+  });
+
+  // Back Card
+  const [backImageSrc, setBackImageSrc] = useState<string | null>(null);
+  const [backCroppedImage, setBackCroppedImage] = useState<string | null>(null);
+  const [backFile, setBackFile] = useState<File | null>();
+  const [backPickedBg, setBackPickBg] = useState("#ffffff");
+  const [backBg, setBackBg] = useState<string>("bg-white");
+  const [backName, setBackName] = useState<string>("");
+  const [backFont, setBackFontSize] = useState<string>("4xl");
+  const [backImage, setBackImage] = useState("40");
+  const [backAlign, setBackAlign] = useState({
+    name: "Center Center",
+    style: "",
   });
   const [backFontStyle, setBackFontStyle] = useState<Style>({
     style: "syne",
     name: "Syne",
   });
-  const [image, setImage] = useState("40");
-  const [backImage, setBackImage] = useState("40");
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  // Error
+  const [error, setError] = useState<boolean>(false);
 
+  // On Crop Complete
   const onCropComplete = (_: any, croppedAreaPixels: any) => {
     setCroppedAreaPixels(croppedAreaPixels);
   };
 
   // Showing Cropped Image
-  const smallShowCroppedImage = async () => {
+  const showCroppedImage = async () => {
     try {
       if (active === "front") {
         const croppedImage = await getCroppedImg(
@@ -96,7 +112,7 @@ const SmallEditor: React.FC = () => {
   };
 
   // Live Preview
-  const smallUpdateCroppedImage = useCallback(async () => {
+  const updateCroppedImage = useCallback(async () => {
     if (croppedAreaPixels) {
       try {
         if (active === "front") {
@@ -119,13 +135,12 @@ const SmallEditor: React.FC = () => {
       }
     }
   }, [imageSrc, croppedAreaPixels, rotation]);
-
   useEffect(() => {
-    smallUpdateCroppedImage();
-  }, [smallUpdateCroppedImage]);
+    updateCroppedImage();
+  }, [updateCroppedImage]);
 
-  // On File Cahnge
-  const smallOnFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // On File Change
+  const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
 
@@ -156,15 +171,52 @@ const SmallEditor: React.FC = () => {
     }
   };
 
-  const smallHandleSubmit = () => {
-    console.log(frontFile, backFile);
+  // On order asked
+  const handleSubmit = () => {
+    if (backFile || frontFile) {
+      // Product
+      setProductId(productId ? productId : "");
+      // Set Front
+      updateFront({
+        bgColor: bg,
+        fontStyle: fontStyle.style,
+        image: frontFile,
+        text: name,
+        textAlignment: align.style,
+        textSize: font,
+        imageSize: image,
+      });
+      // Set Back
+      updateBack({
+        bgColor: backBg,
+        fontStyle: backFontStyle.style,
+        image: backFile,
+        text: backName,
+        textAlignment: backAlign.style,
+        textSize: backFont,
+        imageSize: backImage,
+      });
+
+      navigate("/pay");
+    } else {
+      setError(true);
+    }
   };
 
   return (
     <>
+      {error && (
+        <div className="absolute flex top-3 right-0 z-50 text-white bg-red-500 rounded ps-5 text-sm py-2">
+          <p>Please at least insert your logo </p>
+          <p
+            onClick={() => setError(false)}
+            className="text-white ms-5 me-2 text- bi-x-lg bg-black rounded px-2 py-1"
+          ></p>
+        </div>
+      )}
       <div className="px-2">
         <div className="secondary-bg rounded mt-1 relative">
-          {/* Small Device Preview */}
+          {/* Device Preview */}
           <div className="col-span-5">
             <div className={`relative px-2 py-5 bg-gray-200 h-full rounded`}>
               <SmallDevicePreview
@@ -202,7 +254,7 @@ const SmallEditor: React.FC = () => {
         </div>
       </div>
 
-      {/* Small Device Editors */}
+      {/* Device Editors */}
       <div
         className={`absolute w-full px-5 bg-secondary border border-gray-600 rounded-xl bottom-10 sm-scroll ${
           imageSrc ? "sm-" : backImageSrc ? "sm-scrollbar" : ""
@@ -238,7 +290,7 @@ const SmallEditor: React.FC = () => {
                       type="file"
                       id={`logo-file`}
                       className="hidden"
-                      onChange={smallOnFileChange}
+                      onChange={onFileChange}
                       accept="image/*"
                       ref={inputRef}
                     />
@@ -287,7 +339,7 @@ const SmallEditor: React.FC = () => {
                       />
                     </div>
                     <p
-                      onClick={() => smallShowCroppedImage()}
+                      onClick={() => showCroppedImage()}
                       className="absolute  bottom-0 z-50 bg-green-400 bi-check text- text-xl cursor-pointer rounded px-3"
                     ></p>
                     <p
@@ -330,7 +382,7 @@ const SmallEditor: React.FC = () => {
                       />
                     </div>
                     <p
-                      onClick={() => smallShowCroppedImage()}
+                      onClick={() => showCroppedImage()}
                       className="absolute  bottom-0 z-50 bg-green-400 bi-check text- text-xl cursor-pointer rounded px-3"
                     ></p>
                     <p
@@ -494,7 +546,7 @@ const SmallEditor: React.FC = () => {
         )}
       </div>
 
-      {/* Small device Card Taps*/}
+      {/* Card Taps*/}
       <div className="absolute bottom-0 w-full">
         <div className="flex justify-between px-10 secondary-bg py-2 border rounded border-gray-800">
           <p
@@ -504,7 +556,7 @@ const SmallEditor: React.FC = () => {
             } bi-image text-2xl text-gray-500`}
           ></p>
           <button
-            onClick={() => smallHandleSubmit()}
+            onClick={() => handleSubmit()}
             className="rounded shadow-none px-8  text-center py-0 btn-bg text-sm text-white"
           >
             Order
