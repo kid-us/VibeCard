@@ -205,159 +205,180 @@ const SmallEditor: React.FC = () => {
       {/* Small Device Editors */}
       <div
         className={`absolute w-full px-5 bg-secondary border border-gray-600 rounded-xl bottom-10 sm-scroll ${
-          imageSrc ? "sm-scrollbar" : backImageSrc ? "sm-scrollbar" : ""
+          imageSrc ? "sm-" : backImageSrc ? "sm-scrollbar" : ""
         }`}
       >
         {/* Image */}
         {tab === "image" && (
-          <div className="w-full">
-            <div className="flex justify-between mt-2">
-              <p className="text-gray-400 text-sm">Image / Logo</p>
-              {active === "front" && croppedImage && (
-                <button
-                  onClick={() => setCroppedImage(null)}
-                  className="bg-red-500 rounded text-xs w-14 text-white"
-                >
-                  Reset
-                </button>
-              )}
-              {active === "back" && backCroppedImage && (
-                <button
-                  onClick={() => setBackCroppedImage(null)}
-                  className="bg-red-500 rounded text-xs w-14 text-white"
-                >
-                  Reset
-                </button>
-              )}
-            </div>
-            {!imageSrc && (
-              <div className="flex justify-between">
-                <div className="bg-white border w-full h-20 mt-3 rounded pb-3 ps-3 text-center">
-                  <input
-                    type="file"
-                    id={`logo-file`}
-                    className="hidden"
-                    onChange={smallOnFileChange}
-                    accept="image/*"
-                    ref={inputRef}
-                  />
+          <>
+            <div className="w-full">
+              <div className="flex justify-between mt-2">
+                <p className="text-gray-400 text-sm">Image / Logo</p>
+                {active === "front" && croppedImage && (
+                  <button
+                    onClick={() => setCroppedImage(null)}
+                    className="bg-red-500 rounded text-xs w-14 text-white"
+                  >
+                    Reset
+                  </button>
+                )}
+                {active === "back" && backCroppedImage && (
+                  <button
+                    onClick={() => setBackCroppedImage(null)}
+                    className="bg-red-500 rounded text-xs w-14 text-white"
+                  >
+                    Reset
+                  </button>
+                )}
+              </div>
+              {!imageSrc && (
+                <div className="flex justify-between">
+                  <div className="bg-white border w-full h-20 mt-3 rounded pb-3 ps-3 text-center">
+                    <input
+                      type="file"
+                      id={`logo-file`}
+                      className="hidden"
+                      onChange={smallOnFileChange}
+                      accept="image/*"
+                      ref={inputRef}
+                    />
 
-                  <label htmlFor={`logo-file`} className="cursor-pointer">
-                    <div className="flex flex-col pt-3">
-                      <i className="bi-image text-2xl"></i>
-                      <span className="text-sm">Upload front / back Image</span>
+                    <label htmlFor={`logo-file`} className="cursor-pointer">
+                      <div className="flex flex-col pt-3">
+                        <i className="bi-image text-2xl"></i>
+                        <span className="text-sm">
+                          Upload front / back Image
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              )}
+
+              {/* Front Card */}
+              {imageSrc && (
+                <>
+                  {/* Scroll Animation */}
+                  <div className="relative">
+                    <div className="fixed right-1 scroll-thumb bi-hand-index-thumb-fill top-96 text-gray-500 "></div>
+                  </div>
+                  {/* Editor */}
+                  <div className="h-[300px] w-full relative mt-4 mb-10 rounded overflow-hidden">
+                    <Cropper
+                      image={imageSrc}
+                      crop={crop}
+                      zoom={zoom}
+                      aspect={aspect}
+                      rotation={rotation}
+                      onCropChange={setCrop}
+                      onZoomChange={setZoom}
+                      onRotationChange={setRotation}
+                      onCropComplete={onCropComplete}
+                      cropShape="rect"
+                      showGrid={true}
+                    />
+                    <div className="absolute w-full bottom-7">
+                      <CustomSlider
+                        value={zoom}
+                        min={1}
+                        max={3}
+                        step={0.1}
+                        onChange={setZoom}
+                      />
                     </div>
+                    <p
+                      onClick={() => smallShowCroppedImage()}
+                      className="absolute  bottom-0 z-50 bg-green-400 bi-check text- text-xl cursor-pointer rounded px-3"
+                    ></p>
+                    <p
+                      onClick={() => setRotation((rotation + 90) % 360)}
+                      className="absolute right-0 bottom-0 z-50 bg-gray-400 bi-arrow-repeat text- text-xl cursor-pointer rounded px-3"
+                    ></p>
+                  </div>
+                </>
+              )}
+
+              {/* Card Back */}
+              {backImageSrc && (
+                <>
+                  {/* Scroll Animation */}
+                  <div className="relative">
+                    <div className="fixed right-1 scroll-thumb bi-hand-index-thumb-fill top-96 text-gray-500 "></div>
+                  </div>
+                  {/* Editor */}
+                  <div className="h-[400px] w-full relative mt-4 mb-10 rounded overflow-hidden">
+                    <Cropper
+                      image={backImageSrc}
+                      crop={crop}
+                      zoom={zoom}
+                      aspect={aspect}
+                      rotation={rotation}
+                      onCropChange={setCrop}
+                      onZoomChange={setZoom}
+                      onRotationChange={setRotation}
+                      onCropComplete={onCropComplete}
+                      cropShape="rect"
+                      showGrid={true}
+                    />
+                    <div className="absolute w-full bottom-7">
+                      <CustomSlider
+                        value={zoom}
+                        min={1}
+                        max={3}
+                        step={0.1}
+                        onChange={setZoom}
+                      />
+                    </div>
+                    <p
+                      onClick={() => smallShowCroppedImage()}
+                      className="absolute  bottom-0 z-50 bg-green-400 bi-check text- text-xl cursor-pointer rounded px-3"
+                    ></p>
+                    <p
+                      onClick={() => setRotation((rotation + 90) % 360)}
+                      className="absolute right-0 bottom-0 z-50 bg-gray-400 bi-arrow-repeat text- text-xl cursor-pointer rounded px-3"
+                    ></p>
+                  </div>
+                </>
+              )}
+
+              <div className="mt-3">
+                <div className="mb-5">
+                  <label
+                    htmlFor="width"
+                    className="text-gray-400 block text-xs"
+                  >
+                    Image Size
                   </label>
+                  <select
+                    name="width"
+                    className="w-full h-10 rounded p-1 mt-2 focus:outline-none"
+                    onChange={(e) =>
+                      active === "front"
+                        ? setImage(e.currentTarget.value)
+                        : setBackImage(e.currentTarget.value)
+                    }
+                    value={active === "front" ? image : backImage}
+                    style={{
+                      backgroundColor: "#f0f0f0",
+                      color: "#333",
+                    }}
+                  >
+                    {imageSize.map((size) =>
+                      size !== image ? (
+                        <option key={size} value={`${size}`}>
+                          {size}
+                        </option>
+                      ) : (
+                        <option selected value={image}>
+                          {image}
+                        </option>
+                      )
+                    )}
+                  </select>
                 </div>
-              </div>
-            )}
-
-            {/* Front Card */}
-            {imageSrc && (
-              <div className="h-[400px] w-full relative mt-4 mb-10 rounded overflow-hidden">
-                <Cropper
-                  image={imageSrc}
-                  crop={crop}
-                  zoom={zoom}
-                  aspect={aspect}
-                  rotation={rotation}
-                  onCropChange={setCrop}
-                  onZoomChange={setZoom}
-                  onRotationChange={setRotation}
-                  onCropComplete={onCropComplete}
-                  cropShape="rect"
-                  showGrid={true}
-                />
-                <div className="absolute w-full bottom-7">
-                  <CustomSlider
-                    value={zoom}
-                    min={1}
-                    max={3}
-                    step={0.1}
-                    onChange={setZoom}
-                  />
-                </div>
-                <p
-                  onClick={() => smallShowCroppedImage()}
-                  className="absolute  bottom-0 z-50 bg-green-400 bi-check text- text-xl cursor-pointer rounded px-3"
-                ></p>
-                <p
-                  onClick={() => setRotation((rotation + 90) % 360)}
-                  className="absolute right-0 bottom-0 z-50 bg-gray-400 bi-arrow-repeat text- text-xl cursor-pointer rounded px-3"
-                ></p>
-              </div>
-            )}
-
-            {/* Card Back */}
-            {backImageSrc && (
-              <div className="h-[400px] w-full relative mt-4 mb-10 rounded overflow-hidden">
-                <Cropper
-                  image={backImageSrc}
-                  crop={crop}
-                  zoom={zoom}
-                  aspect={aspect}
-                  rotation={rotation}
-                  onCropChange={setCrop}
-                  onZoomChange={setZoom}
-                  onRotationChange={setRotation}
-                  onCropComplete={onCropComplete}
-                  cropShape="rect"
-                  showGrid={true}
-                />
-                <div className="absolute w-full bottom-7">
-                  <CustomSlider
-                    value={zoom}
-                    min={1}
-                    max={3}
-                    step={0.1}
-                    onChange={setZoom}
-                  />
-                </div>
-                <p
-                  onClick={() => smallShowCroppedImage()}
-                  className="absolute  bottom-0 z-50 bg-green-400 bi-check text- text-xl cursor-pointer rounded px-3"
-                ></p>
-                <p
-                  onClick={() => setRotation((rotation + 90) % 360)}
-                  className="absolute right-0 bottom-0 z-50 bg-gray-400 bi-arrow-repeat text- text-xl cursor-pointer rounded px-3"
-                ></p>
-              </div>
-            )}
-
-            <div className="mt-3">
-              <div className="mb-5">
-                <label htmlFor="width" className="text-gray-400 block text-xs">
-                  Image Size
-                </label>
-                <select
-                  name="width"
-                  className="w-full h-10 rounded p-1 mt-2 focus:outline-none"
-                  onChange={(e) =>
-                    active === "front"
-                      ? setImage(e.currentTarget.value)
-                      : setBackImage(e.currentTarget.value)
-                  }
-                  value={active === "front" ? image : backImage}
-                  style={{
-                    backgroundColor: "#f0f0f0",
-                    color: "#333",
-                  }}
-                >
-                  {imageSize.map((size) =>
-                    size !== image ? (
-                      <option key={size} value={`${size}`}>
-                        {size}
-                      </option>
-                    ) : (
-                      <option selected value={image}>
-                        {image}
-                      </option>
-                    )
-                  )}
-                </select>
               </div>
             </div>
-          </div>
+          </>
         )}
 
         {/* text */}
