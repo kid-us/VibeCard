@@ -20,12 +20,10 @@ const ShowMyCard = ({ showPreview }: Props) => {
     if (front.image) {
       const url = URL.createObjectURL(front.image);
       setFrontImage(url);
-      return () => URL.revokeObjectURL(url);
     }
     if (back.image) {
       const url = URL.createObjectURL(back.image);
       setBackImage(url);
-      return () => URL.revokeObjectURL(url);
     }
   }, [front, back]);
 
