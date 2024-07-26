@@ -9,6 +9,7 @@ interface Card {
   fontStyle: string;
   imageSize: string;
   pickedBg: string;
+  color: string;
 }
 
 type State = {
@@ -34,6 +35,7 @@ const useProduct = create<State & Actions>((set) => ({
     fontStyle: "syne",
     imageSize: "40",
     pickedBg: "#ffffff",
+    color: "#000000",
   },
   back: {
     text: "",
@@ -44,6 +46,7 @@ const useProduct = create<State & Actions>((set) => ({
     fontStyle: "syne",
     imageSize: "40",
     pickedBg: "#ffffff",
+    color: "#000000",
   },
   productId: 0,
 

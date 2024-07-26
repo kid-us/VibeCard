@@ -20,6 +20,7 @@ interface Props {
   align: Style;
   fSize: string;
   pickedBg: string;
+  textColor: string;
   //   Back
   backPickedBg: string;
   backBg: string;
@@ -29,6 +30,7 @@ interface Props {
   backAlign: Style;
   backCroppedImage: string;
   backFontSize: string;
+  backTextColor: string;
   // Other
   setSwitch: (value: boolean) => void;
   switchBtn: boolean;
@@ -36,29 +38,33 @@ interface Props {
 
 const SmallDevicePreview = ({
   product,
-  bg,
-  setBg,
-  backBg,
-  setBackBg,
   activeCard,
+  setSwitch,
   active,
-  fontStyle,
-  image,
-  fSize,
-  croppedImage,
+  switchBtn,
+  // front
+  bg,
   name,
+  image,
   align,
-  backImage,
+  fSize,
+  pickedBg,
+  fontStyle,
+  textColor,
+  croppedImage,
+  setBg,
+  setPickBg,
+  // Back
+  backBg,
   backAlign,
-  backCroppedImage,
   backName,
+  backImage,
+  backCroppedImage,
   backFontSize,
   backFontStyle,
-  setSwitch,
-  switchBtn,
   backPickedBg,
-  pickedBg,
-  setPickBg,
+  backTextColor,
+  setBackBg,
   setBackPickBg,
 }: Props) => {
   return (
@@ -153,11 +159,10 @@ const SmallDevicePreview = ({
                   )}
                   {name !== "" && (
                     <p
-                      className={`${
-                        bg === "bg-white" ? "text-black" : "text-white"
-                      } ${align.style} ${
-                        fontStyle.style
-                      } text-${fSize} overflow-hidden text-ellipsis px-2`}
+                      className={`${align.style} ${fontStyle.style} text-${fSize} overflow-hidden text-ellipsis px-2`}
+                      style={{
+                        color: textColor,
+                      }}
                     >
                       {name}
                     </p>
@@ -188,11 +193,10 @@ const SmallDevicePreview = ({
                   )}
                   {backName !== "" && (
                     <p
-                      className={`${
-                        bg === "bg-white" ? "text-black" : "text-white"
-                      } ${backAlign.style} ${
-                        backFontStyle.style
-                      } text-${backFontSize} overflow-hidden text-ellipsis px-2`}
+                      className={`${backAlign.style} ${backFontStyle.style} text-${backFontSize} overflow-hidden text-ellipsis px-2`}
+                      style={{
+                        color: backTextColor,
+                      }}
                     >
                       {backName}
                     </p>
@@ -249,11 +253,10 @@ const SmallDevicePreview = ({
                   )}
                   {name !== "" && (
                     <p
-                      className={`${
-                        bg === "bg-white" ? "text-black" : "text-white"
-                      } ${align.style} ${
-                        fontStyle.style
-                      } text-${fSize} overflow-hidden text-ellipsis px-2`}
+                      className={`${align.style} ${fontStyle.style} text-${fSize} overflow-hidden text-ellipsis px-2`}
+                      style={{
+                        color: textColor,
+                      }}
                     >
                       {name}
                     </p>
@@ -284,11 +287,10 @@ const SmallDevicePreview = ({
                   )}
                   {backName !== "" && (
                     <p
-                      className={`${
-                        bg === "bg-white" ? "text-black" : "text-white"
-                      } ${backAlign.style} ${
-                        backFontStyle.style
-                      } text-${backFontSize} overflow-hidden text-ellipsis px-2`}
+                      className={`${backAlign.style} ${backFontStyle.style} text-${backFontSize} overflow-hidden text-ellipsis px-2`}
+                      style={{
+                        color: backTextColor,
+                      }}
                     >
                       {backName}
                     </p>
@@ -322,11 +324,10 @@ const SmallDevicePreview = ({
                 )}
                 {name !== "" && (
                   <p
-                    className={`${
-                      bg === "bg-white" ? "text-black" : "text-white"
-                    } ${align.style} ${
-                      fontStyle.style
-                    } text-${fSize} overflow-hidden text-ellipsis px-2`}
+                    className={`${align.style} ${fontStyle.style} text-${fSize} overflow-hidden text-ellipsis px-2`}
+                    style={{
+                      color: textColor,
+                    }}
                   >
                     {name}
                   </p>
@@ -351,11 +352,10 @@ const SmallDevicePreview = ({
               <div className={`flex justify-center items-center h-full`}>
                 {name !== "" && (
                   <p
-                    className={`${
-                      bg === "bg-white" ? "text-black" : "text-white"
-                    } ${align.style} ${
-                      fontStyle.style
-                    } text-${fSize} overflow-hidden text-ellipsis px-2`}
+                    className={`${align.style} ${fontStyle.style} text-${fSize} overflow-hidden text-ellipsis px-2`}
+                    style={{
+                      color: textColor,
+                    }}
                   >
                     {name}
                   </p>
@@ -394,11 +394,10 @@ const SmallDevicePreview = ({
                   )}
                   {name !== "" && (
                     <p
-                      className={`${
-                        bg === "bg-white" ? "text-black" : "text-white"
-                      } ${align.style} ${
-                        fontStyle.style
-                      } text-${fSize} overflow-hidden text-ellipsis px-2`}
+                      className={`${align.style} ${fontStyle.style} text-${fSize} overflow-hidden text-ellipsis px-2`}
+                      style={{
+                        color: textColor,
+                      }}
                     >
                       {name}
                     </p>

@@ -8,6 +8,7 @@ import SmallDevicePreview from "./SmallDevicePreview";
 import { useNavigate, useParams } from "react-router-dom";
 import useProduct from "@/store/useProduct";
 import ShowMyCard from "./ShowMyCard";
+import { save } from "@/assets";
 
 export interface Image {
   width: string;
@@ -45,13 +46,14 @@ const SmallEditor: React.FC = () => {
 
   // Front Card
   const [croppedImage, setCroppedImage] = useState<string | null>(null);
-  const [pickedBg, setPickBg] = useState("#ffffff");
+  const [pickedBg, setPickBg] = useState<string>("#ffffff");
   const [frontFile, setFrontFile] = useState<File | null>();
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [bg, setBg] = useState<string>("bg-white");
   const [name, setName] = useState<string>("");
   const [font, setFontSize] = useState<string>("4xl");
-  const [image, setImage] = useState("40");
+  const [image, setImage] = useState<string>("40");
+  const [textColor, setTextColor] = useState<string>("");
   const [align, setAlign] = useState({
     name: "Center Center",
     style: "text-center",
@@ -65,11 +67,12 @@ const SmallEditor: React.FC = () => {
   const [backImageSrc, setBackImageSrc] = useState<string | null>(null);
   const [backCroppedImage, setBackCroppedImage] = useState<string | null>(null);
   const [backFile, setBackFile] = useState<File | null>();
-  const [backPickedBg, setBackPickBg] = useState("#ffffff");
+  const [backPickedBg, setBackPickBg] = useState<string>("#ffffff");
   const [backBg, setBackBg] = useState<string>("bg-white");
   const [backName, setBackName] = useState<string>("");
   const [backFont, setBackFontSize] = useState<string>("4xl");
-  const [backImage, setBackImage] = useState("40");
+  const [backImage, setBackImage] = useState<string>("40");
+  const [backTextColor, setBackTextColor] = useState<string>("");
   const [backAlign, setBackAlign] = useState({
     name: "Center Center",
     style: "",
@@ -197,6 +200,7 @@ const SmallEditor: React.FC = () => {
         textSize: font,
         imageSize: image,
         pickedBg: pickedBg,
+        color: textColor,
       });
       // Set Back
       updateBack({
@@ -208,6 +212,7 @@ const SmallEditor: React.FC = () => {
         textSize: backFont,
         imageSize: backImage,
         pickedBg: backPickedBg,
+        color: backTextColor,
       });
 
       navigate("/pay");
@@ -231,6 +236,7 @@ const SmallEditor: React.FC = () => {
       textSize: font,
       imageSize: image,
       pickedBg: pickedBg,
+      color: textColor,
     });
     // Set Back
     updateBack({
@@ -242,6 +248,7 @@ const SmallEditor: React.FC = () => {
       textSize: backFont,
       imageSize: backImage,
       pickedBg: backPickedBg,
+      color: backTextColor,
     });
     setShowMyCard(true);
   };
@@ -277,6 +284,7 @@ const SmallEditor: React.FC = () => {
                 fontStyle={fontStyle}
                 image={image}
                 name={name}
+                textColor={textColor}
                 // Back
                 backPickedBg={backPickedBg}
                 setBackPickBg={(value) => setBackPickBg(value)}
@@ -288,6 +296,7 @@ const SmallEditor: React.FC = () => {
                 backFontStyle={backFontStyle}
                 backImage={backImage}
                 backName={backName}
+                backTextColor={backTextColor}
                 // Switch
                 setSwitch={(value) => setSwitchBtn(value)}
                 switchBtn={switchBtn}
@@ -355,7 +364,7 @@ const SmallEditor: React.FC = () => {
                 <>
                   {/* Scroll Animation */}
                   <div className="relative">
-                    <div className="fixed right-1 scroll-thumb bi-hand-index-thumb-fill top-96 text-gray-500 "></div>
+                    <div className="fixed right-1 text-2xl scroll-thumb bi-hand-index-thumb-fill top-96 text-gray-500 "></div>
                   </div>
                   {/* Editor */}
                   <div className="h-[300px] w-full relative mt-4 mb-10 rounded overflow-hidden">
@@ -383,11 +392,13 @@ const SmallEditor: React.FC = () => {
                     </div>
                     <p
                       onClick={() => showCroppedImage()}
-                      className="absolute  bottom-0 z-50 bg-green-400 bi-check text- text-xl cursor-pointer rounded px-3"
-                    ></p>
+                      className="absolute  bottom-0 z-50 bg-white cursor-pointer rounded p-2 shadow "
+                    >
+                      <img src={save} alt="" className="h-5" />
+                    </p>
                     <p
                       onClick={() => setRotation((rotation + 90) % 360)}
-                      className="absolute right-0 bottom-0 z-50 bg-gray-400 bi-arrow-repeat text- text-xl cursor-pointer rounded px-3"
+                      className="absolute right-0 bottom-0 z-50 bg-white font-extrabold bi-arrow-repeat text-2xl cursor-pointer rounded px-2"
                     ></p>
                   </div>
                 </>
@@ -398,7 +409,7 @@ const SmallEditor: React.FC = () => {
                 <>
                   {/* Scroll Animation */}
                   <div className="relative">
-                    <div className="fixed right-1 scroll-thumb bi-hand-index-thumb-fill top-96 text-gray-500 "></div>
+                    <div className="fixed right-1 scroll-thumb text-2xl bi-hand-index-thumb-fill top-96 text-gray-500 "></div>
                   </div>
                   {/* Editor */}
                   <div className="h-[400px] w-full relative mt-4 mb-10 rounded overflow-hidden">
@@ -426,11 +437,13 @@ const SmallEditor: React.FC = () => {
                     </div>
                     <p
                       onClick={() => showCroppedImage()}
-                      className="absolute  bottom-0 z-50 bg-green-400 bi-check text- text-xl cursor-pointer rounded px-3"
-                    ></p>
+                      className="absolute  bottom-0 z-50 bg-white cursor-pointer rounded p-2 shadow "
+                    >
+                      <img src={save} alt="" className="h-5" />
+                    </p>
                     <p
                       onClick={() => setRotation((rotation + 90) % 360)}
-                      className="absolute right-0 bottom-0 z-50 bg-gray-400 bi-arrow-repeat text- text-xl cursor-pointer rounded px-3"
+                      className="absolute right-0 bottom-0 z-50 bg-white font-extrabold bi-arrow-repeat text-2xl cursor-pointer rounded px-2"
                     ></p>
                   </div>
                 </>
@@ -521,6 +534,21 @@ const SmallEditor: React.FC = () => {
                     )
                   )}
                 </select>
+              </div>
+
+              {/* Text Color */}
+              <div className="lg:0 mb-5 mt-10">
+                <p className="text-white text-xs mb-2">Text Color</p>
+                <input
+                  type="color"
+                  className="w-full lg:h-16 h-12 border-none outline-none shadow shadow-orange-900"
+                  onChange={(e) =>
+                    active === "front"
+                      ? setTextColor(e.currentTarget.value)
+                      : setBackTextColor(e.currentTarget.value)
+                  }
+                  value={active === "front" ? textColor : backTextColor}
+                />
               </div>
             </div>
             <div className="mt-3">

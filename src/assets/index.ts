@@ -17,6 +17,9 @@ import logo from "./facicon.png";
 // Content
 import deezer from "./deezer.png";
 
+// Save svg
+import save from "./save.svg";
+
 export {
   userPic,
   google,
@@ -35,4 +38,5 @@ export {
   logo,
   // Content
   deezer,
+  save,
 };

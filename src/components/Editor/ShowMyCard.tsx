@@ -129,13 +129,10 @@ const ShowMyCard = ({ showPreview }: Props) => {
                     )}
                     {front.text !== "" && (
                       <p
-                        className={`${
-                          front.bgColor === "bg-white"
-                            ? "text-black"
-                            : "text-white"
-                        } ${front.textAlignment} ${front.fontStyle} text-${
-                          front.textSize
-                        } overflow-hidden text-ellipsis px-2`}
+                        className={`${front.textAlignment} ${front.fontStyle} text-${front.textSize} overflow-hidden text-ellipsis px-2`}
+                        style={{
+                          color: front.color,
+                        }}
                       >
                         {front.text}
                       </p>
@@ -165,13 +162,10 @@ const ShowMyCard = ({ showPreview }: Props) => {
                     )}
                     {back.text !== "" && (
                       <p
-                        className={`${
-                          back.bgColor === "bg-white"
-                            ? "text-black"
-                            : "text-white"
-                        } ${back.textAlignment} ${back.fontStyle} text-${
-                          back.textSize
-                        } overflow-hidden text-ellipsis px-2`}
+                        className={`${back.textAlignment} ${back.fontStyle} text-${back.textSize} overflow-hidden text-ellipsis px-2`}
+                        style={{
+                          color: back.color,
+                        }}
                       >
                         {back.text}
                       </p>
@@ -213,13 +207,10 @@ const ShowMyCard = ({ showPreview }: Props) => {
                     )}
                     {front.text !== "" && (
                       <p
-                        className={`${
-                          front.bgColor === "bg-white"
-                            ? "text-black"
-                            : "text-white"
-                        } ${front.textAlignment} ${front.fontStyle} text-${
-                          front.textSize
-                        } overflow-hidden text-ellipsis px-2`}
+                        className={`${front.textAlignment} ${front.fontStyle} text-${front.textSize} overflow-hidden text-ellipsis px-2`}
+                        style={{
+                          color: front.color,
+                        }}
                       >
                         {front.text}
                       </p>
@@ -249,13 +240,10 @@ const ShowMyCard = ({ showPreview }: Props) => {
                     )}
                     {back.text !== "" && (
                       <p
-                        className={`${
-                          back.bgColor === "bg-white"
-                            ? "text-black"
-                            : "text-white"
-                        } ${back.textAlignment} ${back.fontStyle} text-${
-                          back.textSize
-                        } overflow-hidden text-ellipsis px-2`}
+                        className={`${back.textAlignment} ${back.fontStyle} text-${back.textSize} overflow-hidden text-ellipsis px-2`}
+                        style={{
+                          color: back.color,
+                        }}
                       >
                         {back.text}
                       </p>
@@ -266,7 +254,7 @@ const ShowMyCard = ({ showPreview }: Props) => {
             </div>
           )}
 
-          {/* Product 2  */}
+          {/* Product Small Device 2  */}
           {Number(productId) === 2 && (
             <div className="lg:hidden pb-5">
               {/* Front */}
@@ -293,13 +281,10 @@ const ShowMyCard = ({ showPreview }: Props) => {
                     )}
                     {front.text !== "" && (
                       <p
-                        className={`${
-                          front.bgColor === "bg-white"
-                            ? "text-black"
-                            : "text-white"
-                        } ${front.textAlignment} ${front.fontStyle} text-${
-                          front.textSize
-                        } overflow-hidden text-ellipsis px-2`}
+                        className={`${front.textAlignment} ${front.fontStyle} text-${front.textSize} overflow-hidden text-ellipsis px-2`}
+                        style={{
+                          color: front.color,
+                        }}
                       >
                         {front.text}
                       </p>
@@ -333,13 +318,10 @@ const ShowMyCard = ({ showPreview }: Props) => {
                     )}
                     {back.text !== "" && (
                       <p
-                        className={`${
-                          back.bgColor === "bg-white"
-                            ? "text-black"
-                            : "text-white"
-                        } ${back.textAlignment} ${back.fontStyle} text-${
-                          back.textSize
-                        } overflow-hidden text-ellipsis px-2`}
+                        className={`${back.textAlignment} ${back.fontStyle} text-${back.textSize} overflow-hidden text-ellipsis px-2`}
+                        style={{
+                          color: back.color,
+                        }}
                       >
                         {back.text}
                       </p>
@@ -373,13 +355,10 @@ const ShowMyCard = ({ showPreview }: Props) => {
                     )}
                     {front.text !== "" && (
                       <p
-                        className={`${
-                          front.bgColor === "bg-white"
-                            ? "text-black"
-                            : "text-white"
-                        } ${front.textAlignment} ${front.fontStyle} text-${
-                          front.textSize
-                        } overflow-hidden text-ellipsis px-2`}
+                        className={`${front.textAlignment} ${front.fontStyle} text-${front.textSize} overflow-hidden text-ellipsis px-2`}
+                        style={{
+                          color: front.color,
+                        }}
                       >
                         {front.text}
                       </p>
@@ -406,13 +385,10 @@ const ShowMyCard = ({ showPreview }: Props) => {
                   <div className={`flex justify-center items-center h-full`}>
                     {front.text !== "" && (
                       <p
-                        className={`${
-                          front.bgColor === "bg-white"
-                            ? "text-black"
-                            : "text-white"
-                        } ${front.textAlignment} ${front.fontStyle} text-${
-                          front.textSize
-                        } overflow-hidden text-ellipsis px-2`}
+                        className={`${front.textAlignment} ${front.fontStyle} text-${front.textSize} overflow-hidden text-ellipsis px-2`}
+                        style={{
+                          color: front.color,
+                        }}
                       >
                         {front.text}
                       </p>
@@ -453,13 +429,10 @@ const ShowMyCard = ({ showPreview }: Props) => {
                     )}
                     {front.text !== "" && (
                       <p
-                        className={`${
-                          front.bgColor === "bg-white"
-                            ? "text-black"
-                            : "text-white"
-                        } ${front.textAlignment} ${front.fontStyle} text-${
-                          front.textSize
-                        } overflow-hidden text-ellipsis px-2`}
+                        className={`${front.textAlignment} ${front.fontStyle} text-${front.textSize} overflow-hidden text-ellipsis px-2`}
+                        style={{
+                          color: front.color,
+                        }}
                       >
                         {front.text}
                       </p>

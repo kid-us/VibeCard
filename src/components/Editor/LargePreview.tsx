@@ -20,6 +20,7 @@ interface Props {
   align: Style;
   fSize: string;
   pickedBg: string;
+  textColor: string;
   //   Back
   backPickedBg: string;
   backBg: string;
@@ -29,6 +30,7 @@ interface Props {
   backAlign: Style;
   backCroppedImage: string;
   backFontSize: string;
+  backTextColor: string;
   // Other
   setSwitch: (value: boolean) => void;
   switchBtn: boolean;
@@ -37,30 +39,36 @@ interface Props {
 const LargePreview = ({
   product,
   bg,
-  setBg,
   backBg,
-  setBackBg,
   activeCard,
-  active,
-  fontStyle,
-  image,
-  fSize,
-  croppedImage,
-  name,
-  align,
-  backImage,
-  backAlign,
-  backCroppedImage,
-  backName,
-  backFontSize,
-  backFontStyle,
   setSwitch,
   switchBtn,
-  backPickedBg,
+  active,
+  // front
+  name,
+  align,
+  image,
+  fSize,
+  fontStyle,
   pickedBg,
+  croppedImage,
+  textColor,
   setPickBg,
+  setBg,
+  // Back
+  backName,
+  backImage,
+  backAlign,
+  backFontSize,
+  backFontStyle,
+  backCroppedImage,
+  backPickedBg,
+  backTextColor,
   setBackPickBg,
+  setBackBg,
 }: Props) => {
+  console.log(textColor);
+
   return (
     <>
       {/* Colors */}
@@ -135,11 +143,10 @@ const LargePreview = ({
                 )}
                 {name !== "" && (
                   <p
-                    className={`${
-                      bg === "bg-white" ? "text-black" : "text-white"
-                    } ${align.style} ${
-                      fontStyle.style
-                    } text-${fSize} overflow-hidden text-ellipsis px-2`}
+                    className={`${align.style} ${fontStyle.style} text-${fSize} overflow-hidden text-ellipsis px-2`}
+                    style={{
+                      color: textColor,
+                    }}
                   >
                     {name}
                   </p>
@@ -169,11 +176,10 @@ const LargePreview = ({
                 )}
                 {backName !== "" && (
                   <p
-                    className={`${
-                      bg === "bg-white" ? "text-black" : "text-white"
-                    } ${backAlign.style} ${
-                      backFontStyle.style
-                    } text-${backFontSize} overflow-hidden text-ellipsis px-2`}
+                    className={`${backAlign.style} ${backFontStyle.style} text-${backFontSize} overflow-hidden text-ellipsis px-2`}
+                    style={{
+                      color: backTextColor,
+                    }}
                   >
                     {backName}
                   </p>
@@ -204,7 +210,7 @@ const LargePreview = ({
               }}
             >
               <div
-                className={`flex justify-center items-center h-full overflow-hidden`}
+                className={`flex justify-center items-center h-full w-full overflow-hidden`}
               >
                 {croppedImage && (
                   <img
@@ -215,11 +221,10 @@ const LargePreview = ({
                 )}
                 {name !== "" && (
                   <p
-                    className={`${
-                      bg === "bg-white" ? "text-black" : "text-white"
-                    } ${align.style} ${
-                      fontStyle.style
-                    } text-${fSize} overflow-hidden text-ellipsis px-2`}
+                    className={`${backAlign.style} ${backFontStyle.style} text-${backFontSize} overflow-hidden text-ellipsis px-2`}
+                    style={{
+                      color: textColor,
+                    }}
                   >
                     {name}
                   </p>
@@ -237,7 +242,7 @@ const LargePreview = ({
               }}
             >
               <div
-                className={`flex justify-center items-center h-full overflow-hidden`}
+                className={`flex justify-center items-center h-full w-full overflow-hidden`}
               >
                 {backCroppedImage && (
                   <img
@@ -248,11 +253,10 @@ const LargePreview = ({
                 )}
                 {backName !== "" && (
                   <p
-                    className={`${
-                      bg === "bg-white" ? "text-black" : "text-white"
-                    } ${backAlign.style} ${
-                      backFontStyle.style
-                    } text-${backFontSize} overflow-hidden text-ellipsis px-2`}
+                    className={`${backAlign.style} ${backFontStyle.style} text-${backFontSize} overflow-hidden text-ellipsis px-2`}
+                    style={{
+                      color: backTextColor,
+                    }}
                   >
                     {backName}
                   </p>
@@ -285,11 +289,10 @@ const LargePreview = ({
                 )}
                 {name !== "" && (
                   <p
-                    className={`${
-                      bg === "bg-white" ? "text-black" : "text-white"
-                    } ${align.style} ${
-                      fontStyle.style
-                    } text-${fSize} overflow-hidden text-ellipsis px-2`}
+                    className={`${align.style} ${fontStyle.style} text-${fSize} overflow-hidden text-ellipsis px-2`}
+                    style={{
+                      color: textColor,
+                    }}
                   >
                     {name}
                   </p>
@@ -314,11 +317,10 @@ const LargePreview = ({
               <div className={`flex justify-center items-center h-full`}>
                 {name !== "" && (
                   <p
-                    className={`${
-                      bg === "bg-white" ? "text-black" : "text-white"
-                    } ${align.style} ${
-                      fontStyle.style
-                    } text-${fSize} overflow-hidden text-ellipsis px-2`}
+                    className={`${align.style} ${fontStyle.style} text-${fSize} overflow-hidden text-ellipsis px-2`}
+                    style={{
+                      color: textColor,
+                    }}
                   >
                     {name}
                   </p>
@@ -357,11 +359,10 @@ const LargePreview = ({
                 )}
                 {name !== "" && (
                   <p
-                    className={`${
-                      bg === "bg-white" ? "text-black" : "text-white"
-                    } ${align.style} ${
-                      fontStyle.style
-                    } text-${fSize} overflow-hidden text-ellipsis px-2`}
+                    className={`${align.style} ${fontStyle.style} text-${fSize} overflow-hidden text-ellipsis px-2`}
+                    style={{
+                      color: textColor,
+                    }}
                   >
                     {name}
                   </p>
