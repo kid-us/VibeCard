@@ -268,6 +268,12 @@ const SmallEditor: React.FC = () => {
         <div className="secondary-bg rounded mt-1 relative">
           {/* Preview */}
           <div className="col-span-5">
+            {/* Preview */}
+            <button
+              onClick={() => handlePreview()}
+              className="absolute z-40 bi-eye-fill text-black px-2 h-7 rounded mt-10 text-lg"
+            ></button>
+
             <div className={`relative px-2 py-5 bg-gray-200 h-full rounded`}>
               <SmallDevicePreview
                 product={productId}
@@ -633,11 +639,6 @@ const SmallEditor: React.FC = () => {
             >
               Order
             </button>
-            {/* Preview */}
-            <button
-              onClick={() => handlePreview()}
-              className="bi-eye-fill text-white px-2 h-7 mt-1 rounded"
-            ></button>
           </div>
           <p
             onClick={() => setTab("text")}

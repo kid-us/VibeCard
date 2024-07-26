@@ -585,25 +585,23 @@ const LargeEditor: React.FC = () => {
           </div>
 
           {/* Order */}
-          <div className="absolute -bottom-0 left-0 z-50">
-            <div className="flex gap-x-4">
+          <div className="absolute -bottom-0 left-0 z-50 w-full">
+            <div className="flex justify-center w-full gap-x-4">
               <button
                 onClick={() => handleSubmit()}
                 className="btn-bg rounded shadow-xl py-3 shadow-zinc-950"
               >
                 Order this Card
               </button>
-              <button
-                onClick={() => handlePreview()}
-                className="bg-white text-center w-60 rounded shadow-xl py-3 shadow-zinc-950"
-              >
-                Preview my card
-              </button>
             </div>
           </div>
 
           {/* Large Preview */}
           <div className="col-span-5">
+            <button
+              onClick={() => handlePreview()}
+              className="absolute z-40 right-28 text-center rounded bi-eye-fill text-2xl mt-1"
+            ></button>
             <div className={`relative py-5 bg-gray-200 h-full rounded`}>
               <LargePreview
                 product={productId}
