@@ -5,10 +5,11 @@ import CustomSlider from "./Slider";
 import { fonts } from "@/services/fonts";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import Preview from "./Preview";
+import LargePreview from "./LargePreview";
 import { fontSize, imageSize, textAlignment } from "@/services/editor";
 import { useNavigate, useParams } from "react-router-dom";
 import useProduct from "@/store/useProduct";
+import ShowMyCard from "./ShowMyCard";
 
 export interface Image {
   width: string;
@@ -80,8 +81,18 @@ const LargeEditor: React.FC = () => {
     name: "Syne",
   });
 
+  // Preview
+  const [showMyCard, setShowMyCard] = useState<boolean>(false);
+
   // Error
   const [error, setError] = useState<boolean>(false);
+
+  // Error hide
+  useEffect(() => {
+    setTimeout(() => {
+      setError(false);
+    }, 10000);
+  }, [error]);
 
   // On crop complete
   const onCropComplete = (_: any, croppedAreaPixels: any) => {
@@ -187,6 +198,7 @@ const LargeEditor: React.FC = () => {
         textAlignment: align.style,
         textSize: font,
         imageSize: image,
+        pickedBg: pickedBg,
       });
       // Set Back
       updateBack({
@@ -197,6 +209,7 @@ const LargeEditor: React.FC = () => {
         textAlignment: backAlign.style,
         textSize: backFont,
         imageSize: backImage,
+        pickedBg: backPickedBg,
       });
 
       navigate("/pay");
@@ -205,12 +218,35 @@ const LargeEditor: React.FC = () => {
     }
   };
 
-  // Error hide
-  useEffect(() => {
-    setTimeout(() => {
-      setError(false);
-    }, 10000);
-  }, [error]);
+  // Handle Preview
+  const handlePreview = () => {
+    // Product
+    // setProductId(productId ? productId : "");
+    setProductId(1);
+    // Set Front
+    updateFront({
+      bgColor: bg,
+      fontStyle: fontStyle.style,
+      image: frontFile,
+      text: name,
+      textAlignment: align.style,
+      textSize: font,
+      imageSize: image,
+      pickedBg: pickedBg,
+    });
+    // Set Back
+    updateBack({
+      bgColor: backBg,
+      fontStyle: backFontStyle.style,
+      image: backFile,
+      text: backName,
+      textAlignment: backAlign.style,
+      textSize: backFont,
+      imageSize: backImage,
+      pickedBg: backPickedBg,
+    });
+    setShowMyCard(true);
+  };
 
   return (
     <>
@@ -523,19 +559,27 @@ const LargeEditor: React.FC = () => {
           </div>
 
           {/* Order */}
-          <div className="absolute -bottom-5 left-[45%] z-50">
-            <button
-              onClick={() => handleSubmit()}
-              className="btn-bg rounded shadow-xl py-3 shadow-zinc-950"
-            >
-              Order this Card
-            </button>
+          <div className="absolute -bottom-0 left-0 z-50">
+            <div className="flex gap-x-4">
+              <button
+                onClick={() => handleSubmit()}
+                className="btn-bg rounded shadow-xl py-3 shadow-zinc-950"
+              >
+                Order this Card
+              </button>
+              <button
+                onClick={() => handlePreview()}
+                className="bg-white text-center w-60 rounded shadow-xl py-3 shadow-zinc-950"
+              >
+                Preview my card
+              </button>
+            </div>
           </div>
 
           {/* Large Preview */}
           <div className="col-span-5">
             <div className={`relative py-5 bg-gray-200 h-full rounded`}>
-              <Preview
+              <LargePreview
                 product={productId}
                 active={active}
                 activeCard={(value: string) => setActive(value)}
@@ -569,6 +613,11 @@ const LargeEditor: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Show My Card */}
+      {showMyCard && (
+        <ShowMyCard showPreview={(value) => setShowMyCard(value)} />
+      )}
 
       {/*Footer  */}
       <Footer />

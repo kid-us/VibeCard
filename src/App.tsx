@@ -27,7 +27,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/img/:productId" element={<ImageEditor />} />
+        <Route path="/editor/:productId" element={<ImageEditor />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/pricing" element={<Pricing />} />

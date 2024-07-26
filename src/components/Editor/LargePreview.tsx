@@ -34,7 +34,7 @@ interface Props {
   switchBtn: boolean;
 }
 
-const Preview = ({
+const LargePreview = ({
   product,
   bg,
   setBg,
@@ -375,4 +375,4 @@ const Preview = ({
   );
 };
 
-export default Preview;
+export default LargePreview;

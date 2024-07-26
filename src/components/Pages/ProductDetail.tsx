@@ -1,5 +1,5 @@
 import Navbar from "../Navbar/Navbar";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Product1 from "../Product/Product1";
 import Product2 from "../Product/Product2";
@@ -31,8 +31,16 @@ const ProductDetail = () => {
     if (type === "") {
       setOrderError(true);
       return;
+    } else {
+      const productCardInfo = {
+        quantity: quantity,
+        cardType: type,
+        vibecardLogo: backLogo,
+      };
+
+      localStorage.setItem("product", JSON.stringify(productCardInfo));
+      navigate(`/editor/${id}`);
     }
-    navigate(`/pay?${id}`);
   };
 
   return (
@@ -153,21 +161,13 @@ const ProductDetail = () => {
               <div className="lg:flex justify-between gap-x-10 w-full mt-14">
                 {/* Design */}
                 <div className="w-full lg:mb-0 mb-5">
-                  <Link to={`/img/${id}`}>
-                    <p className="bg-white py-3  lg:text-center rounded shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 text-center">
+                  <button onClick={() => handleOrder()}>
+                    <p className="bg-white py-3  lg:text-center rounded shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 text-center w-80">
                       <span className="bi-palette-fill me-2"></span>
                       Design your Card
                     </p>
-                  </Link>
+                  </button>
                 </div>
-
-                {/* Order */}
-                <button
-                  onClick={() => handleOrder()}
-                  className="btn-bg py-3  lg:text-center rounded shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 w-full"
-                >
-                  Order
-                </button>
               </div>
             </div>
           </div>

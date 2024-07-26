@@ -7,6 +7,7 @@ import { fontSize, imageSize, textAlignment } from "@/services/editor";
 import SmallDevicePreview from "./SmallDevicePreview";
 import { useNavigate, useParams } from "react-router-dom";
 import useProduct from "@/store/useProduct";
+import ShowMyCard from "./ShowMyCard";
 
 export interface Image {
   width: string;
@@ -40,11 +41,11 @@ const SmallEditor: React.FC = () => {
   // Front and Back
   const [switchBtn, setSwitchBtn] = useState(false);
   const [tab, setTab] = useState<string>("image");
-  const [pickedBg, setPickBg] = useState("#ffffff");
   const [active, setActive] = useState<string>("front");
 
   // Front Card
   const [croppedImage, setCroppedImage] = useState<string | null>(null);
+  const [pickedBg, setPickBg] = useState("#ffffff");
   const [frontFile, setFrontFile] = useState<File | null>();
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [bg, setBg] = useState<string>("bg-white");
@@ -78,8 +79,18 @@ const SmallEditor: React.FC = () => {
     name: "Syne",
   });
 
+  // Preview
+  const [showMyCard, setShowMyCard] = useState<boolean>(false);
+
   // Error
   const [error, setError] = useState<boolean>(false);
+
+  // Error hide
+  useEffect(() => {
+    setTimeout(() => {
+      setError(false);
+    }, 10000);
+  }, [error]);
 
   // On Crop Complete
   const onCropComplete = (_: any, croppedAreaPixels: any) => {
@@ -185,6 +196,7 @@ const SmallEditor: React.FC = () => {
         textAlignment: align.style,
         textSize: font,
         imageSize: image,
+        pickedBg: pickedBg,
       });
       // Set Back
       updateBack({
@@ -195,6 +207,7 @@ const SmallEditor: React.FC = () => {
         textAlignment: backAlign.style,
         textSize: backFont,
         imageSize: backImage,
+        pickedBg: backPickedBg,
       });
 
       navigate("/pay");
@@ -203,12 +216,35 @@ const SmallEditor: React.FC = () => {
     }
   };
 
-  // Error hide
-  useEffect(() => {
-    setTimeout(() => {
-      setError(false);
-    }, 10000);
-  }, [error]);
+  // Handle Preview
+  const handlePreview = () => {
+    // Product
+    // setProductId(productId ? productId : "");
+    setProductId(1);
+    // Set Front
+    updateFront({
+      bgColor: bg,
+      fontStyle: fontStyle.style,
+      image: frontFile,
+      text: name,
+      textAlignment: align.style,
+      textSize: font,
+      imageSize: image,
+      pickedBg: pickedBg,
+    });
+    // Set Back
+    updateBack({
+      bgColor: backBg,
+      fontStyle: backFontStyle.style,
+      image: backFile,
+      text: backName,
+      textAlignment: backAlign.style,
+      textSize: backFont,
+      imageSize: backImage,
+      pickedBg: backPickedBg,
+    });
+    setShowMyCard(true);
+  };
 
   return (
     <>
@@ -223,7 +259,7 @@ const SmallEditor: React.FC = () => {
       )}
       <div className="px-2">
         <div className="secondary-bg rounded mt-1 relative">
-          {/* Device Preview */}
+          {/* Preview */}
           <div className="col-span-5">
             <div className={`relative px-2 py-5 bg-gray-200 h-full rounded`}>
               <SmallDevicePreview
@@ -261,7 +297,7 @@ const SmallEditor: React.FC = () => {
         </div>
       </div>
 
-      {/* Device Editors */}
+      {/* Editors */}
       <div
         className={`absolute w-full px-5 bg-secondary border border-gray-600 rounded-xl bottom-10 sm-scroll ${
           imageSrc ? "sm-" : backImageSrc ? "sm-scrollbar" : ""
@@ -555,19 +591,26 @@ const SmallEditor: React.FC = () => {
 
       {/* Card Taps*/}
       <div className="absolute bottom-0 w-full">
-        <div className="flex justify-between px-10 secondary-bg py-2 border rounded border-gray-800">
+        <div className="flex justify-between px-1 secondary-bg py-2 border rounded border-gray-800">
           <p
             onClick={() => setTab("image")}
             className={`${
               tab === "image" && "text-white text-3xl"
             } bi-image text-2xl text-gray-500`}
           ></p>
-          <button
-            onClick={() => handleSubmit()}
-            className="rounded shadow-none px-8  text-center py-0 btn-bg text-sm text-white"
-          >
-            Order
-          </button>
+          <div className="flex gap-x-4">
+            <button
+              onClick={() => handleSubmit()}
+              className="rounded shadow-none px-8  text-center py-0 btn-bg text-sm text-white"
+            >
+              Order
+            </button>
+            {/* Preview */}
+            <button
+              onClick={() => handlePreview()}
+              className="bi-eye-fill text-white px-2 h-7 mt-1 rounded"
+            ></button>
+          </div>
           <p
             onClick={() => setTab("text")}
             className={`${
@@ -576,6 +619,11 @@ const SmallEditor: React.FC = () => {
           ></p>
         </div>
       </div>
+
+      {/* Design Preview */}
+      {showMyCard && (
+        <ShowMyCard showPreview={(value) => setShowMyCard(value)} />
+      )}
     </>
   );
 };
