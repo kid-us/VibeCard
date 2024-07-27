@@ -1,6 +1,22 @@
-import { Link } from "react-router-dom";
 import { google } from "../../assets";
+import axios from "axios";
+import { baseUrl } from "@/services/request";
 const SignUpOption = () => {
+  const handleGoogleAccount = () => {
+    axios
+      .get(`${baseUrl}/api/v1/auth/login/google`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <div className="grid grid-cols-3 mt-4">
@@ -8,12 +24,14 @@ const SignUpOption = () => {
         <div className="text-center text-xs">or</div>
         <div className="border-t-2 mt-2 border-gray-700"></div>
       </div>
-      <Link to="/" className="text-xs">
-        <div className="flex justify-center text-center border-2 border-gray-700 w-full rounded-lg py-3 mt-4">
-          <img src={google} className="me-4 w-3 h-3" />
-          <span>Continue with google</span>.
-        </div>
-      </Link>
+
+      <div
+        onClick={() => handleGoogleAccount()}
+        className="cursor-pointer text-xs flex justify-center text-center border-2 border-gray-700 w-full rounded-lg py-3 mt-4"
+      >
+        <img src={google} className="me-4 w-3 h-3" />
+        <span>Continue with google</span>.
+      </div>
     </>
   );
 };
