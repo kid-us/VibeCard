@@ -161,11 +161,12 @@ const ProductDetail = () => {
               <div className="lg:flex justify-between gap-x-10 w-full mt-14">
                 {/* Design */}
                 <div className="w-full lg:mb-0 mb-5">
-                  <button onClick={() => handleOrder()}>
-                    <p className="bg-white py-3  lg:text-center rounded shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 text-center w-80">
-                      <span className="bi-palette-fill me-2"></span>
-                      Design your Card
-                    </p>
+                  <button
+                    onClick={() => handleOrder()}
+                    className="bg-white py-3  lg:text-center rounded shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 text-center lg:w-80 w-full"
+                  >
+                    <span className="bi-palette-fill me-2"></span>
+                    Design your Card
                   </button>
                 </div>
               </div>

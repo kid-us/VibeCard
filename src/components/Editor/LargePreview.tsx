@@ -67,8 +67,6 @@ const LargePreview = ({
   setBackPickBg,
   setBackBg,
 }: Props) => {
-  console.log(textColor);
-
   return (
     <>
       {/* Colors */}
