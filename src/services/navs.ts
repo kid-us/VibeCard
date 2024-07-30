@@ -24,7 +24,7 @@ export const nav: Nav[] = [
   },
   {
     id: 6,
-    title: "Affiliate",
-    path: "/affiliate",
+    title: "Ambassador",
+    path: "/ambassador",
   },
 ];

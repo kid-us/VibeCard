@@ -21,6 +21,7 @@ import AboutUs from "./components/Pages/AboutUs";
 import PrivacyPolicy from "./components/Pages/PrivacyPolicy";
 import ContactUs from "./components/Pages/ContactUs";
 import ImageEditor from "./components/Editor/ImageEditor";
+import Ambassador from "./components/Pages/Ambassador";
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
             </Protected>
           }
         />
+        <Route path="/ambassador" element={<Ambassador />}></Route>
         <Route path="/create" element={<Create />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact-us" element={<ContactUs />} />
