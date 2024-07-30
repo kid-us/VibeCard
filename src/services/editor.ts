@@ -53,3 +53,53 @@ export const textAlignment = [
     style: "absolute bottom-2 right-2",
   },
 ];
+
+interface Fonts {
+  style: string;
+  name: string;
+}
+
+// Font Styles
+export const fonts: Fonts[] = [
+  { style: "logo-font", name: "Vibecard" },
+  {
+    style: "font-poppins",
+    name: "Poppins",
+  },
+  {
+    style: "pompiere",
+    name: "Pompiere",
+  },
+  {
+    style: "font-monospace",
+    name: "Monospace",
+  },
+  {
+    style: "syne",
+    name: "Syne",
+  },
+  {
+    style: "caveat",
+    name: "Caveat",
+  },
+  {
+    style: "metamorphous",
+    name: "Metamorphous",
+  },
+  {
+    style: "chakra",
+    name: "Chakra",
+  },
+  {
+    style: "playwrite",
+    name: "Playwrite",
+  },
+  {
+    style: "ubuntu",
+    name: "Ubuntu",
+  },
+  {
+    style: "roboto",
+    name: "Roboto",
+  },
+];

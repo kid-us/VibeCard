@@ -21,6 +21,7 @@ interface Props {
   fSize: string;
   pickedBg: string;
   textColor: string;
+  frontNewText: string;
   //   Back
   backPickedBg: string;
   backBg: string;
@@ -31,6 +32,7 @@ interface Props {
   backCroppedImage: string;
   backFontSize: string;
   backTextColor: string;
+  backNewText: string;
   // Other
   setSwitch: (value: boolean) => void;
   switchBtn: boolean;
@@ -45,6 +47,7 @@ const LargePreview = ({
   switchBtn,
   active,
   // front
+  frontNewText,
   name,
   align,
   image,
@@ -56,6 +59,7 @@ const LargePreview = ({
   setPickBg,
   setBg,
   // Back
+  backNewText,
   backName,
   backImage,
   backAlign,
@@ -140,14 +144,16 @@ const LargePreview = ({
                   />
                 )}
                 {name !== "" && (
-                  <p
-                    className={`${align.style} ${fontStyle.style} text-${fSize} overflow-hidden text-ellipsis px-2`}
-                    style={{
-                      color: textColor,
-                    }}
-                  >
-                    {name}
-                  </p>
+                  <>
+                    <p
+                      className={`${align.style} ${fontStyle.style} text-${fSize} overflow-hidden text-ellipsis px-2`}
+                      style={{
+                        color: textColor,
+                      }}
+                    >
+                      {name}
+                    </p>
+                  </>
                 )}
               </div>
             </div>
@@ -330,6 +336,11 @@ const LargePreview = ({
                     className={`h-${image} w-${image} object-cover`}
                   />
                 )}
+              </div>
+              <div className="flex justify-center top-0 h-full w-full items-center mt-8">
+                <p className="text-black  top-0 text-center w-full">
+                  {frontNewText}
+                </p>
               </div>
             </div>
           </div>

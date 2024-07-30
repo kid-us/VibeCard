@@ -2,11 +2,11 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import Cropper from "react-easy-crop";
 import { getCroppedImg } from "./cropUtils";
 import CustomSlider from "./Slider";
-import { fonts } from "@/services/fonts";
+// import { fonts } from "@/services/fonts";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import LargePreview from "./LargePreview";
-import { fontSize, imageSize, textAlignment } from "@/services/editor";
+import { fontSize, imageSize, textAlignment, fonts } from "@/services/editor";
 import { useNavigate, useParams } from "react-router-dom";
 import useProduct from "@/store/useProduct";
 import ShowMyCard from "./ShowMyCard";
@@ -53,6 +53,7 @@ const LargeEditor: React.FC = () => {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [bg, setBg] = useState<string>("bg-white");
   const [name, setName] = useState<string>("");
+  const [text, setText] = useState<string>("");
   const [font, setFontSize] = useState<string>("4xl");
   const [image, setImage] = useState<string>("40");
   const [textColor, setTextColor] = useState<string>("");
@@ -72,6 +73,7 @@ const LargeEditor: React.FC = () => {
   const [backPickedBg, setBackPickBg] = useState<string>("#ffffff");
   const [backBg, setBackBg] = useState<string>("bg-white");
   const [backName, setBackName] = useState<string>("");
+  const [backText, setBackText] = useState<string>("");
   const [backFont, setBackFontSize] = useState<string>("4xl");
   const [backImage, setBackImage] = useState<string>("40");
   const [backTextColor, setBackTextColor] = useState<string>("");
@@ -187,39 +189,52 @@ const LargeEditor: React.FC = () => {
     }
   };
 
+  interface Product {
+    cardType: string;
+    quantity: string | number;
+    vibecardLogo: boolean;
+  }
+
   // On order asked
   const handleSubmit = () => {
-    if (backFile || frontFile) {
-      // Product
-      setProductId(productId ? productId : "");
-      // Set Front
-      updateFront({
-        bgColor: bg,
-        fontStyle: fontStyle.style,
-        image: frontFile,
-        text: name,
-        textAlignment: align.style,
-        textSize: font,
-        imageSize: image,
-        pickedBg: pickedBg,
-        color: textColor,
-      });
-      // Set Back
-      updateBack({
-        bgColor: backBg,
-        fontStyle: backFontStyle.style,
-        image: backFile,
-        text: backName,
-        textAlignment: backAlign.style,
-        textSize: backFont,
-        imageSize: backImage,
-        pickedBg: backPickedBg,
-        color: backTextColor,
-      });
+    const productString = localStorage.getItem("product");
+    if (productString) {
+      const product: Product = JSON.parse(productString);
+
+      const data = {
+        cardType: product.cardType, //string
+        quantity: product.quantity, // number
+        vibecardLogo: product.vibecardLogo, // boolean
+        frontImage: frontFile, // file
+        backImage: backImage, // file
+
+        front: {
+          bgColor: bg, //string
+          fontStyle: fontStyle.style, //string
+          text: name, //string
+          textAlignment: align.style, //string
+          textSize: font, //string
+          imageSize: image, //string
+          pickedBg: pickedBg, //string
+          color: textColor, //string
+          // text2: text2,
+        },
+        back: {
+          bgColor: bg, //string
+          fontStyle: fontStyle.style, //string
+          text: name, //string
+          textAlignment: align.style, //string
+          textSize: font, //string
+          imageSize: image, //string
+          pickedBg: pickedBg, //string
+          color: textColor, //string
+          // text2: text2,
+        },
+      };
+
+      console.log(data);
 
       navigate("/pay");
-    } else {
-      setError(true);
     }
   };
 
@@ -447,14 +462,10 @@ const LargeEditor: React.FC = () => {
                     </div>
                   </div>
                 )}
-
                 {/* text */}
                 {tab === "text" && (
                   <div className="w-full">
-                    <p className="text-font py-5 text-white">
-                      Design with Image
-                    </p>
-                    <p className="text-white text-sm mb-4">
+                    <p className="text-white text-lg mb-5">
                       Company Name / Your Name
                     </p>
                     <input
@@ -467,6 +478,21 @@ const LargeEditor: React.FC = () => {
                           : (e) => setBackName(e.currentTarget.value)
                       }
                     />
+                    <p className="text-white text-sm mb-4">
+                      Slogan / Your Name
+                    </p>
+
+                    <input
+                      type="text"
+                      className="rounded w-full h-11 px-4 focus:outline-none mb-4 placeholder:font-bold placeholder:text-sm"
+                      placeholder="Slogan goes here"
+                      onChange={
+                        active === "front"
+                          ? (e) => setText(e.currentTarget.value)
+                          : (e) => setBackText(e.currentTarget.value)
+                      }
+                    />
+
                     <div className="mt-4">
                       {/* Font Size */}
                       <div>
@@ -619,6 +645,7 @@ const LargeEditor: React.FC = () => {
                 image={image}
                 name={name}
                 textColor={textColor}
+                frontNewText={text}
                 // Back
                 backPickedBg={backPickedBg}
                 setBackPickBg={(value) => setBackPickBg(value)}
@@ -631,6 +658,7 @@ const LargeEditor: React.FC = () => {
                 backImage={backImage}
                 backName={backName}
                 backTextColor={backTextColor}
+                backNewText={backText}
                 // Switch
                 setSwitch={(value) => setSwitchBtn(value)}
                 switchBtn={switchBtn}
