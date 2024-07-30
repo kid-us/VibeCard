@@ -46,7 +46,7 @@ const socialMedias: Social[] = [
     icon: "bi-twitter",
     color: "text-cyan-600",
   },
-];
+] as const;
 
 const schema = z.object({
   twitter: z.string().optional().optional(),
@@ -225,12 +225,54 @@ const AmbassadorRegister = () => {
             <span
               className={`absolute left-1 top-8 cursor-pointer px-2 text-lg border-r border-gray-500 bi-at text-white`}
             ></span>
-            <input
-              {...register(social.value)}
-              type="text"
-              name={social.value}
-              className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
-            />
+            {/* Tik tok */}
+            {social.value === "tiktok" && (
+              <input
+                {...register("tiktok")}
+                type="text"
+                className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
+              />
+            )}
+            {/* instagram */}
+            {social.value === "instagram" && (
+              <input
+                {...register("instagram")}
+                type="text"
+                className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
+              />
+            )}
+            {/* youtube */}
+            {social.value === "youtube" && (
+              <input
+                {...register("youtube")}
+                type="text"
+                className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
+              />
+            )}
+            {/* facebook */}
+            {social.value === "facebook" && (
+              <input
+                {...register("facebook")}
+                type="text"
+                className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
+              />
+            )}
+            {/* twitch */}
+            {social.value === "twitch" && (
+              <input
+                {...register("twitch")}
+                type="text"
+                className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
+              />
+            )}
+            {/* twitter */}
+            {social.value === "twitter" && (
+              <input
+                {...register("twitter")}
+                type="text"
+                className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
+              />
+            )}
             <span
               className={`absolute right-2 top-8 cursor-pointer px-2 text-lg border-l border-gray-500 ${social.icon} ${social.color}`}
             ></span>
