@@ -340,6 +340,7 @@ const LargePreview = ({
               <div className="flex justify-center top-0 h-full w-full items-center mt-8">
                 <p className="text-black  top-0 text-center w-full">
                   {frontNewText}
+                  {backNewText}
                 </p>
               </div>
             </div>
