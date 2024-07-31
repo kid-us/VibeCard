@@ -12,6 +12,7 @@ import Chat from "../ChatBot/Chat";
 import Product1 from "../Product/Product1";
 import Product2 from "../Product/Product2";
 import Product3 from "../Product/Product3";
+import Testimonials from "../Home/Testimonials";
 
 const Home = () => {
   const [title] = useState("Vibecard - Digital Business Cards");
@@ -113,6 +114,25 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {/* Testimonials */}
+      <div className="border-t border-gray-800 mt-10 lg:pb-14 pt-10 overflow-hidden">
+        <div className="lg:container mx-auto">
+          <div className="relative right-20 lg:-top-28 -top-40">
+            <div className="absolute lg:right-[35em]  right-36 top-40 bulb"></div>
+          </div>
+          <div className="flex justify-center w-full text-center">
+            <p className="text-gray-100 font-extrabold lg:text-4xl text-3xl text-center mb-16 lg:w-96 w-80">
+              Testimonials
+            </p>
+          </div>
+          {/* <Products /> */}
+          <div className=" gap-x-5 px-2">
+            <Testimonials />
+          </div>
+        </div>
+      </div>
+
       {/* Faq */}
       <div className="mt-16 lg:px-0 px-4">
         <h1 className="text-center text-2xl text-white">FAQ</h1>

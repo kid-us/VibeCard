@@ -22,6 +22,7 @@ import PrivacyPolicy from "./components/Pages/PrivacyPolicy";
 import ContactUs from "./components/Pages/ContactUs";
 import ImageEditor from "./components/Editor/ImageEditor";
 import Ambassador from "./components/Pages/Ambassador";
+import Affiliate from "./components/Pages/Affiliate";
 
 function App() {
   return (
@@ -64,6 +65,7 @@ function App() {
           }
         />
         <Route path="/ambassador" element={<Ambassador />}></Route>
+        <Route path="/affiliate" element={<Affiliate />}></Route>
         <Route path="/create" element={<Create />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact-us" element={<ContactUs />} />
