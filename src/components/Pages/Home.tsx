@@ -13,6 +13,13 @@ import Product1 from "../Product/Product1";
 import Product2 from "../Product/Product2";
 import Product3 from "../Product/Product3";
 import Testimonials from "../Home/Testimonials";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const Home = () => {
   const [title] = useState("Vibecard - Digital Business Cards");
@@ -107,11 +114,27 @@ const Home = () => {
             </p>
           </div>
           {/* <Products /> */}
-          <div className="lg:grid lg:grid-cols-3 md:grid md:grid-cols-2 gap-x-5 px-2">
-            <Product1></Product1>
-            <Product2></Product2>
-            <Product3></Product3>
-          </div>
+          <Carousel>
+            <CarouselContent className="gap-x-2 px-1">
+              <CarouselItem className="lg:basis-1/3">
+                <Product1></Product1>
+              </CarouselItem>
+              <CarouselItem className="lg:basis-1/3">
+                <Product2></Product2>
+              </CarouselItem>
+              <CarouselItem className="lg:basis-1/3">
+                <Product3></Product3>
+              </CarouselItem>
+            </CarouselContent>
+            <div className="lg:hidden">
+              <CarouselPrevious className="absolute z-50 left-0 bg-sky-950 text-white" />
+              <CarouselNext className="absolute z-50 right-0 bg-sky-950 text-white" />
+            </div>
+            <div className="lg:block md:hidden hidden">
+              <CarouselPrevious className="bg-sky-950 text-white" />
+              <CarouselNext className="bg-sky-950 text-white" />
+            </div>
+          </Carousel>
         </div>
       </div>
 
@@ -126,7 +149,7 @@ const Home = () => {
               Testimonials
             </p>
           </div>
-          {/* <Products /> */}
+          {/* <Testimonies /> */}
           <div className=" gap-x-5 px-2">
             <Testimonials />
           </div>

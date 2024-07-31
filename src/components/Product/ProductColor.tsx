@@ -29,7 +29,7 @@ const ProductColor = ({ defaultBg, setBg, title }: Props) => {
       <div className="flex justify-between">
         <p className="text-lg text-white">{title}</p>
         <div className="flex justify-center">
-          <p className="text-sm me-3 pt-1 text-white">Color</p>
+          {/* <p className="lg:text-sm mx-2 text-xs pt-1 text-white">Color</p> */}
           {bgColors.map((bg) => (
             <div
               key={bg.style}
