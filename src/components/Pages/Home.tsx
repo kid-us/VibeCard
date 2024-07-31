@@ -43,7 +43,7 @@ const Home = () => {
       </div>
 
       {/* Video */}
-      <div className="relative lg:pb-14 pb-8">
+      <div className="relative lg:pb-1 pb-1">
         <div className="relative right-20 -top-52">
           <div className="absolute w-[5%] lg:w-[10%] lg:right-20 -right-40 bulb"></div>
         </div>
@@ -127,12 +127,12 @@ const Home = () => {
               </CarouselItem>
             </CarouselContent>
             <div className="lg:hidden">
-              <CarouselPrevious className="absolute z-50 left-0 bg-sky-950 text-white" />
-              <CarouselNext className="absolute z-50 right-0 bg-sky-950 text-white" />
+              <CarouselPrevious className="absolute z-50 left-0" />
+              <CarouselNext className="absolute z-50 right-0" />
             </div>
             <div className="lg:block md:hidden hidden">
-              <CarouselPrevious className="bg-sky-950 text-white" />
-              <CarouselNext className="bg-sky-950 text-white" />
+              <CarouselPrevious />
+              <CarouselNext />
             </div>
           </Carousel>
         </div>

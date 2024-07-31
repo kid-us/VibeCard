@@ -40,7 +40,7 @@ const HeroCard = () => {
 
   return (
     <>
-      <div className="lg:grid grid-cols-3 lg:my-32 my-24 px-3">
+      <div className="lg:grid grid-cols-3 lg:my-28 my-16 px-3">
         <div className="relative lg:block hidden">
           <p className="absolute w-52 border border-teal-500 -right-20 top-8"></p>
           <div className="absolute right-20 top-0 bg-white w-52 rounded py-3 px-3">
