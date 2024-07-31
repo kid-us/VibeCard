@@ -50,7 +50,7 @@ const Testimonials = () => {
         <CarouselContent className="gap-x-2 ms-1">
           {testimony.map((t) => (
             <CarouselItem className="lg:basis-1/2 secondary-bg rounded-lg">
-              <div key={t.id} className="relative px-10 pb-10 pt-5">
+              <div key={t.id} className="relative lg:px-10 pb-10 pt-5">
                 <img
                   src={t.img}
                   alt="Photo"
