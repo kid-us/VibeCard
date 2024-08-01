@@ -234,6 +234,21 @@ const LargeEditor: React.FC = () => {
   };
 
   const [orientation, setOrientation] = useState<boolean>(false);
+  const handleOrientation = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    if (e.currentTarget.value === "landscape") setOrientation(false);
+    else {
+      setOrientation(true);
+    }
+    setBackFile(null);
+    setBackCroppedImage(null);
+    setBackName("");
+    setBackExtraText("");
+    //
+    setFrontFile(null);
+    setCroppedImage(null);
+    setName("");
+    setExtraText("");
+  };
 
   return (
     <>
@@ -278,11 +293,7 @@ const LargeEditor: React.FC = () => {
                 <select
                   name="orientation"
                   className="rounded h-7 w-40 focus:outline-none"
-                  onChange={(e) => {
-                    e.currentTarget.value === "landscape"
-                      ? setOrientation(false)
-                      : setOrientation(true);
-                  }}
+                  onChange={handleOrientation}
                 >
                   <option value="landscape">Landscape</option>
                   <option value="portrait">Portrait</option>
