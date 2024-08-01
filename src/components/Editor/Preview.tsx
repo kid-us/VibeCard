@@ -9,7 +9,7 @@ interface Props {
 }
 
 const Preview = ({ showPreview, orientation }: Props) => {
-  const { back, front, productId } = useProduct();
+  const { back, front } = useProduct();
 
   const printRef = useRef<HTMLDivElement>(null);
 
@@ -29,14 +29,6 @@ const Preview = ({ showPreview, orientation }: Props) => {
   }, [front, back]);
 
   //   Style
-  const style =
-    Number(productId) === 2
-      ? "lg:top-32 top-2 z-50 lg:w-[70%] w-[98%] lg:h-[75dvh] h-[98dvh]"
-      : Number(productId) === 3 ||
-        Number(productId) === 4 ||
-        Number(productId) === 5
-      ? "lg:top-32 top-2 z-50 lg:w-[50%] w-[98%] lg:h-[70dvh] h-[98dvh]"
-      : "";
 
   // Handling Print
   const handlePrint = async () => {
@@ -83,10 +75,10 @@ const Preview = ({ showPreview, orientation }: Props) => {
   return (
     <>
       <div className="overlay w-full z-50"></div>
-      <div className="flex justify-center align-center">
+      <div className="flex justify-center">
         <div
           ref={printRef}
-          className={`fixed ${style} lg:w-[45%] w-[98%] lg:h-[100dvh] h-[98dvh] lg:top-4 top-2 z-50 bg-gray-200 rounded-lg border-gradient-2 lg:overflow-auto overflow-y-scroll`}
+          className={`fixed lg:w-[45%] w-[98%] lg:h-[100dvh] h-[98dvh] lg:top-4 top-2 z-50 bg-gray-200 rounded-lg border-gradient-2 lg:overflow-auto overflow-y-scroll`}
         >
           <div className="relative flex justify-between ">
             <button
@@ -100,7 +92,7 @@ const Preview = ({ showPreview, orientation }: Props) => {
           </div>
 
           <div
-            className={`absolute flex mt-10 ${
+            className={`absolute lg:flex hidden mt-10 ${
               !orientation && "hidden"
             } w-full justify-between`}
           >
@@ -111,13 +103,13 @@ const Preview = ({ showPreview, orientation }: Props) => {
             <div
               className={`${
                 orientation
-                  ? "flex justify-center gap-x-5 h-full items-center"
+                  ? "lg:flex justify-center gap-x-5 h-full items-center lg:my-0 my-14 lg:ms-0 ms-9"
                   : "lg:px-20 px-2 mt-24"
               }  `}
             >
               <p
                 className={`${
-                  orientation && "hidden"
+                  orientation && "lg:hidden"
                 } lg:mt-8 text-sm mb-2 mt-14`}
               >
                 Front
@@ -126,7 +118,7 @@ const Preview = ({ showPreview, orientation }: Props) => {
               <div
                 className={`relative rounded-md  ${
                   orientation
-                    ? " lg:h-[400px] h-[220px] w-[270px]"
+                    ? " lg:h-[400px] h-[370px] w-[260px]"
                     : "lg:h-[280px] h-[220px] w-full"
                 }  mb-5 shadow-md shadow-zinc-900 overflow-hidden ${
                   front.pickedBg === "#ffffff" ? front.bgColor : ""
@@ -190,20 +182,21 @@ const Preview = ({ showPreview, orientation }: Props) => {
                 </div>
               </div>
               {/* Back */}
-              <p className={`${orientation && "hidden"} mt-8 text-sm mb-2`}>
+              <p className={`${orientation && "lg:hidden"} mt-1 text-sm mb-2`}>
                 Back
               </p>
               <div
                 className={`relative rounded-md w-full ${
                   orientation
-                    ? " lg:h-[400px] h-[220px] w-[270px]"
+                    ? " lg:h-[400px] h-[360px] w-[260px]"
                     : "lg:h-[280px] h-[220px] w-full"
-                } mb-5 shadow-md shadow-zinc-900 overflow-hidden ${
+                } lg:mb-5 shadow-md shadow-zinc-900 overflow-hidden ${
                   back.pickedBg === "#ffffff" ? back.bgColor : ""
                 }`}
                 style={{
                   backgroundColor:
                     back.pickedBg === "#ffffff" ? "" : back.pickedBg,
+                  margin: "",
                 }}
               >
                 <div
@@ -259,6 +252,9 @@ const Preview = ({ showPreview, orientation }: Props) => {
                   )}
                 </div>
               </div>
+              <p className="text-transparent">
+                Lorem, ipsum dolor sit amet cons
+              </p>
             </div>
           </>
 

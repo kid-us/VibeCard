@@ -304,21 +304,27 @@ const SmallEditor: React.FC = () => {
           imageSrc ? "sm-" : backImageSrc ? "sm-scrollbar" : ""
         }`}
       >
-        <label htmlFor="orientation" className="text-white text-xl chakra me-5">
-          Orientation
-        </label>
-        <select
-          name="orientation"
-          className="rounded h-7 w-40 focus:outline-none"
-          onChange={(e) => {
-            e.currentTarget.value === "landscape"
-              ? setOrientation(false)
-              : setOrientation(true);
-          }}
-        >
-          <option value="landscape">Landscape</option>
-          <option value="portrait">Portrait</option>
-        </select>
+        {/* Orientation */}
+        <div className="mt-3">
+          <label
+            htmlFor="orientation"
+            className="text-white text-lg chakra me-5"
+          >
+            Orientation
+          </label>
+          <select
+            name="orientation"
+            className="rounded h-7 w-40 focus:outline-none"
+            onChange={(e) => {
+              e.currentTarget.value === "landscape"
+                ? setOrientation(false)
+                : setOrientation(true);
+            }}
+          >
+            <option value="landscape">Landscape</option>
+            <option value="portrait">Portrait</option>
+          </select>
+        </div>
         <hr className="mt-5 border-gray-500" />
         {/* Image */}
         {tab === "image" && (
