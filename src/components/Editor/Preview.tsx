@@ -103,7 +103,7 @@ const Preview = ({ showPreview, orientation }: Props) => {
             <div
               className={`${
                 orientation
-                  ? " lg:flex gap-x-5 h-full items-center lg:my-0 my-14 lg:px-16"
+                  ? " lg:flex gap-x-5 h-full items-center lg:my-0 my-14 lg:px-16 lg:ms-0 ms-20"
                   : "lg:px-20 px-2 mt-24"
               }  `}
             >
