@@ -80,7 +80,7 @@ const Preview = ({ showPreview, orientation }: Props) => {
           ref={printRef}
           className={`fixed lg:w-[45%] w-[98%] lg:h-[100dvh] h-[98dvh] lg:top-4 top-2 z-50 bg-gray-200 rounded-lg border-gradient-2 lg:overflow-auto overflow-y-scroll`}
         >
-          <div className="relative flex justify-between ">
+          <div className="relative flex justify-between">
             <button
               onClick={handlePrint}
               className="absolute lg:left-10 left-2 top-3 text-xl text-blue-600 bi-printer-fill"
@@ -103,7 +103,7 @@ const Preview = ({ showPreview, orientation }: Props) => {
             <div
               className={`${
                 orientation
-                  ? "lg:flex justify-center gap-x-5 h-full items-center lg:my-0 my-14 lg:ms-0 ms-9"
+                  ? " lg:flex gap-x-5 h-full items-center lg:my-0 my-14 lg:px-16"
                   : "lg:px-20 px-2 mt-24"
               }  `}
             >
@@ -118,7 +118,7 @@ const Preview = ({ showPreview, orientation }: Props) => {
               <div
                 className={`relative rounded-md  ${
                   orientation
-                    ? " lg:h-[400px] h-[370px] w-[260px]"
+                    ? " lg:h-[400px] lg:w-full w-48 h-[260px]"
                     : "lg:h-[280px] h-[220px] w-full"
                 }  mb-5 shadow-md shadow-zinc-900 overflow-hidden ${
                   front.pickedBg === "#ffffff" ? front.bgColor : ""
@@ -186,9 +186,9 @@ const Preview = ({ showPreview, orientation }: Props) => {
                 Back
               </p>
               <div
-                className={`relative rounded-md w-full ${
+                className={`relative rounded-md ${
                   orientation
-                    ? " lg:h-[400px] h-[360px] w-[260px]"
+                    ? " lg:h-[400px] lg:w-full w-48 h-[260px]"
                     : "lg:h-[280px] h-[220px] w-full"
                 } lg:mb-5 shadow-md shadow-zinc-900 overflow-hidden ${
                   back.pickedBg === "#ffffff" ? back.bgColor : ""
@@ -252,89 +252,11 @@ const Preview = ({ showPreview, orientation }: Props) => {
                   )}
                 </div>
               </div>
-              <p className="text-transparent">
+              <p className="lg:hidden text-transparent">
                 Lorem, ipsum dolor sit amet cons
               </p>
             </div>
           </>
-
-          {/*Large Device  Product 2  */}
-          {/* {Number(productId) === 2 && (
-            <div className="lg:block hidden">
-              <div className="lg:flex hidden justify-center gap-x-80">
-                <p className="mt-8 text-sm mb-2">Front</p>
-                <p className="mt-8 text-sm mb-2">Back</p>
-              </div>
-              <div className="lg:flex justify-center gap-x-10 lg:mt-0 mt-10 lg:ms-0">
-                Front
-                <p className="mt-8 text-sm mb-2">Front</p>
-                <div
-                  className={`relative flex rounded-md lg:w-[310px] w-[200px] lg:h-[470px] h-[270px] mb-5 shadow-lg shadow-zinc-900 cursor-pointer overflow-hidden ${
-                    front.pickedBg === "#ffffff" ? front.bgColor : ""
-                  }`}
-                  style={{
-                    backgroundColor:
-                      front.pickedBg === "#ffffff" ? "" : front.pickedBg,
-                  }}
-                >
-                  <div
-                    className={`flex justify-center items-center h-full overflow-hidden`}
-                  >
-                    {frontImage && (
-                      <img
-                        src={frontImage}
-                        alt="user"
-                        className={`h-${front.imageSize} w-${front.imageSize} object-cover`}
-                      />
-                    )}
-                    {front.text !== "" && (
-                      <p
-                        className={`${front.textAlignment} ${front.fontStyle} text-${front.textSize} overflow-hidden text-ellipsis px-2`}
-                        style={{
-                          color: front.color,
-                        }}
-                      >
-                        {front.text}
-                      </p>
-                    )}
-                  </div>
-                </div>
-                Back
-                <p className="mt-8 text-sm mb-2">Back</p>
-                <div
-                  className={`relative rounded-md lg:w-[310px] w-[200px] lg:h-[470px] h-[270px] mb-5 shadow-lg shadow-zinc-900 cursor-pointer overflow-hidden ${
-                    back.pickedBg === "#ffffff" ? back.bgColor : ""
-                  }`}
-                  style={{
-                    backgroundColor:
-                      back.pickedBg === "#ffffff" ? "" : back.pickedBg,
-                  }}
-                >
-                  <div
-                    className={`flex justify-center items-center h-full overflow-hidden`}
-                  >
-                    {backImage && (
-                      <img
-                        src={backImage}
-                        alt="user"
-                        className={`h-${back.textSize} w-${back.textSize} object-cover`}
-                      />
-                    )}
-                    {back.text !== "" && (
-                      <p
-                        className={`${back.textAlignment} ${back.fontStyle} text-${back.textSize} overflow-hidden text-ellipsis px-2`}
-                        style={{
-                          color: back.color,
-                        }}
-                      >
-                        {back.text}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          )} */}
         </div>
       </div>
     </>

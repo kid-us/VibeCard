@@ -198,7 +198,7 @@ const LargeCardPreview = ({
       // Hide lines after 5 seconds
       setTimeout(() => {
         setShowLines({ x: false, y: false });
-      }, 5000);
+      }, 2000);
     }
   };
 
