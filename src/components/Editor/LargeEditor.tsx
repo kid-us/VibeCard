@@ -2,15 +2,13 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import Cropper from "react-easy-crop";
 import { getCroppedImg } from "./cropUtils";
 import CustomSlider from "./Slider";
-// import { fonts } from "@/services/fonts";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import LargePreview from "./LargePreview";
-import { fontSize, imageSize, textAlignment, fonts } from "@/services/editor";
-import { useNavigate, useParams } from "react-router-dom";
+import { fontSize, imageSize, fonts } from "@/services/editor";
 import useProduct from "@/store/useProduct";
-import ShowMyCard from "./ShowMyCard";
 import { save } from "@/assets";
+import LargeCardPreview from "./LargeCardPreview";
+import Preview from "./Preview";
 
 export interface Image {
   width: string;
@@ -23,13 +21,8 @@ export interface Style {
 }
 
 const LargeEditor: React.FC = () => {
-  // Product Id
-  const { productId } = useParams<{ productId: string }>();
-
   // Zustand
-  const { setProductId, updateBack, updateFront } = useProduct();
-
-  const navigate = useNavigate();
+  const { updateBack, updateFront } = useProduct();
 
   // Cropper
   const [crop, setCrop] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -37,7 +30,6 @@ const LargeEditor: React.FC = () => {
   const [rotation, setRotation] = useState(0);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<any>(null);
   const [aspect, setAspect] = useState<number>();
-
   // Input Ref
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -53,15 +45,17 @@ const LargeEditor: React.FC = () => {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [bg, setBg] = useState<string>("bg-white");
   const [name, setName] = useState<string>("");
-  const [text, setText] = useState<string>("");
+  const [extraText, setExtraText] = useState<string>("");
   const [font, setFontSize] = useState<string>("4xl");
   const [image, setImage] = useState<string>("40");
   const [textColor, setTextColor] = useState<string>("");
-  const [align, setAlign] = useState({
-    name: "Center Center",
-    style: "text-center",
-  });
+  const [extraFont, setExtraFont] = useState<string>("2xl");
+  const [extraTextColor, setExtraTextColor] = useState<string>("");
   const [fontStyle, setFontStyle] = useState<Style>({
+    style: "syne",
+    name: "Syne",
+  });
+  const [extraFontStyle, setExtraFontStyle] = useState<Style>({
     style: "syne",
     name: "Syne",
   });
@@ -73,13 +67,15 @@ const LargeEditor: React.FC = () => {
   const [backPickedBg, setBackPickBg] = useState<string>("#ffffff");
   const [backBg, setBackBg] = useState<string>("bg-white");
   const [backName, setBackName] = useState<string>("");
-  const [backText, setBackText] = useState<string>("");
+  const [backExtraText, setBackExtraText] = useState<string>("");
   const [backFont, setBackFontSize] = useState<string>("4xl");
   const [backImage, setBackImage] = useState<string>("40");
   const [backTextColor, setBackTextColor] = useState<string>("");
-  const [backAlign, setBackAlign] = useState({
-    name: "Center Center",
-    style: "",
+  const [backExtraFont, setBackExtraFont] = useState<string>("2xl");
+  const [backExtraTextColor, setBackExtraTextColor] = useState<string>("");
+  const [backExtraFontStyle, setBackExtraFontStyle] = useState<Style>({
+    style: "syne",
+    name: "Syne",
   });
   const [backFontStyle, setBackFontStyle] = useState<Style>({
     style: "syne",
@@ -98,6 +94,14 @@ const LargeEditor: React.FC = () => {
       setError(false);
     }, 10000);
   }, [error]);
+
+  // Show Extra Text
+  const [show, setShow] = useState<boolean>(false);
+  useEffect(() => {
+    if (extraText !== "" || backExtraText !== "") {
+      setShow(true);
+    }
+  }, [extraText, backExtraText]);
 
   // On crop complete
   const onCropComplete = (_: any, croppedAreaPixels: any) => {
@@ -189,71 +193,27 @@ const LargeEditor: React.FC = () => {
     }
   };
 
-  interface Product {
-    cardType: string;
-    quantity: string | number;
-    vibecardLogo: boolean;
-  }
-
   // On order asked
   const handleSubmit = () => {
-    const productString = localStorage.getItem("product");
-    if (productString) {
-      const product: Product = JSON.parse(productString);
-
-      const data = {
-        cardType: product.cardType, //string
-        quantity: product.quantity, // number
-        vibecardLogo: product.vibecardLogo, // boolean
-        frontImage: frontFile, // file
-        backImage: backImage, // file
-
-        front: {
-          bgColor: bg, //string
-          fontStyle: fontStyle.style, //string
-          text: name, //string
-          textAlignment: align.style, //string
-          textSize: font, //string
-          imageSize: image, //string
-          pickedBg: pickedBg, //string
-          color: textColor, //string
-          // text2: text2,
-        },
-        back: {
-          bgColor: bg, //string
-          fontStyle: fontStyle.style, //string
-          text: name, //string
-          textAlignment: align.style, //string
-          textSize: font, //string
-          imageSize: image, //string
-          pickedBg: pickedBg, //string
-          color: textColor, //string
-          // text2: text2,
-        },
-      };
-
-      console.log(data);
-
-      navigate("/pay");
-    }
+    console.log("log");
   };
 
   // Handle Preview
   const handlePreview = () => {
-    // Product
-    // setProductId(productId ? productId : "");
-    setProductId(1);
     // Set Front
     updateFront({
       bgColor: bg,
       fontStyle: fontStyle.style,
       image: frontFile,
       text: name,
-      textAlignment: align.style,
       textSize: font,
       imageSize: image,
       pickedBg: pickedBg,
       color: textColor,
+      extraText: extraText,
+      extraTextColor: extraTextColor,
+      extraTextFontSize: extraFont,
+      extraTextFontStyle: extraFontStyle.style,
     });
     // Set Back
     updateBack({
@@ -261,11 +221,14 @@ const LargeEditor: React.FC = () => {
       fontStyle: backFontStyle.style,
       image: backFile,
       text: backName,
-      textAlignment: backAlign.style,
       textSize: backFont,
       imageSize: backImage,
       pickedBg: backPickedBg,
       color: backTextColor,
+      extraText: backExtraText,
+      extraTextColor: backExtraTextColor,
+      extraTextFontSize: backExtraFont,
+      extraTextFontStyle: backExtraFontStyle.style,
     });
     setShowMyCard(true);
   };
@@ -462,147 +425,217 @@ const LargeEditor: React.FC = () => {
                     </div>
                   </div>
                 )}
+                
                 {/* text */}
                 {tab === "text" && (
                   <div className="w-full">
-                    <p className="text-white text-lg mb-5">
-                      Company Name / Your Name
-                    </p>
-                    <input
-                      type="text"
-                      className="rounded w-full h-11 px-4 focus:outline-none mb-4 placeholder:font-bold placeholder:text-sm"
-                      placeholder="Name goes here"
-                      onChange={
-                        active === "front"
-                          ? (e) => setName(e.currentTarget.value)
-                          : (e) => setBackName(e.currentTarget.value)
-                      }
-                    />
-                    <p className="text-white text-sm mb-4">
-                      Slogan / Your Name
-                    </p>
+                    <div>
+                      <p className="text-white text-lg mb-5">
+                        Company Name / Your Name
+                      </p>
+                      <input
+                        type="text"
+                        className="rounded w-full h-11 px-4 focus:outline-none mb-4 placeholder:font-bold placeholder:text-sm"
+                        placeholder="Name goes here"
+                        onChange={
+                          active === "front"
+                            ? (e) => setName(e.currentTarget.value)
+                            : (e) => setBackName(e.currentTarget.value)
+                        }
+                      />
 
-                    <input
-                      type="text"
-                      className="rounded w-full h-11 px-4 focus:outline-none mb-4 placeholder:font-bold placeholder:text-sm"
-                      placeholder="Slogan goes here"
-                      onChange={
-                        active === "front"
-                          ? (e) => setText(e.currentTarget.value)
-                          : (e) => setBackText(e.currentTarget.value)
-                      }
-                    />
+                      <div className="mt-4">
+                        {/* Font Size */}
+                        <div>
+                          <p className="text-white text-xs">Font Size</p>
+                          <select
+                            name="height"
+                            className="w-full h-10 rounded p-1 mt-2 focus:outline-none"
+                            onChange={(e) =>
+                              active === "front"
+                                ? setFontSize(e.currentTarget.value)
+                                : setBackFontSize(e.currentTarget.value)
+                            }
+                            value={active === "front" ? font : backFont}
+                          >
+                            {fontSize.map((f) =>
+                              f !== font ? (
+                                <option key={f} value={f}>
+                                  {f}
+                                </option>
+                              ) : (
+                                <option
+                                  selected
+                                  value={active === "front" ? font : backFont}
+                                >
+                                  {active === "front" ? font : backFont}
+                                </option>
+                              )
+                            )}
+                          </select>
+                        </div>
 
-                    <div className="mt-4">
-                      {/* Font Size */}
-                      <div>
-                        <p className="text-white text-xs">Font Size</p>
-                        <select
-                          name="height"
-                          className="w-full h-10 rounded p-1 mt-2 focus:outline-none"
-                          onChange={(e) =>
-                            active === "front"
-                              ? setFontSize(e.currentTarget.value)
-                              : setBackFontSize(e.currentTarget.value)
-                          }
-                          value={active === "front" ? font : backFont}
-                        >
-                          {fontSize.map((f) =>
-                            f !== font ? (
-                              <option key={f} value={f}>
-                                {f}
-                              </option>
-                            ) : (
-                              <option
-                                selected
-                                value={active === "front" ? font : backFont}
-                              >
-                                {active === "front" ? font : backFont}
-                              </option>
-                            )
-                          )}
-                        </select>
-                      </div>
+                        {/* Text Color */}
+                        <div className="lg:0 mb-5 mt-10">
+                          <p className="text-white text-xs mb-2">Text Color</p>
+                          <input
+                            type="color"
+                            className="w-full lg:h-16 h-12 border-none outline-none shadow shadow-orange-900"
+                            onChange={(e) =>
+                              active === "front"
+                                ? setTextColor(e.currentTarget.value)
+                                : setBackTextColor(e.currentTarget.value)
+                            }
+                            value={
+                              active === "front" ? textColor : backTextColor
+                            }
+                          />
+                        </div>
 
-                      {/* Text Color */}
-                      <div className="lg:0 mb-5 mt-10">
-                        <p className="text-white text-xs mb-2">Text Color</p>
-                        <input
-                          type="color"
-                          className="w-full lg:h-16 h-12 border-none outline-none shadow shadow-orange-900"
-                          onChange={(e) =>
-                            active === "front"
-                              ? setTextColor(e.currentTarget.value)
-                              : setBackTextColor(e.currentTarget.value)
-                          }
-                          value={active === "front" ? textColor : backTextColor}
-                        />
+                        {/* Font Style */}
+                        <div>
+                          <p className="text-white text-xs mt-5">Font Style</p>
+                          <div className="relative">
+                            <p className="bg-white rounded py-2 px-1 text-sm my-2 w-40">
+                              {active === "front"
+                                ? fontStyle.name
+                                : backFontStyle.name}
+                            </p>
+                            <div className="w-full bg-white rounded p-2 text-sm">
+                              {fonts.map((font) => (
+                                <p
+                                  onClick={() =>
+                                    active === "front"
+                                      ? setFontStyle({
+                                          name: font.name,
+                                          style: font.style,
+                                        })
+                                      : setBackFontStyle({
+                                          name: font.name,
+                                          style: font.style,
+                                        })
+                                  }
+                                  className={`cursor-pointer mb-1`}
+                                >
+                                  {font.name}
+                                </p>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    {/* Text Align */}
-                    <div className="mt-5">
-                      <div>
-                        <p className="text-white text-xs">Text Align</p>
-                        <div className="relative">
-                          <p className="bg-white rounded py-2 px-1 text-sm my-2 w-36">
-                            {active === "front" ? align.name : backAlign.name}
-                          </p>
-                          <div className=" w-full bg-white rounded p-2 text-sm">
-                            {textAlignment.map((textAlign) => (
-                              <p
-                                onClick={() =>
-                                  active === "front"
-                                    ? setAlign({
-                                        name: textAlign.name,
-                                        style: textAlign.style,
-                                      })
-                                    : setBackAlign({
-                                        name: textAlign.name,
-                                        style: textAlign.style,
-                                      })
-                                }
-                                className={`${
-                                  textAlign.style === align.style &&
-                                  "text-teal-500"
-                                } cursor-pointer mb-1`}
-                              >
-                                {textAlign.name}
+
+                    <hr className="border w-full my-10" />
+                    <p className="text-white font-poppins">
+                      Do you want to add another text?
+                    </p>
+                    <div className="mt-4">
+                      <p className="text-white text-xs mb-4">
+                        Slogan / Your Name
+                      </p>
+
+                      <input
+                        type="text"
+                        className="rounded w-full h-11 px-4 focus:outline-none mb-4 placeholder:font-bold placeholder:text-sm"
+                        placeholder="Slogan goes here"
+                        onChange={
+                          active === "front"
+                            ? (e) => setExtraText(e.currentTarget.value)
+                            : (e) => setBackExtraText(e.currentTarget.value)
+                        }
+                      />
+
+                      {show && (
+                        <div className="mt-4">
+                          {/* Font Size */}
+                          <div>
+                            <p className="text-white text-xs">Font Size</p>
+                            <select
+                              name="height"
+                              className="w-full h-10 rounded p-1 mt-2 focus:outline-none"
+                              onChange={(e) =>
+                                active === "front"
+                                  ? setExtraFont(e.currentTarget.value)
+                                  : setBackExtraFont(e.currentTarget.value)
+                              }
+                              value={
+                                active === "front" ? extraFont : backExtraFont
+                              }
+                            >
+                              {fontSize.map((f) =>
+                                f !== font ? (
+                                  <option key={f} value={f}>
+                                    {f}
+                                  </option>
+                                ) : (
+                                  <option
+                                    selected
+                                    value={active === "front" ? font : backFont}
+                                  >
+                                    {active === "front" ? font : backFont}
+                                  </option>
+                                )
+                              )}
+                            </select>
+                          </div>
+
+                          {/* Text Color */}
+                          <div className="lg:0 mb-5 mt-10">
+                            <p className="text-white text-xs mb-2">
+                              Text Color
+                            </p>
+                            <input
+                              type="color"
+                              className="w-full lg:h-16 h-12 border-none outline-none shadow shadow-orange-900"
+                              onChange={(e) =>
+                                active === "front"
+                                  ? setExtraTextColor(e.currentTarget.value)
+                                  : setBackExtraTextColor(e.currentTarget.value)
+                              }
+                              value={
+                                active === "front"
+                                  ? extraTextColor
+                                  : backExtraTextColor
+                              }
+                            />
+                          </div>
+
+                          {/* Font Style */}
+                          <div>
+                            <p className="text-white text-xs mt-5">
+                              Font Style
+                            </p>
+                            <div className="relative">
+                              <p className="bg-white rounded py-2 px-1 text-sm my-2 w-40">
+                                {active === "front"
+                                  ? extraFontStyle.name
+                                  : backExtraFontStyle.name}
                               </p>
-                            ))}
+                              <div className="w-full bg-white rounded p-2 text-sm">
+                                {fonts.map((font) => (
+                                  <p
+                                    onClick={() =>
+                                      active === "front"
+                                        ? setExtraFontStyle({
+                                            name: font.name,
+                                            style: font.style,
+                                          })
+                                        : setBackExtraFontStyle({
+                                            name: font.name,
+                                            style: font.style,
+                                          })
+                                    }
+                                    className={`cursor-pointer mb-1`}
+                                  >
+                                    {font.name}
+                                  </p>
+                                ))}
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      {/* Font Style */}
-                      <div>
-                        <p className="text-white text-xs mt-5">Font Style</p>
-                        <div className="relative">
-                          <p className="bg-white rounded py-2 px-1 text-sm my-2 w-40">
-                            {active === "front"
-                              ? fontStyle.name
-                              : backFontStyle.name}
-                          </p>
-                          <div className="w-full bg-white rounded p-2 text-sm">
-                            {fonts.map((font) => (
-                              <p
-                                onClick={() =>
-                                  active === "front"
-                                    ? setFontStyle({
-                                        name: font.name,
-                                        style: font.style,
-                                      })
-                                    : setBackFontStyle({
-                                        name: font.name,
-                                        style: font.style,
-                                      })
-                                }
-                                className={`cursor-pointer mb-1`}
-                              >
-                                {font.name}
-                              </p>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
+                      )}
                     </div>
                   </div>
                 )}
@@ -629,7 +662,45 @@ const LargeEditor: React.FC = () => {
               className="absolute z-40 right-28 text-center rounded bi-eye-fill text-2xl mt-1"
             ></button>
             <div className={`relative py-5 bg-gray-200 h-full rounded`}>
-              <LargePreview
+              <LargeCardPreview
+                active={active}
+                setSwitch={(value) => setSwitchBtn(value)}
+                activeCard={(value: string) => setActive(value)}
+                // Front
+                bg={bg}
+                fSize={font}
+                name={name}
+                image={image}
+                pickedBg={pickedBg}
+                croppedImage={croppedImage ? croppedImage : ""}
+                textColor={textColor}
+                fontStyle={fontStyle}
+                switchBtn={switchBtn}
+                extraFontStyle={extraFontStyle}
+                extraFontsize={extraFont}
+                extraText={extraText}
+                extraTextColor={extraTextColor}
+                setPickBg={(value) => setPickBg(value)}
+                setBg={(value: string) => setBg(value)}
+                //  Back
+                pickedBackBg={backPickedBg}
+                backBg={backBg}
+                backCroppedImage={backCroppedImage ? backCroppedImage : ""}
+                backExtraText={backExtraText}
+                backExtraFontStyle={backExtraFontStyle}
+                backExtraFontsize={backExtraFont}
+                backExtraTextColor={backExtraTextColor}
+                backFontSize={backFont}
+                backFontStyle={backFontStyle}
+                backImage={backImage}
+                backName={backName}
+                backPickedBg={backPickedBg}
+                backTextColor={backTextColor}
+                setBackBg={(value: string) => setBackBg(value)}
+                setBackPickBg={(value) => setBackPickBg(value)}
+              />
+
+              {/* <LargePreview
                 product={productId}
                 active={active}
                 activeCard={(value: string) => setActive(value)}
@@ -662,16 +733,14 @@ const LargeEditor: React.FC = () => {
                 // Switch
                 setSwitch={(value) => setSwitchBtn(value)}
                 switchBtn={switchBtn}
-              />
+              /> */}
             </div>
           </div>
         </div>
       </div>
 
       {/* Show My Card */}
-      {showMyCard && (
-        <ShowMyCard showPreview={(value) => setShowMyCard(value)} />
-      )}
+      {showMyCard && <Preview showPreview={(value) => setShowMyCard(value)} />}
 
       {/*Footer  */}
       <Footer />
