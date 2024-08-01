@@ -5,6 +5,7 @@ import { Style } from "./LargeEditor";
 import useProduct from "@/store/useProduct";
 
 interface Props {
+  orientation: boolean;
   active: string;
   activeCard: (value: string) => void;
   setSwitch: (value: boolean) => void;
@@ -43,6 +44,7 @@ interface Props {
 }
 
 const LargeCardPreview = ({
+  orientation,
   active,
   switchBtn,
   activeCard,
@@ -329,15 +331,36 @@ const LargeCardPreview = ({
           </label>
         </div>
       </div>
-      <div className="pb-10">
-        <p className="mt-8 text-sm mb-2 ms-10">Front</p>
+      <div
+        className={`absolute flex mt-10 ${
+          !orientation && "hidden"
+        } w-full justify-between`}
+      >
+        <p className={`mt-8 text-sm mb-2 ms-14`}>Front</p>
+        <p className={`mt-8 text-sm mb-2 me-16`}>Back</p>
+      </div>
+      <div
+        className={`pb-10 ${
+          orientation &&
+          "flex gap-x-10 justify-center items-center h-full mt-10"
+        } `}
+      >
+        <p className={`${orientation && "hidden"} mt-8 text-sm mb-2 ms-10`}>
+          Front
+        </p>
         {/* Front */}
-        <div className="flex justify-center items-center h-full">
+        <div
+          className={`flex justify-center items-center ${
+            orientation ? "w-[265px]" : "h-full"
+          } `}
+        >
           <div
             onClick={() => activeCard("front")}
             className={`${!switchBtn && bg} ${
               active === "front" && "border-2 border-sky-600"
-            } relative rounded-md  w-full h-[280px] shadow-lg shadow-zinc-900 mx-20 overflow-hidden cursor-pointer`}
+            } relative rounded-md shadow-lg shadow-zinc-900 ${
+              orientation ? "w-full h-[400px]" : "mx-20 w-full h-[280px]"
+            } overflow-hidden cursor-pointer`}
             style={{
               backgroundColor: switchBtn ? pickedBg : "",
             }}
@@ -480,14 +503,24 @@ const LargeCardPreview = ({
             </div>
           </div>
         </div>
+
         {/* Back */}
-        <p className="mt-8 text-sm mb-2 ms-10">Back</p>
-        <div className="flex justify-center items-center h-full">
+        <p className={`${orientation && "hidden"} mt-8 text-sm mb-2 ms-10`}>
+          Back
+        </p>
+
+        <div
+          className={`${
+            orientation && "w-[265px]"
+          } flex justify-center items-center h-full`}
+        >
           <div
             onClick={() => activeCard("back")}
             className={`${!switchBtn && backBg} ${
               active === "back" && "border-2 border-sky-600"
-            } relative rounded-md  w-full h-[280px] shadow-lg shadow-zinc-900 mx-20 overflow-hidden cursor-pointer`}
+            } relative rounded-md  shadow-lg shadow-zinc-900 ${
+              orientation ? "w-full h-[400px]" : "mx-20 w-full h-[280px]"
+            } overflow-hidden cursor-pointer`}
             style={{
               backgroundColor: switchBtn ? pickedBackBg : "",
             }}

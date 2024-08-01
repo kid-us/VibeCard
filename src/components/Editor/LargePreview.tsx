@@ -152,7 +152,7 @@ const LargePreview = ({
       }, 5000);
     }
   };
-  
+
   return (
     <>
       {/* Colors */}
@@ -239,7 +239,7 @@ const LargePreview = ({
                 )}
               </div>
             </div>
-            
+
             {/* Back */}
             <p className="mt-8 text-sm mb-2">Back</p>
             <div

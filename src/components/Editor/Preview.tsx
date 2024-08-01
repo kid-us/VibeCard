@@ -5,9 +5,10 @@ import jsPDF from "jspdf";
 
 interface Props {
   showPreview: (value: boolean) => void;
+  orientation: boolean;
 }
 
-const Preview = ({ showPreview }: Props) => {
+const Preview = ({ showPreview, orientation }: Props) => {
   const { back, front, productId } = useProduct();
 
   const printRef = useRef<HTMLDivElement>(null);
@@ -98,12 +99,36 @@ const Preview = ({ showPreview }: Props) => {
             ></p>
           </div>
 
+          <div
+            className={`absolute flex mt-10 ${
+              !orientation && "hidden"
+            } w-full justify-between`}
+          >
+            <p className={`mt-16 text-sm mb-2 ms-14`}>Front</p>
+            <p className={`mt-16 text-sm mb-2 me-16`}>Back</p>
+          </div>
           <>
-            <div className="lg:px-20 px-2">
-              <p className="lg:mt-8 text-sm mb-2 mt-14">Front</p>
+            <div
+              className={`${
+                orientation
+                  ? "flex justify-center gap-x-5 h-full items-center"
+                  : "lg:px-20 px-2 mt-24"
+              }  `}
+            >
+              <p
+                className={`${
+                  orientation && "hidden"
+                } lg:mt-8 text-sm mb-2 mt-14`}
+              >
+                Front
+              </p>
               {/* Front */}
               <div
-                className={`relative rounded-md w-full lg:h-[280px] h-[220px] mb-5 shadow-md shadow-zinc-900 overflow-hidden ${
+                className={`relative rounded-md  ${
+                  orientation
+                    ? " lg:h-[400px] h-[220px] w-[270px]"
+                    : "lg:h-[280px] h-[220px] w-full"
+                }  mb-5 shadow-md shadow-zinc-900 overflow-hidden ${
                   front.pickedBg === "#ffffff" ? front.bgColor : ""
                 }`}
                 style={{
@@ -165,11 +190,17 @@ const Preview = ({ showPreview }: Props) => {
                 </div>
               </div>
               {/* Back */}
-              <p className="mt-8 text-sm mb-2">Back</p>
+              <p className={`${orientation && "hidden"} mt-8 text-sm mb-2`}>
+                Back
+              </p>
               <div
-                className={`relative rounded-md w-full lg:h-[280px] h-[220px] mb-5 shadow-md shadow-zinc-900 overflow-hidden ${
+                className={`relative rounded-md w-full ${
+                  orientation
+                    ? " lg:h-[400px] h-[220px] w-[270px]"
+                    : "lg:h-[280px] h-[220px] w-full"
+                } mb-5 shadow-md shadow-zinc-900 overflow-hidden ${
                   back.pickedBg === "#ffffff" ? back.bgColor : ""
-                }`} 
+                }`}
                 style={{
                   backgroundColor:
                     back.pickedBg === "#ffffff" ? "" : back.pickedBg,

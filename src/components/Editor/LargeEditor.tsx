@@ -233,6 +233,8 @@ const LargeEditor: React.FC = () => {
     setShowMyCard(true);
   };
 
+  const [orientation, setOrientation] = useState<boolean>(false);
+
   return (
     <>
       {error && (
@@ -267,6 +269,25 @@ const LargeEditor: React.FC = () => {
               </div>
               {/* Editor */}
               <div className="col-span-10 pb-10 h-[90dvh] overflow-y-scroll pe-20 pt-5">
+                <label
+                  htmlFor="orientation"
+                  className="text-white text-xl chakra me-5"
+                >
+                  Orientation
+                </label>
+                <select
+                  name="orientation"
+                  className="rounded h-7 w-40 focus:outline-none"
+                  onChange={(e) => {
+                    e.currentTarget.value === "landscape"
+                      ? setOrientation(false)
+                      : setOrientation(true);
+                  }}
+                >
+                  <option value="landscape">Landscape</option>
+                  <option value="portrait">Portrait</option>
+                </select>
+                <hr className="my-5 border-gray-500" />
                 {/* image */}
                 {tab === "image" && (
                   <div className="w-full">
@@ -425,7 +446,6 @@ const LargeEditor: React.FC = () => {
                     </div>
                   </div>
                 )}
-                
                 {/* text */}
                 {tab === "text" && (
                   <div className="w-full">
@@ -663,6 +683,7 @@ const LargeEditor: React.FC = () => {
             ></button>
             <div className={`relative py-5 bg-gray-200 h-full rounded`}>
               <LargeCardPreview
+                orientation={orientation}
                 active={active}
                 setSwitch={(value) => setSwitchBtn(value)}
                 activeCard={(value: string) => setActive(value)}
@@ -740,7 +761,12 @@ const LargeEditor: React.FC = () => {
       </div>
 
       {/* Show My Card */}
-      {showMyCard && <Preview showPreview={(value) => setShowMyCard(value)} />}
+      {showMyCard && (
+        <Preview
+          orientation={orientation}
+          showPreview={(value) => setShowMyCard(value)}
+        />
+      )}
 
       {/*Footer  */}
       <Footer />

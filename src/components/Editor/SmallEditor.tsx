@@ -5,7 +5,6 @@ import CustomSlider from "./Slider";
 import { fonts } from "@/services/fonts";
 import { fontSize, imageSize } from "@/services/editor";
 import useProduct from "@/store/useProduct";
-import ShowMyCard from "./ShowMyCard";
 import { save } from "@/assets";
 import SmallCardPreview from "./SmallCardPreview";
 import Preview from "./Preview";
@@ -233,6 +232,8 @@ const SmallEditor: React.FC = () => {
     setShowMyCard(true);
   };
 
+  const [orientation, setOrientation] = useState<boolean>(false);
+
   return (
     <>
       {error && (
@@ -303,6 +304,22 @@ const SmallEditor: React.FC = () => {
           imageSrc ? "sm-" : backImageSrc ? "sm-scrollbar" : ""
         }`}
       >
+        <label htmlFor="orientation" className="text-white text-xl chakra me-5">
+          Orientation
+        </label>
+        <select
+          name="orientation"
+          className="rounded h-7 w-40 focus:outline-none"
+          onChange={(e) => {
+            e.currentTarget.value === "landscape"
+              ? setOrientation(false)
+              : setOrientation(true);
+          }}
+        >
+          <option value="landscape">Landscape</option>
+          <option value="portrait">Portrait</option>
+        </select>
+        <hr className="mt-5 border-gray-500" />
         {/* Image */}
         {tab === "image" && (
           <>
@@ -708,7 +725,12 @@ const SmallEditor: React.FC = () => {
       </div>
 
       {/* Design Preview */}
-      {showMyCard && <Preview showPreview={(value) => setShowMyCard(value)} />}
+      {showMyCard && (
+        <Preview
+          orientation={orientation}
+          showPreview={(value) => setShowMyCard(value)}
+        />
+      )}
     </>
   );
 };
