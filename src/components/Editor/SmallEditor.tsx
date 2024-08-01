@@ -257,6 +257,7 @@ const SmallEditor: React.FC = () => {
 
             <div className={`relative px-2 py-5 bg-gray-200 h-full rounded`}>
               <SmallCardPreview
+                orientation={orientation}
                 active={active}
                 setSwitch={(value) => setSwitchBtn(value)}
                 activeCard={(value: string) => setActive(value)}

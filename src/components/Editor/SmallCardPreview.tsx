@@ -6,6 +6,7 @@ import useProduct from "@/store/useProduct";
 import "./switch.css";
 
 interface Props {
+  orientation: boolean;
   active: string;
   activeCard: (value: string) => void;
   setSwitch: (value: boolean) => void;
@@ -44,6 +45,7 @@ interface Props {
 }
 
 const SmallDevicePreview = ({
+  orientation,
   active,
   switchBtn,
   activeCard,
@@ -357,7 +359,9 @@ const SmallDevicePreview = ({
               onClick={() => activeCard("front")}
               className={`${!switchBtn && bg} ${
                 active === "front" && "border-2 border-sky-600"
-              } relative rounded-md  w-full h-[220px] shadow-lg shadow-zinc-900 overflow-hidden cursor-pointer`}
+              } relative rounded-md ${
+                orientation ? " w-48 h-[260px]" : "w-full h-[220px]"
+              } shadow-lg shadow-zinc-900 overflow-hidden cursor-pointer`}
               style={{
                 backgroundColor: switchBtn ? pickedBg : "",
               }}
@@ -511,7 +515,9 @@ const SmallDevicePreview = ({
               onClick={() => activeCard("back")}
               className={`${!switchBtn && backBg} ${
                 active === "back" && "border-2 border-sky-600"
-              } relative rounded-md  w-full h-[220px] shadow-lg shadow-zinc-900 overflow-hidden cursor-pointer`}
+              } relative rounded-md ${
+                orientation ? " w-48 h-[260px]" : "w-full h-[220px]"
+              }  shadow-lg shadow-zinc-900 overflow-hidden cursor-pointer`}
               style={{
                 backgroundColor: switchBtn ? pickedBackBg : "",
               }}
