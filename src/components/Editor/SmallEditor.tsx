@@ -318,7 +318,7 @@ const SmallEditor: React.FC = () => {
 
       {/* Editors */}
       <div
-        className={`absolute w-full px-5 bg-secondary border border-gray-600 rounded-xl bottom-10 sm-scroll h-[50vh] ${
+        className={`absolute w-full px-5 bg-secondary border border-gray-600 rounded-xl bottom-0 sm-scroll h-[50vh] pb-20 ${
           imageSrc ? "sm-scrollbar" : backImageSrc ? "sm-scrollbar" : ""
         }`}
       >
