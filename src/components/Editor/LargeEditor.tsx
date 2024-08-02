@@ -284,20 +284,23 @@ const LargeEditor: React.FC = () => {
               </div>
               {/* Editor */}
               <div className="col-span-10 pb-10 h-[90dvh] overflow-y-scroll pe-20 pt-5">
-                <label
-                  htmlFor="orientation"
-                  className="text-white text-xl chakra me-5"
-                >
-                  Orientation
-                </label>
-                <select
-                  name="orientation"
-                  className="rounded h-7 w-40 focus:outline-none"
-                  onChange={handleOrientation}
-                >
-                  <option value="landscape">Landscape</option>
-                  <option value="portrait">Portrait</option>
-                </select>
+                {/* Orientation */}
+                <div>
+                  <label
+                    htmlFor="orientation"
+                    className="text-white text-xl chakra me-5"
+                  >
+                    Orientation
+                  </label>
+                  <select
+                    name="orientation"
+                    className="rounded h-7 w-40 focus:outline-none"
+                    onChange={handleOrientation}
+                  >
+                    <option value="landscape">Landscape</option>
+                    <option value="portrait">Portrait</option>
+                  </select>
+                </div>
                 <hr className="my-5 border-gray-500" />
                 {/* image */}
                 {tab === "image" && (
@@ -468,6 +471,7 @@ const LargeEditor: React.FC = () => {
                         type="text"
                         className="rounded w-full h-11 px-4 focus:outline-none mb-4 placeholder:font-bold placeholder:text-sm"
                         placeholder="Name goes here"
+                        value={active === "front" ? name : backName}
                         onChange={
                           active === "front"
                             ? (e) => setName(e.currentTarget.value)
@@ -570,6 +574,7 @@ const LargeEditor: React.FC = () => {
                         type="text"
                         className="rounded w-full h-11 px-4 focus:outline-none mb-4 placeholder:font-bold placeholder:text-sm"
                         placeholder="Slogan goes here"
+                        value={active === "front" ? extraText : backExtraText}
                         onChange={
                           active === "front"
                             ? (e) => setExtraText(e.currentTarget.value)
