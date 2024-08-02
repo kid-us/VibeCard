@@ -37,7 +37,7 @@ const Home = () => {
       <Chat></Chat>
       <div>
         <Navbar />
-        <div className="lg:container mx-auto lg:mt-40 mt-32 lg:pb-32 pb-14">
+        <div className="lg:container mx-auto lg:mt-40 mt-20 lg:pb-32 pb-14">
           <Hero />
         </div>
       </div>
