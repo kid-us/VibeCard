@@ -652,6 +652,9 @@ const LargeCardPreview = ({
                       ></button>
                       <p
                         className={`${backExtraFontStyle.style} text-${backExtraFontsize} overflow-hidden text-ellipsis px-2`}
+                        style={{
+                          color: backExtraTextColor,
+                        }}
                       >
                         {backExtraText}
                       </p>
