@@ -103,7 +103,7 @@ const Preview = ({ showPreview, orientation }: Props) => {
             <div
               className={`${
                 orientation
-                  ? " lg:flex gap-x-5 h-full items-center lg:my-0 my-14 lg:px-16 lg:ms-0 ms-20"
+                  ? " lg:flex gap-x-5 h-full items-center lg:my-0 my-14 lg:px-16 lg:ms-0 lg:w-full w-[50%] lg:m-0 m-auto lg:pt-0 pt-4"
                   : "lg:px-20 px-2 mt-24"
               }  `}
             >
@@ -118,8 +118,8 @@ const Preview = ({ showPreview, orientation }: Props) => {
               <div
                 className={`relative rounded-md  ${
                   orientation
-                    ? " lg:h-[400px] lg:w-full w-48 h-[260px]"
-                    : "lg:h-[280px] h-[220px] w-full"
+                    ? " lg:h-[400px] lg:w-full w-48 h-[30vh]"
+                    : "lg:h-[280px] h-[30vh] w-full"
                 }  mb-5 shadow-md shadow-zinc-900 overflow-hidden ${
                   front.pickedBg === "#ffffff" ? front.bgColor : ""
                 }`}
@@ -147,7 +147,7 @@ const Preview = ({ showPreview, orientation }: Props) => {
                   )}
                   {front.text !== "" && (
                     <div
-                      className="absolute top-0"
+                      className={`absolute ${orientation ? "top-3" : "top-0"} `}
                       style={{
                         transform: `translate(${front.textPosition.x}px, ${front.textPosition.y}px)`,
                       }}
@@ -188,8 +188,8 @@ const Preview = ({ showPreview, orientation }: Props) => {
               <div
                 className={`relative rounded-md ${
                   orientation
-                    ? " lg:h-[400px] lg:w-full w-48 h-[260px]"
-                    : "lg:h-[280px] h-[220px] w-full"
+                    ? " lg:h-[400px] lg:w-full w-48 h-[30vh]"
+                    : "lg:h-[280px] h-[30vh] w-full"
                 } lg:mb-5 shadow-md shadow-zinc-900 overflow-hidden ${
                   back.pickedBg === "#ffffff" ? back.bgColor : ""
                 }`}
