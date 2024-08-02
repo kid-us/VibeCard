@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import DatePicker from "../Insights/DatePicker";
 import React from "react";
 import { DateRange } from "react-day-picker";
@@ -16,25 +15,6 @@ const Affiliate = () => {
   return (
     <>
       <div className="lg:container mx-auto px-2">
-        <nav className="flex justify-between text-white mt-5">
-          <div>
-            <Link to="/" className="logo-font text-3xl">
-              vibecard
-            </Link>
-          </div>
-          <div className="flex gap-x-10">
-            <div className="flex gap-x-1 text-xl">
-              <p className="bi-person-fill text-gray-200"></p>
-              <p>Lorem</p>
-            </div>
-            <div className="flex lg:mt-1">
-              <p className="bi-box-arrow-right lg:text-gray-400 lg:text-md text-xl">
-                <span className="lg:inline hidden">Logout</span>
-              </p>
-            </div>
-          </div>
-        </nav>
-
         <div className="mt-10">
           <p className="text-xl text-white">
             Welcome to your affiliate market dashboard{" "}

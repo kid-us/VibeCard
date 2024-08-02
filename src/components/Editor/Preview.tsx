@@ -96,8 +96,16 @@ const Preview = ({ showPreview, orientation }: Props) => {
               !orientation && "hidden"
             } w-full justify-between`}
           >
-            <p className={`mt-16 text-sm mb-2 ms-14`}>Front</p>
-            <p className={`mt-16 text-sm mb-2 me-16`}>Back</p>
+            <p
+              className={`mt-16 text-sm mb-2 ${!orientation && "hidden"} ms-14`}
+            >
+              Front
+            </p>
+            <p
+              className={`mt-16 text-sm mb-2 ${!orientation && "hidden"} me-16`}
+            >
+              Back
+            </p>
           </div>
           <>
             <div
@@ -147,7 +155,7 @@ const Preview = ({ showPreview, orientation }: Props) => {
                   )}
                   {front.text !== "" && (
                     <div
-                      className={`absolute ${orientation ? "top-3" : "top-0"} `}
+                      className={`absolute ${orientation ? "top-3" : "top-3"} `}
                       style={{
                         transform: `translate(${front.textPosition.x}px, ${front.textPosition.y}px)`,
                       }}
