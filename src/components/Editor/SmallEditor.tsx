@@ -67,10 +67,10 @@ const SmallEditor: React.FC = () => {
   const [backBg, setBackBg] = useState<string>("bg-white");
   const [backName, setBackName] = useState<string>("");
   const [backExtraText, setBackExtraText] = useState<string>("");
-  const [backFont, setBackFontSize] = useState<string>("4xl");
-  const [backImage, setBackImage] = useState<string>("40");
+  const [backFont, setBackFontSize] = useState<string>("2xl");
+  const [backImage, setBackImage] = useState<string>("20");
   const [backTextColor, setBackTextColor] = useState<string>("");
-  const [backExtraFont, setBackExtraFont] = useState<string>("2xl");
+  const [backExtraFont, setBackExtraFont] = useState<string>("xl");
   const [backExtraTextColor, setBackExtraTextColor] = useState<string>("");
   const [backExtraFontStyle, setBackExtraFontStyle] = useState<Style>({
     style: "syne",
@@ -394,7 +394,7 @@ const SmallEditor: React.FC = () => {
                 <>
                   {/* Scroll Animation */}
                   <div className="relative">
-                    <div className="fixed right-1 text-2xl scroll-thumb bi-hand-index-thumb-fill top-96 text-gray-500 "></div>
+                    <div className="fixed right-1 text-2xl scroll-thumb bi-hand-index-thumb-fill text-gray-500 "></div>
                   </div>
                   {/* Editor */}
                   <div className="h-[300px] w-full relative mt-4 mb-10 rounded overflow-hidden">
@@ -439,7 +439,7 @@ const SmallEditor: React.FC = () => {
                 <>
                   {/* Scroll Animation */}
                   <div className="relative">
-                    <div className="fixed right-1 scroll-thumb text-2xl bi-hand-index-thumb-fill top-96 text-gray-500 "></div>
+                    <div className="fixed right-1 scroll-thumb text-2xl bi-hand-index-thumb-fill text-gray-500 "></div>
                   </div>
                   {/* Editor */}
                   <div className="h-[400px] w-full relative mt-4 mb-10 rounded overflow-hidden">
