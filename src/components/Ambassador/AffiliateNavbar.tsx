@@ -9,9 +9,10 @@ interface Navs {
 }
 
 export const affiliateNav: Navs[] = [
-  { id: 1, name: "Transactions", path: "/transactions" },
-  { id: 2, name: "Payments", path: "/payments" },
-  { id: 3, name: "Setting", path: "/setting" },
+  // { id: 1, name: "Home", path: "/affiliate" },
+  // { id: 2, name: "Transactions", path: "/affiliate/transactions" },
+  // { id: 3, name: "Payments", path: "/affiliate/payments" },
+  { id: 4, name: "Setting", path: "/affiliate/setting" },
 ];
 
 const AffiliateNavbar = () => {
@@ -21,7 +22,7 @@ const AffiliateNavbar = () => {
     <div>
       <nav className="flex justify-between text-white mt-5">
         <div>
-          <Link to="/" className="logo-font text-3xl">
+          <Link to="/affiliate" className="logo-font text-4xl">
             vibecard
           </Link>
         </div>
@@ -37,7 +38,7 @@ const AffiliateNavbar = () => {
               {nav.name}
             </Link>
           ))}
-          <p className="cursor-pointer">Logout</p>
+          <p className="cursor-pointer text-xl">Logout</p>
         </div>
       </nav>
       {menu && <AffiliateMenu username={"Lorem"} menu={() => setMenu(false)} />}

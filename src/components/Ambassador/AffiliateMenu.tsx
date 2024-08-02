@@ -8,7 +8,7 @@ interface Props {
 
 const AffiliateMenu = ({ username, menu }: Props) => {
   return (
-    <div className="fixed w-full h-full main-bg top-0">
+    <div className="fixed z-50 w-full h-full main-bg top-0">
       <div className="flex justify-between text-white mt-5 pe-3">
         <div>
           <Link to="/" className="logo-font text-3xl">
