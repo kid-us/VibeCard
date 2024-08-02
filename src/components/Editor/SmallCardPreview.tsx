@@ -88,6 +88,14 @@ const SmallDevicePreview = ({
     x: 0,
     y: 0,
   });
+  const [position2, setPosition2] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+  const [position3, setPosition3] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
   const [showLines, setShowLines] = useState<{ x: boolean; y: boolean }>({
     x: false,
     y: false,
@@ -99,6 +107,14 @@ const SmallDevicePreview = ({
 
   //   Front
   const [backPosition, setBackPosition] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+  const [backPosition2, setBackPosition2] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+  const [backPosition3, setBackPosition3] = useState<{ x: number; y: number }>({
     x: 0,
     y: 0,
   });
@@ -129,11 +145,13 @@ const SmallDevicePreview = ({
 
   const handleDrag2 = (e: any, data: any) => {
     console.log(e, data);
+    setPosition2({ x: data.x, y: data.y });
     checkIfCentered();
   };
 
   const handleDrag3 = (e: any, data: any) => {
     console.log(e, data);
+    setPosition3({ x: data.x, y: data.y });
     checkIfCentered();
   };
 
@@ -212,11 +230,13 @@ const SmallDevicePreview = ({
 
   const handleBackDrag2 = (e: any, data: any) => {
     console.log(e, data);
+    setBackPosition2({ x: data.x, y: data.y });
     checkIfBackCentered();
   };
 
   const handleBackDrag3 = (e: any, data: any) => {
     console.log(e, data);
+    setBackPosition3({ x: data.x, y: data.y });
     checkIfBackCentered();
   };
 
@@ -438,7 +458,7 @@ const SmallDevicePreview = ({
                       bounds="parent"
                       axis="both"
                       handle=".handle"
-                      defaultPosition={{ x: 0, y: 0 }}
+                      position={position2}
                       grid={[10, 10]}
                       scale={1}
                       onStart={(e, data) => console.log("Start:", e, data)}
@@ -448,7 +468,7 @@ const SmallDevicePreview = ({
                         updateFront({ textPosition: { x: data.x, y: data.y } });
                       }}
                     >
-                      <div ref={draggableRef2} className="absolute top-3 ">
+                      <div ref={draggableRef2} className="absolute top-3">
                         <button
                           className={`bi-arrows-move handle absolute -top-1 left-2 text-sm`}
                           style={{
@@ -472,7 +492,7 @@ const SmallDevicePreview = ({
                       bounds="parent"
                       axis="both"
                       handle=".handle"
-                      defaultPosition={{ x: 0, y: 0 }}
+                      position={position3}
                       grid={[10, 10]}
                       scale={1}
                       onStart={(e, data) => console.log("Start:", e, data)}
@@ -594,7 +614,7 @@ const SmallDevicePreview = ({
                       bounds="parent"
                       axis="both"
                       handle=".handle"
-                      defaultPosition={{ x: 0, y: 0 }}
+                      position={backPosition2}
                       grid={[10, 10]}
                       scale={1}
                       onStart={(e, data) => console.log("Start:", e, data)}
@@ -628,7 +648,7 @@ const SmallDevicePreview = ({
                       bounds="parent"
                       axis="both"
                       handle=".handle"
-                      defaultPosition={{ x: 0, y: 0 }}
+                      position={backPosition3}
                       grid={[10, 10]}
                       scale={1}
                       onStart={(e, data) => console.log("Start:", e, data)}

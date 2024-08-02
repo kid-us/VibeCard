@@ -530,6 +530,7 @@ const SmallEditor: React.FC = () => {
                 type="text"
                 className="rounded w-full h-11 px-4 focus:outline-none mb-4 placeholder:font-bold placeholder:text-sm"
                 placeholder="Name goes here"
+                value={active === "front" ? name : backName}
                 onChange={
                   active === "front"
                     ? (e) => setName(e.currentTarget.value)
@@ -626,6 +627,7 @@ const SmallEditor: React.FC = () => {
                 type="text"
                 className="rounded w-full h-11 px-4 focus:outline-none mb-4 placeholder:font-bold placeholder:text-sm"
                 placeholder="Slogan goes here"
+                value={active === "front" ? extraText : backExtraText}
                 onChange={
                   active === "front"
                     ? (e) => setExtraText(e.currentTarget.value)
