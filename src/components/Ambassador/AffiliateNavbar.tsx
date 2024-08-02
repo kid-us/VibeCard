@@ -1,6 +1,22 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import AffiliateMenu from "./AffiliateMenu";
+
+interface Navs {
+  id: number;
+  name: string;
+  path: string;
+}
+
+export const affiliateNav: Navs[] = [
+  { id: 1, name: "Transactions", path: "/transactions" },
+  { id: 2, name: "Payments", path: "/payments" },
+  { id: 3, name: "Setting", path: "/setting" },
+];
 
 const AffiliateNavbar = () => {
+  const [menu, setMenu] = useState<boolean>(false);
+
   return (
     <div>
       <nav className="flex justify-between text-white mt-5">
@@ -9,18 +25,22 @@ const AffiliateNavbar = () => {
             vibecard
           </Link>
         </div>
-        <div className="flex gap-x-10">
-          <div className="flex gap-x-1 text-xl">
-            <p className="bi-person-fill text-gray-200"></p>
-            <p>Lorem</p>
-          </div>
-          <div className="flex lg:mt-1">
-            <p className="bi-box-arrow-right lg:text-gray-400 lg:text-md text-xl">
-              <span className="lg:inline hidden">Logout</span>
-            </p>
-          </div>
+        <div className="lg:hidden">
+          <button
+            onClick={() => setMenu(!menu)}
+            className="bi-list text-2xl"
+          ></button>
+        </div>
+        <div className="lg:flex hidden gap-x-10">
+          {affiliateNav.map((nav) => (
+            <Link key={nav.id} to={nav.path} className="mx-5">
+              {nav.name}
+            </Link>
+          ))}
+          <p className="cursor-pointer">Logout</p>
         </div>
       </nav>
+      {menu && <AffiliateMenu username={"Lorem"} menu={() => setMenu(false)} />}
     </div>
   );
 };

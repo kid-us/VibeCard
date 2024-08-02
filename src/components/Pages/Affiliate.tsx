@@ -2,6 +2,7 @@ import DatePicker from "../Insights/DatePicker";
 import React from "react";
 import { DateRange } from "react-day-picker";
 import { addDays } from "date-fns";
+import AffiliateNavbar from "../Ambassador/AffiliateNavbar";
 
 const Affiliate = () => {
   // Custom Date
@@ -15,6 +16,7 @@ const Affiliate = () => {
   return (
     <>
       <div className="lg:container mx-auto px-2">
+        <AffiliateNavbar />
         <div className="mt-10">
           <p className="text-xl text-white">
             Welcome to your affiliate market dashboard{" "}
