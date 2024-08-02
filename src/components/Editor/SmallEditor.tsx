@@ -722,12 +722,12 @@ const SmallEditor: React.FC = () => {
 
       {/* Card Taps*/}
       <div className="absolute bottom-0 w-full">
-        <div className="flex justify-between px-1 secondary-bg py-2 border rounded border-gray-800">
+        <div className="flex justify-between px-3 secondary-bg py-2 border rounded border-gray-800">
           <p
             onClick={() => setTab("image")}
             className={`${
               tab === "image" && "text-white text-3xl"
-            } bi-image text-2xl text-gray-500`}
+            } bi-image text-4xl text-gray-500`}
           ></p>
           <div className="flex gap-x-4">
             <button
@@ -741,7 +741,7 @@ const SmallEditor: React.FC = () => {
             onClick={() => setTab("text")}
             className={`${
               tab === "text" && "text-white text-3xl"
-            } bi-fonts text-2xl text-gray-500`}
+            } bi-fonts text-4xl text-gray-500`}
           ></p>
         </div>
       </div>
