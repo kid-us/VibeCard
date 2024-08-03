@@ -5,8 +5,9 @@ import { addDays } from "date-fns";
 import AffiliateNavbar from "../Ambassador/AffiliateNavbar";
 import { Link } from "react-router-dom";
 import AffiliateFooter from "../Ambassador/AffiliateFooter";
+import useAmbassador from "@/store/useAmbassador";
 
-const producSold = [
+const productSolds = [
   { name: "This month", id: 1 },
   { name: "Last month", id: 2 },
   { name: "Last 30 days", id: 3 },
@@ -14,6 +15,8 @@ const producSold = [
 ];
 
 const Affiliate = () => {
+  const { firstName, lastName, earning, referral_code } = useAmbassador();
+
   // Custom Date
   const [date, setDate] = React.useState<DateRange | undefined>({
     from: new Date(),
@@ -34,7 +37,7 @@ const Affiliate = () => {
         <div className="mt-10">
           <p className="text-xl text-white">
             Welcome to your affiliate market dashboard{" "}
-            <span className="text-teal-500">{"Lorem"}</span>.
+            <span className="text-teal-500">{firstName + " " + lastName}</span>.
           </p>
           <div className="text-white mt-5">
             <h1 className="text-xl mb-2">Referral Link</h1>
@@ -43,7 +46,7 @@ const Affiliate = () => {
               purchases made by them
             </p>
             <Link to="/" className="text-blue-500">
-              vivecard.com/?ref=username
+              vivecard.com/?ref={referral_code}
             </Link>
           </div>
           <div className="mt-5 text-white">
@@ -175,7 +178,7 @@ const Affiliate = () => {
 
                   {dropdown && (
                     <div className="absolute mt-2 text-sm">
-                      {producSold.map((sold) => (
+                      {productSolds.map((sold) => (
                         <p
                           key={sold.id}
                           onClick={() => {
@@ -191,7 +194,7 @@ const Affiliate = () => {
                   )}
                 </div>
               </div>
-              <h1 className="text-8xl mt-5">0</h1>
+              <h1 className="text-8xl mt-5">{earning}</h1>
             </div>
           </div>
         </div>

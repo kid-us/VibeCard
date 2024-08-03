@@ -5,7 +5,6 @@ import { useState } from "react";
 import Button from "../Button/Button";
 import axios from "axios";
 import { baseUrl } from "../../services/request";
-import { useNavigate } from "react-router-dom";
 
 interface Social {
   name: string;
@@ -46,6 +45,18 @@ const socialMedias: Social[] = [
     icon: "bi-twitter",
     color: "text-cyan-600",
   },
+  {
+    name: "Linkedin",
+    value: "linkedin",
+    icon: "bi-linkedin",
+    color: "text-blue-600",
+  },
+  {
+    name: "Website",
+    value: "website",
+    icon: "bi-globe",
+    color: "text-blue-600",
+  },
 ] as const;
 
 const schema = z.object({
@@ -55,7 +66,8 @@ const schema = z.object({
   facebook: z.string().optional(),
   instagram: z.string().optional(),
   tiktok: z.string().optional(),
-
+  website: z.string().optional(),
+  linkedin: z.string().optional(),
   first_name: z
     .string()
     .min(3, { message: "First Name must be greater than 3 characters." }),
@@ -71,10 +83,9 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const AmbassadorRegister = () => {
-  const navigate = useNavigate();
-
   const [registerError, setRegisterError] = useState("");
-
+  const [showPassword, setShowPassword] = useState(false);
+  const [successMsg, setSuccessMsg] = useState(false);
   const [loader, setLoader] = useState(false);
 
   const {
@@ -83,207 +94,242 @@ const AmbassadorRegister = () => {
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  const [showPassword, setShowPassword] = useState(false);
-
   const onSubmit = (data: FieldValues) => {
-    console.log(data);
-    return;
     setLoader(true);
+
+    const registerAmbassador = {
+      first_name: data.first_name,
+      last_name: data.last_name,
+      email: data.email,
+      password: data.password,
+      tiktoc_link: `https://tiktok.com/${data.tiktok}`,
+      twich_link: `https://twitch.com/${data.twitch}`,
+      twitter_link: `https://twitter.com/${data.twitter}`,
+      instagram_link: `https://tiktok.com/${data.instagram}`,
+      facebook_link: `https://fb.com/${data.facebook}`,
+      youtube_link: `https://youtube.com/${data.youtube}`,
+      linkedin_link: `https://linkedin.com/${data.linkedin}`,
+      website_link: `https://${data.website}`,
+    };
+
     axios
-      .get(`${baseUrl}/api/v1/auth/check-email/${data.email}`, {
+      .post(`${baseUrl}/api/v1/ambassador/register`, registerAmbassador, {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then(() => {
-        axios
-          .post(`${baseUrl}/api/v1/auth/register`, data, {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-          .then(() => {
-            navigate(`/verify?email=${data.email}`);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      })
-      .catch(() => {
         setLoader(false);
-        setRegisterError("Email already exist.");
+        setSuccessMsg(true);
+        setTimeout(() => {
+          setSuccessMsg(false);
+        }, 3000);
+      })
+      .catch((error) => {
+        setLoader(false);
+        setRegisterError("Something went wrong");
+        console.log(error);
       });
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-      {/* Email exist error */}
-      {registerError !== "" && (
-        <div className="relative">
-          <p className="absolute -top-7 text-red-600 text-sm">
-            <span className="bi-exclamation-triangle-fill me-4"></span>
-            {registerError}
+    <>
+      {successMsg && (
+        <div className="fixed z-50 lg:right-20 right-1 lg:top-5 top-2 bg-green-500 lg:w-96 rounded px-4 py-2 lg:mx-0 mx-2">
+          <p>
+            Success! your request has been submitted successfully once we
+            approve your account you can user affiliate market!
           </p>
+          <p className="mt-2">Stay tuned!</p>
         </div>
       )}
-
-      {/* Register */}
-      <p className="col-span-2 text-white text-xl lg:mt-0 mt-10">
-        Be our Ambassador
-      </p>
-      <div className="lg:grid grid-cols-2 gap-x-10 bg-white rounded lg:p-8 p-4 mt-5">
-        {/* First Name */}
-        <div className="lg:mb-4 mb-3">
-          <label className="text-sm text-gray-700 block" htmlFor="username">
-            First Name <span className="bi-asterisk text-[5px]"></span>
-          </label>
-          <input
-            {...register("first_name")}
-            type="text"
-            name="first_name"
-            className={`text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ${
-              errors.email && "border-red-600 border-1 border"
-            }`}
-          />
-          {errors.first_name && (
-            <p className="text-red-600 text-xs pt-1">
-              {errors.first_name.message}
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+        {/* Email exist error */}
+        {registerError !== "" && (
+          <div className="relative">
+            <p className="absolute -top-9 text-white text-sm bg-red-500 w-full rounded p-2">
+              <span className="bi-exclamation-triangle-fill me-4"></span>
+              {registerError}
             </p>
-          )}
-        </div>
-
-        {/* Last Name */}
-        <div className="lg:mb-4 mb-3">
-          <label className="text-sm text-gray-700 block" htmlFor="username">
-            Last Name <span className="bi-asterisk text-[5px]"></span>
-          </label>
-          <input
-            {...register("last_name")}
-            type="text"
-            name="last_name"
-            className={`text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ${
-              errors.email && "border-red-600 border-1 border"
-            }`}
-          />
-          {errors.last_name && (
-            <p className="text-red-600 text-xs pt-1">
-              {errors.last_name.message}
-            </p>
-          )}
-        </div>
-
-        {/* Email */}
-        <div className="lg:mb-4 mb-3">
-          <label className="text-sm text-gray-700 block" htmlFor="email">
-            Email <span className="bi-asterisk text-[5px]"></span>
-          </label>
-          <input
-            {...register("email")}
-            type="email"
-            name="email"
-            className={`text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ${
-              errors.email && "border-red-600 border-1 border"
-            }`}
-          />
-          {errors.email && (
-            <p className="text-red-600 text-xs pt-1">{errors.email.message}</p>
-          )}
-        </div>
-
-        {/* Password */}
-        <div className="lg:mb-4 mb-3 relative">
-          <label className="text-sm text-gray-700 block" htmlFor="password">
-            Password <span className="bi-asterisk text-[5px]"></span>
-          </label>
-          <input
-            {...register("password")}
-            type={showPassword ? "text" : "password"}
-            name="password"
-            className={`text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ${
-              errors.password && "border-red-600 border-1 border"
-            }`}
-          />
-          <span
-            onClick={() => setShowPassword(!showPassword)}
-            className={`absolute ${
-              showPassword ? "bi-eye" : "bi-eye-slash"
-            } right-2 top-8 cursor-pointer text-white px-2 text-lg border-l border-gray-500`}
-          ></span>
-          {errors.password && (
-            <p className="text-red-600 text-xs pt-1">
-              {errors.password.message}
-            </p>
-          )}
-        </div>
-
-        {/* Social medias */}
-        {socialMedias.map((social) => (
-          <div key={social.value} className="lg:mb-4 mb-3 relative">
-            <label className="text-xs text-gray-900 block" htmlFor="username">
-              {social.name}
-            </label>
-            <span
-              className={`absolute left-1 top-8 cursor-pointer px-2 text-lg border-r border-gray-500 bi-at text-white`}
-            ></span>
-            {/* Tik tok */}
-            {social.value === "tiktok" && (
-              <input
-                {...register("tiktok")}
-                type="text"
-                className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
-              />
-            )}
-            {/* instagram */}
-            {social.value === "instagram" && (
-              <input
-                {...register("instagram")}
-                type="text"
-                className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
-              />
-            )}
-            {/* youtube */}
-            {social.value === "youtube" && (
-              <input
-                {...register("youtube")}
-                type="text"
-                className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
-              />
-            )}
-            {/* facebook */}
-            {social.value === "facebook" && (
-              <input
-                {...register("facebook")}
-                type="text"
-                className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
-              />
-            )}
-            {/* twitch */}
-            {social.value === "twitch" && (
-              <input
-                {...register("twitch")}
-                type="text"
-                className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
-              />
-            )}
-            {/* twitter */}
-            {social.value === "twitter" && (
-              <input
-                {...register("twitter")}
-                type="text"
-                className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
-              />
-            )}
-            <span
-              className={`absolute right-2 top-8 cursor-pointer px-2 text-lg border-l border-gray-500 ${social.icon} ${social.color}`}
-            ></span>
           </div>
-        ))}
-        {/* Button */}
-        <div className="col-span-2">
-          <Button loader={loader} label="Submit" />
+        )}
+
+        {/* Register */}
+        <p className="col-span-2 text-white text-xl lg:mt-0 mt-10">
+          Be our Ambassador
+        </p>
+        <div className="lg:grid grid-cols-2 gap-x-10 bg-white rounded lg:p-8 p-4 mt-5">
+          {/* First Name */}
+          <div className="lg:mb-4 mb-3">
+            <label className="text-sm text-gray-700 block" htmlFor="username">
+              First Name <span className="bi-asterisk text-[5px]"></span>
+            </label>
+            <input
+              {...register("first_name")}
+              type="text"
+              name="first_name"
+              className={`text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ${
+                errors.email && "border-red-600 border-1 border"
+              }`}
+            />
+            {errors.first_name && (
+              <p className="text-red-600 text-xs pt-1">
+                {errors.first_name.message}
+              </p>
+            )}
+          </div>
+
+          {/* Last Name */}
+          <div className="lg:mb-4 mb-3">
+            <label className="text-sm text-gray-700 block" htmlFor="username">
+              Last Name <span className="bi-asterisk text-[5px]"></span>
+            </label>
+            <input
+              {...register("last_name")}
+              type="text"
+              name="last_name"
+              className={`text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ${
+                errors.email && "border-red-600 border-1 border"
+              }`}
+            />
+            {errors.last_name && (
+              <p className="text-red-600 text-xs pt-1">
+                {errors.last_name.message}
+              </p>
+            )}
+          </div>
+
+          {/* Email */}
+          <div className="lg:mb-4 mb-3">
+            <label className="text-sm text-gray-700 block" htmlFor="email">
+              Email <span className="bi-asterisk text-[5px]"></span>
+            </label>
+            <input
+              {...register("email")}
+              type="email"
+              name="email"
+              className={`text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ${
+                errors.email && "border-red-600 border-1 border"
+              }`}
+            />
+            {errors.email && (
+              <p className="text-red-600 text-xs pt-1">
+                {errors.email.message}
+              </p>
+            )}
+          </div>
+
+          {/* Password */}
+          <div className="lg:mb-4 mb-3 relative">
+            <label className="text-sm text-gray-700 block" htmlFor="password">
+              Password <span className="bi-asterisk text-[5px]"></span>
+            </label>
+            <input
+              {...register("password")}
+              type={showPassword ? "text" : "password"}
+              name="password"
+              className={`text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ${
+                errors.password && "border-red-600 border-1 border"
+              }`}
+            />
+            <span
+              onClick={() => setShowPassword(!showPassword)}
+              className={`absolute ${
+                showPassword ? "bi-eye" : "bi-eye-slash"
+              } right-2 top-8 cursor-pointer text-white px-2 text-lg border-l border-gray-500`}
+            ></span>
+            {errors.password && (
+              <p className="text-red-600 text-xs pt-1">
+                {errors.password.message}
+              </p>
+            )}
+          </div>
+
+          {/* Social medias */}
+          {socialMedias.map((social) => (
+            <div key={social.value} className="lg:mb-4 mb-3 relative">
+              <label className="text-xs text-gray-900 block" htmlFor="username">
+                {social.name}
+              </label>
+              <span
+                className={`absolute left-1 top-8 cursor-pointer px-2 text-lg border-r border-gray-500 bi-at text-white`}
+              ></span>
+              {/* Tik tok */}
+              {social.value === "tiktok" && (
+                <input
+                  {...register("tiktok")}
+                  type="text"
+                  className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-12"
+                />
+              )}
+              {/* instagram */}
+              {social.value === "instagram" && (
+                <input
+                  {...register("instagram")}
+                  type="text"
+                  className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-12"
+                />
+              )}
+              {/* youtube */}
+              {social.value === "youtube" && (
+                <input
+                  {...register("youtube")}
+                  type="text"
+                  className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-12"
+                />
+              )}
+              {/* facebook */}
+              {social.value === "facebook" && (
+                <input
+                  {...register("facebook")}
+                  type="text"
+                  className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-12"
+                />
+              )}
+              {/* twitch */}
+              {social.value === "twitch" && (
+                <input
+                  {...register("twitch")}
+                  type="text"
+                  className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-12"
+                />
+              )}
+              {/* twitter */}
+              {social.value === "twitter" && (
+                <input
+                  {...register("twitter")}
+                  type="text"
+                  className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-12"
+                />
+              )}
+              {/* linkedin */}
+              {social.value === "linkedin" && (
+                <input
+                  {...register("linkedin")}
+                  type="text"
+                  className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-12"
+                />
+              )}
+              {/* website */}
+              {social.value === "website" && (
+                <input
+                  {...register("website")}
+                  type="text"
+                  className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-12"
+                />
+              )}
+              <span
+                className={`absolute right-2 top-8 cursor-pointer px-2 text-lg border-l border-gray-500 ${social.icon} ${social.color}`}
+              ></span>
+            </div>
+          ))}
+          {/* Button */}
+          <div className="col-span-2">
+            <Button loader={loader} label="Submit" />
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </>
   );
 };
 

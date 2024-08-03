@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AffiliateMenu from "./AffiliateMenu";
+import useAmbassador from "@/store/useAmbassador";
 
 interface Navs {
   id: number;
@@ -16,6 +17,15 @@ export const affiliateNav: Navs[] = [
 ];
 
 const AffiliateNavbar = () => {
+  const { logout } = useAmbassador();
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/ambassador");
+  };
+
   const [menu, setMenu] = useState<boolean>(false);
 
   return (
@@ -38,7 +48,9 @@ const AffiliateNavbar = () => {
               {nav.name}
             </Link>
           ))}
-          <p className="cursor-pointer text-xl">Logout</p>
+          <p onClick={() => handleLogout()} className="cursor-pointer">
+            Logout
+          </p>
         </div>
       </nav>
       {menu && <AffiliateMenu username={"Lorem"} menu={() => setMenu(false)} />}

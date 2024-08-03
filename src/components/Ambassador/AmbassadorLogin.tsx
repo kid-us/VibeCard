@@ -6,7 +6,6 @@ import { useState } from "react";
 import Button from "../Button/Button";
 import axios from "axios";
 import { baseUrl } from "../../services/request";
-import useAuthStore from "../../store/useUserData";
 
 const schema = z.object({
   password: z.string().min(4, {
@@ -19,7 +18,6 @@ type FormData = z.infer<typeof schema>;
 
 const AmbassadorLogin = () => {
   // Zustand
-  const { login } = useAuthStore();
   // RRD
   const navigate = useNavigate();
   // States
@@ -37,29 +35,21 @@ const AmbassadorLogin = () => {
   // On Form Submit
   const onSubmit = (data: FieldValues) => {
     setLoader(true);
-    return;
+
+    const logData = {
+      email: data.email,
+      password: data.password,
+    };
+
     axios
-      .post(`${baseUrl}/api/v1/auth/login`, data, {
+      .post(`${baseUrl}/api/v1/ambassador/login`, logData, {
         headers: {
           "Content-Type": "application/json",
         },
         withCredentials: true,
       })
       .then(() => {
-        axios
-          .get(`${baseUrl}/api/v1/auth/me`, {
-            headers: {
-              "Content-Type": "application/json",
-            },
-            withCredentials: true,
-          })
-          .then((response) => {
-            login(response.data.username, response.data.email);
-            navigate("/");
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        navigate("/affiliate");
       })
       .catch((error) => {
         setLoader(false);
@@ -75,7 +65,7 @@ const AmbassadorLogin = () => {
       {/* Login error */}
       {loginError !== "" && (
         <div className="relative">
-          <p className="absolute -top-10 text-red-600 text-sm">
+          <p className="absolute -top-16 text-white text-sm bg-red-500 w-full rounded p-2">
             <span className="bi-exclamation-triangle-fill me-4"></span>
             {loginError}
           </p>
@@ -130,8 +120,6 @@ const AmbassadorLogin = () => {
         </div>
         <Button loader={loader} label="Login" />
       </div>
-
-      {/* Button */}
     </form>
   );
 };

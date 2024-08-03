@@ -24,6 +24,7 @@ import ImageEditor from "./components/Editor/ImageEditor";
 import Ambassador from "./components/Pages/Ambassador";
 import Affiliate from "./components/Pages/Affiliate";
 import AffiliateSetting from "./components/Ambassador/AffilateSetting";
+import AmbassadorProtected from "./components/Protected/AmbassadorProtected";
 
 function App() {
   return (
@@ -65,17 +66,30 @@ function App() {
             </Protected>
           }
         />
-        {/* Affiliate */}
-        <Route path="/ambassador" element={<Ambassador />}></Route>
-        <Route path="/affiliate" element={<Affiliate />}></Route>
-        <Route path="/affiliate/setting" element={<AffiliateSetting />}></Route>
-
         <Route path="/create" element={<Create />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/404" element={<Page404 />} />
         <Route path="*" element={<Navigate to="/404" />}></Route>
+        {/* Affiliate */}
+        <Route path="/ambassador" element={<Ambassador />}></Route>
+        <Route
+          path="/affiliate"
+          element={
+            <AmbassadorProtected>
+              <Affiliate />
+            </AmbassadorProtected>
+          }
+        ></Route>
+        <Route
+          path="/affiliate/setting"
+          element={
+            <AmbassadorProtected>
+              <AffiliateSetting />
+            </AmbassadorProtected>
+          }
+        ></Route>
       </Routes>
     </>
   );

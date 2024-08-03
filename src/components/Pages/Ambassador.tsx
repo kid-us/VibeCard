@@ -16,7 +16,7 @@ const Ambassador = () => {
         <div className="lg:grid grid-cols-2 gap-x-16 my-16">
           <div>
             <p className="text-xl ubuntu">Ready to get paid to vibecard?</p>
-            <p className="text-lg ubuntu mt-1">
+            <p className="text-lg mt-2">
               The vibecard Ambassador program allows you to sell vibecard to
               your network at a 15% discount, AND get paid 15% of those sales.
               Yep, you read that right: Get paid to give your friends a deal!
