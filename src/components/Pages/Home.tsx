@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Hero from "../Home/Hero";
 import Footer from "../Footer/Footer";
-import { video, video2 } from "../../assets";
+import { tutorial } from "../../assets";
 import Loading from "../Loading/Loading";
 import homeCard from "../../services/homeCard";
 import Faq from "../Home/FAQ";
@@ -58,8 +58,7 @@ const Home = () => {
               {/* <img src={browse} alt="" /> */}
               <div className="lg:rounded-lg rounded overflow-hidden">
                 <video autoPlay muted loop playsInline className="">
-                  <source src={video} type="video/webm" />
-                  <source src={video2} type="video/mp4" />
+                  <source src={tutorial} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>

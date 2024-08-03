@@ -2,8 +2,7 @@ import userPic from "./user.png";
 import google from "./google.png";
 import pageNotFound from "./page404.gif";
 import photo from "./photo.png";
-import video from "./demo.webm";
-import video2 from "./Demo.mp4";
+import tutorial from "./tutorial.mp4";
 import ceo from "./ceo.png";
 // Home
 import design from "./design.svg";
@@ -25,8 +24,7 @@ export {
   google,
   pageNotFound,
   photo,
-  video,
-  video2,
+  tutorial,
   ceo,
   // Home
   design,
