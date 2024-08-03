@@ -20,9 +20,15 @@ export interface Style {
   style: string;
 }
 
+export interface LocalStorageData {
+  cardType: string;
+  quantity: string | number;
+  vibecardLogo: boolean;
+}
+
 const LargeEditor: React.FC = () => {
   // Zustand
-  const { updateBack, updateFront } = useProduct();
+  const { updateBack, updateFront, front, back } = useProduct();
 
   // Cropper
   const [crop, setCrop] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -34,6 +40,7 @@ const LargeEditor: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Front and Back
+  const [orientation, setOrientation] = useState<boolean>(false);
   const [switchBtn, setSwitchBtn] = useState(false);
   const [tab, setTab] = useState<string>("image");
   const [pickedBg, setPickBg] = useState<string>("#ffffff");
@@ -195,7 +202,60 @@ const LargeEditor: React.FC = () => {
 
   // On order asked
   const handleSubmit = () => {
-    console.log("log");
+    if (frontFile || backFile) {
+      const productsInfo = localStorage.getItem("product");
+      const product: LocalStorageData | null = productsInfo
+        ? (JSON.parse(productsInfo) as LocalStorageData)
+        : null;
+      if (product) {
+        const frontDesign = {
+          bgColor: bg,
+          fontStyle: fontStyle.style,
+          text: name,
+          textPosition: front.textPosition,
+          textSize: font,
+          imageSize: image,
+          imagePosition: front.imagePosition,
+          pickedBg: pickedBg,
+          color: textColor,
+          extraText: extraText,
+          extraTextColor: extraTextColor,
+          extraFont: extraFont,
+          extraFontStyle: extraFontStyle.style,
+          extraTextPosition: front.extraTextPosition,
+        };
+
+        const backDesign = {
+          bgColor: backBg,
+          fontStyle: backFontStyle.style,
+          text: backName,
+          textPosition: back.textPosition,
+          textSize: backFont,
+          imageSize: backImage,
+          imagePosition: back.imagePosition,
+          pickedBg: backPickedBg,
+          color: backTextColor,
+          extraText: backExtraText,
+          extraTextColor: backExtraTextColor,
+          extraFont: backExtraFont,
+          extraFontStyle: extraFontStyle.style,
+          extraTextPosition: back.extraTextPosition,
+        };
+        const data = {
+          orientation: !orientation ? "landscape" : "portrait",
+          cardType: product.cardType,
+          quantity: product.quantity,
+          vibecardLogo: product.vibecardLogo,
+          frontImage: frontFile,
+          backImage: backFile,
+          front: JSON.stringify(frontDesign),
+          back: JSON.stringify(backDesign),
+        };
+        console.log(data);
+      }
+    } else {
+      setError(true);
+    }
   };
 
   // Handle Preview
@@ -233,7 +293,6 @@ const LargeEditor: React.FC = () => {
     setShowMyCard(true);
   };
 
-  const [orientation, setOrientation] = useState<boolean>(false);
   const handleOrientation = (e: React.ChangeEvent<HTMLSelectElement>) => {
     if (e.currentTarget.value === "landscape") setOrientation(false);
     else {
@@ -253,11 +312,11 @@ const LargeEditor: React.FC = () => {
   return (
     <>
       {error && (
-        <div className="fixed flex top-2 right-0 z-50 text-white bg-red-500 rounded ps-10 text-sm py-3">
+        <div className="fixed flex top-4 right-0 z-50 text-white bg-red-500 rounded ps-10 text-sm py-3">
           <p>Please at least insert your logo </p>
           <p
             onClick={() => setError(false)}
-            className="text-white ms-5 me-2 text- bi-x-lg bg-black rounded px-2 py-1 cursor-pointer"
+            className="text-white ms-5 me-2 bi-x-lg rounded px-2 cursor-pointer"
           ></p>
         </div>
       )}
@@ -444,13 +503,13 @@ const LargeEditor: React.FC = () => {
                             color: "#333",
                           }}
                         >
-                          {imageSize.map((size) =>
+                          {imageSize.map((size, index) =>
                             size !== image ? (
-                              <option key={size} value={`${size}`}>
+                              <option key={index} value={`${size}`}>
                                 {size}
                               </option>
                             ) : (
-                              <option selected value={image}>
+                              <option key={size} value={image}>
                                 {image}
                               </option>
                             )
@@ -500,7 +559,6 @@ const LargeEditor: React.FC = () => {
                                 </option>
                               ) : (
                                 <option
-                                  selected
                                   value={active === "front" ? font : backFont}
                                 >
                                   {active === "front" ? font : backFont}
@@ -606,7 +664,6 @@ const LargeEditor: React.FC = () => {
                                   </option>
                                 ) : (
                                   <option
-                                    selected
                                     value={active === "front" ? font : backFont}
                                   >
                                     {active === "front" ? font : backFont}

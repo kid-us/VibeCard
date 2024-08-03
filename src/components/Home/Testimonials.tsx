@@ -34,7 +34,7 @@ const testimony: Testimonial[] = [
     note: "The launch of our contactless business cards is another step in our commitment to building a sustainable future and limiting our impact on the planet. We are delighted to be working with vibecard which has developed leading technology",
   },
   {
-    id: 1,
+    id: 3,
     company: "NIB Bank",
     job: "CSO",
     name: "Rediet S.",
