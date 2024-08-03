@@ -13,7 +13,7 @@ interface Social {
   color: string;
 }
 
-const socialMedias: Social[] = [
+export const socialMedias: Social[] = [
   { name: "Tik Tok", value: "tiktok", icon: "bi-tiktok", color: "text-white" },
   {
     name: "Instagram",

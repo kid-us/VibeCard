@@ -1,5 +1,4 @@
 import AffiliateNavbar from "./AffiliateNavbar";
-
 import { z } from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,47 +8,8 @@ import axios from "axios";
 import { baseUrl } from "../../services/request";
 import { useNavigate } from "react-router-dom";
 import AffiliateFooter from "./AffiliateFooter";
-
-interface Social {
-  name: string;
-  value: string;
-  icon: string;
-  color: string;
-}
-
-const socialMedias: Social[] = [
-  { name: "Tik Tok", value: "tiktok", icon: "bi-tiktok", color: "text-white" },
-  {
-    name: "Instagram",
-    value: "instagram",
-    icon: "bi-instagram",
-    color: "text-pink-500",
-  },
-  {
-    name: "YouTube",
-    value: "youtube",
-    icon: "bi-youtube",
-    color: "text-red-500",
-  },
-  {
-    name: "Facebook",
-    value: "facebook",
-    icon: "bi-facebook",
-    color: "text-blue-500",
-  },
-  {
-    name: "Twitch",
-    value: "twitch",
-    icon: "bi-twitch",
-    color: "text-purple-600",
-  },
-  {
-    name: "Twitter",
-    value: "twitter",
-    icon: "bi-twitter",
-    color: "text-cyan-600",
-  },
-] as const;
+import useAmbassador from "@/store/useAmbassador";
+import { socialMedias } from "./AmbassadorRegister";
 
 const schema = z.object({
   twitter: z.string().optional().optional(),
@@ -58,6 +18,8 @@ const schema = z.object({
   facebook: z.string().optional(),
   instagram: z.string().optional(),
   tiktok: z.string().optional(),
+  website: z.string().optional(),
+  linkedin: z.string().optional(),
 
   first_name: z
     .string()
@@ -74,13 +36,43 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const AffiliateSetting = () => {
+  const {
+    email,
+    facebook,
+    firstName,
+    instagram,
+    lastName,
+    linkedin,
+    referral_code,
+    youtube,
+    website,
+    twitter,
+    twich,
+    tiktok,
+  } = useAmbassador();
+
   const navigate = useNavigate();
 
   const [registerError, setRegisterError] = useState("");
 
   const [loader, setLoader] = useState(false);
 
-  const [referral, setReferral] = useState<string>("");
+  // Default Value
+  const [fName] = useState<string>(firstName ? firstName : "");
+  const [lName] = useState<string>(lastName ? lastName : "");
+  const [userEmail] = useState<string>(email ? email : "");
+  const [userFacebook] = useState<string>(facebook ? facebook : "");
+  const [userLinkedin] = useState<string>(linkedin ? linkedin : "");
+  const [userTiktok] = useState<string>(tiktok ? tiktok : "");
+  const [userWebsite] = useState<string>(website ? website : "");
+  const [userTwich] = useState<string>(twich ? twich : "");
+  const [userInstagram] = useState<string>(instagram ? instagram : "");
+  const [userYoutube] = useState<string>(youtube ? youtube : "");
+  const [userTwitter] = useState<string>(twitter ? twitter : "");
+
+  const [referral, setReferral] = useState<string>(
+    referral_code ? referral_code : ""
+  );
 
   const {
     register,
@@ -119,6 +111,7 @@ const AffiliateSetting = () => {
         setRegisterError("Email already exist.");
       });
   };
+
   return (
     <>
       <div className="lg:container mx-auto px-2">
@@ -182,6 +175,7 @@ const AffiliateSetting = () => {
                   className={`text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ${
                     errors.first_name && "border-red-600 border-1 border"
                   }`}
+                  value={fName}
                 />
                 {errors.first_name && (
                   <p className="text-red-600 text-xs pt-1">
@@ -205,6 +199,7 @@ const AffiliateSetting = () => {
                   className={`text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ${
                     errors.email && "border-red-600 border-1 border"
                   }`}
+                  value={lName}
                 />
                 {errors.last_name && (
                   <p className="text-red-600 text-xs pt-1">
@@ -225,6 +220,7 @@ const AffiliateSetting = () => {
                   className={`text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ${
                     errors.email && "border-red-600 border-1 border"
                   }`}
+                  value={userEmail}
                 />
                 {errors.email && (
                   <p className="text-red-600 text-xs pt-1">
@@ -271,15 +267,13 @@ const AffiliateSetting = () => {
                   >
                     {social.name}
                   </label>
-                  <span
-                    className={`absolute left-1 top-8 cursor-pointer px-2 text-lg border-r border-gray-500 bi-at text-white`}
-                  ></span>
                   {/* Tik tok */}
                   {social.value === "tiktok" && (
                     <input
                       {...register("tiktok")}
                       type="text"
-                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
+                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-5"
+                      value={userTiktok}
                     />
                   )}
                   {/* instagram */}
@@ -287,7 +281,8 @@ const AffiliateSetting = () => {
                     <input
                       {...register("instagram")}
                       type="text"
-                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
+                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-5"
+                      value={userInstagram}
                     />
                   )}
                   {/* youtube */}
@@ -295,7 +290,8 @@ const AffiliateSetting = () => {
                     <input
                       {...register("youtube")}
                       type="text"
-                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
+                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-5"
+                      value={userYoutube}
                     />
                   )}
                   {/* facebook */}
@@ -303,7 +299,8 @@ const AffiliateSetting = () => {
                     <input
                       {...register("facebook")}
                       type="text"
-                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
+                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-5"
+                      value={userFacebook}
                     />
                   )}
                   {/* twitch */}
@@ -311,7 +308,8 @@ const AffiliateSetting = () => {
                     <input
                       {...register("twitch")}
                       type="text"
-                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
+                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-5"
+                      value={userTwich}
                     />
                   )}
                   {/* twitter */}
@@ -319,7 +317,26 @@ const AffiliateSetting = () => {
                     <input
                       {...register("twitter")}
                       type="text"
-                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12"
+                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-5"
+                      value={userTwitter}
+                    />
+                  )}
+                  {/* linkedin */}
+                  {social.value === "linkedin" && (
+                    <input
+                      {...register("linkedin")}
+                      type="text"
+                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-5"
+                      value={userLinkedin}
+                    />
+                  )}
+                  {/* website */}
+                  {social.value === "website" && (
+                    <input
+                      {...register("website")}
+                      type="text"
+                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-5"
+                      value={userWebsite}
                     />
                   )}
                   <span
