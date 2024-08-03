@@ -35,6 +35,12 @@ const CenteredCard = () => {
             ? coverColorBg === "gradient-cover" && coverColorBg
             : ""
         }`}
+        style={{
+          backgroundColor:
+            !preview.cover && coverColorBg !== "gradient-cover"
+              ? coverColorBg
+              : "",
+        }}
       >
         {preview.cover && (
           <img

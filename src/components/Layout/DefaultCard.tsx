@@ -36,6 +36,12 @@ const DefaultCard = () => {
             ? coverColorBg === "gradient-cover" && `${coverColorBg} z-0`
             : ""
         }`}
+        style={{
+          backgroundColor:
+            !preview.cover && coverColorBg !== "gradient-cover"
+              ? coverColorBg
+              : "",
+        }}
       >
         {preview.cover && (
           <img
