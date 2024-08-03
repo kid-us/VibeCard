@@ -192,8 +192,7 @@ const HeroCard = () => {
         </div>
         {/* Note */}
         <div className="lg:text-start text-center mt-16">
-          <h1 className="bi-hand-index-fill text-4xl text-teal-500 mb-3 mt-10"></h1>
-          <h1 className="font-extrabold text-white text-3xl mb-5">
+          <h1 className="font-extrabold text-teal-500 text-3xl mb-5">
             Transform Your Connections with a Tap
           </h1>
           <div className="relative lg:block hidden lg:-top-32 -top-40">
