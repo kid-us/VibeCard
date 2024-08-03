@@ -345,7 +345,7 @@ const CreateForm = ({ layout }: Props) => {
                 setCardName(e.currentTarget.value);
               }}
               value={fullName}
-              // autoComplete="off"
+              autoComplete="off"
             />
             {errors.name && (
               <p className="text-red-600 text-xs pt-1">{errors.name.message}</p>
@@ -370,7 +370,7 @@ const CreateForm = ({ layout }: Props) => {
               }`}
               onChange={(e) => handleEmail(e.currentTarget.value)}
               value={email}
-              // autoComplete="off"
+              autoComplete="off"
             />
             {errors.email && (
               <p className="text-red-600 text-xs pt-1">
@@ -397,7 +397,7 @@ const CreateForm = ({ layout }: Props) => {
               }`}
               onChange={(e) => handlePhone(e.currentTarget.value)}
               value={phone}
-              // autoComplete="off"
+              autoComplete="off"
             />
             {errors.phone && (
               <p className="text-red-600 text-xs pt-1">
@@ -427,7 +427,7 @@ const CreateForm = ({ layout }: Props) => {
                 setCardJob(e.currentTarget.value);
               }}
               value={job}
-              // autoComplete="off"
+              autoComplete="off"
             />
             {errors.job && (
               <p className="text-red-600 text-xs pt-1">{errors.job.message}</p>
@@ -455,6 +455,7 @@ const CreateForm = ({ layout }: Props) => {
                 setCardLocation(e.currentTarget.value);
               }}
               value={userLocation}
+              autoComplete="off"
             />
             {errors.location && (
               <p className="text-red-600 text-xs pt-1">
@@ -484,7 +485,7 @@ const CreateForm = ({ layout }: Props) => {
                 setCardCompany(e.currentTarget.value);
               }}
               value={userCompany}
-              // autoComplete="off"
+              autoComplete="off"
             />
             {errors.company && (
               <p className="text-red-600 text-xs pt-1">
@@ -511,7 +512,7 @@ const CreateForm = ({ layout }: Props) => {
                 setCardTagLine(e.currentTarget.value);
               }}
               value={bio}
-              // autoComplete="off"
+              autoComplete="off"
             />
           </div>
         </div>
