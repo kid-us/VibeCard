@@ -7,7 +7,25 @@ import Product3 from "../Product/Product3";
 import Product4 from "../Product/Product4";
 import Product5 from "../Product/Product5";
 import Footer from "../Footer/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { baseUrl } from "@/services/request";
+import Loading from "../Loading/Loading";
+
+interface Plan {
+  metal: {
+    price: number;
+    material: string;
+  };
+  bamboo: {
+    price: number;
+    material: string;
+  };
+  recycled_paper: {
+    price: number;
+    material: string;
+  };
+}
 
 const ProductDetail = () => {
   const [title] = useState("Product");
@@ -20,6 +38,25 @@ const ProductDetail = () => {
   const [type, setType] = useState("");
   const [quantity, setQuantity] = useState<number>(1);
   const [backLogo, setBackLogo] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const [cards, setCards] = useState<Plan>();
+
+  useEffect(() => {
+    axios
+      .get<Plan>(`${baseUrl}/api/v1/dashboard/card-material-pricing`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        setCards(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const handleMinus = () => {
     if (quantity === 1) return;
@@ -45,6 +82,8 @@ const ProductDetail = () => {
 
   return (
     <>
+      {loading && <Loading />}
+
       <Navbar />
 
       <div className="lg:px-0 px-2">
@@ -77,7 +116,7 @@ const ProductDetail = () => {
                         : "bg-white"
                     } w-full text-center pt-3 rounded h-12 lg:mb-0 mb-2 font-poppins cursor-pointer`}
                   >
-                    Recycled Paper €10
+                    Recycled Paper €{cards?.recycled_paper.price}
                   </p>
                   <p
                     onClick={() => setType("bamboo")}
@@ -87,7 +126,7 @@ const ProductDetail = () => {
                         : "bg-white"
                     } w-full text-center pt-3 rounded h-12 lg:mb-0 mb-2 font-poppins cursor-pointer`}
                   >
-                    Bamboo €25
+                    Bamboo €{cards?.bamboo.price}
                   </p>
                   <p
                     onClick={() => setType("metal")}
@@ -97,7 +136,7 @@ const ProductDetail = () => {
                         : "bg-white"
                     } w-full text-center pt-3 rounded h-12 lg:mb-0 mb-2 font-poppins cursor-pointer`}
                   >
-                    Metal €35
+                    Metal €{cards?.metal.price}
                   </p>
                 </div>
                 {/* Styles */}

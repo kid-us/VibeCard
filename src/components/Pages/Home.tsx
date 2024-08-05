@@ -57,7 +57,7 @@ const Home = () => {
             <div className=" lg:rounded-lg rounded overflow-hidden">
               {/* <img src={browse} alt="" /> */}
               <div className="lg:rounded-lg rounded overflow-hidden">
-                <video autoPlay muted loop playsInline className="">
+                <video autoPlay muted loop playsInline className="aspect-video">
                   <source src={tutorial} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>

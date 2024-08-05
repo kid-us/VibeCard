@@ -1,16 +1,44 @@
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import { free, pricingInfo, pro, proPlus } from "@/services/pricing";
+import axios from "axios";
+import { baseUrl } from "@/services/request";
+import Loading from "../Loading/Loading";
+
+interface Plan {
+  pro: { price: string; plan: "pro" };
+  proPlus: { price: string; plan: "pro+" };
+}
 
 const Pricing = () => {
   const [title] = useState("Pricing");
   useDocumentTitle(title);
 
+  const [subscription, setSubscription] = useState<Plan>();
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    axios
+      .get<Plan>(`${baseUrl}/api/v1/dashboard/subscription-plan`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        setSubscription(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <>
+      {loading && <Loading />}
       <Navbar />
 
       <div className="lg:container mx-auto lg:mt-24 mt-14">
@@ -60,7 +88,9 @@ const Pricing = () => {
               </p>
               <div className="py-10 text-center my-4 w-full">
                 <div className="flex justify-center gap-x-10 mb-4">
-                  <h1 className="text-2xl font-extrabold ">€5.49</h1>
+                  <h1 className="text-2xl font-extrabold ">
+                    €{subscription?.pro.price}
+                  </h1>
                   <p className="text-sm chakra py-2">per month</p>
                 </div>
                 <Link
@@ -90,7 +120,9 @@ const Pricing = () => {
             </p>
             <div className="py-10 text-center my-4">
               <div className="flex justify-center gap-x-10 mb-4">
-                <h1 className="text-2xl font-extrabold ">€6.99</h1>
+                <h1 className="text-2xl font-extrabold ">
+                  €{subscription?.proPlus.price}
+                </h1>
                 <p className="text-sm chakra py-2">per year</p>
               </div>
               <Link
