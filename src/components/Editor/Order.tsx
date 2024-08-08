@@ -159,6 +159,7 @@ const Order = ({ closeOrder, frontFile, backFile }: Props) => {
         })
         .then((response) => {
           window.location.href = response.data.checkout_url;
+          localStorage.clear();
         })
         .catch((error) => {
           setLoader(false);

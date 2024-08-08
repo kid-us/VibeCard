@@ -25,13 +25,15 @@ import Ambassador from "./components/Pages/Ambassador";
 import Affiliate from "./components/Pages/Affiliate";
 import AffiliateSetting from "./components/Ambassador/AffilateSetting";
 import AmbassadorProtected from "./components/Protected/AmbassadorProtected";
+import Test from "./components/Pages/Test";
 
 function App() {
   return (
     <>
       <Routes>
+        <Route path="/test" element={<Test />}></Route>
         <Route path="/" element={<Home />} />
-        <Route path="/editor/:productId" element={<ImageEditor />} />
+        <Route path="/editor" element={<ImageEditor />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/pricing" element={<Pricing />} />
