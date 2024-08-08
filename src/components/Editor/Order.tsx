@@ -158,9 +158,7 @@ const Order = ({ closeOrder, frontFile, backFile }: Props) => {
           withCredentials: true,
         })
         .then((response) => {
-          console.log(response);
-
-          // window.location.href = response.data.checkout_url;
+          window.location.href = response.data.checkout_url;
         })
         .catch((error) => {
           setLoader(false);
