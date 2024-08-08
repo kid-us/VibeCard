@@ -109,7 +109,7 @@ const ProductDetail = () => {
                 {/* Card Types */}
                 <div className="lg:flex justify-between gap-x-10 mt-5 lg:mx-0 mx-5">
                   <p
-                    onClick={() => setType("paper")}
+                    onClick={() => setType("recycled_paper")}
                     className={`shadow-xl shadow-zinc-900 ${
                       type === "paper"
                         ? "btn-bg shadow-none px-2 text-white"

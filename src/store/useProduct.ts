@@ -26,13 +26,15 @@ interface Card {
 type State = {
   front: Card;
   back: Card;
-  productId: number | string;
+  // productId: number | string;
+  orientation: string;
 };
 
 type Actions = {
   updateFront: (card: Partial<Card>) => void;
   updateBack: (card: Partial<Card>) => void;
-  setProductId: (id: number | string) => void;
+  // setProductId: (id: number | string) => void;
+  setCardOrientation: (orientation: string) => void;
 };
 
 // Create the Zustand store
@@ -71,7 +73,8 @@ const useProduct = create<State & Actions>((set) => ({
     extraTextFontSize: "",
     extraTextFontStyle: "",
   },
-  productId: 0,
+  // productId: 0,
+  orientation: "",
 
   updateFront: (card) =>
     set((state) => ({
@@ -83,7 +86,9 @@ const useProduct = create<State & Actions>((set) => ({
       back: { ...state.back, ...card },
     })),
 
-  setProductId: (id) => set({ productId: id }),
+  // setProductId: (id) => set({ productId: id }),
+  setCardOrientation: (orientation) => set({ orientation: orientation }),
+  // setOrientation : (orientation) => set({orientation: orientation}))
 }));
 
 export default useProduct;

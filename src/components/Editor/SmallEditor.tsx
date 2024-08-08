@@ -8,7 +8,7 @@ import useProduct from "@/store/useProduct";
 import { save } from "@/assets";
 import SmallCardPreview from "./SmallCardPreview";
 import Preview from "./Preview";
-import { LocalStorageData } from "./LargeEditor";
+import Order from "./Order";
 
 export interface Image {
   width: string;
@@ -22,7 +22,10 @@ export interface Style {
 
 const SmallEditor: React.FC = () => {
   // Zustand
-  const { updateBack, updateFront, back, front } = useProduct();
+  const { updateBack, updateFront } = useProduct();
+
+  // Order
+  const [order, setOrder] = useState<boolean>(false);
 
   // Cropper
   const [orientation, setOrientation] = useState<boolean>(false);
@@ -198,56 +201,7 @@ const SmallEditor: React.FC = () => {
   // On order asked
   const handleSubmit = () => {
     if (frontFile || backFile) {
-      const productsInfo = localStorage.getItem("product");
-      const product: LocalStorageData | null = productsInfo
-        ? (JSON.parse(productsInfo) as LocalStorageData)
-        : null;
-      if (product) {
-        const frontDesign = {
-          bgColor: bg,
-          fontStyle: fontStyle.style,
-          text: name,
-          textPosition: front.textPosition,
-          textSize: font,
-          imageSize: image,
-          imagePosition: front.imagePosition,
-          pickedBg: pickedBg,
-          color: textColor,
-          extraText: extraText,
-          extraTextColor: extraTextColor,
-          extraFont: extraFont,
-          extraFontStyle: extraFontStyle.style,
-          extraTextPosition: front.extraTextPosition,
-        };
-
-        const backDesign = {
-          bgColor: backBg,
-          fontStyle: backFontStyle.style,
-          text: backName,
-          textPosition: back.textPosition,
-          textSize: backFont,
-          imageSize: backImage,
-          imagePosition: back.imagePosition,
-          pickedBg: backPickedBg,
-          color: backTextColor,
-          extraText: backExtraText,
-          extraTextColor: backExtraTextColor,
-          extraFont: backExtraFont,
-          extraFontStyle: extraFontStyle.style,
-          extraTextPosition: back.extraTextPosition,
-        };
-        const data = {
-          orientation: !orientation ? "landscape" : "portrait",
-          cardType: product.cardType,
-          quantity: product.quantity,
-          vibecardLogo: product.vibecardLogo,
-          frontImage: frontFile,
-          backImage: backFile,
-          front: JSON.stringify(frontDesign),
-          back: JSON.stringify(backDesign),
-        };
-        console.log(data);
-      }
+      setOrder(true);
     } else {
       setError(true);
     }
@@ -306,6 +260,13 @@ const SmallEditor: React.FC = () => {
 
   return (
     <>
+      {order && (
+        <Order
+          backFile={backFile ? backFile : null}
+          frontFile={frontFile ? frontFile : null}
+          closeOrder={() => setOrder(false)}
+        />
+      )}
       {error && (
         <div className="fixed flex top-2 right-2 z-50 text-white bg-red-500 rounded ps-5 text-sm py-2">
           <p>Please at least insert your logo </p>

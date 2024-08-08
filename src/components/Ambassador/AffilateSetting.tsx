@@ -82,6 +82,21 @@ const AffiliateSetting = () => {
 
   const [showPassword, setShowPassword] = useState(false);
 
+  const handleReferral = () => {
+    axios
+      .put(`${baseUrl}/api/v1/ambassador/edit-referral-code`, referral, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const onSubmit = (data: FieldValues) => {
     console.log(data);
     return;
@@ -142,7 +157,10 @@ const AffiliateSetting = () => {
                   value={referral}
                 />
               </div>
-              <button className="btn-bg p-0 shadow-none h-11 mt-6 px-10 rounded text-white">
+              <button
+                onClick={() => handleReferral()}
+                className="btn-bg p-0 shadow-none h-11 mt-6 px-10 rounded text-white"
+              >
                 Save Change
               </button>
             </div>

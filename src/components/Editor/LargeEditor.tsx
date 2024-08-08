@@ -9,6 +9,7 @@ import useProduct from "@/store/useProduct";
 import { save } from "@/assets";
 import LargeCardPreview from "./LargeCardPreview";
 import Preview from "./Preview";
+import Order from "./Order";
 
 export interface Image {
   width: string;
@@ -20,15 +21,12 @@ export interface Style {
   style: string;
 }
 
-export interface LocalStorageData {
-  cardType: string;
-  quantity: string | number;
-  vibecardLogo: boolean;
-}
-
 const LargeEditor: React.FC = () => {
   // Zustand
-  const { updateBack, updateFront, front, back } = useProduct();
+  const { updateBack, updateFront, setCardOrientation } = useProduct();
+
+  // Order
+  const [order, setOrder] = useState<boolean>(false);
 
   // Cropper
   const [crop, setCrop] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -203,56 +201,39 @@ const LargeEditor: React.FC = () => {
   // On order asked
   const handleSubmit = () => {
     if (frontFile || backFile) {
-      const productsInfo = localStorage.getItem("product");
-      const product: LocalStorageData | null = productsInfo
-        ? (JSON.parse(productsInfo) as LocalStorageData)
-        : null;
-      if (product) {
-        const frontDesign = {
-          bgColor: bg,
-          fontStyle: fontStyle.style,
-          text: name,
-          textPosition: front.textPosition,
-          textSize: font,
-          imageSize: image,
-          imagePosition: front.imagePosition,
-          pickedBg: pickedBg,
-          color: textColor,
-          extraText: extraText,
-          extraTextColor: extraTextColor,
-          extraFont: extraFont,
-          extraFontStyle: extraFontStyle.style,
-          extraTextPosition: front.extraTextPosition,
-        };
-
-        const backDesign = {
-          bgColor: backBg,
-          fontStyle: backFontStyle.style,
-          text: backName,
-          textPosition: back.textPosition,
-          textSize: backFont,
-          imageSize: backImage,
-          imagePosition: back.imagePosition,
-          pickedBg: backPickedBg,
-          color: backTextColor,
-          extraText: backExtraText,
-          extraTextColor: backExtraTextColor,
-          extraFont: backExtraFont,
-          extraFontStyle: extraFontStyle.style,
-          extraTextPosition: back.extraTextPosition,
-        };
-        const data = {
-          orientation: !orientation ? "landscape" : "portrait",
-          cardType: product.cardType,
-          quantity: product.quantity,
-          vibecardLogo: product.vibecardLogo,
-          frontImage: frontFile,
-          backImage: backFile,
-          front: JSON.stringify(frontDesign),
-          back: JSON.stringify(backDesign),
-        };
-        console.log(data);
-      }
+      // setOrientation
+      setCardOrientation(orientation ? "portrait" : "landscape");
+      // Set Front
+      updateFront({
+        bgColor: bg,
+        fontStyle: fontStyle.style,
+        image: frontFile,
+        text: name,
+        textSize: font,
+        imageSize: image,
+        pickedBg: pickedBg,
+        color: textColor,
+        extraText: extraText,
+        extraTextColor: extraTextColor,
+        extraTextFontSize: extraFont,
+        extraTextFontStyle: extraFontStyle.style,
+      });
+      // Set Back
+      updateBack({
+        bgColor: backBg,
+        fontStyle: backFontStyle.style,
+        image: backFile,
+        text: backName,
+        textSize: backFont,
+        imageSize: backImage,
+        pickedBg: backPickedBg,
+        color: backTextColor,
+        extraText: backExtraText,
+        extraTextColor: backExtraTextColor,
+        extraTextFontSize: backExtraFont,
+        extraTextFontStyle: backExtraFontStyle.style,
+      });
+      setOrder(true);
     } else {
       setError(true);
     }
@@ -294,8 +275,9 @@ const LargeEditor: React.FC = () => {
   };
 
   const handleOrientation = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    if (e.currentTarget.value === "landscape") setOrientation(false);
-    else {
+    if (e.currentTarget.value === "landscape") {
+      setOrientation(false);
+    } else {
       setOrientation(true);
     }
     setBackFile(null);
@@ -311,6 +293,13 @@ const LargeEditor: React.FC = () => {
 
   return (
     <>
+      {order && (
+        <Order
+          backFile={backFile ? backFile : null}
+          frontFile={frontFile ? frontFile : null}
+          closeOrder={() => setOrder(false)}
+        />
+      )}
       {error && (
         <div className="fixed flex top-4 right-0 z-50 text-white bg-red-500 rounded ps-10 text-sm py-3">
           <p>Please at least insert your logo </p>
@@ -737,7 +726,7 @@ const LargeEditor: React.FC = () => {
           </div>
 
           {/* Order */}
-          <div className="absolute -bottom-0 left-0 z-50 w-full">
+          <div className="absolute -bottom-0 left-0 z-30 w-full">
             <div className="flex justify-center w-full gap-x-4">
               <button
                 onClick={() => handleSubmit()}
