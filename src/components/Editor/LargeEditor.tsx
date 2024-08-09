@@ -10,6 +10,7 @@ import { save } from "@/assets";
 import LargeCardPreview from "./LargeCardPreview";
 import Preview from "./Preview";
 import Order from "./Order";
+import { useNavigate } from "react-router-dom";
 
 export interface Image {
   width: string;
@@ -22,6 +23,15 @@ export interface Style {
 }
 
 const LargeEditor: React.FC = () => {
+  const navigate = useNavigate();
+  const productsInfo = localStorage.getItem("product");
+
+  useEffect(() => {
+    if (!productsInfo) {
+      navigate("/products");
+    }
+  }, []);
+
   // Zustand
   const { updateBack, updateFront, setCardOrientation } = useProduct();
 
@@ -298,6 +308,7 @@ const LargeEditor: React.FC = () => {
           backFile={backFile ? backFile : null}
           frontFile={frontFile ? frontFile : null}
           closeOrder={() => setOrder(false)}
+          view={orientation}
         />
       )}
       {error && (

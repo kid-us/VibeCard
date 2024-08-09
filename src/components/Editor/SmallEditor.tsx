@@ -9,6 +9,7 @@ import { save } from "@/assets";
 import SmallCardPreview from "./SmallCardPreview";
 import Preview from "./Preview";
 import Order from "./Order";
+import { useNavigate } from "react-router-dom";
 
 export interface Image {
   width: string;
@@ -21,8 +22,16 @@ export interface Style {
 }
 
 const SmallEditor: React.FC = () => {
+  const navigate = useNavigate();
+  const productsInfo = localStorage.getItem("product");
+
+  useEffect(() => {
+    if (!productsInfo) {
+      navigate("/products");
+    }
+  }, []);
   // Zustand
-  const { updateBack, updateFront } = useProduct();
+  const { updateBack, updateFront, setCardOrientation } = useProduct();
 
   // Order
   const [order, setOrder] = useState<boolean>(false);
@@ -201,6 +210,38 @@ const SmallEditor: React.FC = () => {
   // On order asked
   const handleSubmit = () => {
     if (frontFile || backFile) {
+      // setOrientation
+      setCardOrientation(orientation ? "portrait" : "landscape");
+      // Set Front
+      updateFront({
+        bgColor: bg,
+        fontStyle: fontStyle.style,
+        image: frontFile,
+        text: name,
+        textSize: font,
+        imageSize: image,
+        pickedBg: pickedBg,
+        color: textColor,
+        extraText: extraText,
+        extraTextColor: extraTextColor,
+        extraTextFontSize: extraFont,
+        extraTextFontStyle: extraFontStyle.style,
+      });
+      // Set Back
+      updateBack({
+        bgColor: backBg,
+        fontStyle: backFontStyle.style,
+        image: backFile,
+        text: backName,
+        textSize: backFont,
+        imageSize: backImage,
+        pickedBg: backPickedBg,
+        color: backTextColor,
+        extraText: backExtraText,
+        extraTextColor: backExtraTextColor,
+        extraTextFontSize: backExtraFont,
+        extraTextFontStyle: backExtraFontStyle.style,
+      });
       setOrder(true);
     } else {
       setError(true);
@@ -265,6 +306,7 @@ const SmallEditor: React.FC = () => {
           backFile={backFile ? backFile : null}
           frontFile={frontFile ? frontFile : null}
           closeOrder={() => setOrder(false)}
+          view={orientation}
         />
       )}
       {error && (

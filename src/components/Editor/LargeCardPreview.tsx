@@ -82,8 +82,19 @@ const LargeCardPreview = ({
 }: Props) => {
   const { updateBack, updateFront } = useProduct();
 
+  const frontContainerRef = useRef<HTMLDivElement>(null);
+  const backContainerRef = useRef<HTMLDivElement>(null);
+
   //   Front
   const [position, setPosition] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+  const [position2, setPosition2] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+  const [position3, setPosition3] = useState<{ x: number; y: number }>({
     x: 0,
     y: 0,
   });
@@ -96,8 +107,16 @@ const LargeCardPreview = ({
   const draggableRef2 = useRef<HTMLDivElement>(null);
   const draggableRef3 = useRef<HTMLDivElement>(null);
 
-  //   Front
+  //   Back
   const [backPosition, setBackPosition] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+  const [backPosition2, setBackPosition2] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+  const [backPosition3, setBackPosition3] = useState<{ x: number; y: number }>({
     x: 0,
     y: 0,
   });
@@ -128,11 +147,13 @@ const LargeCardPreview = ({
 
   const handleDrag2 = (e: any, data: any) => {
     console.log(e, data);
+    setPosition2({ x: data.x, y: data.y });
     checkIfCentered();
   };
 
   const handleDrag3 = (e: any, data: any) => {
     console.log(e, data);
+    setPosition3({ x: data.x, y: data.y });
     checkIfCentered();
   };
 
@@ -211,11 +232,13 @@ const LargeCardPreview = ({
 
   const handleBackDrag2 = (e: any, data: any) => {
     console.log(e, data);
+    setBackPosition2({ x: data.x, y: data.y });
     checkIfBackCentered();
   };
 
   const handleBackDrag3 = (e: any, data: any) => {
     console.log(e, data);
+    setBackPosition3({ x: data.x, y: data.y });
     checkIfBackCentered();
   };
 
@@ -350,6 +373,7 @@ const LargeCardPreview = ({
         </p>
         {/* Front */}
         <div
+          ref={frontContainerRef}
           className={`flex justify-center items-center ${
             orientation ? "w-[265px]" : "h-full"
           } `}
@@ -437,6 +461,7 @@ const LargeCardPreview = ({
                     handle=".handle"
                     defaultPosition={{ x: 0, y: 0 }}
                     grid={[10, 10]}
+                    position={position2}
                     scale={1}
                     onStart={(e, data) => console.log("Start:", e, data)}
                     onDrag={handleDrag2}
@@ -471,6 +496,7 @@ const LargeCardPreview = ({
                     handle=".handle"
                     defaultPosition={{ x: 0, y: 0 }}
                     grid={[10, 10]}
+                    position={position3}
                     scale={1}
                     onStart={(e, data) => console.log("Start:", e, data)}
                     onDrag={handleDrag3}
@@ -510,6 +536,7 @@ const LargeCardPreview = ({
         </p>
 
         <div
+          ref={backContainerRef}
           className={`${
             orientation && "w-[265px]"
           } flex justify-center items-center h-full`}
@@ -599,6 +626,7 @@ const LargeCardPreview = ({
                     handle=".handle"
                     defaultPosition={{ x: 0, y: 0 }}
                     grid={[10, 10]}
+                    position={backPosition2}
                     scale={1}
                     onStart={(e, data) => console.log("Start:", e, data)}
                     onDrag={handleBackDrag2}
@@ -633,6 +661,7 @@ const LargeCardPreview = ({
                     handle=".handle"
                     defaultPosition={{ x: 0, y: 0 }}
                     grid={[10, 10]}
+                    position={backPosition3}
                     scale={1}
                     onStart={(e, data) => console.log("Start:", e, data)}
                     onDrag={handleBackDrag3}
