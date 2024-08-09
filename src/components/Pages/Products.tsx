@@ -16,11 +16,11 @@ const Products = () => {
       <Navbar />
 
       <div className="lg:container mx-auto lg:mt-24 mt-14">
-        <h1 className="lg:text-4xl text-2xl text-center font-extrabold text-white">
+        <h1 className="lg:text-4xl text-2xl lg:text-center px-2 font-extrabold text-white">
           Vibecard Digital Business Card Accessories
         </h1>
 
-        <p className="my-4 text-center text-gray-500">
+        <p className="my-4 text-center text-gray-500 lg:px-0 px-2">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
       </div>
