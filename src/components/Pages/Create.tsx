@@ -30,6 +30,37 @@ const Create = () => {
   const [title] = useState("Create Card");
   useDocumentTitle(title);
 
+  // Reload
+  useEffect(() => {
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      const message =
+        "Are you sure you want to leave? Your changes might not be saved.";
+      event.returnValue = message; // Standard for most browsers
+      return message; // For some older browsers
+    };
+
+    const handlePopState = () => {
+      // Logic for detecting navigation
+      const confirmNavigation = window.confirm(
+        "Are you sure you want to leave this page? Your changes might not be saved."
+      );
+      if (!confirmNavigation) {
+        // Prevent the navigation by pushing a new state
+        window.history.pushState(null, "", window.location.href);
+      }
+    };
+
+    // Add event listeners
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    window.addEventListener("popstate", handlePopState);
+
+    // Cleanup event listeners on component unmount
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
+
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const editedUrl = searchParams.get("edit");
