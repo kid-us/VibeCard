@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import DefaultCard from "../Layout/DefaultCard";
 import CenteredCard from "../Layout/CenteredCard";
@@ -25,10 +25,24 @@ import { useCardColorStore } from "@/store/useCardColorStore";
 import EditForm from "../Create/EditForm";
 import CreateForm from "../Create/CreateForm";
 import Loading from "../Loading/Loading";
+import useSubscription from "@/hooks/useSubscription";
 
 const Create = () => {
   const [title] = useState("Create Card");
   useDocumentTitle(title);
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(true);
+
+  const { quota } = useSubscription();
+
+  useEffect(() => {
+    if (quota) {
+      setLoading(false);
+    } else {
+      navigate("/pricing");
+    }
+  }, [quota]);
 
   // Reload
   useEffect(() => {
@@ -64,8 +78,6 @@ const Create = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const editedUrl = searchParams.get("edit");
-
-  const [loading, setLoading] = useState(false);
 
   const {
     preview,

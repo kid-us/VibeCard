@@ -32,22 +32,6 @@ const Protected = ({ children }: ProtectedProps) => {
       });
   }, []);
 
-  useEffect(() => {
-    axios
-      .get(`${baseUrl}/api/v1/auth/can-create-card`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
   return <>{loading ? <Loading /> : children}</>;
 };
 

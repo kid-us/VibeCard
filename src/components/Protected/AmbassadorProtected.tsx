@@ -67,7 +67,7 @@ const AmbassadorProtected = ({ children }: ProtectedProps) => {
         }
       })
       .catch(() => {
-        navigate("/login");
+        navigate("/ambassador");
       });
   }, []);
 

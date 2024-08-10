@@ -7,6 +7,7 @@ import Navbar from "../Navbar/Navbar";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Loader from "../Loader/Loader";
 import ShareComponent from "../Share/ShareComponent";
+import useSubscription from "@/hooks/useSubscription";
 
 interface Card {
   card_url: string;
@@ -20,6 +21,8 @@ interface Card {
 const Dashboard = () => {
   const [title] = useState("Dashboard");
   useDocumentTitle(title);
+
+  const { quota } = useSubscription();
 
   const [deleteCard, setDeleteCard] = useState(false);
   const [deletedCardUrl, setDeletedCardUrl] = useState("");
@@ -275,7 +278,7 @@ const Dashboard = () => {
               </div>
 
               <div className="lg:col-span-4 mb-5">
-                <Link to={"/create"}>
+                <Link to={quota ? "/create" : "/pricing"}>
                   <div className="flex justify-center mx-2 gap-x-10 btn-bg px-0 lg:mx-10 py-20 lg:mt-14 shadow-none">
                     <p className="text-center bi-plus-lg mb-8  bg-white w-10 h-10 rounded-full pt-2 text-black shadow-lg"></p>
 

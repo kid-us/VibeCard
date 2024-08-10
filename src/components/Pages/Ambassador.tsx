@@ -51,7 +51,7 @@ const Ambassador = () => {
 
             <div className="mt-16 lg:block hidden">
               <h1 className="mb-5">FAQs</h1>
-              <Faq />
+              <Faq ambassador={true} />
             </div>
           </div>
           <div className="w-full">
@@ -60,7 +60,7 @@ const Ambassador = () => {
         </div>
         <div className="lg:hidden">
           <h1 className="mb-4">FAQs</h1>
-          <Faq />
+          <Faq ambassador={true} />
         </div>
       </div>
       <Footer />
