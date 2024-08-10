@@ -11,7 +11,7 @@ import Logout from "../Logout/Logout";
 const Navbar = () => {
   // States
   const [isMenu, setIsMenu] = useState(false);
-  const { login, user } = useAuthStore();
+  const { login, user, plan } = useAuthStore();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -23,9 +23,7 @@ const Navbar = () => {
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response.data);
-
-        login(response.data.username, response.data.email);
+        login(response.data.username, response.data.email, response.data.plan);
         setLoading(false);
       })
       .catch(() => {
@@ -117,12 +115,14 @@ const Navbar = () => {
                     >
                       Setting
                     </Link>
-                    <Link
-                      to={"/insights"}
-                      className="block text-md mb-3 hover:text-gray-400 hover:text-sm"
-                    >
-                      Insights
-                    </Link>
+                    {plan !== "free" && (
+                      <Link
+                        to={"/insights"}
+                        className="block text-md mb-3 hover:text-gray-400 hover:text-sm"
+                      >
+                        Insights
+                      </Link>
+                    )}
                     <hr className="my-2" />
                     <Logout />
                   </div>

@@ -24,7 +24,7 @@ const Protected = ({ children }: ProtectedProps) => {
         withCredentials: true,
       })
       .then((response) => {
-        login(response.data.username, response.data.email);
+        login(response.data.username, response.data.email, response.data.plan);
         setLoading(false);
       })
       .catch(() => {

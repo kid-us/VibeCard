@@ -14,6 +14,8 @@ import LinkTaps from "../Insights/LinkTaps";
 // import { addDays } from "date-fns";
 // import { DateRange } from "react-day-picker";
 import filter from "@/services/filter";
+import useAuthStore from "@/store/useUserData";
+import { useNavigate } from "react-router-dom";
 
 export interface Insights {
   social_media_name: string;
@@ -23,6 +25,17 @@ export interface Insights {
 const Insights = () => {
   const [title] = useState("Insight");
   useDocumentTitle(title);
+
+  const { plan } = useAuthStore();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (plan && plan === "free") {
+      navigate("/pricing");
+    }
+  }, []);
+
   // Zustand
   const { activeCard } = useInsightStore();
   // Insight
