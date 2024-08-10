@@ -152,13 +152,14 @@ const BottomContent = ({ styles, data }: Props) => {
                 />
               </div>
             ) : (
-              <p
+              <a
                 onClick={() => handleSocialMedia(media.icon)}
                 key={media.icon}
-                // to={`${media.link}`}
+                href={`${media.link}`}
+                target="_blank"
                 className={`${media.icon} text-white text-3xl text-center rounded-md py-2 shadow-inner`}
                 style={{ backgroundColor: media.color }}
-              ></p>
+              ></a>
             )
           )}
         </div>

@@ -92,9 +92,9 @@ const ContentItems = ({
                 }`}
                 placeholder={
                   socialMedia.find((s) => s.icon === content.icon)?.link ||
-                  "Link"
+                  content.placeholder
                 }
-                onChange={(e) => onLink(e.currentTarget.value)}
+                onChange={(e) => onLink(content.path + e.currentTarget.value)}
                 autoFocus
               />
               <p
