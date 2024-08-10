@@ -59,7 +59,11 @@ const Form = ({ buttonClicked }: Props) => {
             withCredentials: true,
           })
           .then((response) => {
-            login(response.data.username, response.data.email);
+            login(
+              response.data.username,
+              response.data.email,
+              response.data.plan
+            );
             navigate("/");
           })
           .catch((err) => {
