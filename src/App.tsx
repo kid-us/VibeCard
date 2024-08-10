@@ -14,7 +14,6 @@ import ViewCard from "./components/Pages/ViewCard";
 import Pricing from "./components/Pages/Pricing";
 import Products from "./components/Pages/Products";
 import ProductDetail from "./components/Pages/ProductDetail";
-import Pay from "./components/Pages/Pay";
 import Setting from "./components/Pages/Setting";
 import Insights from "./components/Pages/Insights";
 import AboutUs from "./components/Pages/AboutUs";
@@ -40,7 +39,6 @@ function App() {
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/wallets/:id" element={<WalletsDetail />} />
         <Route path="/verify" element={<Verify />} />
-        <Route path="/pay" element={<Pay />} />
         <Route
           path="/setting"
           element={
@@ -68,7 +66,14 @@ function App() {
             </Protected>
           }
         />
-        <Route path="/create" element={<Create />} />
+        <Route
+          path="/create"
+          element={
+            <Protected>
+              <Create />
+            </Protected>
+          }
+        />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />

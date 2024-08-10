@@ -36,11 +36,17 @@ const Create = () => {
 
   const { quota } = useSubscription();
 
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const editedUrl = searchParams.get("edit");
+
   useEffect(() => {
-    if (quota) {
-      setLoading(false);
-    } else {
-      navigate("/pricing");
+    if (!editedUrl) {
+      if (quota) {
+        setLoading(false);
+      } else {
+        navigate("/pricing");
+      }
     }
   }, [quota]);
 
@@ -74,10 +80,6 @@ const Create = () => {
       window.removeEventListener("popstate", handlePopState);
     };
   }, []);
-
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const editedUrl = searchParams.get("edit");
 
   const {
     preview,

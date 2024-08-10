@@ -10,7 +10,6 @@ import Logout from "../Logout/Logout";
 
 const Navbar = () => {
   // States
-
   const [isMenu, setIsMenu] = useState(false);
   const { login, user } = useAuthStore();
   const [loading, setLoading] = useState(true);
@@ -24,6 +23,8 @@ const Navbar = () => {
         withCredentials: true,
       })
       .then((response) => {
+        console.log(response.data);
+
         login(response.data.username, response.data.email);
         setLoading(false);
       })

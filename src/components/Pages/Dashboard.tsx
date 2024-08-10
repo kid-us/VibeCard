@@ -177,7 +177,7 @@ const Dashboard = () => {
                         >
                           <div className="relative lg:flex grid grid-cols-2 justify-between w-full text-white px-5 py-5 mb-4 rounded shadow shadow-zinc-900">
                             {/* Share Social Medias */}
-                            {viewShare && (
+                            {viewShare && cardUrl === link.card_url && (
                               <div className="absolute lg:right-32 right-0 lg:px-0 px-5 z-50 top-10 lg:-top-20 secondary-bg border-gradient py-1 space-x-2">
                                 <div className="flex justify-between px-5 mt-2 mb-4">
                                   <p className="text-sm">Share your card</p>
@@ -189,7 +189,7 @@ const Dashboard = () => {
 
                                 <div className="space-x-3 flex mb-3">
                                   <ShareComponent
-                                    url={cardUrl}
+                                    url={`vibe-card.vercel.app/card/${link.card_url}`}
                                     title={shareTitle}
                                     description={description}
                                   />
