@@ -25,6 +25,7 @@ import Ambassador from "./components/Pages/Ambassador";
 import Affiliate from "./components/Pages/Affiliate";
 import AffiliateSetting from "./components/Ambassador/AffilateSetting";
 import AmbassadorProtected from "./components/Protected/AmbassadorProtected";
+import WalletsDetail from "./components/Pages/WalletsDetail";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="/wallets/:id" element={<WalletsDetail />} />
         <Route path="/verify" element={<Verify />} />
         <Route path="/pay" element={<Pay />} />
         <Route

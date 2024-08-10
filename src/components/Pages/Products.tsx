@@ -7,10 +7,12 @@ import Product2 from "../Product/Product2";
 import Product3 from "../Product/Product3";
 import Product4 from "../Product/Product4";
 import Product5 from "../Product/Product5";
+import Wallets from "../Product/Wallets";
 
 const Products = () => {
   const [title] = useState("Shop our Products");
   useDocumentTitle(title);
+
   return (
     <>
       <Navbar />
@@ -33,6 +35,7 @@ const Products = () => {
             <Product3 />
             <Product4 />
             <Product5 />
+            <Wallets />
           </div>
         </div>
       </div>
