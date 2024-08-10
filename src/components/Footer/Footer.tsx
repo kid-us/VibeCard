@@ -16,9 +16,18 @@ const Footer = () => {
               incidunt?
             </p>
             <div className="flex gap-x-10 my-14">
-              <Link to="/" className="text-white text-3xl bi-facebook"></Link>
-              <Link to="/" className="text-white text-3xl bi-linkedin"></Link>
-              <Link to="/" className="text-white text-3xl bi-instagram"></Link>
+              <Link
+                to="https://www.linkedin.com/company/vibecard/"
+                className="text-white text-3xl bi-linkedin"
+              ></Link>
+              <Link
+                to="https://www.instagram.com/vibe_card_r"
+                className="text-white text-3xl bi-instagram"
+              ></Link>
+              <Link
+                to="https://www.tiktok.com/@vibecard"
+                className="text-white text-3xl bi-tiktok"
+              ></Link>
             </div>
             <div className="lg:block hidden absolute bottom-0">
               <p className="text-gray-300 text-xs">
