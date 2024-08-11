@@ -115,13 +115,13 @@ const Home = () => {
           {/* <Products /> */}
           <Carousel>
             <CarouselContent className="gap-x-2 px-1">
-              <CarouselItem className="lg:basis-1/3">
+              <CarouselItem className="lg:basis-1/3 md:basis-1/2">
                 <Product1></Product1>
               </CarouselItem>
-              <CarouselItem className="lg:basis-1/3">
+              <CarouselItem className="lg:basis-1/3 md:basis-1/2">
                 <Product2></Product2>
               </CarouselItem>
-              <CarouselItem className="lg:basis-1/3">
+              <CarouselItem className="lg:basis-1/3 md:basis-1/2">
                 <Product3></Product3>
               </CarouselItem>
             </CarouselContent>
