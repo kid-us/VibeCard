@@ -5,7 +5,7 @@ import Product1 from "../Product/Product1";
 import Product2 from "../Product/Product2";
 import Product3 from "../Product/Product3";
 import Product4 from "../Product/Product4";
-import Product5 from "../Product/GoogleReview";
+// import Product5 from "../Product/GoogleReview"//;
 import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -94,7 +94,7 @@ const ProductDetail = () => {
               {Number(id) === 2 && <Product2 />}
               {Number(id) === 3 && <Product3 />}
               {Number(id) === 4 && <Product4 />}
-              {Number(id) === 5 && <Product5 />}
+              {/* {Number(id) === 5 && <Product5 />} */}
             </div>
 
             <div className="px-2 main-bg lg:ps-10">
