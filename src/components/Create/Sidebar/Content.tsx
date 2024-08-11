@@ -114,9 +114,11 @@ const Content = () => {
     <div>
       <p className="chakra text-white mb-4">Contents</p>
       <div className="bg-white rounded p-2 mb-5 lg:overflow-hidden lg:h-auto h-[75dvh] overflow-y-scroll lg:pb-0 pb-5">
+        {/* Contacts */}
         <p className="chakra mb-3 text-black">Contact</p>
 
         <ContentItems
+          item="contact"
           contents={contactContents}
           id={contactId}
           error={error}
@@ -128,9 +130,11 @@ const Content = () => {
           onLink={(value: string) => setContactAddress(value)}
         />
 
+        {/* Social Media */}
         <p className="chakra mt-5 mb-3 text-black">Social Media</p>
 
         <ContentItems
+          item="media"
           contents={socialMedias}
           id={socialMediaId}
           error={error}

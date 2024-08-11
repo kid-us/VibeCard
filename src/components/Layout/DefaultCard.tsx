@@ -7,6 +7,7 @@ import Button from "./Button";
 import SocialMedia from "./SocialMedia";
 import Contacts from "./Contacts";
 import { useCardData } from "../../store/useCardData";
+import Watermark from "../Watermark/Watermark";
 
 const DefaultCard = () => {
   const { coverColorBg } = useCoverColorStore();
@@ -27,9 +28,10 @@ const DefaultCard = () => {
 
   return (
     <div
-      className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 z-0 lg:mb-0 mb-14 border border-gray-700`}
+      className={`relative rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 z-0 lg:mb-0 mb-14 border border-gray-700`}
       style={{ backgroundColor: cardColorBg }}
     >
+      <Watermark />
       <div
         className={`lg:h-24 h-32 w-full relative flex justify-between z-0 ${
           !preview.cover

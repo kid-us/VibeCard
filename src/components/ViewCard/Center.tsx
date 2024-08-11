@@ -1,6 +1,7 @@
 import { Data, StyleData } from "@/services/viewCard";
 import BottomContent from "./BootomContent";
 import { userPic } from "@/assets";
+import Watermark from "../Watermark/Watermark";
 
 interface Props {
   data: Data;
@@ -10,9 +11,10 @@ interface Props {
 const Center = ({ data, styles }: Props) => {
   return (
     <div
-      className={`rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 lg:mb-0 mb-14`}
+      className={`relative rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 lg:mb-0 mb-14`}
       style={{ backgroundColor: styles.cardBg.bg_color }}
     >
+      <Watermark />
       <div
         className={`lg:h-24 h-32 relative flex justify-between ${
           !data?.covor_picture

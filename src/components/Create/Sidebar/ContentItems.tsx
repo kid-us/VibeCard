@@ -1,6 +1,7 @@
 import { deezer } from "@/assets";
 import { SocialMediaContent } from "../../../services/contents";
 import { useContentStore } from "../../../store/useContentStore";
+import { useState } from "react";
 
 interface Props {
   id: number;
@@ -12,6 +13,12 @@ interface Props {
   setId: (value: number) => void;
   onError: (error: boolean) => void;
   onLink: (value: string) => void;
+  item: string;
+}
+
+interface ValueProp {
+  id: number;
+  value: string;
 }
 
 const ContentItems = ({
@@ -24,8 +31,27 @@ const ContentItems = ({
   setId,
   onError,
   onLink,
+  item,
 }: Props) => {
-  const { socialMedia } = useContentStore();
+  const { socialMedia, contact } = useContentStore();
+  const [value, setValue] = useState<ValueProp[]>([]);
+
+  const handleChange = (value: string, id: number) => {
+    setValue((prevValue) => {
+      const existingIndex = prevValue.findIndex((v) => v.id === id);
+
+      if (existingIndex >= 0) {
+        // If the id already exists, update the corresponding value
+        const updatedValue = [...prevValue];
+        updatedValue[existingIndex].value = value;
+        return updatedValue;
+      } else {
+        // If the id does not exist, add a new entry
+        return [...prevValue, { id: id, value: value }];
+      }
+    });
+  };
+
   return (
     <div className="pb-5">
       {contents.map((content) => (
@@ -89,16 +115,25 @@ const ContentItems = ({
                 type="text"
                 className={`bg-white w-full py-2 px-3 rounded shadow-md border border-black shadow-zinc-950 placeholder:text-sky-900 text-sm focus:outline-none text-black lg:h-auto h-12 ${
                   error && "border border-red-500 font-poppins font-semibold"
-                }`}
+                } pe-[54px]`}
                 placeholder={
-                  socialMedia.find((s) => s.icon === content.icon)?.link ||
-                  content.placeholder
+                  item === "media"
+                    ? socialMedia.find((s) => s.icon === content.icon)?.link ||
+                      content.placeholder
+                    : contact.find((c) => c.icon === content.icon)?.link ||
+                      content.placeholder
                 }
-                onChange={(e) => onLink(content.path + e.currentTarget.value)}
+                onChange={(e) => {
+                  onLink(content.path + e.currentTarget.value);
+                  handleChange(e.currentTarget.value, content.id);
+                }}
                 autoFocus
+                value={value.find((v) => v.id === content.id)?.value || ""}
               />
               <p
-                onClick={() => update(content)}
+                onClick={() => {
+                  update(content);
+                }}
                 className="absolute bi-check top-0 right-0 text-xl px-3 me-1 mt-1 text-center bg-sky-800 text-white rounded cursor-pointer shadow-md shadow-zinc-900 hover:bg-sky-900"
               ></p>
             </div>
