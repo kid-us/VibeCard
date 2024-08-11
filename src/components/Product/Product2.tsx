@@ -20,16 +20,30 @@ const Product1 = () => {
               <div
                 className={`relative hover:z-40 rounded-md w-72 h-[400px] ${cardBg.bg} flex justify-center items-center mb-5 shadow-xl shadow-zinc-900`}
               >
-                <p className={`${cardBg.color} logo-font text-center text-4xl`}>
-                  vibecard
-                </p>
+                <p
+                  className={`${cardBg.color} bi-qr-code font-poppins text-center text-9xl`}
+                ></p>
               </div>
 
               {/* Qr code */}
               <div
                 className={`absolute top-10 -right-0 rounded-md w-72 h-[400px] ${cardBg.bg} flex justify-center items-center shadow-xl shadow-zinc-950`}
               >
-                <p className={`${cardBg.color} bi-qr-code text-8xl`}></p>
+                <div>
+                  <p className={`${cardBg.color} font-poppins text-4xl`}>
+                    Your Logo
+                  </p>
+                  <p
+                    className={`${cardBg.color} font-poppins text-sm text-center`}
+                  >
+                    Your name
+                  </p>
+                  <p
+                    className={`${cardBg.color} font-poppins text-sm text-center`}
+                  >
+                    Your Title
+                  </p>
+                </div>
               </div>
             </div>
           </div>

@@ -330,3 +330,7 @@ option {
 .sm-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: #555;
 }
+
+.no-select {
+  user-select: none !important;
+}

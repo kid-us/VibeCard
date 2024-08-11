@@ -1,23 +1,28 @@
 import { Link } from "react-router-dom";
 
-const Product4 = () => {
+interface Props {
+  name: string;
+  bg: string;
+}
+
+const SocialMediaProduct = ({ name, bg }: Props) => {
   return (
     <div className="lg:mb-0 mb-10">
-      <Link to="/products/4">
-        <div className="flex justify-center items-center relative lg:px-8 px-2 py-5 bg-gray-200 rounded h-[530px]">
+      <Link to="/products/5">
+        <div className="flex justify-center items-center relative px-8 py-5 bg-gray-200 rounded h-[530px]">
           <p className="absolute top-2 left-2 bg-indigo-900 text-white text-sm py-1 px-10 rounded shadow shadow-zinc-900">
             Best Seller
           </p>
           <div
-            className={`rounded-md w-full h-[230px] bg-red-600 mb-5 shadow-lg shadow-zinc-900`}
+            className={`rounded-md lg:w-72 h-[400px] ${bg} mb-5 shadow-lg shadow-zinc-900`}
           >
             <div className="flex justify-center items-center h-full px-10">
               <div>
+                <p className={`text-white bi-${name} text-center text-9xl`}></p>
                 <p
-                  className={`text-white logo-font text-center bi-youtube text-8xl`}
-                ></p>
-                <p className="text-center font-extrabold text-xl font-poppins">
-                  YouTube
+                  className={`text-white text-center text-3xl font-poppins mt-5 first-letter:uppercase`}
+                >
+                  {name}
                 </p>
               </div>
             </div>
@@ -36,4 +41,4 @@ const Product4 = () => {
   );
 };
 
-export default Product4;
+export default SocialMediaProduct;

@@ -4,7 +4,7 @@ import ProductColor from "./ProductColor";
 
 const Product3 = () => {
   const [cardBg, setCardBg] = useState({
-    bg: "bg-black",
+    bg: "bg-zinc-600",
     color: "text-white",
   });
 
@@ -18,11 +18,14 @@ const Product3 = () => {
           <div
             className={`rounded-md w-full h-[230px] ${cardBg.bg} mb-5 shadow-lg shadow-zinc-900`}
           >
-            <div className="flex justify-between items-center h-full px-10">
-              <p className={`${cardBg.color} logo-font text-center text-3xl`}>
-                vibecard
-              </p>
-              <p className={`${cardBg.color} bi-qr-code text-8xl`}></p>
+            <div className="flex justify-center items-center h-full px-10">
+              <div>
+                <p
+                  className={`${cardBg.color} font-poppins font-bold text-center text-3xl`}
+                >
+                  Your Logo here
+                </p>
+              </div>
             </div>
           </div>
         </div>

@@ -6,8 +6,10 @@ import Product1 from "../Product/Product1";
 import Product2 from "../Product/Product2";
 import Product3 from "../Product/Product3";
 import Product4 from "../Product/Product4";
-import Product5 from "../Product/Product5";
 import Wallets from "../Product/Wallets";
+import SocialMediaProduct from "../Product/SocialMediaProduct";
+import GoogleReview from "../Product/GoogleReview";
+import Product5 from "../Product/Product5";
 
 const Products = () => {
   const [title] = useState("Shop our Products");
@@ -30,11 +32,19 @@ const Products = () => {
       <div className="lg:container mx-auto mt-16">
         <div className="mb-10">
           <div className="lg:grid lg:grid-cols-3 md:grid md:grid-cols-2 gap-x-5 px-2">
-            <Product1 />
+            {/* Business Card */}
             <Product2 />
+            <Product1 />
             <Product3 />
+            {/* Social Media */}
+            <SocialMediaProduct bg="bg-black" name="tiktok" />
             <Product4 />
+            <SocialMediaProduct bg="bg-blue-500" name="facebook" />
+            {/* <Google Review /> */}
+            <GoogleReview bg="bg-white" note="Google Review" />
+            <GoogleReview bg="bg-black" note="Rate your Experience" />
             <Product5 />
+
             <Wallets />
           </div>
         </div>

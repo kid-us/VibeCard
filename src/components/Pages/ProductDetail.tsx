@@ -5,7 +5,7 @@ import Product1 from "../Product/Product1";
 import Product2 from "../Product/Product2";
 import Product3 from "../Product/Product3";
 import Product4 from "../Product/Product4";
-import Product5 from "../Product/Product5";
+import Product5 from "../Product/GoogleReview";
 import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import axios from "axios";
