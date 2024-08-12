@@ -80,7 +80,7 @@ const ProductDetail = () => {
       };
 
       localStorage.setItem("product", JSON.stringify(productCardInfo));
-      navigate(`/editor`);
+      navigate(`/card-design`);
     }
   };
 
