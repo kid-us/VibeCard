@@ -125,13 +125,9 @@ const Home = () => {
                 <Product3></Product3>
               </CarouselItem>
             </CarouselContent>
-            <div className="lg:hidden">
-              <CarouselPrevious className="absolute z-50 left-0" />
-              <CarouselNext className="absolute z-50 right-0" />
-            </div>
-            <div className="lg:block md:hidden hidden">
-              <CarouselPrevious />
-              <CarouselNext />
+            <div className="lg:hidden md:block block">
+              <CarouselPrevious className="absolute z-50 left-0 bg-black text-white" />
+              <CarouselNext className="absolute z-50 right-0 bg-black text-white" />
             </div>
           </Carousel>
         </div>

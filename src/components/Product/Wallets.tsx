@@ -3,6 +3,13 @@ import { useEffect, useState } from "react";
 import Loading from "../Loading/Loading";
 import { Link } from "react-router-dom";
 import { baseUrl } from "@/services/request";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../ui/carousel";
 
 export interface Wallets {
   color: string;
@@ -41,22 +48,49 @@ const Wallets = () => {
   }, []);
   return (
     <>
-      {loading && <Loading />}
-      {wallets.length > 0 &&
-        wallets.map((wallet) => (
-          <Link to={`/wallets/${wallet.wallet_id}`} key={wallet.wallet_id}>
-            <div
-              key={wallet.wallet_id}
-              className="mb-4 rounded overflow-hidden"
-            >
-              <img
-                src={wallet.image}
-                alt=""
-                className="h-96 w-full object-cover"
-              />
-            </div>
-          </Link>
-        ))}
+      <Carousel>
+        {loading && <Loading />}
+        <CarouselContent>
+          {/* <CarouselItem className="lg:basis-1/3 md:basis-1/2"></CarouselItem> */}
+          {/* <CarouselItem className="lg:basis-1/3 md:basis-1/2"></CarouselItem> */}
+          {wallets.length > 0 &&
+            wallets.map((wallet) => (
+              <CarouselItem className="lg:basis-1/3 md:basis-1/2">
+                <Link
+                  to={`/wallets/${wallet.wallet_id}`}
+                  key={wallet.wallet_id}
+                >
+                  <div
+                    key={wallet.wallet_id}
+                    className="mb-4 rounded overflow-hidden"
+                  >
+                    <img
+                      src={wallet.image}
+                      alt=""
+                      className="h-96 w-full object-cover"
+                    />
+                  </div>
+                </Link>
+                {/* Color */}
+                <div className="mt-2 bg-gray-800 rounded px-3 py-5 shadow shadow-zinc-950 mb-8">
+                  <p className="text-lg text-white font-poppins no-select">
+                    RFID Kreditkarten Halter
+                  </p>
+                  <p className="text-xs text-white font-poppins">
+                    Price{" "}
+                    <span className="text-teal-500 font-poppins text-sm font-bold">
+                      €24.99
+                    </span>
+                  </p>
+                </div>
+              </CarouselItem>
+            ))}
+        </CarouselContent>
+        <div>
+          <CarouselPrevious className="absolute z-50 left-0 bg-black text-white" />
+          <CarouselNext className="absolute z-50 right-0 bg-black text-white" />
+        </div>
+      </Carousel>
     </>
   );
 };

@@ -10,6 +10,13 @@ import Wallets from "../Product/Wallets";
 import SocialMediaProduct from "../Product/SocialMediaProduct";
 import GoogleReview from "../Product/GoogleReview";
 import Product5 from "../Product/Product5";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../ui/carousel";
 
 const Products = () => {
   const [title] = useState("Shop our Products");
@@ -31,22 +38,64 @@ const Products = () => {
 
       <div className="lg:container mx-auto mt-16">
         <div className="mb-10">
-          <div className="lg:grid lg:grid-cols-3 md:grid md:grid-cols-2 gap-x-5 px-2">
-            {/* Business Card */}
-            <Product2 />
-            <Product1 />
-            <Product3 />
-            {/* Social Media */}
-            <SocialMediaProduct bg="bg-black" name="tiktok" />
-            <Product4 />
-            <SocialMediaProduct bg="bg-blue-500" name="facebook" />
-            {/* <Google Review /> */}
-            <GoogleReview bg="bg-white" note="Google Review" />
-            <GoogleReview bg="bg-black" note="Rate your Experience" />
-            <Product5 />
+          {/* Business Card */}
+          <Carousel>
+            <CarouselContent>
+              <CarouselItem className="lg:basis-1/3 md:basis-1/2">
+                <Product2></Product2>
+              </CarouselItem>
+              <CarouselItem className="lg:basis-1/3 md:basis-1/2">
+                <Product1></Product1>
+              </CarouselItem>
+              <CarouselItem className="lg:basis-1/3 md:basis-1/2">
+                <Product3></Product3>
+              </CarouselItem>
+            </CarouselContent>
+            <div className="lg:hidden md:block block">
+              <CarouselPrevious className="absolute z-50 left-0 bg-black text-white" />
+              <CarouselNext className="absolute z-50 right-0 bg-black text-white" />
+            </div>
+          </Carousel>
 
-            <Wallets />
-          </div>
+          {/* Social Media */}
+          <Carousel>
+            <CarouselContent>
+              <CarouselItem className="lg:basis-1/3 md:basis-1/2">
+                <SocialMediaProduct bg="bg-black" name="tiktok" />
+              </CarouselItem>
+              <CarouselItem className="lg:basis-1/3 md:basis-1/2">
+                <Product4></Product4>
+              </CarouselItem>
+              <CarouselItem className="lg:basis-1/3 md:basis-1/2">
+                <SocialMediaProduct bg="bg-blue-500" name="facebook" />
+              </CarouselItem>
+            </CarouselContent>
+            <div className="lg:hidden md:block block">
+              <CarouselPrevious className="absolute z-50 left-0 bg-black text-white" />
+              <CarouselNext className="absolute z-50 right-0 bg-black text-white" />
+            </div>
+          </Carousel>
+
+          {/* <Google Review /> */}
+          <Carousel>
+            <CarouselContent>
+              <CarouselItem className="lg:basis-1/3 md:basis-1/2">
+                <GoogleReview bg="bg-white" note="Google Review" />
+              </CarouselItem>
+              <CarouselItem className="lg:basis-1/3 md:basis-1/2">
+                <GoogleReview bg="bg-black" note="Rate your Experience" />
+              </CarouselItem>
+              <CarouselItem className="lg:basis-1/3 md:basis-1/2">
+                <Product5></Product5>
+              </CarouselItem>
+            </CarouselContent>
+            <div className="lg:hidden md:block block">
+              <CarouselPrevious className="absolute z-50 left-0 bg-black text-white" />
+              <CarouselNext className="absolute z-50 right-0 bg-black text-white" />
+            </div>
+          </Carousel>
+          {/* Wallets */}
+          <Wallets />
         </div>
       </div>
 

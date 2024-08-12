@@ -4,7 +4,7 @@ const Product4 = () => {
   return (
     <div className="lg:mb-0 mb-10">
       <Link to="/products/4">
-        <div className="flex justify-center items-center relative lg:px-8 px-2 py-5 bg-gray-200 rounded h-[530px]">
+        <div className="flex justify-center items-center relative lg:px-8 px-2 py-5 pb-0 bg-white rounded h-[450px]">
           <p className="absolute top-2 left-2 bg-indigo-900 text-white text-sm py-1 px-10 rounded shadow shadow-zinc-900">
             Best Seller
           </p>
@@ -16,7 +16,7 @@ const Product4 = () => {
                 <p
                   className={`text-white logo-font text-center bi-youtube text-8xl`}
                 ></p>
-                <p className="text-center font-extrabold text-xl font-poppins">
+                <p className="text-center font-extrabold text-xl font-poppins text-white">
                   YouTube
                 </p>
               </div>
@@ -26,11 +26,21 @@ const Product4 = () => {
       </Link>
       {/* Color */}
       <div className="mt-2 bg-gray-800 rounded px-3 py-5 shadow shadow-zinc-950 mb-8">
-        <div className="flex justify-between">
-          <p className="text-lg text-white font-poppins">
-            Vibecard Social Media
-          </p>
-        </div>
+        <p className="text-lg text-white font-poppins">Vibecard Social Media</p>
+        <p className="text-xs text-white font-poppins">
+          Available in{" "}
+          <span className="text-teal-500 font-poppins text-sm font-bold">
+            Metal{" "}
+          </span>
+          ,{" "}
+          <span className="text-teal-500 font-poppins text-sm font-bold">
+            Bamboo{" "}
+          </span>
+          and{" "}
+          <span className="text-teal-500 font-poppins text-sm font-bold">
+            Recycled Paper
+          </span>
+        </p>
       </div>
     </div>
   );

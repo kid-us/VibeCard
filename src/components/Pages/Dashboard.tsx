@@ -88,6 +88,22 @@ const Dashboard = () => {
       });
   };
 
+  const handleManageSubscription = () => {
+    axios
+      .get(`${baseUrl}/api/v1/payment/manage-subscription`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const shareTitle = "Vibecard Digital Business Card";
   const description =
     "Check out my new digital business card created with Vibecard!";
@@ -165,6 +181,13 @@ const Dashboard = () => {
                     Elevate your business and career to the next level with our
                     services.
                   </p>
+                  <button
+                    onClick={() => handleManageSubscription()}
+                    className="font-poppins btn-bg shadow rounded lg:w-72 mt-3"
+                  >
+                    Manage Subscription
+                  </button>
+                  {/* Previous Card */}
                   {links.length > 0 && (
                     <div className="mt-10 shadow rounded-x">
                       <p className="text-2xl mb-4 py-5">
