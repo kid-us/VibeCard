@@ -84,10 +84,10 @@ const ContactUs = () => {
         </>
       )}
 
-      <div className="container mx-auto text-white mt-14">
-        <p className="text-4xl font-extrabold text-center">Let's Chat!</p>
+      <div className="lg:container mx-auto text-white mt-14 px-2">
+        <p className="text-4xl font-extrabold lg:text-center">Let's Chat!</p>
         <div className="flex justify-center">
-          <div className="w-[50%]">
+          <div className="lg:w-[50%] w-full">
             <p className="mt-3 text-xl text-gray-300">
               Question? Complaint? Complement? Idea for a new product? We want
               to hear from you even if it's just to say hi.
@@ -102,7 +102,7 @@ const ContactUs = () => {
         <div className="flex justify-center">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="w-[55%] secondary-bg mt-10 rounded p-10"
+            className="lg:w-[55%] w-full secondary-bg mt-10 rounded p-10"
           >
             {/* Error message */}
             {errorMsg && (
