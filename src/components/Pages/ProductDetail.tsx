@@ -14,6 +14,7 @@ import Loading from "../Loading/Loading";
 import SocialMediaProduct from "../Product/SocialMediaProduct";
 import Product5 from "../Product/Product5";
 import GoogleReview from "../Product/GoogleReview";
+import Faq from "../Home/FAQ";
 
 interface Plan {
   metal: {
@@ -241,6 +242,14 @@ const ProductDetail = () => {
                     Design your Card
                   </button>
                 </div>
+              </div>
+            </div>
+          </div>
+          {/* Faq */}
+          <div className="px-4">
+            <div className="mt-10 flex justify-center">
+              <div className="w-full">
+                <Faq />
               </div>
             </div>
           </div>

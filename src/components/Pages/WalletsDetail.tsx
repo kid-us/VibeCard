@@ -8,6 +8,7 @@ import { baseUrl } from "@/services/request";
 import Loading from "../Loading/Loading";
 import { Wallets } from "../Product/Wallets";
 import WalletOrder from "../Order/WalletOrder";
+import Faq from "../Home/FAQ";
 
 interface Wal {
   wallet: Wallets;
@@ -73,7 +74,7 @@ const WalletsDetail = () => {
               <img
                 src={wallets?.image}
                 alt="Wallet"
-                className="h-[550px] w-full object-cover rounded"
+                className="lg:h-[550px] w-full object-cover rounded"
               />
             </div>
             <div className="px-2 main-bg lg:ps-10">
@@ -83,7 +84,7 @@ const WalletsDetail = () => {
                 </p>
               </div>
               <p className="text-white font-poppins font-bold text-2xl mt-5">
-                Price {wallets?.price}
+                Price €{wallets?.price}
               </p>
 
               <p className="text-xl mt-5 mb-4 text-white font-poppins font-bold">
@@ -132,6 +133,14 @@ const WalletsDetail = () => {
               <p className="mt-5 mb-4 text-white font-poppins leading-relaxed text-sm">
                 {wallets?.description}
               </p>
+            </div>
+          </div>
+          {/* Faq */}
+          <div className="px-4">
+            <div className="mt-10 flex justify-center">
+              <div className="w-full">
+                <Faq />
+              </div>
             </div>
           </div>
         </div>
