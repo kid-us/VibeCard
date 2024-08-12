@@ -7,6 +7,7 @@ import { free, pricingInfo, pro, proPlus } from "@/services/pricing";
 import axios from "axios";
 import { baseUrl } from "@/services/request";
 import Loading from "../Loading/Loading";
+import useSubscription from "@/hooks/useSubscription";
 
 interface Plan {
   pro: { price: string; plan: "pro" };
@@ -16,6 +17,8 @@ interface Plan {
 const Pricing = () => {
   const [title] = useState("Pricing");
   useDocumentTitle(title);
+
+  const { quota } = useSubscription();
 
   const [subscription, setSubscription] = useState<Plan>();
   const [loading, setLoading] = useState<boolean>(true);
@@ -62,7 +65,7 @@ const Pricing = () => {
             <div className="py-10 text-center">
               <h1 className="text-2xl font-extrabold my-4">Free</h1>
               <Link
-                to="/create"
+                to={quota ? "/create" : "/pricing"}
                 className="text-center py-3 btn-bg shadow shadow-zinc-900 text-white rounded chakra"
               >
                 Create now

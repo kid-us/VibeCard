@@ -89,19 +89,22 @@ const Dashboard = () => {
   };
 
   const handleManageSubscription = () => {
-    axios
-      .get(`${baseUrl}/api/v1/payment/manage-subscription`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    window.location.href =
+      "https://billing.stripe.com/p/session/test_YWNjdF8xUFdkRmRQNlVPSGxNenRILF9RZUwzUERsTXVyRkt1SVduQzhFejN6c2VrQ1pQcnFi0100HPQpVv1Q";
+
+    // axios
+    //   .get(`${baseUrl}/api/v1/payment/manage-subscription`, {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     withCredentials: true,
+    //   })
+    //   .then((response) => {
+    //     console.log(response);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   const shareTitle = "Vibecard Digital Business Card";
@@ -183,7 +186,7 @@ const Dashboard = () => {
                   </p>
                   <button
                     onClick={() => handleManageSubscription()}
-                    className="font-poppins btn-bg shadow rounded lg:w-72 mt-3"
+                    className="font-poppins btn-bg shadow rounded lg:w-72 mt-3 lg:mb-0 mb-5"
                   >
                     Manage Subscription
                   </button>

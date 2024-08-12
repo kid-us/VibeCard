@@ -7,7 +7,7 @@ interface Footer {
 export const explore: Footer[] = [
   { id: 1, name: "Home", path: "/" },
   { id: 2, name: "About", path: "/about-us" },
-  { id: 5, name: "Tutorial", path: "/" },
+  // { id: 5, name: "Tutorial", path: "/" },
   { id: 6, name: "Contact", path: "/contact-us" },
   { id: 3, name: "Create Card", path: "/create" },
   { id: 4, name: "Privacy Policy", path: "/privacy-policy" },

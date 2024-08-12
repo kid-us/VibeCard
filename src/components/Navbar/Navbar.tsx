@@ -31,8 +31,6 @@ const Navbar = () => {
       });
   }, []);
 
-  console.log(plan);
-
   return (
     <>
       {loading && <Loading />}
@@ -127,7 +125,7 @@ const Navbar = () => {
               </div>
             ) : (
               <Link to={"/login"}>
-                <div className="btn-bg shadow-none p-2 text-sm lowercase first-letter:uppercase rounded-full px-10">
+                <div className="btn-bg shadow-none p-2 text-sm lowercase first-letter:uppercase rounded px-10">
                   Sign In
                 </div>
               </Link>
