@@ -29,7 +29,7 @@ const Chat = () => {
             ></iframe>
           )}
 
-          <div className="lg:w-96 w-[100%] px-5 py-1 bg-white">
+          <div className="lg:w-96 w-[100%] px-5 py-1 bg-white border-t">
             <div className="flex justify-between">
               <div
                 onClick={() => setActiveTap("home")}
