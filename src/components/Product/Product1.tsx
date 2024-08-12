@@ -10,7 +10,7 @@ const Product1 = () => {
 
   return (
     <div className="lg:mb-0 mb-10">
-      <Link to={"/products/1"}>
+      <Link to={"/products/business-card-landscape"}>
         <div className="relative lg:px-8 px-2 py-5 bg-white rounded h-[530px]">
           <p className="absolute z-20 top-2 left-2 bg-indigo-900 text-white text-sm py-1 px-10 rounded shadow shadow-zinc-900">
             Best Seller

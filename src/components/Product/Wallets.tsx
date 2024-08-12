@@ -51,23 +51,21 @@ const Wallets = () => {
       <Carousel>
         {loading && <Loading />}
         <CarouselContent>
-          {/* <CarouselItem className="lg:basis-1/3 md:basis-1/2"></CarouselItem> */}
-          {/* <CarouselItem className="lg:basis-1/3 md:basis-1/2"></CarouselItem> */}
           {wallets.length > 0 &&
             wallets.map((wallet) => (
-              <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-                <Link
-                  to={`/wallets/${wallet.wallet_id}`}
-                  key={wallet.wallet_id}
-                >
+              <CarouselItem
+                key={wallet.wallet_id}
+                className="lg:basis-1/3 md:basis-1/2"
+              >
+                <Link to={`/wallets/${wallet.wallet_id}`}>
                   <div
                     key={wallet.wallet_id}
                     className="mb-4 rounded overflow-hidden"
                   >
                     <img
                       src={wallet.image}
-                      alt=""
-                      className="h-96 w-full object-cover"
+                      alt="wallets"
+                      className=" w-full object-cover"
                     />
                   </div>
                 </Link>

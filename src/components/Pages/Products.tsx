@@ -32,7 +32,7 @@ const Products = () => {
         </h1>
 
         <p className="my-4 text-center text-gray-500 lg:px-0 px-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Contactless Business Cards, Wallet Cases
         </p>
       </div>
 

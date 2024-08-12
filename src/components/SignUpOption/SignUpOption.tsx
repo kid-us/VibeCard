@@ -4,13 +4,9 @@ import { baseUrl } from "@/services/request";
 const SignUpOption = () => {
   const handleGoogleAccount = () => {
     axios
-      .get(`${baseUrl}/api/v1/auth/login/google`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      .post(`${baseUrl}/api/v1/auth/login/google`)
       .then((response) => {
-        console.log(response.data);
+        window.location.href = response.data.url;
       })
       .catch((error) => {
         console.log(error);

@@ -3,7 +3,7 @@ import axios from "axios";
 import { baseUrl } from "@/services/request";
 
 const useSubscription = () => {
-  const [quota, setQuota] = useState(false);
+  const [quota, setQuota] = useState(true);
 
   useEffect(() => {
     axios
@@ -14,12 +14,10 @@ const useSubscription = () => {
         withCredentials: true,
       })
       .then(() => {
-        // console.log(response.data);
         setQuota(true);
       })
       .catch(() => {
         setQuota(false);
-        // console.log(error);
       });
   }, []);
 

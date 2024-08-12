@@ -11,6 +11,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseUrl } from "@/services/request";
 import Loading from "../Loading/Loading";
+import SocialMediaProduct from "../Product/SocialMediaProduct";
+import Product5 from "../Product/Product5";
+import GoogleReview from "../Product/GoogleReview";
 
 interface Plan {
   metal: {
@@ -87,20 +90,38 @@ const ProductDetail = () => {
       <Navbar />
 
       <div className="lg:px-0 px-2">
-        <div className="lg:container mx-auto lg:mt-20 mt-4 lg:secondary-bg rounded overflow-hidden">
-          <div className="lg:grid grid-cols-2 justify-between gap-x-10">
+        <div className="lg:container mx-auto lg:mt-8 mt-4 lg:secondary-bg rounded overflow-hidden">
+          <div className="lg:grid grid-cols-2">
             <div className="mt-10 lg:mx-0 mx-1 lg:px-20 lg:pb-10">
-              {Number(id) === 1 && <Product1 />}
-              {Number(id) === 2 && <Product2 />}
-              {Number(id) === 3 && <Product3 />}
-              {Number(id) === 4 && <Product4 />}
-              {/* {Number(id) === 5 && <Product5 />} */}
+              {id === "business-card-landscape" && <Product1 />}
+              {id === "business-card-portrait" && <Product2 />}
+              {id === "business-card" && <Product3 />}
+              {id === "card-social-media-youtube" && <Product4 />}
+              {id === "card-social-media-tiktok" && (
+                <SocialMediaProduct bg="bg-black" name="tiktok" />
+              )}
+              {id === "card-social-media-facebook" && (
+                <SocialMediaProduct bg="bg-blue-500" name="facebook" />
+              )}
+              {id === "card-google-review-landscape" && <Product5 />}
+              {id === "card-google-review-portrait-1" && (
+                <GoogleReview bg="bg-white" note="Goggle Review" />
+              )}
+              {id === "card-google-review-portrait-2" && (
+                <GoogleReview bg="bg-black" note="Rate your Experience" />
+              )}
+              {/* {Number(id) === 5 && <Product5 />}  */}
             </div>
 
             <div className="px-2 main-bg lg:ps-10">
               <div className="lg:mt-4 rounded-xl lg:py-5">
                 <p className="lg:text-4xl text-2xl text-white font-extrabold">
                   Vibecard NFC Card
+                </p>
+
+                <p className="mt-2 text-sm text-gray-200">
+                  Original Business cards durable PVC, Professional, and
+                  Effortless networking with NFC technology
                 </p>
 
                 <p className="text-white lg:mt-10 mt-4 lg:text-md text-sm">

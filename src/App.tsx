@@ -35,7 +35,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/pricing" element={<Pricing />} />
-        <Route path="/products" element={<Products />} />
+        <Route path="/all-products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/wallets/:id" element={<WalletsDetail />} />
         <Route path="/verify" element={<Verify />} />

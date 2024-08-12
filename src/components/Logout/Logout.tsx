@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const Logout = () => {
   const { logout } = useUserData();
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -23,8 +24,8 @@ const Logout = () => {
         logout();
         navigate("/");
       })
-      .catch((err) => {
-        console.error("Logout failed: ", err);
+      .catch((error) => {
+        console.log(error);
       });
   };
 

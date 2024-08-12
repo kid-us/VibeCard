@@ -9,7 +9,13 @@ interface Props {
 const GoogleReview = ({ bg, note }: Props) => {
   return (
     <div className="lg:mb-0 mb-10">
-      <Link to="/products/5">
+      <Link
+        to={`/products${
+          bg === "bg-white"
+            ? "/card-google-review-portrait-1"
+            : "/card-google-review-portrait-2"
+        } `}
+      >
         <div className="flex justify-center items-center relative px-8 py-5 bg-white pb-0 rounded h-[450px]">
           <p className="absolute top-2 left-2 bg-indigo-900 text-white text-sm py-1 px-10 rounded shadow shadow-zinc-900">
             Best Seller

@@ -25,7 +25,6 @@ import { useCardColorStore } from "@/store/useCardColorStore";
 import EditForm from "../Create/EditForm";
 import CreateForm from "../Create/CreateForm";
 import Loading from "../Loading/Loading";
-import useSubscription from "@/hooks/useSubscription";
 
 const Create = () => {
   const [title] = useState("Create Card");
@@ -34,21 +33,26 @@ const Create = () => {
 
   const [loading, setLoading] = useState(true);
 
-  const { quota } = useSubscription();
-
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const editedUrl = searchParams.get("edit");
 
   useEffect(() => {
-    if (!editedUrl) {
-      if (quota) {
+    // if (!editedUrl) {
+    axios
+      .get(`${baseUrl}/api/v1/auth/can-create-card`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then(() => {
         setLoading(false);
-      } else {
+      })
+      .catch(() => {
         navigate("/pricing");
-      }
-    }
-  }, [quota]);
+      });
+  }, []);
 
   // Reload
   useEffect(() => {

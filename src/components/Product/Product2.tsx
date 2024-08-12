@@ -4,14 +4,14 @@ import ProductColor from "./ProductColor";
 
 const Product1 = () => {
   const [cardBg, setCardBg] = useState({
-    bg: "bg-white",
-    color: "text-black",
+    bg: "bg-red-700",
+    color: "text-white",
   });
 
   return (
     <>
       <div className="lg:mb-0 mb-10">
-        <Link to={"/products/2"}>
+        <Link to={"/products/business-card-portrait"}>
           <div className="relative px-8 py-5 bg-white rounded h-[530px]">
             <p className="absolute z-50 top-2 left-2 bg-indigo-900 text-white text-sm py-1 px-10 rounded shadow shadow-zinc-900">
               Best Seller

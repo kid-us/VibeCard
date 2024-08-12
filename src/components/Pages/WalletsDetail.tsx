@@ -69,13 +69,13 @@ const WalletsDetail = () => {
       <Navbar />
 
       <div className="lg:px-0 px-2">
-        <div className="lg:container mx-auto lg:mt-20 mt-4 lg:secondary-bg rounded overflow-hidden">
+        <div className="lg:container mx-auto lg:mt-10 mt-4 lg:secondary-bg rounded overflow-hidden">
           <div className="lg:grid grid-cols-2 justify-between gap-x-10">
             <div className="">
               <img src={wallets?.image} alt="Wallet" className="rounded" />
             </div>
             <div className="px-2 main-bg lg:ps-10">
-              <div className="lg:mt-4 rounded-xl lg:py-5">
+              <div className="rounded-xl lg:py-5">
                 <p className="lg:text-4xl text-2xl text-white font-extrabold">
                   {wallets?.name}
                 </p>
@@ -125,7 +125,7 @@ const WalletsDetail = () => {
               <p className="mt-5 mb-4 text-white font-poppins font-bold">
                 Description
               </p>
-              <p className="mt-5 mb-4 text-white font-poppins font-bold">
+              <p className="mt-5 mb-4 text-white font-poppins leading-relaxed">
                 {wallets?.description}
               </p>
             </div>

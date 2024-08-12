@@ -10,7 +10,7 @@ const Product3 = () => {
 
   return (
     <div className="lg:mb-0 mb-10">
-      <Link to="/products/3">
+      <Link to="/products/business-card">
         <div className="flex justify-center items-center relative lg:px-8 px-1 py-5 bg-white rounded h-[530px]">
           <p className="absolute top-2 left-2 bg-indigo-900 text-white text-sm py-1 px-10 rounded shadow shadow-zinc-900">
             Best Seller
