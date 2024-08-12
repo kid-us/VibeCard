@@ -15,10 +15,10 @@ export const explore: Footer[] = [
 
 export const shop: Footer[] = [
   { id: 7, name: "Shop All", path: "/all-products" },
-  { id: 71, name: "Bamboo Card", path: "/" },
-  { id: 8, name: "Metal Card", path: "/" },
-  { id: 9, name: "Leather  Wallets", path: "/" },
-  { id: 102, name: "Synthetic  Wallets", path: "/" },
+  { id: 71, name: "Bamboo Card", path: "/all-products" },
+  { id: 8, name: "Metal Card", path: "/all-products" },
+  { id: 9, name: "Leather  Wallets", path: "/all-products" },
+  { id: 102, name: "Synthetic  Wallets", path: "/all-products" },
   // { id: 103, name: "Basic Stands", path: "/" },
   // { id: 104, name: "Advanced Stands", path: "/" },
 ];

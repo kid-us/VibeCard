@@ -26,9 +26,8 @@ export interface All {
 }
 
 const Wallets = () => {
-  const [wallets, setWallets] = useState<Wallets[]>([]);
-
   const [loading, setLoading] = useState<boolean>(true);
+  const [wallets, setWallets] = useState<Wallets[]>([]);
 
   useEffect(() => {
     axios

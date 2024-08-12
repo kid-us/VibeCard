@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Nav } from "../../services/navs";
 import Logout from "../Logout/Logout";
+import useAuthStore from "@/store/useUserData";
 
 interface Props {
   nav: Nav[];
@@ -9,6 +10,8 @@ interface Props {
 }
 
 const Menu = ({ nav, menu, username }: Props) => {
+  const { plan } = useAuthStore();
+
   return (
     <>
       <div className="flex justify-between py-3 px-3 z-50">
@@ -79,12 +82,14 @@ const Menu = ({ nav, menu, username }: Props) => {
             >
               Setting
             </Link>
-            <Link
-              to={"/insights"}
-              className="block text-white text-xl pb-2 font-poppins font-extrabold mb-3"
-            >
-              Insights
-            </Link>
+            {plan !== "free" && (
+              <Link
+                to={"/insights"}
+                className="block text-white text-xl pb-2 font-poppins font-extrabold mb-3"
+              >
+                Insights
+              </Link>
+            )}
           </>
         )}
 

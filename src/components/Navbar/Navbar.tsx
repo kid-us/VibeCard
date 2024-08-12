@@ -31,6 +31,8 @@ const Navbar = () => {
       });
   }, []);
 
+  console.log(plan);
+
   return (
     <>
       {loading && <Loading />}
@@ -41,7 +43,6 @@ const Navbar = () => {
         </div>
 
         <div className="lg:container mx-auto flex justify-between">
-          {/* Large Device */}
           <div>
             <div
               className={`flex lg:pe-10 text-white ${user === null && "pe-28"}`}
@@ -54,9 +55,6 @@ const Navbar = () => {
                 >
                   <span className="px-3 flex me-">
                     <span className={`bi-list text-3xl pt-1 text-white`}></span>
-                    {/* <span className={`font-light pt-[6px] ps-3 text-white`}>
-                      Menu
-                    </span> */}
                   </span>
                 </p>
               </div>
@@ -82,7 +80,6 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Large Device */}
           <div className="lg:block hidden me-24 text-white pt-3">
             {user !== null ? (
               <div className="relative">
