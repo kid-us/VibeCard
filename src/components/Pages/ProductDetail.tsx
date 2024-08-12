@@ -92,7 +92,18 @@ const ProductDetail = () => {
       <div className="lg:px-0 px-2">
         <div className="lg:container mx-auto lg:mt-8 mt-4 lg:secondary-bg rounded overflow-hidden">
           <div className="lg:grid grid-cols-2">
-            <div className="mt-10 lg:mx-0 mx-1 lg:px-20 lg:pb-10">
+            <div className="lg:hidden block my-6">
+              <p className="lg:text-4xl text-2xl text-white font-extrabold font-poppins">
+                Vibecard NFC Card
+              </p>
+
+              <p className="mt-3 text-sm text-gray-400">
+                Original Business cards durable PVC, Professional, and
+                Effortless networking with NFC technology
+              </p>
+            </div>
+
+            <div className="lg:mt-10 lg:mx-0 mx-1 lg:px-20 lg:pb-10">
               {id === "business-card-landscape" && <Product1 />}
               {id === "business-card-portrait" && <Product2 />}
               {id === "business-card" && <Product3 />}
@@ -110,30 +121,31 @@ const ProductDetail = () => {
               {id === "card-google-review-portrait-2" && (
                 <GoogleReview bg="bg-black" note="Rate your Experience" />
               )}
-              {/* {Number(id) === 5 && <Product5 />}  */}
             </div>
 
             <div className="px-2 main-bg lg:ps-10">
               <div className="lg:mt-4 rounded-xl lg:py-5">
-                <p className="lg:text-4xl text-2xl text-white font-extrabold">
-                  Vibecard NFC Card
-                </p>
+                <div className="lg:block hidden">
+                  <p className="lg:text-4xl text-2xl text-white font-extrabold font-poppins">
+                    Vibecard NFC Card
+                  </p>
 
-                <p className="mt-2 text-sm text-gray-200">
-                  Original Business cards durable PVC, Professional, and
-                  Effortless networking with NFC technology
-                </p>
+                  <p className="mt-3 text-sm text-gray-400">
+                    Original Business cards durable PVC, Professional, and
+                    Effortless networking with NFC technology
+                  </p>
+                </div>
 
-                <p className="text-white lg:mt-10 mt-4 lg:text-md text-sm">
+                <p className="text-white mt-5 lg:text-md text-sm">
                   Choose your card choice.
                 </p>
                 {/* Card Types */}
-                <div className="lg:flex justify-between gap-x-10 mt-5 lg:mx-0 mx-5">
+                <div className="lg:flex justify-between gap-x-5 mt-5">
                   <p
                     onClick={() => setType("recylced_paper")}
                     className={`shadow-xl shadow-zinc-900 ${
                       type === "recylced_paper"
-                        ? "btn-bg shadow-none px-2 text-white"
+                        ? "btn-bg shadow-none px-2 text-white text-sm"
                         : "bg-white"
                     } w-full text-center pt-3 rounded h-12 lg:mb-0 mb-2 font-poppins cursor-pointer`}
                   >
@@ -170,7 +182,7 @@ const ProductDetail = () => {
                   </span>
                 </p>
 
-                <div className="flex lg:justify-start justify-center gap-x-10 mt-4">
+                <div className="flex ustify-start gap-x-6 mt-4">
                   <p
                     onClick={() => setBackLogo(true)}
                     className={`shadow-xl shadow-zinc-900 ${
@@ -195,7 +207,7 @@ const ProductDetail = () => {
                 <div>
                   <button
                     onClick={() => handleMinus()}
-                    className="bi-dash bg-black w-full h-full text-white text-2xl"
+                    className="bi-dash bg-black w-full h-full text-white text-3xl"
                   ></button>
                 </div>
                 <div className="col-span-3">
@@ -218,12 +230,12 @@ const ProductDetail = () => {
                   You must to choose your card type
                 </p>
               )}
-              <div className="lg:flex justify-between gap-x-10 w-full mt-14">
+              <div className="lg:flex justify-between gap-x-10 w-full mt-8">
                 {/* Design */}
                 <div className="w-full lg:mb-0 mb-5">
                   <button
                     onClick={() => handleOrder()}
-                    className="bg-white py-3  lg:text-center rounded shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 text-center lg:w-80 w-full"
+                    className="btn-bg py-3 lg:text-center rounded shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 text-center w-full"
                   >
                     <span className="bi-palette-fill me-2"></span>
                     Design your Card

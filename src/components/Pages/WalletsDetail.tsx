@@ -71,25 +71,33 @@ const WalletsDetail = () => {
       <div className="lg:px-0 px-2">
         <div className="lg:container mx-auto lg:mt-10 mt-4 lg:secondary-bg rounded overflow-hidden">
           <div className="lg:grid grid-cols-2 justify-between gap-x-10">
-            <div className="">
-              <img src={wallets?.image} alt="Wallet" className="rounded" />
+            <div className="lg:hidden block rounded-xl lg:py-6 mt-5">
+              <p className="lg:text-4xl text-2xl text-white font-extrabold">
+                {wallets?.name}
+              </p>
+            </div>
+            <div className="pt-8">
+              <img
+                src={wallets?.image}
+                alt="Wallet"
+                className="h-[550px] w-full object-cover rounded"
+              />
             </div>
             <div className="px-2 main-bg lg:ps-10">
-              <div className="rounded-xl lg:py-5">
+              <div className="lg:block hidden rounded-xl lg:py-6">
                 <p className="lg:text-4xl text-2xl text-white font-extrabold">
                   {wallets?.name}
                 </p>
               </div>
-              <p className="mt-5 mb-4 text-white font-poppins font-bold text-2xl">
+              <p className="text-white font-poppins font-bold text-2xl mt-5">
                 Price {wallets?.price}
               </p>
 
               <p className="text-xl mt-5 mb-4 text-white font-poppins font-bold">
-                Size
-              </p>
-
-              <p className="mt-5 mb-4 text-white font-poppins">
-                {wallets?.size}
+                Size{" "}
+                <span className="text-sm font-light font-poppins">
+                  {wallets?.size}
+                </span>
               </p>
 
               {/*Quantity */}
@@ -117,15 +125,15 @@ const WalletsDetail = () => {
               </div>
 
               <div className="mb-10">
-                <button className="btn-bg w-full mt-8 shadow text-white">
+                <button className="btn-bg w-full mt-8 shadow text-white rounded">
                   Order
                 </button>
               </div>
 
-              <p className="mt-5 mb-4 text-white font-poppins font-bold">
+              <p className="mt-5 mb-4 text-white text-xl font-poppins font-bold">
                 Description
               </p>
-              <p className="mt-5 mb-4 text-white font-poppins leading-relaxed">
+              <p className="mt-5 mb-4 text-white font-poppins leading-relaxed text-sm">
                 {wallets?.description}
               </p>
             </div>
