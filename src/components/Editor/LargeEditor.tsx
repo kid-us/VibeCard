@@ -9,8 +9,8 @@ import useProduct from "@/store/useProduct";
 import { save } from "@/assets";
 import LargeCardPreview from "./LargeCardPreview";
 import Preview from "./Preview";
-import Order from "./Order";
 import { useNavigate } from "react-router-dom";
+import CardOrder from "../Order/CardOrder";
 
 export interface Image {
   width: string;
@@ -304,7 +304,7 @@ const LargeEditor: React.FC = () => {
   return (
     <>
       {order && (
-        <Order
+        <CardOrder
           backFile={backFile ? backFile : null}
           frontFile={frontFile ? frontFile : null}
           closeOrder={() => setOrder(false)}
