@@ -6,56 +6,53 @@ const Chat = () => {
   const [activeTap, setActiveTap] = useState("home");
   return (
     <div className="relative">
-      {chatBox && (
-        <div className="fixed bottom-24 right-3 z-50 lg:h-[85%] h-[80%] lg:w-96 w-[95%] rounded-xl bg-white shadow-xl shadow-slate-950">
-          {/* <div className="relative"> */}
-          <div className="text- w-full lg:p-6 p-2">
-            <p className="text-5xl lg:mt-10 mt-2 font-extrabold">Hi there 👋</p>
-            <p className="text-3xl mt-3">How can we help?</p>
-          </div>
+      {!chatBox && (
+        <div className="fixed bottom-24 right-0 z-50 lg:h-[83%] h-[80%] lg:w-96 w-[90%] rounded-lg bg-white shadow-xl shadow-slate-950 overflow-hidden">
+          {activeTap === "home" && (
+            <div className="lg:h-[88%] h-[80%] lg:w-96 w-[100%] lg:p-6 p-2">
+              <p className="text-5xl lg:mt-10 mt-10 font-extrabold">
+                Hi there 👋
+              </p>
+              <p className="text-3xl mt-3 mb-5">How can we help?</p>
+              <div className="bg-black overflow-y-scroll rounded p-5 h-[76%]">
+                <p className="text-white mb-10 text-2xl">FAQ</p>
+                <Faq textSize={true} />
+              </div>
+            </div>
+          )}
 
-          <div className="mx-2 rounded border border-gradient px-3 pt-6 lg:h-[56%] h-[59%] overflow-scroll">
-            <Faq textSize={true} />
-          </div>
+          {activeTap === "messages" && (
+            <iframe
+              className="rounded lg:h-[88%] h-[80%] lg:w-96 w-[100%]"
+              allow="microphone;"
+              src="https://console.dialogflow.com/api-client/demo/embedded/ade34863-b44f-4399-8af0-ef82d3bfd2f5"
+            ></iframe>
+          )}
 
-          <div className="fixed bottom-[6.1em] rounded-xl text-white lg:w-96 w-[95%] px-5 lg:py-5 py-3 secondary-bg">
+          <div className="text-white lg:w-96 w-[100%] px-5 py-3 bg-white">
             <div className="flex justify-between">
               <div
                 onClick={() => setActiveTap("home")}
                 className={`text-center cursor-pointer ${
-                  activeTap === "home" && "text-sky-400"
+                  activeTap === "home" ? "text-sky-800" : "text-black"
                 }`}
               >
-                <button
-                  className={`bi-house-fill lg:text-3xl text-xl`}
-                ></button>
+                <button className={`bi-house-fill text-2xl`}></button>
                 <p className="lg:text-md text-sm">Home</p>
               </div>
               <div
                 onClick={() => setActiveTap("messages")}
                 className={`text-center cursor-pointer ${
-                  activeTap === "messages" && "text-sky-400"
+                  activeTap === "messages" ? "text-sky-800" : "text-black"
                 }`}
               >
                 <button
-                  className={`bi-chat-square-quote-fill lg:text-3xl text-xl`}
+                  className={`bi-chat-square-quote-fill text-2xl`}
                 ></button>
                 <p className="lg:text-md text-sm">Messages</p>
               </div>
-              <div
-                onClick={() => setActiveTap("help")}
-                className={`text-center cursor-pointer ${
-                  activeTap === "help" && "text-sky-400"
-                }`}
-              >
-                <button
-                  className={`bi-question-circle lg:text-3xl text-xl`}
-                ></button>
-                <p className="lg:text-md text-sm">Help</p>
-              </div>
             </div>
           </div>
-          {/* </div> */}
         </div>
       )}
 
