@@ -127,7 +127,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
         <img
           src={img}
           alt="wallet"
-          className="lg:w-[70%] w-[95%] h-[500px] object-cover rounded"
+          className="lg:h-[550px] w-full object-cover rounded"
         />
       </div>
       <div className="relative bg-white rounded shadow-lg shadow-zinc-950 lg:p-10 mx-2 lg:mt-0 mt-5">
