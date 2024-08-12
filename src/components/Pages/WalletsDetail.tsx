@@ -7,6 +7,7 @@ import axios from "axios";
 import { baseUrl } from "@/services/request";
 import Loading from "../Loading/Loading";
 import { Wallets } from "../Product/Wallets";
+import WalletOrder from "../Order/WalletOrder";
 
 interface Wal {
   wallet: Wallets;
@@ -19,8 +20,8 @@ const WalletsDetail = () => {
   const { id } = useParams();
   // const navigate = useNavigate();
 
+  const [order, setOrder] = useState<boolean>(false);
   const [wallets, setWallets] = useState<Wallets>();
-
   const [quantity, setQuantity] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -38,7 +39,7 @@ const WalletsDetail = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [id]);
 
   const handleMinus = () => {
     if (quantity === 1) return;
@@ -46,24 +47,16 @@ const WalletsDetail = () => {
     setQuantity(quantity - 1);
   };
 
-  // const handleOrder = () => {
-  //   if (type === "") {
-  //     setOrderError(true);
-  //     return;
-  //   } else {
-  //     const productCardInfo = {
-  //       quantity: quantity,
-  //       cardType: type,
-  //       vibecardLogo: backLogo,
-  //     };
-
-  //     localStorage.setItem("product", JSON.stringify(productCardInfo));
-  //     navigate(`/editor`);
-  //   }
-  // };
-
   return (
     <>
+      {order && (
+        <WalletOrder
+          id={id ? id : ""}
+          img={wallets ? wallets.image : ""}
+          quantity={quantity}
+          hideModal={() => setOrder(false)}
+        />
+      )}
       {loading && <Loading />}
 
       <Navbar />
@@ -125,7 +118,10 @@ const WalletsDetail = () => {
               </div>
 
               <div className="mb-10">
-                <button className="btn-bg w-full mt-8 shadow text-white rounded">
+                <button
+                  onClick={() => setOrder(true)}
+                  className="btn-bg w-full mt-8 shadow text-white rounded"
+                >
                   Order
                 </button>
               </div>
