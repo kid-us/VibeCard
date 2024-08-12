@@ -6,7 +6,7 @@ const Chat = () => {
   const [activeTap, setActiveTap] = useState("home");
   return (
     <div className="relative">
-      {!chatBox && (
+      {chatBox && (
         <div className="fixed bottom-24 right-0 z-50 lg:h-[83%] h-[80%] lg:w-96 w-[90%] rounded-lg bg-white shadow-xl shadow-slate-950 overflow-hidden">
           {activeTap === "home" && (
             <div className="lg:h-[88%] h-[80%] lg:w-96 w-[100%] lg:p-6 p-2">
