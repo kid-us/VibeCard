@@ -152,7 +152,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
                 {...register("firstName")}
                 type="text"
                 name="firstName"
-                className={`text-black bg-gray-100 py-3 rounded h-12 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                className={`text-black bg-gray-300 py-3 rounded h-12 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                   errors.firstName && "border-red-600 border-1 border"
                 }`}
                 onChange={(e) => setFName(e.currentTarget.value)}
@@ -173,7 +173,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
                 {...register("lastName")}
                 type="text"
                 name="lastName"
-                className={`text-black bg-gray-100 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                   errors.lastName && "border-red-600 border-1 border"
                 }`}
                 onChange={(e) => setLName(e.currentTarget.value)}
@@ -194,7 +194,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
                 {...register("email")}
                 type="email"
                 name="email"
-                className={`text-black bg-gray-100 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                   errors.email && "border-red-600 border-1 border"
                 }`}
                 onChange={(e) => setEmail(e.currentTarget.value)}
@@ -216,7 +216,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
                   {...register("street")}
                   type="text"
                   name="street"
-                  className={`text-black bg-gray-100 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                  className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                     errors.street && "border-red-600 border-1 border"
                   }`}
                   onChange={(e) => setStreet(e.currentTarget.value)}
@@ -239,7 +239,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
                   {...register("streetNo")}
                   type="text"
                   name="streetNo"
-                  className={`text-black bg-gray-100 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                  className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                     errors.streetNo && "border-red-600 border-1 border"
                   }`}
                   onChange={(e) => setStreetNo(e.currentTarget.value)}
@@ -261,7 +261,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
                 {...register("address")}
                 type="text"
                 name="address"
-                className={`text-black bg-gray-100 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                   errors.address && "border-red-600 border-1 border"
                 }`}
                 onChange={(e) => setAddress(e.currentTarget.value)}
@@ -282,7 +282,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
                 {...register("plz")}
                 type="text"
                 name="plz"
-                className={`text-black bg-gray-100 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                   errors.plz && "border-red-600 border-1 border"
                 }`}
                 onChange={(e) => setPlz(e.currentTarget.value)}
@@ -303,7 +303,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
                 {...register("location")}
                 type="text"
                 name="location"
-                className={`text-black bg-gray-100 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                   errors.location && "border-red-600 border-1 border"
                 }`}
                 onChange={(e) => setLocation(e.currentTarget.value)}
@@ -324,7 +324,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
                 {...register("phone")}
                 type="tel"
                 name="phone"
-                className={`text-black bg-gray-100 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                   errors.phone && "border-red-600 border-1 border"
                 }`}
                 onChange={(e) => setPhone(e.currentTarget.value)}
@@ -345,7 +345,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
                 {...register("referral")}
                 type="tel"
                 name="referral"
-                className={`text-black bg-gray-100 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm`}
+                className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm`}
                 onChange={(e) => setReferral(e.currentTarget.value)}
                 value={referral}
               />
