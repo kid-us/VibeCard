@@ -79,9 +79,11 @@ const Home = () => {
             <div className="relative right-20 lg:-top-28 -top-40">
               <div className="absolute lg:right-[35em]  right-36 top-40 bulb"></div>
             </div>
-            <p className="text-center mt-16 mb-8 text-gray-500">Features</p>
+            <p className="text-center lg:mt-16 mt-6 mb-8 text-gray-500 font-poppins">
+              Features
+            </p>
             <div className="flex justify-center w-full text-center">
-              <p className="text-teal-500 font-extrabold lg:text-4xl text-3xl text-center mb-16 lg:w-96 w-80">
+              <p className="text-teal-500 font-poppins font-extrabold lg:text-4xl text-2xl text-center lg:mb-16 mb-10 lg:w-96 w-80">
                 Customize, Connect, and Conquer
               </p>
             </div>
@@ -108,7 +110,7 @@ const Home = () => {
             <div className="absolute lg:right-[35em]  right-36 top-40 bulb"></div>
           </div>
           <div className="flex justify-center w-full text-center">
-            <p className="text-teal-500 font-extrabold lg:text-4xl text-3xl text-center mb-16 lg:w-96 w-80">
+            <p className="text-teal-500 font-poppins font-extrabold lg:text-4xl text-2xl text-center lg:mb-16 mb-10 lg:w-96 w-80">
               All Digital Business Cards
             </p>
           </div>
@@ -140,7 +142,7 @@ const Home = () => {
             <div className="absolute lg:right-[35em]  right-36 top-40 bulb"></div>
           </div>
           <div className="flex justify-center w-full text-center">
-            <p className="text-teal-500 font-extrabold lg:text-4xl text-3xl text-center mb-16 lg:w-96 w-80">
+            <p className="font-poppins text-teal-500 font-extrabold lg:text-4xl text-2xl text-center lg:mb-16 mb-10 lg:w-96 w-80">
               Testimonials
             </p>
           </div>
@@ -153,7 +155,9 @@ const Home = () => {
 
       {/* Faq */}
       <div className="mt-16 lg:px-0 px-4">
-        <h1 className="text-center text-2xl text-teal-500">FAQ</h1>
+        <h1 className="text-center text-2xl text-teal-500 font-poppins font-bold">
+          FAQ
+        </h1>
         <div className="mt-10 flex justify-center">
           <div className="lg:w-[60%] w-full">
             <Faq />
