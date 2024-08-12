@@ -362,7 +362,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
               Do you want to save this info for future time use.
             </label>
           </div>
-          <div className="mt-20">
+          <div className="lg:mt-16 mt-8">
             <Button label="Order" loader={loader} />
           </div>
         </form>
