@@ -9,7 +9,7 @@ const Chat = () => {
       {chatBox && (
         <div className="fixed bottom-24 right-0 z-50 lg:h-[83%] h-[80%] lg:w-96 w-[90%] rounded-lg bg-white shadow-xl shadow-slate-950 overflow-hidden">
           {activeTap === "home" && (
-            <div className="lg:h-[88%] h-[80%] lg:w-96 w-[100%] lg:p-6 p-2">
+            <div className="lg:h-[88%] h-[88.5%] lg:w-96 w-[100%] lg:p-6 p-2">
               <p className="text-5xl lg:mt-10 mt-10 font-extrabold">
                 Hi there 👋
               </p>
@@ -23,13 +23,13 @@ const Chat = () => {
 
           {activeTap === "messages" && (
             <iframe
-              className="rounded lg:h-[88%] h-[80%] lg:w-96 w-[100%]"
+              className="rounded lg:h-[88%] h-[88.5%] lg:w-96 w-[100%]"
               allow="microphone;"
               src="https://console.dialogflow.com/api-client/demo/embedded/ade34863-b44f-4399-8af0-ef82d3bfd2f5"
             ></iframe>
           )}
 
-          <div className="text-white lg:w-96 w-[100%] px-5 py-3 bg-white">
+          <div className="lg:w-96 w-[100%] px-5 py-1 bg-white">
             <div className="flex justify-between">
               <div
                 onClick={() => setActiveTap("home")}
@@ -38,7 +38,7 @@ const Chat = () => {
                 }`}
               >
                 <button className={`bi-house-fill text-2xl`}></button>
-                <p className="lg:text-md text-sm">Home</p>
+                <p className="lg:text-md text-xs">Home</p>
               </div>
               <div
                 onClick={() => setActiveTap("messages")}
@@ -49,7 +49,7 @@ const Chat = () => {
                 <button
                   className={`bi-chat-square-quote-fill text-2xl`}
                 ></button>
-                <p className="lg:text-md text-sm">Messages</p>
+                <p className="lg:text-md text-xs">Messages</p>
               </div>
             </div>
           </div>
