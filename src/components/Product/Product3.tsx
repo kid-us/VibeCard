@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ProductColor from "./ProductColor";
 
 interface Props {
-  tablet: boolean;
+  tablet?: boolean;
 }
 
 const Product3 = ({ tablet }: Props) => {
@@ -22,7 +22,7 @@ const Product3 = ({ tablet }: Props) => {
           <div
             className={`rounded-md ${
               tablet && "lg:w-full md:w-[60%] w-full"
-            }  h-[230px] ${cardBg.bg} mb-5 shadow-lg shadow-zinc-900`}
+            } w-full h-[230px] ${cardBg.bg} mb-5 shadow-lg shadow-zinc-900`}
           >
             <div className="flex justify-center items-center h-full px-10">
               <div>

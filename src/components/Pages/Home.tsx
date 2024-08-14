@@ -9,32 +9,23 @@ import Faq from "../Home/FAQ";
 import HeroCard from "../Home/HeroCard";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Chat from "../ChatBot/Chat";
-import Product1 from "../Product/Product1";
-import Product2 from "../Product/Product2";
-import Product3 from "../Product/Product3";
 import Testimonials from "../Home/Testimonials";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import Product from "../Home/Product";
 
 const Home = () => {
   const [title] = useState("Vibecard - Digital Business Cards");
   useDocumentTitle(title);
 
   // Scroll to top
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 1000);
   }, []);
   return (
     <>
@@ -120,23 +111,8 @@ const Home = () => {
             </p>
           </div>
           {/* <Products /> */}
-          <Carousel>
-            <CarouselContent className="gap-x-2 px-1">
-              <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-                <Product1></Product1>
-              </CarouselItem>
-              <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-                <Product2></Product2>
-              </CarouselItem>
-              <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-                <Product3></Product3>
-              </CarouselItem>
-            </CarouselContent>
-            <div className="lg:hidden md:block block">
-              <CarouselPrevious className="absolute z-50 left-0 bg-black text-white" />
-              <CarouselNext className="absolute z-50 right-0 bg-black text-white" />
-            </div>
-          </Carousel>
+
+          <Product />
         </div>
       </div>
 
