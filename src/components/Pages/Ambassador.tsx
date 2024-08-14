@@ -2,10 +2,19 @@ import { Link } from "react-router-dom";
 import AmbassadorRegister from "../Ambassador/AmbassadorRegister";
 import Faq from "../Home/FAQ";
 import Footer from "../Footer/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AmbassadorLogin from "../Ambassador/AmbassadorLogin";
+import useDocumentTitle from "@/hooks/useDocumentTitle";
 
 const Ambassador = () => {
+  const [title] = useState("Vibecard - Ambassador");
+  useDocumentTitle(title);
+
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [active, setActive] = useState(false);
   return (
     <>

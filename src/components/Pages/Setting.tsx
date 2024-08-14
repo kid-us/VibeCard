@@ -26,6 +26,11 @@ const Setting = () => {
   const [title] = useState("Setting");
   useDocumentTitle(title);
 
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [username, setUsername] = useState("");
   const [usernameError, setUsernameError] = useState(false);
 

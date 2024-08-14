@@ -2,9 +2,18 @@ import { useEffect, useState } from "react";
 import LargeEditor from "./LargeEditor";
 import SmallEditor from "./SmallEditor";
 import Loading from "../Loading/Loading";
+import useDocumentTitle from "@/hooks/useDocumentTitle";
 
 const ImageEditor = () => {
+  const [title] = useState("Design your Card");
+  useDocumentTitle(title);
+
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // Reload
   useEffect(() => {

@@ -26,6 +26,11 @@ const Insights = () => {
   const [title] = useState("Insight");
   useDocumentTitle(title);
 
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { plan } = useAuthStore();
 
   const navigate = useNavigate();

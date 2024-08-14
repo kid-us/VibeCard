@@ -1,6 +1,6 @@
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Product1 from "../Product/Product1";
 import Product2 from "../Product/Product2";
@@ -21,6 +21,11 @@ import {
 const Products = () => {
   const [title] = useState("Shop our Products");
   useDocumentTitle(title);
+
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

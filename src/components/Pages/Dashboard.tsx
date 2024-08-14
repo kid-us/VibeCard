@@ -22,6 +22,11 @@ const Dashboard = () => {
   const [title] = useState("Dashboard");
   useDocumentTitle(title);
 
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { quota } = useSubscription();
 
   const [deleteCard, setDeleteCard] = useState(false);

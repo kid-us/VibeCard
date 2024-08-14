@@ -19,6 +19,7 @@ type FormData = z.infer<typeof schema>;
 const CheckEmail = () => {
   const [title] = useState("Verify you Email");
   useDocumentTitle(title);
+
   const location = useLocation();
   const navigate = useNavigate();
 

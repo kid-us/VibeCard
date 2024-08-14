@@ -31,6 +31,11 @@ const Create = () => {
   useDocumentTitle(title);
   const navigate = useNavigate();
 
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [loading, setLoading] = useState(true);
 
   const location = useLocation();

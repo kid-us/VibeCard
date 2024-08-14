@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
@@ -6,6 +6,11 @@ import useDocumentTitle from "../../hooks/useDocumentTitle";
 const PrivacyPolicy = () => {
   const [title] = useState("Privacy Policy");
   useDocumentTitle(title);
+
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

@@ -25,6 +25,11 @@ const Home = () => {
   const [title] = useState("Vibecard - Digital Business Cards");
   useDocumentTitle(title);
 
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {

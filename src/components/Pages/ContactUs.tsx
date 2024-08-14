@@ -3,7 +3,7 @@ import Navbar from "../Navbar/Navbar";
 // import axios from "axios";
 // import { baseUrl } from "@/services/request";
 import useDocumentTitle from "@/hooks/useDocumentTitle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldValues, useForm } from "react-hook-form";
@@ -24,6 +24,11 @@ type FormData = z.infer<typeof schema>;
 const ContactUs = () => {
   const [title] = useState("Contact Us");
   useDocumentTitle(title);
+
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const [errorMsg, setErrorMsg] = useState(false);
   const [successMsg, setSuccessMsg] = useState(false);

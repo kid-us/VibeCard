@@ -1,5 +1,5 @@
 import DatePicker from "../Insights/DatePicker";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DateRange } from "react-day-picker";
 import { addDays } from "date-fns";
 import AffiliateNavbar from "../Ambassador/AffiliateNavbar";
@@ -15,6 +15,11 @@ const productSolds = [
 ];
 
 const Affiliate = () => {
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { firstName, lastName, earning, referral_code } = useAmbassador();
 
   // Custom Date

@@ -35,6 +35,11 @@ const ProductDetail = () => {
   const [title] = useState("Product");
   useDocumentTitle(title);
 
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const navigate = useNavigate();
 
   const { id } = useParams();

@@ -18,6 +18,11 @@ const Pricing = () => {
   const [title] = useState("Pricing");
   useDocumentTitle(title);
 
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { quota } = useSubscription();
 
   const [subscription, setSubscription] = useState<Plan>();

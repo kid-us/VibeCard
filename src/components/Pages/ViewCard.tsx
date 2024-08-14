@@ -13,6 +13,11 @@ const ViewCard = () => {
   const [title] = useState("My Card");
   useDocumentTitle(title);
 
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { id } = useParams();
   const [data, setData] = useState<Data>();
   const [styles, setStyles] = useState<StyleData>();
