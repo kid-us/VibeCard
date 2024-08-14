@@ -2,7 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import ProductColor from "./ProductColor";
 
-const Product1 = () => {
+interface Props {
+  tablet?: boolean;
+}
+
+const Product1 = ({ tablet }: Props) => {
   const [cardBg, setCardBg] = useState({
     bg: "bg-red-700",
     color: "text-white",
@@ -16,7 +20,11 @@ const Product1 = () => {
             <p className="absolute z-50 top-2 left-2 bg-indigo-900 text-white text-sm py-1 px-10 rounded shadow shadow-zinc-900">
               Best Seller
             </p>
-            <div className="relative">
+            <div
+              className={`relative ${
+                tablet && "lg:w-full md:w-[60%] w-full m-auto"
+              }`}
+            >
               <div
                 className={`relative hover:z-40 rounded-md w-72 h-[400px] ${cardBg.bg} flex justify-center items-center mb-5 shadow-xl shadow-zinc-900`}
               >

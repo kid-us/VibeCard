@@ -2,7 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import ProductColor from "./ProductColor";
 
-const Product3 = () => {
+interface Props {
+  tablet: boolean;
+}
+
+const Product3 = ({ tablet }: Props) => {
   const [cardBg, setCardBg] = useState({
     bg: "bg-zinc-600",
     color: "text-white",
@@ -16,7 +20,9 @@ const Product3 = () => {
             Best Seller
           </p>
           <div
-            className={`rounded-md w-full h-[230px] ${cardBg.bg} mb-5 shadow-lg shadow-zinc-900`}
+            className={`rounded-md ${
+              tablet && "lg:w-full md:w-[60%] w-full"
+            }  h-[230px] ${cardBg.bg} mb-5 shadow-lg shadow-zinc-900`}
           >
             <div className="flex justify-center items-center h-full px-10">
               <div>

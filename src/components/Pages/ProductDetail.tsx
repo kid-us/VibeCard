@@ -110,9 +110,9 @@ const ProductDetail = () => {
             </div>
 
             <div className="lg:mt-10 lg:mx-0 mx-1 lg:px-20 lg:pb-10">
-              {id === "business-card-landscape" && <Product1 />}
-              {id === "business-card-portrait" && <Product2 />}
-              {id === "business-card" && <Product3 />}
+              {id === "business-card-landscape" && <Product1 tablet />}
+              {id === "business-card-portrait" && <Product2 tablet />}
+              {id === "business-card" && <Product3 tablet />}
               {id === "card-social-media-youtube" && <Product4 />}
               {id === "card-social-media-tiktok" && (
                 <SocialMediaProduct bg="bg-black" name="tiktok" />

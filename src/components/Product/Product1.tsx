@@ -2,7 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import ProductColor from "./ProductColor";
 
-const Product1 = () => {
+interface Props {
+  tablet?: boolean;
+}
+
+const Product1 = ({ tablet }: Props) => {
   const [cardBg, setCardBg] = useState({
     bg: "bg-black",
     color: "text-white",
@@ -16,7 +20,11 @@ const Product1 = () => {
             Best Seller
           </p>
           <div
-            className={`relative rounded-md w-full h-[230px] ${cardBg.bg} flex justify-center items-center mb-5 shadow-lg shadow-zinc-900`}
+            className={`relative rounded-md ${
+              tablet && "lg:w-full md:w-[60%] m-auto"
+            }  h-[230px] ${
+              cardBg.bg
+            } flex justify-center items-center mb-5 shadow-lg shadow-zinc-900`}
           >
             <div>
               <p className={`${cardBg.color} logo-font text-center text-4xl`}>
@@ -32,7 +40,11 @@ const Product1 = () => {
 
           {/* Qr code */}
           <div
-            className={`rounded-md w-full h-[230px] ${cardBg.bg} flex justify-center items-center shadow-lg shadow-zinc-900`}
+            className={`rounded-md ${
+              tablet && "lg:w-full md:w-[60%] w-full m-auto"
+            }  h-[230px] ${
+              cardBg.bg
+            } flex justify-center items-center shadow-lg shadow-zinc-900`}
           >
             <p className={`${cardBg.color} bi-qr-code text-8xl`}></p>
           </div>
