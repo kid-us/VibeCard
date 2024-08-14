@@ -19,9 +19,9 @@ const Pricing = () => {
   useDocumentTitle(title);
 
   // Scroll to top
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   const { quota } = useSubscription();
 
@@ -50,16 +50,16 @@ const Pricing = () => {
       <Navbar />
 
       <div className="lg:container mx-auto lg:mt-24 mt-14">
-        <h1 className="lg:text-4xl text-2xl text-center font-extrabold text-white">
+        <h1 className="lg:text-4xl text-2xl lg:text-center font-extrabold text-white ps-2">
           Choose the best plan for you or your business.
         </h1>
 
-        <p className="my-4 text-center text-gray-500 text-lg">
+        <p className="my-4 lg:text-center text-gray-500 text-lg ps-2">
           Use the toggle below to switch between individual or team pricing
           plans
         </p>
 
-        <div className="lg:grid grid-cols-3 gap-x-5 lg:my-24 my-10 lg:px-20 px-2">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-x-5 lg:my-29 md:my-20 my-10 lg:px-20 px-2">
           {/* Basic */}
           <div className="border border-gray-600 rounded-xl lg:px-10 px-5 lg:mb-0 mb-4 py-6 text-white">
             <p className="text-2xl font-extrabold mb-5">Basic</p>
@@ -85,7 +85,7 @@ const Pricing = () => {
           </div>
           {/* Pro */}
           <div className="relative">
-            <div className="absolute -top-10 h-40 bg-teal-500 rounded-t-xl text-white uppercase">
+            <div className="absolute lg:-top-10 h-40 bg-teal-500 rounded-t-xl text-white uppercase">
               <p className="pt-3 px-5 text-sm text-black">Most Popular</p>
             </div>
             <div className="relative z-50 border-2 border-teal-500 rounded-xl lg:px-10 px-5 lg:mb-0 lg:mt-0 mt-14 mb-4 py-6 text-white secondary-bg">
@@ -162,7 +162,7 @@ const Pricing = () => {
               Pro
             </p>
             <p className="lg:text-md text-xs text-gray-400 font-poppins">
-              €5.49
+              €{subscription?.pro.price}
             </p>
           </div>
           <div className="text-center">
@@ -170,7 +170,7 @@ const Pricing = () => {
               Pro +
             </p>
             <p className="lg:text-md text-xs text-gray-400 font-poppins">
-              €6.99
+              €{subscription?.proPlus.price}
             </p>
           </div>
         </div>
@@ -183,19 +183,19 @@ const Pricing = () => {
             <div>
               <p className="lg:text-lg text-xs">{pi.title}</p>
             </div>
-            <div className="flex gap-x-4 justify-center text-white">
+            <div className="grid grid-cols-2 w-16 lg:ms-32 md:ms-20 ms-10 text-white">
               <p className={`${pi.value1.icon} lg:text-2xl text-sm`}> </p>
               <p className="lg:text-lg text-sm font-poppins">
                 {pi.value1.value !== 0 && pi.value1.value}{" "}
               </p>
             </div>
-            <div className="flex gap-x-4 justify-center text-teal-500">
+            <div className="grid grid-cols-2 text-teal-500 w-16 lg:ms-32 md:ms-20 ms-10 ">
               <p className={`${pi.value2.icon} lg:text-2xl text-sm`}> </p>
               <p className="lg:text-lg text-sm font-poppins">
                 {pi.value2.value !== 0 && pi.value2.value}{" "}
               </p>
             </div>
-            <div className="flex gap-x-4 justify-center text-violet-500">
+            <div className="grid grid-cols-2 text-violet-500 w-16 lg:ms-32 md:ms-20 ms-10">
               <p className={`${pi.value3.icon} lg:text-2xl text-sm`}> </p>
               <p className="lg:text-lg text-sm font-poppins">
                 {pi.value3.value !== 0 && pi.value3.value}{" "}
