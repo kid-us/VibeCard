@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
-const Product4 = () => {
+interface Props {
+  tablet: boolean;
+}
+
+const Product4 = ({ tablet }: Props) => {
   return (
     <div className="lg:mb-0 mb-10">
       <Link to="/products/card-social-media-youtube">
@@ -9,7 +13,11 @@ const Product4 = () => {
             Best Seller
           </p>
           <div
-            className={`rounded-md w-full h-[230px] bg-red-600 mb-5 shadow-lg shadow-zinc-900`}
+            className={`rounded-md ${
+              tablet
+                ? "lg:w-full md:w-[60%] w-full h-[230px]"
+                : "w-full h-[230px]"
+            } bg-red-600 mb-5 shadow-lg shadow-zinc-900`}
           >
             <div className="flex justify-center items-center h-full px-10">
               <div>

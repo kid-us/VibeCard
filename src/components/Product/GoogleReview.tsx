@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 interface Props {
   bg: string;
   note: string;
+  tablet?: boolean;
 }
 
-const GoogleReview = ({ bg, note }: Props) => {
+const GoogleReview = ({ bg, note, tablet }: Props) => {
   return (
     <div className="lg:mb-0 mb-10">
       <Link
@@ -21,7 +22,9 @@ const GoogleReview = ({ bg, note }: Props) => {
             Best Seller
           </p>
           <div
-            className={`rounded-md lg:w-72 w-[90%] h-[400px] ${bg} mb-5 shadow-lg shadow-zinc-900`}
+            className={`rounded-md ${
+              tablet ? "lg:w-72 md:w-[42%] w-[90%]" : "lg:w-72 w-[90%]"
+            }  h-[400px] ${bg} mb-5 shadow-lg shadow-zinc-900`}
           >
             <div className="relative flex justify-center items-center h-full">
               <div className="">

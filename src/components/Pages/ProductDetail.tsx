@@ -113,19 +113,23 @@ const ProductDetail = () => {
               {id === "business-card-landscape" && <Product1 tablet />}
               {id === "business-card-portrait" && <Product2 tablet />}
               {id === "business-card" && <Product3 tablet />}
-              {id === "card-social-media-youtube" && <Product4 />}
+              {id === "card-social-media-youtube" && <Product4 tablet />}
               {id === "card-social-media-tiktok" && (
-                <SocialMediaProduct bg="bg-black" name="tiktok" />
+                <SocialMediaProduct bg="bg-black" name="tiktok" tablet />
               )}
               {id === "card-social-media-facebook" && (
-                <SocialMediaProduct bg="bg-blue-500" name="facebook" />
+                <SocialMediaProduct bg="bg-blue-500" name="facebook" tablet />
               )}
-              {id === "card-google-review-landscape" && <Product5 />}
+              {id === "card-google-review-landscape" && <Product5 tablet />}
               {id === "card-google-review-portrait-1" && (
-                <GoogleReview bg="bg-white" note="Goggle Review" />
+                <GoogleReview bg="bg-white" note="Goggle Review" tablet />
               )}
               {id === "card-google-review-portrait-2" && (
-                <GoogleReview bg="bg-black" note="Rate your Experience" />
+                <GoogleReview
+                  bg="bg-black"
+                  note="Rate your Experience"
+                  tablet
+                />
               )}
             </div>
 

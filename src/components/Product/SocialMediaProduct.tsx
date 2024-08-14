@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 interface Props {
   name: string;
   bg: string;
+  tablet?: boolean;
 }
 
-const SocialMediaProduct = ({ name, bg }: Props) => {
+const SocialMediaProduct = ({ name, bg, tablet }: Props) => {
   return (
     <div className="lg:mb-0 mb-10">
       <Link to={`/products/card-social-media-${name}`}>
@@ -14,7 +15,9 @@ const SocialMediaProduct = ({ name, bg }: Props) => {
             Best Seller
           </p>
           <div
-            className={`rounded-md lg:w-72 w-[90%] h-[400px] ${bg} mb-5 shadow-lg shadow-zinc-900`}
+            className={`rounded-md ${
+              tablet ? "lg:w-72 md:w-[42%] w-[90%]" : "lg:w-72 w-[90%]"
+            } h-[400px] ${bg} mb-5 shadow-lg shadow-zinc-900`}
           >
             <div className="flex justify-center items-center h-full px-10">
               <div>

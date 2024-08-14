@@ -1,13 +1,21 @@
 import { googleText } from "@/assets";
 import { Link } from "react-router-dom";
 
-const Product5 = () => {
+interface Props {
+  tablet?: boolean;
+}
+
+const Product5 = ({ tablet }: Props) => {
   return (
     <div className="lg:mb-0 mb-10">
       <Link to="/products/card-google-review-landscape">
         <div className="flex justify-center items-center relative lg:px-8 px-2 py-5 pb-0 bg-white rounded h-[450px]">
           <div
-            className={`relative rounded-md w-full h-[230px] bg-white mb-5 shadow-lg shadow-zinc-900`}
+            className={`relative rounded-md ${
+              tablet
+                ? "lg:w-full md:w-[60%] w-full h-[230px]"
+                : "w-full h-[230px]"
+            } bg-white mb-5 shadow-lg shadow-zinc-900`}
           >
             <div className="flex items-center h-full justify-between">
               <div>
