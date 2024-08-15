@@ -8,7 +8,7 @@ interface Props {
 const Product5 = ({ tablet }: Props) => {
   return (
     <div className="lg:mb-0 mb-10">
-      <Link to="/products/card-google-review-landscape">
+      <Link to="/products/card-google-review">
         <div className="flex justify-center items-center relative lg:px-8 px-2 py-5 pb-0 bg-white rounded h-[450px]">
           <div
             className={`relative rounded-md ${

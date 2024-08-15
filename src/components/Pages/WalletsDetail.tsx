@@ -9,6 +9,19 @@ import Loading from "../Loading/Loading";
 import { Wallets } from "../Product/Wallets";
 import WalletOrder from "../Order/WalletOrder";
 import Faq from "../Home/FAQ";
+import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
+import {
+  red1,
+  red2,
+  red3,
+  slide1,
+  slide2,
+  slide3,
+  wall1,
+  wall2,
+  wall3,
+} from "@/assets";
+import Autoplay from "embla-carousel-autoplay";
 
 interface Wal {
   wallet: Wallets;
@@ -76,11 +89,126 @@ const WalletsDetail = () => {
               </p>
             </div>
             <div className="pt-8">
-              <img
-                src={wallets?.image}
-                alt="Wallet"
-                className="lg:h-[550px] w-full object-cover rounded"
-              />
+              {id === "205367e34c064fffbbfc55af03218483" && (
+                <Carousel
+                  plugins={[
+                    Autoplay({
+                      delay: 5000,
+                    }),
+                  ]}
+                >
+                  <CarouselContent className="flex gap-x-2 px-1">
+                    <CarouselItem>
+                      <img
+                        src={wallets?.image}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={wall1}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={wall2}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={wall3}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full h-[340px] lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                  </CarouselContent>
+                </Carousel>
+              )}
+              {id === "21bfa19927fc4cc2b6ed4cd3039007d4" && (
+                <Carousel
+                  plugins={[
+                    Autoplay({
+                      delay: 5000,
+                    }),
+                  ]}
+                >
+                  <CarouselContent className="flex gap-x-2 px-1">
+                    <CarouselItem>
+                      <img
+                        src={wallets?.image}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={slide1}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={slide2}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={slide3}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full h-[340px] lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                  </CarouselContent>
+                </Carousel>
+              )}
+              {id === "d6d3107adf9f4e2aab749e12ce56944a" && (
+                <Carousel
+                  plugins={[
+                    Autoplay({
+                      delay: 5000,
+                    }),
+                  ]}
+                >
+                  <CarouselContent className="flex gap-x-2 px-1">
+                    <CarouselItem>
+                      <img
+                        src={wallets?.image}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={red1}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={red2}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={red3}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full h-[340px] lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                  </CarouselContent>
+                </Carousel>
+              )}
             </div>
             <div className="px-2 main-bg lg:ps-10">
               <div className="lg:block hidden rounded-xl lg:py-6">

@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 
 interface Props {
-  tablet: boolean;
+  tablet?: boolean;
 }
 
 const Product4 = ({ tablet }: Props) => {
   return (
     <div className="lg:mb-0 mb-10">
-      <Link to="/products/card-social-media-youtube">
+      <Link to="/products/card-social-media">
         <div className="flex justify-center items-center relative lg:px-8 px-2 py-5 pb-0 bg-white rounded h-[450px]">
           <p className="absolute top-2 left-2 bg-indigo-900 text-white text-sm py-1 px-10 rounded shadow shadow-zinc-900">
             Best Seller

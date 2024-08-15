@@ -21,7 +21,7 @@ const Product1 = ({ tablet }: Props) => {
           </p>
           <div
             className={`relative rounded-md ${
-              tablet && "lg:w-full md:w-[60%] m-auto"
+              tablet && "lg:w-[75%] md:w-[60%] m-auto"
             }  h-[230px] ${
               cardBg.bg
             } flex justify-center items-center mb-5 shadow-lg shadow-zinc-900`}
@@ -41,7 +41,7 @@ const Product1 = ({ tablet }: Props) => {
           {/* Qr code */}
           <div
             className={`rounded-md ${
-              tablet && "lg:w-full md:w-[60%] w-full m-auto"
+              tablet && "lg:w-[75%] md:w-[60%] w-full m-auto"
             }  h-[230px] ${
               cardBg.bg
             } flex justify-center items-center shadow-lg shadow-zinc-900`}

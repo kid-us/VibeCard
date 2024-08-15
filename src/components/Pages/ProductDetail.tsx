@@ -1,20 +1,32 @@
 import Navbar from "../Navbar/Navbar";
 import { useNavigate, useParams } from "react-router-dom";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
-import Product1 from "../Product/Product1";
-import Product2 from "../Product/Product2";
-import Product3 from "../Product/Product3";
-import Product4 from "../Product/Product4";
-// import Product5 from "../Product/GoogleReview"//;
 import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseUrl } from "@/services/request";
 import Loading from "../Loading/Loading";
-import SocialMediaProduct from "../Product/SocialMediaProduct";
-import Product5 from "../Product/Product5";
-import GoogleReview from "../Product/GoogleReview";
 import Faq from "../Home/FAQ";
+import Autoplay from "embla-carousel-autoplay";
+
+import {
+  card1,
+  card2,
+  card3,
+  card4,
+  card5,
+  card6,
+  fb,
+  g1,
+  g2,
+  g3,
+  g4,
+  g5,
+  ig,
+  ln,
+  tk,
+} from "@/assets";
+import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 
 interface Plan {
   metal: {
@@ -109,27 +121,215 @@ const ProductDetail = () => {
               </p>
             </div>
 
-            <div className="lg:mt-10 lg:mx-0 mx-1 lg:px-20 lg:pb-10">
-              {id === "business-card-landscape" && <Product1 tablet />}
-              {id === "business-card-portrait" && <Product2 tablet />}
-              {id === "business-card" && <Product3 tablet />}
-              {id === "card-social-media-youtube" && <Product4 tablet />}
-              {id === "card-social-media-tiktok" && (
-                <SocialMediaProduct bg="bg-black" name="tiktok" tablet />
+            <div className="lg:mt-10 lg:mx-0 mx-1 lg:pb-10 lg:px-10 md:px-10 px-0">
+              {id === "business-card-landscape" && (
+                <>
+                  <Carousel
+                    plugins={[
+                      Autoplay({
+                        delay: 5000,
+                      }),
+                    ]}
+                  >
+                    <CarouselContent className="flex gap-x-2 px-1">
+                      <CarouselItem>
+                        <img
+                          src={card4}
+                          alt="card"
+                          className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        />
+                      </CarouselItem>
+                      <CarouselItem>
+                        <img
+                          src={card1}
+                          alt="card"
+                          className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        />
+                      </CarouselItem>
+                      <CarouselItem>
+                        <img
+                          src={card2}
+                          alt="card"
+                          className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        />
+                      </CarouselItem>
+                      <CarouselItem>
+                        <img
+                          src={card3}
+                          alt="card"
+                          className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        />
+                      </CarouselItem>
+                    </CarouselContent>
+                  </Carousel>
+                </>
               )}
-              {id === "card-social-media-facebook" && (
-                <SocialMediaProduct bg="bg-blue-500" name="facebook" tablet />
+              {id === "business-card-portrait" && (
+                <Carousel
+                  plugins={[
+                    Autoplay({
+                      delay: 5000,
+                    }),
+                  ]}
+                >
+                  <CarouselContent className="flex gap-x-2 px-1">
+                    <CarouselItem>
+                      <img
+                        src={card5}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={card1}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={card2}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={card3}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                  </CarouselContent>
+                </Carousel>
               )}
-              {id === "card-google-review-landscape" && <Product5 tablet />}
-              {id === "card-google-review-portrait-1" && (
-                <GoogleReview bg="bg-white" note="Goggle Review" tablet />
+              {id === "business-card" && (
+                <Carousel
+                  plugins={[
+                    Autoplay({
+                      delay: 5000,
+                    }),
+                  ]}
+                >
+                  <CarouselContent className="flex gap-x-2 px-1">
+                    <CarouselItem>
+                      <img
+                        src={card6}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={card1}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={card2}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={card3}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                  </CarouselContent>
+                </Carousel>
               )}
-              {id === "card-google-review-portrait-2" && (
-                <GoogleReview
-                  bg="bg-black"
-                  note="Rate your Experience"
-                  tablet
-                />
+              {id === "card-social-media" && (
+                <Carousel
+                  plugins={[
+                    Autoplay({
+                      delay: 5000,
+                    }),
+                  ]}
+                >
+                  <CarouselContent className="flex gap-x-2 px-1">
+                    <CarouselItem>
+                      <img
+                        src={ig}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={fb}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={ln}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={tk}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                  </CarouselContent>
+                </Carousel>
+              )}
+              {id === "card-google-review" && (
+                <Carousel
+                  plugins={[
+                    Autoplay({
+                      delay: 5000,
+                    }),
+                  ]}
+                >
+                  <CarouselContent className="flex gap-x-2 px-1">
+                    <CarouselItem>
+                      <img
+                        src={g1}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={g2}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={g3}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={g4}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={g5}
+                        alt="card"
+                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                  </CarouselContent>
+                </Carousel>
               )}
             </div>
 
