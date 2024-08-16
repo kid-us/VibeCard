@@ -16,7 +16,7 @@ const SocialMediaProduct = ({ name, bg, tablet }: Props) => {
           </p>
           <div
             className={`rounded-md ${
-              tablet ? "lg:w-72 md:w-[42%] w-[90%]" : "lg:w-72 w-[90%]"
+              tablet ? "lg:w-72 md:w-[42%] w-[90%]" : "lg:w-72 w-[70%]"
             } h-[400px] ${bg} mb-5 shadow-lg shadow-zinc-900`}
           >
             <div className="flex justify-center items-center h-full px-10">
