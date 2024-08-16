@@ -27,6 +27,7 @@ import {
   tk,
 } from "@/assets";
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
+import Cart from "../Cart/Cart";
 
 interface Plan {
   metal: {
@@ -106,6 +107,7 @@ const ProductDetail = () => {
       {loading && <Loading />}
 
       <Navbar />
+      <Cart />
 
       <div className="lg:px-0 px-2">
         <div className="lg:container mx-auto lg:mt-8 mt-4 lg:secondary-bg rounded overflow-hidden">

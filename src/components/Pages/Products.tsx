@@ -17,6 +17,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
+import Cart from "../Cart/Cart";
 
 const Products = () => {
   const [title] = useState("Shop our Products");
@@ -30,7 +31,7 @@ const Products = () => {
   return (
     <>
       <Navbar />
-
+      <Cart />
       <div className="lg:container mx-auto lg:mt-24 mt-14">
         <h1 className="lg:text-4xl text-2xl lg:text-center px-2 font-extrabold text-white">
           Vibecard Digital Business Card Accessories
