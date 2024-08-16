@@ -16,7 +16,6 @@ export const socialMedias: SocialMediaContent[] = [
     path: "https://www.linkedin.com/in/",
     placeholder: "Username",
   },
-
   {
     id: 2,
     icon: "bi-twitter",
@@ -89,7 +88,22 @@ export const socialMedias: SocialMediaContent[] = [
     path: "https://www.deezer.com/user/",
     placeholder: "Username",
   },
-  // { id: 11, icon: "bi-calendar", label: "Calendar", color: "#737373" },
+  {
+    id: 11,
+    icon: "bi-google",
+    label: "Goggle Review",
+    color: "#525252",
+    path: "",
+    placeholder: "Link",
+  },
+  {
+    id: 12,
+    icon: "trustpilot",
+    label: "Trust Pilot",
+    color: "#14532d",
+    path: "",
+    placeholder: "Link",
+  },
 ];
 
 export const contactContents: SocialMediaContent[] = [

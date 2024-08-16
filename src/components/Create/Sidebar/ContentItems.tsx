@@ -1,4 +1,4 @@
-import { deezer } from "@/assets";
+import { deezer, trustpilot } from "@/assets";
 import { SocialMediaContent } from "../../../services/contents";
 import { useContentStore } from "../../../store/useContentStore";
 import { useState } from "react";
@@ -64,6 +64,17 @@ const ContentItems = ({
               <div className="flex ms-2">
                 <img
                   src={deezer}
+                  alt="Deezer Logo"
+                  className="w-7 h-7 me-0 pe-0"
+                />
+                <span className="text-xs ms-4 pt-2 text-gray-200 chakra">
+                  {content.label}
+                </span>
+              </div>
+            ) : content.icon === "trustpilot" ? (
+              <div className="flex ms-2">
+                <img
+                  src={trustpilot}
                   alt="Deezer Logo"
                   className="w-7 h-7 me-0 pe-0"
                 />

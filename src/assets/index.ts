@@ -17,6 +17,7 @@ import googleText from "./google_note.png";
 import logo from "./facicon.png";
 // Content
 import deezer from "./deezer.png";
+import trustpilot from "./trustpilot.png";
 // Card
 import card1 from "./Card/card1.png";
 import card2 from "./Card/card2.png";
@@ -66,6 +67,7 @@ export {
   logo,
   // Content
   deezer,
+  trustpilot,
   save,
   watermark,
   googleText,
