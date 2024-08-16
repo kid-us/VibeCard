@@ -253,7 +253,11 @@ const EditForm = ({ layout }: Props) => {
     // Prepare form data
     const formData = new FormData();
     if (pictures.profile) formData.append("main_picture", pictures.profile);
-    if (pictures.cover) formData.append("covor_picture", pictures.cover);
+    if (coverColorBg) {
+      formData.append("covor_picture", "falser");
+    } else if (pictures.cover) {
+      formData.append("covor_picture", pictures.cover);
+    }
     if (pictures.logo) formData.append("company_logo", pictures.logo);
     formData.append("pronouns", userPronoun);
     formData.append("full_name", fullName);
@@ -279,8 +283,6 @@ const EditForm = ({ layout }: Props) => {
         formDataObject[key] = value;
       }
     });
-    console.log(formDataObject);
-
     try {
       await axios.put(`${baseUrl}/api/v1/cards/edit/${editedUrl}`, formData, {
         headers: {

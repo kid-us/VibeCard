@@ -167,7 +167,7 @@ const Create = () => {
             updateCoverLogo(true);
           }
           // Card BG and Cover
-          updateCoverColor(styles.coverBG.bg_color);
+          updateCoverColor(data.covor_picture ? "" : styles.coverBG.bg_color);
           updateCardColor(styles.cardBg.bg_color);
           // Font Color
           updateColor("tagLine", styles.bio.font_color);
