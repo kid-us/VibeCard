@@ -42,8 +42,8 @@ const Create = () => {
   const searchParams = new URLSearchParams(location.search);
   const editedUrl = searchParams.get("edit");
 
+  // // Subscription
   useEffect(() => {
-    // if (!editedUrl) {
     axios
       .get(`${baseUrl}/api/v1/auth/can-create-card`, {
         headers: {
@@ -90,6 +90,7 @@ const Create = () => {
     };
   }, []);
 
+  // Store
   const {
     preview,
     setCardCompany,
@@ -259,7 +260,6 @@ const Create = () => {
   // States
   const [modal, setModal] = useState(false);
   const [activeModal, setActiveModal] = useState("");
-
   const [previewCard, setPreviewCard] = useState(false);
 
   // Sidebar Small Device

@@ -50,7 +50,7 @@ const Cart = ({ home }: Props) => {
           {viewCart && (
             <>
               <div className="overlay z-40"></div>
-              <div className="secondary-bg shadow shadow-teal-500 w-[98%] md:w-[60%] lg:w-[28%] lg:h-[90%] h-[100%] fixed lg:top-20 top-0 right-0  z-50">
+              <div className="animate__animated animate__fadeInRight secondary-bg shadow shadow-teal-500 w-[98%] md:w-[60%] lg:w-[28%] lg:h-[90%] h-[100%] fixed lg:top-20 top-0 right-0  z-50">
                 <div className="flex justify-between px-5 pt-5">
                   <p className="text-white font-poppins font-bold text-xl">
                     {cart.length} Cart

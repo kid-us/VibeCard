@@ -11,7 +11,7 @@ import secure from "./secure.svg";
 import share from "./share.svg";
 import arrow from "./arrows.svg";
 import adapt from "./adapt.svg";
-import xn from "./watermark.png";
+import watermark from "./watermark.png";
 import googleText from "./google_note.png";
 
 import logo from "./facicon.png";
@@ -67,7 +67,7 @@ export {
   // Content
   deezer,
   save,
-  xn,
+  watermark,
   googleText,
   // Card
   card1,
