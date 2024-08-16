@@ -58,8 +58,8 @@ const Products = () => {
               </CarouselItem>
             </CarouselContent>
             <div className="lg:hidden md:block block">
-              <CarouselPrevious className="absolute z-50 left-0 bg-black text-white" />
-              <CarouselNext className="absolute z-50 right-0 bg-black text-white" />
+              <CarouselPrevious className="absolute z-40 left-0 bg-black text-white" />
+              <CarouselNext className="absolute z-40 right-0 bg-black text-white" />
             </div>
           </Carousel>
 
@@ -77,8 +77,8 @@ const Products = () => {
               </CarouselItem>
             </CarouselContent>
             <div className="lg:hidden md:block block">
-              <CarouselPrevious className="absolute z-50 left-0 bg-black text-white" />
-              <CarouselNext className="absolute z-50 right-0 bg-black text-white" />
+              <CarouselPrevious className="absolute z-40 left-0 bg-black text-white" />
+              <CarouselNext className="absolute z-40 right-0 bg-black text-white" />
             </div>
           </Carousel>
 
@@ -96,8 +96,8 @@ const Products = () => {
               </CarouselItem>
             </CarouselContent>
             <div className="lg:hidden md:block block">
-              <CarouselPrevious className="absolute z-50 left-0 bg-black text-white" />
-              <CarouselNext className="absolute z-50 right-0 bg-black text-white" />
+              <CarouselPrevious className="absolute z-40 left-0 bg-black text-white" />
+              <CarouselNext className="absolute z-40 right-0 bg-black text-white" />
             </div>
           </Carousel>
           {/* Wallets */}
