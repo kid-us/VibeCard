@@ -1,10 +1,4 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "../ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import Product1 from "../Product/Product1";
 import Product2 from "../Product/Product2";
 import Product3 from "../Product/Product3";
@@ -55,10 +49,6 @@ const Product = () => {
           <Product5 />
         </CarouselItem>
       </CarouselContent>
-      <div>
-        <CarouselPrevious className="absolute z-50 left-0 bg-black text-white" />
-        <CarouselNext className="absolute z-50 right-0 bg-black text-white" />
-      </div>
     </Carousel>
   );
 };
