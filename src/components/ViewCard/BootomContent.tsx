@@ -1,4 +1,4 @@
-import { deezer } from "@/assets";
+import { deezer, trustpilot } from "@/assets";
 import { baseUrl } from "@/services/request";
 import { Data, StyleData } from "@/services/viewCard";
 import axios from "axios";
@@ -139,31 +139,50 @@ const BottomContent = ({ styles, data }: Props) => {
                 : "invisible"
             }`}
           >
-            {styles.socialMedia.map((media) =>
-              media.icon === "deezer" ? (
-                <div
-                  className={`flex rounded-md py-2 justify-center shadow-inner`}
-                  style={{
-                    backgroundColor: media.color,
-                  }}
-                >
-                  <img
-                    src={deezer}
-                    alt="Deezer Logo"
-                    className="w-8 h-8 me-0 pe-0"
-                  />
-                </div>
-              ) : (
-                <a
-                  onClick={() => handleSocialMedia(media.icon)}
-                  key={media.icon}
-                  href={`${media.link}`}
-                  target="_blank"
-                  className={`${media.icon} text-white text-3xl text-center rounded-md py-2 shadow-inner`}
-                  style={{ backgroundColor: media.color }}
-                ></a>
-              )
-            )}
+            {styles.socialMedia.map((media) => (
+              <>
+                {media.icon === "trustpilot" ? (
+                  <Link to={`${media.link}`}>
+                    <div
+                      className={`flex rounded-md py-2 justify-center shadow-inner`}
+                      style={{
+                        backgroundColor: media.color,
+                      }}
+                    >
+                      <img
+                        src={trustpilot}
+                        alt="Trust Pilot"
+                        className="w-8 h-8 me-0 pe-0"
+                      />
+                    </div>
+                  </Link>
+                ) : media.icon === "deezer" ? (
+                  <Link to={`${media.link}`}>
+                    <div
+                      className={`flex rounded-md py-2 justify-center shadow-inner`}
+                      style={{
+                        backgroundColor: media.color,
+                      }}
+                    >
+                      <img
+                        src={deezer}
+                        alt="Deezer"
+                        className="w-8 h-8 me-0 pe-0"
+                      />
+                    </div>
+                  </Link>
+                ) : (
+                  <a
+                    onClick={() => handleSocialMedia(media.icon)}
+                    key={media.icon}
+                    href={`${media.link}`}
+                    target="_blank"
+                    className={`${media.icon} text-white text-3xl text-center rounded-md py-2 shadow-inner`}
+                    style={{ backgroundColor: media.color }}
+                  ></a>
+                )}
+              </>
+            ))}
           </div>
         )}
 
