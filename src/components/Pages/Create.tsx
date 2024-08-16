@@ -320,7 +320,7 @@ const Create = () => {
                         alt="user"
                         className="w-8 h-8 overflow-hidden rounded-full"
                       />
-                      <p className="ms-3 text-gray-500 mt-1 text-ellipsis text-nowrap overflow-hidden">
+                      <p className="ms-3 text-teal-400 font-poppins font-bold mt-1 text-ellipsis text-nowrap overflow-hidden">
                         {user}
                       </p>
                     </div>

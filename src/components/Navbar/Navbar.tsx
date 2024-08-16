@@ -83,7 +83,7 @@ const Navbar = () => {
               <div className="relative">
                 <p
                   onClick={() => setIsMenu(!isMenu)}
-                  className="text-center font-extrabold cursor-pointer uppercase"
+                  className="text-center font-extrabold cursor-pointer uppercase text-teal-300"
                 >
                   <span className="bi-person-fill text-xl me-2"></span>
                   {user}

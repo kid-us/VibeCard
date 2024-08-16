@@ -62,12 +62,12 @@ const Sidebar = () => {
             alt="user"
             className="w-full overflow-hidden border-2 border-black rounded-full"
           />
-          <p className="uppercase text-xs text-center mt-2 text-gray-400 text-ellipsis text-nowrap overflow-hidden">
+          <p className="uppercase text-xs text-center mt-2 text-teal-500 font-poppins font-bold text-ellipsis text-nowrap overflow-hidden">
             {user}
           </p>
           <p
             onClick={() => handleLogout()}
-            className="text-center mt-2 bi-arrow-bar-right text-xl cursor-pointer"
+            className="text-center mt-2 bi-box-arrow-right text-red-500 text-xl cursor-pointer"
             title="Logout"
           ></p>
         </div>
