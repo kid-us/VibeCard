@@ -142,35 +142,35 @@ const BottomContent = ({ styles, data }: Props) => {
             {styles.socialMedia.map((media) => (
               <>
                 {media.icon === "trustpilot" ? (
-                  <Link to={`${media.link}`}>
-                    <div
-                      className={`flex rounded-md py-2 justify-center shadow-inner`}
-                      style={{
-                        backgroundColor: media.color,
-                      }}
-                    >
+                  <div
+                    className={`flex rounded-md py-2 justify-center shadow-inner`}
+                    style={{
+                      backgroundColor: media.color,
+                    }}
+                  >
+                    <Link to={`${media.link}`}>
                       <img
                         src={trustpilot}
                         alt="Trust Pilot"
                         className="w-8 h-8 me-0 pe-0"
                       />
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 ) : media.icon === "deezer" ? (
-                  <Link to={`${media.link}`}>
-                    <div
-                      className={`flex rounded-md py-2 justify-center shadow-inner`}
-                      style={{
-                        backgroundColor: media.color,
-                      }}
-                    >
+                  <div
+                    className={`flex rounded-md py-2 justify-center shadow-inner`}
+                    style={{
+                      backgroundColor: media.color,
+                    }}
+                  >
+                    <Link to={`${media.link}`}>
                       <img
                         src={deezer}
                         alt="Deezer"
                         className="w-8 h-8 me-0 pe-0"
                       />
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 ) : (
                   <a
                     onClick={() => handleSocialMedia(media.icon)}

@@ -11,16 +11,16 @@ interface Props {
 const Default = ({ data, styles }: Props) => {
   return (
     <div
-      className={`relative rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 z-0 lg:mb-0 mb-14`}
+      className={`relative rounded-2xl lg:w-full md:w-[70%] w-full mx-auto overflow-hidden shadow-lg shadow-zinc-800 z-0 lg:mb-0 mb-14`}
       style={{ backgroundColor: styles.cardBg.bg_color }}
     >
       <Watermark />
       <div
-        className={`lg:h-24 h-32 relative flex justify-between z-0 ${
+        className={`lg:h-24 h-32 relative flex justify-between z-0  ${
           data?.covor_picture
             ? styles.coverBG.bg_color === "gradient-cover" &&
               `${styles.coverBG.bg_color} z-0`
-            : ""
+            : "gradient-cover"
         }`}
         style={{
           backgroundColor: `${styles.coverBG.bg_color}`,

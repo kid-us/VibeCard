@@ -6,7 +6,7 @@ const Watermark = () => {
       <div className="absolute top-1 px-1 right-2 z-40 watermark-effect">
         <img src={watermark} alt="vibecard" className="w-16 p-1" />
       </div>
-      <p className="absolute top-0 z-50  h-6 w-full"></p>
+      <div className="absolute top-0 z-50  h-6 w-full"></div>
     </>
   );
 };
