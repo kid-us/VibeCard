@@ -1,6 +1,7 @@
 import useWallets from "@/hooks/useWallets";
 import { useCartStore } from "@/store/useCartStore";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface Props {
   home?: boolean;
@@ -49,7 +50,10 @@ const Cart = ({ home }: Props) => {
 
           {viewCart && (
             <>
-              <div className="overlay z-40"></div>
+              <div
+                onClick={() => setViewCart(false)}
+                className="overlay z-40"
+              ></div>
               <div className="animate__animated animate__fadeInRight secondary-bg shadow shadow-teal-500 w-[98%] md:w-[60%] lg:w-[28%] lg:h-[90%] h-[100%] fixed lg:top-20 top-0 right-0  z-50">
                 <div className="flex justify-between px-5 pt-5">
                   <p className="text-white font-poppins font-bold text-xl">
@@ -109,9 +113,11 @@ const Cart = ({ home }: Props) => {
                     Clear Cart
                   </button>
 
-                  <button className="bg-teal-600 shadow shadow-zinc-900 font-poppins w-full text-white rounded mt-3 h-12">
-                    Checkout
-                  </button>
+                  <Link to={"/order-multiple-products"}>
+                    <p className="bg-teal-600 shadow shadow-zinc-900 font-poppins w-full text-white rounded mt-3 h-12 text-center pt-3">
+                      Checkout
+                    </p>
+                  </Link>
                 </div>
               </div>
             </>

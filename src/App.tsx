@@ -25,6 +25,7 @@ import Affiliate from "./components/Pages/Affiliate";
 import AffiliateSetting from "./components/Ambassador/AffilateSetting";
 import AmbassadorProtected from "./components/Protected/AmbassadorProtected";
 import WalletsDetail from "./components/Pages/WalletsDetail";
+import OrderMultipleProducts from "./components/Pages/OrderMultipleProduct";
 
 function App() {
   return (
@@ -74,6 +75,10 @@ function App() {
             </Protected>
           }
         />
+        <Route
+          path="/order-multiple-products"
+          element={<OrderMultipleProducts />}
+        ></Route>
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />

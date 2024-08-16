@@ -32,9 +32,9 @@ const Logout = () => {
   return (
     <button
       onClick={handleLogout}
-      className="font-poppins text-gray-300 rounded"
+      className="font-poppins text-red-500 rounded text-lg"
     >
-      <span className="bi-arrow-bar-right"></span> Logout
+      <span className="bi-box-arrow-right font-poppins"></span> Logout
     </button>
   );
 };

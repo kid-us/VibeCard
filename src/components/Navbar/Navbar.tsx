@@ -134,10 +134,10 @@ const Navbar = () => {
 
           {/* Small device user Icon */}
           {user !== null && (
-            <div className="lg:hidden mt-1 pt-2 me-2">
+            <div className="lg:hidden mt-1 pt-2">
               <Link to={"/dashboard"}>
                 <span className="px-3 flex">
-                  <p className={`bi-person-fill text-3xl text-white`}></p>
+                  <p className={`bi-person-fill text-3xl text-teal-500`}></p>
                 </span>
               </Link>
             </div>
