@@ -130,7 +130,7 @@ const ViewCard = () => {
                 />
               )}
             </div>
-            <div className="lg:w-[28%] w-[88%] md:w-full mx-auto">
+            <div className="lg:w-[28%] w-[88%] md:w-full lg:mx-0 mx-auto">
               {/* Default / Left */}
               {data && styles && data.card_layout === "default" && (
                 <Default

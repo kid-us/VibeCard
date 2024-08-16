@@ -36,7 +36,7 @@ const Center = ({ data, styles, cover, logo, profile, capture }: Props) => {
           />
         )}
 
-        <div className="absolute lg:top-10 top-16 left-1/3 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden">
+        <div className="absolute z-20 lg:top-10 top-16 left-1/3 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden">
           <img src={profile ? profile : userPic} alt="user" />
         </div>
         {logo && (
@@ -53,7 +53,7 @@ const Center = ({ data, styles, cover, logo, profile, capture }: Props) => {
           <div className="content-center">
             {/* Pronoun and Name */}
             <p
-              className={` text-center overflow-hidden text-ellipsis text-nowrap pb-2 ${
+              className={`text-center overflow-hidden text-ellipsis text-nowrap pb-2 ${
                 styles.name.font_style + " " + styles.name.font_size
               } `}
               style={{ color: styles.name.font_color }}

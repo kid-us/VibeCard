@@ -35,7 +35,7 @@ const Right = ({ data, styles, cover, logo, profile, capture }: Props) => {
           />
         )}
 
-        <div className="absolute lg:top-10 top-16 right-2 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden">
+        <div className="absolute z-20 lg:top-10 top-16 right-2 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden">
           <img src={profile ? profile : userPic} alt="user" className="" />
         </div>
         {/* Pronoun and Name */}

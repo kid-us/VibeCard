@@ -38,14 +38,14 @@ const Default = ({ data, styles, cover, profile, logo, capture }: Props) => {
             "
           />
         )}
-        <div className="absolute lg:top-10 top-16 left-2 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden z-0">
+        <div className="absolute lg:top-10 top-16 left-2 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden z-50">
           <img src={profile ? profile : userPic} alt="user" />
         </div>
 
         {/* Pronoun and Name */}
         <div className="content-center overflow-hidden">
           <p
-            className={`absolute z-50 right-0 me-1 pb-2 w-48 text-center overflow-hidden text-ellipsis text-nowrap ${
+            className={`absolute z-20 right-0 me-1 pb-2 w-48 text-center overflow-hidden text-ellipsis text-nowrap ${
               styles.name.font_style + " " + styles.name.font_size
             } ${data.covor_picture && "glass-effect text-shadow"}`}
             style={{ color: styles.name.font_color }}
