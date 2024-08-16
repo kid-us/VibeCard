@@ -6,9 +6,10 @@ import Watermark from "../Watermark/Watermark";
 interface Props {
   data: Data;
   styles: StyleData;
+  capture: () => void;
 }
 
-const Center = ({ data, styles }: Props) => {
+const Center = ({ data, styles, capture }: Props) => {
   return (
     <div
       className={`relative rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 lg:mb-0 mb-14`}
@@ -20,7 +21,7 @@ const Center = ({ data, styles }: Props) => {
           !data?.covor_picture
             ? styles.coverBG.bg_color === "gradient-cover" &&
               `${styles.coverBG.bg_color} z-0`
-            : ""
+            : "gradient-cover"
         }`}
       >
         {data.covor_picture && (
@@ -114,7 +115,7 @@ const Center = ({ data, styles }: Props) => {
           </p>
         </div>
 
-        <BottomContent styles={styles} data={data} />
+        <BottomContent styles={styles} data={data} capture={capture} />
       </div>
     </div>
   );

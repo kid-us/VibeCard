@@ -8,9 +8,10 @@ import vCardsJS from "vcards-js";
 interface Props {
   styles: StyleData;
   data: Data;
+  capture: () => void;
 }
 
-const BottomContent = ({ styles, data }: Props) => {
+const BottomContent = ({ styles, data, capture }: Props) => {
   const generateVCard = () => {
     const vCard = vCardsJS();
 
@@ -143,7 +144,7 @@ const BottomContent = ({ styles, data }: Props) => {
               <>
                 {media.icon === "trustpilot" ? (
                   <div
-                    className={`flex rounded-md py-2 justify-center shadow-inner`}
+                    className={`flex rounded-md items-center justify-center shadow shadow-zinc-900 h-[52px]`}
                     style={{
                       backgroundColor: media.color,
                     }}
@@ -158,7 +159,7 @@ const BottomContent = ({ styles, data }: Props) => {
                   </div>
                 ) : media.icon === "deezer" ? (
                   <div
-                    className={`flex rounded-md py-2 justify-center shadow-inner`}
+                    className={`flex rounded-md items-center justify-center shadow shadow-zinc-900 h-[52px]`}
                     style={{
                       backgroundColor: media.color,
                     }}
@@ -172,14 +173,18 @@ const BottomContent = ({ styles, data }: Props) => {
                     </Link>
                   </div>
                 ) : (
-                  <a
-                    onClick={() => handleSocialMedia(media.icon)}
-                    key={media.icon}
-                    href={`${media.link}`}
-                    target="_blank"
-                    className={`${media.icon} text-white text-3xl text-center rounded-md py-2 shadow-inner`}
+                  <div
+                    className="flex justify-center items-center w-full rounded-md shadow shadow-zinc-900 h-[52px]"
                     style={{ backgroundColor: media.color }}
-                  ></a>
+                  >
+                    <a
+                      onClick={() => handleSocialMedia(media.icon)}
+                      key={media.icon}
+                      href={`${media.link}`}
+                      target="_blank"
+                      className={`${media.icon} text-white text-2xl`}
+                    ></a>
+                  </div>
                 )}
               </>
             ))}
@@ -188,7 +193,10 @@ const BottomContent = ({ styles, data }: Props) => {
 
         <button
           className={`w-full rounded-lg py-4 mb-8 mt-5 shadow-md font-poppins font-extrabold shadow-zinc-950`}
-          onClick={generateVCard}
+          onClick={() => {
+            generateVCard();
+            capture();
+          }}
           style={{
             backgroundColor: styles.button.bg_color,
             color: styles.button.text_color,

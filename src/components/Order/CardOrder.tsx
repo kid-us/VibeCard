@@ -300,7 +300,6 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                 </div>
               </div>
               {/* Back */}
-
               <div
                 className={`relative rounded-md ${
                   view
