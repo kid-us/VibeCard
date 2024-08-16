@@ -22,6 +22,8 @@ import {
   wall3,
 } from "@/assets";
 import Autoplay from "embla-carousel-autoplay";
+import Cart from "../Cart/Cart";
+import { useCartStore } from "@/store/useCartStore";
 
 interface Wal {
   wallet: Wallets;
@@ -43,6 +45,8 @@ const WalletsDetail = () => {
   const [wallets, setWallets] = useState<Wallets>();
   const [quantity, setQuantity] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
+
+  const addToCart = useCartStore((state) => state.addToCart);
 
   useEffect(() => {
     axios
@@ -68,6 +72,8 @@ const WalletsDetail = () => {
 
   return (
     <>
+      <Cart />
+
       {order && (
         <WalletOrder
           id={id ? id : ""}
@@ -251,6 +257,19 @@ const WalletsDetail = () => {
                 </div>
               </div>
 
+              <div className="mb-10">
+                <button
+                  onClick={() =>
+                    addToCart({
+                      id: wallets ? wallets.wallet_id : "",
+                      quantity,
+                    })
+                  }
+                  className="bg-white bi-cart-fill w-full mt-8 shadow shadow-zinc-900 text-black font-poppins rounded py-3"
+                >
+                  Add to Card
+                </button>
+              </div>
               <div className="mb-10">
                 <button
                   onClick={() => setOrder(true)}
