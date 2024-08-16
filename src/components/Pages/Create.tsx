@@ -44,19 +44,21 @@ const Create = () => {
 
   // // Subscription
   useEffect(() => {
-    axios
-      .get(`${baseUrl}/api/v1/auth/can-create-card`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      })
-      .then(() => {
-        setLoading(false);
-      })
-      .catch(() => {
-        navigate("/pricing");
-      });
+    if (!editedUrl) {
+      axios
+        .get(`${baseUrl}/api/v1/auth/can-create-card`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        })
+        .then(() => {
+          setLoading(false);
+        })
+        .catch(() => {
+          navigate("/pricing");
+        });
+    }
   }, []);
 
   // Reload
@@ -256,7 +258,7 @@ const Create = () => {
   }, []);
 
   const { layout } = useLayoutStore();
-  const { user } = useAuthStore();
+  const { user, plan } = useAuthStore();
   // States
   const [modal, setModal] = useState(false);
   const [activeModal, setActiveModal] = useState("");
@@ -308,9 +310,11 @@ const Create = () => {
                     <Link to="/dashboard" className="me-16 text-md">
                       Dashboard
                     </Link>
-                    <Link to="/insights" className="me-16 text-md">
-                      Insights
-                    </Link>
+                    {plan !== "free" && (
+                      <Link to="/insights" className="me-16 text-md">
+                        Insights
+                      </Link>
+                    )}
                     <Link to="/setting" className="me-5 text-md">
                       Setting
                     </Link>
@@ -353,7 +357,6 @@ const Create = () => {
             ) : (
               <CreateForm layout={layout} />
             )}
-            {/* <Form layout={layout} /> */}
           </div>
 
           {/* Card Layout*/}

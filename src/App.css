@@ -334,3 +334,7 @@ option {
 .no-select {
   user-select: none !important;
 }
+
+.watermark {
+  width: 65px;
+}
