@@ -51,17 +51,17 @@ const Navbar = () => {
                   onClick={() => setIsMenu(true)}
                   className={`lg:hidden font-poppins text-2xl text-teal-950 font-bold pt-2`}
                 >
-                  <span className="px-3 flex me-">
+                  <span className="px-3 flex">
                     <span className={`bi-list text-3xl pt-1 text-white`}></span>
                   </span>
                 </p>
               </div>
-              <div className={`lg:pe-10 text-white p-2 `}>
+
+              <div className={`lg:pe-10 text-white p-2`}>
                 <Link to={"/"} className={`logo-font lg:text-4xl text-4xl`}>
                   vibecard
                 </Link>
               </div>
-
               <div
                 className={`ms-5 lg:inline-block hidden text-white pt-3 space-x-12 px-10`}
               >
