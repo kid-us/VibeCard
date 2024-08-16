@@ -2,7 +2,11 @@ import useWallets from "@/hooks/useWallets";
 import { useCartStore } from "@/store/useCartStore";
 import { useState } from "react";
 
-const Cart = () => {
+interface Props {
+  home?: boolean;
+}
+
+const Cart = ({ home }: Props) => {
   const { allWallets } = useWallets();
 
   const cart = useCartStore((state) => state.cart);
@@ -35,7 +39,9 @@ const Cart = () => {
           <div className="relative">
             <button
               onClick={() => setViewCart(true)}
-              className="fixed right-2 bottom-4 z-50 bi-cart-fill font-poppins btn-bg shadow text-xl text-white rounded-full p-0 w-12 h-12 md:w-14 md:h-14"
+              className={`fixed ${
+                home ? "bottom-24 right-5" : "bottom-4 right-2"
+              }  z-50 bi-cart-fill font-poppins btn-bg shadow text-xl text-white rounded-full p-0 w-12 h-12 md:w-14 md:h-14`}
             >
               <span className="font-poppins ms-1 text-sm">{cart.length}</span>
             </button>

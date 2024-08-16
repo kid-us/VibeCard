@@ -11,6 +11,7 @@ import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Chat from "../ChatBot/Chat";
 import Testimonials from "../Home/Testimonials";
 import Product from "../Home/Product";
+import Cart from "../Cart/Cart";
 
 const Home = () => {
   const [title] = useState("Vibecard - Digital Business Cards");
@@ -30,6 +31,7 @@ const Home = () => {
   return (
     <>
       {loading && <Loading />}
+      <Cart home />
       <Chat></Chat>
       <div>
         <Navbar />
