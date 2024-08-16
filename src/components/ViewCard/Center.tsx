@@ -6,10 +6,13 @@ import Watermark from "../Watermark/Watermark";
 interface Props {
   data: Data;
   styles: StyleData;
+  profile: string | null;
+  cover: string | null;
+  logo: string | null;
   capture: () => void;
 }
 
-const Center = ({ data, styles, capture }: Props) => {
+const Center = ({ data, styles, cover, logo, profile, capture }: Props) => {
   return (
     <div
       className={`relative rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 lg:mb-0 mb-14`}
@@ -18,15 +21,15 @@ const Center = ({ data, styles, capture }: Props) => {
       <Watermark />
       <div
         className={`lg:h-24 h-32 relative flex justify-between ${
-          !data?.covor_picture
+          !cover
             ? styles.coverBG.bg_color === "gradient-cover" &&
               `${styles.coverBG.bg_color} z-0`
             : "gradient-cover"
         }`}
       >
-        {data.covor_picture && (
+        {cover && (
           <img
-            src={data.covor_picture}
+            src={cover}
             alt="cover"
             className="w-full object-cover
 "
@@ -34,14 +37,11 @@ const Center = ({ data, styles, capture }: Props) => {
         )}
 
         <div className="absolute lg:top-10 top-16 left-1/3 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden">
-          <img
-            src={data.main_picture ? data.main_picture : userPic}
-            alt="user"
-          />
+          <img src={profile ? profile : userPic} alt="user" />
         </div>
-        {data.company_logo && (
+        {logo && (
           <img
-            src={data.company_logo}
+            src={logo}
             alt="Cover"
             className="absolute top-20 right-28 w-12 h-12 rounded-full border-2 bg-white"
           />
@@ -53,7 +53,7 @@ const Center = ({ data, styles, capture }: Props) => {
           <div className="content-center">
             {/* Pronoun and Name */}
             <p
-              className={` text-center overflow-hidden text-ellipsis text-nowrap ${
+              className={` text-center overflow-hidden text-ellipsis text-nowrap pb-2 ${
                 styles.name.font_style + " " + styles.name.font_size
               } `}
               style={{ color: styles.name.font_color }}
@@ -75,7 +75,7 @@ const Center = ({ data, styles, capture }: Props) => {
           <p
             className={`${
               styles.jobTitle.font_style + " " + styles.jobTitle.font_size
-            } mb-1 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase text-center ${
+            } mb-1 pb-2 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase text-center ${
               !data.job_title && "invisible"
             } `}
             style={{ color: styles.jobTitle.font_color }}
@@ -93,7 +93,7 @@ const Center = ({ data, styles, capture }: Props) => {
           </p>
           {/* Tag Line */}
           <p
-            className={`mt-3 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase text-center ${
+            className={`mt-3 pb-2 overflow-hidden text-ellipsis text-nowrap first-letter:uppercase text-center ${
               !data.bio && "invisible"
             } ${styles.bio.font_style + " " + styles.bio.font_size}`}
             style={{ color: styles.bio.font_color }}

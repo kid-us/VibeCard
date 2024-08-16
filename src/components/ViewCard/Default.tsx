@@ -21,7 +21,7 @@ const Default = ({ data, styles, cover, profile, logo, capture }: Props) => {
       <Watermark />
       <div
         className={`lg:h-24 h-32 relative flex justify-between z-0  ${
-          cover
+          !cover
             ? styles.coverBG.bg_color === "gradient-cover" &&
               `${styles.coverBG.bg_color} z-0`
             : "gradient-cover"

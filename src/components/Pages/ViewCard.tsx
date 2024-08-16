@@ -146,6 +146,9 @@ const ViewCard = () => {
               {data && styles && data.card_layout === "centered" && (
                 <Center
                   data={data}
+                  profile={profileImg ? profileImg : null}
+                  cover={coverImg ? coverImg : ""}
+                  logo={logo ? logo : ""}
                   styles={styles}
                   capture={() => handleCapture()}
                 />
@@ -154,6 +157,9 @@ const ViewCard = () => {
               {data && styles && data.card_layout === "right" && (
                 <Right
                   data={data}
+                  profile={profileImg ? profileImg : null}
+                  cover={coverImg ? coverImg : ""}
+                  logo={logo ? logo : ""}
                   styles={styles}
                   capture={() => handleCapture()}
                 />
