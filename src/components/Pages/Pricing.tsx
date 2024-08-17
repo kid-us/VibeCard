@@ -33,6 +33,7 @@ const Pricing = () => {
       .get<Plan>(`${baseUrl}/api/v1/dashboard/subscription-plan`, {
         headers: {
           "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420",
         },
       })
       .then((response) => {

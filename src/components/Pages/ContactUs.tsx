@@ -1,13 +1,13 @@
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-// import axios from "axios";
-// import { baseUrl } from "@/services/request";
 import useDocumentTitle from "@/hooks/useDocumentTitle";
 import { useEffect, useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldValues, useForm } from "react-hook-form";
 import Button from "../Button/Button";
+import axios from "axios";
+import { baseUrl } from "@/services/request";
 
 const schema = z.object({
   username: z
@@ -41,26 +41,31 @@ const ContactUs = () => {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (data: FieldValues) => {
-    console.log(data);
+    const contact = {
+      username: data.username,
+      email: data.email,
+      message: data.message,
+    };
 
     setLoader(true);
-    setSuccessMsg(true);
-    // axios
-    //   .post(`${baseUrl}/api/v1/auth/update`, data, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     withCredentials: true,
-    //   })
-    //   .then(() => {
-    //     setSuccessMsg(true);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    setErrorMsg(true);
-    //     setLoader(false);
-    //   });
+
+    axios
+      .post(`${baseUrl}/api/v1/auth/contact-us`, contact, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then(() => {
+        setSuccessMsg(true);
+      })
+      .catch((error) => {
+        console.log(error);
+        setErrorMsg(true);
+        setLoader(false);
+      });
   };
+
   return (
     <>
       <Navbar />

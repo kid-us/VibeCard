@@ -20,6 +20,7 @@ const Protected = ({ children }: ProtectedProps) => {
       .get(`${baseUrl}/api/v1/auth/me`, {
         headers: {
           "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420",
         },
         withCredentials: true,
       })

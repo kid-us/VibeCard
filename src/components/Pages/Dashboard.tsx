@@ -94,22 +94,19 @@ const Dashboard = () => {
   };
 
   const handleManageSubscription = () => {
-    window.location.href =
-      "https://billing.stripe.com/p/session/test_YWNjdF8xUFdkRmRQNlVPSGxNenRILF9RZUwzUERsTXVyRkt1SVduQzhFejN6c2VrQ1pQcnFi0100HPQpVv1Q";
-
-    // axios
-    //   .get(`${baseUrl}/api/v1/payment/manage-subscription`, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     withCredentials: true,
-    //   })
-    //   .then((response) => {
-    //     console.log(response);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    axios
+      .get(`${baseUrl}/api/v1/payment/manage-subscription`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        window.location.href = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const shareTitle = "Vibecard Digital Business Card";
