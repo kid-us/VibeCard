@@ -8,10 +8,11 @@ import axios from "axios";
 import { baseUrl } from "@/services/request";
 import Loading from "../Loading/Loading";
 import useSubscription from "@/hooks/useSubscription";
+import useAuthStore from "@/store/useUserData";
 
 interface Plan {
-  pro: { price: string; plan: "pro" };
-  proPlus: { price: string; plan: "pro+" };
+  pro: { price: string; plan: "pro"; price_id: string };
+  proPlus: { price: string; plan: "pro+"; price_id: string };
 }
 
 const Pricing = () => {
@@ -19,11 +20,13 @@ const Pricing = () => {
   useDocumentTitle(title);
 
   // Scroll to top
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const { quota } = useSubscription();
+
+  const { plan, isAuthenticated } = useAuthStore();
 
   const [subscription, setSubscription] = useState<Plan>();
   const [loading, setLoading] = useState<boolean>(true);
@@ -33,7 +36,6 @@ const Pricing = () => {
       .get<Plan>(`${baseUrl}/api/v1/dashboard/subscription-plan`, {
         headers: {
           "Content-Type": "application/json",
-          "ngrok-skip-browser-warning": "69420",
         },
       })
       .then((response) => {
@@ -44,6 +46,33 @@ const Pricing = () => {
         console.log(error);
       });
   }, []);
+
+  const handleSubscribe = (id: string) => {
+    if (!isAuthenticated) {
+      window.location.href = "/login";
+      return;
+    }
+
+    const subscriptionPlan = plan && plan !== "free" ? true : false;
+
+    axios
+      .post(
+        `${baseUrl}/api/v1/payment/subscribe?price_id=${id}&change_plan=${subscriptionPlan}`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      )
+      .then((response) => {
+        window.location.href = response.data.url;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -102,12 +131,16 @@ const Pricing = () => {
                   </h1>
                   <p className="text-sm chakra py-2">per month</p>
                 </div>
-                <Link
-                  to="/"
-                  className="text-center py-3 btn-bg shadow shadow-zinc-900 text-white rounded chakra"
+                <button
+                  onClick={() =>
+                    handleSubscribe(
+                      subscription ? subscription.pro.price_id : ""
+                    )
+                  }
+                  className="text-center w-full py-3 btn-bg shadow shadow-zinc-900 text-white rounded chakra"
                 >
                   Subscribe
-                </Link>
+                </button>
               </div>
               <p className="mb-3 text-teal-500">
                 Everything in Basic plan, plus
@@ -134,12 +167,16 @@ const Pricing = () => {
                 </h1>
                 <p className="text-sm chakra py-2">per year</p>
               </div>
-              <Link
-                to="/"
-                className="text-center btn-bg py-3 px-10 shadow shadow-zinc-900 text-white rounded chakra"
+              <button
+                onClick={() =>
+                  handleSubscribe(
+                    subscription ? subscription.proPlus.price_id : ""
+                  )
+                }
+                className="text-center w-full btn-bg py-3 px-10 shadow shadow-zinc-900 text-white rounded chakra"
               >
                 Subscribe
-              </Link>
+              </button>
             </div>
             <p className="mb-3 text-indigo-500">Everything in Pro plan, plus</p>
 

@@ -354,12 +354,12 @@ const ProductDetail = () => {
                 {/* Card Types */}
                 <div className="lg:flex justify-between gap-x-5 mt-5">
                   <p
-                    onClick={() => setType("recylced_paper")}
+                    onClick={() => setType("recycled_paper")}
                     className={`shadow-xl shadow-zinc-900 ${
-                      type === "recylced_paper"
+                      type === "recycled_paper"
                         ? "btn-bg shadow-none px-2 text-white text-sm"
                         : "bg-white"
-                    } w-full text-center pt-3 rounded h-12 lg:mb-0 mb-2 font-poppins cursor-pointer`}
+                    } w-full text-center pt-3 rounded h-12 lg:mb-0 mb-2 font-poppins cursor-pointer text-sm font-bold`}
                   >
                     Recycled Paper €{cards?.recycled_paper.price}
                   </p>
@@ -369,7 +369,7 @@ const ProductDetail = () => {
                       type === "bamboo"
                         ? "btn-bg shadow-none px-2 text-white"
                         : "bg-white"
-                    } w-full text-center pt-3 rounded h-12 lg:mb-0 mb-2 font-poppins cursor-pointer`}
+                    } w-full text-center pt-3 rounded h-12 lg:mb-0 mb-2 font-poppins cursor-pointer text-sm font-bold`}
                   >
                     Bamboo €{cards?.bamboo.price}
                   </p>
@@ -379,7 +379,7 @@ const ProductDetail = () => {
                       type === "metal"
                         ? "btn-bg shadow-none px-2 text-white"
                         : "bg-white"
-                    } w-full text-center pt-3 rounded h-12 lg:mb-0 mb-2 font-poppins cursor-pointer`}
+                    } w-full text-center pt-3 rounded h-12 lg:mb-0 mb-2 font-poppins cursor-pointer text-sm font-bold`}
                   >
                     Metal €{cards?.metal.price}
                   </p>

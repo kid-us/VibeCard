@@ -28,7 +28,7 @@ const LargeEditor: React.FC = () => {
 
   useEffect(() => {
     if (!productsInfo) {
-      navigate("/products");
+      navigate("/all-products");
     }
   }, []);
 
