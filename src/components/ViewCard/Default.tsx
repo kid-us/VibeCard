@@ -13,8 +13,6 @@ interface Props {
 }
 
 const Default = ({ data, styles, cover, profile, logo, capture }: Props) => {
-  console.log(logo);
-
   return (
     <div
       className={`relative rounded-2xl lg:w-full md:w-[70%] w-full mx-auto overflow-hidden shadow-lg shadow-zinc-800 z-0 lg:mb-0 mb-14`}
@@ -67,9 +65,9 @@ const Default = ({ data, styles, cover, profile, logo, capture }: Props) => {
       </div>
       <div className="px-5 mt-10 text-white">
         <div className="relative">
-          {data.company_logo && (
+          {logo && (
             <img
-              src={data.company_logo}
+              src={logo}
               alt="Logo"
               className="absolute right-0 -top-6 w-14 h-14 rounded-full border-2 bg-white"
             />
