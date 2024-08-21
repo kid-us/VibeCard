@@ -30,6 +30,59 @@ const ViewCard = () => {
   const [logo, setLogo] = useState<string | null>(null);
   const [coverImg, setCoverImg] = useState<string | null>(null);
 
+  // const blobImage = async (img: string) => {
+  //   try {
+  //     const response = await fetch(img);
+  //     if (!response.ok) {
+  //       throw new Error("Failed to fetch image");
+  //     }
+  //     const blob = await response.blob();
+  //     const url = URL.createObjectURL(blob);
+  //     return url;
+  //   } catch (error) {
+  //     console.error("Error fetching and converting image:", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `${baseUrl}/api/v1/cards/card/${id}?increment=true`
+  //       );
+  //       setData(response.data);
+  //       setStyles(JSON.parse(response.data.styles));
+
+  //       if (response.data.qr_code) {
+  //         const qrCode = await blobImage(response.data.qr_code);
+  //         setQrImg(qrCode ? qrCode : "");
+  //       }
+
+  //       if (response.data.main_picture) {
+  //         let x = response.data.main_picture;
+  //         const profile = await blobImage(x);
+  //         setProfileImg(profile ? profile : "");
+  //       }
+
+  //       if (response.data.covor_picture) {
+  //         const cover = await blobImage(response.data.covor_picture);
+  //         setCoverImg(cover ? cover : "");
+  //       }
+  //       if (response.data.company_logo) {
+  //         const logo = await blobImage(response.data.company_logo);
+  //         setLogo(logo ? logo : "");
+  //       }
+
+  //       setLoading(false);
+  //     } catch (err) {
+  //       console.error(err);
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [id, baseUrl]);
+
   const blobImage = async (img: string) => {
     try {
       const response = await fetch(img);
@@ -53,25 +106,42 @@ const ViewCard = () => {
         setData(response.data);
         setStyles(JSON.parse(response.data.styles));
 
+        const imagePromises = [];
+
         if (response.data.qr_code) {
-          const qrCode = await blobImage(response.data.qr_code);
-          setQrImg(qrCode ? qrCode : "");
+          imagePromises.push(
+            blobImage(response.data.qr_code).then((qrCode) =>
+              setQrImg(qrCode || "")
+            )
+          );
         }
 
         if (response.data.main_picture) {
-          let x = response.data.main_picture;
-          const profile = await blobImage(x);
-          setProfileImg(profile ? profile : "");
+          imagePromises.push(
+            blobImage(response.data.main_picture).then((profile) =>
+              setProfileImg(profile || "")
+            )
+          );
         }
 
         if (response.data.covor_picture) {
-          const cover = await blobImage(response.data.covor_picture);
-          setCoverImg(cover ? cover : "");
+          imagePromises.push(
+            blobImage(response.data.covor_picture).then((cover) =>
+              setCoverImg(cover || "")
+            )
+          );
         }
+
         if (response.data.company_logo) {
-          const logo = await blobImage(response.data.company_logo);
-          setLogo(logo ? logo : "");
+          imagePromises.push(
+            blobImage(response.data.company_logo).then((logo) =>
+              setLogo(logo || "")
+            )
+          );
         }
+
+        // Wait for all images to be processed
+        await Promise.all(imagePromises);
 
         setLoading(false);
       } catch (err) {
