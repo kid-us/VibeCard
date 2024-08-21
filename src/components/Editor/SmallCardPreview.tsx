@@ -380,7 +380,9 @@ const SmallDevicePreview = ({
               className={`${!switchBtn && bg} ${
                 active === "front" && "border-2 border-sky-600"
               } relative rounded-md ${
-                orientation ? " w-48 h-[30vh]" : "w-full h-[30vh]"
+                orientation
+                  ? " w-48 h-[30vh]"
+                  : "w-full h-[30vh] md:w-[55%] md:h-[35vh]"
               } shadow-lg shadow-zinc-900 overflow-hidden cursor-pointer`}
               style={{
                 backgroundColor: switchBtn ? pickedBg : "",
@@ -536,7 +538,9 @@ const SmallDevicePreview = ({
               className={`${!switchBtn && backBg} ${
                 active === "back" && "border-2 border-sky-600"
               } relative rounded-md ${
-                orientation ? " w-48 h-[30vh]" : "w-full h-[30vh]"
+                orientation
+                  ? " w-48 h-[30vh]"
+                  : "w-full h-[30vh] md:w-[55%] md:h-[35vh]"
               }  shadow-lg shadow-zinc-900 overflow-hidden cursor-pointer`}
               style={{
                 backgroundColor: switchBtn ? pickedBackBg : "",

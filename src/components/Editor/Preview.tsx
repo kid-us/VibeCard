@@ -78,7 +78,7 @@ const Preview = ({ showPreview, orientation }: Props) => {
       <div className="flex justify-center">
         <div
           ref={printRef}
-          className={`fixed lg:w-[45%] w-[98%] lg:h-[100dvh] h-[98dvh] lg:top-4 top-2 z-50 bg-gray-200 rounded-lg border-gradient-2 lg:overflow-auto overflow-y-scroll`}
+          className={`fixed lg:w-[45%] md:w-[55%] w-[98%] lg:h-[100dvh] h-[98dvh] lg:top-4 top-2 z-50 bg-gray-200 rounded-lg border-gradient-2 lg:overflow-auto overflow-y-scroll`}
         >
           <div className="relative flex justify-between">
             <button
@@ -127,7 +127,7 @@ const Preview = ({ showPreview, orientation }: Props) => {
                 className={`relative rounded-md  ${
                   orientation
                     ? " lg:h-[400px] lg:w-full w-48 h-[30vh]"
-                    : "lg:h-[280px] h-[30vh] w-full"
+                    : "lg:h-[280px] h-[30vh] md:h-[35vh] w-full"
                 }  mb-5 shadow-md shadow-zinc-900 overflow-hidden ${
                   front.pickedBg === "#ffffff" ? front.bgColor : ""
                 }`}
@@ -197,7 +197,7 @@ const Preview = ({ showPreview, orientation }: Props) => {
                 className={`relative rounded-md ${
                   orientation
                     ? " lg:h-[400px] lg:w-full w-48 h-[30vh]"
-                    : "lg:h-[280px] h-[30vh] w-full"
+                    : "lg:h-[280px] h-[30vh] md:h-[35vh] w-full"
                 } lg:mb-5 shadow-md shadow-zinc-900 overflow-hidden ${
                   back.pickedBg === "#ffffff" ? back.bgColor : ""
                 }`}
