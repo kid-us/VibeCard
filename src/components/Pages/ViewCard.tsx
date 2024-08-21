@@ -57,10 +57,13 @@ const ViewCard = () => {
           const qrCode = await blobImage(response.data.qr_code);
           setQrImg(qrCode ? qrCode : "");
         }
+
         if (response.data.main_picture) {
-          const profile = await blobImage(response.data.main_picture);
+          let x = response.data.main_picture;
+          const profile = await blobImage(x);
           setProfileImg(profile ? profile : "");
         }
+
         if (response.data.covor_picture) {
           const cover = await blobImage(response.data.covor_picture);
           setCoverImg(cover ? cover : "");
@@ -79,6 +82,8 @@ const ViewCard = () => {
 
     fetchData();
   }, [id, baseUrl]);
+
+  // console.log(data);
 
   const handleCapture = async () => {
     if (captureRef.current) {
