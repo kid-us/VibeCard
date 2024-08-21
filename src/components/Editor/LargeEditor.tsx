@@ -371,7 +371,10 @@ const LargeEditor: React.FC = () => {
                       <p className="text-white">Image / Logo</p>
                       {active === "front" && croppedImage && (
                         <button
-                          onClick={() => setCroppedImage(null)}
+                          onClick={() => {
+                            setCroppedImage(null);
+                            setImageSrc(null);
+                          }}
                           className="bg-red-500 rounded text-xs w-14 text-white"
                         >
                           Reset
@@ -379,7 +382,10 @@ const LargeEditor: React.FC = () => {
                       )}
                       {active === "back" && backCroppedImage && (
                         <button
-                          onClick={() => setBackCroppedImage(null)}
+                          onClick={() => {
+                            setBackCroppedImage(null);
+                            setBackImageSrc(null);
+                          }}
                           className="bg-red-500 rounded text-xs w-14 text-white"
                         >
                           Reset
