@@ -313,7 +313,7 @@ const LargeEditor: React.FC = () => {
       )}
       {error && (
         <div className="fixed flex top-4 right-0 z-50 text-white bg-red-500 rounded ps-10 text-sm py-3">
-          <p>Please at least insert your logo </p>
+          <p>Please at least insert your logo</p>
           <p
             onClick={() => setError(false)}
             className="text-white ms-5 me-2 bi-x-lg rounded px-2 cursor-pointer"
