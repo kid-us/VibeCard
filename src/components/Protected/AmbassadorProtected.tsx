@@ -26,6 +26,10 @@ interface Ambassador {
   uid: string;
   verified: boolean;
   referral_code: string;
+  conversions: number;
+  orders: number;
+  referrals: number;
+  sales: number;
 }
 
 const AmbassadorProtected = ({ children }: ProtectedProps) => {
@@ -59,7 +63,11 @@ const AmbassadorProtected = ({ children }: ProtectedProps) => {
             response.data.linkedin,
             response.data.tiktoc,
             response.data.twitter,
-            response.data.website
+            response.data.website,
+            response.data.conversions,
+            response.data.orders,
+            response.data.sales,
+            response.data.referrals
           );
           setLoading(false);
         } else {

@@ -9,18 +9,8 @@ import { baseUrl } from "../../services/request";
 import { useNavigate } from "react-router-dom";
 import AffiliateFooter from "./AffiliateFooter";
 import useAmbassador from "@/store/useAmbassador";
-import { socialMedias } from "./AmbassadorRegister";
 
 const schema = z.object({
-  twitter: z.string().optional().optional(),
-  twitch: z.string().optional(),
-  youtube: z.string().optional(),
-  facebook: z.string().optional(),
-  instagram: z.string().optional(),
-  tiktok: z.string().optional(),
-  website: z.string().optional(),
-  linkedin: z.string().optional(),
-
   first_name: z
     .string()
     .min(3, { message: "First Name must be greater than 3 characters." }),
@@ -36,39 +26,18 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const AffiliateSetting = () => {
-  const {
-    email,
-    facebook,
-    firstName,
-    instagram,
-    lastName,
-    linkedin,
-    referral_code,
-    youtube,
-    website,
-    twitter,
-    twich,
-    tiktok,
-  } = useAmbassador();
+  const { email, firstName, lastName, referral_code } = useAmbassador();
 
   const navigate = useNavigate();
 
-  const [registerError, setRegisterError] = useState("");
+  // const [registerError, setRegisterError] = useState("");
 
   const [loader, setLoader] = useState(false);
 
   // Default Value
-  const [fName] = useState<string>(firstName ? firstName : "");
-  const [lName] = useState<string>(lastName ? lastName : "");
-  const [userEmail] = useState<string>(email ? email : "");
-  const [userFacebook] = useState<string>(facebook ? facebook : "");
-  const [userLinkedin] = useState<string>(linkedin ? linkedin : "");
-  const [userTiktok] = useState<string>(tiktok ? tiktok : "");
-  const [userWebsite] = useState<string>(website ? website : "");
-  const [userTwich] = useState<string>(twich ? twich : "");
-  const [userInstagram] = useState<string>(instagram ? instagram : "");
-  const [userYoutube] = useState<string>(youtube ? youtube : "");
-  const [userTwitter] = useState<string>(twitter ? twitter : "");
+  const [fName, setFName] = useState<string>(firstName ? firstName : "");
+  const [lName, setLName] = useState<string>(lastName ? lastName : "");
+  const [userEmail, setUserEmail] = useState<string>(email ? email : "");
 
   const [referral, setReferral] = useState<string>(
     referral_code ? referral_code : ""
@@ -84,11 +53,16 @@ const AffiliateSetting = () => {
 
   const handleReferral = () => {
     axios
-      .put(`${baseUrl}/api/v1/ambassador/edit-referral-code`, referral, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      .put(
+        `${baseUrl}/api/v1/ambassador/edit-referral-code`,
+        { referral_code: referral },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      )
       .then(() => {
         window.location.reload();
       })
@@ -98,32 +72,27 @@ const AffiliateSetting = () => {
   };
 
   const onSubmit = (data: FieldValues) => {
-    console.log(data);
-    return;
     setLoader(true);
+
+    const editData = {
+      first_name: data.first_name,
+      last_name: data.last_name,
+      email: data.email,
+      password: data.password,
+    };
+
     axios
-      .get(`${baseUrl}/api/v1/auth/check-email/${data.email}`, {
+      .put(`${baseUrl}/api/v1/ambassador/edit-details`, editData, {
         headers: {
           "Content-Type": "application/json",
         },
+        withCredentials: true,
       })
       .then(() => {
-        axios
-          .post(`${baseUrl}/api/v1/auth/register`, data, {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-          .then(() => {
-            navigate(`/verify?email=${data.email}`);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        navigate(`/`);
       })
-      .catch(() => {
-        setLoader(false);
-        setRegisterError("Email already exist.");
+      .catch((error) => {
+        console.log(error);
       });
   };
 
@@ -168,14 +137,14 @@ const AffiliateSetting = () => {
 
           <form onSubmit={handleSubmit(onSubmit)} className="w-full">
             {/* Email exist error */}
-            {registerError !== "" && (
+            {/* {registerError !== "" && (
               <div className="relative">
                 <p className="absolute -top-7 text-red-600 text-sm">
                   <span className="bi-exclamation-triangle-fill me-4"></span>
                   {registerError}
                 </p>
               </div>
-            )}
+            )} */}
 
             <div className="lg:grid grid-cols-2 gap-x-10 bg-white rounded lg:p-8 p-4 mt-5">
               {/* First Name */}
@@ -193,6 +162,7 @@ const AffiliateSetting = () => {
                   className={`text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ${
                     errors.first_name && "border-red-600 border-1 border"
                   }`}
+                  onChange={(e) => setFName(e.currentTarget.value)}
                   value={fName}
                 />
                 {errors.first_name && (
@@ -217,6 +187,7 @@ const AffiliateSetting = () => {
                   className={`text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ${
                     errors.email && "border-red-600 border-1 border"
                   }`}
+                  onChange={(e) => setLName(e.currentTarget.value)}
                   value={lName}
                 />
                 {errors.last_name && (
@@ -238,6 +209,7 @@ const AffiliateSetting = () => {
                   className={`text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ${
                     errors.email && "border-red-600 border-1 border"
                   }`}
+                  onChange={(e) => setUserEmail(e.currentTarget.value)}
                   value={userEmail}
                 />
                 {errors.email && (
@@ -276,92 +248,6 @@ const AffiliateSetting = () => {
                 )}
               </div>
 
-              {/* Social medias */}
-              {socialMedias.map((social) => (
-                <div key={social.value} className="lg:mb-4 mb-3 relative">
-                  <label
-                    className="text-xs text-gray-900 block"
-                    htmlFor="username"
-                  >
-                    {social.name}
-                  </label>
-                  {/* Tik tok */}
-                  {social.value === "tiktok" && (
-                    <input
-                      {...register("tiktok")}
-                      type="text"
-                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-5"
-                      value={userTiktok}
-                    />
-                  )}
-                  {/* instagram */}
-                  {social.value === "instagram" && (
-                    <input
-                      {...register("instagram")}
-                      type="text"
-                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-5"
-                      value={userInstagram}
-                    />
-                  )}
-                  {/* youtube */}
-                  {social.value === "youtube" && (
-                    <input
-                      {...register("youtube")}
-                      type="text"
-                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-5"
-                      value={userYoutube}
-                    />
-                  )}
-                  {/* facebook */}
-                  {social.value === "facebook" && (
-                    <input
-                      {...register("facebook")}
-                      type="text"
-                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-5"
-                      value={userFacebook}
-                    />
-                  )}
-                  {/* twitch */}
-                  {social.value === "twitch" && (
-                    <input
-                      {...register("twitch")}
-                      type="text"
-                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-5"
-                      value={userTwich}
-                    />
-                  )}
-                  {/* twitter */}
-                  {social.value === "twitter" && (
-                    <input
-                      {...register("twitter")}
-                      type="text"
-                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-5"
-                      value={userTwitter}
-                    />
-                  )}
-                  {/* linkedin */}
-                  {social.value === "linkedin" && (
-                    <input
-                      {...register("linkedin")}
-                      type="text"
-                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-5"
-                      value={userLinkedin}
-                    />
-                  )}
-                  {/* website */}
-                  {social.value === "website" && (
-                    <input
-                      {...register("website")}
-                      type="text"
-                      className="text-white secondary-bg py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm h-12 ps-5"
-                      value={userWebsite}
-                    />
-                  )}
-                  <span
-                    className={`absolute right-2 top-8 cursor-pointer px-2 text-lg border-l border-gray-500 ${social.icon} ${social.color}`}
-                  ></span>
-                </div>
-              ))}
               {/* Button */}
               <div className="col-span-2">
                 <Button loader={loader} label="Submit" />

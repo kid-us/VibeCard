@@ -25,10 +25,10 @@ interface Props {
 const schema = z.object({
   firstName: z
     .string()
-    .min(3, { message: "firstName must be greater than 3 characters." }),
+    .min(3, { message: "First Name must be greater than 3 characters." }),
   lastName: z
     .string()
-    .min(3, { message: "lastName must be greater than 3 characters." }),
+    .min(3, { message: "Last Name must be greater than 3 characters." }),
   email: z.string().email({ message: "Email address required." }),
   street: z.string().min(2, { message: "Street name required" }),
   streetNo: z.string().min(2, { message: "Street name required" }),
@@ -42,26 +42,19 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
-  const { back, front, orientation } = useProduct();
-
   const navigate = useNavigate();
 
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  });
+
   const captureRef = useRef<HTMLDivElement>(null);
-
-  const [fName, setFName] = useState<string>("");
-  const [lName, setLName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [street, setStreet] = useState<string>("");
-  const [streetNo, setStreetNo] = useState<string>("");
-  const [address, setAddress] = useState<string>("");
-  const [plz, setPlz] = useState<string>("");
-  const [location, setLocation] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
-  const [checkbox, setCheckbox] = useState<boolean>(false);
-  const [referral, setReferral] = useState<string>("");
-
-  const [frontImage, setFrontImage] = useState<string | null>(null);
-  const [backImage, setBackImage] = useState<string | null>(null);
+  const { back, front, orientation } = useProduct();
 
   //   Get images from a file
   useEffect(() => {
@@ -75,14 +68,12 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
     }
   }, [front, back]);
 
+  const [checkbox, setCheckbox] = useState<boolean>(false);
+  const [frontImage, setFrontImage] = useState<string | null>(null);
+  const [backImage, setBackImage] = useState<string | null>(null);
   const [loader, setLoader] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(schema) });
-
+  // Get Metadata
   useEffect(() => {
     axios
       .get(`${baseUrl}/api/v1/products/order-metadata`, {
@@ -92,21 +83,24 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
         withCredentials: true,
       })
       .then((response) => {
-        setAddress(response.data.order_metadata.address);
-        setFName(response.data.order_metadata.fname);
-        setLName(response.data.order_metadata.lname);
-        setEmail(response.data.order_metadata.email);
-        setLocation(response.data.order_metadata.location);
-        setPhone(response.data.order_metadata.phone);
-        setPlz(response.data.order_metadata.plz);
-        setStreet(response.data.order_metadata.street);
-        setStreetNo(response.data.order_metadata.street_no);
-        setReferral(response.data.order_metadata.referral);
+        const data = response.data.order_metadata;
+
+        // Set form values using react-hook-form's setValue
+        setValue("firstName", data.fname);
+        setValue("lastName", data.lname);
+        setValue("email", data.email);
+        setValue("street", data.street);
+        setValue("streetNo", data.street_no);
+        setValue("address", data.address);
+        setValue("plz", data.plz);
+        setValue("location", data.location);
+        setValue("phone", data.phone);
+        setValue("referral", data.referral);
       })
       .catch((error) => {
-        console.log(error);
+        console.error("Failed to fetch order metadata:", error);
       });
-  }, []);
+  }, [setValue]);
 
   const onSubmit = (data: FieldValues) => {
     setLoader(true);
@@ -159,6 +153,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
         phone: data.phone,
         street: data.street,
         street_no: data.streetNo,
+        referral_code: data.referral,
       };
 
       const formData = new FormData();
@@ -388,12 +383,9 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                 <input
                   {...register("firstName")}
                   type="text"
-                  name="firstName"
                   className={`text-black bg-gray-300 py-3 rounded h-12 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                     errors.firstName && "border-red-600 border-1 border"
                   }`}
-                  onChange={(e) => setFName(e.currentTarget.value)}
-                  value={fName}
                 />
                 {errors.firstName && (
                   <p className="text-red-600 text-xs pt-1">
@@ -412,12 +404,9 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                 <input
                   {...register("lastName")}
                   type="text"
-                  name="lastName"
                   className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                     errors.lastName && "border-red-600 border-1 border"
                   }`}
-                  onChange={(e) => setLName(e.currentTarget.value)}
-                  value={lName}
                 />
                 {errors.lastName && (
                   <p className="text-red-600 text-xs pt-1">
@@ -433,12 +422,9 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                 <input
                   {...register("email")}
                   type="email"
-                  name="email"
                   className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                     errors.email && "border-red-600 border-1 border"
                   }`}
-                  onChange={(e) => setEmail(e.currentTarget.value)}
-                  value={email}
                 />
                 {errors.email && (
                   <p className="text-red-600 text-xs pt-1">
@@ -458,12 +444,9 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                   <input
                     {...register("street")}
                     type="text"
-                    name="street"
                     className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                       errors.street && "border-red-600 border-1 border"
                     }`}
-                    onChange={(e) => setStreet(e.currentTarget.value)}
-                    value={street}
                   />
                   {errors.street && (
                     <p className="text-red-600 text-xs pt-1">
@@ -481,12 +464,9 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                   <input
                     {...register("streetNo")}
                     type="text"
-                    name="streetNo"
                     className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                       errors.streetNo && "border-red-600 border-1 border"
                     }`}
-                    onChange={(e) => setStreetNo(e.currentTarget.value)}
-                    value={streetNo}
                   />
                   {errors.streetNo && (
                     <p className="text-red-600 text-xs pt-1">
@@ -506,12 +486,9 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                 <input
                   {...register("address")}
                   type="text"
-                  name="address"
                   className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                     errors.address && "border-red-600 border-1 border"
                   }`}
-                  onChange={(e) => setAddress(e.currentTarget.value)}
-                  value={address}
                 />
                 {errors.address && (
                   <p className="text-red-600 text-xs pt-1">
@@ -527,12 +504,9 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                 <input
                   {...register("plz")}
                   type="text"
-                  name="plz"
                   className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                     errors.plz && "border-red-600 border-1 border"
                   }`}
-                  onChange={(e) => setPlz(e.currentTarget.value)}
-                  value={plz}
                 />
                 {errors.plz && (
                   <p className="text-red-600 text-xs pt-1">
@@ -542,18 +516,18 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
               </div>
               {/* location */}
               <div className="mb-5">
-                <label className="text-sm text-gray-500 block" htmlFor="plz">
+                <label
+                  className="text-sm text-gray-500 block"
+                  htmlFor="location"
+                >
                   Location
                 </label>
                 <input
                   {...register("location")}
                   type="text"
-                  name="location"
                   className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                     errors.location && "border-red-600 border-1 border"
                   }`}
-                  onChange={(e) => setLocation(e.currentTarget.value)}
-                  value={location}
                 />
                 {errors.location && (
                   <p className="text-red-600 text-xs pt-1">
@@ -563,18 +537,15 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
               </div>
               {/* phone */}
               <div className="mb-5">
-                <label className="text-sm text-gray-500 block" htmlFor="plz">
+                <label className="text-sm text-gray-500 block" htmlFor="phone">
                   Phone
                 </label>
                 <input
                   {...register("phone")}
                   type="tel"
-                  name="phone"
                   className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                     errors.phone && "border-red-600 border-1 border"
                   }`}
-                  onChange={(e) => setPhone(e.currentTarget.value)}
-                  value={phone}
                 />
                 {errors.phone && (
                   <p className="text-red-600 text-xs pt-1">
@@ -582,18 +553,18 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                   </p>
                 )}
               </div>
-              {/* phone */}
+              {/* referral */}
               <div className="mb-5">
-                <label className="text-sm text-gray-500 block" htmlFor="plz">
+                <label
+                  className="text-sm text-gray-500 block"
+                  htmlFor="referral"
+                >
                   Referral
                 </label>
                 <input
                   {...register("referral")}
                   type="tel"
-                  name="referral"
-                  className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm`}
-                  onChange={(e) => setReferral(e.currentTarget.value)}
-                  value={referral}
+                  className="text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm"
                 />
               </div>
             </div>

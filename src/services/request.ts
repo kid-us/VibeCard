@@ -1,2 +1,2 @@
-// export const baseUrl = "https://1ab3-102-218-50-216.ngrok-free.app";
-export const baseUrl = "https://vibeapi.jamescog.com";
+export const baseUrl = "https://a69bff794ff32ae1f7e8618156ba8408.serveo.net";
+// export const baseUrl = "https://vibeapi.jamescog.com";

@@ -20,7 +20,16 @@ const Affiliate = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const { firstName, lastName, earning, referral_code } = useAmbassador();
+  const {
+    firstName,
+    lastName,
+    earning,
+    referral_code,
+    conversions,
+    orders,
+    referrals,
+    sales,
+  } = useAmbassador();
 
   // Custom Date
   const [date, setDate] = React.useState<DateRange | undefined>({
@@ -78,27 +87,27 @@ const Affiliate = () => {
             </div>
             {/* Referrals */}
             <div className="border mb-5 border-gray-700 rounded px-4 py-5 text-white secondary-bg">
-              <h1 className="text-2xl">0</h1>
+              <h1 className="text-2xl">{referrals}</h1>
               <p className="text-gray-500 text-sm">Referrals</p>
             </div>
             {/* Orders */}
             <div className="border mb-5 border-gray-700 rounded px-4 py-5 text-white secondary-bg">
-              <h1 className="text-2xl">0</h1>
+              <h1 className="text-2xl">{orders}</h1>
               <p className="text-gray-500 text-sm">Orders</p>
             </div>
             {/* Conversations */}
             <div className="border mb-5 border-gray-700 rounded px-4 py-5 text-white secondary-bg">
-              <h1 className="text-2xl">0%</h1>
+              <h1 className="text-2xl">{conversions}%</h1>
               <p className="text-gray-500 text-sm">Conversations</p>
             </div>
             {/* Sales */}
             <div className="border mb-5 border-gray-700 rounded px-4 py-5 text-white secondary-bg">
-              <h1 className="text-2xl">€0</h1>
+              <h1 className="text-2xl">€{sales}</h1>
               <p className="text-gray-500 text-sm">Sales</p>
             </div>
             {/* Earnings */}
             <div className="border mb-5 border-gray-700 rounded px-4 py-5 text-white secondary-bg">
-              <h1 className="text-2xl">€0</h1>
+              <h1 className="text-2xl">€{earning}</h1>
               <p className="text-gray-500 text-sm">Earnings</p>
             </div>
           </div>
@@ -199,7 +208,7 @@ const Affiliate = () => {
                   )}
                 </div>
               </div>
-              <h1 className="text-8xl mt-5">{earning}</h1>
+              <h1 className="text-8xl mt-5">{orders}</h1>
             </div>
           </div>
         </div>

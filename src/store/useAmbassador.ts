@@ -15,8 +15,12 @@ interface AuthState {
   linkedin: string | null;
   instagram: string | null;
   facebook: string | null;
-  isAuthenticated: boolean;
+  // isAuthenticated: boolean;
   verified: boolean | null;
+  conversions: number | null;
+  orders: number | null;
+  referrals: number | null;
+  sales: number | null;
   login: (
     id: string,
     firstName: string,
@@ -32,7 +36,11 @@ interface AuthState {
     linkedin: string | null,
     tiktok: string | null,
     twitter: string | null,
-    website: string | null
+    website: string | null,
+    conversions: number | null,
+    orders: number | null,
+    referrals: number | null,
+    sales: number | null
   ) => void;
   logout: () => void;
 }
@@ -53,8 +61,11 @@ const useAmbassador = create<AuthState>((set) => ({
   tiktok: null,
   twitter: null,
   website: null,
-  isAuthenticated: false,
-
+  // isAuthenticated: false,
+  conversions: null,
+  orders: null,
+  referrals: null,
+  sales: null,
   login: (
     id,
     firstName,
@@ -70,7 +81,11 @@ const useAmbassador = create<AuthState>((set) => ({
     linkedin,
     tiktok,
     twitter,
-    website
+    website,
+    conversions,
+    orders,
+    sales,
+    referrals
   ) =>
     set({
       id,
@@ -88,7 +103,11 @@ const useAmbassador = create<AuthState>((set) => ({
       tiktok,
       twitter,
       website,
-      isAuthenticated: true,
+      // isAuthenticated: true,
+      conversions,
+      orders,
+      sales,
+      referrals,
     }),
 
   logout: () =>
@@ -108,7 +127,11 @@ const useAmbassador = create<AuthState>((set) => ({
       tiktok: null,
       twitter: null,
       website: null,
-      isAuthenticated: false,
+      // isAuthenticated: false,
+      conversions: null,
+      orders: null,
+      sales: null,
+      referrals: null,
     }),
 }));
 
