@@ -406,7 +406,10 @@ const SmallEditor: React.FC = () => {
                 <p className="text-gray-400 text-xs">Image / Logo</p>
                 {active === "front" && croppedImage && (
                   <button
-                    onClick={() => setCroppedImage(null)}
+                    onClick={() => {
+                      setCroppedImage(null);
+                      setImageSrc(null);
+                    }}
                     className="bg-red-500 rounded text-xs w-14 text-white"
                   >
                     Reset
@@ -414,7 +417,10 @@ const SmallEditor: React.FC = () => {
                 )}
                 {active === "back" && backCroppedImage && (
                   <button
-                    onClick={() => setBackCroppedImage(null)}
+                    onClick={() => {
+                      setBackCroppedImage(null);
+                      setBackImageSrc(null);
+                    }}
                     className="bg-red-500 rounded text-xs w-14 text-white"
                   >
                     Reset
