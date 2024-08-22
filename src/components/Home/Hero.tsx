@@ -24,7 +24,7 @@ const Hero = () => {
         <div className="lg:mt-16 mt-14 lg:mb-0 mb-10 lg:w-72 w-52 text-center">
           <Link to="/create">
             <div className="btn-bg py-4 lg:w-72 w-52 lg:text-center rounded-lg shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 text-white font-extrabold">
-              Get started
+              {t("get-started")}
             </div>
           </Link>
         </div>
@@ -55,7 +55,7 @@ const Hero = () => {
                   <p className="text-gray-400 my-3">
                     <span className="bi-geo-alt-fill lg:text-md text-sm text-teal-200 font-poppins">
                       {" "}
-                      At VibeCard
+                      {t("at")} VibeCard
                     </span>
                   </p>
                   <div className="flex gap-x-10 text-white">
