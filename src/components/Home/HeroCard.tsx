@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ceo, logo } from "../../assets";
 // import { bgColors } from "./Products";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const socials = [
   { id: 1, icon: "bi-instagram", bg: "bg-red-500" },
@@ -32,6 +33,8 @@ const bgColors = [
 ];
 
 const HeroCard = () => {
+  const { t } = useTranslation();
+
   const [coverBg, setCoverBg] = useState("bg-amber-500");
   const [cardBg, setCardBg] = useState({
     bg: "bg-zinc-900",
@@ -125,7 +128,7 @@ const HeroCard = () => {
                   <p className={`text-lg ${cardBg.color}`}>vibecard</p>
                   {/* Tag Line */}
                   <p className={`mt-3 text-xs ${cardBg.color}`}>
-                    YourPersonalized Networking Companion
+                    {t("intro3") + " " + t("intro4")}
                   </p>
 
                   {/* Location */}
@@ -133,7 +136,7 @@ const HeroCard = () => {
                     <span
                       className={`bi-geo-alt-fill me-2 ${cardBg.color}`}
                     ></span>
-                    Germany
+                    {t("germany")}
                   </p>
                 </div>
 
@@ -193,18 +196,12 @@ const HeroCard = () => {
         {/* Note */}
         <div className="lg:text-start text-center mt-16">
           <h1 className="font-extrabold font-poppins text-teal-500 lg:text-3xl text-2xl mb-5">
-            Transform Your Connections with a Tap
+            {t("hero1")}
           </h1>
           <div className="relative lg:block hidden lg:-top-32 -top-40">
             <div className="absolute lg:right-[15em] w-full right-36 top-40 bulb"></div>
           </div>
-          <p className="text-white lg:text-xl text-lg">
-            Discover VibeCard, your ultimate tool for seamless networking. Our
-            innovative NFC business cards and RFID solutions revolutionize the
-            way you share your professional and personal information. Say
-            goodbye to traditional business cards and embrace a sustainable,
-            smart networking experience that leaves a lasting impression.
-          </p>
+          <p className="text-white lg:text-xl text-lg">{t("heroDesc")}</p>
         </div>
       </div>
     </>
