@@ -88,11 +88,11 @@ const Home = () => {
               <div className="absolute lg:right-[35em]  right-36 top-40 bulb"></div>
             </div>
             <p className="text-center lg:mt-16 mt-6 mb-8 text-gray-500 font-poppins">
-              Features
+              {t("feature")}
             </p>
             <div className="flex justify-center w-full text-center">
               <p className="text-teal-500 font-poppins font-extrabold lg:text-4xl text-2xl text-center lg:mb-16 mb-10 lg:w-96 w-80">
-                Customize, Connect, and Conquer
+                {t("featureTitle")}
               </p>
             </div>
             <div className="lg:grid grid-cols-9 gap-x-5">
@@ -102,8 +102,10 @@ const Home = () => {
                   className="col-span-3 border-gradient-2 hover:border hover:border-gray-500 rounded-2xl p-7 text-white lg:mb-5 mb-8 secondary-bg"
                 >
                   <img src={card.image} alt="Image" className="w-12 mb-5" />
-                  <h1 className="text-xl font-extrabold">{card.title}</h1>
-                  <p className="text-md mt-4 text-gray-300">{card.note}</p>
+                  <h1 className="text-xl font-extrabold">{t(card.title)}</h1>
+                  <p className="text-md mt-4 text-gray-300 font-poppins">
+                    {t(card.note)}
+                  </p>
                 </div>
               ))}
             </div>
