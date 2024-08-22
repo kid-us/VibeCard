@@ -185,7 +185,7 @@ const Dashboard = () => {
                   <h1 className="text-4xl">
                     {t("welcome")} <span className="text-teal-400">{user}</span>
                   </h1>
-                  <p className="lg:mb-0 text-3xl mt-10 mb-5">
+                  <p className="lg:mb-0 text-3xl mt-10 mb-5 font-poppins">
                     {t("dashboardDesc")}
                   </p>
                   <button
@@ -197,7 +197,9 @@ const Dashboard = () => {
                   {/* Previous Card */}
                   {links.length > 0 && (
                     <div className="mt-10 shadow rounded-x">
-                      <p className="text-2xl mb-4 py-5">{t("previousCard")}</p>
+                      <p className="text-2xl mb-4 py-5 font-poppins">
+                        {t("previousCard")}
+                      </p>
                       {links.map((link) => (
                         <div
                           key={link.card_url}
@@ -236,10 +238,10 @@ const Dashboard = () => {
                                 <p className="font-poppins font-extrabold">
                                   {link.pronouns} {link.full_name}
                                 </p>
-                                <p className="text-sm">
+                                <p className="text-xs font-poppins">
                                   {t("job")}:{link.job_title}
                                 </p>
-                                <p className="chakra text-xs">
+                                <p className="font-poppins text-xs">
                                   {t("worksAt")} : {link.company_name}
                                 </p>
                               </div>
@@ -249,7 +251,7 @@ const Dashboard = () => {
                             <div>
                               <Link
                                 to={`/card/${link.card_url}`}
-                                className="block chakra mb-2 pt-5 hover:text-gray-400"
+                                className="block text-sm mb-2 pt-5 hover:text-gray-400 font-poppins"
                               >
                                 {t("view") + " "}
                                 <span className="bi-arrow-up-right text-sky-600 ms-1"></span>
@@ -259,7 +261,7 @@ const Dashboard = () => {
                             {/* Copy */}
                             <p
                               onClick={() => handleCopy(link.card_url)}
-                              className={`lg:px-5 pt-5 lg:ms-5 cursor-pointer`}
+                              className={`lg:px-5 pt-5 lg:ms-5 cursor-pointer font-poppins text-sm`}
                             >
                               <span className="bi-clipboard me-2"></span>
                               {copiedUrls.includes(link.card_url)
@@ -273,7 +275,7 @@ const Dashboard = () => {
                                 setViewShare(true);
                                 setCardUrl(link.card_url);
                               }}
-                              className={`pt-2 lg:ms-5`}
+                              className={`pt-2 lg:ms-5 font-poppins text-sm`}
                             >
                               <span className="bi-share-fill me-2"></span>
                               {t("share")}
@@ -282,7 +284,7 @@ const Dashboard = () => {
                             {/* Edit */}
                             <Link
                               to={`/create?edit=${link.card_url}`}
-                              className="block chakra mb-2 pt-6 lg:px-5 hover:text-gray-400"
+                              className="block font-poppins text-sm mb-2 pt-6 lg:px-5 hover:text-gray-400"
                             >
                               <span className="bi-pen-fill text-green-600"></span>{" "}
                               {t("edit")}
@@ -294,7 +296,7 @@ const Dashboard = () => {
                                 setDeletedCardUrl(link.card_url);
                                 setDeleteCard(true);
                               }}
-                              className="text-white rounded-lg chakra mb-2 pt-5 hover:text-gray-400"
+                              className="text-white rounded-lg font-poppins text-sm mb-2 pt-5 hover:text-gray-400"
                             >
                               <span className="bi-trash-fill text-red-600"></span>{" "}
                               {t("delete")}
@@ -312,7 +314,9 @@ const Dashboard = () => {
                   <div className="flex justify-center mx-2 gap-x-10 btn-bg px-0 lg:mx-10 py-20 lg:mt-14 shadow-none">
                     <p className="text-center bi-plus-lg mb-8  bg-white w-10 h-10 rounded-full pt-2 text-black shadow-lg"></p>
 
-                    <p className="text-white mt-2">{t("dashBtn")}</p>
+                    <p className="text-white font-poppins mt-2">
+                      {t("dashBtn")}
+                    </p>
                   </div>
                 </Link>
               </div>
