@@ -77,5 +77,31 @@
   "chat": "Let's chat!",
   "contactDesc": "Question? Complaint? Complement? Idea for a new product? We want to hear from you even if it's just to say hi.",
   "contactError": "We couldn't accept messages right now!",
-  "contactSuccess": "Thank you for sending us a message Message send Successfully!"
+  "contactSuccess": "Thank you for sending us a message Message send Successfully!",
+
+  "legal": "Legal Notice",
+  "policy": "Privacy Policy",
+  "policyNote": "VibeCard is committed to protecting and respecting the privacy of its users. Our privacy practices comply with the European General Data Protection Regulation (GDPR). We only collect personal data necessary for the delivery of our services and retain this data only as long as is required by law or necessary for the purposes for which it is processed. Users have the right to access their stored data, request rectification, or demand deletion.",
+  "terms": "Terms of Use",
+  "termsNote": "The use of the VibeCard website and products is subject to certain terms and conditions. By using our services, you agree to these terms. Unauthorized use of our products for illegal purposes is prohibited. In the case of misuse, we reserve the right to suspend service and take legal action.",
+  "copyright": "Copyright and Intellectual Property",
+  "copyrightNote": "All content on our website and all products provided by VibeCard are protected by copyright and may not be reproduced, distributed, or otherwise used for commercial purposes without our express written consent. This includes text, graphics, logos, images, software, and other digital media.",
+  "declaimer": "Declaimer",
+  "declaimerNote": "VibeCard assumes no liability for any damage or loss that may arise directly or indirectly from the use of our products or services. While we strive to ensure that all information provided on our website is accurate, we do not guarantee its completeness or accuracy.",
+  "changes": "Changes to Legal Notices",
+  "changesNote": "We reserve the right to change our legal notices at any time. Changes will be posted on our website and become effective upon posting. Users are encouraged to regularly review the legal notices to stay informed about any changes.",
+  "contactInfo": "Contact Information",
+  "contactInfoNote": "For questions or concerns regarding our legal notices, users can contact us at any time using the contact details provided on our contact page.",
+
+  "aboutUs": "About Us",
+  "innovation": "Innovation from Start",
+  "innovationNote": "VibeCard was founded in 2023 in Emmendingen, Germany, with the vision to revolutionize how people exchange professional and personal information. As a newly established company, we are determined to take a leading role in the technology sector and redefine communication in the professional world.",
+  "firstStep": "First steps towards a Great future",
+  "firstStepNote": "Our journey began with the realization that traditional business cards are often inefficient and environmentally harmful. To address this issue, we developed an innovative NFC-based solution that allows for the quick, secure, and waste-free exchange of contacts. From the outset, our goal has been not only to offer an alternative but to significantly improve upon traditional methods.",
+  "ambitious": "Ambitious Goals",
+  "ambitiousNote": "Despite the challenges associated with the startup phase of a technology company, our ambitions are high. We aim to quickly expand our presence and continuously improve our products to meet the evolving needs of our customers. With a strong focus on customer satisfaction, security, and design quality, we strive to make VibeCard the first choice for digital business communication.",
+  "sustainability": "Sustainability and Innovation",
+  "sustainabilityNote": "Another cornerstone of our company philosophy is sustainability. Our NFC cards are made from recycled materials and are fully recyclable. This underscores our commitment to environmental responsibility and sets a strong example in an increasingly eco-conscious world.",
+  "shape": "Shaping the future",
+  "shapeNote": "VibeCard is at the beginning of a promising future. We are committed to driving continuous innovation and using cutting-edge technologies to enhance connectivity worldwide. Each step forward confirms our vision, and we are excited about the possibilities that lie ahead."
 }

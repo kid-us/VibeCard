@@ -78,5 +78,20 @@
   "chat": "Lass uns chatten!",
   "contactDesc": "Frage? Beschwerde? Ergänzung? Idee für ein neues Produkt? Wir möchten von Ihnen hören, auch wenn es nur darum geht, Hallo zu sagen.",
   "contactError": "Wir können momentan keine Nachrichten annehmen!",
-  "contactSuccess": "Vielen Dank, dass Sie uns eine Nachricht gesendet haben. Nachricht gesendet Erfolgreich!"
+  "contactSuccess": "Vielen Dank, dass Sie uns eine Nachricht gesendet haben. Nachricht gesendet Erfolgreich!",
+
+  "legal": "Rechtliche Hinweise",
+  "policy": "Datenschutzrichtlinie",
+  "policyNote": "VibeCard verpflichtet sich, die Privatsphäre seiner Benutzer zu schützen und zu respektieren. Unsere Datenschutzpraktiken entsprechen der europäischen Datenschutz-Grundverordnung (DSGVO). Wir erfassen nur personenbezogene Daten, die für die Bereitstellung unserer Dienste erforderlich sind, und bewahren diese Daten nur so lange auf, wie dies gesetzlich vorgeschrieben ist oder für die Zwecke, für die sie verarbeitet werden, erforderlich ist. Benutzer haben das Recht, auf ihre gespeicherten Daten zuzugreifen, deren Berichtigung oder Löschung zu verlangen.",
+  "terms": "Nutzungsbedingungen",
+  "termsNote": "Die Nutzung der VibeCard-Website und -Produkte unterliegt bestimmten Bedingungen. Durch die Nutzung unserer Dienste erklären Sie sich mit diesen Bedingungen einverstanden. Die unbefugte Nutzung unserer Produkte für illegale Zwecke ist verboten. Im Falle eines Missbrauchs behalten wir uns das Recht vor, den Dienst auszusetzen und rechtliche Schritte einzuleiten.",
+  "copyright": "Urheberrecht und geistiges Eigentum",
+
+  "copyrightNote": "Alle Inhalte auf unserer Website und alle von VibeCard bereitgestellten Produkte sind urheberrechtlich geschützt und dürfen ohne unsere ausdrückliche schriftliche Zustimmung nicht reproduziert, verbreitet oder anderweitig für kommerzielle Zwecke verwendet werden. Dies umfasst Texte, Grafiken, Logos, Bilder, Software und andere digitale Medien.",
+  "declaimer": "Haftungsausschluss",
+  "declaimerNote": "VibeCard übernimmt keine Haftung für Schäden oder Verluste, die direkt oder indirekt durch die Verwendung unserer Produkte oder Dienstleistungen entstehen können. Obwohl wir uns bemühen, sicherzustellen, dass alle auf unserer Website bereitgestellten Informationen korrekt sind, übernehmen wir keine Garantie für deren Vollständigkeit oder Richtigkeit.",
+  "changes": "Änderungen der rechtlichen Hinweise",
+  "changesNote": "Wir behalten uns das Recht vor, unsere rechtlichen Hinweise jederzeit zu ändern. Änderungen werden auf unserer Website veröffentlicht und treten mit der Veröffentlichung in Kraft. Benutzer werden aufgefordert, die rechtlichen Hinweise regelmäßig zu überprüfen, um über Änderungen informiert zu bleiben.",
+  "contactInfo": "Kontaktinformationen",
+  "contactInfoNote": "Bei Fragen oder Bedenken bezüglich unserer rechtlichen Hinweise können Benutzer uns jederzeit über die auf unserer Kontaktseite angegebenen Kontaktdaten kontaktieren."
 }
