@@ -18,26 +18,22 @@ const Home = () => {
   const [title] = useState("Vibecard - Digital Business Cards");
   useDocumentTitle(title);
 
-  const { t, i18n } = useTranslation();
-
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
+  const { t } = useTranslation();
 
   // Scroll to top
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // const [loading, setLoading] = useState(true);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 3000);
-  // }, []);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
   return (
     <>
-      {/* {loading && <Loading />} */}
+      {loading && <Loading />}
       <Cart home />
       <Chat></Chat>
       <div>
@@ -46,9 +42,6 @@ const Home = () => {
           <Hero />
         </div>
       </div>
-
-      <button onClick={() => changeLanguage("en")}>English</button>
-      <button onClick={() => changeLanguage("de")}>German</button>
 
       {/* Video */}
       <div className="relative lg:pb-1 pb-1">
@@ -121,7 +114,7 @@ const Home = () => {
           </div>
           <div className="flex justify-center w-full text-center">
             <p className="text-teal-500 font-poppins font-extrabold lg:text-4xl text-2xl text-center lg:mb-16 mb-10 lg:w-96 w-80">
-              All Digital Business Cards
+              {t("digital")}
             </p>
           </div>
           {/* <Products /> */}

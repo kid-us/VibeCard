@@ -2,8 +2,11 @@ import axios from "axios";
 import { baseUrl } from "../../services/request";
 import useUserData from "../../store/useUserData";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Logout = () => {
+  const { t } = useTranslation();
+
   const { logout } = useUserData();
 
   const navigate = useNavigate();
@@ -34,7 +37,7 @@ const Logout = () => {
       onClick={handleLogout}
       className="font-poppins text-red-500 rounded text-lg"
     >
-      <span className="bi-box-arrow-right font-poppins"></span> Logout
+      <span className="bi-box-arrow-right font-poppins"></span> {t("nav8")}
     </button>
   );
 };

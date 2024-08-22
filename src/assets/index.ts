@@ -50,6 +50,10 @@ import wall3 from "./flip/wall3.png";
 // Save svg
 import save from "./save.svg";
 
+// Flag
+import en from "./en.png";
+import de from "./de.png";
+
 export {
   userPic,
   google,
@@ -99,4 +103,7 @@ export {
   wall1,
   wall2,
   wall3,
+  // Flag
+  de,
+  en,
 };

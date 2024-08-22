@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Nav } from "../../services/navs";
 import Logout from "../Logout/Logout";
 import useAuthStore from "@/store/useUserData";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   nav: Nav[];
@@ -10,6 +11,8 @@ interface Props {
 }
 
 const Menu = ({ nav, menu, username }: Props) => {
+  const { t } = useTranslation();
+
   const { plan } = useAuthStore();
 
   return (
@@ -62,7 +65,7 @@ const Menu = ({ nav, menu, username }: Props) => {
                 to={n.path}
                 className="block text-lg text-white pb-2 font-poppins font-extrabold mb-3"
               >
-                {n.title}
+                {t(n.title)}
               </Link>
             )
         )}
@@ -73,21 +76,21 @@ const Menu = ({ nav, menu, username }: Props) => {
               to={"/dashboard"}
               className="block text-white text-lg pb-2 font-poppins font-extrabold mb-3"
             >
-              Dashboard
+              {t("nav4")}
             </Link>
 
             <Link
               to={"/setting"}
               className="block text-white text-lg pb-2 font-poppins font-extrabold mb-3"
             >
-              Setting
+              {t("nav6")}
             </Link>
             {plan !== "free" && (
               <Link
                 to={"/insights"}
                 className="block text-white text-lg pb-2 font-poppins font-extrabold mb-3"
               >
-                Insights
+                {t("nav7")}
               </Link>
             )}
           </>
@@ -96,14 +99,14 @@ const Menu = ({ nav, menu, username }: Props) => {
         <div className={`absolute ${username ? "bottom-1" : "top-60"}`}>
           <div className="w-80 main-bg rounded py-4 mb-14 border border-gray-700 px-10">
             <p className="font-extrabold text-white text-sm">
-              <span className="bi-telephone-fill me-5"></span> Contact Us
+              <span className="bi-telephone-fill me-5"></span> {t("contact-us")}
             </p>
             <p className="text-xs mt-2 text-gray-200 font-poppins">
-              Get in touch with our 24/7 customer service
+              {t("contact-us-note")}
             </p>
             <Link to={"/contact-us"}>
               <p className="bg-sky-900 text-center text-xs mt-5 rounded p-2 shadow shadow-gray-50 text-white">
-                Contact Us
+                {t("contact-us")}
               </p>
             </Link>
           </div>
@@ -116,10 +119,10 @@ const Menu = ({ nav, menu, username }: Props) => {
                 to={"/login"}
                 className="btn-bg shadow-none py-2 rounded text-white"
               >
-                Login
+                {t("login")}
               </Link>{" "}
               <Link to={"/register"} className="py-2 rounded-full text-white">
-                Create Account
+                {t("register")}
               </Link>
             </div>
           ) : (

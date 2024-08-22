@@ -1,4 +1,16 @@
 {
+  "nav1": "Buy Products",
+  "nav2": "Pricing",
+  "nav3": "Ambassador",
+  "nav4": "Dashboard",
+  "nav5": "Create Card",
+  "nav6": "Setting",
+  "nav7": "Insights",
+  "nav8": "Logout",
+  "login": "Login",
+  "register": "Create Account",
+  "contact-us": "Contact Us",
+  "contact-us-note": " Get in touch with our 24/7 customer service",
   "intro1": "From Meet-and-Greets to",
   "intro2": "Meaningful Relationships",
   "intro3": "Your",
@@ -22,5 +34,6 @@
   "feature5": "Ultimate Security:",
   "feature5Desc": "Safeguard your information with advanced encryption—security that moves at the pace of business.",
   "feature6": "Adaptable for All:",
-  "feature6Desc": "From solopreneurs to established enterprises, adapt VibeCard to fit any scale of business needs."
+  "feature6Desc": "From solopreneurs to established enterprises, adapt VibeCard to fit any scale of business needs.",
+  "digital": " All Digital Business Cards"
 }

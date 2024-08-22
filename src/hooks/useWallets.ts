@@ -27,8 +27,6 @@ const useWallets = () => {
         },
       })
       .then((response) => {
-        console.log(response.data);
-
         setAllWallets(response.data.wallets);
       })
       .catch((error) => {

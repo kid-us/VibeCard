@@ -7,8 +7,16 @@ import axios from "axios";
 import { baseUrl } from "../../services/request";
 import Loading from "../Loading/Loading";
 import Logout from "../Logout/Logout";
+import { useTranslation } from "react-i18next";
+import { en, de } from "@/assets";
 
 const Navbar = () => {
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
+
   // States
   const [isMenu, setIsMenu] = useState(false);
   const { login, user, plan } = useAuthStore();
@@ -71,70 +79,103 @@ const Navbar = () => {
                     to={n.path}
                     className={`text-sm text-gray-300 font- `}
                   >
-                    {n.title}
+                    {t(n.title)}
                   </Link>
                 ))}
               </div>
             </div>
           </div>
 
-          <div className="lg:block hidden me-24 text-white pt-3">
-            {user !== null ? (
-              <div className="relative">
-                <p
-                  onClick={() => setIsMenu(!isMenu)}
-                  className="text-center font-extrabold cursor-pointer uppercase text-teal-300"
-                >
-                  <span className="bi-person-fill text-xl me-2"></span>
-                  {user}
-                </p>
+          <div className="lg:block hidden text-white pt-3">
+            <div className="flex">
+              {user !== null ? (
+                <div className="relative flex gap-x-10">
+                  <div className="">
+                    <img
+                      onClick={() =>
+                        changeLanguage(i18n.language === "en" ? "de" : "en")
+                      }
+                      src={i18n.language === "de" ? en : de}
+                      alt="flag"
+                      className="w-7 cursor-pointer"
+                    />
+                  </div>
+                  <p
+                    onClick={() => setIsMenu(!isMenu)}
+                    className="text-center font-extrabold cursor-pointer text-teal-500"
+                  >
+                    <span className="bi-person-fill text-xl me-2"></span>
+                    {user}
+                  </p>
 
-                {/* Menu  */}
-                {isMenu && (
-                  <div className="secondary-bg lg:block shadow shadow-gray-600 hidden absolute z-50 w-44 px-4 py-5 rounded-lg mt-3">
-                    <Link
-                      to={"/dashboard"}
-                      className="block text-md mb-3 hover:text-gray-400 hover:text-sm"
-                    >
-                      Dashboard
-                    </Link>
-                    <Link
-                      to={"/create"}
-                      className="block text-md mb-3 hover:text-gray-400 hover:text-sm"
-                    >
-                      Create Card
-                    </Link>
-                    <Link
-                      to={"/setting"}
-                      className="block text-md mb-3 hover:text-gray-400 hover:text-sm"
-                    >
-                      Setting
-                    </Link>
-                    {plan !== "free" && (
+                  {isMenu && (
+                    <div className="secondary-bg lg:block shadow shadow-gray-600 hidden absolute z-50 w-44 px-4 py-5 rounded-lg mt-8">
                       <Link
-                        to={"/insights"}
+                        to={"/dashboard"}
                         className="block text-md mb-3 hover:text-gray-400 hover:text-sm"
                       >
-                        Insights
+                        {t("nav4")}
                       </Link>
-                    )}
-                    <hr className="my-2" />
-                    <Logout />
-                  </div>
-                )}
-              </div>
-            ) : (
-              <Link to={"/login"}>
-                <div className="btn-bg shadow-none p-2 text-sm lowercase first-letter:uppercase rounded px-10">
-                  Sign In
+                      <Link
+                        to={"/create"}
+                        className="block text-md mb-3 hover:text-gray-400 hover:text-sm"
+                      >
+                        {t("nav5")}
+                      </Link>
+                      <Link
+                        to={"/setting"}
+                        className="block text-md mb-3 hover:text-gray-400 hover:text-sm"
+                      >
+                        {t("nav6")}
+                      </Link>
+                      {plan !== "free" && (
+                        <Link
+                          to={"/insights"}
+                          className="block text-md mb-3 hover:text-gray-400 hover:text-sm"
+                        >
+                          {t("nav7")}
+                        </Link>
+                      )}
+                      <hr className="my-2" />
+                      <Logout />
+                    </div>
+                  )}
                 </div>
-              </Link>
-            )}
+              ) : (
+                <>
+                  <div className="me-5">
+                    <img
+                      onClick={() =>
+                        changeLanguage(i18n.language === "en" ? "de" : "en")
+                      }
+                      src={i18n.language === "de" ? en : de}
+                      alt="flag"
+                      className="w-7 cursor-pointer"
+                    />
+                  </div>
+                  <Link to={"/login"}>
+                    <div className="btn-bg shadow-none p-2 text-sm lowercase first-letter:uppercase rounded px-10">
+                      Sign In
+                    </div>
+                  </Link>
+                </>
+              )}
+            </div>
           </div>
 
           {/* Small device user Icon */}
           {user !== null && (
-            <div className="lg:hidden mt-1 pt-2">
+            <div className="lg:hidden flex mt-1 pt-2">
+              <div className="me-1">
+                <img
+                  onClick={() =>
+                    changeLanguage(i18n.language === "en" ? "de" : "en")
+                  }
+                  src={i18n.language === "de" ? en : de}
+                  alt="flag"
+                  className="w-8 cursor-pointer"
+                />
+              </div>
               <Link to={"/dashboard"}>
                 <span className="px-3 flex">
                   <p className={`bi-person-fill text-3xl text-teal-500`}></p>

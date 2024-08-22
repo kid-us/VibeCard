@@ -1,4 +1,16 @@
 {
+  "nav1": "Produkte kaufen",
+  "nav2": "Preise",
+  "nav3": "Botschafter",
+  "nav4": "Armaturenbrett",
+  "nav5": "Karte erstellen",
+  "nav6": "Einstellung",
+  "nav7": "Einblicke",
+  "nav8": "Ausloggen",
+  "login": "Login",
+  "register": "Benutzerkonto erstellen",
+  "contact-us": "Kontaktieren Sie uns",
+  "contact-us-note": "Kontaktieren Sie unseren 24/7-Kundenservice",
   "intro1": "Von Meet-and-Greets bis",
   "intro2": "Sinnvolle Beziehungen",
   "intro3": "Dein",
@@ -22,5 +34,6 @@
   "feature5": "Ultimative Sicherheit:",
   "feature5Desc": "Schützen Sie Ihre Informationen mit erweiterter Verschlüsselung – Sicherheit, die mit der Geschäftsdynamik Schritt hält.",
   "feature6": "Anpassbar für alle:",
-  "feature6Desc": "Passen Sie VibeCard an die Geschäftsanforderungen jeder Größenordnung an – vom Solounternehmer bis zum etablierten Unternehmen."
+  "feature6Desc": "Passen Sie VibeCard an die Geschäftsanforderungen jeder Größenordnung an – vom Solounternehmer bis zum etablierten Unternehmen.",
+  "digital": "Alle digitalen Visitenkarten"
 }

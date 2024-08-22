@@ -11,10 +11,10 @@ export const nav: Nav[] = [
   //   title: "Resources",
   //   path: "/",
   // },
-  { id: 3, title: "Buy Products", path: "/all-products" },
+  { id: 3, title: "nav1", path: "/all-products" },
   {
     id: 4,
-    title: "Pricing",
+    title: "nav2",
     path: "/pricing",
   },
   // {
@@ -24,7 +24,7 @@ export const nav: Nav[] = [
   // },
   {
     id: 6,
-    title: "Ambassador",
+    title: "nav3",
     path: "/ambassador",
   },
 ];
