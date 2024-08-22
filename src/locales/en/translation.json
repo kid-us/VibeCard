@@ -45,5 +45,20 @@
   "feature5Desc": "Safeguard your information with advanced encryption—security that moves at the pace of business.",
   "feature6": "Adaptable for All:",
   "feature6Desc": "From solopreneurs to established enterprises, adapt VibeCard to fit any scale of business needs.",
-  "digital": " All Digital Business Cards"
+  "digital": " All Digital Business Cards",
+
+  "faqQ1": "Why choose vibecard?",
+  "faqA1": "Instant Impact: Make a memorable impact at every meeting with a card that carries not just your contact details but your professional brand.• Enhanced Security: Protect your information with state-of-the-art encryption and security features that come standard with our RFID wallets.• Versatile Solutions: From individual entrepreneurs to large enterprises, our products meet the needs of every professional environment.",
+
+  "faqQ2": "What is an NFC digital business card?",
+  "faqA2": "An NFC digital business card is a physical card embedded with a Near Field Communication chip that allows the transfer of information to a compatible device, such as a smartphone, through close proximity (usually a few centimeters). It typically stores contact details and other professional information that can be updated anytime without needing to reprint the physical card.",
+
+  "faqQ3": "How do NFC digital business cards work?",
+  "faqA3": "NFC digital business cards work by utilizing NFC technology, which involves communication between two electronic devices over a short distance. When an NFC-enabled device, like a smartphone, comes into close contact with the NFC card, it triggers a transfer of data. This can instantly import contact information or redirect to a digital portfolio, social media, or websites.",
+
+  "faqQ4": "Are NFC business cards compatible with all smartphones?",
+  "faqA4": "Most modern smartphones are equipped with NFC technology and can read NFC tags without any additional apps. However, it’s important to check if the smartphone settings are enabled for NFC. Older models or certain budget smartphones might not support NFC.",
+
+  "faqQ5": "What does NFC offers?",
+  "faqA5": "NFC digital business cards offer several advantages over traditional cards: Eco-Friendly: Reduces the need for paper, contributing to less waste. Cost-Effective: Although there might be an initial investment, digital cards can be updated without reprinting, saving on continual costs. Convenience: Provides a quick and easy way to share a comprehensive set of contact information, including links to websites, social profiles, and portfolios.Hygienic: Minimizes physical contact, an important consideration in post-pandemic scenarios."
 }

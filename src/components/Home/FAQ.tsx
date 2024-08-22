@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { faq, ambassadorFaq } from "../../services/faq";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   textSize?: boolean;
@@ -7,6 +8,8 @@ interface Props {
 }
 
 const Faq = ({ textSize, ambassador }: Props) => {
+  const { t } = useTranslation();
+
   const [id, setId] = useState<number>(0);
 
   const handleFaq = (faqId: number) => {
@@ -28,7 +31,7 @@ const Faq = ({ textSize, ambassador }: Props) => {
                       textSize ? "text-sm" : "lg:text-xl text-lg "
                     } text-white font-poppins`}
                   >
-                    {faqs.question}
+                    {t(faqs.question)}
                   </p>
                 </div>
                 <div>
@@ -52,7 +55,7 @@ const Faq = ({ textSize, ambassador }: Props) => {
                       textSize ? "text-sm" : "text-lg"
                     }`}
                   >
-                    {faqs.answer}
+                    {t(faqs.answer)}
                   </p>
                 </div>
               )}

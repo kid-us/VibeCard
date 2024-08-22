@@ -46,5 +46,20 @@
   "feature5Desc": "Schützen Sie Ihre Informationen mit erweiterter Verschlüsselung – Sicherheit, die mit der Geschäftsdynamik Schritt hält.",
   "feature6": "Anpassbar für alle:",
   "feature6Desc": "Passen Sie VibeCard an die Geschäftsanforderungen jeder Größenordnung an – vom Solounternehmer bis zum etablierten Unternehmen.",
-  "digital": "Alle digitalen Visitenkarten"
+  "digital": "Alle digitalen Visitenkarten",
+
+  "faqQ1": "Warum VibeCard wählen?",
+  "faqA1": "Sofortige Wirkung: Hinterlassen Sie bei jedem Meeting einen bleibenden Eindruck mit einer Karte, auf der nicht nur Ihre Kontaktdaten, sondern auch Ihre professionelle Marke steht. • Verbesserte Sicherheit: Schützen Sie Ihre Informationen mit hochmodernen Verschlüsselungs- und Sicherheitsfunktionen, die standardmäßig bei unseren RFID-Geldbörsen vorhanden sind. • Vielseitige Lösungen: Von Einzelunternehmern bis hin zu Großunternehmen erfüllen unsere Produkte die Anforderungen jedes professionellen Umfelds.",
+
+  "faqQ2": "Was ist eine digitale NFC-Visitenkarte??",
+  "faqA2": "Eine digitale NFC-Visitenkarte ist eine physische Karte mit einem Near Field Communication-Chip, der die Übertragung von Informationen auf ein kompatibles Gerät wie ein Smartphone über eine Distanz von wenigen Zentimetern ermöglicht. Normalerweise sind auf der Karte Kontaktdaten und andere berufliche Informationen gespeichert, die jederzeit aktualisiert werden können, ohne dass die physische Karte neu ausgedruckt werden muss.",
+
+  "faqQ3": "Wie funktionieren digitale NFC-Visitenkarten?",
+  "faqA3": "Digitale NFC-Visitenkarten funktionieren mit NFC-Technologie, die eine Kommunikation zwischen zwei elektronischen Geräten über eine kurze Distanz ermöglicht. Wenn ein NFC-fähiges Gerät, wie etwa ein Smartphone, in engen Kontakt mit der NFC-Karte kommt, löst dies eine Datenübertragung aus. Dadurch können Kontaktinformationen sofort importiert oder auf ein digitales Portfolio, soziale Medien oder Websites umgeleitet werden.",
+
+  "faqQ4": "Sind NFC-Visitenkarten mit allen Smartphones kompatibel?",
+  "faqA4": "Die meisten modernen Smartphones sind mit NFC-Technologie ausgestattet und können NFC-Tags ohne zusätzliche Apps lesen. Es ist jedoch wichtig zu prüfen, ob die Smartphone-Einstellungen für NFC aktiviert sind. Ältere Modelle oder bestimmte preisgünstige Smartphones unterstützen NFC möglicherweise nicht.",
+
+  "faqQ5": "Was bietet NFC?",
+  "faqA5": "Digitale NFC-Visitenkarten bieten gegenüber herkömmlichen Karten mehrere Vorteile: Umweltfreundlich: Reduziert den Papierbedarf und trägt zu weniger Abfall bei. Kostengünstig: Obwohl möglicherweise eine Anfangsinvestition anfällt, können digitale Karten ohne Neudruck aktualisiert werden, wodurch laufende Kosten gespart werden. Komfort: Bietet eine schnelle und einfache Möglichkeit, einen umfassenden Satz von Kontaktinformationen zu teilen, einschließlich Links zu Websites, sozialen Profilen und Portfolios. Hygienisch: Minimiert den physischen Kontakt, ein wichtiger Aspekt in Szenarien nach einer Pandemie."
 }
