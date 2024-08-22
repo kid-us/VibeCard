@@ -12,25 +12,32 @@ import Chat from "../ChatBot/Chat";
 import Testimonials from "../Home/Testimonials";
 import Product from "../Home/Product";
 import Cart from "../Cart/Cart";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
   const [title] = useState("Vibecard - Digital Business Cards");
   useDocumentTitle(title);
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
 
   // Scroll to top
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-  }, []);
+  // const [loading, setLoading] = useState(true);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 3000);
+  // }, []);
   return (
     <>
-      {loading && <Loading />}
+      {/* {loading && <Loading />} */}
       <Cart home />
       <Chat></Chat>
       <div>
@@ -40,6 +47,9 @@ const Home = () => {
         </div>
       </div>
 
+      <button onClick={() => changeLanguage("en")}>English</button>
+      <button onClick={() => changeLanguage("de")}>German</button>
+
       {/* Video */}
       <div className="relative lg:pb-1 pb-1">
         <div className="relative right-20 -top-52">
@@ -47,7 +57,7 @@ const Home = () => {
         </div>
         <div className="absolute lg:left-[45%] left-36 top-6 secondary-bg border-gradient shadow shadow-zinc-900 rounded-full px-4 py-1">
           <p className="text-center text-xs font-extrabold text-white ">
-            As simple as this
+            {t("video")}
           </p>
         </div>
         <div className="container mx-auto pt-10 lg:px-0 px-3">

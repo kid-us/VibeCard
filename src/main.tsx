@@ -4,6 +4,7 @@ import App from "./App.tsx";
 import "./index.css";
 import "animate.css";
 import { BrowserRouter } from "react-router-dom";
+import "./i18n.ts";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

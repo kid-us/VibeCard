@@ -1,20 +1,23 @@
 import { Link } from "react-router-dom";
 import Magnetic from "../GsapMagnetic/Magnetic";
 import { ceo } from "../../assets";
+import { useTranslation } from "react-i18next";
 
 const Hero = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="lg:grid grid-cols-2 lg:px-0 px-2 gap-10">
       <div className="">
         <h1 className="lg:text-5xl text-3xl font-extrabold text-white">
-          From Meet-and-Greets to{" "}
+          {t("intro1") + " "}
           <span className="text-teal-400 rounded-full px-1">
             {" "}
-            Meaningful Relationships
+            {t("intro2")}
           </span>{" "}
-          Your
+          {t("intro3")}
           <span className="text-indigo-400 rounded-full px-1">
-            Personalized Networking Companion.
+            {t("intro4")}
           </span>
         </h1>
 
