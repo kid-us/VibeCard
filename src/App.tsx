@@ -19,7 +19,7 @@ import Insights from "./components/Pages/Insights";
 import AboutUs from "./components/Pages/AboutUs";
 import PrivacyPolicy from "./components/Pages/PrivacyPolicy";
 import ContactUs from "./components/Pages/ContactUs";
-import ImageEditor from "./components/Editor/ImageEditor";
+import ImageEditor from "./components/Pages/ImageEditor";
 import Ambassador from "./components/Pages/Ambassador";
 import Affiliate from "./components/Pages/Affiliate";
 import AffiliateSetting from "./components/Ambassador/AffilateSetting";

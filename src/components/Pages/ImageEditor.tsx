@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import LargeEditor from "./LargeEditor";
-import SmallEditor from "./SmallEditor";
+import LargeEditor from "../Editor/LargeEditor";
+import SmallEditor from "../Editor/SmallEditor";
 import Loading from "../Loading/Loading";
 import useDocumentTitle from "@/hooks/useDocumentTitle";
 
