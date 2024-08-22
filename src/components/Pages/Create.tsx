@@ -25,11 +25,14 @@ import { useCardColorStore } from "@/store/useCardColorStore";
 import EditForm from "../Create/EditForm";
 import CreateForm from "../Create/CreateForm";
 import Loading from "../Loading/Loading";
+import { useTranslation } from "react-i18next";
 
 const Create = () => {
   const [title] = useState("Create Card");
   useDocumentTitle(title);
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   // Scroll to top
   useEffect(() => {
@@ -308,15 +311,15 @@ const Create = () => {
                   {/* Links */}
                   <div className="mt-4 flex me-4">
                     <Link to="/dashboard" className="me-16 text-md">
-                      Dashboard
+                      {t("nav4")}
                     </Link>
                     {plan !== "free" && (
                       <Link to="/insights" className="me-16 text-md">
-                        Insights
+                        {t("nav7")}
                       </Link>
                     )}
                     <Link to="/setting" className="me-5 text-md">
-                      Setting
+                      {t("nav6")}
                     </Link>
                     <div className="flex ms-10">
                       <img

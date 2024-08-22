@@ -46,7 +46,7 @@ const Register = () => {
 
               {/* Footer */}
               <p className="text-sm mt-5 text-end text-gray-500">
-                Already have an account?
+                {t("already")}
                 <Link to="/login" className="text-sm text-blue-600 ms-1">
                   Login
                 </Link>

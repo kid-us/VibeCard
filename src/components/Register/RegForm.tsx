@@ -6,6 +6,7 @@ import Button from "../Button/Button";
 import axios from "axios";
 import { baseUrl } from "../../services/request";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   buttonClicked: (value: boolean) => void;
@@ -26,6 +27,8 @@ type FormData = z.infer<typeof schema>;
 
 const Form = ({ buttonClicked, username }: Props) => {
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const [registerError, setRegisterError] = useState("");
 
@@ -89,7 +92,7 @@ const Form = ({ buttonClicked, username }: Props) => {
       {/* Username */}
       <div className="mb-5">
         <label className="text-sm text-gray-500 block" htmlFor="username">
-          Username
+          {t("username")}
         </label>
         <input
           {...register("username")}
@@ -108,7 +111,7 @@ const Form = ({ buttonClicked, username }: Props) => {
       {/* Email */}
       <div className="mb-5">
         <label className="text-sm text-gray-500 block" htmlFor="email">
-          Email
+          {t("email")}
         </label>
         <input
           {...register("email")}
@@ -126,7 +129,7 @@ const Form = ({ buttonClicked, username }: Props) => {
       {/* Password */}
       <div className="mb-5 relative">
         <label className="text-sm text-gray-500 block" htmlFor="password">
-          Password
+          {t("password")}
         </label>
         <input
           {...register("password")}
@@ -150,7 +153,7 @@ const Form = ({ buttonClicked, username }: Props) => {
       {/* Confirm Password */}
       <div className="mb-5">
         <label className="text-sm text-gray-500 block" htmlFor="password">
-          Confirm Password
+          {t("conPass")}
         </label>
         <input
           type="password"

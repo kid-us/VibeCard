@@ -97,7 +97,7 @@ const Form = ({ buttonClicked }: Props) => {
       {/* Email */}
       <div className="mb-5">
         <label className="text-sm text-gray-500 block" htmlFor="email">
-          Email
+          {t("email")}
         </label>
         <input
           {...register("email")}
@@ -113,7 +113,7 @@ const Form = ({ buttonClicked }: Props) => {
       {/* Password */}
       <div className="mb-5 relative">
         <label className="text-sm text-gray-500 block" htmlFor="password">
-          Password
+          {t("password")}
         </label>
 
         <input

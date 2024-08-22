@@ -1,4 +1,10 @@
 {
+  "email": "E-Mail",
+  "password": "Passwort",
+  "conPass": "Passwort bestätigen",
+  "username": "Benutzername",
+  "already": "Hast du schon ein Konto?",
+
   "welcome": "Willkommen zurück",
   "login-note": "Melden Sie sich bei Ihrem Vibecard-Konto an.",
   "forgot": "Passwort vergessen?",
@@ -118,5 +124,9 @@
   "worksAt": "Arbeitet bei",
   "copy": "Kopieren",
   "share": "Teilen",
-  "copied": "Kopiert"
+  "copied": "Kopiert",
+
+  "editSuccess": "Sie haben Ihre Karte erfolgreich aktualisiert.",
+  "editPopUp": "Nur geänderte Felder werden aktualisiert. Wenn ein Feldwert nicht angegeben wird, bleiben die vorherigen Daten für dieses Feld unverändert. Sie können wählen, ob Sie ein bestimmtes Feld aktualisieren oder Änderungen an der gesamten Karte vornehmen möchten.",
+  "notice": "Beachten"
 }

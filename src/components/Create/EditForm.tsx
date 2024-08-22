@@ -10,6 +10,7 @@ import { useCoverColorStore } from "../../store/useCoverColorStore";
 import axios from "axios";
 import { baseUrl } from "../../services/request";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   layout: string;
@@ -25,6 +26,8 @@ const EditForm = ({ layout }: Props) => {
   const pageLocation = useLocation();
   const searchParams = new URLSearchParams(pageLocation.search);
   const editedUrl = searchParams.get("edit");
+
+  const { t } = useTranslation();
 
   const [popUp, setPopUp] = useState(true);
   const [cardEdited, setCardEdited] = useState(false);
@@ -311,12 +314,9 @@ const EditForm = ({ layout }: Props) => {
                 className="absolute right-5 top-3 bi-x-lg cursor-pointer"
               ></p>
               <div className="p-8">
-                <h1 className="text-gray-400 text-xl chakra">Notice:</h1>
+                <h1 className="text-gray-400 text-xl chakra">{t("notice")}:</h1>
                 <p className="my-3 text-sm text-gray-300 font-poppins">
-                  Only changed fields will be updated. If a field value is not
-                  provided, the previous data for that field will remain
-                  unchanged. You can choose to update a specific field or make
-                  changes to the entire card
+                  {t("editPopUp")}
                 </p>
               </div>
             </div>
@@ -331,15 +331,15 @@ const EditForm = ({ layout }: Props) => {
           <div className="flex justify-center align-center">
             <div className="absolute lg:top-40 top-28 z-50 lg:w-[60%] secondary-bg rounded-xl border-gradient-2">
               <div className="p-8">
-                <p className="text-lg chakra text-gray-300 my-5">
-                  You have Edited (Updated) your card Successfully.
+                <p className="text-lg font-poppins text-gray-300 my-5">
+                  {t("editSuccess")}
                 </p>
 
                 <Link
                   to={"/dashboard"}
                   className="btn-bg shadow-none py-3 text-sm"
                 >
-                  Goto Dashboard
+                  Goto {t("nav4")}
                 </Link>
               </div>
             </div>
@@ -347,7 +347,7 @@ const EditForm = ({ layout }: Props) => {
         </>
       )}
 
-      <p className="mb-4">Create your Business card</p>
+      <p className="mb-4">{t("dashBtn")}</p>
 
       <form
         onSubmit={handleFormSubmit}

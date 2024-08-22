@@ -14,6 +14,7 @@ import axios from "axios";
 import { baseUrl } from "../../services/request";
 import Modal from "../Modal/Modal";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   layout: string;
@@ -41,6 +42,8 @@ const CreateForm = ({ layout }: Props) => {
   const pageLocation = useLocation();
   const searchParams = new URLSearchParams(pageLocation.search);
   const editedUrl = searchParams.get("edit");
+
+  const { t } = useTranslation();
 
   // Zustand
   const { contact, updateContacts, socialMedia } = useContentStore();
@@ -264,7 +267,7 @@ const CreateForm = ({ layout }: Props) => {
       {/* Modal */}
       {modal && <Modal link={cardLink} />}
 
-      <p className="mb-4">Create your Business card</p>
+      <p className="mb-4">{t("dashBtn")}</p>
 
       <form className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-10 shadow lg:shadow-zinc-400 rounded-xl secondary-bg lg:overflow-auto lg:h-auto h-[69dvh] overflow-y-scroll border border-gray-700 mb-10">
         {/* Images */}

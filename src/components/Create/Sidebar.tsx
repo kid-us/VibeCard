@@ -10,8 +10,10 @@ import useAuthStore from "../../store/useUserData";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { baseUrl } from "../../services/request";
+import { useTranslation } from "react-i18next";
 
 const Sidebar = () => {
+  const { t } = useTranslation();
   const [selected, setSelected] = useState("Colors");
   const { preview } = useCardData();
   const { user, logout } = useAuthStore();
@@ -52,7 +54,7 @@ const Sidebar = () => {
           >
             <p className={`${icons.icon} text-xl`}></p>
             <p className="text-[10px] font-poppins text-gray-300 py-1">
-              {icons.title}
+              {t(icons.title)}
             </p>
           </div>
         ))}
