@@ -105,5 +105,18 @@
   "sustainability": "Nachhaltigkeit und Innovation",
   "sustainabilityNote": "Ein weiterer Eckpfeiler unserer Unternehmensphilosophie ist Nachhaltigkeit. Unsere NFC-Karten werden aus recycelten Materialien hergestellt und sind vollständig recycelbar. Dies unterstreicht unser Engagement für Umweltverantwortung und ist ein starkes Beispiel in einer zunehmend umweltbewussten Welt.",
   "shape": "Die Zukunft gestalten",
-  "shapeNote": "VibeCard steht am Anfang einer vielversprechenden Zukunft. Wir sind bestrebt, kontinuierliche Innovationen voranzutreiben und modernste Technologien einzusetzen, um die Konnektivität weltweit zu verbessern. Jeder Schritt nach vorne bestätigt unsere Vision und wir sind begeistert von den Möglichkeiten, die vor uns liegen."
+  "shapeNote": "VibeCard steht am Anfang einer vielversprechenden Zukunft. Wir sind bestrebt, kontinuierliche Innovationen voranzutreiben und modernste Technologien einzusetzen, um die Konnektivität weltweit zu verbessern. Jeder Schritt nach vorne bestätigt unsere Vision und wir sind begeistert von den Möglichkeiten, die vor uns liegen.",
+
+  "dashboardDesc": "Bringen Sie Ihr Geschäft und Ihre Karriere mit unseren Dienstleistungen auf die nächste Stufe.",
+  "dashBtn": "Visitenkarte erstellen",
+  "dashBtn2": "Abonnement verwalten",
+  "previousCard": "Vorherige Karten anzeigen",
+  "view": "Anzeigen",
+  "job": "Stelle",
+  "edit": "Bearbeiten",
+  "delete": "Löschen",
+  "worksAt": "Arbeitet bei",
+  "copy": "Kopieren",
+  "share": "Teilen",
+  "copied": "Kopiert"
 }

@@ -8,6 +8,7 @@ import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Loader from "../Loader/Loader";
 import ShareComponent from "../Share/ShareComponent";
 import useSubscription from "@/hooks/useSubscription";
+import { useTranslation } from "react-i18next";
 
 interface Card {
   card_url: string;
@@ -21,6 +22,8 @@ interface Card {
 const Dashboard = () => {
   const [title] = useState("Dashboard");
   useDocumentTitle(title);
+
+  const { t } = useTranslation();
 
   // Scroll to top
   useEffect(() => {
@@ -180,24 +183,21 @@ const Dashboard = () => {
               <div className="lg:col-span-6 lg:px-1 md:p-9 py-5 px-2 ">
                 <div className="content-center text-white">
                   <h1 className="text-4xl">
-                    Welcome Back <span className="text-teal-400">{user}</span>
+                    {t("welcome")} <span className="text-teal-400">{user}</span>
                   </h1>
                   <p className="lg:mb-0 text-3xl mt-10 mb-5">
-                    Elevate your business and career to the next level with our
-                    services.
+                    {t("dashboardDesc")}
                   </p>
                   <button
                     onClick={() => handleManageSubscription()}
                     className="font-poppins btn-bg shadow rounded lg:w-72 mt-3 lg:mb-0 mb-5"
                   >
-                    Manage Subscription
+                    {t("dashBtn2")}
                   </button>
                   {/* Previous Card */}
                   {links.length > 0 && (
                     <div className="mt-10 shadow rounded-x">
-                      <p className="text-2xl mb-4 py-5">
-                        See your Previous Cards
-                      </p>
+                      <p className="text-2xl mb-4 py-5">{t("previousCard")}</p>
                       {links.map((link) => (
                         <div
                           key={link.card_url}
@@ -236,9 +236,11 @@ const Dashboard = () => {
                                 <p className="font-poppins font-extrabold">
                                   {link.pronouns} {link.full_name}
                                 </p>
-                                <p className="text-sm">Job:{link.job_title}</p>
+                                <p className="text-sm">
+                                  {t("job")}:{link.job_title}
+                                </p>
                                 <p className="chakra text-xs">
-                                  Works at: {link.company_name}
+                                  {t("worksAt")} : {link.company_name}
                                 </p>
                               </div>
                             </div>
@@ -249,7 +251,7 @@ const Dashboard = () => {
                                 to={`/card/${link.card_url}`}
                                 className="block chakra mb-2 pt-5 hover:text-gray-400"
                               >
-                                View{" "}
+                                {t("view") + " "}
                                 <span className="bi-arrow-up-right text-sky-600 ms-1"></span>
                               </Link>
                             </div>
@@ -261,8 +263,8 @@ const Dashboard = () => {
                             >
                               <span className="bi-clipboard me-2"></span>
                               {copiedUrls.includes(link.card_url)
-                                ? "Copied"
-                                : "Copy"}
+                                ? t("copied")
+                                : t("copy")}
                             </p>
 
                             {/* Share */}
@@ -274,7 +276,7 @@ const Dashboard = () => {
                               className={`pt-2 lg:ms-5`}
                             >
                               <span className="bi-share-fill me-2"></span>
-                              Share
+                              {t("share")}
                             </button>
 
                             {/* Edit */}
@@ -283,7 +285,7 @@ const Dashboard = () => {
                               className="block chakra mb-2 pt-6 lg:px-5 hover:text-gray-400"
                             >
                               <span className="bi-pen-fill text-green-600"></span>{" "}
-                              Edit
+                              {t("edit")}
                             </Link>
 
                             {/* Delete */}
@@ -295,7 +297,7 @@ const Dashboard = () => {
                               className="text-white rounded-lg chakra mb-2 pt-5 hover:text-gray-400"
                             >
                               <span className="bi-trash-fill text-red-600"></span>{" "}
-                              Delete
+                              {t("delete")}
                             </button>
                           </div>
                         </div>
@@ -310,7 +312,7 @@ const Dashboard = () => {
                   <div className="flex justify-center mx-2 gap-x-10 btn-bg px-0 lg:mx-10 py-20 lg:mt-14 shadow-none">
                     <p className="text-center bi-plus-lg mb-8  bg-white w-10 h-10 rounded-full pt-2 text-black shadow-lg"></p>
 
-                    <p className="text-white mt-2">Create Business Card</p>
+                    <p className="text-white mt-2">{t("dashBtn")}</p>
                   </div>
                 </Link>
               </div>
