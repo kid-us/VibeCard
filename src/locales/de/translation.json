@@ -75,5 +75,8 @@
   "shop4": "Geldbörsen aus Leder",
   "shop5": "Synthetische Geldbörsen",
 
-  "contactDesc": "Frage? Beschwerde? Ergänzung? Idee für ein neues Produkt? Wir möchten von Ihnen hören, auch wenn es nur darum geht, Hallo zu sagen."
+  "chat": "Lass uns chatten!",
+  "contactDesc": "Frage? Beschwerde? Ergänzung? Idee für ein neues Produkt? Wir möchten von Ihnen hören, auch wenn es nur darum geht, Hallo zu sagen.",
+  "contactError": "Wir können momentan keine Nachrichten annehmen!",
+  "contactSuccess": "Vielen Dank, dass Sie uns eine Nachricht gesendet haben. Nachricht gesendet Erfolgreich!"
 }

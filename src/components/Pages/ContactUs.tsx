@@ -8,6 +8,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import Button from "../Button/Button";
 import axios from "axios";
 import { baseUrl } from "@/services/request";
+import { useTranslation } from "react-i18next";
 
 const schema = z.object({
   username: z
@@ -24,6 +25,8 @@ type FormData = z.infer<typeof schema>;
 const ContactUs = () => {
   const [title] = useState("Contact Us");
   useDocumentTitle(title);
+
+  const { t } = useTranslation();
 
   // Scroll to top
   useEffect(() => {
@@ -84,8 +87,7 @@ const ContactUs = () => {
                 <div className="text-center mt-4">
                   <p className="bi-check-circle-fill text-green-500 text-4xl"></p>
                   <p className="text-white mt-5 text-xl chakra">
-                    Thank you for sending us a message Message send
-                    Successfully!
+                    {t("contactSuccess")}
                   </p>
                 </div>
               </div>
@@ -95,30 +97,20 @@ const ContactUs = () => {
       )}
 
       <div className="lg:container mx-auto text-white mt-14 px-2">
-        <p className="text-4xl font-extrabold lg:text-center">Let's Chat!</p>
+        <p className="text-4xl font-extrabold lg:text-center">{t("chat")}</p>
         <div className="flex justify-center">
           <div className="lg:w-[50%] w-full">
-            <p className="mt-3 text-xl text-gray-300">
-              Question? Complaint? Complement? Idea for a new product? We want
-              to hear from you even if it's just to say hi.
-            </p>
+            <p className="mt-3 text-xl text-gray-300">{t("contactDesc")}</p>
           </div>
         </div>
         {errorMsg && (
-          <p className="text-center mt-10 text-red-500">
-            We couldn't accept messages right now!
-          </p>
+          <p className="text-center mt-10 text-red-500">{t("contactError")}</p>
         )}
         <div className="flex justify-center">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="lg:w-[55%] w-full secondary-bg mt-10 rounded p-10"
           >
-            {/* Error message */}
-            {errorMsg && (
-              <p className="text-red-600 my-5 text-lg">Something went wrong!</p>
-            )}
-
             {/* Username */}
             <div className="mb-5">
               <label className="text-sm text-gray-500 block" htmlFor="username">

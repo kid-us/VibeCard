@@ -74,5 +74,8 @@
   "shop4": "Leather Wallets",
   "shop5": "Synthetic Wallets",
 
-  "contactDesc": "Question? Complaint? Complement? Idea for a new product? We want to hear from you even if it's just to say hi."
+  "chat": "Let's chat!",
+  "contactDesc": "Question? Complaint? Complement? Idea for a new product? We want to hear from you even if it's just to say hi.",
+  "contactError": "We couldn't accept messages right now!",
+  "contactSuccess": "Thank you for sending us a message Message send Successfully!"
 }
