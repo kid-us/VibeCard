@@ -1,4 +1,11 @@
 {
+  "welcome": "Welcome Back",
+  "login-note": "Log in to your vibecard account.",
+  "forgot": "Forgot Password",
+  "continue": "Continue with google",
+  "account": "Don't have an account?",
+  "create": "Create",
+
   "nav1": "Buy Products",
   "nav2": "Pricing",
   "nav3": "Ambassador",

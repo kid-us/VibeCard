@@ -4,8 +4,11 @@ import Card from "../Card/Card";
 import LogForm from "../Login/LogForm";
 import SignUpOption from "../SignUpOption/SignUpOption";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
+  const { t } = useTranslation();
+
   const [title] = useState("Login");
   useDocumentTitle(title);
 
@@ -22,10 +25,8 @@ const Login = () => {
         <div className="lg:w-5/6 md:w-5/6 w-full">
           <div className="lg:grid grid-cols-2">
             <div className="lg:p-10 md:p-9 p-8 shadow-lg secondary-bg rounded-lg text-white border border-violet-800 mb-3">
-              <h1 className="text-2xl">Welcome Back</h1>
-              <p className="text-sm mb-14 mt-2">
-                Log in to your VibeCard account.
-              </p>
+              <h1 className="text-2xl">{t("welcome")}</h1>
+              <p className="text-sm mb-14 mt-2">{t("login-note")}</p>
 
               {/* Form */}
               <LogForm
@@ -43,9 +44,9 @@ const Login = () => {
 
               {/* Footer */}
               <p className="text-sm mt-5 text-end text-gray-500">
-                Don't have an account?
+                {t("account")}
                 <Link to="/register" className="text-sm text-blue-600 ms-1">
-                  Create
+                  {t("create")}
                 </Link>
               </p>
             </div>

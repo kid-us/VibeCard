@@ -1,4 +1,11 @@
 {
+  "welcome": "Willkommen zurück",
+  "login-note": "Melden Sie sich bei Ihrem Vibecard-Konto an.",
+  "forgot": "Passwort vergessen?",
+  "continue": "Weiter mit Google.",
+  "account": "Sie haben noch kein Konto?",
+  "create": "Erstellen",
+
   "nav1": "Produkte kaufen",
   "nav2": "Preise",
   "nav3": "Botschafter",
@@ -11,6 +18,7 @@
   "register": "Benutzerkonto erstellen",
   "contact-us": "Kontaktieren Sie uns",
   "contact-us-note": "Kontaktieren Sie unseren 24/7-Kundenservice",
+
   "intro1": "Von Meet-and-Greets bis",
   "intro2": "Sinnvolle Beziehungen",
   "intro3": "Dein",

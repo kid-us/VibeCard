@@ -7,6 +7,7 @@ import Button from "../Button/Button";
 import axios from "axios";
 import { baseUrl } from "../../services/request";
 import useAuthStore from "../../store/useUserData";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   buttonClicked: (value: boolean) => void;
@@ -23,6 +24,8 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const Form = ({ buttonClicked }: Props) => {
+  const { t } = useTranslation();
+
   // Zustand
   const { login } = useAuthStore();
   // RRD
@@ -133,7 +136,7 @@ const Form = ({ buttonClicked }: Props) => {
         )}
         <div className="mt-2 text-end">
           <Link to="/request" className="text-xs text-blue-600">
-            Forgot Password?
+            {t("forgot")}
           </Link>
         </div>
       </div>
