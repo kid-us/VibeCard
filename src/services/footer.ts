@@ -5,20 +5,19 @@ interface Footer {
 }
 
 export const explore: Footer[] = [
-  { id: 1, name: "Home", path: "/" },
-  { id: 2, name: "About", path: "/about-us" },
-  // { id: 5, name: "Tutorial", path: "/" },
-  { id: 6, name: "Contact", path: "/contact-us" },
-  { id: 3, name: "Create Card", path: "/create" },
-  { id: 4, name: "Privacy Policy", path: "/privacy-policy" },
+  { id: 1, name: "explore1", path: "/" },
+  { id: 2, name: "explore2", path: "/about-us" },
+  { id: 6, name: "explore3", path: "/contact-us" },
+  { id: 3, name: "nav5", path: "/create" },
+  { id: 4, name: "explore4", path: "/privacy-policy" },
 ];
 
 export const shop: Footer[] = [
-  { id: 7, name: "Shop All", path: "/all-products" },
-  { id: 71, name: "Bamboo Card", path: "/all-products" },
-  { id: 8, name: "Metal Card", path: "/all-products" },
-  { id: 9, name: "Leather  Wallets", path: "/all-products" },
-  { id: 102, name: "Synthetic  Wallets", path: "/all-products" },
+  { id: 7, name: "shop1", path: "/all-products" },
+  { id: 71, name: "shop2", path: "/all-products" },
+  { id: 8, name: "shop3", path: "/all-products" },
+  { id: 9, name: "shop4", path: "/all-products" },
+  { id: 102, name: "shop5", path: "/all-products" },
   // { id: 103, name: "Basic Stands", path: "/" },
   // { id: 104, name: "Advanced Stands", path: "/" },
 ];

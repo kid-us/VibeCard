@@ -60,5 +60,19 @@
   "faqA4": "Most modern smartphones are equipped with NFC technology and can read NFC tags without any additional apps. However, it’s important to check if the smartphone settings are enabled for NFC. Older models or certain budget smartphones might not support NFC.",
 
   "faqQ5": "What does NFC offers?",
-  "faqA5": "NFC digital business cards offer several advantages over traditional cards: Eco-Friendly: Reduces the need for paper, contributing to less waste. Cost-Effective: Although there might be an initial investment, digital cards can be updated without reprinting, saving on continual costs. Convenience: Provides a quick and easy way to share a comprehensive set of contact information, including links to websites, social profiles, and portfolios.Hygienic: Minimizes physical contact, an important consideration in post-pandemic scenarios."
+  "faqA5": "NFC digital business cards offer several advantages over traditional cards: Eco-Friendly: Reduces the need for paper, contributing to less waste. Cost-Effective: Although there might be an initial investment, digital cards can be updated without reprinting, saving on continual costs. Convenience: Provides a quick and easy way to share a comprehensive set of contact information, including links to websites, social profiles, and portfolios.Hygienic: Minimizes physical contact, an important consideration in post-pandemic scenarios.",
+
+  "explore": "Explore",
+  "explore1": "Home",
+  "explore2": "About",
+  "explore3": "Contact",
+  "explore4": "Privacy Policy",
+  "shop": "Shop",
+  "shop1": "Shop All",
+  "shop2": "Bamboo Card",
+  "shop3": "Metal Card",
+  "shop4": "Leather Wallets",
+  "shop5": "Synthetic Wallets",
+
+  "contactDesc": "Question? Complaint? Complement? Idea for a new product? We want to hear from you even if it's just to say hi."
 }

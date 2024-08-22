@@ -61,5 +61,19 @@
   "faqA4": "Die meisten modernen Smartphones sind mit NFC-Technologie ausgestattet und können NFC-Tags ohne zusätzliche Apps lesen. Es ist jedoch wichtig zu prüfen, ob die Smartphone-Einstellungen für NFC aktiviert sind. Ältere Modelle oder bestimmte preisgünstige Smartphones unterstützen NFC möglicherweise nicht.",
 
   "faqQ5": "Was bietet NFC?",
-  "faqA5": "Digitale NFC-Visitenkarten bieten gegenüber herkömmlichen Karten mehrere Vorteile: Umweltfreundlich: Reduziert den Papierbedarf und trägt zu weniger Abfall bei. Kostengünstig: Obwohl möglicherweise eine Anfangsinvestition anfällt, können digitale Karten ohne Neudruck aktualisiert werden, wodurch laufende Kosten gespart werden. Komfort: Bietet eine schnelle und einfache Möglichkeit, einen umfassenden Satz von Kontaktinformationen zu teilen, einschließlich Links zu Websites, sozialen Profilen und Portfolios. Hygienisch: Minimiert den physischen Kontakt, ein wichtiger Aspekt in Szenarien nach einer Pandemie."
+  "faqA5": "Digitale NFC-Visitenkarten bieten gegenüber herkömmlichen Karten mehrere Vorteile: Umweltfreundlich: Reduziert den Papierbedarf und trägt zu weniger Abfall bei. Kostengünstig: Obwohl möglicherweise eine Anfangsinvestition anfällt, können digitale Karten ohne Neudruck aktualisiert werden, wodurch laufende Kosten gespart werden. Komfort: Bietet eine schnelle und einfache Möglichkeit, einen umfassenden Satz von Kontaktinformationen zu teilen, einschließlich Links zu Websites, sozialen Profilen und Portfolios. Hygienisch: Minimiert den physischen Kontakt, ein wichtiger Aspekt in Szenarien nach einer Pandemie.",
+
+  "explore": "Erkunden",
+  "explore1": "Heim",
+  "explore2": "Um",
+  "explore3": "Kontakt",
+  "explore4": "Datenschutzrichtlinie",
+  "shop": "Geschäft",
+  "shop1": "Alle Produkte",
+  "shop2": "Bambuskarte",
+  "shop3": "Metallkarte",
+  "shop4": "Geldbörsen aus Leder",
+  "shop5": "Synthetische Geldbörsen",
+
+  "contactDesc": "Frage? Beschwerde? Ergänzung? Idee für ein neues Produkt? Wir möchten von Ihnen hören, auch wenn es nur darum geht, Hallo zu sagen."
 }
