@@ -53,7 +53,7 @@ export const pro: PricingFeatures[] = [
     id: 4,
     feature: "Real-time analytics and usage statistics",
   },
-  { id: 5, feature: "Integration with Google and Apple Wallet" },
+  // { id: 5, feature: "Integration with Google and Apple Wallet" },
   { id: 6, feature: "Lead generation and follow-up tools" },
   { id: 7, feature: "Advanced Insights" },
 ];
@@ -154,6 +154,13 @@ export const pricingInfo: PricingDetail[] = [
   {
     id: 10,
     title: "Multi-language support ",
+    value1: { id: 1, icon: "bi-dash", value: 0 },
+    value2: { id: 1, icon: "bi-dash", value: 0 },
+    value3: { id: 1, icon: "bi-check-circle-fill", value: 0 },
+  },
+  {
+    id: 11,
+    title: "Remove watermark ",
     value1: { id: 1, icon: "bi-dash", value: 0 },
     value2: { id: 1, icon: "bi-dash", value: 0 },
     value3: { id: 1, icon: "bi-check-circle-fill", value: 0 },

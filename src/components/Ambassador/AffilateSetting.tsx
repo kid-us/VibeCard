@@ -89,7 +89,7 @@ const AffiliateSetting = () => {
         withCredentials: true,
       })
       .then(() => {
-        navigate(`/`);
+        navigate(`/affiliate`);
       })
       .catch((error) => {
         console.log(error);

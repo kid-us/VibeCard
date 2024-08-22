@@ -63,6 +63,7 @@ const ProductDetail = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   const [cards, setCards] = useState<Plan>();
+  const [availableCards, setAvailableCards] = useState<string[]>([]);
 
   useEffect(() => {
     axios
@@ -80,9 +81,23 @@ const ProductDetail = () => {
       });
   }, []);
 
+  useEffect(() => {
+    axios
+      .get(`${baseUrl}/api/v1/products/available-materials`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        setAvailableCards(response.data.materials);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   const handleMinus = () => {
     if (quantity === 1) return;
-
     setQuantity(quantity - 1);
   };
 
@@ -353,36 +368,42 @@ const ProductDetail = () => {
                 </p>
                 {/* Card Types */}
                 <div className="lg:flex justify-between gap-x-5 mt-5">
-                  <p
-                    onClick={() => setType("recycled_paper")}
-                    className={`shadow-xl shadow-zinc-900 ${
-                      type === "recycled_paper"
-                        ? "btn-bg shadow-none px-2 text-white text-sm"
-                        : "bg-white"
-                    } w-full text-center pt-3 rounded h-12 lg:mb-0 mb-2 font-poppins cursor-pointer text-sm font-bold`}
-                  >
-                    Recycled Paper €{cards?.recycled_paper.price}
-                  </p>
-                  <p
-                    onClick={() => setType("bamboo")}
-                    className={`shadow-xl shadow-zinc-900 ${
-                      type === "bamboo"
-                        ? "btn-bg shadow-none px-2 text-white"
-                        : "bg-white"
-                    } w-full text-center pt-3 rounded h-12 lg:mb-0 mb-2 font-poppins cursor-pointer text-sm font-bold`}
-                  >
-                    Bamboo €{cards?.bamboo.price}
-                  </p>
-                  <p
-                    onClick={() => setType("metal")}
-                    className={`shadow-xl shadow-zinc-900 ${
-                      type === "metal"
-                        ? "btn-bg shadow-none px-2 text-white"
-                        : "bg-white"
-                    } w-full text-center pt-3 rounded h-12 lg:mb-0 mb-2 font-poppins cursor-pointer text-sm font-bold`}
-                  >
-                    Metal €{cards?.metal.price}
-                  </p>
+                  {availableCards.includes("recycled_paper") && (
+                    <p
+                      onClick={() => setType("recycled_paper")}
+                      className={`shadow-xl shadow-zinc-900 ${
+                        type === "recycled_paper"
+                          ? "btn-bg shadow-none px-2 text-white text-sm"
+                          : "bg-white"
+                      } w-full text-center pt-3 rounded h-12 lg:mb-0 mb-2 font-poppins cursor-pointer text-sm font-bold`}
+                    >
+                      Recycled Paper €{cards?.recycled_paper.price}
+                    </p>
+                  )}
+                  {availableCards.includes("bamboo") && (
+                    <p
+                      onClick={() => setType("bamboo")}
+                      className={`shadow-xl shadow-zinc-900 ${
+                        type === "bamboo"
+                          ? "btn-bg shadow-none px-2 text-white"
+                          : "bg-white"
+                      } w-full text-center pt-3 rounded h-12 lg:mb-0 mb-2 font-poppins cursor-pointer text-sm font-bold`}
+                    >
+                      Bamboo €{cards?.bamboo.price}
+                    </p>
+                  )}
+                  {availableCards.includes("metal") && (
+                    <p
+                      onClick={() => setType("metal")}
+                      className={`shadow-xl shadow-zinc-900 ${
+                        type === "metal"
+                          ? "btn-bg shadow-none px-2 text-white"
+                          : "bg-white"
+                      } w-full text-center pt-3 rounded h-12 lg:mb-0 mb-2 font-poppins cursor-pointer text-sm font-bold`}
+                    >
+                      Metal €{cards?.metal.price}
+                    </p>
+                  )}
                 </div>
                 {/* Styles */}
                 <p className="lg:mt-10 mt-7 lg:text-md text-sm text-gray-300">

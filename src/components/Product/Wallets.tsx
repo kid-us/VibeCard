@@ -19,6 +19,7 @@ export interface Wallets {
   size: string;
   wallet_id: string;
   name: string;
+  status: string;
 }
 
 export interface All {
@@ -51,37 +52,40 @@ const Wallets = () => {
         {loading && <Loading />}
         <CarouselContent>
           {wallets.length > 0 &&
-            wallets.map((wallet) => (
-              <CarouselItem
-                key={wallet.wallet_id}
-                className="lg:basis-1/3 md:basis-1/2"
-              >
-                <Link to={`/wallets/${wallet.wallet_id}`}>
-                  <div
+            wallets.map(
+              (wallet) =>
+                wallet.status !== "Not Available" && (
+                  <CarouselItem
                     key={wallet.wallet_id}
-                    className="mb-4 rounded overflow-hidden"
+                    className="lg:basis-1/3 md:basis-1/2"
                   >
-                    <img
-                      src={wallet.image}
-                      alt="wallets"
-                      className=" w-full object-cover"
-                    />
-                  </div>
-                </Link>
-                {/* Color */}
-                <div className="mt-2 bg-gray-800 rounded px-3 py-5 shadow shadow-zinc-950 mb-8">
-                  <p className="text-lg text-white font-poppins no-select">
-                    RFID Kreditkarten Halter
-                  </p>
-                  <p className="text-xs text-white font-poppins">
-                    Price{" "}
-                    <span className="text-teal-500 font-poppins text-sm font-bold">
-                      €24.99
-                    </span>
-                  </p>
-                </div>
-              </CarouselItem>
-            ))}
+                    <Link to={`/wallets/${wallet.wallet_id}`}>
+                      <div
+                        key={wallet.wallet_id}
+                        className="mb-4 rounded overflow-hidden"
+                      >
+                        <img
+                          src={wallet.image}
+                          alt="wallets"
+                          className=" w-full object-cover"
+                        />
+                      </div>
+                    </Link>
+                    {/* Color */}
+                    <div className="mt-2 bg-gray-800 rounded px-3 py-5 shadow shadow-zinc-950 mb-8">
+                      <p className="text-lg text-white font-poppins no-select">
+                        RFID Kreditkarten Halter
+                      </p>
+                      <p className="text-xs text-white font-poppins">
+                        Price{" "}
+                        <span className="text-teal-500 font-poppins text-sm font-bold">
+                          €24.99
+                        </span>
+                      </p>
+                    </div>
+                  </CarouselItem>
+                )
+            )}
         </CarouselContent>
         <div>
           <CarouselPrevious className="absolute z-50 left-0 bg-black text-white" />
