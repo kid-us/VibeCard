@@ -10,6 +10,7 @@ import { baseUrl } from "@/services/request";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
+import { useTranslation } from "react-i18next";
 
 const schema = z.object({
   username: z
@@ -25,6 +26,8 @@ type FormData = z.infer<typeof schema>;
 const Setting = () => {
   const [title] = useState("Setting");
   useDocumentTitle(title);
+
+  const { t } = useTranslation();
 
   // Scroll to top
   useEffect(() => {
@@ -126,17 +129,18 @@ const Setting = () => {
           <div className="flex justify-center">
             <div className="py-10 lg:px-10 px-5 rounded secondary-bg shadow">
               <form onSubmit={handleSubmit(onSubmit)}>
-                <h1 className="mb-5 text-2xl text-white">Account Settings</h1>
+                <h1 className="mb-5 text-2xl text-white">
+                  {t("accountSetting")}
+                </h1>
                 <p className="text-gray-400 mb-5">
-                  Hello <span className="text-teal-500">{user} </span>
-                  you can change your username and Password here but you can't
-                  change your email address.
+                  {t("hello")} <span className="text-teal-500">{user} </span>
+                  {t("settingDesc")}
                 </p>
 
                 {/* Error message */}
                 {errorMsg && (
                   <p className="text-red-600 my-5 text-lg">
-                    Something went wrong!
+                    {t("settingError")}
                   </p>
                 )}
 
@@ -146,7 +150,7 @@ const Setting = () => {
                     className="text-sm text-gray-500 block"
                     htmlFor="username"
                   >
-                    Username
+                    {t("username")}
                   </label>
                   <input
                     {...register("username")}
@@ -175,7 +179,7 @@ const Setting = () => {
                     className="text-sm text-gray-500 block"
                     htmlFor="email"
                   >
-                    Email
+                    {t("email")}
                   </label>
                   <input
                     type="email"
@@ -193,7 +197,7 @@ const Setting = () => {
                     className="text-sm text-gray-500 block"
                     htmlFor="password"
                   >
-                    Password
+                    {t("password")}
                   </label>
                   <input
                     {...register("password")}
@@ -222,7 +226,7 @@ const Setting = () => {
                     className="text-sm text-gray-500 block"
                     htmlFor="password"
                   >
-                    Confirm Password
+                    {t("conPass")}
                   </label>
                   <input
                     type="password"
@@ -243,7 +247,7 @@ const Setting = () => {
                 </div>
                 <div className="mt-10">
                   {/* Button */}
-                  <Button loader={loader} label="Update" />
+                  <Button loader={loader} label={t("update")} />
                 </div>
               </form>
             </div>

@@ -243,5 +243,10 @@
   "verifyTitle": "Bestätigen Sie Ihre E-Mail",
   "verifyDesc1": "Wir haben einen Aktivierungslink an die E-Mail gesendet",
   "verifyDesc2": "Um den Verifizierungsprozess abzuschließen und Ihr Vibecard-Konto zu aktivieren, überprüfen Sie bitte Ihren Posteingang (und vorsichtshalber Ihren Spam-/Junk-Ordner) und klicken Sie auf den Verifizierungslink.",
-  "verifySuccess": "Ihr Konto ist verifiziert!"
+  "verifySuccess": "Ihr Konto ist verifiziert!",
+
+  "accountSetting": "Kontoeinstellungen",
+  "hello": "Hallo",
+  "settingDesc": "Sie können hier Ihren Benutzernamen und Ihr Passwort ändern, aber nicht Ihre E-Mail-Adresse.",
+  "settingError": "Etwas ist schiefgelaufen"
 }

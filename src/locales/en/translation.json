@@ -241,5 +241,10 @@
   "verifyTitle": "Verify your email",
   "verifyDesc1": "We've sent an activation link to the email",
   "verifyDesc2": "Tocomplete the verification process and activate your vibecard account, please check your inbox (and spam/junk folder, just in case) and click on the verification link.",
-  "verifySuccess": "Your account is verified!"
+  "verifySuccess": "Your account is verified!",
+
+  "accountSetting": "Account Settings",
+  "hello": "Hello",
+  "settingDesc": "you can change your username and Password here but you can't change your email address.",
+  "settingError": "Something went wrong"
 }
