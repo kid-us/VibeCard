@@ -4,6 +4,7 @@ import { bgColors } from "../Product/ProductColor";
 import { Style } from "./LargeEditor";
 import useProduct from "@/store/useProduct";
 import "./switch.css";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   orientation: boolean;
@@ -81,6 +82,8 @@ const SmallDevicePreview = ({
   setBackBg,
   setBackPickBg,
 }: Props) => {
+  const { t } = useTranslation();
+
   const { updateBack, updateFront } = useProduct();
 
   //   Front
@@ -313,7 +316,7 @@ const SmallDevicePreview = ({
         {switchBtn ? (
           <div className={`relative`}>
             <p className="text-xs mb-2 text-black lg:block hidden">
-              Pick you Color here
+              {t("pick")}
             </p>
             <div className="lg:0 w-32 h-32">
               <input
@@ -361,7 +364,7 @@ const SmallDevicePreview = ({
               active === "front" && "btn-bg p-0 w-20 rounded"
             }`}
           >
-            Front
+            {t("front")}
           </p>
           <p
             onClick={() => activeCard("back")}
@@ -369,7 +372,7 @@ const SmallDevicePreview = ({
               active === "back" && "btn-bg p-0 w-20 rounded"
             }`}
           >
-            Back
+            {t("back")}
           </p>
         </div>
         {/* Front */}

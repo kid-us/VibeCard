@@ -3,6 +3,7 @@ import Draggable from "react-draggable";
 import { bgColors } from "../Product/ProductColor";
 import { Style } from "./LargeEditor";
 import useProduct from "@/store/useProduct";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   orientation: boolean;
@@ -80,6 +81,8 @@ const LargeCardPreview = ({
   setBackBg,
   setBackPickBg,
 }: Props) => {
+  const { t } = useTranslation();
+
   const { updateBack, updateFront } = useProduct();
 
   const frontContainerRef = useRef<HTMLDivElement>(null);
@@ -315,7 +318,7 @@ const LargeCardPreview = ({
         {switchBtn ? (
           <div className={`relative`}>
             <p className="text-xs mb-2 text-black lg:block hidden">
-              Pick you Color here
+              {t("pick")}
             </p>
             <div className="lg:0 w-32 h-32">
               <input
@@ -359,8 +362,8 @@ const LargeCardPreview = ({
           !orientation && "hidden"
         } w-full justify-between`}
       >
-        <p className={`mt-8 text-sm mb-2 ms-14`}>Front</p>
-        <p className={`mt-8 text-sm mb-2 me-16`}>Back</p>
+        <p className={`mt-8 text-sm mb-2 ms-14`}> {t("front")}</p>
+        <p className={`mt-8 text-sm mb-2 me-16`}> {t("back")}</p>
       </div>
       <div
         className={`pb-10 ${
@@ -369,7 +372,7 @@ const LargeCardPreview = ({
         } `}
       >
         <p className={`${orientation && "hidden"} mt-8 text-sm mb-2 ms-10`}>
-          Front
+          {t("front")}
         </p>
         {/* Front */}
         <div
@@ -532,7 +535,7 @@ const LargeCardPreview = ({
 
         {/* Back */}
         <p className={`${orientation && "hidden"} mt-8 text-sm mb-2 ms-10`}>
-          Back
+          {t("back")}
         </p>
 
         <div

@@ -11,6 +11,7 @@ import LargeCardPreview from "./LargeCardPreview";
 import Preview from "./Preview";
 import { useNavigate } from "react-router-dom";
 import CardOrder from "../Order/CardOrder";
+import { useTranslation } from "react-i18next";
 
 export interface Image {
   width: string;
@@ -23,6 +24,8 @@ export interface Style {
 }
 
 const LargeEditor: React.FC = () => {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
   const productsInfo = localStorage.getItem("product");
 
@@ -313,7 +316,7 @@ const LargeEditor: React.FC = () => {
       )}
       {error && (
         <div className="fixed flex top-4 right-0 z-50 text-white bg-red-500 rounded ps-10 text-sm py-3">
-          <p>Please at least insert your logo</p>
+          <p>{t("logoError")}</p>
           <p
             onClick={() => setError(false)}
             className="text-white ms-5 me-2 bi-x-lg rounded px-2 cursor-pointer"
@@ -349,15 +352,15 @@ const LargeEditor: React.FC = () => {
                     htmlFor="orientation"
                     className="text-white text-xl chakra me-5"
                   >
-                    Orientation
+                    {t("orientation")}
                   </label>
                   <select
                     name="orientation"
                     className="rounded h-7 w-40 focus:outline-none"
                     onChange={handleOrientation}
                   >
-                    <option value="landscape">Landscape</option>
-                    <option value="portrait">Portrait</option>
+                    <option value="landscape"> {t("landscape")}</option>
+                    <option value="portrait"> {t("portrait")}</option>
                   </select>
                 </div>
                 <hr className="my-5 border-gray-500" />
@@ -365,19 +368,19 @@ const LargeEditor: React.FC = () => {
                 {tab === "image" && (
                   <div className="w-full">
                     <p className="text-font py-5 text-white">
-                      Design with Image
+                      {t("designWImage")}
                     </p>
                     <div className="flex justify-between">
-                      <p className="text-white">Image / Logo</p>
+                      <p className="text-white">{t("imageLogo")}</p>
                       {active === "front" && croppedImage && (
                         <button
                           onClick={() => {
                             setCroppedImage(null);
                             setImageSrc(null);
                           }}
-                          className="bg-red-500 rounded text-xs w-14 text-white"
+                          className="bg-red-500 rounded text-xs px-2 text-white"
                         >
-                          Reset
+                          {t("reset")}
                         </button>
                       )}
                       {active === "back" && backCroppedImage && (
@@ -386,9 +389,9 @@ const LargeEditor: React.FC = () => {
                             setBackCroppedImage(null);
                             setBackImageSrc(null);
                           }}
-                          className="bg-red-500 rounded text-xs w-14 text-white"
+                          className="bg-red-500 rounded text-xs  px-2 text-white"
                         >
-                          Reset
+                          {t("reset")}
                         </button>
                       )}
                     </div>
@@ -406,7 +409,9 @@ const LargeEditor: React.FC = () => {
                           <div className="flex flex-col pt-10">
                             <i className="bi-image text-2xl"></i>
                             <span className="text-sm">
-                              Upload front / back Image
+                              {t("upload")}{" "}
+                              {active === "front" ? t("front") : t("back")}{" "}
+                              {t("imageName")}
                             </span>
                           </div>
                         </label>
@@ -487,13 +492,14 @@ const LargeEditor: React.FC = () => {
                       </div>
                     )}
 
+                    {/* Image Size */}
                     <div className="my-8">
                       <div className="mb-5">
                         <label
                           htmlFor="width"
                           className="text-white block text-sm"
                         >
-                          Image Size
+                          {t("imageSize")}
                         </label>
                         <select
                           name="width"
@@ -530,12 +536,12 @@ const LargeEditor: React.FC = () => {
                   <div className="w-full">
                     <div>
                       <p className="text-white text-lg mb-5">
-                        Company Name / Your Name
+                        {t("companyName")}
                       </p>
                       <input
                         type="text"
                         className="rounded w-full h-11 px-4 focus:outline-none mb-4 placeholder:font-bold placeholder:text-sm"
-                        placeholder="Name goes here"
+                        placeholder={t("nameGoes")}
                         value={active === "front" ? name : backName}
                         onChange={
                           active === "front"
@@ -547,7 +553,7 @@ const LargeEditor: React.FC = () => {
                       <div className="mt-4">
                         {/* Font Size */}
                         <div>
-                          <p className="text-white text-xs">Font Size</p>
+                          <p className="text-white text-xs">{t("fontSizes")}</p>
                           <select
                             name="height"
                             className="w-full h-10 rounded p-1 mt-2 focus:outline-none"
@@ -576,7 +582,9 @@ const LargeEditor: React.FC = () => {
 
                         {/* Text Color */}
                         <div className="lg:0 mb-5 mt-10">
-                          <p className="text-white text-xs mb-2">Text Color</p>
+                          <p className="text-white text-xs mb-2">
+                            {t("textColor")}
+                          </p>
                           <input
                             type="color"
                             className="w-full lg:h-16 h-12 border-none outline-none shadow shadow-orange-900"
@@ -593,7 +601,9 @@ const LargeEditor: React.FC = () => {
 
                         {/* Font Style */}
                         <div>
-                          <p className="text-white text-xs mt-5">Font Style</p>
+                          <p className="text-white text-xs mt-5">
+                            {t("fontStyles")}
+                          </p>
                           <div className="relative">
                             <p className="bg-white rounded py-2 px-1 text-sm my-2 w-40">
                               {active === "front"
@@ -627,17 +637,15 @@ const LargeEditor: React.FC = () => {
 
                     <hr className="border w-full my-10" />
                     <p className="text-white font-poppins">
-                      Do you want to add another text?
+                      {t("inputConfirm")}
                     </p>
                     <div className="mt-4">
-                      <p className="text-white text-xs mb-4">
-                        Slogan / Your Name
-                      </p>
+                      <p className="text-white text-xs mb-4">{t("another")}</p>
 
                       <input
                         type="text"
                         className="rounded w-full h-11 px-4 focus:outline-none mb-4 placeholder:font-bold placeholder:text-sm"
-                        placeholder="Slogan goes here"
+                        placeholder={t("anotherGoes")}
                         value={active === "front" ? extraText : backExtraText}
                         onChange={
                           active === "front"
@@ -650,7 +658,9 @@ const LargeEditor: React.FC = () => {
                         <div className="mt-4">
                           {/* Font Size */}
                           <div>
-                            <p className="text-white text-xs">Font Size</p>
+                            <p className="text-white text-xs">
+                              {t("fontSizes")}
+                            </p>
                             <select
                               name="height"
                               className="w-full h-10 rounded p-1 mt-2 focus:outline-none"
@@ -682,7 +692,7 @@ const LargeEditor: React.FC = () => {
                           {/* Text Color */}
                           <div className="lg:0 mb-5 mt-10">
                             <p className="text-white text-xs mb-2">
-                              Text Color
+                              {t("textColor")}
                             </p>
                             <input
                               type="color"
@@ -703,7 +713,7 @@ const LargeEditor: React.FC = () => {
                           {/* Font Style */}
                           <div>
                             <p className="text-white text-xs mt-5">
-                              Font Style
+                              {t("fontStyles")}
                             </p>
                             <div className="relative">
                               <p className="bg-white rounded py-2 px-1 text-sm my-2 w-40">
@@ -747,9 +757,9 @@ const LargeEditor: React.FC = () => {
             <div className="flex justify-center w-full gap-x-4">
               <button
                 onClick={() => handleSubmit()}
-                className="btn-bg rounded shadow-xl py-3 shadow-zinc-950"
+                className="btn-bg rounded shadow-xl py-3 shadow-zinc-950 font-poppins"
               >
-                Order this Card
+                {t("orderThis")}
               </button>
             </div>
           </div>
@@ -799,41 +809,6 @@ const LargeEditor: React.FC = () => {
                 setBackBg={(value: string) => setBackBg(value)}
                 setBackPickBg={(value) => setBackPickBg(value)}
               />
-
-              {/* <LargePreview
-                product={productId}
-                active={active}
-                activeCard={(value: string) => setActive(value)}
-                // Front
-                pickedBg={pickedBg}
-                setPickBg={(value) => setPickBg(value)}
-                align={align}
-                bg={bg}
-                setBg={(value: string) => setBg(value)}
-                croppedImage={croppedImage ? croppedImage : ""}
-                fSize={font}
-                fontStyle={fontStyle}
-                image={image}
-                name={name}
-                textColor={textColor}
-                frontNewText={text}
-                // Back
-                backPickedBg={backPickedBg}
-                setBackPickBg={(value) => setBackPickBg(value)}
-                backBg={backBg}
-                setBackBg={(value: string) => setBackBg(value)}
-                backAlign={backAlign}
-                backCroppedImage={backCroppedImage ? backCroppedImage : ""}
-                backFontSize={backFont}
-                backFontStyle={backFontStyle}
-                backImage={backImage}
-                backName={backName}
-                backTextColor={backTextColor}
-                backNewText={backText}
-                // Switch
-                setSwitch={(value) => setSwitchBtn(value)}
-                switchBtn={switchBtn}
-              /> */}
             </div>
           </div>
         </div>

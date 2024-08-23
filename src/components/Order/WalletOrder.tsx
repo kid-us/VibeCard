@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import axios from "axios";
 import { baseUrl } from "@/services/request";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   id: string;
@@ -40,6 +41,8 @@ type FormData = z.infer<typeof schema>;
 const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
   const [checkbox, setCheckbox] = useState<boolean>(false);
   const [loader, setLoader] = useState(false);
+
+  const { t } = useTranslation();
 
   const {
     register,
@@ -121,11 +124,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
   return (
     <div className="fixed z-50 lg:grid grid-cols-2 secondary-bg h-[100vh] w-full lg:overflow-auto overflow-y-scroll">
       <div className="flex justify-center items-center">
-        <img
-          src={img}
-          alt="wallet"
-          className="lg:h-[550px] w-full object-cover rounded"
-        />
+        <img src={img} alt="wallet" className="w-full object-cover rounded" />
       </div>
       <div className="relative bg-white rounded shadow-lg shadow-zinc-950 lg:p-10 mx-2 lg:mt-0 mt-5">
         <button
@@ -134,7 +133,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
         ></button>
         <form onSubmit={handleSubmit(onSubmit)} className="lg:px-5 px-6 py-5">
           <p className="text-2xl mb-10 font-poppins text-black">
-            Please insert your delivery information
+            {t("deliveryInfo")}
           </p>
           <div className="lg:grid grid-cols-2 gap-x-8">
             {/* first name */}
@@ -143,7 +142,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
                 className="text-sm text-gray-500 block"
                 htmlFor="firstName"
               >
-                First Name
+                {t("fName")}
               </label>
               <input
                 {...register("firstName")}
@@ -162,7 +161,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
             {/* last name */}
             <div className="mb-5">
               <label className="text-sm text-gray-500 block" htmlFor="lastName">
-                Last Name
+                {t("lName")}
               </label>
               <input
                 {...register("lastName")}
@@ -181,7 +180,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
             {/* Email */}
             <div className="mb-5">
               <label className="text-sm text-gray-500 block" htmlFor="email">
-                Email
+                {t("email")}
               </label>
               <input
                 {...register("email")}
@@ -201,7 +200,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
             <div className="grid grid-cols-3 gap-x-5 mb-5">
               <div className="col-span-2">
                 <label className="text-sm text-gray-500 block" htmlFor="street">
-                  Street
+                  {t("street")}
                 </label>
                 <input
                   {...register("street")}
@@ -222,7 +221,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
                   className="text-sm text-gray-500 block"
                   htmlFor="streetNo"
                 >
-                  StreetNo
+                  {t("streetNo")}
                 </label>
                 <input
                   {...register("streetNo")}
@@ -242,7 +241,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
             {/* address */}
             <div className="mb-5">
               <label className="text-sm text-gray-500 block" htmlFor="address">
-                Address
+                {t("address")}
               </label>
               <input
                 {...register("address")}
@@ -261,7 +260,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
             {/* PLZ */}
             <div className="mb-5">
               <label className="text-sm text-gray-500 block" htmlFor="plz">
-                Plz
+                {t("PLZ")}
               </label>
               <input
                 {...register("plz")}
@@ -280,7 +279,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
             {/* location */}
             <div className="mb-5">
               <label className="text-sm text-gray-500 block" htmlFor="plz">
-                Location
+                {t("location")}
               </label>
               <input
                 {...register("location")}
@@ -299,7 +298,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
             {/* phone */}
             <div className="mb-5">
               <label className="text-sm text-gray-500 block" htmlFor="plz">
-                Phone
+                {t("phone")}
               </label>
               <input
                 {...register("phone")}
@@ -318,7 +317,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
             {/* Referral */}
             <div className="mb-5">
               <label className="text-sm text-gray-500 block" htmlFor="plz">
-                Referral
+                {t("referral")}
               </label>
               <input
                 {...register("referral")}
@@ -336,11 +335,11 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
               onChange={() => setCheckbox(!checkbox)}
             />
             <label htmlFor="save" className="text-black text-sm">
-              Do you want to save this info for future time use.
+              {t("saveInfo")}
             </label>
           </div>
           <div className="lg:mt-16 mt-8">
-            <Button label="Order" loader={loader} />
+            <Button label={t("order")} loader={loader} />
           </div>
         </form>
       </div>

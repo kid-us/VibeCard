@@ -2,6 +2,7 @@ import useProduct from "@/store/useProduct";
 import { useEffect, useState, useRef } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   showPreview: (value: boolean) => void;
@@ -9,6 +10,8 @@ interface Props {
 }
 
 const Preview = ({ showPreview, orientation }: Props) => {
+  const { t } = useTranslation();
+
   const { back, front } = useProduct();
 
   const printRef = useRef<HTMLDivElement>(null);
@@ -99,12 +102,12 @@ const Preview = ({ showPreview, orientation }: Props) => {
             <p
               className={`mt-16 text-sm mb-2 ${!orientation && "hidden"} ms-14`}
             >
-              Front
+              {t("front")}
             </p>
             <p
               className={`mt-16 text-sm mb-2 ${!orientation && "hidden"} me-16`}
             >
-              Back
+              {t("back")}
             </p>
           </div>
           <>
@@ -120,7 +123,7 @@ const Preview = ({ showPreview, orientation }: Props) => {
                   orientation && "lg:hidden"
                 } lg:mt-8 text-sm mb-2 mt-14`}
               >
-                Front
+                {t("front")}
               </p>
               {/* Front */}
               <div
@@ -191,7 +194,7 @@ const Preview = ({ showPreview, orientation }: Props) => {
               </div>
               {/* Back */}
               <p className={`${orientation && "lg:hidden"} mt-1 text-sm mb-2`}>
-                Back
+                {t("back")}
               </p>
               <div
                 className={`relative rounded-md ${

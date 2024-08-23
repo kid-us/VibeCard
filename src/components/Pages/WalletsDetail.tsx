@@ -37,9 +37,9 @@ const WalletsDetail = () => {
   const { t } = useTranslation();
 
   // Scroll to top
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const { id } = useParams();
   // const navigate = useNavigate();
