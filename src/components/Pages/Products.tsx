@@ -18,10 +18,13 @@ import {
   CarouselPrevious,
 } from "../ui/carousel";
 import Cart from "../Cart/Cart";
+import { useTranslation } from "react-i18next";
 
 const Products = () => {
   const [title] = useState("Shop our Products");
   useDocumentTitle(title);
+
+  const { t } = useTranslation();
 
   // Scroll to top
   useEffect(() => {
@@ -34,17 +37,17 @@ const Products = () => {
       <Cart />
       <div className="lg:container mx-auto lg:mt-24 mt-14">
         <h1 className="lg:text-4xl text-2xl lg:text-center px-2 font-extrabold text-white">
-          Vibecard Digital Business Card Accessories
+          {t("productTitle")}
         </h1>
 
         <p className="my-4 text-center text-gray-500 lg:px-0 px-2">
-          Contactless Business Cards, Wallet Cases
+          {t("productDesc")}
         </p>
       </div>
 
       <div className="lg:container mx-auto mt-16">
         <div className="mb-10">
-          {/* Business Card */}
+          {/* Business Card */}c
           <Carousel>
             <CarouselContent>
               <CarouselItem className="lg:basis-1/3 md:basis-1/2">

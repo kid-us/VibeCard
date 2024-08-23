@@ -10,6 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
+import { useTranslation } from "react-i18next";
 
 export interface Wallets {
   color: string;
@@ -27,6 +28,8 @@ export interface All {
 }
 
 const Wallets = () => {
+  const { t } = useTranslation();
+
   const [loading, setLoading] = useState<boolean>(true);
   const [wallets, setWallets] = useState<Wallets[]>([]);
 
@@ -38,6 +41,8 @@ const Wallets = () => {
         },
       })
       .then((response) => {
+        console.log(response.data);
+
         setLoading(false);
         setWallets(response.data.wallets);
       })
@@ -77,7 +82,7 @@ const Wallets = () => {
                         RFID Kreditkarten Halter
                       </p>
                       <p className="text-xs text-white font-poppins">
-                        Price{" "}
+                        {t("price")}{" "}
                         <span className="text-teal-500 font-poppins text-sm font-bold">
                           €24.99
                         </span>
