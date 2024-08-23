@@ -236,5 +236,10 @@
   "pricing7": "Profile Update",
   "pricing8": "Export analytics data",
   "pricing9": "Multi-language support",
-  "pricing10": "Remove watermark"
+  "pricing10": "Remove watermark",
+
+  "verifyTitle": "Verify your email",
+  "verifyDesc1": "We've sent an activation link to the email",
+  "verifyDesc2": "Tocomplete the verification process and activate your vibecard account, please check your inbox (and spam/junk folder, just in case) and click on the verification link.",
+  "verifySuccess": "Your account is verified!"
 }

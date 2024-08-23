@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import { useTranslation } from "react-i18next";
 const Verify = () => {
   const [title] = useState("Verify");
   useDocumentTitle(title);
+
+  const { t } = useTranslation();
 
   const location = useLocation();
 
@@ -25,27 +28,25 @@ const Verify = () => {
           <div className="lg:p-10 md:p-9 p-8 shadow-lg secondary-bg rounded-lg text-white border border-violet-800">
             {emailAddress ? (
               <>
-                <h1 className="text-4xl">Verify your email</h1>
+                <h1 className="text-4xl">{t("verifyTitle")}</h1>
                 <p className="text-gray-500 mt-6">
-                  We've sent an activation link to the email{" "}
-                  <span className="text-sky-600">{emailAddress}</span>. To
-                  complete the verification process and activate your vibecard
-                  account, please check your inbox (and spam/junk folder, just
-                  in case) and click on the verification link.
+                  {t("verifyDesc1")}{" "}
+                  <span className="text-sky-600">{emailAddress}</span>.{" "}
+                  {t("verifyDesc2")}
                 </p>
               </>
             ) : (
               <>
                 <h1 className="text-3xl">
-                  Welcome to <span className="logo-font">vibecard</span>
+                  {t("welcome")} <span className="logo-font">vibecard</span>
                 </h1>
                 <p className="text-center pt-10 text-2xl">
                   <span className="bi-check-circle-fill text-blue-500 me-5 text-xl"></span>
-                  Your account is Verified.
+                  {t("verifySuccess")}
                 </p>
                 <Link to="/login">
                   <p className="btn-bg w-full py-3 rounded font-poppins mt-7 shadow shadow-zinc-900 text-center">
-                    Log In
+                    {t("login")}
                   </p>
                 </Link>
               </>
