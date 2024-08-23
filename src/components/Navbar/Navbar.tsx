@@ -112,26 +112,26 @@ const Navbar = () => {
                     <div className="secondary-bg lg:block shadow shadow-gray-600 hidden absolute z-50 w-44 px-4 py-5 rounded-lg mt-8">
                       <Link
                         to={"/dashboard"}
-                        className="block text-md mb-3 hover:text-gray-400 hover:text-sm"
+                        className="block text-md mb-3 hover:text-gray-400 text-sm font-poppins"
                       >
                         {t("nav4")}
                       </Link>
                       <Link
                         to={"/create"}
-                        className="block text-md mb-3 hover:text-gray-400 hover:text-sm"
+                        className="block text-md mb-3 hover:text-gray-400 text-sm font-poppins"
                       >
                         {t("nav5")}
                       </Link>
                       <Link
                         to={"/setting"}
-                        className="block text-md mb-3 hover:text-gray-400 hover:text-sm"
+                        className="block text-md mb-3 hover:text-gray-400 text-sm font-poppins"
                       >
                         {t("nav6")}
                       </Link>
                       {plan !== "free" && (
                         <Link
                           to={"/insights"}
-                          className="block text-md mb-3 hover:text-gray-400 hover:text-sm"
+                          className="block text-md mb-3 hover:text-gray-400 text-sm font-poppins"
                         >
                           {t("nav7")}
                         </Link>
