@@ -7,15 +7,16 @@ import { useInsightStore } from "@/store/useInsightStore";
 import axios from "axios";
 import { baseUrl } from "@/services/request";
 import History from "../Insights/History";
-// import DatePicker from "../Insights/DatePicker";
+import DatePicker from "../Insights/DatePicker";
 import LinkTaps from "../Insights/LinkTaps";
 
-// import * as React from "react";
-// import { addDays } from "date-fns";
-// import { DateRange } from "react-day-picker";
+import * as React from "react";
+import { addDays } from "date-fns";
+import { DateRange } from "react-day-picker";
 import filter from "@/services/filter";
 import useAuthStore from "@/store/useUserData";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export interface Insights {
   social_media_name: string;
@@ -25,6 +26,8 @@ export interface Insights {
 const Insights = () => {
   const [title] = useState("Insight");
   useDocumentTitle(title);
+
+  const { t } = useTranslation();
 
   // Scroll to top
   useEffect(() => {
@@ -53,10 +56,10 @@ const Insights = () => {
   const [dropdown, setDropdown] = useState(false);
 
   // Custom Date
-  // const [date, setDate] = React.useState<DateRange | undefined>({
-  //   from: new Date(),
-  //   to: addDays(new Date(), 20),
-  // });
+  const [date, setDate] = React.useState<DateRange | undefined>({
+    from: new Date(),
+    to: addDays(new Date(), 20),
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -121,9 +124,9 @@ const Insights = () => {
     }
   }, [activeCard, viewCardData]);
 
-  // const handleCustom = () => {
-  //   setViewCardData("custom");
-  // };
+  const handleCustom = () => {
+    setViewCardData("custom");
+  };
 
   return (
     <>
@@ -137,9 +140,9 @@ const Insights = () => {
           </div>
           <div className="col-span-3">
             <div className="flex justify-between mb-10">
-              {/* <div>
-                <p className="text-white text-sm mb-2">
-                  Filter by Calendar Date
+              <div>
+                <p className="text-white text-sm mb-2 font-poppins">
+                  {t("fetchByCalendar")}
                 </p>
                 <div className="flex">
                   <DatePicker date={date} setDate={setDate} />
@@ -147,13 +150,13 @@ const Insights = () => {
                     onClick={() => handleCustom()}
                     className="ms-2 btn-bg shadow-none py-2 rounded text-white text-sm"
                   >
-                    Fetch
+                    {t("fetch")}
                   </button>
                 </div>
-              </div> */}
+              </div>
 
               <div className="relative">
-                <p className="text-white text-sm mb-2">Filter</p>
+                <p className="text-white text-sm mb-2">{t("filter")}</p>
                 <div
                   onClick={() => setDropdown(!dropdown)}
                   className="flex justify-between bg-white border rounded-md w-36 text-center pt-2 pb-1 cursor-pointer px-2"
@@ -178,7 +181,7 @@ const Insights = () => {
                         }}
                         className="cursor-pointer hover:text-teal-600"
                       >
-                        {f.name}
+                        {t(f.name)}
                       </p>
                     ))}
                   </div>

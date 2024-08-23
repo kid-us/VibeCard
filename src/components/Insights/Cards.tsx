@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuthStore from "@/store/useUserData";
 import { useInsightStore } from "@/store/useInsightStore";
+import { useTranslation } from "react-i18next";
 
 interface Card {
   card_url: string;
@@ -63,6 +64,8 @@ export interface BusinessCardData {
 }
 
 const Cards: React.FC = () => {
+  const { t } = useTranslation();
+
   const { updateActiveCard } = useInsightStore();
   const { user } = useAuthStore();
   const [cards, setCards] = useState<BusinessCardData[]>([]);
@@ -109,11 +112,11 @@ const Cards: React.FC = () => {
     <>
       {cardsLength && cardsLength.length > 0 && (
         <div className="secondary-bg mb-4 rounded text-white p-3">
-          <p className="text-2xl font-extrabold">
-            Welcome {user} you track you cards
+          <p className="text-2xl font-poppins">
+            {t("welcome")} {user} {t("insightTrack1")}
           </p>
           <p className="text-sm font-poppins">
-            You have {cardsLength.length} active Cards
+            {t("insightTrack2")} {cardsLength.length} {t("insightTrack3")}
           </p>
 
           <div className="grid grid-cols-3 mt-5 gap-x-4">
@@ -130,7 +133,7 @@ const Cards: React.FC = () => {
                   setDataIndex(index);
                 }}
               >
-                Card {index + 1}
+                {t("card")} {index + 1}
               </button>
             ))}
           </div>
@@ -349,7 +352,7 @@ const Cards: React.FC = () => {
                     color: cards[dataIndex].styles.button.text_color,
                   }}
                 >
-                  Save Contact
+                  {t("saveContact")}
                 </button>
               </div>
             </div>
@@ -566,7 +569,7 @@ const Cards: React.FC = () => {
                     color: cards[dataIndex].styles.button.text_color,
                   }}
                 >
-                  Save Contact
+                  {t("saveContact")}
                 </button>
               </div>
             </div>
@@ -786,7 +789,7 @@ const Cards: React.FC = () => {
                     color: cards[dataIndex].styles.button.text_color,
                   }}
                 >
-                  Save Contact
+                  {t("saveContact")}
                 </button>
               </div>
             </div>

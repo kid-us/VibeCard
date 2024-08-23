@@ -90,6 +90,9 @@
   "get-started": "Get Started",
   "at": "At",
   "germany": "Germany",
+
+  "card": "Card",
+
   "hero1": "Transform Your Connections with a Tap",
   "heroDesc": "Discover VibeCard, your ultimate tool for seamless networking. Our innovative NFC business cards and RFID solutions revolutionize the way you share your professional and personal information. Say goodbye to traditional business cards and embrace a sustainable, smart networking experience that leaves a lasting impression.",
   "feature": "Features",
@@ -246,5 +249,23 @@
   "accountSetting": "Account Settings",
   "hello": "Hello",
   "settingDesc": "you can change your username and Password here but you can't change your email address.",
-  "settingError": "Something went wrong"
+  "settingError": "Something went wrong",
+
+  "insightTrack1": "you track you cards",
+  "insightTrack2": "You have",
+  "insightTrack3": "active cards",
+  "fetch": "Fetch",
+  "fetchByCalendar": "Filter by Calendar Date",
+  "today": "Today",
+  "month": "Month",
+  "week": "Week",
+  "cardView": "Card Views",
+  "linkTaps": "Link Taps",
+  "contactTaps": "Contact Taps",
+  "track": "Track your Record",
+  "contactDown": "Contact Download",
+  "socialTap": "Social Media Tap",
+  "filter": "Filter",
+  "link": "Link",
+  "taps": "Taps"
 }

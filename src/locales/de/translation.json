@@ -17,6 +17,7 @@
   "coverPic": "Titelbild",
   "logo": "Firmenlogo",
   "cardPreview": "Kartenvorschau",
+  "card": "Karte",
 
   "layout": "Layout",
   "colors": "Farben",
@@ -248,5 +249,23 @@
   "accountSetting": "Kontoeinstellungen",
   "hello": "Hallo",
   "settingDesc": "Sie können hier Ihren Benutzernamen und Ihr Passwort ändern, aber nicht Ihre E-Mail-Adresse.",
-  "settingError": "Etwas ist schiefgelaufen"
+  "settingError": "Etwas ist schiefgelaufen",
+
+  "insightTrack1": "Sie verfolgen Ihre Karten",
+  "insightTrack2": "Sie haben",
+  "insightTrack3": "aktive Karten",
+  "fetch": "Abrufen",
+  "fetchByCalendar": "Nach Kalenderdatum filtern",
+  "today": "Heute",
+  "month": "Monat",
+  "week": "Woche",
+  "cardView": "Kartenansichten",
+  "linkTaps": "Link-Taps",
+  "contactTaps": "Kontakt-Taps",
+  "track": "Verfolgen Sie Ihren Datensatz",
+  "contactDown": "Kontakt-Download",
+  "socialTap": "Social-Media-Taps",
+  "filter": "Filter",
+  "link": "Link",
+  "taps": "Taps"
 }

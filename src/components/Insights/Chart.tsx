@@ -14,6 +14,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import { useTranslation } from "react-i18next";
 
 interface Prop {
   cardChartData: string;
@@ -23,6 +24,8 @@ interface Prop {
 }
 
 function Chart({ cardChartData, contact, social, view }: Prop) {
+  const { t } = useTranslation();
+
   const chartData = [{ view, contact, social }];
 
   const chartConfig = {
@@ -43,19 +46,19 @@ function Chart({ cardChartData, contact, social, view }: Prop) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Track your Record</CardTitle>
+        <CardTitle>{t("track")}</CardTitle>
         <div className="flex space-x-10 pt-3">
           <CardDescription className="flex">
-            <div className="bg-[#dc2626] h-5 w-5"></div>
-            <p className="ms-3">Card View</p>
+            <div className="bg-[#dc2626] rounded h-5 w-5"></div>
+            <p className="ms-3">{t("cardView")}</p>
           </CardDescription>
           <CardDescription className="flex">
-            <div className="bg-[#f59e0b] h-5 w-5"></div>
-            <p className="ms-3">Contact Download</p>
+            <div className="bg-[#f59e0b] rounded h-5 w-5"></div>
+            <p className="ms-3">{t("contactDown")}</p>
           </CardDescription>
           <CardDescription className="flex">
             <div className="bg-[#059669] h-5 w-5"></div>
-            <p className="ms-3">Social Media Tap</p>
+            <p className="ms-3">{t("socialTap")}</p>
           </CardDescription>
         </div>
       </CardHeader>
