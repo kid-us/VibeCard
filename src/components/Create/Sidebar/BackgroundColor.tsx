@@ -3,6 +3,7 @@ import { cardColor, coverColor } from "../../../services/coverColor";
 import { useCoverColorStore } from "../../../store/useCoverColorStore";
 import { useCardColorStore } from "../../../store/useCardColorStore";
 import { useTextColorStore } from "../../../store/useTextColorStore";
+import { t } from "i18next";
 
 interface Props {
   cardType: string;
@@ -27,14 +28,14 @@ const BackgroundColor = ({ colorPicker, bgColors, cardType }: Props) => {
 
   return (
     <div className="bg-white rounded p-2 mb-5">
-      <p className="chakra mt-2 text-black">Default</p>
+      <p className="chakra mt-2 text-black">{t("default")}</p>
       <div
         className={`${
           bgColors === "gradient-cover" && bgColors
         } w-full h-20 rounded-lg my-2 shadow shadow-zinc-900`}
         style={{ backgroundColor: bgColors }}
       ></div>
-      <p className="chakra mt-2 text-black">Trend Colors</p>
+      <p className="chakra mt-2 text-black">{t("trend")}</p>
       <div className="grid lg:grid-cols-6 grid-cols-7 lg:gap-3 gap-2 overflow-hidden py-5">
         {cardType === "cover" || cardType === "button"
           ? coverColor.map((cover) => (
@@ -60,7 +61,7 @@ const BackgroundColor = ({ colorPicker, bgColors, cardType }: Props) => {
       </div>
       {colorPicker && (
         <div className={`relative ${color}`}>
-          <p className="chakra mb-2 text-black">Pick you Color here</p>
+          <p className="chakra mb-2 text-black">{t("pick")}</p>
           <input
             type="color"
             className="w-full h-14 border-none outline-none shadow shadow-orange-900"

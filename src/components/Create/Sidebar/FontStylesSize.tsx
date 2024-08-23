@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { fontSize, fonts } from "../../../services/fonts";
 import { State, useTextColorStore } from "../../../store/useTextColorStore";
+import { t } from "i18next";
 
 interface Props {
   defaultFontStyle: string;
@@ -35,9 +36,9 @@ const FontStylesSize = ({ view, defaultFontSize, defaultFontStyle }: Props) => {
       {/* Font Styles */}
       <div className="flex my-5 text-sm ms-1">
         <p className="first-letter:uppercase text-teal-400 chakra text-lg">
-          {view}
+          {t(view)}
         </p>
-        <p className="ms-2 text-white chakra"> Font Style</p>
+        <p className="ms-2 text-white chakra"> {t("fontStyle")}</p>
       </div>
 
       <div className="bg-white w-full rounded p-2">
@@ -60,9 +61,9 @@ const FontStylesSize = ({ view, defaultFontSize, defaultFontStyle }: Props) => {
       {/* Font Sizes */}
       <div className="flex my-3 text-sm ms-1">
         <p className="first-letter:uppercase text-teal-400 chakra text-lg">
-          {view}
+          {t(view)}
         </p>
-        <p className=" ms-2 text-white chakra"> Font Size</p>
+        <p className=" ms-2 text-white chakra"> {t("fontSize")}</p>
       </div>
       <div className="bg-white w-full rounded p-2 mb-3">
         {fontSize.map((size) => (
@@ -74,7 +75,7 @@ const FontStylesSize = ({ view, defaultFontSize, defaultFontStyle }: Props) => {
     defaultFontSize === size.size ? "text-teal-400" : "text-black"
   }`}
           >
-            {size.name}
+            {t(size.name)}
           </p>
         ))}
       </div>

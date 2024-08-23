@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import { useTextColorStore } from "../../store/useTextColorStore";
 
 const Button = () => {
@@ -7,7 +8,7 @@ const Button = () => {
       className={`w-full rounded-lg py-4 mb-8 mt-5 shadow-md font-poppins font-extrabold shadow-zinc-950`}
       style={{ backgroundColor: button.color, color: button.font }}
     >
-      Save Contact
+      {t("saveContact")}
     </button>
   );
 };

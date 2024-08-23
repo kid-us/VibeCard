@@ -14,7 +14,7 @@ import axios from "axios";
 import { baseUrl } from "../../services/request";
 import Modal from "../Modal/Modal";
 import { useLocation } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { t } from "i18next";
 
 interface Props {
   layout: string;
@@ -28,12 +28,12 @@ interface FilePreviews {
 
 // Zod
 const schema = z.object({
-  name: z.string().min(3, { message: "Name required." }),
-  company: z.string().min(1, { message: "Company required." }),
-  phone: z.number({ invalid_type_error: "Phone number required" }).min(6),
-  job: z.string().min(3, { message: "Job title required." }),
-  location: z.string().min(3, { message: "Location required." }),
-  email: z.string().email({ message: "Email address required." }),
+  name: z.string().min(3, { message: "Name required" }),
+  company: z.string().min(1, { message: "Company required" }),
+  phone: z.string().min(6, { message: "Phone required" }),
+  job: z.string().min(3, { message: "Job title required" }),
+  location: z.string().min(3, { message: "Location required" }),
+  email: z.string().email({ message: "Email required" }),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -42,8 +42,6 @@ const CreateForm = ({ layout }: Props) => {
   const pageLocation = useLocation();
   const searchParams = new URLSearchParams(pageLocation.search);
   const editedUrl = searchParams.get("edit");
-
-  const { t } = useTranslation();
 
   // Zustand
   const { contact, updateContacts, socialMedia } = useContentStore();
@@ -274,7 +272,7 @@ const CreateForm = ({ layout }: Props) => {
         <div className="lg:flex justify-between flex-shrink-0 grid grid-cols-3 gap-1 lg:px-0 px-1">
           {/* Profile */}
           <InputImages
-            title="Profile Picture"
+            title="profilePic"
             type="profile"
             onPreviewChange={handlePreviewChange}
             onHandleFile={handleFile}
@@ -282,13 +280,13 @@ const CreateForm = ({ layout }: Props) => {
           />
           {/* Cover */}
           <InputImages
-            title="Cover Photo"
+            title="coverPic"
             type="cover"
             onPreviewChange={handlePreviewChange}
             onHandleFile={handleFile}
           />
           <InputImages
-            title="Company Logo"
+            title="logo"
             type="logo"
             onPreviewChange={handlePreviewChange}
             onHandleFile={handleFile}
@@ -303,7 +301,7 @@ const CreateForm = ({ layout }: Props) => {
               className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="pronoun"
             >
-              Pronoun <span className="text-red-700 text-2xl">*</span>{" "}
+              {t("pronoun")} <span className="text-red-700 text-2xl">*</span>{" "}
             </label>
 
             <select
@@ -316,14 +314,17 @@ const CreateForm = ({ layout }: Props) => {
               defaultValue={userPronoun}
             >
               <option value="" hidden></option>
-              <option value="Mr">Mr</option>
-              <option value="Mrs">Mrs</option>
-              <option value="Prof">Professor</option>
-              <option value="Dr">Dr</option>
+              <option value={t("mr")}>{t("mr")}</option>
+              <option value={t("mrs")}>{t("mrs")}</option>
+              <option value={t("professor")}>{t("professor")}</option>
+              <option value={t("dr")}>{t("dr")}</option>
+              <option value={t("miss")}>{t("miss")}</option>
             </select>
 
             {pronounError && (
-              <p className="text-red-600 text-xs pt-1">Pronoun required.</p>
+              <p className="text-red-600 text-xs pt-1">
+                {t("pronoun")} {t("required")}.
+              </p>
             )}
           </div>
 
@@ -333,7 +334,7 @@ const CreateForm = ({ layout }: Props) => {
               className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="name"
             >
-              Name
+              {t("name")}
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
@@ -361,7 +362,7 @@ const CreateForm = ({ layout }: Props) => {
               className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="email"
             >
-              Email
+              {t("email")}
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
@@ -388,7 +389,7 @@ const CreateForm = ({ layout }: Props) => {
               className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="phone"
             >
-              Phone
+              {t("phone")}
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
@@ -415,7 +416,7 @@ const CreateForm = ({ layout }: Props) => {
               className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="job-title"
             >
-              Job Title
+              {t("jobTitle")}
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
@@ -443,7 +444,7 @@ const CreateForm = ({ layout }: Props) => {
               className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="location"
             >
-              Location
+              {t("location")}
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
@@ -473,7 +474,7 @@ const CreateForm = ({ layout }: Props) => {
               className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="company"
             >
-              Company
+              {t("company")}
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
@@ -503,7 +504,7 @@ const CreateForm = ({ layout }: Props) => {
               className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="tag-line"
             >
-              Bio
+              {t("bio")}
               <span className="text-transparent text-2xl">*</span>
             </label>
             <input
@@ -527,23 +528,13 @@ const CreateForm = ({ layout }: Props) => {
               editedUrl ? "justify-between" : "justify-end"
             } rounded-b-xl secondary-bg py-3 lg:shadow border border-gray-700`}
           >
-            {editedUrl ? (
-              <button
-                onClick={handleSubmit(onSubmit)}
-                type="submit"
-                className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full lg:mx-0 mx-5"
-              >
-                {loader ? <Loader /> : "Update"}
-              </button>
-            ) : (
-              <button
-                onClick={handleSubmit(onSubmit)}
-                type="submit"
-                className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full lg:mx-0 mx-5"
-              >
-                {loader ? <Loader /> : "Create"}
-              </button>
-            )}
+            <button
+              onClick={handleSubmit(onSubmit)}
+              type="submit"
+              className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full lg:mx-0 mx-5"
+            >
+              {loader ? <Loader /> : t("create")}
+            </button>
           </div>
         </div>
       </form>

@@ -5,8 +5,8 @@ interface Icons {
 }
 
 export const sidebarIcons: Icons[] = [
-  { id: 1, icon: "bi-grid-1x2-fill", title: "Layout" },
-  { id: 2, icon: "bi-palette-fill", title: "Colors" },
-  { id: 3, icon: "bi-fonts", title: "Text" },
-  { id: 4, icon: "bi-body-text", title: "Content" },
+  { id: 1, icon: "bi-grid-1x2-fill", title: "layout" },
+  { id: 2, icon: "bi-palette-fill", title: "colors" },
+  { id: 3, icon: "bi-fonts", title: "text" },
+  { id: 4, icon: "bi-body-text", title: "content" },
 ];

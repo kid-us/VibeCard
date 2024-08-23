@@ -1,6 +1,7 @@
 import { ChangeEvent, useRef, useState } from "react";
 import { useContentStore } from "../../store/useContentStore";
 import ImageCropper from "../ImageCrop/ImageCropper";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   type: "profile" | "cover" | "logo";
@@ -20,6 +21,8 @@ const InputImages = ({
   onPreviewChange,
   onHandleFile,
 }: Props) => {
+  const { t } = useTranslation();
+
   const [preview, setPreview] = useState<string | null>(null);
   const [cropping, setCropping] = useState<string | null>(null);
   const { updateCoverLogo } = useContentStore();
@@ -64,7 +67,7 @@ const InputImages = ({
   return (
     <div>
       <p className="text-xs text-gray-100 mb-4 font-poppins first-letter:uppercase text-center">
-        {title}
+        {t(title)}
       </p>
       <div
         className={`border shadow shadow-gray-600 rounded-lg border-gray-600 ${
@@ -91,8 +94,8 @@ const InputImages = ({
           <label htmlFor={`${type}-file`} className="cursor-pointer">
             <div className="flex flex-col text-center mt-5">
               <i className="bi-image text-xl text-gray-200"></i>
-              <span className="text-[8px] text-gray-200">
-                Select image or video file or drag and drop one here
+              <span className="text-[8px] text-gray-200 font-poppins">
+                {t("image")}
               </span>
             </div>
           </label>

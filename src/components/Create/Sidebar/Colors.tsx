@@ -5,15 +5,8 @@ import { useTextColorStore } from "../../../store/useTextColorStore";
 import { useCardColorStore } from "../../../store/useCardColorStore";
 import { useCoverColorStore } from "../../../store/useCoverColorStore";
 import { useState } from "react";
-
-const texts = [
-  "Pronoun",
-  "Name",
-  "Location",
-  "Job Title",
-  "Company",
-  "Tag Line",
-];
+import { t } from "i18next";
+import { texts } from "./Texts";
 
 const Colors = () => {
   const [dropdown, setDropdown] = useState(false);
@@ -24,10 +17,11 @@ const Colors = () => {
 
   const { cardColorBg } = useCardColorStore();
   const { coverColorBg } = useCoverColorStore();
+
   return (
     <>
       {/* Background */}
-      <p className="chakra text-white mb-4">Card Background Color</p>
+      <p className="chakra text-white mb-4">{t("cardBg")}</p>
       <div className="lg:overflow-hidden lg:h-auto h-[75dvh] overflow-y-scroll lg:pb-0 pb-3">
         <BackgroundColor
           bgColors={cardColorBg}
@@ -36,18 +30,18 @@ const Colors = () => {
         />
 
         {/* Cover Background */}
-        <p className="chakra text-white mb-3">Cover Background Color</p>
+        <p className="chakra text-white mb-3">{t("coverBg")}</p>
         <BackgroundColor bgColors={coverColorBg} cardType="cover" colorPicker />
 
         {/* Button Color */}
-        <p className="chakra text-white mb-3">Button Background Color</p>
+        <p className="chakra text-white mb-3">{t("btnBg")}</p>
         <BackgroundColor
           bgColors={button.color}
           cardType="button"
           colorPicker={false}
         />
 
-        <p className="chakra text-white mb-3">Button Text Color</p>
+        <p className="chakra text-white mb-3">{t("btnTextC")}</p>
         <TextColor name={"button"} bg={button.font} />
         {/* Text Colors */}
         <div className="relative text-sm mb-4 border-teal-500 shadow shadow-stone-300 rounded-lg">
@@ -55,7 +49,7 @@ const Colors = () => {
             onClick={() => setDropdown(!dropdown)}
             className="cursor-pointer bg-white text-black rounded-lg "
           >
-            <p className="px-2 py-2 chakra text-lg">Choose Text</p>
+            <p className="px-2 py-2 chakra text-lg">{t("chooseT")}</p>
             <p
               className={`${
                 dropdown ? "bi-caret-up-fill" : "bi-caret-down-fill"
@@ -69,15 +63,15 @@ const Colors = () => {
               {texts.map((text) => (
                 <p
                   onClick={() => {
-                    setView(text);
+                    setView(text.title);
                     setDropdown(false);
                   }}
-                  key={text}
+                  key={text.title}
                   className={`${
-                    view === text && "text-teal-900 text-xl"
+                    view === text.title && "text-teal-900 text-xl"
                   } hover:text-gray-400 w-full cursor-pointer chakra text-lg text-black`}
                 >
-                  {text}
+                  {t(text.translate)}
                 </p>
               ))}
             </div>
@@ -85,15 +79,15 @@ const Colors = () => {
         </div>
 
         {/* Pronoun */}
-        {view === "Pronoun" && (
-          <TextColor name={"pronoun"} bg={pronoun.color} title={"Pronoun"} />
+        {view === "pronoun" && (
+          <TextColor name={"pronoun"} bg={pronoun.color} title={"pronoun"} />
         )}
         {/* Name */}
-        {view === "Name" && (
-          <TextColor name={"name"} bg={name.color} title={"Name"} />
+        {view === "name" && (
+          <TextColor name={"name"} bg={name.color} title={"name"} />
         )}
         {/* Job Title */}
-        {view === "Job Title" && (
+        {view === "jobTitle" && (
           <TextColor
             name={"jobTitle"}
             bg={jobTitle.color}
@@ -101,16 +95,16 @@ const Colors = () => {
           />
         )}
         {/* Location */}
-        {view === "Location" && (
-          <TextColor name={"location"} bg={location.color} title={"Location"} />
+        {view === "location" && (
+          <TextColor name={"location"} bg={location.color} title={"location"} />
         )}
         {/* Company */}
-        {view === "Company" && (
-          <TextColor name={"company"} bg={company.color} title={"Company"} />
+        {view === "company" && (
+          <TextColor name={"company"} bg={company.color} title={"company"} />
         )}
         {/* Tag Title */}
-        {view === "Tag Line" && (
-          <TextColor name={"tagLine"} bg={tagLine.color} title={"Tag Line"} />
+        {view === "tagLine" && (
+          <TextColor name={"tagLine"} bg={tagLine.color} title={"bio"} />
         )}
       </div>
     </>

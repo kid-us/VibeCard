@@ -14,7 +14,7 @@ import { useTranslation } from "react-i18next";
 
 const Sidebar = () => {
   const { t } = useTranslation();
-  const [selected, setSelected] = useState("Colors");
+  const [selected, setSelected] = useState(t("colors"));
   const { preview } = useCardData();
   const { user, logout } = useAuthStore();
   const navigate = useNavigate();
@@ -47,9 +47,9 @@ const Sidebar = () => {
         {sidebarIcons.map((icons) => (
           <div
             key={icons.id}
-            onClick={() => setSelected(icons.title)}
+            onClick={() => setSelected(t(icons.title))}
             className={`py-5 text-center cursor-pointer ${
-              selected === icons.title ? "secondary-bg" : "hover:bg-blue-950"
+              selected === t(icons.title) ? "secondary-bg" : "hover:bg-blue-950"
             } p-3`}
           >
             <p className={`${icons.icon} text-xl`}></p>
@@ -78,13 +78,13 @@ const Sidebar = () => {
       {/* Contents */}
       <div className="col-span-4 p-2 mt-3 overflow-y-scroll">
         {/* Layout */}
-        {selected === "Layout" && <Layout />}
+        {selected === t("layout") && <Layout />}
         {/* Color */}
-        {selected === "Colors" && <Colors />}
+        {selected === t("colors") && <Colors />}
         {/* Text */}
-        {selected === "Text" && <Texts />}
+        {selected === t("text") && <Texts />}
         {/* Content */}
-        {selected === "Content" && <Content />}
+        {selected === t("content") && <Content />}
       </div>
     </div>
   );

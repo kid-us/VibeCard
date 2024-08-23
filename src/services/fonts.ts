@@ -54,9 +54,9 @@ export const fonts: Fonts[] = [
 
 // Font Size
 export const fontSize: Size[] = [
-  { size: "text-xl", name: "Extra Large" },
-  { size: "text-lg", name: "Large" },
-  { size: "text-md", name: "Medium" },
-  { size: "text-sm", name: "Small" },
-  { size: "text-xs", name: "Extra Small" },
+  { size: "text-xl", name: "text-xl" },
+  { size: "text-lg", name: "text-lg" },
+  { size: "text-md", name: "text-md" },
+  { size: "text-sm", name: "text-sm" },
+  { size: "text-xs", name: "text-xs" },
 ];

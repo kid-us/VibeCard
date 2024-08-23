@@ -8,7 +8,7 @@ import SocialMedia from "./SocialMedia";
 import Contacts from "./Contacts";
 import { useCardData } from "../../store/useCardData";
 import Watermark from "../Watermark/Watermark";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 const DefaultCard = () => {
   const { coverColorBg } = useCoverColorStore();
@@ -25,12 +25,12 @@ const DefaultCard = () => {
     nameVal,
     preview,
     pronounVal,
-    setPreview,
+    // setPreview,
   } = useCardData();
 
-  useEffect(() => {
-    setPreview("cover", "");
-  }, [coverColorBg]);
+  // useEffect(() => {
+  //   setPreview("cover", "");
+  // }, [coverColorBg]);
 
   return (
     <div

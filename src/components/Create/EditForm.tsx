@@ -357,20 +357,20 @@ const EditForm = ({ layout }: Props) => {
         <div className="lg:flex justify-between flex-shrink-0 grid grid-cols-3 gap-1 lg:px-0 px-1">
           {/* Profile */}
           <InputImages
-            title="Profile Picture"
+            title="profilePic"
             type="profile"
             onPreviewChange={handlePreviewChange}
             onHandleFile={handleFile}
           />
           {/* Cover */}
           <InputImages
-            title="Cover Photo"
+            title="coverPic"
             type="cover"
             onPreviewChange={handlePreviewChange}
             onHandleFile={handleFile}
           />
           <InputImages
-            title="Company Logo"
+            title="logo"
             type="logo"
             onPreviewChange={handlePreviewChange}
             onHandleFile={handleFile}
@@ -385,7 +385,7 @@ const EditForm = ({ layout }: Props) => {
               className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="pronoun"
             >
-              Pronoun <span className="text-red-700 text-2xl">*</span>{" "}
+              {t("pronoun")} <span className="text-red-700 text-2xl">*</span>{" "}
             </label>
 
             <select
@@ -411,7 +411,7 @@ const EditForm = ({ layout }: Props) => {
               className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="name"
             >
-              Name
+              {t("name")}
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
@@ -438,7 +438,7 @@ const EditForm = ({ layout }: Props) => {
               className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="email"
             >
-              Email
+              {t("email")}
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
@@ -462,7 +462,7 @@ const EditForm = ({ layout }: Props) => {
               className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="phone"
             >
-              Phone
+              {t("phone")}
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
@@ -487,7 +487,7 @@ const EditForm = ({ layout }: Props) => {
               className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="job-title"
             >
-              Job Title
+              {t("jobTitle")}
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
@@ -514,7 +514,7 @@ const EditForm = ({ layout }: Props) => {
               className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="location"
             >
-              Location
+              {t("location")}
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
@@ -541,7 +541,7 @@ const EditForm = ({ layout }: Props) => {
               className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="company"
             >
-              Company
+              {t("company")}
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
@@ -568,7 +568,7 @@ const EditForm = ({ layout }: Props) => {
               className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="tag-line"
             >
-              Bio
+              {t("bio")}
               <span className="text-transparent text-2xl">*</span>
             </label>
             <input
@@ -593,7 +593,7 @@ const EditForm = ({ layout }: Props) => {
               type="submit"
               className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full lg:mx-0 mx-5"
             >
-              {loader ? <Loader /> : "Update"}
+              {loader ? <Loader /> : t("update")}
             </button>
           </div>
         </div>

@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import { textColor } from "../../../services/coverColor";
 import { useTextColorStore } from "../../../store/useTextColorStore";
 import { State } from "../../../store/useTextColorStore";
@@ -17,20 +18,20 @@ const TextColor = ({ bg, name, title }: Props) => {
         {title && (
           <>
             <p className="first-letter:uppercase text-teal-400 chakra text-xl">
-              {title}
+              {t(title)}
             </p>
 
-            <p className="ms-2 text-white chakra"> Color</p>
+            <p className="ms-2 text-white chakra"> {t("color")}</p>
           </>
         )}
       </div>
       <div className="bg-white rounded p-2 mb-5">
-        <p className="mt-2 chakra text-black">Default</p>
+        <p className="mt-2 chakra text-black">{t("default")}</p>
         <div
           className={`w-full h-10 rounded-lg my-2 shadow shadow-zinc-900`}
           style={{ backgroundColor: bg }}
         ></div>
-        <p className="mt-3 chakra text-black">Choose Colors</p>
+        <p className="mt-3 chakra text-black">{t("chooseC")}</p>
         <div className="grid lg:grid-cols-6 grid-cols-7 lg:gap-3 gap-2 overflow-hidden py-5">
           {textColor.map((text) => (
             <button

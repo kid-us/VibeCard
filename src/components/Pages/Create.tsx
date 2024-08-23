@@ -39,30 +39,30 @@ const Create = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const editedUrl = searchParams.get("edit");
 
   // // Subscription
-  useEffect(() => {
-    if (!editedUrl) {
-      axios
-        .get(`${baseUrl}/api/v1/auth/can-create-card`, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        })
-        .then(() => {
-          setLoading(false);
-        })
-        .catch(() => {
-          navigate("/pricing");
-        });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!editedUrl) {
+  //     axios
+  //       .get(`${baseUrl}/api/v1/auth/can-create-card`, {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         withCredentials: true,
+  //       })
+  //       .then(() => {
+  //         setLoading(false);
+  //       })
+  //       .catch(() => {
+  //         navigate("/pricing");
+  //       });
+  //   }
+  // }, []);
 
   // Reload
   useEffect(() => {
@@ -136,7 +136,7 @@ const Create = () => {
           }
 
           // Layout
-          updateLayout(data.card_layout);
+          updateLayout(t(data.card_layout));
           // Cards
           setCardName(data.full_name);
           setCardPronoun(data.pronouns);
@@ -203,7 +203,7 @@ const Create = () => {
         });
     } else {
       // Layout
-      updateLayout("default");
+      updateLayout(t("default"));
       // Cards
       setCardName(null);
       setCardPronoun(null);
@@ -310,15 +310,15 @@ const Create = () => {
                   </div>
                   {/* Links */}
                   <div className="mt-4 flex me-4">
-                    <Link to="/dashboard" className="me-16 text-md">
+                    <Link to="/dashboard" className="me-16 font-poppins">
                       {t("nav4")}
                     </Link>
                     {plan !== "free" && (
-                      <Link to="/insights" className="me-16 text-md">
+                      <Link to="/insights" className="me-16 font-poppins">
                         {t("nav7")}
                       </Link>
                     )}
-                    <Link to="/setting" className="me-5 text-md">
+                    <Link to="/setting" className="me-5 font-poppins">
                       {t("nav6")}
                     </Link>
                     <div className="flex ms-10">
@@ -369,11 +369,11 @@ const Create = () => {
             } lg:col-span-2 lg:pe-5 lg:pt-0 lg:pb-0 pt-5 lg:h-auto pb-10 px-3 h-[95vh] overflow-scroll lg:mt-20`}
           >
             <div className="content-center w-full">
-              <p className="mb-4">Card Preview</p>
+              <p className="mb-4">{t("cardPreview")}</p>
               {/* {layout} */}
-              {layout === "default" && <DefaultCard />}
-              {layout === "centered" && <CenteredCard />}
-              {layout === "right" && <RightCard />}
+              {layout === t("default") && <DefaultCard />}
+              {layout === t("center") && <CenteredCard />}
+              {layout === t("right") && <RightCard />}
             </div>
           </div>
         </div>
@@ -391,28 +391,28 @@ const Create = () => {
 
             <div className="z-50 secondary-bg h-[90dvh] absolute bottom-0 w-full rounded-t-3xl text-white pb-10 animate__animated animate__fadeInUp">
               {/* Colors */}
-              {modal && activeModal === "Colors" && (
+              {modal && activeModal === t("colors") && (
                 <div className="p-5">
                   <Colors />
                 </div>
               )}
 
               {/* Texts */}
-              {modal && activeModal === "Text" && (
+              {modal && activeModal === t("text") && (
                 <div className="p-5">
                   <Texts />
                 </div>
               )}
 
               {/* Contents */}
-              {modal && activeModal === "Content" && (
+              {modal && activeModal === t("content") && (
                 <div className="p-5">
                   <Content />
                 </div>
               )}
 
               {/* Layout */}
-              {modal && activeModal === "Layout" && (
+              {modal && activeModal === t("layout") && (
                 <div className="p-5">
                   <Layout />
                 </div>

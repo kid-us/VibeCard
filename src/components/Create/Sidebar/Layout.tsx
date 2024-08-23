@@ -1,16 +1,18 @@
+import { useTranslation } from "react-i18next";
 import { userPic } from "../../../assets";
 import { useLayoutStore } from "../../../store/useLayoutStore";
 
 const Layout = () => {
+  const { t } = useTranslation();
   const { updateLayout } = useLayoutStore();
   return (
     <div>
-      <p className="chakra text-white mb-4">Card Layouts</p>
+      <p className="chakra text-white mb-4">{t("cardLayout")}</p>
       <div className="bg-white rounded p-2 lg:overflow-hidden lg:h-auto h-[75dvh] overflow-y-scroll lg:pb-0">
         <div>
-          <p className="chakra text-black">Default</p>
+          <p className="chakra text-black">{t("default")}</p>
           <div
-            onClick={() => updateLayout("default")}
+            onClick={() => updateLayout(t("default"))}
             className="relative shadow bg-gray-100 shadow-zinc-800 rounded-lg mt-3 cursor-pointer"
           >
             <div className="w-full lg:h-20 h-32 bg-gray-600 rounded ">
@@ -61,9 +63,9 @@ const Layout = () => {
           </div>
 
           {/* Right */}
-          <p className="mt-5 chakra text-black">Right</p>
+          <p className="mt-5 chakra text-black">{t("right")}</p>
           <div
-            onClick={() => updateLayout("right")}
+            onClick={() => updateLayout(t("right"))}
             className="relative bg-gray-100 shadow shadow-zinc-800 rounded-lg mt-3 cursor-pointer"
           >
             <div className="w-full lg:h-20 h-32 bg-gray-600 rounded ">
@@ -114,9 +116,9 @@ const Layout = () => {
           </div>
 
           {/* Center */}
-          <p className="mt-5 chakra text-black">Center</p>
+          <p className="mt-5 chakra text-black">{t("center")}</p>
           <div
-            onClick={() => updateLayout("centered")}
+            onClick={() => updateLayout(t("center"))}
             className="relative bg-gray-100 shadow shadow-zinc-800 rounded-lg mt-3 cursor-pointer mb-5"
           >
             <div className="w-full lg:h-20 h-32 bg-gray-600 rounded">

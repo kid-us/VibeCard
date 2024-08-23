@@ -2,8 +2,16 @@ import { useState } from "react";
 import "../fonts.css";
 import { useTextColorStore } from "../../../store/useTextColorStore";
 import FontStylesSize from "./FontStylesSize";
+import { t } from "i18next";
 
-const texts = ["pronoun", "name", "location", "jobTitle", "tagLine", "company"];
+export const texts = [
+  { title: "pronoun", translate: "pronoun" },
+  { title: "name", translate: "name" },
+  { title: "location", translate: "location" },
+  { title: "jobTitle", translate: "jobTitle" },
+  { title: "tagLine", translate: "bio" },
+  { title: "company", translate: "company" },
+];
 
 const Texts = () => {
   const [dropdown, setDropdown] = useState(false);
@@ -14,7 +22,7 @@ const Texts = () => {
 
   return (
     <>
-      <p className="chakra text-white mb-4">Text Styles</p>
+      <p className="chakra text-white mb-4">{t("textStyles")}</p>
 
       <div className="z-50 lg:overflow-hidden lg:h-auto h-[75dvh] overflow-y-scroll lg:pb-0 pb-5">
         <div className="relative text-sm border-teal-500 shadow shadow-stone-300 rounded-lg">
@@ -22,7 +30,7 @@ const Texts = () => {
             onClick={() => setDropdown(!dropdown)}
             className="bg-white cursor-pointer text-black rounded-lg"
           >
-            <p className="px-2 py-2  chakra text-lg">Choose Text </p>
+            <p className="px-2 py-2 chakra text-lg">{t("chooseT")} </p>
             <p
               className={`${
                 dropdown ? "bi-caret-up-fill" : "bi-caret-down-fill"
@@ -36,15 +44,15 @@ const Texts = () => {
               {texts.map((text) => (
                 <p
                   onClick={() => {
-                    setView(text);
+                    setView(text.title);
                     setDropdown(false);
                   }}
-                  key={text}
+                  key={text.title}
                   className={`${
-                    view === text && "text-teal-900 text-xl"
+                    view === text.title && "text-teal-900 text-xl"
                   } hover:text-gray-400 w-full cursor-pointer chakra text-lg first-letter:uppercase text-black`}
                 >
-                  {text}
+                  {t(text.translate)}
                 </p>
               ))}
             </div>
