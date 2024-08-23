@@ -274,5 +274,15 @@
   "bestSeller": "Best seller",
   "googleReview": "Goggle Review",
   "availableIn": "Available in",
-  "price": "Price"
+  "price": "Price",
+  "cardDesc": "Original Business cards durable PVC, Professional, and Effortless networking with NFC technology",
+  "quantity": "Quantity",
+  "chooseCard": "Choose your card type",
+  "styleDesc": "With vibecard logo on back?",
+  "cardTitle": "NFC Card",
+  "styles": "Style",
+  "yes": "Yes",
+  "no": "No",
+  "designBtn": "Design your card",
+  "designError": "You must to choose your card type"
 }

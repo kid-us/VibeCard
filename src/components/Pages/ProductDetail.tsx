@@ -28,6 +28,7 @@ import {
 } from "@/assets";
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import Cart from "../Cart/Cart";
+import { useTranslation } from "react-i18next";
 
 interface Plan {
   metal: {
@@ -48,10 +49,12 @@ const ProductDetail = () => {
   const [title] = useState("Product");
   useDocumentTitle(title);
 
+  const { t } = useTranslation();
+
   // Scroll to top
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   const navigate = useNavigate();
 
@@ -129,12 +132,11 @@ const ProductDetail = () => {
           <div className="lg:grid grid-cols-2">
             <div className="lg:hidden block my-6">
               <p className="lg:text-4xl text-2xl text-white font-extrabold font-poppins">
-                Vibecard NFC Card
+                Vibecard {t("cardTitle")}
               </p>
 
-              <p className="mt-3 text-sm text-gray-400">
-                Original Business cards durable PVC, Professional, and
-                Effortless networking with NFC technology
+              <p className="mt-3 text-sm text-gray-300 font-poppins">
+                {t("cardDesc")}
               </p>
             </div>
 
@@ -354,17 +356,16 @@ const ProductDetail = () => {
               <div className="lg:mt-4 rounded-xl lg:py-5">
                 <div className="lg:block hidden">
                   <p className="lg:text-4xl text-2xl text-white font-extrabold font-poppins">
-                    Vibecard NFC Card
+                    Vibecard {t("cardTitle")}
                   </p>
 
-                  <p className="mt-3 text-sm text-gray-400">
-                    Original Business cards durable PVC, Professional, and
-                    Effortless networking with NFC technology
+                  <p className="mt-3 text-md text-gray-300 font-poppins">
+                    {t("cardDesc")}
                   </p>
                 </div>
 
-                <p className="text-white mt-5 lg:text-md text-sm">
-                  Choose your card choice.
+                <p className="text-white mt-5 lg:text-md text-sm font-poppins">
+                  {t("chooseCard")}
                 </p>
                 {/* Card Types */}
                 <div className="lg:flex justify-between gap-x-5 mt-5">
@@ -377,7 +378,7 @@ const ProductDetail = () => {
                           : "bg-white"
                       } w-full text-center pt-3 rounded h-12 lg:mb-0 mb-2 font-poppins cursor-pointer text-sm font-bold`}
                     >
-                      Recycled Paper €{cards?.recycled_paper.price}
+                      PVC €{cards?.recycled_paper.price}
                     </p>
                   )}
                   {availableCards.includes("bamboo") && (
@@ -406,12 +407,10 @@ const ProductDetail = () => {
                   )}
                 </div>
                 {/* Styles */}
-                <p className="lg:mt-10 mt-7 lg:text-md text-sm text-gray-300">
-                  Styles :
-                  <span className="mx-1 text-white">
-                    with{" "}
-                    <span className="logo-font text-teal-300">vibecard </span>
-                    logo on back
+                <p className="lg:mt-10 mt-7 lg:text-md text-sm text-gray-300 font-poppins">
+                  {t("styles")} :
+                  <span className="mx-1 text-white font-poppins">
+                    {t("styleDesc")}
                   </span>
                 </p>
 
@@ -420,22 +419,22 @@ const ProductDetail = () => {
                     onClick={() => setBackLogo(true)}
                     className={`shadow-xl shadow-zinc-900 ${
                       backLogo ? "btn-bg shadow-none px-0" : "bg-white"
-                    } text-center pt-3 text-sm rounded h-11 lg:mb-0 mb-2 w-20`}
+                    } text-center pt-3 text-sm rounded h-11 lg:mb-0 mb-2 w-20 font-poppins font-bold`}
                   >
-                    Yes
+                    {t("yes")}
                   </p>
                   <p
                     onClick={() => setBackLogo(false)}
                     className={`shadow-xl shadow-zinc-900 ${
                       !backLogo ? "btn-bg shadow-none px-0" : "bg-white"
-                    } text-center pt-3 text-sm rounded h-11 lg:mb-0 mb-2 w-20`}
+                    } text-center pt-3 text-sm rounded h-11 lg:mb-0 mb-2 w-20 font-poppins font-bold`}
                   >
-                    No
+                    {t("no")}
                   </p>
                 </div>
               </div>
               {/*Quantity */}
-              <p className="mt-5 mb-4 text-white">Quantity</p>
+              <p className="mt-5 mb-4 text-white"> {t("quantity")}</p>
               <div className="grid grid-cols-5 border border-gray-400 rounded-xl me-44 overflow-hidden lg:w-auto w-full">
                 <div>
                   <button
@@ -460,7 +459,7 @@ const ProductDetail = () => {
 
               {orderError && (
                 <p className="mb-3 text-red-500 text-sm text-start pt-5">
-                  You must to choose your card type
+                  {t("designError")}
                 </p>
               )}
               <div className="lg:flex justify-between gap-x-10 w-full mt-8">
@@ -468,10 +467,10 @@ const ProductDetail = () => {
                 <div className="w-full lg:mb-0 mb-5">
                   <button
                     onClick={() => handleOrder()}
-                    className="btn-bg py-3 lg:text-center rounded shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 text-center w-full"
+                    className="btn-bg py-3 lg:text-center rounded shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 text-center w-full font-poppins"
                   >
                     <span className="bi-palette-fill me-2"></span>
-                    Design your Card
+                    {t("designBtn")}
                   </button>
                 </div>
               </div>

@@ -274,5 +274,15 @@
   "bestSeller": "Bestseller",
   "googleReview": "Goggle-Rezension",
   "availableIn": "Verfügbar in",
-  "price": "Preis"
+  "price": "Preis",
+  "cardDesc": "Original-Visitenkarten aus langlebigem PVC, professionell und müheloses Vernetzen mit NFC-Technologie",
+  "quantity": "Menge",
+  "chooseCard": "Wählen Sie Ihren Kartentyp",
+  "styleDesc": "Mit Vibecard-Logo auf der Rückseite?",
+  "cardTitle": "NFC-Karte",
+  "styles": "Stil",
+  "yes": "Ja",
+  "no": "Nein",
+  "designBtn": "Gestalte deine Karte",
+  "designError": "Sie müssen Ihren Kartentyp auswählen"
 }
