@@ -35,17 +35,7 @@ type FormData = z.infer<typeof schema>;
 const OrderMultipleProducts = () => {
   const { allWallets } = useWallets();
 
-  const [fName, setFName] = useState<string>("");
-  const [lName, setLName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [street, setStreet] = useState<string>("");
-  const [streetNo, setStreetNo] = useState<string>("");
-  const [address, setAddress] = useState<string>("");
-  const [plz, setPlz] = useState<string>("");
-  const [location, setLocation] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
   const [checkbox, setCheckbox] = useState<boolean>(false);
-  const [referral, setReferral] = useState<string>("");
 
   const [loader, setLoader] = useState(false);
   const cart = useCartStore((state) => state.cart);
@@ -56,34 +46,39 @@ const OrderMultipleProducts = () => {
 
   const {
     register,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  //   useEffect(() => {
-  //     axios
-  //       .get(`${baseUrl}/api/v1/products/order-metadata`, {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         withCredentials: true,
-  //       })
-  //       .then((response) => {
-  //         setAddress(response.data.order_metadata.address);
-  //         setFName(response.data.order_metadata.fname);
-  //         setLName(response.data.order_metadata.lname);
-  //         setEmail(response.data.order_metadata.email);
-  //         setLocation(response.data.order_metadata.location);
-  //         setPhone(response.data.order_metadata.phone);
-  //         setPlz(response.data.order_metadata.plz);
-  //         setStreet(response.data.order_metadata.street);
-  //         setStreetNo(response.data.order_metadata.street_no);
-  //         setReferral(response.data.order_metadata.referral);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }, []);
+  // Get Metadata
+  useEffect(() => {
+    axios
+      .get(`${baseUrl}/api/v1/products/order-metadata`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        const data = response.data.order_metadata;
+
+        // Set form values using react-hook-form's setValue
+        setValue("firstName", data.fname);
+        setValue("lastName", data.lname);
+        setValue("email", data.email);
+        setValue("street", data.street);
+        setValue("streetNo", data.street_no);
+        setValue("address", data.address);
+        setValue("plz", data.plz);
+        setValue("location", data.location);
+        setValue("phone", data.phone);
+        setValue("referral", data.referral);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch order metadata:", error);
+      });
+  }, [setValue]);
 
   const onSubmit = (data: FieldValues) => {
     const multipleWallets: Wallet[] = cart.map((c) => ({
@@ -101,6 +96,7 @@ const OrderMultipleProducts = () => {
       phone: data.phone,
       street: data.street,
       street_no: data.streetNo,
+      referral_code: data.referral,
     };
 
     const orderWallet = {
@@ -173,8 +169,6 @@ const OrderMultipleProducts = () => {
                 className={`text-black bg-gray-300 py-3 rounded h-12 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                   errors.firstName && "border-red-600 border-1 border"
                 }`}
-                onChange={(e) => setFName(e.currentTarget.value)}
-                value={fName}
               />
               {errors.firstName && (
                 <p className="text-red-600 text-xs pt-1">
@@ -194,8 +188,6 @@ const OrderMultipleProducts = () => {
                 className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                   errors.lastName && "border-red-600 border-1 border"
                 }`}
-                onChange={(e) => setLName(e.currentTarget.value)}
-                value={lName}
               />
               {errors.lastName && (
                 <p className="text-red-600 text-xs pt-1">
@@ -215,8 +207,6 @@ const OrderMultipleProducts = () => {
                 className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                   errors.email && "border-red-600 border-1 border"
                 }`}
-                onChange={(e) => setEmail(e.currentTarget.value)}
-                value={email}
               />
               {errors.email && (
                 <p className="text-red-600 text-xs pt-1">
@@ -237,8 +227,6 @@ const OrderMultipleProducts = () => {
                   className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                     errors.street && "border-red-600 border-1 border"
                   }`}
-                  onChange={(e) => setStreet(e.currentTarget.value)}
-                  value={street}
                 />
                 {errors.street && (
                   <p className="text-red-600 text-xs pt-1">
@@ -260,8 +248,6 @@ const OrderMultipleProducts = () => {
                   className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                     errors.streetNo && "border-red-600 border-1 border"
                   }`}
-                  onChange={(e) => setStreetNo(e.currentTarget.value)}
-                  value={streetNo}
                 />
                 {errors.streetNo && (
                   <p className="text-red-600 text-xs pt-1">
@@ -282,8 +268,6 @@ const OrderMultipleProducts = () => {
                 className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                   errors.address && "border-red-600 border-1 border"
                 }`}
-                onChange={(e) => setAddress(e.currentTarget.value)}
-                value={address}
               />
               {errors.address && (
                 <p className="text-red-600 text-xs pt-1">
@@ -303,8 +287,6 @@ const OrderMultipleProducts = () => {
                 className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                   errors.plz && "border-red-600 border-1 border"
                 }`}
-                onChange={(e) => setPlz(e.currentTarget.value)}
-                value={plz}
               />
               {errors.plz && (
                 <p className="text-red-600 text-xs pt-1">
@@ -324,8 +306,6 @@ const OrderMultipleProducts = () => {
                 className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                   errors.location && "border-red-600 border-1 border"
                 }`}
-                onChange={(e) => setLocation(e.currentTarget.value)}
-                value={location}
               />
               {errors.location && (
                 <p className="text-red-600 text-xs pt-1">
@@ -345,8 +325,6 @@ const OrderMultipleProducts = () => {
                 className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                   errors.phone && "border-red-600 border-1 border"
                 }`}
-                onChange={(e) => setPhone(e.currentTarget.value)}
-                value={phone}
               />
               {errors.phone && (
                 <p className="text-red-600 text-xs pt-1">
@@ -364,8 +342,6 @@ const OrderMultipleProducts = () => {
                 type="tel"
                 name="referral"
                 className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm`}
-                onChange={(e) => setReferral(e.currentTarget.value)}
-                value={referral}
               />
             </div>
           </div>

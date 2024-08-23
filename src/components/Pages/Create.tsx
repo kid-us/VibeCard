@@ -46,23 +46,23 @@ const Create = () => {
   const editedUrl = searchParams.get("edit");
 
   // // Subscription
-  // useEffect(() => {
-  //   if (!editedUrl) {
-  //     axios
-  //       .get(`${baseUrl}/api/v1/auth/can-create-card`, {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         withCredentials: true,
-  //       })
-  //       .then(() => {
-  //         setLoading(false);
-  //       })
-  //       .catch(() => {
-  //         navigate("/pricing");
-  //       });
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!editedUrl) {
+      axios
+        .get(`${baseUrl}/api/v1/auth/can-create-card`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        })
+        .then(() => {
+          setLoading(false);
+        })
+        .catch(() => {
+          navigate("/pricing");
+        });
+    }
+  }, []);
 
   // Reload
   useEffect(() => {
