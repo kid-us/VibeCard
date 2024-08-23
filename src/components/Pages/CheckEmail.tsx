@@ -7,6 +7,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../Button/Button";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import { t } from "i18next";
 
 const schema = z.object({
   password: z.string().min(8, {
@@ -67,10 +68,10 @@ const CheckEmail = () => {
   };
 
   return (
-    <div className="h-[100vh] menu-bg">
+    <div className="h-[100vh] bg">
       <div className="lg:px-40 md:px-36 px-2">
         <div className="lg:pt-10 md:pt-10 py-5 lg:ps-24">
-          <Link to={"/"} className="text-2xl text-teal-950 logo-font">
+          <Link to={"/"} className="text-2xl text-white logo-font">
             vibecard
           </Link>
         </div>
@@ -78,20 +79,20 @@ const CheckEmail = () => {
 
       <div className="flex justify-center lg:px-40 md:px-36 px-2 lg:mt-28 md:mt-28">
         <div className="content-center lg:w-3/6 md:w-5/6 w-full h-96">
-          <div className="lg:p-10 md:p-9 p-8 shadow-lg bg-white rounded-lg">
+          <div className="lg:p-10 md:p-9 p-8 shadow-lg secondary-bg rounded-lg">
             {emailAddress && (
               <>
-                <h1 className="text-4xl">Password reset email sent</h1>
-                <p className="text-gray-500 text-sm mt-6">
-                  We've sent you a link to reset your password to{" "}
-                  <span className="text-blue-600">{emailAddress}</span> email
-                  address. The link expires in 6 hours.
+                <h1 className="text-4xl">{t("resetTitle")}</h1>
+                <p className="text-gray-400 text-sm mt-6">
+                  {t("resetTitle2")}{" "}
+                  <span className="text-blue-600">{emailAddress}</span>{" "}
+                  {t("resetTitle3")}
                 </p>
-                <p className="text-gray-500 text-sm mt-2">
-                  Didn't get an email? Check your junk folder or request another
+                <p className="text-gray-400 text-sm mt-2">
+                  {t("resetTitle4")}
                   link{" "}
                   <Link to="/request" className="text-xl text-blue-600">
-                    here
+                    {t("here")}
                   </Link>
                   .
                 </p>
@@ -99,7 +100,7 @@ const CheckEmail = () => {
             )}
             {token && (
               <>
-                <h1 className="text-2xl">Enter your new Password</h1>
+                <h1 className="text-2xl text-white">{t("enterPassword")}</h1>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="my-8 px-5">
                   <div className="mb-5 relative">
@@ -107,13 +108,13 @@ const CheckEmail = () => {
                       className="text-sm text-gray-500 block"
                       htmlFor="password"
                     >
-                      Password
+                      {t("password")}
                     </label>
                     <input
                       {...register("password")}
                       type={showPassword ? "text" : "password"}
                       name="password"
-                      className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                      className={`bg-gray-100 py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                         errors.password && "border-red-600 border-1 border"
                       }`}
                     />
@@ -135,12 +136,12 @@ const CheckEmail = () => {
                     className="text-sm text-gray-500 block mt-5"
                     htmlFor="password"
                   >
-                    Confirm Password
+                    {t("conPass")}
                   </label>
                   <input
                     type="password"
                     name="confirm-password"
-                    className={`bg-gray-100 py-3 rounded-lg w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                    className={`bg-gray-100 py-3 rounded w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
                       confirmPasswordError && "border-red-600 border-1 border"
                     }`}
                     onChange={(event) =>
@@ -154,7 +155,7 @@ const CheckEmail = () => {
                     </p>
                   )}
                   {/* Button */}
-                  <Button label="Reset Password" />
+                  <Button label={t("resetPass")} />
                 </form>
               </>
             )}

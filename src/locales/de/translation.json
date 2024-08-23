@@ -183,5 +183,13 @@
 
   "editSuccess": "Sie haben Ihre Karte erfolgreich aktualisiert.",
   "editPopUp": "Nur geänderte Felder werden aktualisiert. Wenn ein Feldwert nicht angegeben wird, bleiben die vorherigen Daten für dieses Feld unverändert. Sie können wählen, ob Sie ein bestimmtes Feld aktualisieren oder Änderungen an der gesamten Karte vornehmen möchten.",
-  "notice": "Beachten"
+  "notice": "Beachten",
+
+  "resetTitle": "E-Mail zum Zurücksetzen des Passworts gesendet",
+  "resetTitle2": "Wir haben Ihnen einen Link zum Zurücksetzen Ihres Passworts an diese E-Mail-Adresse gesendet",
+  "resetTitle3": "Der Link läuft in 6 Stunden ab.",
+  "resetTitle4": "Keine E-Mail erhalten? Prüfen Sie Ihren Junk-Ordner oder fordern Sie eine neue an",
+  "here": "hier",
+  "enterPassword": "Geben Sie Ihr neues Passwort ein",
+  "resetPass": "Passwort zurücksetzen"
 }

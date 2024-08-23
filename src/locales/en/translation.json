@@ -181,5 +181,13 @@
 
   "editSuccess": "You have updated your card Successfully.",
   "editPopUp": "Only changed fields will be updated. If a field value is not provided, the previous data for that field will remain unchanged. You can choose to update a specific field or make changes to the entire card",
-  "notice": "Notice"
+  "notice": "Notice",
+
+  "resetTitle": "Password reset email sent",
+  "resetTitle2": "We've sent you a link to reset your password to",
+  "resetTitle3": "email address. The link expires in 6 hours.",
+  "resetTitle4": "Didn't get an email? Check your junk folder or request another",
+  "here": "here",
+  "enterPassword": "Enter your new Password",
+  "resetPass": "Reset Password"
 }
