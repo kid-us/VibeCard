@@ -191,5 +191,9 @@
   "resetTitle4": "Keine E-Mail erhalten? Prüfen Sie Ihren Junk-Ordner oder fordern Sie eine neue an",
   "here": "hier",
   "enterPassword": "Geben Sie Ihr neues Passwort ein",
-  "resetPass": "Passwort zurücksetzen"
+  "resetPass": "Passwort zurücksetzen",
+
+  "forgotPasswordNote1": "Passwort vergessen? Kein Problem! Geben Sie einfach die mit Ihrem Konto verknüpfte E-Mail-Adresse ein und wir senden Ihnen einen Link zum Zurücksetzen Ihres Passworts. Folgen Sie den Anweisungen in der E-Mail, um ein neues Passwort zu erstellen und wieder Zugriff auf Ihr Konto zu erhalten.",
+
+  "forgotPasswordNote2": "Wenn Sie die E-Mail nicht erhalten, überprüfen Sie bitte Ihren Spam-Ordner oder wenden Sie sich für Hilfe an unser Support-Team."
 }

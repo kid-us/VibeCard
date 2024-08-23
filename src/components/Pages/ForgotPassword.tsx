@@ -7,6 +7,7 @@ import axios from "axios";
 import { baseUrl } from "../../services/request";
 import { useState } from "react";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import { t } from "i18next";
 
 const schema = z.object({
   email: z.string().email({ message: "Email address required." }),
@@ -63,16 +64,12 @@ const ForgotPassword = () => {
       <div className="flex justify-center lg:px-40 md:px-36 px-2 lg:mt-28 md:mt-24 mt-20">
         <div className="content-center lg:w-3/6 md:w-5/6 w-full h-96">
           <div className="lg:p-10 md:p-9 p-8 shadow-lg secondary-bg rounded-lg text-white border border-violet-800">
-            <h1 className="text-2xl">Rest your Password</h1>
+            <h1 className="text-2xl">{t("resetPass")}</h1>
             <p className="text-gray-400 text-sm mt-6">
-              Forgot your password? No problem! Just enter the email address
-              associated with your account, and we'll send you a link to reset
-              your password. Follow the instructions in the email to create a
-              new password and regain access to your account.
+              {t("forgotPasswordNote1")}
             </p>
             <p className="text-gray-400 text-sm mt-2">
-              If you don't receive the email, please check your spam folder or
-              contact our support team for help.
+              {t("forgotPasswordNote2")}
             </p>
             {forgotPasswordError !== "" && (
               <p className="text-red-600 text-sm mt-5">
@@ -83,7 +80,7 @@ const ForgotPassword = () => {
 
             <form onSubmit={handleSubmit(onSubmit)} className="my-5">
               <label className="text-sm text-gray-500 block" htmlFor="email">
-                Email
+                {t("email")}
               </label>
               <input
                 {...register("email")}
@@ -99,7 +96,7 @@ const ForgotPassword = () => {
                 </p>
               )}
               {/* Button */}
-              <Button loader={loader} label="Reset Password" />
+              <Button loader={loader} label={t("resetPass")} />
             </form>
           </div>
         </div>
