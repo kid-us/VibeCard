@@ -8,6 +8,7 @@ import axios from "axios";
 import { baseUrl } from "@/services/request";
 import html2canvas from "html2canvas";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface LocalStorageData {
   cardType: string;
@@ -43,6 +44,8 @@ type FormData = z.infer<typeof schema>;
 
 const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const {
     register,
@@ -369,7 +372,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
         <div className="relative bg-white rounded shadow-lg shadow-zinc-950 lg:p-10 mx-2 lg:mt-0 mt-10">
           <form onSubmit={handleSubmit(onSubmit)} className="lg:px-5 px-6 py-5">
             <p className="text-2xl mb-10 font-poppins text-black">
-              Please insert your delivery information
+              {t("deliveryInfo")}
             </p>
             <div className="lg:grid grid-cols-2 gap-x-8">
               {/* first name */}
@@ -378,7 +381,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                   className="text-sm text-gray-500 block"
                   htmlFor="firstName"
                 >
-                  First Name
+                  {t("fName")}
                 </label>
                 <input
                   {...register("firstName")}
@@ -399,7 +402,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                   className="text-sm text-gray-500 block"
                   htmlFor="lastName"
                 >
-                  Last Name
+                  {t("lName")}
                 </label>
                 <input
                   {...register("lastName")}
@@ -417,7 +420,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
               {/* Email */}
               <div className="mb-5">
                 <label className="text-sm text-gray-500 block" htmlFor="email">
-                  Email
+                  {t("email")}
                 </label>
                 <input
                   {...register("email")}
@@ -439,7 +442,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                     className="text-sm text-gray-500 block"
                     htmlFor="street"
                   >
-                    Street
+                    {t("street")}
                   </label>
                   <input
                     {...register("street")}
@@ -481,7 +484,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                   className="text-sm text-gray-500 block"
                   htmlFor="address"
                 >
-                  Address
+                  {t("address")}
                 </label>
                 <input
                   {...register("address")}
@@ -499,7 +502,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
               {/* PLZ */}
               <div className="mb-5">
                 <label className="text-sm text-gray-500 block" htmlFor="plz">
-                  Plz
+                  {t("PLZ")}
                 </label>
                 <input
                   {...register("plz")}
@@ -520,7 +523,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                   className="text-sm text-gray-500 block"
                   htmlFor="location"
                 >
-                  Location
+                  {t("location")}
                 </label>
                 <input
                   {...register("location")}
@@ -538,7 +541,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
               {/* phone */}
               <div className="mb-5">
                 <label className="text-sm text-gray-500 block" htmlFor="phone">
-                  Phone
+                  {t("phone")}
                 </label>
                 <input
                   {...register("phone")}
@@ -559,7 +562,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                   className="text-sm text-gray-500 block"
                   htmlFor="referral"
                 >
-                  Referral
+                  {t("referral")}
                 </label>
                 <input
                   {...register("referral")}
@@ -576,11 +579,11 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                 onChange={() => setCheckbox(!checkbox)}
               />
               <label htmlFor="save" className="text-black text-sm">
-                Do you want to save this info for future time use.
+                {t("saveInfo")}
               </label>
             </div>
             <div className="lg:mt-16 mt-8">
-              <Button label="Order" loader={loader} />
+              <Button label={t("order")} loader={loader} />
             </div>
           </form>
         </div>

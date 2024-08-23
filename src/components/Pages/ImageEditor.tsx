@@ -17,34 +17,37 @@ const ImageEditor = () => {
 
   // Reload
   useEffect(() => {
+    let isReloading = false;
+
     const handleBeforeUnload = (event: BeforeUnloadEvent) => {
-      const message =
-        "Are you sure you want to leave? Your changes might not be saved.";
-      event.returnValue = message; // Standard for most browsers
-      return message; // For some older browsers
+      if (isReloading) {
+        const message =
+          "Are you sure you want to leave? Your changes might not be saved.";
+        event.returnValue = message; // Standard for most browsers
+        return message; // For some older browsers
+      }
     };
 
     const handlePopState = () => {
-      // Logic for detecting navigation
-      const confirmNavigation = window.confirm(
-        "Are you sure you want to leave this page? Your changes might not be saved."
-      );
-      if (!confirmNavigation) {
-        // Prevent the navigation by pushing a new state
-        window.history.pushState(null, "", window.location.href);
-      }
+      isReloading = false; // Reset the flag if back navigation happens
+    };
+
+    const handleUnload = () => {
+      isReloading = true; // Set flag to true only when a reload is detected
     };
 
     // Add event listeners
     window.addEventListener("beforeunload", handleBeforeUnload);
+    window.addEventListener("unload", handleUnload);
     window.addEventListener("popstate", handlePopState);
 
     // Cleanup event listeners on component unmount
     return () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
+      window.removeEventListener("unload", handleUnload);
       window.removeEventListener("popstate", handlePopState);
     };
-  }, []);
+  }, [history]);
 
   // Screen Detector
   useEffect(() => {
