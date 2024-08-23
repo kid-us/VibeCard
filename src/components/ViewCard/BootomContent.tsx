@@ -2,7 +2,7 @@ import { deezer, trustpilot } from "@/assets";
 import { baseUrl } from "@/services/request";
 import { Data, StyleData } from "@/services/viewCard";
 import axios from "axios";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import vCardsJS from "vcards-js";
 
@@ -13,6 +13,8 @@ interface Props {
 }
 
 const BottomContent = ({ styles, data, capture }: Props) => {
+  const { t } = useTranslation();
+
   const generateVCard = () => {
     const vCard = vCardsJS();
 

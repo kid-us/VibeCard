@@ -7,7 +7,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../Button/Button";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const schema = z.object({
   password: z.string().min(8, {
@@ -20,6 +20,8 @@ type FormData = z.infer<typeof schema>;
 const CheckEmail = () => {
   const [title] = useState("Verify you Email");
   useDocumentTitle(title);
+
+  const { t } = useTranslation();
 
   const location = useLocation();
   const navigate = useNavigate();

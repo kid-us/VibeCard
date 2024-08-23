@@ -7,7 +7,7 @@ import axios from "axios";
 import { baseUrl } from "../../services/request";
 import { useState } from "react";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const schema = z.object({
   email: z.string().email({ message: "Email address required." }),
@@ -18,6 +18,7 @@ type FormData = z.infer<typeof schema>;
 const ForgotPassword = () => {
   const [title] = useState("Forgot Password?");
   useDocumentTitle(title);
+  const { t } = useTranslation();
 
   const [forgotPasswordError, setForgotPasswordError] = useState("");
   const [loader, setLoader] = useState(false);

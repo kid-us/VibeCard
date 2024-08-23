@@ -195,5 +195,48 @@
 
   "forgotPasswordNote1": "Passwort vergessen? Kein Problem! Geben Sie einfach die mit Ihrem Konto verknüpfte E-Mail-Adresse ein und wir senden Ihnen einen Link zum Zurücksetzen Ihres Passworts. Folgen Sie den Anweisungen in der E-Mail, um ein neues Passwort zu erstellen und wieder Zugriff auf Ihr Konto zu erhalten.",
 
-  "forgotPasswordNote2": "Wenn Sie die E-Mail nicht erhalten, überprüfen Sie bitte Ihren Spam-Ordner oder wenden Sie sich für Hilfe an unser Support-Team."
+  "forgotPasswordNote2": "Wenn Sie die E-Mail nicht erhalten, überprüfen Sie bitte Ihren Spam-Ordner oder wenden Sie sich für Hilfe an unser Support-Team.",
+
+  "pricingNote": "Wählen Sie den besten Plan für Sie oder Ihr Unternehmen.",
+  "pricingNote2": "Für diejenigen, die hauptsächlich ihre digitale Visitenkarte oder ihre sozialen Medien teilen möchten",
+  "createNow": "Jetzt erstellen",
+  "free": "Kostenlos",
+  "popular": "Beliebteste",
+  "pro": "Pro",
+  "perMonth": "pro Monat",
+  "subscribe": "Abonnieren",
+  "proPlan": "Alles im Basic-Plan, plus",
+  "proPlus": "Pro+",
+  "perYear": "pro Jahr",
+  "proPlusPlan": "Alles in Pro+",
+  "basic": "Grundlegend",
+
+  "free1": "Digitale Visitenkarte und QR-Code",
+  "free2": "Einfaches Teilen von Kontaktinformationen",
+  "free3": "Unbegrenztes Teilen und Scannen von Karten",
+  "free4": "Kundensupport rund um die Uhr",
+
+  "pro1": "Bis zu 3 digitale Karten erstellen",
+  "pro2": "Zugriff auf alle Linktypen",
+  "pro3": "Einfache Profilaktualisierung",
+  "pro4": "Echtzeitanalysen und Nutzungsstatistiken",
+  "pro5": "Tools zur Lead-Generierung und Nachverfolgung",
+  "pro6": "Erweiterte Einblicke",
+
+  "proPlus1": "Bis zu 10 digitale Visitenkarten erstellen",
+  "proPlus2": "Prioritärer Kundensupport",
+  "proPlus3": "Analysedaten exportieren",
+  "proPlus4": "Lebenslange Einblicke und Analysen",
+  "proPlus5": "Mehrsprachige Unterstützung für internationale Nutzung",
+
+  "pricing1": "Anzahl der Benutzer",
+  "pricing2": "Anzahl der digitalen Visitenkarten",
+  "pricing3": "Teilen von Kontaktinformationen",
+  "pricing4": "Unbegrenztes Teilen und Scannen von Karten",
+  "pricing5": "Kundensupport rund um die Uhr",
+  "pricing6": "Einblicke und Analysen",
+  "pricing7": "Profilaktualisierung",
+  "pricing8": "Analysedaten exportieren",
+  "pricing9": "Mehrsprachigkeit",
+  "pricing10": "Wasserzeichen entfernen"
 }

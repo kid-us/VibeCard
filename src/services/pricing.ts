@@ -20,68 +20,68 @@ interface PricingDetail {
 export const free: PricingFeatures[] = [
   {
     id: 1,
-    feature: "Digital business card and QR code",
+    feature: "free1",
   },
   {
     id: 2,
-    feature: "Basic sharing of contact information",
+    feature: "free2",
   },
   {
     id: 3,
-    feature: "Unlimited card shares and scans",
+    feature: "free3",
   },
   {
     id: 4,
-    feature: "24/7 Customer Support",
+    feature: "free4",
   },
 ];
 
 export const pro: PricingFeatures[] = [
   {
     id: 1,
-    feature: "Create Up To 3 digital Cards",
+    feature: "pro1",
   },
   {
     id: 2,
-    feature: "Access to All Link Types",
+    feature: "pro2",
   },
   {
     id: 3,
-    feature: "Easy profile Update ",
+    feature: "pro3",
   },
   {
     id: 4,
-    feature: "Real-time analytics and usage statistics",
+    feature: "pro4",
   },
   // { id: 5, feature: "Integration with Google and Apple Wallet" },
-  { id: 6, feature: "Lead generation and follow-up tools" },
-  { id: 7, feature: "Advanced Insights" },
+  { id: 6, feature: "pro5" },
+  { id: 7, feature: "pro6" },
 ];
 
 export const proPlus: PricingFeatures[] = [
   {
     id: 1,
-    feature: "Create up to 10 digital business cards",
+    feature: "proPlus1",
   },
   {
     id: 2,
-    feature: "Priority customer support",
+    feature: "proPlus2",
   },
   {
     id: 3,
-    feature: "Export analytics data",
+    feature: "proPlus3",
   },
   {
     id: 4,
-    feature: "Lifetime Insights & Analytics",
+    feature: "proPlus4",
   },
-  { id: 5, feature: "Multi-language support for international use" },
+  { id: 5, feature: "proPlus5" },
 ];
 
 export const pricingInfo: PricingDetail[] = [
   {
     id: 1,
-    title: "Number of Users",
+    title: "pricing1",
     value1: { id: 1, icon: "bi-check-circle-fill", value: 1 },
     value2: { id: 1, icon: "bi-check-circle-fill", value: 1 },
     value3: { id: 1, icon: "bi-check-circle-fill", value: 1 },
@@ -89,7 +89,7 @@ export const pricingInfo: PricingDetail[] = [
 
   {
     id: 2,
-    title: "Number of Digital Business Cards",
+    title: "pricing2",
     value1: { id: 1, icon: "bi-check-circle-fill", value: 1 },
     value2: { id: 1, icon: "bi-check-circle-fill", value: 3 },
     value3: { id: 1, icon: "bi-check-circle-fill", value: 10 },
@@ -97,7 +97,7 @@ export const pricingInfo: PricingDetail[] = [
 
   {
     id: 3,
-    title: "Sharing of contact information",
+    title: "pricing3",
     value1: { id: 1, icon: "bi-check-circle-fill", value: 0 },
     value2: { id: 1, icon: "bi-check-circle-fill", value: 0 },
     value3: { id: 1, icon: "bi-check-circle-fill", value: 0 },
@@ -105,7 +105,7 @@ export const pricingInfo: PricingDetail[] = [
 
   {
     id: 4,
-    title: "Unlimited card shares and scans",
+    title: "pricing4",
     value1: { id: 1, icon: "bi-check-circle-fill", value: 0 },
     value2: { id: 1, icon: "bi-check-circle-fill", value: 0 },
     value3: { id: 1, icon: "bi-check-circle-fill", value: 0 },
@@ -113,7 +113,7 @@ export const pricingInfo: PricingDetail[] = [
 
   {
     id: 5,
-    title: "24/7 Customer Support",
+    title: "pricing5",
     value1: { id: 1, icon: "bi-check-circle-fill", value: 0 },
     value2: { id: 1, icon: "bi-check-circle-fill", value: 0 },
     value3: { id: 1, icon: "bi-check-circle-fill", value: 0 },
@@ -121,23 +121,23 @@ export const pricingInfo: PricingDetail[] = [
 
   {
     id: 6,
-    title: "Insights & Analytics",
+    title: "pricing6",
     value1: { id: 1, icon: "bi-dash", value: 0 },
     value2: { id: 1, icon: "bi-check-circle-fill", value: 0 },
     value3: { id: 1, icon: "bi-check-circle-fill", value: 0 },
   },
 
-  {
-    id: 7,
-    title: "Integration with Google & Apple",
-    value1: { id: 1, icon: "bi-dash", value: 0 },
-    value2: { id: 1, icon: "bi-check-circle-fill", value: 0 },
-    value3: { id: 1, icon: "bi-check-circle-fill", value: 0 },
-  },
+  // {
+  //   id: 7,
+  //   title: "Integration with Google & Apple",
+  //   value1: { id: 1, icon: "bi-dash", value: 0 },
+  //   value2: { id: 1, icon: "bi-check-circle-fill", value: 0 },
+  //   value3: { id: 1, icon: "bi-check-circle-fill", value: 0 },
+  // },
 
   {
     id: 8,
-    title: "Profile Update",
+    title: "pricing7",
     value1: { id: 1, icon: "bi-dash", value: 0 },
     value2: { id: 1, icon: "bi-check-circle-fill", value: 0 },
     value3: { id: 1, icon: "bi-check-circle-fill", value: 0 },
@@ -145,7 +145,7 @@ export const pricingInfo: PricingDetail[] = [
 
   {
     id: 9,
-    title: "Export analytics data",
+    title: "pricing8",
     value1: { id: 1, icon: "bi-dash", value: 0 },
     value2: { id: 1, icon: "bi-dash", value: 0 },
     value3: { id: 1, icon: "bi-check-circle-fill", value: 0 },
@@ -153,14 +153,14 @@ export const pricingInfo: PricingDetail[] = [
 
   {
     id: 10,
-    title: "Multi-language support ",
+    title: "pricing9",
     value1: { id: 1, icon: "bi-dash", value: 0 },
     value2: { id: 1, icon: "bi-dash", value: 0 },
     value3: { id: 1, icon: "bi-check-circle-fill", value: 0 },
   },
   {
     id: 11,
-    title: "Remove watermark ",
+    title: "pricing10",
     value1: { id: 1, icon: "bi-dash", value: 0 },
     value2: { id: 1, icon: "bi-dash", value: 0 },
     value3: { id: 1, icon: "bi-check-circle-fill", value: 0 },

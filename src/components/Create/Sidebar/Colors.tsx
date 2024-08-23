@@ -5,12 +5,14 @@ import { useTextColorStore } from "../../../store/useTextColorStore";
 import { useCardColorStore } from "../../../store/useCardColorStore";
 import { useCoverColorStore } from "../../../store/useCoverColorStore";
 import { useState } from "react";
-import { t } from "i18next";
 import { texts } from "./Texts";
+import { useTranslation } from "react-i18next";
 
 const Colors = () => {
   const [dropdown, setDropdown] = useState(false);
   const [view, setView] = useState("Pronoun");
+
+  const { t } = useTranslation();
 
   const { company, jobTitle, location, name, pronoun, tagLine, button } =
     useTextColorStore();
