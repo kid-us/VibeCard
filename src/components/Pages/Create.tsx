@@ -136,7 +136,7 @@ const Create = () => {
           }
 
           // Layout
-          updateLayout(t(data.card_layout));
+          updateLayout(data.card_layout);
           // Cards
           setCardName(data.full_name);
           setCardPronoun(data.pronouns);
@@ -261,6 +261,7 @@ const Create = () => {
   }, []);
 
   const { layout } = useLayoutStore();
+
   const { user, plan } = useAuthStore();
   // States
   const [modal, setModal] = useState(false);
@@ -371,9 +372,9 @@ const Create = () => {
             <div className="content-center w-full">
               <p className="mb-4">{t("cardPreview")}</p>
               {/* {layout} */}
-              {layout === t("default") && <DefaultCard />}
-              {layout === t("center") && <CenteredCard />}
-              {layout === t("right") && <RightCard />}
+              {layout === "default" && <DefaultCard />}
+              {layout === "center" && <CenteredCard />}
+              {layout === "right" && <RightCard />}
             </div>
           </div>
         </div>

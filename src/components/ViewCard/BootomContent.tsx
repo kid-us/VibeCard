@@ -2,6 +2,7 @@ import { deezer, trustpilot } from "@/assets";
 import { baseUrl } from "@/services/request";
 import { Data, StyleData } from "@/services/viewCard";
 import axios from "axios";
+import { t } from "i18next";
 import { Link } from "react-router-dom";
 import vCardsJS from "vcards-js";
 
@@ -202,7 +203,7 @@ const BottomContent = ({ styles, data, capture }: Props) => {
             color: styles.button.text_color,
           }}
         >
-          Save Contact
+          {t("saveContact")}
         </button>
       </div>
     </>

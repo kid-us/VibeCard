@@ -12,7 +12,7 @@ const Layout = () => {
         <div>
           <p className="chakra text-black">{t("default")}</p>
           <div
-            onClick={() => updateLayout(t("default"))}
+            onClick={() => updateLayout("default")}
             className="relative shadow bg-gray-100 shadow-zinc-800 rounded-lg mt-3 cursor-pointer"
           >
             <div className="w-full lg:h-20 h-32 bg-gray-600 rounded ">
@@ -65,7 +65,7 @@ const Layout = () => {
           {/* Right */}
           <p className="mt-5 chakra text-black">{t("right")}</p>
           <div
-            onClick={() => updateLayout(t("right"))}
+            onClick={() => updateLayout("right")}
             className="relative bg-gray-100 shadow shadow-zinc-800 rounded-lg mt-3 cursor-pointer"
           >
             <div className="w-full lg:h-20 h-32 bg-gray-600 rounded ">
@@ -118,7 +118,7 @@ const Layout = () => {
           {/* Center */}
           <p className="mt-5 chakra text-black">{t("center")}</p>
           <div
-            onClick={() => updateLayout(t("center"))}
+            onClick={() => updateLayout("center")}
             className="relative bg-gray-100 shadow shadow-zinc-800 rounded-lg mt-3 cursor-pointer mb-5"
           >
             <div className="w-full lg:h-20 h-32 bg-gray-600 rounded">
