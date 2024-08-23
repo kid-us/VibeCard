@@ -24,6 +24,7 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import Cart from "../Cart/Cart";
 import { useCartStore } from "@/store/useCartStore";
+import { useTranslation } from "react-i18next";
 
 interface Wal {
   wallet: Wallets;
@@ -33,10 +34,12 @@ const WalletsDetail = () => {
   const [title] = useState("Product");
   useDocumentTitle(title);
 
+  const { t } = useTranslation();
+
   // Scroll to top
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   const { id } = useParams();
   // const navigate = useNavigate();
@@ -108,28 +111,28 @@ const WalletsDetail = () => {
                       <img
                         src={wallets?.image}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded mb-3 cursor-pointer w-full"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={wall1}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded mb-3 cursor-pointer w-full"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={wall2}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded mb-3 cursor-pointer w-full"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={wall3}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full h-[340px] lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded mb-3 cursor-pointer w-full h-[340px]"
                       />
                     </CarouselItem>
                   </CarouselContent>
@@ -148,28 +151,28 @@ const WalletsDetail = () => {
                       <img
                         src={wallets?.image}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded mb-3 cursor-pointer w-full"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={slide1}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded mb-3 cursor-pointer w-full"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={slide2}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded mb-3 cursor-pointer w-full"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={slide3}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full h-[340px] lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded mb-3 cursor-pointer w-full"
                       />
                     </CarouselItem>
                   </CarouselContent>
@@ -188,28 +191,28 @@ const WalletsDetail = () => {
                       <img
                         src={wallets?.image}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded mb-3 cursor-pointer w-full"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={red1}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded mb-3 cursor-pointer w-full"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={red2}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded mb-3 cursor-pointer w-full"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={red3}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full h-[340px] lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded mb-3 cursor-pointer w-full"
                       />
                     </CarouselItem>
                   </CarouselContent>
@@ -223,18 +226,18 @@ const WalletsDetail = () => {
                 </p>
               </div>
               <p className="text-white font-poppins font-bold text-2xl mt-5">
-                Price €{wallets?.price}
+                {t("price")} €{wallets?.price}
               </p>
 
               <p className="text-xl mt-5 mb-4 text-white font-poppins font-bold">
-                Size{" "}
+                {t("size")}{" "}
                 <span className="text-sm font-light font-poppins">
-                  {wallets?.size}
+                  {t("sizeDesc")}
                 </span>
               </p>
 
               {/*Quantity */}
-              <p className="mt-5 mb-4 text-white">Quantity</p>
+              <p className="mt-5 mb-4 text-white"> {t("quantity")}</p>
               <div className="grid grid-cols-5 border border-gray-400 rounded-xl me-44 overflow-hidden lg:w-auto w-full">
                 <div>
                   <button
@@ -267,7 +270,7 @@ const WalletsDetail = () => {
                   }
                   className="bg-white bi-cart-fill w-full mt-8 shadow shadow-zinc-900 text-black font-poppins rounded py-3"
                 >
-                  Add to Card
+                  {t("addToCart")}
                 </button>
               </div>
               <div className="mb-10">
@@ -275,15 +278,15 @@ const WalletsDetail = () => {
                   onClick={() => setOrder(true)}
                   className="btn-bg w-full mt-8 shadow text-white rounded"
                 >
-                  Order
+                  {t("order")}
                 </button>
               </div>
 
               <p className="mt-5 mb-4 text-white text-xl font-poppins font-bold">
-                Description
+                {t("description")}
               </p>
               <p className="mt-5 mb-4 text-white font-poppins leading-relaxed text-sm">
-                {wallets?.description}
+                {t("descriptionNote")}
               </p>
             </div>
           </div>
