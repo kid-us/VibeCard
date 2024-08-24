@@ -9,6 +9,7 @@ import { baseUrl } from "../../services/request";
 import { useNavigate } from "react-router-dom";
 import AffiliateFooter from "./AffiliateFooter";
 import useAmbassador from "@/store/useAmbassador";
+import { useTranslation } from "react-i18next";
 
 const schema = z.object({
   first_name: z
@@ -26,6 +27,8 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const AffiliateSetting = () => {
+  const { t } = useTranslation();
+
   const { email, firstName, lastName, referral_code } = useAmbassador();
 
   const navigate = useNavigate();
@@ -102,12 +105,12 @@ const AffiliateSetting = () => {
         <AffiliateNavbar />
 
         <div className="mt-10">
-          <h1 className="text-xl text-white">Update Your Profile</h1>
+          <h1 className="text-xl text-white">{t("updateProfile")}</h1>
 
           <div className="lg:flex bg-white my-5 rounded justify-between">
             <div className="p-4">
-              <p>Referral Code</p>
-              <p className="text-xs">Customize your URL referral code</p>
+              <p>{t("referralCode")}</p>
+              <p className="text-xs">{t("customize")}</p>
               <p className="text-xs">
                 eg. https://vibecard.com/?ref={referral}
               </p>
@@ -115,7 +118,7 @@ const AffiliateSetting = () => {
             <div className="lg:flex gap-x-7 mt-2 me-8 lg:px-0 px-5 lg:pb-0 pb-5">
               <div>
                 <label htmlFor="referral" className="text-xs">
-                  Referral Code
+                  {t("referralCode")}
                 </label>{" "}
                 <br />
                 <input
@@ -130,7 +133,7 @@ const AffiliateSetting = () => {
                 onClick={() => handleReferral()}
                 className="btn-bg p-0 shadow-none h-11 mt-6 px-10 rounded text-white"
               >
-                Save Change
+                {t("saveChange")}
               </button>
             </div>
           </div>
@@ -153,7 +156,7 @@ const AffiliateSetting = () => {
                   className="text-sm text-gray-700 block"
                   htmlFor="username"
                 >
-                  First Name <span className="bi-asterisk text-[5px]"></span>
+                  {t("fName")} <span className="bi-asterisk text-[5px]"></span>
                 </label>
                 <input
                   {...register("first_name")}
@@ -178,7 +181,7 @@ const AffiliateSetting = () => {
                   className="text-sm text-gray-700 block"
                   htmlFor="username"
                 >
-                  Last Name <span className="bi-asterisk text-[5px]"></span>
+                  {t("fName")} <span className="bi-asterisk text-[5px]"></span>
                 </label>
                 <input
                   {...register("last_name")}
@@ -200,7 +203,7 @@ const AffiliateSetting = () => {
               {/* Email */}
               <div className="lg:mb-4 mb-3">
                 <label className="text-sm text-gray-700 block" htmlFor="email">
-                  Email <span className="bi-asterisk text-[5px]"></span>
+                  {t("email")} <span className="bi-asterisk text-[5px]"></span>
                 </label>
                 <input
                   {...register("email")}
@@ -225,7 +228,8 @@ const AffiliateSetting = () => {
                   className="text-sm text-gray-700 block"
                   htmlFor="password"
                 >
-                  Password <span className="bi-asterisk text-[5px]"></span>
+                  {t("password")}{" "}
+                  <span className="bi-asterisk text-[5px]"></span>
                 </label>
                 <input
                   {...register("password")}
@@ -250,7 +254,7 @@ const AffiliateSetting = () => {
 
               {/* Button */}
               <div className="col-span-2">
-                <Button loader={loader} label="Submit" />
+                <Button loader={loader} label={t("update")} />
               </div>
             </div>
           </form>

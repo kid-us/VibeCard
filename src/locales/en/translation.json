@@ -364,5 +364,25 @@
   "fQ14": "Can I refer other affiliates?",
   "fA14": "Yes, you can refer other affiliates to join the program. However, there are no additional benefits or commissions associated with recruiting other affiliates.",
   "fQ15": "How do I get in touch with affiliate support?",
-  "fA15": "You can contact our affiliate support team via the contact page on our website or by emailing us directly at our social medias"
+  "fA15": "You can contact our affiliate support team via the contact page on our website or by emailing us directly at our social medias",
+
+  "welcomeAffiliate": "Welcome to your affiliate dashboard",
+  "referralLink": "Referral Link",
+  "referFriends": "Refer your friends using the link below and earn commissions on purchases made by them",
+  "commission": "Commission Structure",
+  "commissionNote": "A 30% commission is given on sale of every product",
+  "referrals": "Referrals",
+  "orders": "Orders",
+  "conversations": "Conversations",
+  "sales": "Sales",
+  "earn": "Earning",
+  "rank": "Your Rank",
+  "topEarners": "Top Earners",
+  "productSold": "Product Sold",
+
+  "updateProfile": "Update your Profile",
+  "referralCode": "Referral Code",
+  "customize": "Customize your URL referral code",
+  "saveChange": "Save Change"
+
 }

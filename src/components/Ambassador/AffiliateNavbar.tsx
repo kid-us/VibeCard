@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AffiliateMenu from "./AffiliateMenu";
 import useAmbassador from "@/store/useAmbassador";
+import { useTranslation } from "react-i18next";
 
 interface Navs {
   id: number;
@@ -13,10 +14,12 @@ export const affiliateNav: Navs[] = [
   // { id: 1, name: "Home", path: "/affiliate" },
   // { id: 2, name: "Transactions", path: "/affiliate/transactions" },
   // { id: 3, name: "Payments", path: "/affiliate/payments" },
-  { id: 4, name: "Setting", path: "/affiliate/setting" },
+  { id: 4, name: "setting", path: "/affiliate/setting" },
 ];
 
 const AffiliateNavbar = () => {
+  const { t } = useTranslation();
+
   const { logout } = useAmbassador();
 
   const navigate = useNavigate();
@@ -45,11 +48,11 @@ const AffiliateNavbar = () => {
         <div className="lg:flex hidden gap-x-10">
           {affiliateNav.map((nav) => (
             <Link key={nav.id} to={nav.path} className="mx-5">
-              {nav.name}
+              {t(nav.name)}
             </Link>
           ))}
           <p onClick={() => handleLogout()} className="cursor-pointer">
-            Logout
+            {t("logout")}
           </p>
         </div>
       </nav>

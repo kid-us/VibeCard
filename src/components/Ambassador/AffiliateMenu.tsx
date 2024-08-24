@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { affiliateNav } from "./AffiliateNavbar";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   username: string | null;
@@ -7,6 +8,8 @@ interface Props {
 }
 
 const AffiliateMenu = ({ username, menu }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <div className="fixed z-50 w-full h-full main-bg top-0">
       <div className="flex justify-between text-white mt-5 pe-3">
@@ -30,7 +33,7 @@ const AffiliateMenu = ({ username, menu }: Props) => {
             {nav.name}
           </Link>
         ))}
-        <button>Logout</button>
+        <button>{t("logout")}</button>
       </div>
     </div>
   );

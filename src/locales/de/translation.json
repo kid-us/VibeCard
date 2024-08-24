@@ -363,5 +363,23 @@
   "fQ14": "Kann ich andere Partner werben?",
   "fA14": "Ja, Sie können andere Partner für das Programm werben. Es sind jedoch keine zusätzlichen Vorteile oder Provisionen mit der Anwerbung anderer Partner verbunden.",
   "fQ15": "Wie kontaktiere ich den Partnersupport?",
-  "fA15": "Sie können unser Partnersupportteam über die Kontaktseite auf unserer Website oder per E-Mail direkt über unsere sozialen Medien erreichen."
+  "fA15": "Sie können unser Partnersupportteam über die Kontaktseite auf unserer Website oder per E-Mail direkt über unsere sozialen Medien erreichen.",
+
+  "welcomeAffiliate": "Willkommen in Ihrem Partner-Dashboard",
+  "referralLink": "Empfehlen Sie uns Ihren Freunden über den untenstehenden Link und verdienen Sie Provisionen für ihre Einkäufe",
+  "commission": "Provisionsstruktur",
+  "commissionNote": "Für den Verkauf jedes Produkts wird eine Provision von 30 % gewährt",
+  "referrals": "Empfehlungen",
+  "orders": "Bestellungen",
+  "conversations": "Gespräche",
+  "sales": "Verkäufe",
+  "earn": "Verdienst",
+  "rank": "Ihr Rang",
+  "topEarners": "Top-Verdiener",
+  "productSold": "Verkauftes Produkt",
+
+  "updateProfile": "Aktualisieren Sie Ihr Profil",
+  "referralCode": "Empfehlungscode",
+  "customize": "Passen Sie Ihren URL-Empfehlungscode an",
+  "saveChange": "Änderung speichern"
 }

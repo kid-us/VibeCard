@@ -6,6 +6,7 @@ import AffiliateNavbar from "../Ambassador/AffiliateNavbar";
 import { Link } from "react-router-dom";
 import AffiliateFooter from "../Ambassador/AffiliateFooter";
 import useAmbassador from "@/store/useAmbassador";
+import { useTranslation } from "react-i18next";
 
 const productSolds = [
   { name: "This month", id: 1 },
@@ -15,10 +16,12 @@ const productSolds = [
 ];
 
 const Affiliate = () => {
+  const { t } = useTranslation();
+
   // Scroll to top
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const {
     firstName,
@@ -50,37 +53,32 @@ const Affiliate = () => {
         <AffiliateNavbar />
         <div className="mt-10">
           <p className="text-xl text-white">
-            Welcome to your affiliate market dashboard{" "}
+            {t("welcomeAffiliate")}{" "}
             <span className="text-teal-500">{firstName + " " + lastName}</span>.
           </p>
           <div className="text-white mt-5">
-            <h1 className="text-xl mb-2">Referral Link</h1>
-            <p className="mb-1">
-              Refer your friends using the link below and earn commissions on
-              purchases made by them
-            </p>
+            <h1 className="text-xl mb-2">{t("referralLink")}</h1>
+            <p className="mb-1">{t("referFriends")}</p>
             <Link to="/" className="text-blue-500">
               vivecard.com/?ref={referral_code}
             </Link>
           </div>
           <div className="mt-5 text-white">
-            <h1 className="text-2xl text-white">Commission Structure</h1>
-            <p>A 30% commission is given on sale of every product</p>
+            <h1 className="text-2xl text-white">{t("commission")}</h1>
+            <p>{t("commissionNote")}</p>
           </div>
           {/* Data */}
           <div className="grid lg:grid-cols-3 grid-cols-2 mt-6 lg:gap-x-10 gap-x-3">
             <div className="lg:col-span-3 col-span-2 mb-10">
               <div>
-                <p className="text-white text-sm mb-2">
-                  Filter by Calendar Date
-                </p>
+                <p className="text-white text-sm mb-2">{"filterByCalendar"}</p>
                 <div className="lg:flex">
                   <DatePicker date={date} setDate={setDate} />
                   <button
                     onClick={() => handleCustom()}
                     className="lg:ms-2 lg:mt-0 mt-2 btn-bg shadow-none py-2 rounded text-white text-sm"
                   >
-                    Fetch
+                    {t("fetch")}
                   </button>
                 </div>
               </div>
@@ -88,27 +86,27 @@ const Affiliate = () => {
             {/* Referrals */}
             <div className="border mb-5 border-gray-700 rounded px-4 py-5 text-white secondary-bg">
               <h1 className="text-2xl">{referrals}</h1>
-              <p className="text-gray-500 text-sm">Referrals</p>
+              <p className="text-gray-500 text-sm">{t("referrals")}</p>
             </div>
             {/* Orders */}
             <div className="border mb-5 border-gray-700 rounded px-4 py-5 text-white secondary-bg">
               <h1 className="text-2xl">{orders}</h1>
-              <p className="text-gray-500 text-sm">Orders</p>
+              <p className="text-gray-500 text-sm">{t("orders")}</p>
             </div>
             {/* Conversations */}
             <div className="border mb-5 border-gray-700 rounded px-4 py-5 text-white secondary-bg">
               <h1 className="text-2xl">{conversions}%</h1>
-              <p className="text-gray-500 text-sm">Conversations</p>
+              <p className="text-gray-500 text-sm">{t("conversations")}</p>
             </div>
             {/* Sales */}
             <div className="border mb-5 border-gray-700 rounded px-4 py-5 text-white secondary-bg">
               <h1 className="text-2xl">€{sales}</h1>
-              <p className="text-gray-500 text-sm">Sales</p>
+              <p className="text-gray-500 text-sm">{t("sales")}</p>
             </div>
             {/* Earnings */}
             <div className="border mb-5 border-gray-700 rounded px-4 py-5 text-white secondary-bg">
               <h1 className="text-2xl">€{earning}</h1>
-              <p className="text-gray-500 text-sm">Earnings</p>
+              <p className="text-gray-500 text-sm">{t("earn")}</p>
             </div>
           </div>
           {/* Rank / Top Earners / Sold Products*/}
@@ -116,7 +114,7 @@ const Affiliate = () => {
             {/* Rank */}
             <div className="lg:mt-0 mt-5 border border-gray-700 rounded text-white secondary-bg">
               <div className="p-5 pb-7 border-b border-gray-700">
-                <h1 className="text-sm">Your Rank</h1>
+                <h1 className="text-sm">{t("rank")}</h1>
                 <h1 className="text-3xl">100</h1>
               </div>
               <div className="flex border-b border-gray-700 pb-1 justify-between px-4 mt-2 text-gray-400">
@@ -147,13 +145,13 @@ const Affiliate = () => {
             {/* Earner */}
             <div className="lg:mt-0 mt-5 border border-gray-700 rounded text-white secondary-bg py-3 px-5">
               <div className="border-b border-gray-700 pb-5">
-                <h1 className="text-center">Top Earners</h1>
+                <h1 className="text-center">{t("topEarners")}</h1>
                 <div className="flex justify-between my-6">
                   <button className="text-xl bi-arrow-left-square-fill text-purple-200"></button>
                   <p className="chakra">2024</p>
                   <button className="text-xl bi-arrow-right-square-fill text-purple-200"></button>
                 </div>
-                <p className="text-xs mt-5">Your Rank</p>
+                <p className="text-xs mt-5">{t("rank")}</p>
                 <h1 className="mt-2">200</h1>
               </div>
               <div className="flex pt-3 border-b border-gray-700 pb-2">
@@ -180,7 +178,7 @@ const Affiliate = () => {
             {/* Product Sold */}
             <div className="lg:mt-0 mt-5 border border-gray-700 rounded text-white secondary-bg py-3 px-5">
               <div className="flex justify-between">
-                <p>Product Sold</p>
+                <p>{t("productSold")}</p>
                 <div>
                   <p
                     onClick={() => setDropdown(!dropdown)}
