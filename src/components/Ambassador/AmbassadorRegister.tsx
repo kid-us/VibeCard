@@ -5,6 +5,7 @@ import { useState } from "react";
 import Button from "../Button/Button";
 import axios from "axios";
 import { baseUrl } from "../../services/request";
+import { useTranslation } from "react-i18next";
 
 interface Social {
   name: string;
@@ -83,6 +84,7 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const AmbassadorRegister = () => {
+  const { t } = useTranslation();
   const [registerError, setRegisterError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [successMsg, setSuccessMsg] = useState(false);
@@ -136,11 +138,8 @@ const AmbassadorRegister = () => {
     <>
       {successMsg && (
         <div className="fixed z-50 lg:right-20 right-1 lg:top-5 top-2 bg-green-500 lg:w-96 rounded px-4 py-2 lg:mx-0 mx-2">
-          <p>
-            Success! your request has been submitted successfully once we
-            approve your account you can user affiliate market!
-          </p>
-          <p className="mt-2">Stay tuned!</p>
+          <p>{t("ambassadorSuccess")}</p>
+          <p className="mt-2">{t("stayTuned")}</p>
         </div>
       )}
       <form onSubmit={handleSubmit(onSubmit)} className="w-full">
@@ -156,13 +155,13 @@ const AmbassadorRegister = () => {
 
         {/* Register */}
         <p className="col-span-2 text-white text-xl lg:mt-0 mt-10">
-          Be our Ambassador
+          {t("beAmbassador")}
         </p>
         <div className="lg:grid grid-cols-2 gap-x-10 bg-white rounded lg:p-8 p-4 mt-5">
           {/* First Name */}
           <div className="lg:mb-4 mb-3">
             <label className="text-sm text-gray-700 block" htmlFor="username">
-              First Name <span className="bi-asterisk text-[5px]"></span>
+              {t("fName")} <span className="bi-asterisk text-[5px]"></span>
             </label>
             <input
               {...register("first_name")}
@@ -182,7 +181,7 @@ const AmbassadorRegister = () => {
           {/* Last Name */}
           <div className="lg:mb-4 mb-3">
             <label className="text-sm text-gray-700 block" htmlFor="username">
-              Last Name <span className="bi-asterisk text-[5px]"></span>
+              {t("lName")} <span className="bi-asterisk text-[5px]"></span>
             </label>
             <input
               {...register("last_name")}
@@ -202,7 +201,7 @@ const AmbassadorRegister = () => {
           {/* Email */}
           <div className="lg:mb-4 mb-3">
             <label className="text-sm text-gray-700 block" htmlFor="email">
-              Email <span className="bi-asterisk text-[5px]"></span>
+              {t("email")} <span className="bi-asterisk text-[5px]"></span>
             </label>
             <input
               {...register("email")}
@@ -222,7 +221,7 @@ const AmbassadorRegister = () => {
           {/* Password */}
           <div className="lg:mb-4 mb-3 relative">
             <label className="text-sm text-gray-700 block" htmlFor="password">
-              Password <span className="bi-asterisk text-[5px]"></span>
+              {t("password")} <span className="bi-asterisk text-[5px]"></span>
             </label>
             <input
               {...register("password")}

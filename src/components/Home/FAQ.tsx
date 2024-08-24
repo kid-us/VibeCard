@@ -70,7 +70,7 @@ const Faq = ({ textSize, ambassador }: Props) => {
                       textSize ? "text-sm" : "lg:text-xl text-lg "
                     } text-white font-poppins`}
                   >
-                    {faqs.question}
+                    {t(faqs.question)}
                   </p>
                 </div>
                 <div>
@@ -94,7 +94,7 @@ const Faq = ({ textSize, ambassador }: Props) => {
                       textSize ? "text-sm" : "text-lg"
                     }`}
                   >
-                    {faqs.answer}
+                    {t(faqs.answer)}
                   </p>
                 </div>
               )}

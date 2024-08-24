@@ -5,10 +5,13 @@ import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import AmbassadorLogin from "../Ambassador/AmbassadorLogin";
 import useDocumentTitle from "@/hooks/useDocumentTitle";
+import { useTranslation } from "react-i18next";
 
 const Ambassador = () => {
   const [title] = useState("Vibecard - Ambassador");
   useDocumentTitle(title);
+
+  const { t } = useTranslation();
 
   // Scroll to top
   useEffect(() => {
@@ -24,42 +27,37 @@ const Ambassador = () => {
         </Link>
         <div className="lg:grid grid-cols-2 gap-x-16 my-16">
           <div>
-            <p className="text-xl ubuntu">Ready to get paid to vibecard?</p>
-            <p className="text-lg mt-2">
-              The vibecard Ambassador program allows you to sell vibecard to
-              your network at a 15% discount, AND get paid 15% of those sales.
-              Yep, you read that right: Get paid to give your friends a deal!
-            </p>
+            <p className="text-xl ubuntu">{t("ambassador")} vibecard?</p>
+            <p className="text-lg mt-2">{t("ambassadorNote")}</p>
 
             <p className="ubuntu mt-3 lg:hidden text-lg">
-              Apply to become an Ambassador below, then keep reading for
-              additional resources once you're approved!
+              {t("ambassadorNotAlready")}
             </p>
 
             {active ? (
               <p className="mt-10 ubuntu">
-                Do you want to be our ambassador and ge paid?{" "}
+                {t("ambassadorGetPaid")}{" "}
                 <button
                   onClick={() => setActive(false)}
                   className="text-teal-500"
                 >
-                  Create ambassador account
+                  {t("ambassadorCreate")}
                 </button>
               </p>
             ) : (
               <p className="mt-10 ubuntu">
-                Already an ambassador?{" "}
+                {t("ambassadorAlready")}{" "}
                 <button
                   onClick={() => setActive(true)}
                   className="text-teal-500"
                 >
-                  Login
+                  {t("login")}
                 </button>
               </p>
             )}
 
             <div className="mt-16 lg:block hidden">
-              <h1 className="mb-5">FAQs</h1>
+              <h1 className="mb-5">FAQ</h1>
               <Faq ambassador={true} />
             </div>
           </div>
@@ -68,7 +66,7 @@ const Ambassador = () => {
           </div>
         </div>
         <div className="lg:hidden">
-          <h1 className="mb-4">FAQs</h1>
+          <h1 className="mb-4">FAQ</h1>
           <Faq ambassador={true} />
         </div>
       </div>

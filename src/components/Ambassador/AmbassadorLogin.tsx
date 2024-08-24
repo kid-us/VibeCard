@@ -6,6 +6,7 @@ import { useState } from "react";
 import Button from "../Button/Button";
 import axios from "axios";
 import { baseUrl } from "../../services/request";
+import { useTranslation } from "react-i18next";
 
 const schema = z.object({
   password: z.string().min(4, {
@@ -17,6 +18,8 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const AmbassadorLogin = () => {
+  const { t } = useTranslation();
+
   // Zustand
   // RRD
   const navigate = useNavigate();
@@ -72,13 +75,13 @@ const AmbassadorLogin = () => {
         </div>
       )}
       <p className="col-span-2 text-white text-xl lg:mt-0 mt-10">
-        Track your Ambassador Dashboard
+        {t("trackAmbassador")}
       </p>
       <div className="bg-white rounded lg:p-8 p-4 mt-5">
         {/* Email */}
         <div className="mb-5">
           <label className="text-sm text-gray-700 block" htmlFor="email">
-            Email
+            {t("email")}
           </label>
           <input
             {...register("email")}
@@ -94,7 +97,7 @@ const AmbassadorLogin = () => {
         {/* Password */}
         <div className="mb-5 relative">
           <label className="text-sm text-gray-700 block" htmlFor="password">
-            Password
+            {t("password")}
           </label>
 
           <input

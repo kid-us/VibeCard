@@ -35,93 +35,78 @@ export const faq: FAQ[] = [
 export const ambassadorFaq: FAQ[] = [
   {
     id: 3,
-    question: "What is the Vibe-Card Affiliate Program?",
-    answer:
-      "Our Affiliate Program allows you to earn a commission on every sale madethrough your unique affiliate link when you refer customers to purchase NFC business cards from Vibe-Card.",
+    question: "fQ1",
+    answer: "fA1",
   },
   {
     id: 4,
-    question: "How does the affiliate program work?",
-    answer:
-      "Once you're approved, you'll receive a unique affiliate link. You earn a commission each time someone makes apurchase through your link.",
+    question: "fQ2",
+    answer: "fA2",
   },
   {
     id: 5,
-    question: "Do I need to purchase a product to become an ambassador?",
-    answer:
-      "Yes, to become an ambassador, you are required to purchase one of our NFC business cards. However, as an ambassador, you’ll receive a 30% discount on your purchase.",
+    question: "fQ3",
+    answer: "fA3",
   },
   {
     id: 6,
-    question: "Are there any earning limits as an ambassador?",
-    answer:
-      "No, there are no earning limits. You will continue to earn a 15% commission on every sale made through your affiliate link, with no cap on the total amount you can earn",
+    question: "fQ4",
+    answer: "fA4",
   },
   {
     id: 7,
-    question: "How do I join the affiliate program?",
-    answer:
-      "Simply sign up on our affiliate page, fill out the registration form, and you'll receive a confirmation email after approval",
+    question: "fQ5",
+    answer: "fA5",
   },
   {
     id: 8,
-    question: "How do I track my referrals and earnings?",
-    answer:
-      "You can track your referrals, clicks, and earnings in real-time through the affiliate dashboard.",
+    question: "fQ6",
+    answer: "fA6",
   },
   {
     id: 9,
-    question: "When will I receive my commissions?",
-    answer:
-      "Commissions are paid monthly, provided you've reached the minimum payout threshold. You can choose your preferred payment method in your account settings.",
+    question: "fQ7",
+    answer: "fA7",
   },
   {
     id: 10,
-    question: "Is there a minimum payout threshold?",
-    answer:
-      "Yes, the minimum payout amount is 10. If your balance is below this, it will roll over to the next month.",
+    question: "fQ8",
+    answer: "fA8",
   },
 
   {
     id: 11,
-    question: "What happens if a customer returns a product?",
-    answer:
-      "If a customer returns a product, the corresponding commission will be deducted from your balance.",
+    question: "fQ9",
+    answer: "fA9",
   },
   {
     id: 12,
-    question: "Can I promote Vibe-Cards on social media?",
-    answer:
-      "Yes, you're encouraged to share your affiliate link on social media platforms, your website, blogs, or via email marketing.",
+    question: "fQ10",
+    answer: "fA10",
   },
   {
     id: 13,
-    question: "Can I use paid ads to promote my affiliate link?",
-    answer:
-      "Yes, but please ensure that any paid advertising complies with our affiliate terms and conditions, particularly regarding brand usage.",
+    question: "fQ11",
+    answer: "fA11",
   },
   {
     id: 14,
-    question: "Are there any restrictions on promoting the products?",
-    answer:
-      "Yes, affiliates must adhere to our marketing guidelines, which prohibit misleading promotions and certain types of advertising.",
+    question: "fQ12",
+    answer: "fA12",
   },
   {
     id: 15,
-    question: "Who is eligible to join the affiliate program?",
-    answer:
-      "Anyone over the age of 18 with a platform to promote our products can join the program.",
+    question: "fQ13",
+    answer: "fA13",
   },
   {
     id: 16,
-    question: "Can I refer other affiliates?",
-    answer:
-      "Yes, you can refer other affiliates to join the program. However, there are no additional benefits or commissions associated with recruiting other affiliates.",
+    question: "fQ14",
+    answer: "fA14",
   },
   {
     id: 17,
-    question: "How do I get in touch with affiliate support?",
-    answer:
-      "You can contact our affiliate support team via the contact page on our website or by emailing us directly at [affiliate support email]",
+    question: "fQ15",
+    answer: "fA15",
   },
 ];
