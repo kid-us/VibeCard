@@ -45,7 +45,7 @@ const Create = () => {
   const searchParams = new URLSearchParams(location.search);
   const editedUrl = searchParams.get("edit");
 
-  // // Subscription
+  // Subscription
   useEffect(() => {
     if (!editedUrl) {
       axios

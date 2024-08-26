@@ -1,9 +1,31 @@
 import { Link } from "react-router-dom";
 import { shop, explore } from "../../services/footer";
 import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { baseUrl } from "@/services/request";
 
 const Footer = () => {
   const { t } = useTranslation();
+
+  // Subscription
+  const [quota, setQuota] = useState<boolean>(true);
+
+  useEffect(() => {
+    axios
+      .get(`${baseUrl}/api/v1/auth/can-create-card`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then(() => {
+        setQuota(true);
+      })
+      .catch(() => {
+        setQuota(false);
+      });
+  }, []);
 
   return (
     <div className="mt-10 border-t border-gray-800 overflow-hidden">
@@ -41,15 +63,35 @@ const Footer = () => {
           {/* Explore */}
           <div className="lg:col-span-2 md:col-span-2 col-span-2 lg:my-0 md:my-0 my-6">
             <h1 className="text-gray-400 text-lg mb-5">{t("explore")}</h1>
-            {explore.map((e) => (
-              <Link
-                key={e.id}
-                to={e.path}
-                className="block text-gray-200 mb-4 hover:text-gray-500 text-sm"
-              >
-                {t(e.name)}
-              </Link>
-            ))}
+            {explore.map((e) =>
+              e.path === "/create" ? (
+                quota ? (
+                  <Link
+                    key={e.id}
+                    to={e.path}
+                    className="block text-gray-200 mb-4 hover:text-gray-500 text-sm"
+                  >
+                    {t(e.name)}
+                  </Link>
+                ) : (
+                  <Link
+                    key={e.id}
+                    to={"/pricing"}
+                    className="block text-gray-200 mb-4 hover:text-gray-500 text-sm"
+                  >
+                    {t(e.name)}
+                  </Link>
+                )
+              ) : (
+                <Link
+                  key={e.id}
+                  to={e.path}
+                  className="block text-gray-200 mb-4 hover:text-gray-500 text-sm"
+                >
+                  {t(e.name)}
+                </Link>
+              )
+            )}
           </div>
 
           {/* Shop */}

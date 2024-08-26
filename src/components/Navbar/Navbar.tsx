@@ -21,7 +21,9 @@ const Navbar = () => {
   const [isMenu, setIsMenu] = useState(false);
   const { login, user, plan } = useAuthStore();
   const [loading, setLoading] = useState(true);
+  const [quota, setQuota] = useState<boolean>(true);
 
+  // Login
   useEffect(() => {
     axios
       .get(`${baseUrl}/api/v1/auth/me`, {
@@ -36,6 +38,23 @@ const Navbar = () => {
       })
       .catch(() => {
         setLoading(false);
+      });
+  }, []);
+
+  // Subscription
+  useEffect(() => {
+    axios
+      .get(`${baseUrl}/api/v1/auth/can-create-card`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then(() => {
+        setQuota(true);
+      })
+      .catch(() => {
+        setQuota(false);
       });
   }, []);
 
@@ -116,12 +135,21 @@ const Navbar = () => {
                       >
                         {t("nav4")}
                       </Link>
-                      <Link
-                        to={"/create"}
-                        className="block text-md mb-3 hover:text-gray-400 text-sm font-poppins"
-                      >
-                        {t("nav5")}
-                      </Link>
+                      {quota ? (
+                        <Link
+                          to={`/create`}
+                          className="block text-md mb-3 hover:text-gray-400 text-sm font-poppins"
+                        >
+                          {t("nav5")}
+                        </Link>
+                      ) : (
+                        <Link
+                          to={`/pricing`}
+                          className="block text-md mb-3 hover:text-gray-400 text-sm font-poppins"
+                        >
+                          {t("nav5")}
+                        </Link>
+                      )}
                       <Link
                         to={"/setting"}
                         className="block text-md mb-3 hover:text-gray-400 text-sm font-poppins"
