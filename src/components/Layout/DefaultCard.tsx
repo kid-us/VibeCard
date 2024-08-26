@@ -10,7 +10,11 @@ import { useCardData } from "../../store/useCardData";
 import Watermark from "../Watermark/Watermark";
 // import { useEffect } from "react";
 
-const DefaultCard = () => {
+interface Props {
+  watermark?: boolean;
+}
+
+const DefaultCard = ({ watermark }: Props) => {
   const { coverColorBg } = useCoverColorStore();
   const { cardColorBg } = useCardColorStore();
   const { company, jobTitle, location, name, pronoun, tagLine } =
@@ -37,7 +41,7 @@ const DefaultCard = () => {
       className={`relative rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 z-0 lg:mb-0 mb-14 border border-gray-700`}
       style={{ backgroundColor: cardColorBg }}
     >
-      <Watermark />
+      {!watermark && <Watermark />}
       <div
         className={`lg:h-24 h-32 w-full relative flex justify-between z-0 ${
           !preview.cover

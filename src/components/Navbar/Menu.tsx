@@ -85,13 +85,25 @@ const Menu = ({ nav, menu, username }: Props) => {
             >
               {t("nav6")}
             </Link>
-            {plan !== "free" && (
+            {plan !== "free" ? (
               <Link
                 to={"/insights"}
                 className="block text-white text-lg pb-2 font-poppins font-extrabold mb-3"
               >
                 {t("nav7")}
               </Link>
+            ) : (
+              <div className="flex gap-x-6">
+                <Link
+                  to={"/pricing"}
+                  className="block text-white text-lg pb-2 font-poppins font-extrabold mb-3"
+                >
+                  {t("nav7")}
+                </Link>
+                <p className="font-poppins bg-blue-500 rounded-full w-16 shadow-inner shadow-red-950 h-5 text-center text-sm pt-[1px] mt-1 text-white">
+                  Pro
+                </p>
+              </div>
             )}
           </>
         )}

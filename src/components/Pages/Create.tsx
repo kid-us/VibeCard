@@ -267,6 +267,7 @@ const Create = () => {
   const [modal, setModal] = useState(false);
   const [activeModal, setActiveModal] = useState("");
   const [previewCard, setPreviewCard] = useState(false);
+  const [removeWatermark, setRemoveWatermark] = useState<boolean>(false);
 
   // Sidebar Small Device
   const handleModal = (value: string) => {
@@ -314,10 +315,19 @@ const Create = () => {
                     <Link to="/dashboard" className="me-16 font-poppins">
                       {t("nav4")}
                     </Link>
-                    {plan !== "free" && (
+                    {plan !== "free" ? (
                       <Link to="/insights" className="me-16 font-poppins">
                         {t("nav7")}
                       </Link>
+                    ) : (
+                      <div className="relative">
+                        <Link to="/pricing" className="me-16 font-poppins">
+                          {t("nav7")}
+                        </Link>
+                        <p className="absolute -top-3 right-10 bg-blue-500 rounded-full text-center h-4 text-[10px] w-10 pt-[1px] font-poppins shadow-inner shadow-red-950">
+                          Pro +
+                        </p>
+                      </div>
                     )}
                     <Link to="/setting" className="me-5 font-poppins">
                       {t("nav6")}
@@ -370,11 +380,48 @@ const Create = () => {
             } lg:col-span-2 lg:pe-5 lg:pt-0 lg:pb-0 pt-5 lg:h-auto pb-10 px-3 h-[95vh] overflow-scroll lg:mt-20`}
           >
             <div className="content-center w-full">
-              <p className="mb-4">{t("cardPreview")}</p>
+              <div className="flex justify-between">
+                <p className="mb-4 font-poppins">{t("cardPreview")}</p>
+                {plan === "proPlus" ? (
+                  <div className="relative flex gap-x-1">
+                    <div className="toggle-switch">
+                      <input
+                        onChange={() => setRemoveWatermark(!removeWatermark)}
+                        className="toggle-input"
+                        id="toggle"
+                        type="checkbox"
+                      />
+                      <label className="toggle-label" htmlFor="toggle"></label>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="relative flex gap-x-1">
+                    <div className="toggle-switch">
+                      <input
+                        className="toggle-input"
+                        id="toggle"
+                        type="checkbox"
+                        disabled
+                      />
+                      <label className="toggle-label" htmlFor="toggle"></label>
+                    </div>
+                    <p className="bg-blue-500 rounded-full text-center h-5 text-xs w-14 pt-[1px] font-poppins shadow-inner shadow-red-950">
+                      Pro +
+                    </p>
+                    <p className="absolute -top-5  right-0 text-xs font-poppins text-gray-400">
+                      Remove watermark
+                    </p>
+                  </div>
+                )}
+              </div>
               {/* {layout} */}
-              {layout === "default" && <DefaultCard />}
-              {layout === "center" && <CenteredCard />}
-              {layout === "right" && <RightCard />}
+              {layout === "default" && (
+                <DefaultCard watermark={removeWatermark} />
+              )}
+              {layout === "center" && (
+                <CenteredCard watermark={removeWatermark} />
+              )}
+              {layout === "right" && <RightCard watermark={removeWatermark} />}
             </div>
           </div>
         </div>

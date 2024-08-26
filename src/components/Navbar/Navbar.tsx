@@ -128,13 +128,25 @@ const Navbar = () => {
                       >
                         {t("nav6")}
                       </Link>
-                      {plan !== "free" && (
+                      {plan !== "free" ? (
                         <Link
                           to={"/insights"}
                           className="block text-md mb-3 hover:text-gray-400 text-sm font-poppins"
                         >
                           {t("nav7")}
                         </Link>
+                      ) : (
+                        <div className="flex justify-between">
+                          <Link
+                            to={"/pricing"}
+                            className="block text-md mb-3 hover:text-gray-400 text-sm font-poppins"
+                          >
+                            {t("nav7")}
+                          </Link>
+                          <p className="font-poppins bg-blue-500 rounded-full w-16 shadow-inner shadow-red-950 h-5 text-center text-sm pt-[1px]">
+                            Pro
+                          </p>
+                        </div>
                       )}
                       <hr className="my-2" />
                       <Logout />

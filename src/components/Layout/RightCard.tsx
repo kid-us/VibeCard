@@ -9,7 +9,11 @@ import SocialMedia from "./SocialMedia";
 import { useCardData } from "../../store/useCardData";
 import Watermark from "../Watermark/Watermark";
 
-const RightCard = () => {
+interface Props {
+  watermark?: boolean;
+}
+
+const RightCard = ({ watermark }: Props) => {
   const { coverColorBg } = useCoverColorStore();
   const { cardColorBg } = useCardColorStore();
   const { company, jobTitle, location, name, pronoun, tagLine } =
@@ -30,7 +34,7 @@ const RightCard = () => {
       className={`relative rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 lg:mb-0 mb-10 border-gray-700`}
       style={{ backgroundColor: cardColorBg }}
     >
-      <Watermark />
+      {!watermark && <Watermark />}
       <div
         className={`lg:h-24 h-32 relative flex justify-between ${
           !preview?.cover
