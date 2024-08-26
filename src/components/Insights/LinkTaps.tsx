@@ -31,8 +31,6 @@ const LinkTaps = ({ cardUrl, socialMedia }: Props) => {
     }
   }, [cardUrl]);
 
-  console.log(styles);
-
   const getClickCount = (icon: string) => {
     const account = socialMedia?.find(
       (social) => social.social_media_name === icon.replace("bi-", "")

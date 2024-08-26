@@ -1,4 +1,4 @@
-import { deezer, userPic } from "@/assets";
+import { deezer, trustpilot, userPic } from "@/assets";
 import { baseUrl } from "@/services/request";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -141,6 +141,7 @@ const Cards: React.FC = () => {
       )}
 
       <div className="flex justify-center sticky top-24 pt-10 secondary-bg lg:pb-10 rounded-2xl overflow-hidden">
+        {/* Default or Left */}
         {cards.length > 0 && cards[dataIndex].card_layout === "default" && (
           <div className="lg:w-[60%] w-[92%]">
             <div
@@ -334,10 +335,23 @@ const Cards: React.FC = () => {
                             className="w-8 h-8 me-0 pe-0"
                           />
                         </div>
+                      ) : media.icon === "trustpilot" ? (
+                        <div
+                          className={`flex rounded-md py-2 justify-center shadow-inner`}
+                          style={{
+                            backgroundColor: media.color,
+                          }}
+                        >
+                          <img
+                            src={trustpilot}
+                            alt="Deezer Logo"
+                            className="w-8 h-8 me-0 pe-0"
+                          />
+                        </div>
                       ) : (
                         <p
                           key={media.icon}
-                          className={`${media.icon} text-3xl text-center rounded-md py-2 shadow-inner`}
+                          className={`${media.icon} text-white text-3xl text-center rounded-md py-2 shadow-inner`}
                           style={{ backgroundColor: media.color }}
                         ></p>
                       )
@@ -359,6 +373,7 @@ const Cards: React.FC = () => {
           </div>
         )}
 
+        {/* Centered */}
         {cards.length > 0 && cards[dataIndex].card_layout === "centered" && (
           <div className="lg:w-[60%] w-[92%]">
             <div
@@ -551,10 +566,23 @@ const Cards: React.FC = () => {
                             className="w-8 h-8 me-0 pe-0"
                           />
                         </div>
+                      ) : media.icon === "trustpilot" ? (
+                        <div
+                          className={`flex rounded-md py-2 justify-center shadow-inner`}
+                          style={{
+                            backgroundColor: media.color,
+                          }}
+                        >
+                          <img
+                            src={trustpilot}
+                            alt="Deezer Logo"
+                            className="w-8 h-8 me-0 pe-0"
+                          />
+                        </div>
                       ) : (
                         <p
                           key={media.icon}
-                          className={`${media.icon} text-3xl text-center rounded-md py-2 shadow-inner`}
+                          className={`${media.icon} text-white text-3xl text-center rounded-md py-2 shadow-inner`}
                           style={{ backgroundColor: media.color }}
                         ></p>
                       )
@@ -576,6 +604,7 @@ const Cards: React.FC = () => {
           </div>
         )}
 
+        {/* Right */}
         {cards.length > 0 && cards[dataIndex].card_layout === "right" && (
           <div className="lg:w-[60%] w-[92%]">
             <div
@@ -767,6 +796,19 @@ const Cards: React.FC = () => {
                         >
                           <img
                             src={deezer}
+                            alt="Deezer Logo"
+                            className="w-8 h-8 me-0 pe-0"
+                          />
+                        </div>
+                      ) : media.icon === "trustpilot" ? (
+                        <div
+                          className={`flex rounded-md py-2 justify-center shadow-inner`}
+                          style={{
+                            backgroundColor: media.color,
+                          }}
+                        >
+                          <img
+                            src={trustpilot}
                             alt="Deezer Logo"
                             className="w-8 h-8 me-0 pe-0"
                           />

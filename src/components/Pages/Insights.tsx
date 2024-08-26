@@ -61,13 +61,19 @@ const Insights = () => {
     to: addDays(new Date(), 20),
   });
 
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString("en-CA");
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       if (viewCardData === "custom") {
         // alert("custom");
         try {
-          const response = await axios.get<Insights>(
-            `${baseUrl}/api/v1/cards/insights?card_url=${activeCard}&filter=custom`,
+          const response = await axios.get<Insights[]>(
+            `${baseUrl}/api/v1/cards/insights?card_url=${activeCard}&filter=custom&is_card_view=false&cstart_date=${
+              date?.from ? formatDate(date.from) : ""
+            }&cend_date=${date?.to ? formatDate(date.to) : ""}`,
             {
               headers: {
                 "Content-Type": "application/json",
@@ -75,9 +81,26 @@ const Insights = () => {
               withCredentials: true,
             }
           );
-          console.log(response.data);
-          // setTotalContact(response.data.contacts);
-          // setTotalCardView(response.data.card_view);
+          // Card View
+          const totalCardViewSum = response.data
+            .filter((card) => card.social_media_name === "card_view")
+            .reduce((sum, card) => sum + card.clicked_value, 0);
+          setTotalCardView(totalCardViewSum);
+
+          // // Contacts
+          const totalContactSum = response.data
+            .filter((card) => card.social_media_name === "contacts")
+            .reduce((sum, card) => sum + card.clicked_value, 0);
+          setTotalContact(totalContactSum);
+          // Social Media
+          const totalSocialMediaSum = response.data
+            .filter(
+              (card) =>
+                card.social_media_name !== "contacts" &&
+                card.social_media_name !== "card_view"
+            )
+            .reduce((sum, card) => sum + card.clicked_value, 0);
+          setTotalSocialMedia(totalSocialMediaSum);
         } catch (error) {
           console.error("Error fetching data:", error);
         }
@@ -92,7 +115,6 @@ const Insights = () => {
               withCredentials: true,
             }
           );
-          // console.log(response.data);
           // Card Views
           setCardInsight(response.data);
           const totalCardViewSum = response.data
@@ -141,35 +163,67 @@ const Insights = () => {
           <div className="col-span-3">
             <div className="flex justify-between mb-10">
               <div>
-                <p className="text-white text-sm mb-2 font-poppins">
-                  {t("fetchByCalendar")}
-                </p>
+                <div className="flex gap-x-4">
+                  <p className="text-white text-sm mb-2 font-poppins">
+                    {t("fetchByCalendar")}
+                  </p>
+                  <p className="font-poppins bg-blue-500 text-white rounded-full w-20 text-center h-5 text-sm shadow-inner shadow-red-950">
+                    Pro+
+                  </p>
+                </div>
                 <div className="flex">
                   <DatePicker date={date} setDate={setDate} />
-                  <button
-                    onClick={() => handleCustom()}
-                    className="ms-2 btn-bg shadow-none py-2 rounded text-white text-sm"
-                  >
-                    {t("fetch")}
-                  </button>
+                  {plan === "proPlus" ? (
+                    <button
+                      onClick={() => handleCustom()}
+                      className="ms-2 btn-bg shadow-none py-2 rounded text-white text-sm"
+                    >
+                      {t("fetch")}s
+                    </button>
+                  ) : (
+                    <button
+                      disabled
+                      className="ms-2 btn-bg shadow-none py-2 rounded text-white text-sm cursor-not-allowed"
+                    >
+                      {t("fetch")}
+                    </button>
+                  )}
                 </div>
               </div>
 
               <div className="relative">
-                <p className="text-white text-sm mb-2">{t("filter")}</p>
-                <div
-                  onClick={() => setDropdown(!dropdown)}
-                  className="flex justify-between bg-white border rounded-md w-36 text-center pt-2 pb-1 cursor-pointer px-2"
-                >
-                  <p className="first-letter:uppercase text-sm text-gray-700">
-                    {filter.map((f) => f.filterBy === viewCardData && f.name)}
+                <div className="flex gap-x-3">
+                  <p className="text-white text-sm mb-2">{t("filter")}</p>
+                  <p className="font-poppins bg-blue-500 text-white rounded-full w-20 text-center h-5 text-sm shadow-inner shadow-red-950">
+                    Pro+
                   </p>
-                  <p
-                    className={`${
-                      dropdown ? "bi-caret-up-fill" : "bi-caret-down-fill"
-                    } text-gray-700`}
-                  ></p>
                 </div>
+                {plan === "proPlus" ? (
+                  <div
+                    onClick={() => setDropdown(!dropdown)}
+                    className="flex justify-between bg-white border rounded-md w-36 text-center pt-2 pb-1 cursor-pointer px-2"
+                  >
+                    <p className="first-letter:uppercase text-sm text-gray-700">
+                      {filter.map((f) => f.filterBy === viewCardData && f.name)}
+                    </p>
+                    <p
+                      className={`${
+                        dropdown ? "bi-caret-up-fill" : "bi-caret-down-fill"
+                      } text-gray-700`}
+                    ></p>
+                  </div>
+                ) : (
+                  <div className="flex justify-between bg-white border rounded-md w-36 text-center pt-2 pb-1 px-2 cursor-not-allowed">
+                    <p className="first-letter:uppercase text-sm text-gray-700">
+                      Today
+                    </p>
+                    <p
+                      className={`${
+                        dropdown ? "bi-caret-up-fill" : "bi-caret-down-fill"
+                      } text-gray-700`}
+                    ></p>
+                  </div>
+                )}
                 {dropdown && (
                   <div className="absolute z-50 space-y-1 bg-gray-100 border border-gray-400 rounded w-36 py-3 text-sm ps-2 mt-2 text-gray-900">
                     {filter.map((f) => (
