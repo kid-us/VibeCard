@@ -41,8 +41,6 @@ const Wallets = () => {
         },
       })
       .then((response) => {
-        console.log(response.data);
-
         setLoading(false);
         const filter = response.data.wallets.filter(
           (wal) => wal.status !== "Not Available"

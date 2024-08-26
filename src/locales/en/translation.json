@@ -222,13 +222,14 @@
   "pro3": "Easy profile Update ",
   "pro4": "Real-time analytics and usage statistics",
   "pro5": "Lead generation and follow-up tools",
-  "pro6": "Advanced Insights",
+  "pro6": "Basic Insights",
 
   "proPlus1": "Create up to 10 digital business cards",
   "proPlus2": "Priority customer support",
   "proPlus3": "Export analytics data",
-  "proPlus4": "Lifetime Insights & Analytics",
+  "proPlus4": "Lifetime Advanced Insights & Analytics",
   "proPlus5": "Multi-language support for international use",
+  "proPlus6": "Remove watermark",
 
   "pricing1": "Number of Users",
   "pricing2": "Number of Digital Business Cards",
@@ -384,5 +385,4 @@
   "referralCode": "Referral Code",
   "customize": "Customize your URL referral code",
   "saveChange": "Save Change"
-
 }
