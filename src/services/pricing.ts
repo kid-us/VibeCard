@@ -76,7 +76,7 @@ export const proPlus: PricingFeatures[] = [
     feature: "proPlus4",
   },
   { id: 5, feature: "proPlus5" },
-  { id: 5, feature: "proPlus6" },
+  { id: 6, feature: "proPlus6" },
 ];
 
 export const pricingInfo: PricingDetail[] = [

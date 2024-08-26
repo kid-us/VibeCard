@@ -118,7 +118,6 @@ const Home = () => {
             </p>
           </div>
           {/* <Products /> */}
-
           <Product />
         </div>
       </div>
