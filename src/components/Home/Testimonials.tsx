@@ -1,4 +1,4 @@
-import { ceo } from "@/assets";
+import { dallol, sitra } from "@/assets";
 import {
   Carousel,
   CarouselContent,
@@ -19,27 +19,19 @@ interface Testimonial {
 const testimony: Testimonial[] = [
   {
     id: 1,
-    company: "Kuraz",
-    job: "Frontend Developer",
-    name: "Kidus WF",
-    img: ceo,
-    note: "As a traveling sales team meeting countless new vendors worldwide, such as hotels, vibecard business cards have become an essential, modern tool for sharing our information. Compact and professional, these cards greatly simplify networking. They're impressively portable and stylish",
+    company: "Dallol ",
+    job: "Company",
+    name: "Dallol",
+    img: dallol,
+    note: "Partnering with Vibecard has revolutionized our team's networking efforts. As a company that thrives on building strong business relationships, Vibecard has made it incredibly easy for our team members to share contact information and connect with clients seamlessly. The digital business card solution has not only saved us money on printing costs but has also enhanced our brand's image as forward-thinking and tech-savvy. Vibecard is now an integral part of our business operations, and we can't imagine networking without it.",
   },
   {
     id: 2,
-    company: "Hahu Clods",
-    job: "Backend Developer",
-    name: "Yakobe Demisse",
-    img: ceo,
-    note: "The launch of our contactless business cards is another step in our commitment to building a sustainable future and limiting our impact on the planet. We are delighted to be working with vibecard which has developed leading technology",
-  },
-  {
-    id: 3,
-    company: "NIB Bank",
-    job: "CSO",
-    name: "Rediet S.",
-    img: ceo,
-    note: "People still matter, relationships still matter, an algorithm can't do what this card can do. They are more than just cards; they foster meaningful connections. vibecard cards offer something unique and irreplaceable. We are thrilled to have found a solution that allows us to build stronger relationships",
+    company: "Social Media",
+    job: "Social Media Influencer",
+    name: "Sitra",
+    img: sitra,
+    note: "Vibecard has completely transformed the way I network! As someone constantly attending events, the ease of instantly sharing my contact details with just a tap is invaluable. No more fumbling around with business cards or worrying about running out. The seamless integration with my digital profiles has made my connections more meaningful and my follow-ups more efficient. Vibecard is a must-have tool for anyone serious about making lasting connections in the modern world.",
   },
 ];
 
@@ -73,10 +65,10 @@ const Testimonials = () => {
           <CarouselPrevious className="absolute -left-2" />
           <CarouselNext className="absolute -right-2" />
         </div>
-        <div className="lg:block md:hidden hidden">
+        {/* <div className="lg:block md:hidden hidden">
           <CarouselPrevious />
           <CarouselNext />
-        </div>
+        </div> */}
       </Carousel>
     </div>
   );

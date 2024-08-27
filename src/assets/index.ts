@@ -54,6 +54,10 @@ import save from "./save.svg";
 import en from "./en.png";
 import de from "./de.png";
 
+// Testimony
+import sitra from "./sitra.png";
+import dallol from "./dallol.png";
+
 export {
   userPic,
   google,
@@ -106,4 +110,7 @@ export {
   // Flag
   de,
   en,
+  // Testimony
+  sitra,
+  dallol,
 };
