@@ -58,6 +58,14 @@ import de from "./de.png";
 import sitra from "./sitra.png";
 import dallol from "./dallol.png";
 
+// companies
+import company1 from "./companies/1.png";
+import company2 from "./companies/2.png";
+import company3 from "./companies/3.png";
+import company4 from "./companies/4.png";
+import company5 from "./companies/5.png";
+import company6 from "./companies/6.png";
+
 export {
   userPic,
   google,
@@ -113,4 +121,12 @@ export {
   // Testimony
   sitra,
   dallol,
+
+  // Companies
+  company1,
+  company2,
+  company3,
+  company4,
+  company5,
+  company6,
 };

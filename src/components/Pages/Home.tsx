@@ -13,6 +13,7 @@ import Testimonials from "../Home/Testimonials";
 import Product from "../Home/Product";
 import Cart from "../Cart/Cart";
 import { useTranslation } from "react-i18next";
+import Companies from "../Home/Companies";
 
 const Home = () => {
   const [title] = useState("Vibecard - Digital Business Cards");
@@ -21,9 +22,9 @@ const Home = () => {
   const { t } = useTranslation();
 
   // Scroll to top
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -66,6 +67,14 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Companies */}
+      <div className="mt-20">
+        <p className="text-white font-poppins text-2xl text-center mb-10">
+          Millions of teams and professionals around the world trust Vibecard
+        </p>
+        <Companies />
       </div>
 
       {/* hero */}
