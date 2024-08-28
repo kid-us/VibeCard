@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Hero from "../Home/Hero";
 import Footer from "../Footer/Footer";
-import { tutorial } from "../../assets";
+import { intro } from "../../assets";
 import Loading from "../Loading/Loading";
 import homeCard from "../../services/homeCard";
 import Faq from "../Home/FAQ";
@@ -59,8 +59,14 @@ const Home = () => {
             <div className=" lg:rounded-lg rounded overflow-hidden">
               {/* <img src={browse} alt="" /> */}
               <div className="lg:rounded-lg rounded overflow-hidden">
-                <video autoPlay muted loop playsInline className="aspect-video">
-                  <source src={tutorial} type="video/mp4" />
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="aspect-video lg:h-[100vh]"
+                >
+                  <source src={intro} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
@@ -71,7 +77,7 @@ const Home = () => {
 
       {/* Companies */}
       <div className="mt-20">
-        <p className="text-white logo-font text-2xl text-center mb-10">
+        <p className="text-white font-poppins text-2xl text-center mb-10">
           Agrowing number of teams and professionals rely on Vibecard
         </p>
         <Companies />

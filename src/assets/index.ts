@@ -2,7 +2,7 @@ import userPic from "./user.png";
 import google from "./google.png";
 import pageNotFound from "./page404.gif";
 import photo from "./photo.png";
-import tutorial from "./tutorial.mp4";
+import intro from "./intro.mp4";
 import ceo from "./ceo.png";
 // Home
 import design from "./design.svg";
@@ -71,7 +71,7 @@ export {
   google,
   pageNotFound,
   photo,
-  tutorial,
+  intro,
   ceo,
   // Home
   design,
