@@ -6,6 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useTranslation } from "react-i18next";
 
 interface Testimonial {
   id: number;
@@ -23,7 +24,7 @@ const testimony: Testimonial[] = [
     job: "Company",
     name: "Dallol",
     img: dallol,
-    note: "Partnering with Vibecard has revolutionized our team's networking efforts. As a company that thrives on building strong business relationships, Vibecard has made it incredibly easy for our team members to share contact information and connect with clients seamlessly. The digital business card solution has not only saved us money on printing costs but has also enhanced our brand's image as forward-thinking and tech-savvy. Vibecard is now an integral part of our business operations, and we can't imagine networking without it.",
+    note: "testimonials2",
   },
   {
     id: 2,
@@ -31,32 +32,36 @@ const testimony: Testimonial[] = [
     job: "Social Media Influencer",
     name: "Sitra",
     img: sitra,
-    note: "Vibecard has completely transformed the way I network! As someone constantly attending events, the ease of instantly sharing my contact details with just a tap is invaluable. No more fumbling around with business cards or worrying about running out. The seamless integration with my digital profiles has made my connections more meaningful and my follow-ups more efficient. Vibecard is a must-have tool for anyone serious about making lasting connections in the modern world.",
+    note: "testimonials1",
   },
 ];
 
 const Testimonials = () => {
+  const { t } = useTranslation();
+
   return (
     <div>
       <Carousel>
         <CarouselContent className="gap-x-2 ms-1">
-          {testimony.map((t) => (
+          {testimony.map((testimony) => (
             <CarouselItem
-              key={t.id}
+              key={testimony.id}
               className="lg:basis-1/2 secondary-bg rounded-lg"
             >
               <div className="relative lg:px-10 pb-10 pt-5">
                 <img
-                  src={t.img}
+                  src={testimony.img}
                   alt="Photo"
                   className="w-24 h-24 object-cover rounded-full"
                 />
                 <p className="absolute bi-quote right-0 top-0 text-gray-700 text-9xl "></p>
                 <p className="ms-3 mt-5 text-xl font-bold font-poppins text-white">
-                  {t.name}
+                  {testimony.name}
                 </p>
-                <p className="ms-3 my-2 text-white">{t.job}</p>
-                <p className="ms-3 text-sm text-gray-200">{t.note}</p>
+                <p className="ms-3 my-2 text-white">{testimony.job}</p>
+                <p className="ms-3 text-sm text-gray-200">
+                  {t(testimony.note)}
+                </p>
               </div>
             </CarouselItem>
           ))}
