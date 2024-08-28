@@ -2,8 +2,10 @@ import userPic from "./user.png";
 import google from "./google.png";
 import pageNotFound from "./page404.gif";
 import photo from "./photo.png";
-import intro from "./intro.mp4";
+import intro from "./intro2.mp4";
+import intro2 from "./xxx.webm";
 import ceo from "./ceo.png";
+import hero from "./heroImg.png";
 // Home
 import design from "./design.svg";
 import impression from "./impression.svg";
@@ -66,13 +68,20 @@ import company4 from "./companies/4.png";
 import company5 from "./companies/5.png";
 import company6 from "./companies/6.png";
 
+// Ambassador
+import ambassador1 from "./ambassador1.jpg";
+import ambassador2 from "./ambassador2.jpg";
+import ambassador3 from "./ambassador3.jpg";
+
 export {
   userPic,
   google,
   pageNotFound,
   photo,
   intro,
+  intro2,
   ceo,
+  hero,
   // Home
   design,
   adapt,
@@ -129,4 +138,8 @@ export {
   company4,
   company5,
   company6,
+  // Ambassadoe
+  ambassador1,
+  ambassador2,
+  ambassador3,
 };

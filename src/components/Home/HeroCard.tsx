@@ -43,7 +43,7 @@ const HeroCard = () => {
 
   return (
     <>
-      <div className="lg:grid grid-cols-3 lg:my-28 my-16 px-3">
+      <div className="lg:grid grid-cols-3 lg:my-28 my-16 px-3 lg:ms-52">
         <div className="relative lg:block hidden">
           <p className="absolute w-52 border border-teal-500 -right-20 top-8"></p>
           <div className="absolute right-20 top-0 bg-white w-52 rounded py-3 px-3">
@@ -194,7 +194,7 @@ const HeroCard = () => {
           </div>
         </div>
         {/* Note */}
-        <div className="lg:text-start text-center mt-16">
+        {/* <div className="lg:text-start text-center mt-16">
           <h1 className="font-extrabold font-poppins text-teal-500 lg:text-3xl text-2xl mb-5">
             {t("hero1")}
           </h1>
@@ -202,7 +202,7 @@ const HeroCard = () => {
             <div className="absolute lg:right-[15em] w-full right-36 top-40 bulb"></div>
           </div>
           <p className="text-white lg:text-xl text-lg">{t("heroDesc")}</p>
-        </div>
+        </div> */}
       </div>
     </>
   );

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Hero from "../Home/Hero";
 import Footer from "../Footer/Footer";
-import { intro } from "../../assets";
+import { intro, intro2 } from "../../assets";
 import Loading from "../Loading/Loading";
 import homeCard from "../../services/homeCard";
 import Faq from "../Home/FAQ";
@@ -39,7 +39,7 @@ const Home = () => {
       <Chat></Chat>
       <div>
         <Navbar />
-        <div className="lg:container mx-auto lg:mt-40 mt-20 lg:pb-32 pb-14">
+        <div className="lg:container mx-auto lg:mt-40 mt-20 lg:pb-32">
           <Hero />
         </div>
       </div>
@@ -49,14 +49,14 @@ const Home = () => {
         <div className="relative right-20 -top-52">
           <div className="absolute w-[5%] lg:w-[10%] lg:right-20 -right-40 bulb"></div>
         </div>
-        <div className="absolute lg:left-[45%] left-36 top-6 secondary-bg border-gradient shadow shadow-zinc-900 rounded-full px-4 py-1">
+        <div className="absolute lg:left-[45%] left-28 top-6 secondary-bg border-gradient shadow shadow-zinc-900 rounded-full px-4 py-1">
           <p className="text-center text-xs font-extrabold text-white ">
             {t("video")}
           </p>
         </div>
         <div className="container mx-auto pt-10 lg:px-0 px-3">
           <div className="border-gradient border-2 rounded-xl overflow-hidden">
-            <div className=" lg:rounded-lg rounded overflow-hidden">
+            <div className="lg:rounded-lg rounded overflow-hidden">
               {/* <img src={browse} alt="" /> */}
               <div className="lg:rounded-lg rounded overflow-hidden">
                 <video
@@ -64,7 +64,7 @@ const Home = () => {
                   muted
                   loop
                   playsInline
-                  className="aspect-video lg:h-[100vh]"
+                  className="aspect-video lg:h-[100vh] w-full object-"
                 >
                   <source src={intro} type="video/mp4" />
                   Your browser does not support the video tag.
@@ -76,7 +76,7 @@ const Home = () => {
       </div>
 
       {/* Companies */}
-      <div className="mt-20">
+      <div className="mt-10">
         <p className="text-white font-poppins text-2xl text-center mb-10">
           Agrowing number of teams and professionals rely on Vibecard
         </p>
@@ -89,7 +89,7 @@ const Home = () => {
       </div>
 
       {/* Cards */}
-      <div className="border-t border-gray-800 mt-10 overflow-hidden">
+      <div className="border-t border-gray-800 overflow-hidden">
         <div className="lg:container mx-auto">
           <div className="py-1 px-2 lg:px-0">
             <div className="relative right-20 lg:-top-28 -top-40">
@@ -121,8 +121,33 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Hero */}
+      <div className="lg:container mx-auto lg:px-0 px-3 lg:my-20">
+        <div className="lg:grid grid-cols-2 gap-x-10 overflow-hidden">
+          <div className="lg:text-start lg:mt-16 lg:p-3">
+            <h1 className="font-extrabold font-poppins text-teal-500 lg:text-3xl text-2xl mb-5">
+              {t("hero1")}
+            </h1>
+            <p className="text-white lg:text-xl text-lg">{t("heroDesc")}</p>
+          </div>
+          {/*  */}
+          <div className="rounded overflow-hidden lg:mt-0 mt-5">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="aspect-video w-full rounded-xl"
+            >
+              <source src={intro2} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+
       {/* Products */}
-      <div className="border-t border-gray-800 mt-10 lg:pb-14 pt-10 overflow-hidden">
+      <div className="border-t border-gray-800 lg:pb-14 pt-10 overflow-hidden">
         <div className="lg:container mx-auto">
           <div className="relative right-20 lg:-top-28 -top-40">
             <div className="absolute lg:right-[35em]  right-36 top-40 bulb"></div>
@@ -138,7 +163,7 @@ const Home = () => {
       </div>
 
       {/* Testimonials */}
-      <div className="border-t border-gray-800 mt-10 lg:pb-14 pt-10 overflow-hidden">
+      <div className="border-t border-gray-800 lg:pb-14 pt-10 overflow-hidden">
         <div className="lg:container mx-auto">
           <div className="relative right-20 lg:-top-28 -top-40">
             <div className="absolute lg:right-[35em]  right-36 top-40 bulb"></div>

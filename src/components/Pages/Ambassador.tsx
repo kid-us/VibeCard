@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import AmbassadorLogin from "../Ambassador/AmbassadorLogin";
 import useDocumentTitle from "@/hooks/useDocumentTitle";
 import { useTranslation } from "react-i18next";
+import { ambassador1, ambassador2, ambassador3 } from "@/assets";
 
 const Ambassador = () => {
   const [title] = useState("Vibecard - Ambassador");
@@ -19,6 +20,7 @@ const Ambassador = () => {
   }, []);
 
   const [active, setActive] = useState(false);
+
   return (
     <>
       <div className="lg:container mx-auto px-2 text-white mt-5">
@@ -56,17 +58,35 @@ const Ambassador = () => {
               </p>
             )}
 
-            <div className="mt-16 lg:block hidden">
-              <h1 className="mb-5">FAQ</h1>
-              <Faq ambassador={true} />
-            </div>
+            <img
+              src={ambassador1}
+              alt="ambassador"
+              className="mt-5 rounded-xl"
+            />
+
+            <img
+              src={ambassador2}
+              alt="Ambassador"
+              className="mt-5 rounded-xl"
+            />
+            <img
+              src={ambassador3}
+              alt="Ambassador"
+              className="mt-5 rounded-xl"
+            />
           </div>
-          <div className="w-full">
-            {active ? <AmbassadorLogin /> : <AmbassadorRegister />}
+          <div className="sticky top-10 self-start">
+            <div className="w-full">
+              {active ? <AmbassadorLogin /> : <AmbassadorRegister />}
+            </div>
           </div>
         </div>
         <div className="lg:hidden">
           <h1 className="mb-4">FAQ</h1>
+          <Faq ambassador={true} />
+        </div>
+        <div className="mt-16 lg:block hidden">
+          <h1 className="mb-5">FAQ</h1>
           <Faq ambassador={true} />
         </div>
       </div>
