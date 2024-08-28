@@ -17,7 +17,7 @@ const Right = ({ data, styles, cover, logo, profile, capture }: Props) => {
       className={`relative rounded-2xl w-full overflow-hidden shadow-lg shadow-zinc-800 lg:mb-0 mb-10`}
       style={{ backgroundColor: styles.cardBg.bg_color }}
     >
-      <Watermark />
+      {!data.watermark && <Watermark />}
       <div
         className={`lg:h-24 h-32 relative flex justify-between ${
           !cover

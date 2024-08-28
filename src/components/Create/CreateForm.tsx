@@ -15,6 +15,8 @@ import { baseUrl } from "../../services/request";
 import Modal from "../Modal/Modal";
 import { useLocation } from "react-router-dom";
 import { t } from "i18next";
+import useAuthStore from "@/store/useUserData";
+import { useLayoutStore } from "@/store/useLayoutStore";
 
 interface Props {
   layout: string;
@@ -30,7 +32,7 @@ interface FilePreviews {
 const schema = z.object({
   name: z.string().min(3, { message: "Name required" }),
   company: z.string().min(1, { message: "Company required" }),
-  phone: z.string().min(6, { message: "Phone required" }),
+  phone: z.string().min(10, { message: "Phone required" }),
   job: z.string().min(3, { message: "Job title required" }),
   location: z.string().min(3, { message: "Location required" }),
   email: z.string().email({ message: "Email required" }),
@@ -42,6 +44,10 @@ const CreateForm = ({ layout }: Props) => {
   const pageLocation = useLocation();
   const searchParams = new URLSearchParams(pageLocation.search);
   const editedUrl = searchParams.get("edit");
+
+  const { plan } = useAuthStore();
+
+  const { watermark } = useLayoutStore();
 
   // Zustand
   const { contact, updateContacts, socialMedia } = useContentStore();
@@ -222,6 +228,7 @@ const CreateForm = ({ layout }: Props) => {
       // Social Media
       socialMedia: socialMedia,
     };
+
     // Prepare form data
     const formData = new FormData();
     if (pictures.profile) formData.append("main_picture", pictures.profile);
@@ -238,6 +245,7 @@ const CreateForm = ({ layout }: Props) => {
     formData.append("card_layout", layout);
     formData.append("card_type", "business");
     formData.append("card_style_schema", JSON.stringify(cardStyles));
+    formData.append("watermark", plan === "pro" ? `${watermark}` : "false");
 
     try {
       const response = await axios.post(
@@ -393,8 +401,8 @@ const CreateForm = ({ layout }: Props) => {
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
-              {...register("phone", { valueAsNumber: true })}
-              type="tel"
+              {...register("phone")}
+              type="text"
               name="phone"
               className={`bg-transparent border border-gray-600 text-white py-3 rounded-md focus:outline-none w-full mt-1 block shadow-sm shadow-zinc-400 font-poppins text-sm px-3 ${
                 errors.phone && "border-red-600 border-1 border"

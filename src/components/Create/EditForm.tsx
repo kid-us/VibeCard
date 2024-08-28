@@ -11,6 +11,8 @@ import axios from "axios";
 import { baseUrl } from "../../services/request";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import useAuthStore from "@/store/useUserData";
+import { useLayoutStore } from "@/store/useLayoutStore";
 
 interface Props {
   layout: string;
@@ -28,6 +30,10 @@ const EditForm = ({ layout }: Props) => {
   const editedUrl = searchParams.get("edit");
 
   const { t } = useTranslation();
+
+  const { plan } = useAuthStore();
+
+  const { watermark } = useLayoutStore();
 
   const [popUp, setPopUp] = useState(true);
   const [cardEdited, setCardEdited] = useState(false);
@@ -273,6 +279,7 @@ const EditForm = ({ layout }: Props) => {
     formData.append("card_layout", layout);
     formData.append("card_type", "business");
     formData.append("card_style_schema", JSON.stringify(cardStyles));
+    formData.append("watermark", plan === "pro" ? `${watermark}` : "false");
 
     const formDataObject: { [key: string]: any } = {};
     formData.forEach((value, key) => {
@@ -286,6 +293,7 @@ const EditForm = ({ layout }: Props) => {
         formDataObject[key] = value;
       }
     });
+
     try {
       await axios.put(`${baseUrl}/api/v1/cards/edit/${editedUrl}`, formData, {
         headers: {

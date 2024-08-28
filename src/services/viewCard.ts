@@ -89,4 +89,5 @@ export interface Data {
   phone: string;
   pronouns: string;
   qr_code: string;
+  watermark: boolean;
 }

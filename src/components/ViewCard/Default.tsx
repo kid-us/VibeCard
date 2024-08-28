@@ -18,7 +18,7 @@ const Default = ({ data, styles, cover, profile, logo, capture }: Props) => {
       className={`relative rounded-2xl lg:w-full md:w-[70%] w-full mx-auto overflow-hidden shadow-lg shadow-zinc-800 z-0 lg:mb-0 mb-14`}
       style={{ backgroundColor: styles.cardBg.bg_color }}
     >
-      <Watermark />
+      {!data.watermark && <Watermark />}
       <div
         className={`lg:h-24 h-32 relative flex justify-between z-0  ${
           !cover

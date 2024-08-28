@@ -136,6 +136,8 @@ const Create = () => {
           }
 
           // Layout
+          console.log(data.card_layout);
+
           updateLayout(data.card_layout);
           // Cards
           setCardName(data.full_name);
@@ -203,7 +205,7 @@ const Create = () => {
         });
     } else {
       // Layout
-      updateLayout(t("default"));
+      updateLayout("default");
       // Cards
       setCardName(null);
       setCardPronoun(null);
@@ -260,7 +262,7 @@ const Create = () => {
     }
   }, []);
 
-  const { layout } = useLayoutStore();
+  const { layout, watermark, updateWatermark } = useLayoutStore();
 
   const { user, plan } = useAuthStore();
   // States
@@ -382,11 +384,14 @@ const Create = () => {
             <div className="content-center w-full">
               <div className="flex justify-between">
                 <p className="mb-4 font-poppins">{t("cardPreview")}</p>
-                {plan === "proPlus" ? (
+                {plan === "pro" ? (
                   <div className="relative flex gap-x-1">
                     <div className="toggle-switch">
                       <input
-                        onChange={() => setRemoveWatermark(!removeWatermark)}
+                        onChange={() => {
+                          setRemoveWatermark(!removeWatermark);
+                          updateWatermark(!watermark);
+                        }}
                         className="toggle-input"
                         id="toggle"
                         type="checkbox"
@@ -415,6 +420,7 @@ const Create = () => {
                 )}
               </div>
               {/* {layout} */}
+
               {layout === "default" && (
                 <DefaultCard watermark={removeWatermark} />
               )}
