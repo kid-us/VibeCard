@@ -136,8 +136,6 @@ const Create = () => {
           }
 
           // Layout
-          console.log(data.card_layout);
-
           updateLayout(data.card_layout);
           // Cards
           setCardName(data.full_name);

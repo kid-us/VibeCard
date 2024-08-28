@@ -71,8 +71,8 @@ const Home = () => {
 
       {/* Companies */}
       <div className="mt-20">
-        <p className="text-white font-poppins text-2xl text-center mb-10">
-          Millions of teams and professionals around the world trust Vibecard
+        <p className="text-white logo-font text-2xl text-center mb-10">
+          Agrowing number of teams and professionals rely on Vibecard
         </p>
         <Companies />
       </div>

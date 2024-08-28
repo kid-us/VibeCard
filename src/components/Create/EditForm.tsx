@@ -279,7 +279,7 @@ const EditForm = ({ layout }: Props) => {
     formData.append("card_layout", layout);
     formData.append("card_type", "business");
     formData.append("card_style_schema", JSON.stringify(cardStyles));
-    formData.append("watermark", plan === "pro" ? `${watermark}` : "false");
+    formData.append("watermark", plan === "proPLus" ? `${watermark}` : "false");
 
     const formDataObject: { [key: string]: any } = {};
     formData.forEach((value, key) => {

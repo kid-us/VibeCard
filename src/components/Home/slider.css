@@ -2,7 +2,6 @@
   width: 100%;
   height: var(--height);
   overflow: hidden;
-  mask-image: linear-gradient(to right, transparent, #fff, transparent);
 }
 
 .sliders .lists {
