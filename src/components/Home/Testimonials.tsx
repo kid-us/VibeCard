@@ -29,7 +29,7 @@ const testimony: Testimonial[] = [
   {
     id: 2,
     company: "Social Media",
-    job: "Social Media Influencer",
+    job: "Lifestyle Blogger",
     name: "Sitra",
     img: sitra,
     note: "testimonials1",
@@ -45,7 +45,7 @@ const testimony: Testimonial[] = [
   {
     id: 4,
     company: "Social Media",
-    job: "Social Media Influencer",
+    job: "Freelancer",
     name: "Sumeya",
     img: sumeya,
     note: "testimonials4",
