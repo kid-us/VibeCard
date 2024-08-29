@@ -76,10 +76,10 @@ const Home = () => {
       </div>
 
       {/* Companies */}
-      <div className="mt-10">
-        <p className="text-white font-poppins text-2xl text-center mb-10">
-          Agrowing number of teams and professionals rely on Vibecard
-        </p>
+      <p className="mt-10 text-white font-poppins text-2xl text-center mb-10">
+        Agrowing number of teams and professionals rely on Vibecard
+      </p>
+      <div className="bg-black">
         <Companies />
       </div>
 

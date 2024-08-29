@@ -1,4 +1,4 @@
-import { dallol, sitra } from "@/assets";
+import { dallol, hayu, sitra, sumeya } from "@/assets";
 import {
   Carousel,
   CarouselContent,
@@ -33,6 +33,22 @@ const testimony: Testimonial[] = [
     name: "Sitra",
     img: sitra,
     note: "testimonials1",
+  },
+  {
+    id: 3,
+    company: "Social Media",
+    job: "Social Media Influencer",
+    name: "Hayu",
+    img: hayu,
+    note: "testimonials3",
+  },
+  {
+    id: 4,
+    company: "Social Media",
+    job: "Social Media Influencer",
+    name: "Sumeya",
+    img: sumeya,
+    note: "testimonials4",
   },
 ];
 
@@ -70,10 +86,10 @@ const Testimonials = () => {
           <CarouselPrevious className="absolute -left-2" />
           <CarouselNext className="absolute -right-2" />
         </div>
-        {/* <div className="lg:block md:hidden hidden">
+        <div className="lg:block md:hidden hidden">
           <CarouselPrevious />
           <CarouselNext />
-        </div> */}
+        </div>
       </Carousel>
     </div>
   );

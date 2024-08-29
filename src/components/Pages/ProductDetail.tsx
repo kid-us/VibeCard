@@ -52,9 +52,9 @@ const ProductDetail = () => {
   const { t } = useTranslation();
 
   // Scroll to top
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   const navigate = useNavigate();
 
@@ -475,6 +475,31 @@ const ProductDetail = () => {
                 </div>
               </div>
             </div>
+          </div>
+          {/* Descriptions */}
+          <div className="px-4">
+            <h1 className="text-white text-2xl">{t("description")}</h1>
+            <p className="first-letter:uppercase text-xl text-white mt-4 font-poppins">
+              {" "}
+              {t("PVC")} NFC {t("businessCard")}{" "}
+            </p>
+            <p className="font-poppins text-gray-200 mt-2">
+              {t("pvcDescription")}
+            </p>
+            <p className="first-letter:uppercase text-xl text-white mt-4 font-poppins">
+              {" "}
+              {t("bamboo")} NFC {t("businessCard")}{" "}
+            </p>
+            <p className="font-poppins text-gray-200 mt-2">
+              {t("bambooDescription")}
+            </p>
+            <p className="first-letter:uppercase text-xl text-white mt-4 font-poppins">
+              {" "}
+              {t("metal")} NFC {t("businessCard")}{" "}
+            </p>
+            <p className="font-poppins text-gray-200 mt-2">
+              {t("metalDescription")}
+            </p>
           </div>
           {/* Faq */}
           <div className="px-4">

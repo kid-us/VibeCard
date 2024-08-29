@@ -43,7 +43,7 @@ const Companies = () => {
             <img
               src={c.img}
               alt="Companies"
-              className="h-20 w-full object-contain lg:px-0 px-5"
+              className="h-20 w-full object-contain lg:px-0 px-5 brightness-2"
             />
           </div>
         ))}

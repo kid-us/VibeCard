@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import AmbassadorLogin from "../Ambassador/AmbassadorLogin";
 import useDocumentTitle from "@/hooks/useDocumentTitle";
 import { useTranslation } from "react-i18next";
-import { ambassador1, ambassador2, ambassador3 } from "@/assets";
+import { ambassador1 } from "@/assets";
 
 const Ambassador = () => {
   const [title] = useState("Vibecard - Ambassador");
@@ -61,17 +61,6 @@ const Ambassador = () => {
             <img
               src={ambassador1}
               alt="ambassador"
-              className="mt-5 rounded-xl"
-            />
-
-            <img
-              src={ambassador2}
-              alt="Ambassador"
-              className="mt-5 rounded-xl"
-            />
-            <img
-              src={ambassador3}
-              alt="Ambassador"
               className="mt-5 rounded-xl"
             />
           </div>

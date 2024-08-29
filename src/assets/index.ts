@@ -59,6 +59,8 @@ import de from "./de.png";
 // Testimony
 import sitra from "./sitra.png";
 import dallol from "./dallol.png";
+import sumeya from "./Sumeya.jpg";
+import hayu from "./hayu.jpg";
 
 // companies
 import company1 from "./companies/1.png";
@@ -130,6 +132,8 @@ export {
   // Testimony
   sitra,
   dallol,
+  hayu,
+  sumeya,
 
   // Companies
   company1,
