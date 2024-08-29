@@ -75,14 +75,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Companies */}
-      <p className="mt-10 text-white font-poppins text-2xl text-center mb-10">
-        Agrowing number of teams and professionals rely on Vibecard
-      </p>
-      <div className="bg-black">
-        <Companies />
-      </div>
-
       {/* hero */}
       <div className="relative container mx-auto">
         <HeroCard />
@@ -160,6 +152,14 @@ const Home = () => {
           {/* <Products /> */}
           <Product />
         </div>
+      </div>
+
+      {/* Companies */}
+      <p className="mt-10 text-white font-poppins text-2xl text-center mb-10">
+        Agrowing number of teams and professionals rely on Vibecard
+      </p>
+      <div className="bg-white">
+        <Companies />
       </div>
 
       {/* Testimonials */}

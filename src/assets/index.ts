@@ -63,11 +63,16 @@ import sumeya from "./Sumeya.jpg";
 import hayu from "./hayu.jpg";
 
 // companies
-import company1 from "./companies/1.png";
-import company2 from "./companies/2.png";
-import company3 from "./companies/3.png";
-import company4 from "./companies/4.png";
-import company5 from "./companies/5.png";
+// import company1 from "./companies/1.png";
+// import company2 from "./companies/2.png";
+// import company3 from "./companies/3.png";
+// import company4 from "./companies/4.png";
+// import company5 from "./companies/5.png";
+import company1 from "./companies/1.jpg";
+import company2 from "./companies/2.jpg";
+import company3 from "./companies/3.jpg";
+import company4 from "./companies/4.jpg";
+import company5 from "./companies/5.jpg";
 import company6 from "./companies/6.png";
 
 // Ambassador
