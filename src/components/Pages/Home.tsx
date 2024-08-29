@@ -158,7 +158,7 @@ const Home = () => {
       <p className="text-white font-poppins text-2xl text-center mb-10">
         Agrowing number of teams and professionals rely on Vibecard
       </p>
-      <div className="bg-white mb-10">
+      <div className="bg-white mb-10 py-2">
         <Companies />
       </div>
 

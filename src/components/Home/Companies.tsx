@@ -20,10 +20,10 @@ const companies = [
 const Companies = () => {
   return (
     <div
-      className="sliders pt-3"
+      className="sliders"
       style={
         {
-          "--width": "100px",
+          "--width": "110px",
           "--height": "110px",
           "--quantity": companies.length,
         } as React.CSSProperties
@@ -43,7 +43,7 @@ const Companies = () => {
             <img
               src={c.img}
               alt="Companies"
-              className="h-20 scale-150 w-full object-contain lg:px-0 px-5 brightness-2"
+              className="h-full w-full object-cover lg:px-0 px-5 rounded-full"
             />
           </div>
         ))}
