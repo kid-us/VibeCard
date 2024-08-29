@@ -139,7 +139,7 @@ const Home = () => {
       </div>
 
       {/* Products */}
-      <div className="border-t border-gray-800 lg:pb-14 pt-10 overflow-hidden">
+      <div className="border-t border-gray-800 pt-10 overflow-hidden">
         <div className="lg:container mx-auto">
           <div className="relative right-20 lg:-top-28 -top-40">
             <div className="absolute lg:right-[35em]  right-36 top-40 bulb"></div>
@@ -155,15 +155,15 @@ const Home = () => {
       </div>
 
       {/* Companies */}
-      <p className="mt-10 text-white font-poppins text-2xl text-center mb-10">
+      <p className="text-white font-poppins text-2xl text-center mb-10">
         Agrowing number of teams and professionals rely on Vibecard
       </p>
-      <div className="bg-white">
+      <div className="bg-white mb-10">
         <Companies />
       </div>
 
       {/* Testimonials */}
-      <div className="border-t border-gray-800 lg:pb-14 pt-10 overflow-hidden">
+      <div className="border-t border-gray-800 pt-10 overflow-hidden">
         <div className="lg:container mx-auto">
           <div className="relative right-20 lg:-top-28 -top-40">
             <div className="absolute lg:right-[35em]  right-36 top-40 bulb"></div>
