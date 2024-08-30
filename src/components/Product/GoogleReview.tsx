@@ -18,7 +18,7 @@ const GoogleReview = ({ bg, note, tablet }: Props) => {
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}//api/v1/products/available-materials`, {
+      .get(`${baseUrl}/api/v1/products/available-materials`, {
         headers: {
           "Content-Type": "application",
         },

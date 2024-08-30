@@ -152,7 +152,7 @@ const Pricing = () => {
                 <h1 className="text-2xl font-extrabold ">
                   €{subscription?.proPlus.price}
                 </h1>
-                <p className="text-sm chakra py-2">{t("perYear")}</p>
+                <p className="text-sm chakra py-2">{t("perMonth")}</p>
               </div>
               <button
                 onClick={() =>

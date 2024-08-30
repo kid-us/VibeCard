@@ -26,6 +26,7 @@ import AffiliateSetting from "./components/Ambassador/AffilateSetting";
 import AmbassadorProtected from "./components/Protected/AmbassadorProtected";
 import WalletsDetail from "./components/Pages/WalletsDetail";
 import OrderMultipleProducts from "./components/Pages/OrderMultipleProduct";
+import MyOrders from "./components/Pages/MyOrders";
 
 function App() {
   return (
@@ -53,6 +54,14 @@ function App() {
           element={
             <Protected>
               <Insights />
+            </Protected>
+          }
+        />
+        <Route
+          path="/my-orders"
+          element={
+            <Protected>
+              <MyOrders />
             </Protected>
           }
         />

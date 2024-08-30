@@ -188,12 +188,20 @@ const Dashboard = () => {
                   <p className="lg:mb-0 text-3xl mt-10 mb-5 font-poppins">
                     {t("dashboardDesc")}
                   </p>
-                  <button
-                    onClick={() => handleManageSubscription()}
-                    className="font-poppins btn-bg shadow rounded lg:w-72 mt-3 lg:mb-0 mb-5"
-                  >
-                    {t("dashBtn2")}
-                  </button>
+                  <div className="lg:flex gap-x-6">
+                    <button
+                      onClick={() => handleManageSubscription()}
+                      className="font-poppins btn-bg shadow rounded lg:w-72 w-full mt-3 lg:mb-0 mb-5"
+                    >
+                      {t("dashBtn2")}
+                    </button>
+                    <Link
+                      to={"/my-orders"}
+                      className="font-poppins btn-bg shadow rounded lg:w-72 w-full mt-3 lg:mb-0 mb-5"
+                    >
+                      {t("dashBtn3")}
+                    </Link>
+                  </div>
                   {/* Previous Card */}
                   {links.length > 0 && (
                     <div className="mt-10 shadow rounded-x">
