@@ -2,14 +2,9 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
-import Product1 from "../Product/Product1";
-import Product2 from "../Product/Product2";
-import Product3 from "../Product/Product3";
-import Product4 from "../Product/Product4";
 import Wallets from "../Product/Wallets";
 import SocialMediaProduct from "../Product/SocialMediaProduct";
 import GoogleReview from "../Product/GoogleReview";
-import Product5 from "../Product/Product5";
 import {
   Carousel,
   CarouselContent,
@@ -19,6 +14,8 @@ import {
 } from "../ui/carousel";
 import Cart from "../Cart/Cart";
 import { useTranslation } from "react-i18next";
+import { card1, card2, card3, fb, g1, g2, g3, ig, tk } from "@/assets";
+import BusinessCard from "../Product/BusinessCard";
 
 const Products = () => {
   const [title] = useState("Shop our Products");
@@ -47,17 +44,17 @@ const Products = () => {
 
       <div className="lg:container mx-auto mt-16">
         <div className="mb-10">
-          {/* Business Card */}c
+          {/* Business Card */}
           <Carousel>
             <CarouselContent>
               <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-                <Product2></Product2>
+                <BusinessCard img={card1} />
               </CarouselItem>
               <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-                <Product1></Product1>
+                <BusinessCard img={card2} />
               </CarouselItem>
               <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-                <Product3></Product3>
+                <BusinessCard img={card3} />
               </CarouselItem>
             </CarouselContent>
             <div className="lg:hidden md:block block">
@@ -65,18 +62,17 @@ const Products = () => {
               <CarouselNext className="absolute z-40 right-0 bg-black text-white" />
             </div>
           </Carousel>
-
           {/* Social Media */}
           <Carousel>
             <CarouselContent>
               <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-                <SocialMediaProduct bg="bg-black" name="tiktok" />
+                <SocialMediaProduct img={ig} />
               </CarouselItem>
               <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-                <Product4></Product4>
+                <SocialMediaProduct img={fb} />
               </CarouselItem>
               <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-                <SocialMediaProduct bg="bg-blue-500" name="facebook" />
+                <SocialMediaProduct img={tk} />
               </CarouselItem>
             </CarouselContent>
             <div className="lg:hidden md:block block">
@@ -84,18 +80,17 @@ const Products = () => {
               <CarouselNext className="absolute z-40 right-0 bg-black text-white" />
             </div>
           </Carousel>
-
           {/* <Google Review /> */}
           <Carousel>
             <CarouselContent>
               <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-                <GoogleReview bg="bg-white" note="Google Review" />
+                <GoogleReview img={g1} />
               </CarouselItem>
               <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-                <GoogleReview bg="bg-black" note="Rate your Experience" />
+                <GoogleReview img={g3} />
               </CarouselItem>
               <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-                <Product5></Product5>
+                <GoogleReview img={g2} />
               </CarouselItem>
             </CarouselContent>
             <div className="lg:hidden md:block block">

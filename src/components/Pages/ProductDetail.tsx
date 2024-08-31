@@ -13,8 +13,6 @@ import {
   card1,
   card2,
   card3,
-  card4,
-  card5,
   card6,
   fb,
   g1,
@@ -52,9 +50,9 @@ const ProductDetail = () => {
   const { t } = useTranslation();
 
   // Scroll to top
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const navigate = useNavigate();
 
@@ -77,22 +75,19 @@ const ProductDetail = () => {
       })
       .then((response) => {
         setCards(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get(`${baseUrl}/api/v1/products/available-materials`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        setAvailableCards(response.data.materials);
+        axios
+          .get(`${baseUrl}/api/v1/products/available-materials`, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then((response) => {
+            setLoading(false);
+            setAvailableCards(response.data.materials);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -141,133 +136,53 @@ const ProductDetail = () => {
             </div>
 
             <div className="lg:mt-10 lg:mx-0 mx-1 lg:pb-10 lg:px-10 md:px-10 px-0">
-              {id === "business-card-landscape" && (
-                <>
-                  <Carousel
-                    plugins={[
-                      Autoplay({
-                        delay: 5000,
-                      }),
-                    ]}
-                  >
-                    <CarouselContent className="flex gap-x-2 px-1">
-                      <CarouselItem>
-                        <img
-                          src={card4}
-                          alt="card"
-                          className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
-                        />
-                      </CarouselItem>
-                      <CarouselItem>
-                        <img
-                          src={card1}
-                          alt="card"
-                          className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
-                        />
-                      </CarouselItem>
-                      <CarouselItem>
-                        <img
-                          src={card2}
-                          alt="card"
-                          className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
-                        />
-                      </CarouselItem>
-                      <CarouselItem>
-                        <img
-                          src={card3}
-                          alt="card"
-                          className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
-                        />
-                      </CarouselItem>
-                    </CarouselContent>
-                  </Carousel>
-                </>
-              )}
-              {id === "business-card-portrait" && (
-                <Carousel
-                  plugins={[
-                    Autoplay({
-                      delay: 5000,
-                    }),
-                  ]}
-                >
-                  <CarouselContent className="flex gap-x-2 px-1">
-                    <CarouselItem>
-                      <img
-                        src={card5}
-                        alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
-                      />
-                    </CarouselItem>
-                    <CarouselItem>
-                      <img
-                        src={card1}
-                        alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
-                      />
-                    </CarouselItem>
-                    <CarouselItem>
-                      <img
-                        src={card2}
-                        alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
-                      />
-                    </CarouselItem>
-                    <CarouselItem>
-                      <img
-                        src={card3}
-                        alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
-                      />
-                    </CarouselItem>
-                  </CarouselContent>
-                </Carousel>
-              )}
+              {/* Business Card */}
               {id === "business-card" && (
                 <Carousel
                   plugins={[
                     Autoplay({
-                      delay: 5000,
+                      delay: 10000,
                     }),
                   ]}
                 >
                   <CarouselContent className="flex gap-x-2 px-1">
                     <CarouselItem>
                       <img
-                        src={card6}
-                        alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
-                      />
-                    </CarouselItem>
-                    <CarouselItem>
-                      <img
                         src={card1}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded-lg mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={card2}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded-lg mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={card3}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded-lg mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={card6}
+                        alt="card"
+                        className="rounded-lg mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
                       />
                     </CarouselItem>
                   </CarouselContent>
                 </Carousel>
               )}
+              {/* Social Media */}
               {id === "card-social-media" && (
                 <Carousel
                   plugins={[
                     Autoplay({
-                      delay: 5000,
+                      delay: 10000,
                     }),
                   ]}
                 >
@@ -276,38 +191,40 @@ const ProductDetail = () => {
                       <img
                         src={ig}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded-lg mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={fb}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded-lg mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={ln}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded-lg mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={tk}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded-lg mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
                       />
                     </CarouselItem>
                   </CarouselContent>
                 </Carousel>
               )}
+
+              {/* Google Review */}
               {id === "card-google-review" && (
                 <Carousel
                   plugins={[
                     Autoplay({
-                      delay: 5000,
+                      delay: 10000,
                     }),
                   ]}
                 >
@@ -316,35 +233,35 @@ const ProductDetail = () => {
                       <img
                         src={g1}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded-lg mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={g2}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded-lg mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={g3}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded-lg mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={g4}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded-lg mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={g5}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
+                        className="rounded-lg mb-3 cursor-pointer w-full lg:h-[530px] md:h-[530px] object-cover"
                       />
                     </CarouselItem>
                   </CarouselContent>

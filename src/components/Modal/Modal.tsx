@@ -20,7 +20,7 @@ const Modal = ({ link }: Props) => {
 
   return (
     <>
-      <div className="overlay w-full z-50"></div>
+      <div className="overlay fixed h-full w-full z-50"></div>
       <div className="flex justify-center align-center">
         <div className="absolute lg:top-40 top-28 z-50 lg:w-[60%] secondary-bg rounded-xl border-gradient-2">
           <Link

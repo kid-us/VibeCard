@@ -38,20 +38,21 @@ const Insights = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (plan && plan === "free") {
-      navigate("/pricing");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (plan && plan === "free") {
+  //     navigate("/pricing");
+  //   }
+  // }, []);
 
   // Zustand
   const { activeCard } = useInsightStore();
+
   // Insight
   const [cardInsight, setCardInsight] = useState<Insights[]>([]);
   const [totalContact, setTotalContact] = useState(0);
   const [totalCardView, setTotalCardView] = useState(0);
   const [totalSocialMedia, setTotalSocialMedia] = useState(0);
-
+  const [downloadLink, setDownloadLink] = useState<string>("");
   const [viewCardData, setViewCardData] = useState("today");
   const [dropdown, setDropdown] = useState(false);
 
@@ -150,6 +151,27 @@ const Insights = () => {
     setViewCardData("custom");
   };
 
+  // Export
+  useEffect(() => {
+    if (activeCard) {
+      axios
+        .get(
+          `${baseUrl}/api/v1/cards/export-insights/${activeCard}?file_format=csv`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => {
+          setDownloadLink(response.data.url);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [activeCard]);
+
   return (
     <>
       <Navbar />
@@ -161,7 +183,7 @@ const Insights = () => {
             <Cards />
           </div>
           <div className="col-span-3">
-            <div className="flex justify-between mb-10">
+            <div className="flex justify-between mb-5">
               <div>
                 <div className="flex gap-x-4">
                   <p className="text-white text-sm mb-2 font-poppins">
@@ -241,6 +263,28 @@ const Insights = () => {
                   </div>
                 )}
               </div>
+            </div>
+            {/* Export */}
+            <div className="mb-5">
+              <div className="flex">
+                <p className="text-white mb-2 text-sm">Export insights</p>
+                <p className="ms-5 font-poppins bg-blue-500 text-white rounded-full w-20 text-center h-5 text-sm shadow-inner shadow-red-950">
+                  Pro+
+                </p>
+              </div>
+              {plan !== "proPlus" ? (
+                <a href={downloadLink} download={"Insights"}>
+                  <p className="btn-bg p-0 mb-3 shadow-none rounded text-white w-40 py-2">
+                    Export <span className="bi-download ms-3"></span>
+                  </p>
+                </a>
+              ) : (
+                <a>
+                  <p className="btn-bg p-0 mb-3 shadow-none rounded text-white w-40 py-2">
+                    Export <span className="bi-download ms-3"></span>
+                  </p>
+                </a>
+              )}
             </div>
 
             {/* History */}

@@ -5,16 +5,16 @@ interface Props {
   img: string;
 }
 
-const SocialMediaProduct = ({ img }: Props) => {
+const BusinessCard = ({ img }: Props) => {
   return (
     <div className="lg:mb-0 mb-10">
-      <Link to="/products/card-social-media">
+      <Link to={"/products/business-card"}>
         <img src={img} alt="" className="rounded-lg h-96 w-full object-cover" />
       </Link>
-      {/* Available in */}
-      <Available name="socialMedia" />
+      {/* Available in*/}
+      <Available name="businessCard" />
     </div>
   );
 };
 
-export default SocialMediaProduct;
+export default BusinessCard;
