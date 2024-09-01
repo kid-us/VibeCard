@@ -6,7 +6,6 @@ import photo from "./photo.png";
 import intro from "./intro2.mp4";
 import intro2 from "./xxx.webm";
 import ceo from "./ceo.png";
-import hero from "./heroImg.png";
 // Home
 import design from "./design.svg";
 import impression from "./impression.svg";
@@ -87,7 +86,6 @@ export {
   intro,
   intro2,
   ceo,
-  hero,
   notFound,
   // Home
   design,
