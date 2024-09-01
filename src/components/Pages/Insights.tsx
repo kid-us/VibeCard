@@ -38,11 +38,14 @@ const Insights = () => {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (plan && plan === "free") {
-  //     navigate("/pricing");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (plan && plan === "free") {
+      navigate("/pricing");
+    }
+  }, []);
+
+  const [fileType, setFileType] = useState<string>("csv");
+  const [fileTypeClicked, setFileTypeClicked] = useState<boolean>(false);
 
   // Zustand
   const { activeCard } = useInsightStore();
@@ -156,7 +159,7 @@ const Insights = () => {
     if (activeCard) {
       axios
         .get(
-          `${baseUrl}/api/v1/cards/export-insights/${activeCard}?file_format=pdf`,
+          `${baseUrl}/api/v1/cards/export-insights/${activeCard}?file_format=${fileType}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -170,7 +173,7 @@ const Insights = () => {
           console.log(error);
         });
     }
-  }, [activeCard]);
+  }, [activeCard, fileType]);
 
   return (
     <>
@@ -272,15 +275,48 @@ const Insights = () => {
                   Pro+
                 </p>
               </div>
-              <div className="lg:w-40">
-                {plan !== "proPlus" ? (
-                  <a href={downloadLink} download={"Insights"}>
-                    <p className="btn-bg p-0 mb-3 shadow-none rounded text-white w-40 py-2">
-                      Export <span className="bi-download ms-3"></span>
-                    </p>
-                  </a>
+              <div className="">
+                {plan === "proPlus" ? (
+                  <div className="flex gap-x-3">
+                    <a href={downloadLink} download={"Insights"}>
+                      <p className="btn-bg p-0 mb-3 shadow-none rounded text-white w-40 py-2">
+                        Export <span className="bi-download ms-3"></span>
+                      </p>
+                    </a>
+                    <div className="relative bg-white rounded py-2 h-10 px-4">
+                      <p
+                        onClick={() => setFileTypeClicked(!fileTypeClicked)}
+                        className="cursor-pointer"
+                      >
+                        {fileType}{" "}
+                        <span className="bi-caret-down-fill text-xs ms-2"></span>
+                      </p>
+                      {fileTypeClicked && (
+                        <div className="bg-white absolute w-full mt-1 left-0 p-1 border rounded shadow">
+                          <p
+                            onClick={() => {
+                              setFileType("csv");
+                              setFileTypeClicked(false);
+                            }}
+                            className="cursor-pointer"
+                          >
+                            csv
+                          </p>
+                          <p
+                            onClick={() => {
+                              setFileType("pdf");
+                              setFileTypeClicked(false);
+                            }}
+                            className="cursor-pointer"
+                          >
+                            pdf
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 ) : (
-                  <a>
+                  <a className="cursor-not-allowed">
                     <p className="btn-bg p-0 mb-3 shadow-none rounded text-white w-40 py-2">
                       Export <span className="bi-download ms-3"></span>
                     </p>

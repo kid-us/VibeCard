@@ -49,15 +49,9 @@ const Home = () => {
         <div className="relative right-20 -top-52">
           <div className="absolute w-[5%] lg:w-[10%] lg:right-20 -right-40 bulb"></div>
         </div>
-        <div className="absolute lg:left-[45%] left-28 top-6 secondary-bg border-gradient shadow shadow-zinc-900 rounded-full px-4 py-1">
-          <p className="text-center text-xs font-extrabold text-white ">
-            {t("video")}
-          </p>
-        </div>
-        <div className="container mx-auto pt-10 lg:px-0 px-3">
+        <div className="container mx-auto lg:px-0 px-3">
           <div className="rounded-xl overflow-hidden flex justify-center">
             <div className="lg:rounded-lg rounded overflow-hidden">
-              {/* <img src={browse} alt="" /> */}
               <div className="lg:rounded-lg rounded overflow-hidden">
                 <video autoPlay muted loop playsInline className="aspect-video">
                   <source src={intro} type="video/mp4" />

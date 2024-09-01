@@ -84,7 +84,7 @@ const Navbar = () => {
                 </p>
               </div>
 
-              <div className={`lg:pe-10 text-white p-2`}>
+              <div className={`lg:pe-10 text-white py-2`}>
                 <Link to={"/"} className={`logo-font lg:text-4xl text-4xl`}>
                   vibecard
                 </Link>
