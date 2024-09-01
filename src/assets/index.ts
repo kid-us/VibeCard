@@ -1,6 +1,7 @@
 import userPic from "./user.png";
 import google from "./google.png";
 import pageNotFound from "./page404.gif";
+import notFound from "./p404.png";
 import photo from "./photo.png";
 import intro from "./intro2.mp4";
 import intro2 from "./xxx.webm";
@@ -89,6 +90,7 @@ export {
   intro2,
   ceo,
   hero,
+  notFound,
   // Home
   design,
   adapt,

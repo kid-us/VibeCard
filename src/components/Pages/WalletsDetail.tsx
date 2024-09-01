@@ -59,8 +59,6 @@ const WalletsDetail = () => {
         },
       })
       .then((response) => {
-        console.log(response.data);
-
         setWallets(response.data.wallet);
         setLoading(false);
       })
@@ -252,6 +250,8 @@ const WalletsDetail = () => {
                     type="number"
                     className="h-14 border w-full text-center chakra text-3xl text-black"
                     value={quantity}
+                    readOnly
+                    onChange={(e) => setQuantity(Number(e.currentTarget.value))}
                   />
                 </div>
                 <div className="text-center w-full">

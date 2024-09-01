@@ -165,7 +165,6 @@ const Insights = () => {
         )
         .then((response) => {
           setDownloadLink(response.data.url);
-          console.log(` vibecard.de/api/${response.data.url}`);
         })
         .catch((error) => {
           console.log(error);
@@ -273,19 +272,21 @@ const Insights = () => {
                   Pro+
                 </p>
               </div>
-              {plan !== "proPlus" ? (
-                <a href={downloadLink} download={"Insights"}>
-                  <p className="btn-bg p-0 mb-3 shadow-none rounded text-white w-40 py-2">
-                    Export <span className="bi-download ms-3"></span>
-                  </p>
-                </a>
-              ) : (
-                <a>
-                  <p className="btn-bg p-0 mb-3 shadow-none rounded text-white w-40 py-2">
-                    Export <span className="bi-download ms-3"></span>
-                  </p>
-                </a>
-              )}
+              <div className="lg:w-40">
+                {plan !== "proPlus" ? (
+                  <a href={downloadLink} download={"Insights"}>
+                    <p className="btn-bg p-0 mb-3 shadow-none rounded text-white w-40 py-2">
+                      Export <span className="bi-download ms-3"></span>
+                    </p>
+                  </a>
+                ) : (
+                  <a>
+                    <p className="btn-bg p-0 mb-3 shadow-none rounded text-white w-40 py-2">
+                      Export <span className="bi-download ms-3"></span>
+                    </p>
+                  </a>
+                )}
+              </div>
             </div>
 
             {/* History */}
