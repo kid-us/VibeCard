@@ -49,7 +49,12 @@ const Home = () => {
         <div className="relative right-20 -top-52">
           <div className="absolute w-[5%] lg:w-[10%] lg:right-20 -right-40 bulb"></div>
         </div>
-        <div className="container mx-auto lg:px-0 px-3">
+        <div className="relative container mx-auto lg:px-0 px-3">
+          <div className="flex justify-center">
+            <p className="w-36 bg-teal-500 rounded-xl text-center p-0 shadow-none text-white font-poppins text-[12px]">
+              {t("video")}
+            </p>
+          </div>
           <div className="rounded-xl overflow-hidden flex justify-center">
             <div className="lg:rounded-lg rounded overflow-hidden">
               <div className="lg:rounded-lg rounded overflow-hidden">
