@@ -156,7 +156,7 @@ const Insights = () => {
     if (activeCard) {
       axios
         .get(
-          `${baseUrl}/api/v1/cards/export-insights/${activeCard}?file_format=csv`,
+          `${baseUrl}/api/v1/cards/export-insights/${activeCard}?file_format=pdf`,
           {
             headers: {
               "Content-Type": "application/json",

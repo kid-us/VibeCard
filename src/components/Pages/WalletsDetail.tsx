@@ -59,6 +59,8 @@ const WalletsDetail = () => {
         },
       })
       .then((response) => {
+        console.log(response.data);
+
         setWallets(response.data.wallet);
         setLoading(false);
       })
@@ -98,7 +100,7 @@ const WalletsDetail = () => {
               </p>
             </div>
             <div className="pt-8">
-              {id === "205367e34c064fffbbfc55af03218483" && (
+              {id === "2c15466bd01c4c43b578d55ae69bcb10" && (
                 <Carousel
                   plugins={[
                     Autoplay({
@@ -111,34 +113,34 @@ const WalletsDetail = () => {
                       <img
                         src={wallets?.image}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={wall1}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={wall2}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={wall3}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full h-[340px]"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
                       />
                     </CarouselItem>
                   </CarouselContent>
                 </Carousel>
               )}
-              {id === "21bfa19927fc4cc2b6ed4cd3039007d4" && (
+              {id === "537636c3365d41fdb8df931caf116fca" && (
                 <Carousel
                   plugins={[
                     Autoplay({
@@ -151,34 +153,34 @@ const WalletsDetail = () => {
                       <img
                         src={wallets?.image}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={slide1}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={slide2}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={slide3}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
                       />
                     </CarouselItem>
                   </CarouselContent>
                 </Carousel>
               )}
-              {id === "d6d3107adf9f4e2aab749e12ce56944a" && (
+              {id === "3559802c67ce418bb7e33b442ffa5f0e" && (
                 <Carousel
                   plugins={[
                     Autoplay({
@@ -191,28 +193,28 @@ const WalletsDetail = () => {
                       <img
                         src={wallets?.image}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={red1}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={red2}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
                       />
                     </CarouselItem>
                     <CarouselItem>
                       <img
                         src={red3}
                         alt="card"
-                        className="rounded mb-3 cursor-pointer w-full"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
                       />
                     </CarouselItem>
                   </CarouselContent>

@@ -71,7 +71,7 @@ const Wallets = () => {
                     <img
                       src={wallet.image}
                       alt="wallets"
-                      className=" w-full object-cover"
+                      className=" w-full object-cover h-96"
                     />
                   </div>
                 </Link>
