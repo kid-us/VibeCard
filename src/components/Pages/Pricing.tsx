@@ -91,7 +91,7 @@ const Pricing = () => {
           {/* Basic */}
           <div className="border border-gray-600 rounded-xl lg:px-10 px-5 lg:mb-0 mb-4 py-6 text-white">
             <p className="text-2xl font-extrabold mb-5">{t("basic")}</p>
-            <p className="text-gray-500">{t("pricingNote2")}</p>
+            <p className="text-gray-500">{t("freePlanNote")}</p>
             <div className="py-10 text-center">
               <h1 className="text-2xl font-extrabold my-4">{t("free")}</h1>
               <Link
@@ -115,7 +115,7 @@ const Pricing = () => {
             </div>
             <div className="relative z-50 border-2 border-teal-500 rounded-xl lg:px-10 px-5 lg:mb-0 lg:mt-0 mt-14 mb-4 py-6 text-white secondary-bg">
               <p className="text-2xl font-extrabold mb-5">{t("pro")}</p>
-              <p className="text-gray-500">{t("pricingNote2")}</p>
+              <p className="text-gray-500">{t("proPlanNote")}</p>
               <div className="py-10 text-center my-4 w-full">
                 <div className="flex justify-center gap-x-10 mb-4">
                   <h1 className="text-2xl font-extrabold ">
@@ -146,7 +146,7 @@ const Pricing = () => {
           {/* Pro Plus*/}
           <div className="border border-gray-600 rounded-xl lg:px-10 px-5 lg:mb-0 mb-4 py-6 text-white">
             <p className="text-2xl font-extrabold mb-5">{t("proPlus")}</p>
-            <p className="chakra text-gray-600">{t("pricingNote2")}</p>
+            <p className="chakra text-gray-600">{t("proPlusPlanNote")}</p>
             <div className="py-10 text-center my-4">
               <div className="flex justify-center gap-x-10 mb-4">
                 <h1 className="text-2xl font-extrabold ">
