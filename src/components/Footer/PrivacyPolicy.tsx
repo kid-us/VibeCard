@@ -1,9 +1,14 @@
 import { useTranslation } from "react-i18next";
 import Navbar from "../Navbar/Navbar";
 import Footer from "./Footer";
+import { useEffect } from "react";
 
 const PrivacyPolicy = () => {
   const { i18n } = useTranslation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
