@@ -22,9 +22,9 @@ const Home = () => {
   const { t } = useTranslation();
 
   // Scroll to top
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -53,7 +53,13 @@ const Home = () => {
           <div className="rounded-xl overflow-hidden flex justify-center">
             <div className="lg:rounded-lg rounded overflow-hidden">
               <div className="lg:rounded-lg rounded overflow-hidden">
-                <video autoPlay muted loop playsInline className="aspect-video">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="aspect-video border-gradient"
+                >
                   <source src={intro} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
@@ -143,9 +149,11 @@ const Home = () => {
       </div>
 
       {/* Companies */}
-      <p className="text-white font-poppins text-2xl text-center mb-10">
-        Agrowing number of teams and professionals rely on Vibecard
-      </p>
+      <div className="flex justify-center w-full text-center">
+        <p className="font-poppins text-teal-500 font-extrabold text-2xl text-center lg:mb-16 mb-10 w-80">
+          Trusted by growing teams and professionals.
+        </p>
+      </div>
       <div className="bg-white mb-10 py-2">
         <Companies />
       </div>
