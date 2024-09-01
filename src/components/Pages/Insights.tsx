@@ -165,6 +165,7 @@ const Insights = () => {
         )
         .then((response) => {
           setDownloadLink(response.data.url);
+          console.log(` vibecard.de/api/${response.data.url}`);
         })
         .catch((error) => {
           console.log(error);

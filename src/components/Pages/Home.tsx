@@ -55,17 +55,11 @@ const Home = () => {
           </p>
         </div>
         <div className="container mx-auto pt-10 lg:px-0 px-3">
-          <div className="border-gradient border-2 rounded-xl overflow-hidden">
+          <div className="rounded-xl overflow-hidden flex justify-center">
             <div className="lg:rounded-lg rounded overflow-hidden">
               {/* <img src={browse} alt="" /> */}
               <div className="lg:rounded-lg rounded overflow-hidden">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="aspect-video lg:h-[100vh] w-full object-"
-                >
+                <video autoPlay muted loop playsInline className="aspect-video">
                   <source src={intro} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>

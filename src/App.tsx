@@ -17,7 +17,6 @@ import ProductDetail from "./components/Pages/ProductDetail";
 import Setting from "./components/Pages/Setting";
 import Insights from "./components/Pages/Insights";
 import AboutUs from "./components/Pages/AboutUs";
-import PrivacyPolicy from "./components/Pages/PrivacyPolicy";
 import ContactUs from "./components/Pages/ContactUs";
 import ImageEditor from "./components/Pages/ImageEditor";
 import Ambassador from "./components/Pages/Ambassador";
@@ -27,6 +26,10 @@ import AmbassadorProtected from "./components/Protected/AmbassadorProtected";
 import WalletsDetail from "./components/Pages/WalletsDetail";
 import OrderMultipleProducts from "./components/Pages/OrderMultipleProduct";
 import MyOrders from "./components/Pages/MyOrders";
+import PrivacyPolicy from "./components/Footer/PrivacyPolicy";
+import Imprint from "./components/Footer/Imprint";
+import CancellationPolicy from "./components/Footer/CancllationPolicy";
+import Terms from "./components/Footer/Terms";
 
 function App() {
   return (
@@ -91,6 +94,10 @@ function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/imprint" element={<Imprint />} />
+        <Route path="/cancellation" element={<CancellationPolicy />} />
+        <Route path="/terms-use" element={<Terms />} />
+        <Route path="imprint" element={<Imprint />} />
         <Route path="/404" element={<Page404 />} />
         <Route path="*" element={<Navigate to="/404" />}></Route>
         {/* Affiliate */}

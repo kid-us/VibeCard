@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { shop, explore } from "../../services/footer";
+import { shop, explore, legal } from "../../services/footer";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -33,7 +33,7 @@ const Footer = () => {
         <div className="absolute lg:right-[43em]  right-36 top-40 bulb"></div>
       </div>
       <div className="lg:container mx-auto py-10">
-        <div className="grid lg:grid-cols-8 md:grid-cols-8 grid-cols-6 lg:px-0 md:px-3 px-3">
+        <div className="grid lg:grid-cols-6 md:grid-cols-6 grid-cols-6 gap-x-5 lg:px-0 md:px-3 px-3">
           <div className="relative lg:col-span-3 md:col-span-2 col-span-6">
             <h1 className="text-white text-4xl logo-font">vibecard</h1>
             <p className="text-gray-400 text-sm pe-10 mt-4">
@@ -59,9 +59,8 @@ const Footer = () => {
               </p>
             </div>
           </div>
-          <div className="lg:block md:block hidden col-span-2"></div>
           {/* Explore */}
-          <div className="lg:col-span-2 md:col-span-2 col-span-2 lg:my-0 md:my-0 my-6">
+          <div className="lg:col-span-1 md:col-span-2 col-span-2 lg:my-0 md:my-0 my-6">
             <h1 className="text-gray-400 text-lg mb-5">{t("explore")}</h1>
             {explore.map((e) =>
               e.path === "/create" ? (
@@ -94,8 +93,21 @@ const Footer = () => {
             )}
           </div>
 
+          {/* Legal */}
+          <div className="lg:col-span-1 md:col-span-2 col-span-3 lg:my-0 md:my-0 my-6">
+            <h1 className="text-gray-400 text-lg mb-5">{t("legal")}</h1>
+            {legal.map((l) => (
+              <Link
+                key={l.id}
+                to={l.path}
+                className="block text-gray-200 mb-4 hover:text-gray-500 text-sm"
+              >
+                {t(l.name)}
+              </Link>
+            ))}
+          </div>
           {/* Shop */}
-          <div className="lg:col-span-1 md:col-span-2 col-span-2 lg:my-0 md:my-0 my-6">
+          <div className="lg:col-span-1 md:col-span-2 col-span-2 lg:my-0 md:my-0 my-6 lg:ms-10">
             <h1 className="text-gray-400 text-lg mb-5">{t("shop")}</h1>
             {shop.map((c) => (
               <Link

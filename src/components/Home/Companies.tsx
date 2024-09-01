@@ -43,7 +43,7 @@ const Companies = () => {
             <img
               src={c.img}
               alt="Companies"
-              className="h-full w-full object-cover lg:px-0 px-5 rounded-full"
+              className="lg:h-full lg:w-full object-cover rounded-full"
             />
           </div>
         ))}

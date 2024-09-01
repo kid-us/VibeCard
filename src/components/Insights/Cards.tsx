@@ -82,6 +82,8 @@ const Cards: React.FC = () => {
         withCredentials: true,
       })
       .then((response) => {
+        console.log(response.data);
+
         const cardsData: BusinessCardData[] = response.data.map(
           (card: BusinessCardData) => {
             try {

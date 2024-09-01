@@ -72,7 +72,7 @@
 
   "nav1": "Produkte kaufen",
   "nav2": "Preise",
-  "nav3": "Botschafter",
+  "nav3": "Ambassador",
   "nav4": "Armaturenbrett",
   "nav5": "Karte erstellen",
   "nav6": "Einstellung",
@@ -134,8 +134,10 @@
   "shop1": "Alle Produkte",
   "shop2": "Bambuskarte",
   "shop3": "Metallkarte",
-  "shop4": "Geldbörsen aus Leder",
-  "shop5": "Synthetische Geldbörsen",
+  "shop4": "Lederbrieftaschen",
+  "shop5": "Synthetische Brieftaschen",
+  "cancellation": "Widerrufsbelehrung",
+  "imprint": "Impressum",
 
   "chat": "Lass uns chatten!",
   "contactDesc": "Frage? Beschwerde? Ergänzung? Idee für ein neues Produkt? Wir möchten von Ihnen hören, auch wenn es nur darum geht, Hallo zu sagen.",
@@ -271,7 +273,7 @@
   "link": "Link",
   "taps": "Taps",
 
-  "productTitle": "Vibecard Zubehör für digitale Visitenkarten",
+  "productTitle": "Vibecard-Zubehör für digitale Visitenkarten",
   "productDesc": "Kontaktlose Visitenkarten, Brieftaschenhüllen",
   "bestSeller": "Bestseller",
   "googleReview": "Goggle-Rezension",
