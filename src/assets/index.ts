@@ -78,8 +78,6 @@ import company6 from "./companies/6.png";
 
 // Ambassador
 import ambassador1 from "./ambassador1.jpg";
-import ambassador2 from "./ambassador2.jpg";
-import ambassador3 from "./ambassador3.jpg";
 
 export {
   userPic,
@@ -151,6 +149,4 @@ export {
   company6,
   // Ambassadoe
   ambassador1,
-  ambassador2,
-  ambassador3,
 };
