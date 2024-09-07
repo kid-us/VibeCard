@@ -25,7 +25,7 @@ const Available = ({ name }: Props) => {
       .catch((error) => {
         console.log(error);
       });
-  });
+  }, []);
   return (
     <div className="mt-2 bg-gray-800 rounded px-3 py-5 shadow shadow-zinc-950 mb-8">
       <p className="text-lg text-white font-poppins">Vibecard {t(name)}</p>
