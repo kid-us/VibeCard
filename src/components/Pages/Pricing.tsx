@@ -20,6 +20,8 @@ const Pricing = () => {
   const [title] = useState("Pricing");
   useDocumentTitle(title);
 
+  const { user } = useAuthStore();
+
   const { t } = useTranslation();
 
   // Scroll to top
@@ -95,7 +97,7 @@ const Pricing = () => {
             <div className="py-10 text-center">
               <h1 className="text-2xl font-extrabold my-4">{t("free")}</h1>
               <Link
-                to={quota ? "/create" : "/pricing"}
+                to={!user ? "/login" : quota ? "/create" : "/pricing"}
                 className="text-center py-3 btn-bg shadow shadow-zinc-900 text-white rounded chakra"
               >
                 {t("createNow")}
