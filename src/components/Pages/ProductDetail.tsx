@@ -1,5 +1,5 @@
 import Navbar from "../Navbar/Navbar";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
@@ -334,12 +334,6 @@ const ProductDetail = () => {
                 </p>
 
                 {/* Back style */}
-                <p className="lg:mt-10 mt-7 lg:text-md text-sm text-gray-300 font-poppins">
-                  {t("styles")} :
-                  <span className="mx-1 text-white font-poppins">
-                    {t("styleDesc")}
-                  </span>
-                </p>
                 <div className="flex justify-start gap-x-6 mt-4">
                   <p
                     onClick={() => setBackLogo(true)}
@@ -360,20 +354,22 @@ const ProductDetail = () => {
                 </div>
 
                 {/* Back vibecard logo */}
+                <p className="lg:mt-10 mt-7 lg:text-md text-sm text-gray-300 font-poppins">
+                  {t("qrCode")} :
+                  <span className="mx-1 text-white font-poppins">
+                    {t("qrNote")}
+                  </span>
+                </p>
                 <div className="flex justify-start gap-x-6 mt-4">
+                  <Link to={"/create"}>
+                    <p
+                      className={`shadow-xl shadow-zinc-900 bg-white text-center pt-3 text-sm rounded h-11 lg:mb-0 mb-2 w-20 font-poppins font-bold`}
+                    >
+                      {t("yes")}
+                    </p>
+                  </Link>
                   <p
-                    onClick={() => setBackLogo(true)}
-                    className={`shadow-xl shadow-zinc-900 ${
-                      backLogo ? "btn-bg shadow-none px-0" : "bg-white"
-                    } text-center pt-3 text-sm rounded h-11 lg:mb-0 mb-2 w-20 font-poppins font-bold`}
-                  >
-                    {t("yes")}
-                  </p>
-                  <p
-                    onClick={() => setBackLogo(false)}
-                    className={`shadow-xl shadow-zinc-900 ${
-                      !backLogo ? "btn-bg shadow-none px-0" : "bg-white"
-                    } text-center pt-3 text-sm rounded h-11 lg:mb-0 mb-2 w-20 font-poppins font-bold`}
+                    className={`shadow-xl shadow-zinc-900 bg-white text-center pt-3 text-sm rounded h-11 lg:mb-0 mb-2 w-20 font-poppins font-bold`}
                   >
                     {t("no")}
                   </p>
