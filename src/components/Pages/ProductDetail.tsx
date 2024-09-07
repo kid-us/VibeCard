@@ -61,7 +61,7 @@ const ProductDetail = () => {
   const [type, setType] = useState("");
   const [quantity, setQuantity] = useState<number>(1);
   const [backLogo, setBackLogo] = useState(true);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const [cards, setCards] = useState<Plan>();
   const [availableCards, setAvailableCards] = useState<string[]>([]);
