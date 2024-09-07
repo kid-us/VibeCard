@@ -61,7 +61,7 @@ const ProductDetail = () => {
   const [type, setType] = useState("");
   const [quantity, setQuantity] = useState<number>(1);
   const [backLogo, setBackLogo] = useState(true);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const [cards, setCards] = useState<Plan>();
   const [availableCards, setAvailableCards] = useState<string[]>([]);
@@ -284,6 +284,7 @@ const ProductDetail = () => {
                 <p className="text-white mt-5 lg:text-md text-sm font-poppins">
                   {t("chooseCard")}
                 </p>
+
                 {/* Card Types */}
                 <div className="lg:flex justify-between gap-x-5 mt-5">
                   {availableCards.includes("recycled_paper") && (
@@ -323,6 +324,7 @@ const ProductDetail = () => {
                     </p>
                   )}
                 </div>
+
                 {/* Styles */}
                 <p className="lg:mt-10 mt-7 lg:text-md text-sm text-gray-300 font-poppins">
                   {t("styles")} :
@@ -331,7 +333,34 @@ const ProductDetail = () => {
                   </span>
                 </p>
 
-                <div className="flex ustify-start gap-x-6 mt-4">
+                {/* Back style */}
+                <p className="lg:mt-10 mt-7 lg:text-md text-sm text-gray-300 font-poppins">
+                  {t("styles")} :
+                  <span className="mx-1 text-white font-poppins">
+                    {t("styleDesc")}
+                  </span>
+                </p>
+                <div className="flex justify-start gap-x-6 mt-4">
+                  <p
+                    onClick={() => setBackLogo(true)}
+                    className={`shadow-xl shadow-zinc-900 ${
+                      backLogo ? "btn-bg shadow-none px-0" : "bg-white"
+                    } text-center pt-3 text-sm rounded h-11 lg:mb-0 mb-2 w-20 font-poppins font-bold`}
+                  >
+                    {t("yes")}
+                  </p>
+                  <p
+                    onClick={() => setBackLogo(false)}
+                    className={`shadow-xl shadow-zinc-900 ${
+                      !backLogo ? "btn-bg shadow-none px-0" : "bg-white"
+                    } text-center pt-3 text-sm rounded h-11 lg:mb-0 mb-2 w-20 font-poppins font-bold`}
+                  >
+                    {t("no")}
+                  </p>
+                </div>
+
+                {/* Back vibecard logo */}
+                <div className="flex justify-start gap-x-6 mt-4">
                   <p
                     onClick={() => setBackLogo(true)}
                     className={`shadow-xl shadow-zinc-900 ${
