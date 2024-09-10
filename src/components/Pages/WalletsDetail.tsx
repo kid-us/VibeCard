@@ -220,7 +220,49 @@ const WalletsDetail = () => {
                   </CarouselContent>
                 </Carousel>
               )}
+
               {id === "ffa02f0cbf90456f8707978c7d54fc9b" && (
+                <Carousel
+                  plugins={[
+                    Autoplay({
+                      delay: 5000,
+                    }),
+                  ]}
+                >
+                  <CarouselContent className="flex gap-x-2 px-1">
+                    <CarouselItem>
+                      <img
+                        src={wallets?.image}
+                        alt="card"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={red1}
+                        alt="card"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={red2}
+                        alt="card"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={red3}
+                        alt="card"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
+                      />
+                    </CarouselItem>
+                  </CarouselContent>
+                </Carousel>
+              )}
+
+              {id === "3f638a3343514bca88a9e26cddce3a76" && (
                 <Carousel
                   plugins={[
                     Autoplay({
