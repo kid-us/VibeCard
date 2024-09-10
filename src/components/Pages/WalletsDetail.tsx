@@ -98,7 +98,7 @@ const WalletsDetail = () => {
               </p>
             </div>
             <div className="pt-8">
-              {id === "2c15466bd01c4c43b578d55ae69bcb10" && (
+              {id === "3d90e076f13441b3af07b32e4d1e1e26" && (
                 <Carousel
                   plugins={[
                     Autoplay({
@@ -138,7 +138,49 @@ const WalletsDetail = () => {
                   </CarouselContent>
                 </Carousel>
               )}
-              {id === "537636c3365d41fdb8df931caf116fca" && (
+
+              {id === "95aaf8c38c8c41d988989b899536ab99" && (
+                <Carousel
+                  plugins={[
+                    Autoplay({
+                      delay: 5000,
+                    }),
+                  ]}
+                >
+                  <CarouselContent className="flex gap-x-2 px-1">
+                    <CarouselItem>
+                      <img
+                        src={wallets?.image}
+                        alt="card"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={wall1}
+                        alt="card"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={wall2}
+                        alt="card"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
+                      />
+                    </CarouselItem>
+                    <CarouselItem>
+                      <img
+                        src={wall3}
+                        alt="card"
+                        className="mb-3 w-full rounded lg:h-[550px] object-contain"
+                      />
+                    </CarouselItem>
+                  </CarouselContent>
+                </Carousel>
+              )}
+
+              {id === "00b446a1d7864ce1a480569577a1770e" && (
                 <Carousel
                   plugins={[
                     Autoplay({
@@ -178,7 +220,7 @@ const WalletsDetail = () => {
                   </CarouselContent>
                 </Carousel>
               )}
-              {id === "3559802c67ce418bb7e33b442ffa5f0e" && (
+              {id === "ffa02f0cbf90456f8707978c7d54fc9b" && (
                 <Carousel
                   plugins={[
                     Autoplay({
