@@ -262,9 +262,7 @@ const EditForm = ({ layout }: Props) => {
     // Prepare form data
     const formData = new FormData();
     if (pictures.profile) formData.append("main_picture", pictures.profile);
-    if (coverColorBg) {
-      formData.append("covor_picture", "falser");
-    } else if (pictures.cover) {
+    if (pictures.cover) {
       formData.append("covor_picture", pictures.cover);
     }
     if (pictures.logo) formData.append("company_logo", pictures.logo);
