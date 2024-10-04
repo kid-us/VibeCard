@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Hero from "../Home/Hero";
 import Footer from "../Footer/Footer";
-import { intro, intro2 } from "../../assets";
+import { intro, intro2, introPic } from "../../assets";
 import Loading from "../Loading/Loading";
 import homeCard from "../../services/homeCard";
 import Faq from "../Home/FAQ";
@@ -22,15 +22,15 @@ const Home = () => {
   const { t } = useTranslation();
 
   // Scroll to top
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 200);
+    }, 3000);
   }, []);
   return (
     <>
@@ -53,7 +53,7 @@ const Home = () => {
       {/* Video */}
       <div className="lg:container mx-auto lg:px-0 px-2">
         <div className="flex justify-center">
-          <p className="w-36 bg-teal-500 rounded-xl text-center p-0 shadow-none text-white font-poppins text-[12px]">
+          <p className="w-36 bg-teal-500 rounded-xl text-center p-1 shadow-none text-white font-poppins text-[12px]">
             {t("video")}
           </p>
         </div>
@@ -187,6 +187,14 @@ const Home = () => {
       </div>
       <div className="bg-white mb-10 py-2">
         <Companies />
+      </div>
+
+      {/* Intro Image 2 */}
+      <p className="text-center text-white font-poppins text-2xl">
+        Where do u want this photos to be added??
+      </p>
+      <div className="container mx-auto flex justify-center my-10 h-[80vh] w-[100%] object-cover">
+        <img src={introPic} alt="Hero" className="rounded-3xl" />
       </div>
 
       {/* Testimonials */}

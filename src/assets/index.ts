@@ -78,7 +78,9 @@ import company6 from "./companies/6.png";
 // Ambassador
 import ambassador1 from "./ambassador1.jpg";
 
-// 
+// Intro Images
+import introPic from "./introPic.jpg";
+import introPic2 from "./introPic2.jpg";
 
 export {
   userPic,
@@ -147,6 +149,10 @@ export {
   company4,
   company5,
   company6,
-  // Ambassadoe
+  // Ambassador
   ambassador1,
+
+  // Intro images
+  introPic,
+  introPic2,
 };
