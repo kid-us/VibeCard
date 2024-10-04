@@ -78,6 +78,8 @@ import company6 from "./companies/6.png";
 // Ambassador
 import ambassador1 from "./ambassador1.jpg";
 
+// 
+
 export {
   userPic,
   google,

@@ -6,7 +6,6 @@ import { useState } from "react";
 import Button from "../Button/Button";
 import axios from "axios";
 import { baseUrl } from "../../services/request";
-import useAuthStore from "../../store/useUserData";
 import { useTranslation } from "react-i18next";
 
 interface Props {
@@ -26,8 +25,6 @@ type FormData = z.infer<typeof schema>;
 const Form = ({ buttonClicked }: Props) => {
   const { t } = useTranslation();
 
-  // Zustand
-  const { login } = useAuthStore();
   // RRD
   const navigate = useNavigate();
   // States
@@ -54,29 +51,11 @@ const Form = ({ buttonClicked }: Props) => {
         withCredentials: true,
       })
       .then(() => {
-        axios
-          .get(`${baseUrl}/api/v1/auth/me`, {
-            headers: {
-              "Content-Type": "application/json",
-              "ngrok-skip-browser-warning": "69420",
-            },
-            withCredentials: true,
-          })
-          .then((response) => {
-            login(
-              response.data.username,
-              response.data.email,
-              response.data.plan
-            );
-            navigate("/");
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        navigate("/");
       })
       .catch((error) => {
-        setLoader(false);
         console.log(error);
+        setLoader(false);
         setLoginError("Invalid Email and Password");
       });
   };

@@ -22,15 +22,15 @@ const Home = () => {
   const { t } = useTranslation();
 
   // Scroll to top
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 200);
   }, []);
   return (
     <>
@@ -43,13 +43,35 @@ const Home = () => {
           <Hero />
         </div>
       </div>
+      <div className="px-3 my-5">
+        <p className="font-poppins text-white lg:text-center text-start lg:text-xl">
+          Always up to date: Changes to contact details can be updated
+          immediately without having to print new cards.
+        </p>
+      </div>
 
       {/* Video */}
-      <div className="relative lg:pb-1 pb-1">
+      <div className="lg:container mx-auto lg:px-0 px-2">
+        <div className="flex justify-center">
+          <p className="w-36 bg-teal-500 rounded-xl text-center p-0 shadow-none text-white font-poppins text-[12px]">
+            {t("video")}
+          </p>
+        </div>
+        <video
+          src={intro}
+          className="w-full aspect-video border-gradient"
+          autoPlay
+          loop
+          playsInline
+          muted
+        ></video>
+      </div>
+
+      {/* <div className="lg:pb-1 pb-1">
         <div className="relative right-20 -top-52">
           <div className="absolute w-[5%] lg:w-[10%] lg:right-20 -right-40 bulb"></div>
         </div>
-        <div className="relative container mx-auto lg:px-0 px-3">
+        <div className="container mx-auto lg:px-0 px-3">
           <div className="flex justify-center">
             <p className="w-36 bg-teal-500 rounded-xl text-center p-0 shadow-none text-white font-poppins text-[12px]">
               {t("video")}
@@ -72,10 +94,14 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* hero */}
       <div className="relative container mx-auto">
+        <p className="font-poppins text-white mt-5 lg:my-20 lg:text-center text-start lg:text-xl">
+          Easy sharing:Digital business cards can be easily shared via email,
+          messenger or social networks.
+        </p>
         <HeroCard />
       </div>
 
