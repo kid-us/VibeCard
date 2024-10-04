@@ -77,9 +77,7 @@ const Form = ({ buttonClicked }: Props) => {
       .catch((error) => {
         setLoader(false);
         console.log(error);
-        if (error.response.status === 401) {
-          setLoginError("Invalid Email and Password");
-        }
+        setLoginError("Invalid Email and Password");
       });
   };
 
@@ -88,7 +86,7 @@ const Form = ({ buttonClicked }: Props) => {
       {/* Login error */}
       {loginError !== "" && (
         <div className="relative">
-          <p className="absolute -top-10 text-red-600 text-sm">
+          <p className=" -top-10 text-red-600 text-sm">
             <span className="bi-exclamation-triangle-fill me-4"></span>
             {loginError}
           </p>
