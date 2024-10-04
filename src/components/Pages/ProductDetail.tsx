@@ -357,11 +357,15 @@ const ProductDetail = () => {
                 <p className="lg:mt-10 mt-7 lg:text-md text-sm text-gray-300 font-poppins">
                   {t("qrCode")} :
                   <span className="mx-1 text-white font-poppins">
-                    {t("qrNote")}
+                    {/* {t("qrNote")} */}
+                    {t("qrNote2")}{" "}
+                    <Link to="/dashboard" className="text-blue-500">
+                      {t("qrNote3")}
+                    </Link>
                   </span>
                 </p>
-                <div className="flex justify-start gap-x-6 mt-4">
-                  <Link to={"/create"}>
+                {/* <div className="flex justify-start gap-x-6 mt-4">
+                  <Link to={"/dashboard"}>
                     <p
                       className={`shadow-xl shadow-zinc-900 bg-white text-center pt-3 text-sm rounded h-11 lg:mb-0 mb-2 w-20 font-poppins font-bold`}
                     >
@@ -369,11 +373,12 @@ const ProductDetail = () => {
                     </p>
                   </Link>
                   <p
+                    onClick={() => setQRCode("no")}
                     className={`shadow-xl shadow-zinc-900 bg-white text-center pt-3 text-sm rounded h-11 lg:mb-0 mb-2 w-20 font-poppins font-bold`}
                   >
                     {t("no")}
                   </p>
-                </div>
+                </div> */}
               </div>
               {/*Quantity */}
               <p className="mt-5 mb-4 text-white"> {t("quantity")}</p>

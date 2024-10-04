@@ -402,5 +402,7 @@
   "metalDescription": "Our metal NFC business cards are the epitome of elegance and professionalism. Made from high-quality metal, these cards are characterized by their robust construction and luxurious appearance. The NFC chip integrated into the card allows you to share your digital information in an exceptionally stylish way. The metal cards are available in a variety of finishes, including brushed, polished or matte, and can be personalized with engravings and logos to leave a lasting impression on your business partners. Perfect for executives who want to make a statement.",
   "businessCard": "Business Card",
   "qrCode": "QR-Code",
-  "qrNote": "With vibecard qr code on back?"
+  "qrNote": "With vibecard qr code on back?",
+  "qrNote2": "If you want to use our QR code you need to save first your QR code from your Digital card.",
+  "qrNote3": "Get QR Code"
 }
