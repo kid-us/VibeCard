@@ -37,6 +37,9 @@ const Footer = () => {
           <div className="relative lg:col-span-3 md:col-span-2 col-span-6">
             <h1 className="text-white text-4xl logo-font">vibecard</h1>
             <p className="text-gray-400 text-sm pe-10 mt-4">
+              {t("footer-intro")}
+            </p>
+            <p className="text-gray-400 text-sm pe-10 mt-2">
               {t("intro3") + " " + t("intro4")}
             </p>
             <div className="flex gap-x-10 my-14">

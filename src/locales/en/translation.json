@@ -414,5 +414,7 @@
   "chatbot-privacy-note3": "All text or voice commands entered are transmitted to Dialogflow to generate answers.",
   "chatbot-privacy-note4": "Dialogflow may store conversation history to improve the service.",
   "chatbot-privacy-note5": "Why do we use Dialogflow? Dialogflow enables us to provide you with an intelligent, user-friendly and responsive chatbot that efficiently helps you with your inquiries.",
-  "chatbot-privacy-note6": "Your rights You have the right at any time to request information about the data processed by you, as well as the correction, blocking or deletion of your data in accordance with the applicable data protection regulations."
+  "chatbot-privacy-note6": "Your rights You have the right at any time to request information about the data processed by you, as well as the correction, blocking or deletion of your data in accordance with the applicable data protection regulations.",
+
+  "footer-intro": " Make a memorable impact at every meeting with a card that carries not just your contact details but your professional brand."
 }
