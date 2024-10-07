@@ -30,6 +30,7 @@ import PrivacyPolicy from "./components/Footer/PrivacyPolicy";
 import Imprint from "./components/Footer/Imprint";
 import CancellationPolicy from "./components/Footer/CancllationPolicy";
 import Terms from "./components/Footer/Terms";
+import ChatbotPrivacyPolicy from "./components/Pages/ChatbotPrivacyPolicy";
 
 function App() {
   return (
@@ -97,7 +98,11 @@ function App() {
         <Route path="/imprint" element={<Imprint />} />
         <Route path="/cancellation" element={<CancellationPolicy />} />
         <Route path="/terms-use" element={<Terms />} />
-        <Route path="imprint" element={<Imprint />} />
+        <Route path="/imprint" element={<Imprint />} />
+        <Route
+          path="/chatbot-privacy-policy"
+          element={<ChatbotPrivacyPolicy />}
+        />
         <Route path="/404" element={<Page404 />} />
         <Route path="*" element={<Navigate to="/404" />}></Route>
         {/* Affiliate */}

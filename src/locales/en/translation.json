@@ -405,5 +405,14 @@
   "qrCode": "QR-Code",
   "qrNote": "With vibecard qr code on back?",
   "qrNote2": "If you want to use our QR code you need to save first your QR code from your Digital card.",
-  "qrNote3": "Get QR Code"
+  "qrNote3": "Get QR Code",
+
+  "chatbot-privacy-title": "Privacy information for the chatbot",
+  "chatbot-privacy-note": "Our chatbot is provided by the technology of Dialogflow, a service of Google LLC. When using the chatbot, the data you enter (such as questions or requests) is transmitted to Dialogflow and processed there to answer your requests.",
+  "chatbot-privacy-note2": "Please note that Dialogflow, as a third-party provider, also processes personal data. Processing is carried out in accordance with Google's privacy policy, which you can view at the following link: Google privacy policy.",
+  "chatbot-privacy-title2": "What data is processed?",
+  "chatbot-privacy-note3": "All text or voice commands entered are transmitted to Dialogflow to generate answers.",
+  "chatbot-privacy-note4": "Dialogflow may store conversation history to improve the service.",
+  "chatbot-privacy-note5": "Why do we use Dialogflow? Dialogflow enables us to provide you with an intelligent, user-friendly and responsive chatbot that efficiently helps you with your inquiries.",
+  "chatbot-privacy-note6": "Your rights You have the right at any time to request information about the data processed by you, as well as the correction, blocking or deletion of your data in accordance with the applicable data protection regulations."
 }

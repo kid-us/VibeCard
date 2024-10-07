@@ -402,5 +402,14 @@
   "qrCode": "QR-Code",
   "qrNote": "Mit Vibecard-QR-Code auf der Rückseite?",
   "qrNote2": "Wenn Sie unseren QR-Code verwenden möchten, müssen Sie zunächst Ihren QR-Code von Ihrer digitalen Karte speichern.",
-  "qrNote3": "Holen Sie sich den QR-Code"
+  "qrNote3": "Holen Sie sich den QR-Code",
+
+  "chatbot-privacy-title": "Datenschutzhinweise für den Chatbot",
+  "chatbot-privacy-note": "Unser Chatbot wird durch die Technologie von Dialogflow, einem Dienst der Google LLC, bereitgestellt. Bei der Nutzung des Chatbots werden die von Ihnen eingegebenen Daten (wie Fragen oder Anfragen) an Dialogflow übermittelt und dort verarbeitet, um Ihre Anfragen zu beantworten.",
+  "chatbot-privacy-note2": "Bitte beachten Sie, dass Dialogflow als Drittanbieter ebenfalls personenbezogene Daten verarbeitet. Die Verarbeitung erfolgt gemäß den Datenschutzrichtlinien von Google, die Sie unter folgendem Link einsehen können: Google Datenschutzrichtlinien.",
+  "chatbot-privacy-title2": "Welche Daten werden verarbeitet?",
+  "chatbot-privacy-note3": "Alle eingegebenen Texte oder Sprachbefehle werden an Dialogflow übermittelt, um Antworten zu generieren.",
+  "chatbot-privacy-note4": "Dialogflow speichert unter Umständen die Konversationshistorie, um den Service zu verbessern.",
+  "chatbot-privacy-note5": "Warum nutzen wir Dialogflow? Dialogflow ermöglicht uns, Ihnen einen intelligenten, benutzerfreundlichen und reaktionsschnellen Chatbot zur Verfügung zu stellen, der Ihnen effizient bei Ihren Anfragen weiterhilft.",
+  "chatbot-privacy-note6": "Ihre Rechte Sie haben jederzeit das Recht, Auskunft über die von Ihnen verarbeiteten Daten zu verlangen, sowie die Berichtigung, Sperrung oder Löschung Ihrer Daten gemäß der geltenden Datenschutzbestimmungen."
 }
