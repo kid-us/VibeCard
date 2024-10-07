@@ -121,7 +121,7 @@ const Navbar = () => {
                   </div>
                   <p
                     onClick={() => setIsMenu(!isMenu)}
-                    className="text-center font-extrabold cursor-pointer text-teal-500"
+                    className="text-center font-bold cursor-pointer text-teal-500 chakra uppercase text-lg"
                   >
                     <span className="bi-person-fill text-xl me-2"></span>
                     {user}
