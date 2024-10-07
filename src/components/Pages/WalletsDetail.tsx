@@ -332,7 +332,7 @@ const WalletsDetail = () => {
                 <div className="col-span-3">
                   <input
                     type="number"
-                    className="h-14 border w-full text-center chakra text-3xl text-black"
+                    className="h-14 border w-full text-center chakra text-3xl text-black focus:outline-none"
                     value={quantity}
                     readOnly
                     onChange={(e) => setQuantity(Number(e.currentTarget.value))}
