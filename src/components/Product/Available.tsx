@@ -33,7 +33,10 @@ const Available = ({ name }: Props) => {
         <div className="flex text-white font-poppins gap-x-4">
           <p className="font-poppins text-sm">{t("availableIn")}</p>{" "}
           {materials.map((m) => (
-            <p className="text-teal-500 font-poppins text-sm font-bold first-letter:uppercase">
+            <p
+              key={m}
+              className="text-teal-500 font-poppins text-sm font-bold first-letter:uppercase"
+            >
               {m === "recycled_paper" ? "PVC" : m},{" "}
             </p>
           ))}
