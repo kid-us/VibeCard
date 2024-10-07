@@ -107,6 +107,16 @@ option {
   background: #001047;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .text-shadow {
   text-shadow: 1px 4px 4px rgb(0, 0, 0, 1);
 }

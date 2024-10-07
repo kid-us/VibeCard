@@ -100,6 +100,10 @@ const ProductDetail = () => {
   };
 
   const handleOrder = () => {
+    if (quantity < 1) {
+      return;
+    }
+
     if (type === "") {
       setOrderError(true);
       return;
@@ -392,9 +396,11 @@ const ProductDetail = () => {
                 <div className="col-span-3">
                   <input
                     type="number"
-                    className="h-14 border w-full text-center chakra text-3xl text-black"
+                    className="h-14 border w-full text-center chakra text-3xl text-black focus:outline-none"
                     value={quantity}
                     onChange={(e) => setQuantity(Number(e.currentTarget.value))}
+                    min={1}
+                    readOnly
                   />
                 </div>
                 <div className="text-center w-full">
