@@ -386,7 +386,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                 <input
                   {...register("firstName")}
                   type="text"
-                  className={`text-black bg-gray-300 py-3 rounded h-12 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                  className={`text-black bg-gray-300 py-3 rounded h-12 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-900 font-poppins text-sm ${
                     errors.firstName && "border-red-600 border-1 border"
                   }`}
                 />
@@ -407,7 +407,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                 <input
                   {...register("lastName")}
                   type="text"
-                  className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                  className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-900 font-poppins text-sm ${
                     errors.lastName && "border-red-600 border-1 border"
                   }`}
                 />
@@ -425,7 +425,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                 <input
                   {...register("email")}
                   type="email"
-                  className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                  className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-900 font-poppins text-sm ${
                     errors.email && "border-red-600 border-1 border"
                   }`}
                 />
@@ -447,7 +447,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                   <input
                     {...register("street")}
                     type="text"
-                    className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                    className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-900 font-poppins text-sm ${
                       errors.street && "border-red-600 border-1 border"
                     }`}
                   />
@@ -467,7 +467,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                   <input
                     {...register("streetNo")}
                     type="text"
-                    className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                    className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-900 font-poppins text-sm ${
                       errors.streetNo && "border-red-600 border-1 border"
                     }`}
                   />
@@ -489,7 +489,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                 <input
                   {...register("address")}
                   type="text"
-                  className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                  className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-900 font-poppins text-sm ${
                     errors.address && "border-red-600 border-1 border"
                   }`}
                 />
@@ -507,7 +507,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                 <input
                   {...register("plz")}
                   type="text"
-                  className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                  className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-900 font-poppins text-sm ${
                     errors.plz && "border-red-600 border-1 border"
                   }`}
                 />
@@ -528,7 +528,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                 <input
                   {...register("location")}
                   type="text"
-                  className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                  className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-900 font-poppins text-sm ${
                     errors.location && "border-red-600 border-1 border"
                   }`}
                 />
@@ -546,7 +546,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                 <input
                   {...register("phone")}
                   type="tel"
-                  className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm ${
+                  className={`text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-900 font-poppins text-sm ${
                     errors.phone && "border-red-600 border-1 border"
                   }`}
                 />
@@ -567,7 +567,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                 <input
                   {...register("referral")}
                   type="tel"
-                  className="text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-300 font-poppins text-sm"
+                  className="text-black bg-gray-300 py-3 rounded h-11 w-full focus:outline-none px-5 mt-1 block shadow-sm shadow-gray-900 font-poppins text-sm"
                 />
               </div>
             </div>

@@ -145,7 +145,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
           <div className="relative secondary-bg lg:p-2">
             <button
               onClick={() => hideModal()}
-              className="lg:absolute hidden top-3 right-3 text-white bg-red-500 bi-x-lg  rounded px-1"
+              className="lg:absolute lg:block hidden top-3 right-3 text-white bg-red-500 bi-x-lg  rounded px-1"
             ></button>
             <form
               onSubmit={handleSubmit(onSubmit)}
