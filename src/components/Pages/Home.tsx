@@ -44,7 +44,7 @@ const Home = () => {
         </div>
       </div>
       <div className="px-3 my-5">
-        <p className="font-poppins text-white lg:text-center text-start lg:text-xl">
+        <p className="font-poppins text-white text-center lg:text-xl">
           Always up to date: Changes to contact details can be updated
           immediately without having to print new cards.
         </p>
@@ -59,7 +59,7 @@ const Home = () => {
         </div>
         <video
           src={intro}
-          className="w-full aspect-video border-gradient"
+          className="w-full aspect-video border-gradient lg:h-[90dvh] h-auto object-cover"
           autoPlay
           loop
           playsInline
@@ -98,7 +98,7 @@ const Home = () => {
 
       {/* hero */}
       <div className="relative container mx-auto">
-        <p className="font-poppins text-white mt-5 lg:my-20 lg:text-center text-start lg:text-xl">
+        <p className="font-poppins text-white mt-5 lg:my-20 text-center lg:text-xl">
           Easy sharing:Digital business cards can be easily shared via email,
           messenger or social networks.
         </p>
