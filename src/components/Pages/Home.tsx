@@ -22,9 +22,9 @@ const Home = () => {
   const { t } = useTranslation();
 
   // Scroll to top
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -53,13 +53,13 @@ const Home = () => {
       {/* Video */}
       <div className="lg:container mx-auto lg:px-0 px-2">
         <div className="flex justify-center">
-          <p className="w-36 bg-teal-500 rounded-xl text-center p-1 shadow-none text-white font-poppins text-[12px]">
+          <p className="w-36 bg-teal-500 overflow-hidden text-center p-1 shadow-none text-white font-poppins text-[12px]">
             {t("video")}
           </p>
         </div>
         <video
           src={intro}
-          className="w-full aspect-video border-gradient lg:h-[90dvh] h-auto object-cover"
+          className="w-full aspect-video border-gradient lg:h-[90dvh] h-auto object-cover lg:rounded-3xl"
           autoPlay
           loop
           playsInline
