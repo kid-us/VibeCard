@@ -182,10 +182,10 @@ const Dashboard = () => {
             <div className="lg:grid grid-cols-10 gap-">
               <div className="lg:col-span-6 lg:px-1 md:p-9 py-5 px-2 ">
                 <div className="content-center text-white">
-                  <h1 className="text-4xl">
+                  <h1 className="lg:text-4xl text-2xl">
                     {t("welcome")} <span className="text-teal-400">{user}</span>
                   </h1>
-                  <p className="lg:mb-0 text-3xl mt-10 mb-5 font-poppins">
+                  <p className="lg:mb-0 lg:text-3xl text-lg mt-10 mb-5 font-poppins">
                     {t("dashboardDesc")}
                   </p>
                   <div className="lg:flex gap-x-6">

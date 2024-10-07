@@ -18,9 +18,9 @@ const ChatbotPrivacyPolicy = () => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto">
-        <div className="mt-8 text-white lg:px-0 px-3">
-          <h1 className="text-4xl font-extrabold mb-5">
+      <div className="lg:container mx-auto lg:px-6 px-2">
+        <div className="mt-8 text-white lg:px-0">
+          <h1 className="lg:text-4xl text-2xl font-extrabold mb-5">
             {t("chatbot-privacy-title")}
           </h1>
           <p className="text-lg mb-4">{t("chatbot-privacy-note")}</p>

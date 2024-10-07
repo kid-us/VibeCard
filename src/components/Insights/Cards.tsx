@@ -160,6 +160,9 @@ const Cards: React.FC = () => {
                       `${cards[dataIndex].styles.coverBG.bg_color} z-0`
                     : ""
                 }`}
+                style={{
+                  backgroundColor: cards[dataIndex].styles.coverBG.bg_color,
+                }}
               >
                 {cards[dataIndex].covor_picture && (
                   <img

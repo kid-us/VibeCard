@@ -13,11 +13,11 @@ const Imprint = () => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto text-white mt-5">
+      <div className="lg:container mx-auto lg:px-6 px-2 text-white mt-5">
         {i18n.language === "de" ? (
           <div>
-            <h1 className="font-bold text-3xl mb-2">Impressum</h1>
-            <h2 className="font-bold text-xl my-2">Angaben gemäß §5 TMG:</h2>
+            <h1 className="font-bold lg:text-3xl text-2xl mb-2">Impressum</h1>
+            <h2 className="font-bold text-lg my-2">Angaben gemäß §5 TMG:</h2>
             <p className="font-poppins leading-relaxed">
               VibeCard
               <br />
@@ -270,8 +270,8 @@ const Imprint = () => {
           </div>
         ) : (
           <div>
-            <h1 className="font-bold text-3xl mb-2">Imprint</h1>
-            <h2 className="font-bold text-xl my-2">
+            <h1 className="font-bold lg:text-3xl text-2xl mb-2">Imprint</h1>
+            <h2 className="font-bold text-lg my-2">
               Information in accordance with §5 TMG:
             </h2>
             <p className="font-poppins leading-relaxed"></p>

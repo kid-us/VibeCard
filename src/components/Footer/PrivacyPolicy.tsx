@@ -13,7 +13,7 @@ const PrivacyPolicy = () => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto text-white mt-5">
+      <div className="lg:container mx-auto lg:px-6 px-2 text-white mt-5">
         {/* GErman */}
         {i18n.language === "de" ? (
           <div>

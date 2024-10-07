@@ -193,8 +193,8 @@ const Home = () => {
       <p className="text-center text-white font-poppins text-2xl">
         Where do u want this photos to be added??
       </p>
-      <div className="container mx-auto flex justify-center my-10 h-[80vh] w-[100%] object-cover">
-        <img src={introPic} alt="Hero" className="rounded-3xl" />
+      <div className="lg:container mx-auto lg:px-0 px-3 flex justify-center lg:my-10 my-5 lg:h-[80vh] w-[100%] object-cover">
+        <img src={introPic} alt="Hero" className="lg:rounded-3xl rounded" />
       </div>
 
       {/* Testimonials */}

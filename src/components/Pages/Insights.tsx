@@ -186,7 +186,7 @@ const Insights = () => {
             <Cards />
           </div>
           <div className="col-span-3">
-            <div className="flex justify-between mb-5">
+            <div className="lg:flex justify-between mb-5">
               <div>
                 <div className="flex gap-x-4">
                   <p className="text-white text-sm mb-2 font-poppins">
@@ -196,19 +196,20 @@ const Insights = () => {
                     Pro+
                   </p>
                 </div>
-                <div className="flex">
+                {/* Fetch by date */}
+                <div className="lg:flex">
                   <DatePicker date={date} setDate={setDate} />
                   {plan === "proPlus" ? (
                     <button
                       onClick={() => handleCustom()}
-                      className="ms-2 btn-bg shadow-none py-2 rounded text-white text-sm"
+                      className="lg:ms-2 lg:mt-0 mt-3 btn-bg shadow-none py-2 rounded text-white text-sm"
                     >
                       {t("fetch")}s
                     </button>
                   ) : (
                     <button
                       disabled
-                      className="ms-2 btn-bg shadow-none py-2 rounded text-white text-sm cursor-not-allowed"
+                      className="lg:ms-2 lg:mt-0 mt-3 btn-bg shadow-none py-2 rounded text-white text-sm cursor-not-allowed"
                     >
                       {t("fetch")}
                     </button>
@@ -216,7 +217,8 @@ const Insights = () => {
                 </div>
               </div>
 
-              <div className="relative">
+              {/* Filter */}
+              <div className="relative lg:mt-0 mt-5">
                 <div className="flex gap-x-3">
                   <p className="text-white text-sm mb-2">{t("filter")}</p>
                   <p className="font-poppins bg-blue-500 text-white rounded-full w-20 text-center h-5 text-sm shadow-inner shadow-red-950">
