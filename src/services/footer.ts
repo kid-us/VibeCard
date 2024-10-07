@@ -26,4 +26,5 @@ export const legal: Footer[] = [
   { id: 71, name: "explore4", path: "/privacy-policy" },
   { id: 8, name: "terms", path: "/terms-use" },
   { id: 9, name: "cancellation", path: "/cancellation" },
+  { id: 10, name: "chatbot-legal", path: "/chatbot-privacy-policy" },
 ];
