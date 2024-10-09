@@ -9,6 +9,7 @@ import Loader from "../Loader/Loader";
 import ShareComponent from "../Share/ShareComponent";
 import useSubscription from "@/hooks/useSubscription";
 import { useTranslation } from "react-i18next";
+import { googleWallet } from "@/assets";
 
 interface Card {
   card_url: string;
@@ -26,9 +27,9 @@ const Dashboard = () => {
   const { t } = useTranslation();
 
   // Scroll to top
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   const { quota } = useSubscription();
 
@@ -43,6 +44,7 @@ const Dashboard = () => {
   const [cardUrl, setCardUrl] = useState("");
   const [viewShare, setViewShare] = useState(false);
 
+  // Get Cards
   useEffect(() => {
     axios
       .get(`${baseUrl}/api/v1/cards/my-cards`, {
@@ -67,6 +69,7 @@ const Dashboard = () => {
       });
   }, []);
 
+  // Handle Copy
   const handleCopy = (card_url: string) => {
     navigator.clipboard
       .writeText(`vibe-card.vercel.app/card/${card_url}`)
@@ -78,6 +81,7 @@ const Dashboard = () => {
       });
   };
 
+  // Handle Delete
   const handleDelete = () => {
     setLoader(true);
     axios
@@ -96,6 +100,7 @@ const Dashboard = () => {
       });
   };
 
+  // Handle Subscription
   const handleManageSubscription = () => {
     axios
       .get(`${baseUrl}/api/v1/payment/manage-subscription`, {
@@ -112,12 +117,36 @@ const Dashboard = () => {
       });
   };
 
+  // Add to Google Wallet
+  const handleGoogleWallet = (cardLink: string) => {
+    axios
+      .post(
+        `${baseUrl}/api/v1/cards/add-to-g-wallet?card_id=${cardLink}`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+        window.location.href = response.data.token;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // Share infos
   const shareTitle = "Vibecard Digital Business Card";
   const description =
     "Check out my new digital business card created with Vibecard!";
 
   return (
     <>
+      {/* Delete Card */}
       {deleteCard && (
         <>
           <div className="overlay w-full z-50"></div>
@@ -202,6 +231,7 @@ const Dashboard = () => {
                       {t("dashBtn3")}
                     </Link>
                   </div>
+
                   {/* Previous Card */}
                   {links.length > 0 && (
                     <div className="mt-10 shadow rounded-x">
@@ -211,9 +241,9 @@ const Dashboard = () => {
                       {links.map((link) => (
                         <div
                           key={link.card_url}
-                          className="flex justify-between secondary-bg mb-5 rounded-xl shadow border-gradient-2 border shadow-zinc-900"
+                          className="flex justify-between secondary-bg mb-5 rounded-xl shadow border-gradient-2 border shadow-zinc-900 pt-3"
                         >
-                          <div className="relative lg:flex grid grid-cols-2 justify-between w-full text-white px-5 py-5 mb-4 rounded shadow shadow-zinc-900">
+                          <div className="relative grid lg:grid-cols-7 grid-cols-2 justify-between w-full text-white px-5 py-5 mb-4 rounded shadow shadow-zinc-900">
                             {/* Share Social Medias */}
                             {viewShare && cardUrl === link.card_url && (
                               <div className="absolute lg:right-32 right-0 lg:px-0 px-5 z-50 top-10 lg:-top-20 secondary-bg border-gradient py-1 space-x-2">
@@ -236,27 +266,29 @@ const Dashboard = () => {
                             )}
 
                             {/* Card Preview */}
-                            <div className="lg:flex lg:border-r border-gray-700 pe-6 lg:mb-0 mb-4">
-                              <img
-                                src={link.main_picture}
-                                alt="Card Image"
-                                className="rounded-full lg:w-14 w-14 h-14 object-cover border-gradient"
-                              />
-                              <div className="content-center lg:ms-3">
-                                <p className="font-poppins font-extrabold">
-                                  {link.pronouns} {link.full_name}
-                                </p>
-                                <p className="text-xs font-poppins">
-                                  {t("job")}:{link.job_title}
-                                </p>
-                                <p className="font-poppins text-xs">
-                                  {t("worksAt")} : {link.company_name}
-                                </p>
+                            <div className="lg:col-span-2">
+                              <div className="lg:flex lg:border-r border-gray-700 lg:mb-0 mb-4">
+                                <img
+                                  src={link.main_picture}
+                                  alt="Card Image"
+                                  className="rounded-full lg:w-14 w-14 h-14 object-cover border-gradient"
+                                />
+                                <div className="content-center lg:ms-3">
+                                  <p className="font-poppins font-extrabold">
+                                    {link.pronouns} {link.full_name}
+                                  </p>
+                                  <p className="text-xs font-poppins">
+                                    {t("job")}:{link.job_title}
+                                  </p>
+                                  <p className="font-poppins text-xs">
+                                    {t("worksAt")} : {link.company_name}
+                                  </p>
+                                </div>
                               </div>
                             </div>
 
                             {/* View */}
-                            <div>
+                            <div className="text-center">
                               <Link
                                 to={`/card/${link.card_url}`}
                                 className="block text-sm mb-2 pt-5 hover:text-gray-400 font-poppins"
@@ -269,7 +301,7 @@ const Dashboard = () => {
                             {/* Copy */}
                             <p
                               onClick={() => handleCopy(link.card_url)}
-                              className={`lg:px-5 pt-5 lg:ms-5 cursor-pointer font-poppins text-sm`}
+                              className={`pt-5 text-center cursor-pointer font-poppins text-sm`}
                             >
                               <span className="bi-clipboard me-2"></span>
                               {copiedUrls.includes(link.card_url)
@@ -283,7 +315,7 @@ const Dashboard = () => {
                                 setViewShare(true);
                                 setCardUrl(link.card_url);
                               }}
-                              className={`pt-2 lg:ms-5 font-poppins text-sm`}
+                              className={`lg:pt-2 pt-5 text-center font-poppins text-sm`}
                             >
                               <span className="bi-share-fill me-2"></span>
                               {t("share")}
@@ -292,7 +324,7 @@ const Dashboard = () => {
                             {/* Edit */}
                             <Link
                               to={`/create?edit=${link.card_url}`}
-                              className="block font-poppins text-sm mb-2 pt-6 lg:px-5 hover:text-gray-400"
+                              className="block font-poppins text-sm mb-2 pt-6 lg:text-center lg:ps-0 ps-4 hover:text-gray-400"
                             >
                               <span className="bi-pen-fill text-green-600"></span>{" "}
                               {t("edit")}
@@ -304,11 +336,30 @@ const Dashboard = () => {
                                 setDeletedCardUrl(link.card_url);
                                 setDeleteCard(true);
                               }}
-                              className="text-white rounded-lg font-poppins text-sm mb-2 pt-5 hover:text-gray-400"
+                              className="text-white rounded-lg text-center font-poppins text-sm mb-2 pt-5 hover:text-gray-400"
                             >
                               <span className="bi-trash-fill text-red-600"></span>{" "}
                               {t("delete")}
                             </button>
+
+                            <div className="col-span-2"></div>
+
+                            {/* Google Wallet */}
+                            <div className="col-span-3 mt-5 ps-4">
+                              <button
+                                onClick={() =>
+                                  handleGoogleWallet(link.card_url)
+                                }
+                                className="flex gap-x-2"
+                              >
+                                <img
+                                  src={googleWallet}
+                                  alt="Google Wallet"
+                                  className="w-10"
+                                />
+                                Add to Google wallet
+                              </button>
+                            </div>
                           </div>
                         </div>
                       ))}

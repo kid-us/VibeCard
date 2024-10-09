@@ -59,17 +59,29 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
   const captureRef = useRef<HTMLDivElement>(null);
   const { back, front, orientation } = useProduct();
 
-  //   Get images from a file
   useEffect(() => {
+    let frontImageUrl: string | null = null;
+    let backImageUrl: string | null = null;
+  
     if (front.image) {
-      const url = URL.createObjectURL(front.image);
-      setFrontImage(url);
+      frontImageUrl = URL.createObjectURL(front.image);
+      setFrontImage(frontImageUrl);
     }
+  
     if (back.image) {
-      const url = URL.createObjectURL(back.image);
-      setBackImage(url);
+      backImageUrl = URL.createObjectURL(back.image);
+      setBackImage(backImageUrl);
     }
-  }, [front, back]);
+    // Clean up the object URLs when the component unmounts or images change
+  return () => {
+    if (frontImageUrl) {
+      URL.revokeObjectURL(frontImageUrl);
+    }
+    if (backImageUrl) {
+      URL.revokeObjectURL(backImageUrl);
+    }
+  };
+}, [front, back]);
 
   const [checkbox, setCheckbox] = useState<boolean>(false);
   const [frontImage, setFrontImage] = useState<string | null>(null);
@@ -217,6 +229,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
           onClick={() => closeOrder()}
           className="absolute z-50 cursor-pointer bi-x-lg right-4 top-2 font-bold text-red-700 text-xl"
         ></p>
+
         {/* Card Preview */}
         <div className="lg:mt-24 mt-10">
           <div
@@ -297,6 +310,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                   )}
                 </div>
               </div>
+
               {/* Back */}
               <div
                 className={`relative rounded-md ${
@@ -368,6 +382,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
             </div>
           </div>
         </div>
+
         {/* Form */}
         <div className="relative bg-white rounded shadow-lg shadow-zinc-950 lg:p-10 mx-2 lg:mt-0 mt-10">
           <form onSubmit={handleSubmit(onSubmit)} className="lg:px-5 px-6 py-5">
