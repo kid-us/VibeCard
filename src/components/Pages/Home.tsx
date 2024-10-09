@@ -45,15 +45,14 @@ const Home = () => {
       </div>
       <div className="px-3 my-5">
         <p className="font-poppins text-white text-center lg:text-xl">
-          Always up to date: Changes to contact details can be updated
-          immediately without having to print new cards.
+          {t("video-note")}
         </p>
       </div>
 
       {/* Video */}
       <div className="lg:container mx-auto lg:px-0 px-2">
         <div className="flex justify-center">
-          <p className="w-36 bg-teal-500 overflow-hidden text-center p-1 shadow-none text-white font-poppins text-[12px]">
+          <p className="w-36 bg-teal-500 overflow-hidden text-center p-1 shadow-none rounded-lg text-white font-poppins text-[12px]">
             {t("video")}
           </p>
         </div>
@@ -99,8 +98,7 @@ const Home = () => {
       {/* hero */}
       <div className="relative container mx-auto">
         <p className="font-poppins text-white mt-5 lg:my-20 text-center lg:text-xl">
-          Easy sharing:Digital business cards can be easily shared via email,
-          messenger or social networks.
+          {t("hero-card-note")}
         </p>
         <HeroCard />
       </div>
@@ -182,7 +180,7 @@ const Home = () => {
       {/* Companies */}
       <div className="flex justify-center w-full text-center">
         <p className="font-poppins text-teal-500 font-extrabold text-2xl text-center lg:mb-16 mb-10 w-80">
-          Trusted by growing teams and professionals.
+          {t("trusted-companies")}
         </p>
       </div>
       <div className="bg-white mb-10 py-2">
@@ -190,8 +188,8 @@ const Home = () => {
       </div>
 
       {/* Intro Image 2 */}
-      <p className="text-center text-white font-poppins text-2xl">
-        Where do u want this photos to be added??
+      <p className="text-center text-white font-poppins">
+        {t("hero-image-note")}
       </p>
       <div className="lg:container mx-auto lg:px-0 px-3 flex justify-center lg:my-10 my-5 lg:h-[80vh] w-[100%] object-cover">
         <img src={introPic} alt="Hero" className="lg:rounded-3xl rounded" />
@@ -205,7 +203,7 @@ const Home = () => {
           </div>
           <div className="flex justify-center w-full text-center">
             <p className="font-poppins text-teal-500 font-extrabold lg:text-4xl text-2xl text-center lg:mb-16 mb-10 lg:w-96 w-80">
-              Testimonials
+              {t("testimonials")}
             </p>
           </div>
           {/* <Testimonies /> */}
