@@ -280,6 +280,7 @@ const Create = () => {
     }
   };
 
+
   return (
     <>
       {loading && <Loading />}
@@ -443,28 +444,28 @@ const Create = () => {
 
             <div className="z-50 secondary-bg h-[90dvh] absolute bottom-0 w-full rounded-t-3xl text-white pb-10 animate__animated animate__fadeInUp">
               {/* Colors */}
-              {modal && activeModal === t("colors") && (
+              {modal && activeModal === "colors" && (
                 <div className="p-5">
                   <Colors />
                 </div>
               )}
 
               {/* Texts */}
-              {modal && activeModal === t("text") && (
+              {modal && activeModal === "text" && (
                 <div className="p-5">
                   <Texts />
                 </div>
               )}
 
               {/* Contents */}
-              {modal && activeModal === t("content") && (
+              {modal && activeModal === "content" && (
                 <div className="p-5">
                   <Content />
                 </div>
               )}
 
               {/* Layout */}
-              {modal && activeModal === t("layout") && (
+              {modal && activeModal === "layout" && (
                 <div className="p-5">
                   <Layout />
                 </div>
