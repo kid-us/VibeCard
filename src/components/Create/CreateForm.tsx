@@ -326,7 +326,7 @@ const CreateForm = ({ layout }: Props) => {
               <option value={t("mrs")}>{t("mrs")}</option>
               <option value={t("professor")}>{t("professor")}</option>
               <option value={t("dr")}>{t("dr")}</option>
-              <option value={t("miss")}>{t("miss")}</option>
+              {/* <option value={t("miss")}>{t("miss")}</option> */}
             </select>
 
             {pronounError && (

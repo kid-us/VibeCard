@@ -159,8 +159,8 @@ const EditForm = ({ layout }: Props) => {
   const [phoneError, setPhoneError] = useState(false);
   const [locationError, setLocationError] = useState(false);
   const [jobError, setJobError] = useState(false);
-  const [emailError, setEmailError] = useState(false);
 
+  const [emailError, setEmailError] = useState(false);
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   // OnFormSubmit
@@ -205,7 +205,8 @@ const EditForm = ({ layout }: Props) => {
     } else {
       setJobError(false);
     }
-    if (emailRegex.test(email)) {
+    // If email does not match the regex, set error to true
+    if (!emailRegex.test(email)) {
       setEmailError(true);
       setLoader(false);
       return;
