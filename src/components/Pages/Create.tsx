@@ -382,7 +382,7 @@ const Create = () => {
             <div className="content-center w-full">
               <div className="flex justify-between">
                 <p className="mb-4 font-poppins">{t("cardPreview")}</p>
-                {plan === "pro" ? (
+                {plan === "proPlus" ? (
                   <div className="relative flex gap-x-1">
                     <div className="toggle-switch">
                       <input
