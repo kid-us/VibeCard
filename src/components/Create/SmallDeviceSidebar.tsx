@@ -20,7 +20,7 @@ const SmallDeviceSidebar = ({ active, handleClick }: Props) => {
           } p-2`}
         >
           <p className={`${icons.icon} text-xl`}></p>
-          <p className="text-[10px] font-poppins text-gray-300">
+          <p className="text-[10px] font-poppins text-gray-400 first-letter:uppercase">
             {icons.title}
           </p>
         </div>

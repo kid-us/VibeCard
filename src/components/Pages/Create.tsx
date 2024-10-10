@@ -280,7 +280,6 @@ const Create = () => {
     }
   };
 
-
   return (
     <>
       {loading && <Loading />}
@@ -442,7 +441,7 @@ const Create = () => {
               }}
             ></div>
 
-            <div className="z-50 secondary-bg h-[90dvh] absolute bottom-0 w-full rounded-t-3xl text-white pb-10 animate__animated animate__fadeInUp">
+            <div className="z-50 secondary-bg h-[95dvh] absolute bottom-4 w-full rounded-t-3xl text-white pb-10 animate__animated animate__fadeInUp">
               {/* Colors */}
               {modal && activeModal === "colors" && (
                 <div className="p-5">
@@ -476,7 +475,7 @@ const Create = () => {
 
         {/* Small Device Sidebar */}
         {!previewCard && (
-          <div className="lg:hidden absolute bottom-0 w-full z-40 border-t border-gray-600">
+          <div className="lg:hidden absolute -bottom-1 w-full z-50 border-t border-gray-600">
             <SmallDeviceSidebar
               active={activeModal}
               handleClick={(value: string) => handleModal(value)}

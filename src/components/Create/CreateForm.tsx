@@ -342,7 +342,8 @@ const CreateForm = ({ layout }: Props) => {
               className="lg:text-xs text-sm text-gray-100 block"
               htmlFor="name"
             >
-              {t("name")}
+              {/* {t("name")} */}
+              Name
               <span className="text-red-700 text-2xl">*</span>
             </label>
             <input
