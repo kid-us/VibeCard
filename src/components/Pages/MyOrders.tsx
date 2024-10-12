@@ -5,6 +5,7 @@ import { baseUrl } from "@/services/request";
 import Loading from "../Loading/Loading";
 import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
+import useDocumentTitle from "@/hooks/useDocumentTitle";
 
 interface Delivery {
   address: string;
@@ -92,6 +93,14 @@ interface TotalOrders {
 }
 
 const MyOrders = () => {
+  const [title] = useState("Vibecard - My Orders");
+  useDocumentTitle(title);
+
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [orders, setOrders] = useState<allOrders[]>([]);
   const [wallets, setWallets] = useState<GetWallets[]>([]);
   const [loading, setLoading] = useState<boolean>(true);

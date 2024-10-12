@@ -17,11 +17,11 @@ export const nav: Nav[] = [
     title: "nav2",
     path: "/pricing",
   },
-  // {
-  //   id: 5,
-  //   title: "Features",
-  //   path: "/features",
-  // },
+  {
+    id: 5,
+    title: "company-team",
+    path: "/teams",
+  },
   {
     id: 6,
     title: "nav3",

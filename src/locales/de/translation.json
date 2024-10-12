@@ -18,6 +18,10 @@
   "logo": "Firmenlogo",
   "cardPreview": "Kartenvorschau",
   "card": "Karte",
+  "how-many": "Wie viele Personen arbeiten in Ihrem Unternehmen?",
+  "how-many-card": "Wie viele benötigen eine digitale Visitenkarte?",
+  "ready-to-get-started": "Sind Sie bereit, mit Vibe Teams zu beginnen?",
+  "submit-the-form": "Senden Sie das Formular unten!",
 
   "layout": "Layout",
   "colors": "Farben",
@@ -66,6 +70,7 @@
   "continue": "Weiter mit Google.",
   "account": "Sie haben noch kein Konto?",
   "create": "Erstellen",
+  "company-team": "Unternehmen & Teams",
 
   "join": "Verbinden",
   "sign": "Jetzt kostenlos registrieren!",
@@ -419,5 +424,8 @@
   "video-note": "Kontakte können sofort aktualisiert werden, ohne dass Karten neu gedruckt werden müssen",
   "hero-image-note": "Gestalten Sie Ihre digitale Karte und treten Sie der digitalen Welt bei.",
   "trusted-companies": "Von wachsenden Teams und Fachleuten geschätzt.",
-  "testimonials": "Referenzen"
+  "testimonials": "Referenzen",
+
+  "company-title": "Digitale Visitenkartenplattform für Unternehmen",
+  "company-desc": "Stärken Sie Ihr Unternehmen mit einer nahtlosen, digitalen Lösung zum Teilen von Kontaktinformationen. Unsere Plattform vereinfacht das Networking, steigert die Professionalität und bietet eine umweltfreundliche Alternative zu herkömmlichen Visitenkarten, maßgeschneidert für moderne Unternehmen."
 }

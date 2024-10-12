@@ -83,7 +83,10 @@ import introPic from "./introPic.jpg";
 import introPic2 from "./introPic2.jpg";
 
 // Google Wallet
-import googleWallet from './google-wallet.png'
+import googleWallet from "./google-wallet.png";
+
+// Company
+import company from "./company.jpg";
 
 export {
   userPic,
@@ -160,5 +163,8 @@ export {
   introPic2,
 
   // Goggle Wallet
-  googleWallet
+  googleWallet,
+
+  // Company
+  company,
 };

@@ -31,6 +31,7 @@ import Imprint from "./components/Footer/Imprint";
 import CancellationPolicy from "./components/Footer/CancllationPolicy";
 import Terms from "./components/Footer/Terms";
 import ChatbotPrivacyPolicy from "./components/Pages/ChatbotPrivacyPolicy";
+import Company from "./components/Pages/Company";
 
 function App() {
   return (
@@ -45,6 +46,8 @@ function App() {
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/wallets/:id" element={<WalletsDetail />} />
         <Route path="/verify" element={<Verify />} />
+        <Route path="/teams" element={<Company />} />
+
         <Route
           path="/setting"
           element={

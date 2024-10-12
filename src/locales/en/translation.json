@@ -17,6 +17,10 @@
   "coverPic": "Cover Picture",
   "logo": "Company Logo",
   "cardPreview": "Card Preview",
+  "how-many": "How many people work at your company",
+  "how-many-card": "How many will need a digital business card?",
+  "ready-to-get-started": "Ready to get started with Vibe Teams?",
+  "submit-the-form": "Submit the form below!",
 
   "layout": "Layout",
   "colors": "Colors",
@@ -65,6 +69,7 @@
   "continue": "Continue with google",
   "account": "Don't have an account?",
   "create": "Create",
+  "company-team": "Company & Teams",
 
   "join": "Join",
   "sign": "Sign up for free",
@@ -422,5 +427,8 @@
   "video-note": "Contacts can be updated instantly without reprinting cards",
   "hero-image-note": "Design your digital card and join the digital world.",
   "trusted-companies": "Trusted by growing teams and professionals.",
-  "testimonials": "Testimonials"
+  "testimonials": "Testimonials",
+
+  "company-title": "Digital Business Card Platform for Companies",
+  "company-desc": "Empower your business with a seamless, digital solution for sharing contact information. Our platform simplifies networking, enhances professionalism, and provides an eco-friendly alternative to traditional business cards, tailored for modern companies."
 }

@@ -31,7 +31,7 @@ interface Wal {
 }
 
 const WalletsDetail = () => {
-  const [title] = useState("Product");
+  const [title] = useState("Wallets");
   useDocumentTitle(title);
 
   const { t } = useTranslation();
