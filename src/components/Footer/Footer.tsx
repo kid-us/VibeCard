@@ -124,7 +124,7 @@ const Footer = () => {
           </div>
 
           <p className="text-gray-300 text-sm mt-8 lg:hidden md:hidden col-span-3">
-            All right reserved. &copy; vibecad 2024
+            All right reserved. &copy; vibecard 2024
           </p>
         </div>
       </div>
