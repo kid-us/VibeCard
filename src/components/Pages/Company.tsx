@@ -1,7 +1,8 @@
 import { company } from "@/assets";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 import { z } from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,6 +10,9 @@ import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import useDocumentTitle from "@/hooks/useDocumentTitle";
+import companies from "@/services/company";
+import axios from "axios";
+import { baseUrl } from "@/services/request";
 
 const schema = z.object({
   fName: z
@@ -21,13 +25,20 @@ const schema = z.object({
     .string()
     .min(3, { message: "JobTitle must be greater than 2 characters." }),
   company: z.string().min(3, { message: "Company name required." }),
-  phone: z.string().min(3, { message: "Valid Phone number required." }),
+
   people: z
-    .string()
-    .min(3, { message: "Number of people must be grater than 2 chars." }),
-  how_many: z.string().min(3, {
-    message: "Number of digital cards must be grater than 2 chars.",
-  }),
+    .number({
+      invalid_type_error: "Number of employees must be 2 and greater than 2",
+    })
+    .min(2),
+  how_many: z
+    .number({
+      invalid_type_error:
+        "Number of digital cards must be 2 and greater than 2",
+    })
+    .min(2),
+
+  learn: z.string().optional(),
 
   email: z.string().email({ message: "Email is required." }),
 });
@@ -41,6 +52,11 @@ const Company = () => {
   const { t } = useTranslation();
 
   const [loader, setLoader] = useState<boolean>(false);
+  const [phone, setPhone] = useState<string>("");
+  const [phoneError, setPhoneError] = useState<boolean>(false);
+  const [countryName, setCountryName] = useState<string>("");
+  const [success, setSuccess] = useState<string>("");
+  const [submitError, setSubmitError] = useState<boolean>(false);
 
   // Scroll to top
   useEffect(() => {
@@ -53,10 +69,51 @@ const Company = () => {
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
+  const handleOnChange = (
+    value: string,
+    data: { name: string; dialCode: string; countryCode: string }
+  ) => {
+    setPhone(value);
+    setCountryName(data.name); // Store the country name in the state
+  };
+
   // On Form Submit
   const onSubmit = (data: FieldValues) => {
-    console.log(data);
+    if (!phone) {
+      setPhoneError(true);
+      return;
+    }
+    setPhoneError(false);
     setLoader(true);
+
+    const companyData = {
+      work_email: data.email,
+      first_name: data.fName,
+      last_name: data.lName,
+      company_name: data.company,
+      job_title: data.job,
+      phone_number: phone,
+      country: countryName,
+      how_heard_about_us: data.learn,
+      number_of_employees: data.people,
+      number_of_employees_needs_vibecard: data.how_many,
+    };
+
+    axios
+      .post(`${baseUrl}/api/v1/auth/for-companies`, companyData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        setSuccess(response.data.message);
+      })
+      .catch((error) => {
+        setSubmitError(true);
+        setLoader(false);
+        console.log(error);
+      });
   };
 
   return (
@@ -65,7 +122,7 @@ const Company = () => {
       <div className="container mx-auto lg:px-9 px-2">
         <div className="grid lg:grid-cols-2 lg:gap-x-4 mt-6">
           <div className="lg:mt-40 mt-5 overflow-hidden">
-            <p className="text-white font-poppins lg:text-4xl text-3xl mb-5 lg:px-0 px-3">
+            <p className="text-white font-poppins lg:text-5xl font-bold text-3xl mb-5 lg:px-0 px-3">
               {t("company-title")}
             </p>
             <p className="text-white font-poppins text-lg lg:px-0 px-3">
@@ -83,21 +140,33 @@ const Company = () => {
 
         {/* Form */}
         <form onSubmit={handleSubmit(onSubmit)}>
-          {/* Login error */}
-          {/* {loginError !== "" && (
-            <div className="relative">
-              <p className=" -top-10 text-red-600 text-sm">
-                <span className="bi-exclamation-triangle-fill me-4"></span>
-                {loginError}
-              </p>
-            </div>
-          )} */}
           <p className="text-white text-center mt-16 font-poppins lg:text-3xl text-xl">
             {t("ready-to-get-started")}
           </p>
           <p className="text-center mt-2 font-poppins text-gray-300 lg:text-lg">
             {t("submit-the-form")}
           </p>
+
+          {/* Login error */}
+          {submitError && (
+            <div className="relative text-center mt-2">
+              <p className="bg-red-600 text-sm mx-20 rounded p-1 text-white">
+                <span className="bi-exclamation-triangle-fill me-4"></span>
+                Something went wrong.
+              </p>
+            </div>
+          )}
+
+          {/* Success */}
+          {success !== "" && (
+            <div className="relative text-center mt-2">
+              <p className="bg-green-500 text-sm rounded text-center mx-20 py-1">
+                <span className="bi-exclamation-triangle-fill me-4"></span>
+                {success}
+              </p>
+            </div>
+          )}
+
           <div className="grid lg:grid-cols-2 gap-x-5 lg:px-20 px-2 mt-10">
             {/* Email */}
             <div className="mb-5">
@@ -130,7 +199,7 @@ const Company = () => {
               </label>
               <input
                 {...register("fName")}
-                type="fName"
+                type="text"
                 name="fName"
                 className="text-black font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded focus:outline-none px-5 shadow shadow-gray-300"
               />
@@ -151,7 +220,7 @@ const Company = () => {
               </label>
               <input
                 {...register("lName")}
-                type="lName"
+                type="text"
                 name="lName"
                 className="text-black font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded focus:outline-none px-5 shadow shadow-gray-300"
               />
@@ -172,7 +241,7 @@ const Company = () => {
               </label>
               <input
                 {...register("job")}
-                type="job"
+                type="text"
                 name="job"
                 className="text-black font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded focus:outline-none px-5 shadow shadow-gray-300"
               />
@@ -193,7 +262,7 @@ const Company = () => {
               </label>
               <input
                 {...register("company")}
-                type="company"
+                type="text"
                 name="company"
                 className="text-black font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded focus:outline-none px-5 shadow shadow-gray-300"
               />
@@ -205,22 +274,27 @@ const Company = () => {
             </div>
 
             {/* Phone */}
-            <div className="mb-5">
+            <div>
               <label
-                className="text-sm text-gray-400 block font-poppins"
+                className="text-sm text-gray-400 block font-poppins mb-2"
                 htmlFor="phone"
               >
                 {t("phone")}
               </label>
-              <input
-                {...register("phone")}
-                type="phone"
-                name="phone"
-                className="text-black font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded focus:outline-none px-5 shadow shadow-gray-300"
+              <PhoneInput
+                country={"de"}
+                value={phone}
+                onChange={handleOnChange}
+                inputStyle={{
+                  width: "100%",
+                  fontSize: "16px",
+                  height: "45px",
+                }}
               />
-              {errors.phone && (
+
+              {phoneError && (
                 <p className="text-red-600 text-xs pt-1">
-                  {errors.phone.message}
+                  Valid Phone number required.
                 </p>
               )}
             </div>
@@ -234,10 +308,11 @@ const Company = () => {
                 {t("how-many")}
               </label>
               <input
-                {...register("people")}
-                type="people"
+                {...register("people", { valueAsNumber: true })}
+                type="number"
                 name="people"
                 className="text-black font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded focus:outline-none px-5 shadow shadow-gray-300"
+                min={2}
               />
               {errors.people && (
                 <p className="text-red-600 text-xs pt-1">
@@ -255,10 +330,11 @@ const Company = () => {
                 {t("how-many-card")}
               </label>
               <input
-                {...register("how_many")}
-                type="how_many"
+                {...register("how_many", { valueAsNumber: true })}
+                type="number"
                 name="how_many"
                 className="text-black font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded focus:outline-none px-5 shadow shadow-gray-300"
+                min={2}
               />
               {errors.how_many && (
                 <p className="text-red-600 text-xs pt-1">
@@ -266,11 +342,34 @@ const Company = () => {
                 </p>
               )}
             </div>
-          </div>
 
-          {/* Button */}
-          <div className="lg:px-20 px-2">
-            <Button loader={loader} label="Submit" />
+            {/* How do u learn about us  */}
+            <div className="mb-5">
+              <label
+                className="text-sm text-gray-400 block font-poppins"
+                htmlFor="how_many"
+              >
+                {t("how-learn")}
+              </label>
+
+              <select
+                {...register("learn")}
+                name="learn"
+                className="text-black font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded focus:outline-none px-5 shadow shadow-gray-300"
+              >
+                <option defaultValue={""} hidden></option>
+                {companies.map((c) => (
+                  <option key={c.id} value={c.value}>
+                    {c.value}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Button */}
+            <div className="mt-1">
+              <Button loader={loader} label="Submit" />
+            </div>
           </div>
         </form>
       </div>
