@@ -258,7 +258,7 @@ const Company = () => {
                 className="text-sm text-gray-400 block font-poppins"
                 htmlFor="company"
               >
-                {t("company") + "Name"}
+                {t("company") + " Name"}
               </label>
               <input
                 {...register("company")}
