@@ -61,7 +61,7 @@ export const socialMedias: Social[] = [
 ] as const;
 
 const schema = z.object({
-  twitter: z.string().optional().optional(),
+  twitter: z.string().optional(),
   twitch: z.string().optional(),
   youtube: z.string().optional(),
   facebook: z.string().optional(),

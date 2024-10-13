@@ -9,6 +9,11 @@ export const explore: Footer[] = [
   { id: 2, name: "explore2", path: "/about-us" },
   { id: 6, name: "explore3", path: "/contact-us" },
   { id: 3, name: "nav5", path: "/create" },
+  {
+    id: 5,
+    name: "company-team",
+    path: "/teams",
+  },
 ];
 
 export const shop: Footer[] = [
