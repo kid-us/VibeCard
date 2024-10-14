@@ -125,7 +125,7 @@ const Setting = () => {
     <>
       <Navbar />
       <div className="">
-        <div className="lg:container mx-auto lg:p-10 mt-10">
+        <div className="lg:container mx-auto lg:p-10 px-3 lg:mt-16 mt-28">
           <div className="flex justify-center">
             <div className="py-10 lg:px-10 px-5 rounded secondary-bg shadow">
               <form onSubmit={handleSubmit(onSubmit)}>

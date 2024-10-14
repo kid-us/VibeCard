@@ -179,7 +179,7 @@ const Insights = () => {
     <>
       <Navbar />
 
-      <div className=" lg:container mx-auto lg:px-0 px-2 lg:my-14 my-8">
+      <div className="lg:container mx-auto lg:px-0 px-3 lg:mt-32 mt-24">
         <div className="lg:grid grid-cols-5 gap-x-14 rounded">
           {/* Cards */}
           <div className="col-span-2 lg:mb-0 mb-10">

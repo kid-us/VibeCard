@@ -159,7 +159,7 @@ const MyOrders = () => {
       {loading && <Loading />}
       <Navbar />
 
-      <div className="lg:container mx-auto mt-8 lg:px-0 px-1">
+      <div className="lg:container mx-auto lg:mt-36 mt-28 lg:px-0 px-3">
         <div className="grid grid-cols-2 gap-x-10 mt-10">
           {/* Business Cards */}
           <div>

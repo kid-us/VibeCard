@@ -119,13 +119,13 @@ const Company = () => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto lg:px-9 px-2">
+      <div className="container mx-auto lg:px-9 px-3 lg:mt-32 mt-24">
         <div className="grid lg:grid-cols-2 lg:gap-x-4 mt-6">
           <div className="lg:mt-40 mt-5 overflow-hidden">
-            <p className="text-white font-poppins lg:text-5xl font-bold text-3xl mb-5 lg:px-0 px-3">
+            <p className="text-white font-poppins lg:text-5xl font-bold text-3xl mb-5">
               {t("company-title")}
             </p>
-            <p className="text-white font-poppins text-lg lg:px-0 px-3">
+            <p className="text-white font-poppins text-lg lg:px-0">
               {t("company-desc")}
             </p>
           </div>

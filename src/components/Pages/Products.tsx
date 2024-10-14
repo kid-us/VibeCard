@@ -32,17 +32,17 @@ const Products = () => {
     <>
       <Navbar />
       <Cart />
-      <div className="lg:container mx-auto lg:mt-24 mt-14 ">
-        <h1 className="lg:text-4xl text-2xl lg:text-center px-2 font-extrabold text-white">
+      <div className="lg:container mx-auto lg:mt-36 mt-28 ">
+        <h1 className="lg:text-4xl text-2xl lg:text-center px-3 font-extrabold text-white">
           {t("productTitle")}
         </h1>
 
-        <p className="my-4 text-center text-gray-500 lg:px-0 px-2">
+        <p className="my-4 text-center text-gray-500 lg:px-0 px-3">
           {t("productDesc")}
         </p>
       </div>
 
-      <div className="lg:container mx-auto mt-16 lg:px-0 px-2">
+      <div className="lg:container mx-auto mt-16 lg:px-0 px-3">
         <div className="mb-10">
           {/* Business Card */}
           <Carousel>

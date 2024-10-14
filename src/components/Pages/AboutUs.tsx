@@ -18,8 +18,8 @@ const AboutUs = () => {
   return (
     <>
       <Navbar />
-      <div className="lg:container mx-auto lg:px-6 px-2">
-        <div className="mt-10 text-white">
+      <div className="lg:container mx-auto lg:px-6 px-3">
+        <div className="lg:mt-32 mt-28 text-white">
           <h1 className="text-4xl font-extrabold">{t("aboutUs")}</h1>
           <h2 className="my-5 text-xl font-extrabold">{t("innovation")}</h2>
           <p className="text-lg">{t("innovationNote")}</p>
@@ -32,8 +32,8 @@ const AboutUs = () => {
           <h1 className="my-5 text-xl font-extrabold">{t("shape")}</h1>
           <p className="text-lg">{t("shapeNote")}</p>
         </div>
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 };

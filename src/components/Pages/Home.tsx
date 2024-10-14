@@ -43,7 +43,7 @@ const Home = () => {
 
       <div>
         <Navbar />
-        <div className="lg:container mx-auto lg:mt-40 mt-20 lg:pb-32">
+        <div className="lg:container mx-auto lg:mt-56 mt-32 lg:pb-32">
           <Hero />
         </div>
       </div>

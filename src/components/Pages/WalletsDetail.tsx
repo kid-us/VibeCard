@@ -89,7 +89,7 @@ const WalletsDetail = () => {
 
       <Navbar />
 
-      <div className="lg:px-0 px-2">
+      <div className="lg:px-0 px-3 lg:mt-32 mt-20">
         <div className="lg:container mx-auto lg:mt-10 mt-4 lg:secondary-bg rounded overflow-hidden">
           <div className="lg:grid grid-cols-2 justify-between gap-x-10">
             <div className="lg:hidden block rounded-xl lg:py-6 mt-5">

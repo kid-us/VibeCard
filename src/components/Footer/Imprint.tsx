@@ -13,7 +13,7 @@ const Imprint = () => {
   return (
     <>
       <Navbar />
-      <div className="lg:container mx-auto lg:px-6 px-2 text-white mt-5">
+      <div className="lg:container mx-auto lg:mt-32 mt-24 lg:px-6 px-3 text-white">
         {i18n.language === "de" ? (
           <div>
             <h1 className="font-bold lg:text-3xl text-2xl mb-2">Impressum</h1>

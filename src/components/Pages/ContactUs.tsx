@@ -96,7 +96,7 @@ const ContactUs = () => {
         </>
       )}
 
-      <div className="lg:container mx-auto text-white mt-14 px-2">
+      <div className="lg:container mx-auto text-white px-3 lg:mt-32 mt-28">
         <p className="text-4xl font-extrabold lg:text-center">{t("chat")}</p>
         <div className="flex justify-center">
           <div className="lg:w-[50%] w-full">

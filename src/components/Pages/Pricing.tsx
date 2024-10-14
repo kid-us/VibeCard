@@ -84,7 +84,7 @@ const Pricing = () => {
       {loading && <Loading />}
       <Navbar />
 
-      <div className="lg:container mx-auto lg:mt-24 mt-14">
+      <div className="lg:container mx-auto lg:mt-36 mt-28 px-2">
         <h1 className="lg:text-4xl text-2xl lg:text-center font-extrabold text-white ps-2">
           {t("pricingNote")}
         </h1>
@@ -115,7 +115,7 @@ const Pricing = () => {
             <div className="absolute lg:-top-10 h-40 bg-teal-500 rounded-t-xl text-white uppercase">
               <p className="pt-3 px-5 text-sm text-black">{t("popular")}</p>
             </div>
-            <div className="relative z-50 border-2 border-teal-500 rounded-xl lg:px-10 px-5 lg:mb-0 lg:mt-0 mt-14 mb-4 py-6 text-white secondary-bg">
+            <div className="relative z-10 border-2 border-teal-500 rounded-xl lg:px-10 px-5 lg:mb-0 lg:mt-0 mt-14 mb-4 py-6 text-white secondary-bg">
               <p className="text-2xl font-extrabold mb-5">{t("pro")}</p>
               <p className="text-gray-500">{t("proPlanNote")}</p>
               <div className="py-10 text-center my-4 w-full">

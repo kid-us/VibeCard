@@ -18,7 +18,7 @@ const ChatbotPrivacyPolicy = () => {
   return (
     <>
       <Navbar />
-      <div className="lg:container mx-auto lg:px-6 px-2">
+      <div className="lg:container mx-auto lg:px-6 px-3 lg:mt-32 mt-24">
         <div className="mt-8 text-white lg:px-0">
           <h1 className="lg:text-4xl text-2xl font-extrabold mb-5">
             {t("chatbot-privacy-title")}
@@ -33,14 +33,6 @@ const ChatbotPrivacyPolicy = () => {
           <p className="text-lg mb-4">{t("chatbot-privacy-note4")}</p>
           <p className="text-lg mb-4">{t("chatbot-privacy-note5")}</p>
           <p className="text-lg mb-4">{t("chatbot-privacy-note6")}</p>
-
-          {/* <p className="text-lg">{t("firstStepNote")}</p>
-          <h1 className="my-5 text-xl font-extrabold">{t("ambitious")}</h1>
-          <p className="text-lg">{t("ambitiousNote")}</p>
-          <h1 className="my-5 text-xl font-extrabold">{t("sustainability")}</h1>
-          <p className="text-lg">{t("sustainabilityNote")}</p>
-          <h1 className="my-5 text-xl font-extrabold">{t("shape")}</h1>
-          <p className="text-lg">{t("shapeNote")}</p> */}
         </div>
         <Footer />
       </div>
