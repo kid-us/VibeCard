@@ -7,7 +7,7 @@ const Hero = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="lg:grid grid-cols-2 lg:px-0 px-2 gap-10">
+    <div className="lg:grid grid-cols-2 lg:px-0 px-3 gap-10">
       <div className="">
         <h1 className="lg:text-5xl text-3xl font-extrabold text-white">
           {t("intro1") + " "}
