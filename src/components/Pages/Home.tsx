@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Hero from "../Home/Hero";
 import Footer from "../Footer/Footer";
-import { intro, intro2, introPic, introPic2 } from "../../assets";
+import { intro, intro2, introPic3, introPic4 } from "../../assets";
 import Loading from "../Loading/Loading";
 import homeCard from "../../services/homeCard";
 import Faq from "../Home/FAQ";
@@ -27,77 +27,55 @@ const Home = () => {
   }, []);
 
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 3000);
   }, []);
+
   return (
     <>
       {loading && <Loading />}
       <Cart home />
+
       <Chat></Chat>
+
       <div>
         <Navbar />
         <div className="lg:container mx-auto lg:mt-40 mt-20 lg:pb-32">
           <Hero />
         </div>
       </div>
-      <div className="px-3 my-5">
-        <p className="font-poppins text-white text-center lg:text-xl">
+
+      <div className="my-5">
+        <p className="font-poppins text-teal-500 text-center text-xl">
           {t("video-note")}
         </p>
       </div>
 
       {/* Video */}
-      <div className="lg:container mx-auto lg:px-0 px-2">
+      <div className="lg:container mx-auto lg:px-0 px-3">
         <div className="flex justify-center">
           <p className="w-36 bg-teal-500 overflow-hidden text-center p-1 shadow-none rounded-lg text-white font-poppins text-[12px]">
             {t("video")}
           </p>
         </div>
-        <video
-          src={intro}
-          className="w-full aspect-video border-gradient lg:h-[90dvh] h-auto object-cover lg:rounded-3xl"
-          autoPlay
-          loop
-          playsInline
-          muted
-        ></video>
+        <div className="flex justify-center">
+          <video
+            src={intro}
+            className="lg:w-[70%] aspect-video border-gradient lg:h-[70dvh] h-auto object-cover lg:rounded-3xl"
+            autoPlay
+            loop
+            playsInline
+            muted
+          ></video>
+        </div>
       </div>
-
-      {/* <div className="lg:pb-1 pb-1">
-        <div className="relative right-20 -top-52">
-          <div className="absolute w-[5%] lg:w-[10%] lg:right-20 -right-40 bulb"></div>
-        </div>
-        <div className="container mx-auto lg:px-0 px-3">
-          <div className="flex justify-center">
-            <p className="w-36 bg-teal-500 rounded-xl text-center p-0 shadow-none text-white font-poppins text-[12px]">
-              {t("video")}
-            </p>
-          </div>
-          <div className="rounded-xl overflow-hidden flex justify-center">
-            <div className="lg:rounded-lg rounded overflow-hidden">
-              <div className="lg:rounded-lg rounded overflow-hidden">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="aspect-video border-gradient"
-                >
-                  <source src={intro} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
 
       {/* hero */}
       <div className="relative container mx-auto">
-        <p className="font-poppins text-white mt-5 lg:my-20 text-center lg:text-xl">
+        <p className="font-poppins text-teal-500 mt-5 lg:my-20 text-center text-xl">
           {t("hero-card-note")}
         </p>
         <HeroCard />
@@ -106,7 +84,7 @@ const Home = () => {
       {/* Cards */}
       <div className="border-t border-gray-800 overflow-hidden">
         <div className="lg:container mx-auto">
-          <div className="py-1 px-2 lg:px-0">
+          <div className="py-1 px-3 lg:px-0">
             <div className="relative right-20 lg:-top-28 -top-40">
               <div className="absolute lg:right-[35em]  right-36 top-40 bulb"></div>
             </div>
@@ -137,26 +115,43 @@ const Home = () => {
       </div>
 
       {/* Hero */}
-      <div className="lg:container mx-auto lg:px-0 px-3 lg:my-20">
-        <div className="lg:grid grid-cols-2 gap-x-10 overflow-hidden">
-          <div className="lg:text-start lg:mt-16 lg:p-3">
-            <h1 className="font-extrabold font-poppins text-teal-500 lg:text-3xl text-2xl mb-5">
-              {t("hero1")}
-            </h1>
-            <p className="text-white lg:text-xl text-lg">{t("heroDesc")}</p>
+      <div className="lg:container mx-auto lg:my-20 lg:px-0 px-3">
+        {/* Intro 1 */}
+        <div className="lg:grid grid-cols-2 overflow-hidden">
+          <div className="flex justify-center">
+            <img
+              src={introPic4}
+              alt="Hero"
+              className="rounded-lg lg:w-[80%]  w-full"
+            />
           </div>
-          {/*  */}
-          <div className="rounded overflow-hidden lg:mt-0 mt-5">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="aspect-video w-full rounded-xl"
-            >
-              <source src={intro2} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+          <div className="flex items-center lg:mt-0 my-5">
+            <p className="text-white lg:text-2xl font-poppins">
+              {t("intro-3-image-note")}
+            </p>
+          </div>
+        </div>
+
+        {/* Intro 2 */}
+        <div className="lg:grid grid-cols-2 overflow-hidden">
+          {/* Large Device */}
+          <div className="lg:flex hidden items-center h-full">
+            <p className="text-white lg:text-2xl font-poppins">
+              {t("intro-4-image-note")}
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <img
+              src={introPic3}
+              alt="Hero"
+              className="rounded-lg lg:w-[80%]  w-full"
+            />
+          </div>
+          {/* Small Device */}
+          <div className="lg:hidden flex items-center h-full my-8">
+            <p className="text-white lg:text-2xl font-poppins">
+              {t("intro-4-image-note")}
+            </p>
           </div>
         </div>
       </div>
@@ -165,7 +160,7 @@ const Home = () => {
       <div className="border-t border-gray-800 pt-10 overflow-hidden">
         <div className="lg:container mx-auto">
           <div className="relative right-20 lg:-top-28 -top-40">
-            <div className="absolute lg:right-[35em]  right-36 top-40 bulb"></div>
+            <div className="absolute lg:right-[35em] right-36 top-40 bulb"></div>
           </div>
           <div className="flex justify-center w-full text-center">
             <p className="text-teal-500 font-poppins font-extrabold lg:text-4xl text-2xl text-center lg:mb-16 mb-10 lg:w-96 w-80">
@@ -183,25 +178,28 @@ const Home = () => {
           {t("trusted-companies")}
         </p>
       </div>
+
       <div className="bg-white mb-10 py-2">
         <Companies />
       </div>
 
       {/* Intro Image 2 */}
-      <p className="text-center text-white font-poppins">
+      <p className="text-center text-teal-500 text-xl font-poppins">
         {t("hero-image-note")}
       </p>
-      <div className="lg:container mx-auto lg:px-0 px-3 flex justify-center lg:my-10 my-5 lg:h-[80vh] w-[100%] object-cover">
-        <img
-          src={introPic}
-          alt="Hero"
-          className="lg:rounded-3xl rounded lg:block hidden"
-        />
-        <img
-          src={introPic2}
-          alt="Hero"
-          className="lg:rounded-3xl rounded lg:hidden block"
-        />
+      <div className="lg:container mx-auto flex justify-center lg:my-1 my-5 lg:h-[80vh] w-[100%] object-cover lg:px-0 px-3">
+        <div className="rounded overflow-hidden lg:mt-0 mt-5">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="aspect-video w-full rounded-xl"
+          >
+            <source src={intro2} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
 
       {/* Testimonials */}
@@ -216,18 +214,18 @@ const Home = () => {
             </p>
           </div>
           {/* <Testimonies /> */}
-          <div className=" gap-x-5 px-2">
+          <div className=" gap-x-5 lg:px-2 px-3">
             <Testimonials />
           </div>
         </div>
       </div>
 
       {/* Faq */}
-      <div className="mt-16 lg:px-0 px-4">
+      <div className="mt-16">
         <h1 className="text-center text-2xl text-teal-500 font-poppins font-bold">
           FAQ
         </h1>
-        <div className="mt-10 flex justify-center">
+        <div className="mt-10 flex justify-center lg:px-0 px-3">
           <div className="lg:w-[60%] w-full">
             <Faq />
           </div>

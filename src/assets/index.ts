@@ -81,6 +81,8 @@ import ambassador1 from "./ambassador1.jpg";
 // Intro Images
 import introPic from "./introPic.jpg";
 import introPic2 from "./introPic2.jpg";
+import introPic3 from "./intro3.jpg";
+import introPic4 from "./intro4.jpg";
 
 // Google Wallet
 import googleWallet from "./google-wallet.png";
@@ -161,6 +163,8 @@ export {
   // Intro images
   introPic,
   introPic2,
+  introPic3,
+  introPic4,
 
   // Goggle Wallet
   googleWallet,

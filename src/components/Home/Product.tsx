@@ -7,60 +7,6 @@ import { card1, card2, card3, fb, g1, g2, g3, ig, tk } from "@/assets";
 
 const Product = () => {
   return (
-    // // {/* Business Card */}
-    //       <Carousel>
-    //         <CarouselContent>
-    //           <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-    //             <BusinessCard img={card1} />
-    //           </CarouselItem>
-    //           <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-    //             <BusinessCard img={card2} />
-    //           </CarouselItem>
-    //           <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-    //             <BusinessCard img={card3} />
-    //           </CarouselItem>
-    //         </CarouselContent>
-    //         <div className="lg:hidden md:block block">
-    //           <CarouselPrevious className="absolute z-40 left-0 bg-black text-white" />
-    //           <CarouselNext className="absolute z-40 right-0 bg-black text-white" />
-    //         </div>
-    //       </Carousel>
-    //       // {/* Social Media */}
-    //       <Carousel>
-    //         <CarouselContent>
-    //           <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-    //             <SocialMediaProduct img={ig} />
-    //           </CarouselItem>
-    //           <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-    //             <SocialMediaProduct img={fb} />
-    //           </CarouselItem>
-    //           <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-    //             <SocialMediaProduct img={tk} />
-    //           </CarouselItem>
-    //         </CarouselContent>
-    //         <div className="lg:hidden md:block block">
-    //           <CarouselPrevious className="absolute z-40 left-0 bg-black text-white" />
-    //           <CarouselNext className="absolute z-40 right-0 bg-black text-white" />
-    //         </div>
-    //       </Carousel>
-    //       // {/* <Google Review /> */}
-    //       <Carousel>
-    //         <CarouselContent>
-    //           <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-    //             <GoogleReview img={g1} />
-    //           </CarouselItem>
-    //           <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-    //             <GoogleReview img={g3} />
-    //           </CarouselItem>
-    //           <CarouselItem className="lg:basis-1/3 md:basis-1/2">
-    //             <GoogleReview img={g2} />
-    //           </CarouselItem>
-    //         </CarouselContent>
-    //         <div className="lg:hidden md:block block">
-    //           <CarouselPrevious className="absolute z-40 left-0 bg-black text-white" />
-    //           <CarouselNext className="absolute z-40 right-0 bg-black text-white" />
-    //         </div>
-    //       </Carousel>
     <Carousel
       plugins={[
         Autoplay({
@@ -68,7 +14,7 @@ const Product = () => {
         }),
       ]}
     >
-      <CarouselContent className="flex gap-x-2 px-1">
+      <CarouselContent className="flex gap-x-2 lg:px-1 px-3">
         {/* Card */}
         <CarouselItem key={1} className="lg:basis-1/3 md:basis-1/2">
           <BusinessCard img={card1} />
