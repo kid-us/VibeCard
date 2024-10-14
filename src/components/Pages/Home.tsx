@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Hero from "../Home/Hero";
 import Footer from "../Footer/Footer";
-import { intro, intro2, introPic } from "../../assets";
+import { intro, intro2, introPic, introPic2 } from "../../assets";
 import Loading from "../Loading/Loading";
 import homeCard from "../../services/homeCard";
 import Faq from "../Home/FAQ";
@@ -192,7 +192,16 @@ const Home = () => {
         {t("hero-image-note")}
       </p>
       <div className="lg:container mx-auto lg:px-0 px-3 flex justify-center lg:my-10 my-5 lg:h-[80vh] w-[100%] object-cover">
-        <img src={introPic} alt="Hero" className="lg:rounded-3xl rounded" />
+        <img
+          src={introPic}
+          alt="Hero"
+          className="lg:rounded-3xl rounded lg:block hidden"
+        />
+        <img
+          src={introPic2}
+          alt="Hero"
+          className="lg:rounded-3xl rounded lg:hidden block"
+        />
       </div>
 
       {/* Testimonials */}

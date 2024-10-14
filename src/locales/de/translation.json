@@ -78,7 +78,7 @@
   "nav1": "Produkte kaufen",
   "nav2": "Preise",
   "nav3": "Ambassador",
-  "nav4": "Armaturenbrett",
+  "nav4": "Dashboard",
   "nav5": "Karte erstellen",
   "nav6": "Einstellung",
   "nav7": "Einblicke",
@@ -131,7 +131,7 @@
   "faqA5": "Digitale NFC-Visitenkarten bieten gegenüber herkömmlichen Karten mehrere Vorteile: Umweltfreundlich: Reduziert den Papierbedarf und trägt zu weniger Abfall bei. Kostengünstig: Obwohl möglicherweise eine Anfangsinvestition anfällt, können digitale Karten ohne Neudruck aktualisiert werden, wodurch laufende Kosten gespart werden. Komfort: Bietet eine schnelle und einfache Möglichkeit, einen umfassenden Satz von Kontaktinformationen zu teilen, einschließlich Links zu Websites, sozialen Profilen und Portfolios. Hygienisch: Minimiert den physischen Kontakt, ein wichtiger Aspekt in Szenarien nach einer Pandemie.",
 
   "explore": "Erkunden",
-  "explore1": "Heim",
+  "explore1": "Home",
   "explore2": "Über",
   "explore3": "Kontakt",
   "explore4": "Datenschutzrichtlinie",
@@ -427,6 +427,6 @@
   "testimonials": "Referenzen",
 
   "company-title": "Digitale Visitenkartenplattform für Unternehmen",
-  "company-desc": "Stärken Sie Ihr Unternehmen mit einer nahtlosen, digitalen Lösung zum Teilen von Kontaktinformationen. Unsere Plattform vereinfacht das Networking, steigert die Professionalität und bietet eine umweltfreundliche Alternative zu herkömmlichen Visitenkarten, maßgeschneidert für moderne Unternehmen.",
+  "company-desc": "Mit Vibecard können Sie Ihre digitalen Visitenkarten ganz einfach in Apple Wallet und Google Wallet speichern und so Ihre Kontaktinformationen mühelos weitergeben. Unsere Plattform bietet eine praktische Lösung zum Erstellen NFC-fähiger digitaler Karten, mit denen Sie mit nur einem Fingertipp sofort auf Ihre beruflichen Daten zugreifen können. Verfolgen Sie Interaktionen, teilen Sie Kontakte über QR-Codes und steigern Sie Ihre Networking-Effizienz – und tragen Sie gleichzeitig zu einem nachhaltigeren und umweltfreundlicheren Geschäftsmodell bei.",
   "how-learn": "Wie haben Sie von uns erfahren?"
 }
