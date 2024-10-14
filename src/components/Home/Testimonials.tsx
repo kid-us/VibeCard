@@ -58,11 +58,11 @@ const Testimonials = () => {
   return (
     <div>
       <Carousel>
-        <CarouselContent className="gap-x-2 ms-1">
+        <CarouselContent className="lg:w-[50%] gap-x-2 ms-1">
           {testimony.map((testimony) => (
             <CarouselItem
               key={testimony.id}
-              className="lg:basis-1/2 secondary-bg rounded-lg"
+              className="lg:basis-1/1 secondary-bg rounded-lg"
             >
               <div className="relative lg:px-10 pb-10 pt-5">
                 <img
