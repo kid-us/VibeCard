@@ -204,25 +204,25 @@ const Navbar = () => {
           </div>
 
           {/* Small device user Icon */}
-          {user !== null && (
-            <div className="lg:hidden flex mt-1 pt-2">
-              <div className="me-1">
-                <img
-                  onClick={() =>
-                    changeLanguage(i18n.language === "en" ? "de" : "en")
-                  }
-                  src={i18n.language === "de" ? en : de}
-                  alt="flag"
-                  className="w-8 cursor-pointer"
-                />
-              </div>
+          <div className="lg:hidden flex mt-1 pt-2">
+            <div className="me-3">
+              <img
+                onClick={() =>
+                  changeLanguage(i18n.language === "en" ? "de" : "en")
+                }
+                src={i18n.language === "de" ? en : de}
+                alt="flag"
+                className="w-8 cursor-pointer"
+              />
+            </div>
+            {user !== null && (
               <Link to={"/dashboard"}>
                 <span className="px-3 flex">
                   <p className={`bi-person-fill text-3xl text-teal-500`}></p>
                 </span>
               </Link>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </header>
 
