@@ -115,7 +115,7 @@ const Home = () => {
       </div>
 
       {/* Hero */}
-      <div className="lg:container mx-auto lg:my-20 lg:px-0 px-3">
+      <div className="lg:container mx-auto lg:my-20 lg:px-10 px-3">
         {/* Intro 1 */}
         <div className="lg:grid grid-cols-2 overflow-hidden">
           <div className="flex justify-center">
