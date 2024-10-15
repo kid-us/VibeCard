@@ -111,9 +111,7 @@ const AffiliateSetting = () => {
             <div className="p-4">
               <p>{t("referralCode")}</p>
               <p className="text-xs">{t("customize")}</p>
-              <p className="text-xs">
-                eg. https://vibecard.com/?ref={referral}
-              </p>
+              <p className="text-xs">eg. https://vibecard.de/?ref={referral}</p>
             </div>
             <div className="lg:flex gap-x-7 mt-2 me-8 lg:px-0 px-5 lg:pb-0 pb-5">
               <div>

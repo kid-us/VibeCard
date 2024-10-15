@@ -74,7 +74,7 @@ const Affiliate = () => {
             <h1 className="text-xl mb-2">{t("referralLink")}</h1>
             <p className="mb-1">{t("referFriends")}</p>
             <Link to="/" className="text-blue-500">
-              vivecard.com/?ref={referral_code}
+              vivecard.de/?ref={referral_code}
             </Link>
           </div>
           <div className="mt-5 text-white">
