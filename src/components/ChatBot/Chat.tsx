@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 declare global {
   namespace JSX {
@@ -10,6 +11,8 @@ declare global {
 
 const Chat = () => {
   // const [chatBox, setChaBox] = useState(false);
+  const { i18n } = useTranslation();
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
@@ -30,7 +33,7 @@ const Chat = () => {
           intent="WELCOME"
           chat-title="Vibebot_de"
           agent-id="52d05800-ee8a-482c-9383-571b10579904"
-          language-code="en"
+          language-code={`${i18n.language}`}
         ></df-messenger>
       </div>
       {/* )} */}
