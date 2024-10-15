@@ -28,6 +28,7 @@ const Home = () => {
 
   const [loading, setLoading] = useState(true);
 
+  // Loading
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -48,23 +49,23 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="my-5">
+      {/* <div className="my-5">
         <p className="font-poppins text-teal-500 text-center text-xl">
           {t("video-note")}
         </p>
-      </div>
+      </div> */}
 
       {/* Video */}
-      <div className="lg:container mx-auto lg:px-0 px-3">
+      <div className="lg:container mx-auto lg:px-0 px-3 lg:mt-0 mt-10">
         <div className="flex justify-center">
-          <p className="w-36 bg-teal-500 overflow-hidden text-center p-1 shadow-none rounded-lg text-white font-poppins text-[12px]">
+          <p className="w-44 bg-teal-500 overflow-hidden text-center p-1 shadow-none rounded-lg text-white font-bold font-poppins text-[15px]">
             {t("video")}
           </p>
         </div>
         <div className="flex justify-center">
           <video
             src={intro}
-            className="lg:w-[70%] aspect-video border-gradient lg:h-[70dvh] h-auto object-cover lg:rounded-3xl"
+            className="lg:w-[70%] w-full aspect-video border-gradient lg:h-[70dvh] h-full object-cover lg:rounded-3xl"
             autoPlay
             loop
             playsInline
@@ -74,10 +75,10 @@ const Home = () => {
       </div>
 
       {/* hero */}
-      <div className="relative container mx-auto">
-        <p className="font-poppins text-teal-500 mt-5 lg:my-20 text-center text-xl">
+      <div className="relative container mx-auto my-14">
+        {/* <p className="font-poppins text-teal-500 mt-5 lg:my-20 text-center text-xl">
           {t("hero-card-note")}
-        </p>
+        </p> */}
         <HeroCard />
       </div>
 
@@ -125,7 +126,7 @@ const Home = () => {
               className="rounded-lg lg:w-[80%]  w-full"
             />
           </div>
-          <div className="flex items-center lg:mt-0 my-5">
+          <div className="flex items-center lg:mt-0 my-8">
             <p className="text-white lg:text-2xl font-poppins">
               {t("intro-3-image-note")}
             </p>
@@ -144,7 +145,7 @@ const Home = () => {
             <img
               src={introPic3}
               alt="Hero"
-              className="rounded-lg lg:w-[80%]  w-full"
+              className="rounded-lg lg:w-[80%] w-full"
             />
           </div>
           {/* Small Device */}
@@ -184,11 +185,18 @@ const Home = () => {
       </div>
 
       {/* Intro Image 2 */}
-      <p className="text-center text-teal-500 text-xl font-poppins">
+      {/* <p className="text-center text-teal-500 text-xl font-poppins">
         {t("hero-image-note")}
-      </p>
-      <div className="lg:container mx-auto flex justify-center lg:my-1 my-5 lg:h-[80vh] w-[100%] object-cover lg:px-0 px-3">
-        <div className="rounded overflow-hidden lg:mt-0 mt-5">
+      </p> */}
+
+      <div className="flex justify-center">
+        <p className="w-60 bg-teal-500 overflow-hidden text-center p-1 shadow-none rounded-lg text-white font-bold font-poppins text-[14px]">
+          {t("sharing-now")}
+        </p>
+      </div>
+
+      <div className="lg:container mx-auto flex justify-center lg:h-[80vh] w-[100%] object-cover lg:px-0 px-3">
+        <div className="rounded overflow-hidden">
           <video
             autoPlay
             muted
