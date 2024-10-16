@@ -275,7 +275,7 @@ const CreateForm = ({ layout }: Props) => {
 
       <p className="mb-4">{t("dashBtn")}</p>
 
-      <form className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-10 shadow lg:shadow-zinc-400 rounded-xl secondary-bg lg:overflow-auto lg:h-auto h-[69dvh] overflow-y-scroll border border-gray-700 mb-10">
+      <form className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-10 shadow lg:shadow-zinc-400 rounded-xl secondary-bg lg:overflow-auto lg:h-auto h-auto overflow-y-scroll border border-gray-700 mb-14">
         {/* Images */}
         <div className="lg:flex justify-between flex-shrink-0 grid grid-cols-3 gap-1 lg:px-0 px-1">
           {/* Profile */}
