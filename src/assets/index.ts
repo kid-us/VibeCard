@@ -4,7 +4,7 @@ import pageNotFound from "./page404.gif";
 import notFound from "./p404.png";
 import photo from "./photo.png";
 import intro from "./intro2.mp4";
-import intro2 from "./xxx.webm";
+import intro2 from "./xxx.mp4";
 import ceo from "./ceo.png";
 // Home
 import design from "./design.svg";

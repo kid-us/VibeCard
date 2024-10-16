@@ -22,9 +22,9 @@ const Home = () => {
   const { t } = useTranslation();
 
   // Scroll to top
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   const [loading, setLoading] = useState(true);
 
@@ -76,9 +76,11 @@ const Home = () => {
 
       {/* hero */}
       <div className="relative container mx-auto my-14">
-        {/* <p className="font-poppins text-teal-500 mt-5 lg:my-20 text-center text-xl">
-          {t("hero-card-note")}
-        </p> */}
+        <div className="flex justify-center">
+          <p className="w-80 bg-teal-500 overflow-hidden text-center p-1 shadow-none rounded-lg text-white font-bold font-poppins text-[15px] lg:mb-8">
+            {t("hero-card-note")}
+          </p>
+        </div>
         <HeroCard />
       </div>
 
@@ -198,15 +200,13 @@ const Home = () => {
       <div className="lg:container mx-auto flex justify-center lg:h-[80vh] w-[100%] object-cover lg:px-0 px-3">
         <div className="rounded overflow-hidden">
           <video
+            src={intro2}
+            className="w-full aspect-video border-gradient lg:h-[70dvh] h-full object-cover lg:rounded-3xl"
             autoPlay
-            muted
             loop
             playsInline
-            className="aspect-video w-full rounded-xl"
-          >
-            <source src={intro2} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+            muted
+          ></video>
         </div>
       </div>
 
