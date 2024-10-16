@@ -358,7 +358,7 @@ const EditForm = ({ layout }: Props) => {
 
       <form
         onSubmit={handleFormSubmit}
-        className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-10 shadow lg:shadow-zinc-400 rounded-xl secondary-bg lg:overflow-auto lg:h-auto h-[69dvh] overflow-y-scroll border border-gray-700 mb-10"
+        className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-10 shadow lg:shadow-zinc-400 rounded-xl secondary-bg lg:overflow-auto lg:h-auto h-auto overflow-y-scroll border border-gray-700 mb-10"
       >
         {/* Images */}
         <div className="lg:flex justify-between flex-shrink-0 grid grid-cols-3 gap-1 lg:px-0 px-1">
@@ -595,7 +595,7 @@ const EditForm = ({ layout }: Props) => {
         {/* Button */}
         <div className="lg:absolute -bottom-2 lg:pe-10 w-full lg:left-5 lg:mb-0">
           <div
-            className={`flex justify-end rounded-b-xl secondary-bg py-3 lg:shadow border border-gray-700`}
+            className={`flex justify-end rounded-b-xl secondary-bg py-5 lg:shadow border border-gray-700`}
           >
             <button
               type="submit"

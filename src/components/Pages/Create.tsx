@@ -475,7 +475,7 @@ const Create = () => {
 
         {/* Small Device Sidebar */}
         {!previewCard && (
-          <div className="lg:hidden absolute -bottom-1 w-full z-50 border-t border-gray-600">
+          <div className="lg:hidden fixed -bottom-1 w-full z-50 border-t border-gray-600">
             <SmallDeviceSidebar
               active={activeModal}
               handleClick={(value: string) => handleModal(value)}
