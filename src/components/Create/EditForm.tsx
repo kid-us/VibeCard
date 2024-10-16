@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputImages from "./InputImages";
 import { useContentStore } from "../../store/useContentStore";
 import { useCardData } from "../../store/useCardData";
@@ -75,6 +75,10 @@ const EditForm = ({ layout }: Props) => {
     setCardTagLine,
   } = useCardData();
 
+  useEffect(() => {
+    emailVal && setEmail(emailVal);
+  }, [emailVal]);
+
   //   States
   const [, setPreviews] = useState({
     profile: null,
@@ -100,7 +104,7 @@ const EditForm = ({ layout }: Props) => {
     setPreview(type, preview);
   };
 
-  // Image Fiels
+  // Image Files
   const handleFile = (
     type: "profile" | "cover" | "logo",
     file: File | null
@@ -166,6 +170,7 @@ const EditForm = ({ layout }: Props) => {
   // OnFormSubmit
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     setLoader(true);
 
     // Validate Inputs
@@ -176,6 +181,7 @@ const EditForm = ({ layout }: Props) => {
     } else {
       setFullNameError(false);
     }
+
     if (userCompany !== "" && userCompany.length < 1) {
       setCompanyError(true);
       setLoader(false);
@@ -191,6 +197,7 @@ const EditForm = ({ layout }: Props) => {
     } else {
       setPhoneError(false);
     }
+
     if (userLocation !== "" && userLocation.length < 3) {
       setLocationError(true);
       setLoader(false);
@@ -198,6 +205,7 @@ const EditForm = ({ layout }: Props) => {
     } else {
       setLocationError(false);
     }
+
     if (job !== "" && job.length < 3) {
       setJobError(true);
       setLoader(false);
@@ -205,13 +213,17 @@ const EditForm = ({ layout }: Props) => {
     } else {
       setJobError(false);
     }
+
     // If email does not match the regex, set error to true
-    if (!emailRegex.test(email)) {
-      setEmailError(true);
-      setLoader(false);
-      return;
-    } else {
-      setEmailError(false);
+    if (emailVal) {
+      setEmail(emailVal);
+      if (!emailRegex.test(email)) {
+        setEmailError(true);
+        setLoader(false);
+        return;
+      } else {
+        setEmailError(false);
+      }
     }
     // Define card styles
     const cardStyles = {
