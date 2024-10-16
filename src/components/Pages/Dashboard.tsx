@@ -27,9 +27,9 @@ const Dashboard = () => {
   const { t } = useTranslation();
 
   // Scroll to top
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   const { quota } = useSubscription();
 
@@ -234,16 +234,14 @@ const Dashboard = () => {
 
                   {/* Previous Card */}
                   {links.length > 0 && (
-                    <div className="mt-10 shadow rounded-x">
+                    <div className="mt-10 shadow">
                       <p className="text-2xl mb-4 py-5 font-poppins">
                         {t("previousCard")}
                       </p>
-                      {links.map((link) => (
-                        <div
-                          key={link.card_url}
-                          className="flex justify-between secondary-bg mb-5 rounded-xl shadow border-gradient-2 border shadow-zinc-900 pt-3"
-                        >
-                          <div className="relative grid lg:grid-cols-7 grid-cols-2 justify-between w-full text-white px-5 py-5 mb-4 rounded shadow shadow-zinc-900">
+
+                      <div className="flex justify-between secondary-bg mb-5 rounded-xl shadow border-gradient-2 border shadow-zinc-900 pt-3">
+                        {links.map((link) => (
+                          <div className="relative grid lg:grid-cols-12 grid-cols-2 lg:gap-2 gap-y-7 justify-between w-full text-white lg:p-5 py-3 ps-5 mb-4 rounded shadow shadow-zinc-900">
                             {/* Share Social Medias */}
                             {viewShare && cardUrl === link.card_url && (
                               <div className="absolute lg:right-32 right-0 lg:px-0 px-5 z-50 top-10 lg:-top-20 secondary-bg border-gradient py-1 space-x-2">
@@ -264,9 +262,8 @@ const Dashboard = () => {
                                 </div>
                               </div>
                             )}
-
                             {/* Card Preview */}
-                            <div className="lg:col-span-2">
+                            <div className="w-full lg:col-span-4 col-span-2">
                               <div className="lg:flex lg:border-r border-gray-700 lg:mb-0 mb-4">
                                 <img
                                   src={link.main_picture}
@@ -288,10 +285,10 @@ const Dashboard = () => {
                             </div>
 
                             {/* View */}
-                            <div className="text-center">
+                            <div className="w-full lg:col-span-2 lg:text-center">
                               <Link
                                 to={`/card/${link.card_url}`}
-                                className="block text-sm mb-2 pt-5 hover:text-gray-400 font-poppins"
+                                className="block text-sm hover:text-gray-400 font-poppins"
                               >
                                 {t("view") + " "}
                                 <span className="bi-arrow-up-right text-sky-600 ms-1"></span>
@@ -299,70 +296,78 @@ const Dashboard = () => {
                             </div>
 
                             {/* Copy */}
-                            <p
-                              onClick={() => handleCopy(link.card_url)}
-                              className={`pt-5 text-center cursor-pointer font-poppins text-sm`}
-                            >
-                              <span className="bi-clipboard me-2"></span>
-                              {copiedUrls.includes(link.card_url)
-                                ? t("copied")
-                                : t("copy")}
-                            </p>
+                            <div className="w-full lg:col-span-2 lg:text-center">
+                              <button
+                                onClick={() => handleCopy(link.card_url)}
+                                className={`font-poppins text-sm`}
+                              >
+                                <span className="bi-clipboard me-2"></span>
+                                {copiedUrls.includes(link.card_url)
+                                  ? t("copied")
+                                  : t("copy")}
+                              </button>
+                            </div>
 
                             {/* Share */}
-                            <button
-                              onClick={() => {
-                                setViewShare(true);
-                                setCardUrl(link.card_url);
-                              }}
-                              className={`lg:pt-2 pt-5 text-center font-poppins text-sm`}
-                            >
-                              <span className="bi-share-fill me-2"></span>
-                              {t("share")}
-                            </button>
+                            <div className="w-full lg:col-span-2 lg:text-center">
+                              <button
+                                onClick={() => {
+                                  setViewShare(true);
+                                  setCardUrl(link.card_url);
+                                }}
+                                className={`font-poppins text-sm`}
+                              >
+                                <span className="bi-share-fill me-2"></span>
+                                {t("share")}
+                              </button>
+                            </div>
 
                             {/* Edit */}
-                            <Link
-                              to={`/create?edit=${link.card_url}`}
-                              className="block font-poppins text-sm mb-2 pt-6 lg:text-center lg:ps-0 ps-4 hover:text-gray-400"
-                            >
-                              <span className="bi-pen-fill text-green-600"></span>{" "}
-                              {t("edit")}
-                            </Link>
+                            <div className="w-full lg:col-span-2 lg:text-center">
+                              <Link
+                                to={`/create?edit=${link.card_url}`}
+                                className="block font-poppins text-sm mb-2 hover:text-gray-400"
+                              >
+                                <span className="bi-pen-fill text-green-600"></span>{" "}
+                                {t("edit")}
+                              </Link>
+                            </div>
+
+                            <div className="lg:col-span-4 lg:block hidden"></div>
 
                             {/* Delete */}
-                            <button
-                              onClick={() => {
-                                setDeletedCardUrl(link.card_url);
-                                setDeleteCard(true);
-                              }}
-                              className="text-white rounded-lg text-center font-poppins text-sm mb-2 pt-5 hover:text-gray-400"
-                            >
-                              <span className="bi-trash-fill text-red-600"></span>{" "}
-                              {t("delete")}
-                            </button>
-
-                            <div className="col-span-2"></div>
+                            <div className="w-full lg:col-span-2 lg:text-center">
+                              <button
+                                onClick={() => {
+                                  setDeletedCardUrl(link.card_url);
+                                  setDeleteCard(true);
+                                }}
+                                className="text-white rounded-lg font-poppins text-sm hover:text-gray-400"
+                              >
+                                <span className="bi-trash-fill text-red-600"></span>{" "}
+                                {t("delete")}
+                              </button>
+                            </div>
 
                             {/* Google Wallet */}
-                            <div className="col-span-3 mt-5 ps-4">
+                            <div className="lg:col-span-4 text-center col-span-2">
                               <button
                                 onClick={() =>
                                   handleGoogleWallet(link.card_url)
                                 }
-                                className="flex gap-x-2"
+                                className="flex justify-center gap-x-2 lg:ps-4"
                               >
                                 <img
                                   src={googleWallet}
                                   alt="Google Wallet"
-                                  className="w-10"
+                                  className="w-7"
                                 />
                                 Add to Google wallet
                               </button>
                             </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
