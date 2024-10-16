@@ -290,7 +290,7 @@ const Create = () => {
         </div>
 
         {/* Large Device Page */}
-        <div className="lg:grid lg:grid-cols-9">
+        <div className="lg:grid lg:grid-cols-9 lg:mt-0 mt-8">
           {/* Sidebar */}
           <div className="lg:block hidden col-span-2">
             <Sidebar />
@@ -441,32 +441,52 @@ const Create = () => {
               }}
             ></div>
 
-            <div className="z-50 secondary-bg h-[95dvh] absolute bottom-4 w-full rounded-t-3xl text-white pb-10 animate__animated animate__fadeInUp">
+            <div className="z-50 secondary-bg h-[95dvh] fixed bottom-4 w-full rounded-t-3xl text-white pb-10 animate__animated animate__fadeInUp">
               {/* Colors */}
               {modal && activeModal === "colors" && (
                 <div className="p-5">
-                  <Colors />
+                  <Colors
+                    onClose={() => {
+                      setModal(false);
+                      setActiveModal("");
+                    }}
+                  />
                 </div>
               )}
 
               {/* Texts */}
               {modal && activeModal === "text" && (
                 <div className="p-5">
-                  <Texts />
+                  <Texts
+                    onClose={() => {
+                      setModal(false);
+                      setActiveModal("");
+                    }}
+                  />
                 </div>
               )}
 
               {/* Contents */}
               {modal && activeModal === "content" && (
                 <div className="p-5">
-                  <Content />
+                  <Content
+                    onClose={() => {
+                      setModal(false);
+                      setActiveModal("");
+                    }}
+                  />
                 </div>
               )}
 
               {/* Layout */}
               {modal && activeModal === "layout" && (
                 <div className="p-5">
-                  <Layout />
+                  <Layout
+                    onClose={() => {
+                      setModal(false);
+                      setActiveModal("");
+                    }}
+                  />
                 </div>
               )}
             </div>

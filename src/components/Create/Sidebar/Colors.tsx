@@ -8,7 +8,11 @@ import { useState } from "react";
 import { texts } from "./Texts";
 import { useTranslation } from "react-i18next";
 
-const Colors = () => {
+interface Props {
+  onClose?: () => void;
+}
+
+const Colors = ({ onClose }: Props) => {
   const [dropdown, setDropdown] = useState(false);
   const [view, setView] = useState("Pronoun");
 
@@ -23,7 +27,10 @@ const Colors = () => {
   return (
     <>
       {/* Background */}
-      <p className="chakra text-white mb-4">{t("cardBg")}</p>
+      <div className="flex justify-between">
+        <p className="chakra text-white mb-4">{t("cardBg")}</p>
+        <button onClick={onClose} className="bi-x-lg mb-5"></button>
+      </div>
       <div className="lg:overflow-hidden lg:h-auto h-[75dvh] overflow-y-scroll lg:pb-0 pb-3">
         <BackgroundColor
           bgColors={cardColorBg}

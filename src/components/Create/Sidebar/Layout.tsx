@@ -2,12 +2,20 @@ import { useTranslation } from "react-i18next";
 import { userPic } from "../../../assets";
 import { useLayoutStore } from "../../../store/useLayoutStore";
 
-const Layout = () => {
+interface Props {
+  onClose?: () => void;
+}
+
+const Layout = ({ onClose }: Props) => {
   const { t } = useTranslation();
   const { updateLayout } = useLayoutStore();
   return (
     <div>
-      <p className="chakra text-white mb-4">{t("cardLayout")}</p>
+      <div className="flex justify-between">
+        <p className="chakra text-white mb-4">{t("cardLayout")}</p>
+        <button onClick={onClose} className="bi-x-lg mb-5"></button>
+      </div>
+
       <div className="bg-white rounded p-2 lg:overflow-hidden lg:h-auto h-[75dvh] overflow-y-scroll lg:pb-0">
         <div>
           <p className="chakra text-black">{t("default")}</p>

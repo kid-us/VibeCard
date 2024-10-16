@@ -8,7 +8,11 @@ import { useContentStore } from "../../../store/useContentStore";
 import ContentItems from "./ContentItems";
 import { t } from "i18next";
 
-const Content = () => {
+interface Props {
+  onClose?: () => void;
+}
+
+const Content = ({ onClose }: Props) => {
   const { socialMedia, updateSocialMedia, contact, updateContacts } =
     useContentStore();
 
@@ -113,7 +117,11 @@ const Content = () => {
 
   return (
     <div>
-      <p className="chakra text-white mb-4">{t("content")}</p>
+      <div className="flex justify-between">
+        <p className="chakra text-white mb-4">{t("content")}</p>
+        <button onClick={onClose} className="bi-x-lg mb-5"></button>
+      </div>
+
       <div className="bg-white rounded p-2 mb-5 lg:overflow-hidden lg:h-auto h-[75dvh] overflow-y-scroll lg:pb-0 pb-5">
         {/* Contacts */}
         <p className="chakra mb-3 text-black">{t("contact")}</p>

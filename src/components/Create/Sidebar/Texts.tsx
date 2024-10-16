@@ -13,7 +13,11 @@ export const texts = [
   { title: "company", translate: "company" },
 ];
 
-const Texts = () => {
+interface Props {
+  onClose?: () => void;
+}
+
+const Texts = ({ onClose }: Props) => {
   const [dropdown, setDropdown] = useState(false);
   const [view, setView] = useState("pronoun");
 
@@ -22,7 +26,10 @@ const Texts = () => {
 
   return (
     <>
-      <p className="chakra text-white mb-4">{t("textStyles")}</p>
+      <div className="flex justify-between">
+        <p className="chakra text-white mb-4">{t("textStyles")}</p>
+        <button onClick={onClose} className="bi-x-lg mb-5"></button>
+      </div>
 
       <div className="z-50 lg:overflow-hidden lg:h-auto h-[75dvh] overflow-y-scroll lg:pb-0 pb-5">
         <div className="relative text-sm border-teal-500 shadow shadow-stone-300 rounded-lg">
