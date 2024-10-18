@@ -14,14 +14,14 @@ const ViewCard = () => {
   const [title] = useState("My Card");
   useDocumentTitle(title);
 
-  const captureRef = useRef<HTMLDivElement>(null);
-
   // Scroll to top
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
   const { id } = useParams();
+
+  const captureRef = useRef<HTMLDivElement>(null);
+
   const [data, setData] = useState<Data>();
   const [styles, setStyles] = useState<StyleData>();
   const [loading, setLoading] = useState(true);
@@ -30,6 +30,20 @@ const ViewCard = () => {
   const [logo, setLogo] = useState<string | null>(null);
   const [coverImg, setCoverImg] = useState<string | null>(null);
 
+  // const blobImage = async (img: string) => {
+  //   try {
+  //     const response = await fetch(img);
+  //     if (!response.ok) {
+  //       throw new Error("Failed to fetch image");
+  //     }
+  //     const blob = await response.blob();
+  //     const url = URL.createObjectURL(blob);
+  //     return url;
+  //   } catch (error) {
+  //     console.error("Error fetching and converting image:", error);
+  //   }
+  // };
+
   const blobImage = async (img: string) => {
     try {
       const response = await fetch(img);
@@ -37,12 +51,68 @@ const ViewCard = () => {
         throw new Error("Failed to fetch image");
       }
       const blob = await response.blob();
-      const url = URL.createObjectURL(blob);
-      return url;
+      return URL.createObjectURL(blob);
     } catch (error) {
       console.error("Error fetching and converting image:", error);
+      return null; // Return null explicitly
     }
   };
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `${baseUrl}/api/v1/cards/card/${id}?increment=true`
+  //       );
+  //       setData(response.data);
+  //       setStyles(JSON.parse(response.data.styles));
+
+  //       const imagePromises = [];
+
+  //       if (response.data.qr_code) {
+  //         imagePromises.push(
+  //           blobImage(response.data.qr_code).then((qrCode) =>
+  //             setQrImg(qrCode || "")
+  //           )
+  //         );
+  //       }
+
+  //       if (response.data.main_picture) {
+  //         imagePromises.push(
+  //           blobImage(response.data.main_picture).then((profile) =>
+  //             setProfileImg(profile || "")
+  //           )
+  //         );
+  //       }
+
+  //       if (response.data.covor_picture) {
+  //         imagePromises.push(
+  //           blobImage(response.data.covor_picture).then((cover) =>
+  //             setCoverImg(cover || "")
+  //           )
+  //         );
+  //       }
+
+  //       if (response.data.company_logo) {
+  //         imagePromises.push(
+  //           blobImage(response.data.company_logo).then((logo) =>
+  //             setLogo(logo || "")
+  //           )
+  //         );
+  //       }
+
+  //       // Wait for all images to be processed
+  //       await Promise.all(imagePromises);
+
+  //       setLoading(false);
+  //     } catch (err) {
+  //       console.error(err);
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [id, baseUrl]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,43 +123,21 @@ const ViewCard = () => {
         setData(response.data);
         setStyles(JSON.parse(response.data.styles));
 
-        const imagePromises = [];
+        const imageFields = [
+          { field: response.data.qr_code, setter: setQrImg },
+          { field: response.data.main_picture, setter: setProfileImg },
+          { field: response.data.covor_picture, setter: setCoverImg },
+          { field: response.data.company_logo, setter: setLogo },
+        ];
 
-        if (response.data.qr_code) {
-          imagePromises.push(
-            blobImage(response.data.qr_code).then((qrCode) =>
-              setQrImg(qrCode || "")
-            )
-          );
-        }
+        const imagePromises = imageFields.map(({ field, setter }) => {
+          if (field) {
+            return blobImage(field).then((imgUrl) => setter(imgUrl || ""));
+          }
+          return Promise.resolve(); // No need to wait for null fields
+        });
 
-        if (response.data.main_picture) {
-          imagePromises.push(
-            blobImage(response.data.main_picture).then((profile) =>
-              setProfileImg(profile || "")
-            )
-          );
-        }
-
-        if (response.data.covor_picture) {
-          imagePromises.push(
-            blobImage(response.data.covor_picture).then((cover) =>
-              setCoverImg(cover || "")
-            )
-          );
-        }
-
-        if (response.data.company_logo) {
-          imagePromises.push(
-            blobImage(response.data.company_logo).then((logo) =>
-              setLogo(logo || "")
-            )
-          );
-        }
-
-        // Wait for all images to be processed
         await Promise.all(imagePromises);
-
         setLoading(false);
       } catch (err) {
         console.error(err);
@@ -100,29 +148,58 @@ const ViewCard = () => {
     fetchData();
   }, [id, baseUrl]);
 
+  // const handleCapture = async () => {
+  //   if (captureRef.current) {
+  //     // Wait for images to loads
+  //     await Promise.all(
+  //       Array.from(captureRef.current.querySelectorAll("img")).map(
+  //         (img) =>
+  //           new Promise<void>((resolve, reject) => {
+  //             if (img.complete) {
+  //               resolve();
+  //             } else {
+  //               img.onload = () => resolve();
+  //               img.onerror = () => reject();
+  //             }
+  //           })
+  //       )
+  //     );
+
+  //     const canvas = await html2canvas(captureRef.current, { useCORS: true });
+  //     const dataUrl = canvas.toDataURL("image/png");
+  //     const link = document.createElement("a");
+  //     link.href = dataUrl;
+  //     link.download = "capture.png";
+  //     link.click();
+  //   }
+  // };
+
   const handleCapture = async () => {
     if (captureRef.current) {
-      // Wait for images to loads
-      await Promise.all(
-        Array.from(captureRef.current.querySelectorAll("img")).map(
-          (img) =>
-            new Promise<void>((resolve, reject) => {
-              if (img.complete) {
-                resolve();
-              } else {
-                img.onload = () => resolve();
-                img.onerror = () => reject();
-              }
-            })
-        )
-      );
+      try {
+        await Promise.all(
+          Array.from(captureRef.current.querySelectorAll("img")).map(
+            (img) =>
+              new Promise<void>((resolve, reject) => {
+                if (img.complete) {
+                  resolve();
+                } else {
+                  img.onload = () => resolve();
+                  img.onerror = () => reject(new Error("Image failed to load"));
+                }
+              })
+          )
+        );
 
-      const canvas = await html2canvas(captureRef.current, { useCORS: true });
-      const dataUrl = canvas.toDataURL("image/png");
-      const link = document.createElement("a");
-      link.href = dataUrl;
-      link.download = "capture.png";
-      link.click();
+        const canvas = await html2canvas(captureRef.current, { useCORS: true });
+        const dataUrl = canvas.toDataURL("image/png");
+        const link = document.createElement("a");
+        link.href = dataUrl;
+        link.download = "capture.png";
+        link.click();
+      } catch (error) {
+        console.error("Error capturing image:", error);
+      }
     }
   };
 

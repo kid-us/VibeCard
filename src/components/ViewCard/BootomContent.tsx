@@ -103,7 +103,7 @@ const BottomContent = ({ styles, data, capture }: Props) => {
             }`}
           >
             {styles.contacts.map((c) => (
-              <div key={c.icon} className="my-2">
+              <div key={c.link} className="my-2">
                 {c.icon === "bi-envelope-fill" ? (
                   <a
                     onClick={() => handleContact()}
