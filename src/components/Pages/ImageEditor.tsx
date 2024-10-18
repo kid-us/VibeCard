@@ -84,7 +84,7 @@ const ImageEditor = () => {
     <>
       {/* Large device */}
       {!isMobile && (
-        <div className="lg:block hidden">
+        <div className="lg:block hidden mt-28 relative z-50">
           <LargeEditor />
         </div>
       )}
