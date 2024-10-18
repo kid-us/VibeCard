@@ -7,6 +7,7 @@ import axios from "axios";
 import { baseUrl } from "@/services/request";
 import { useCartStore } from "@/store/useCartStore";
 import useWallets from "@/hooks/useWallets";
+import { useTranslation } from "react-i18next";
 
 interface Wallet {
   wallet_id: string;
@@ -25,7 +26,7 @@ const schema = z.object({
   streetNo: z.string().min(2, { message: "Street name required" }),
   address: z.string().min(2, { message: "Address required." }),
   plz: z.string().min(2, { message: "PLZ required." }),
-  location: z.string().min(2, { message: "Location required." }),
+  location: z.string().min(2, { message: "Country required." }),
   phone: z.string().min(10, { message: "Phone number required." }),
   referral: z.string().optional(),
 });
@@ -34,6 +35,8 @@ type FormData = z.infer<typeof schema>;
 
 const OrderMultipleProducts = () => {
   const { allWallets } = useWallets();
+
+  const { t } = useTranslation();
 
   const [checkbox, setCheckbox] = useState<boolean>(false);
 
@@ -151,7 +154,7 @@ const OrderMultipleProducts = () => {
       <div className="relative bg-white rounded shadow-lg shadow-zinc-950 lg:p-10 mx-2 lg:mt-0 mt-5">
         <form onSubmit={handleSubmit(onSubmit)} className="lg:px-5 px-6 py-5">
           <p className="lg:text-2xl text-xl font-bold mb-10 font-poppins text-black">
-            Please insert your delivery information
+            {t("deliveryInfo")}
           </p>
           <div className="lg:grid grid-cols-2 gap-x-8">
             {/* first name */}
@@ -160,7 +163,7 @@ const OrderMultipleProducts = () => {
                 className="text-sm text-gray-500 block"
                 htmlFor="firstName"
               >
-                First Name
+                {t("fName")}
               </label>
               <input
                 {...register("firstName")}
@@ -179,7 +182,7 @@ const OrderMultipleProducts = () => {
             {/* last name */}
             <div className="mb-5">
               <label className="text-sm text-gray-500 block" htmlFor="lastName">
-                Last Name
+                {t("lName")}
               </label>
               <input
                 {...register("lastName")}
@@ -198,7 +201,7 @@ const OrderMultipleProducts = () => {
             {/* Email */}
             <div className="mb-5">
               <label className="text-sm text-gray-500 block" htmlFor="email">
-                Email
+                {t("email")}
               </label>
               <input
                 {...register("email")}
@@ -218,7 +221,7 @@ const OrderMultipleProducts = () => {
             <div className="grid grid-cols-3 gap-x-5 mb-5">
               <div className="col-span-2">
                 <label className="text-sm text-gray-500 block" htmlFor="street">
-                  Street
+                  {t("street")}
                 </label>
                 <input
                   {...register("street")}
@@ -239,7 +242,7 @@ const OrderMultipleProducts = () => {
                   className="text-sm text-gray-500 block"
                   htmlFor="streetNo"
                 >
-                  StreetNo
+                  {t("streetNo")}
                 </label>
                 <input
                   {...register("streetNo")}
@@ -259,7 +262,7 @@ const OrderMultipleProducts = () => {
             {/* address */}
             <div className="mb-5">
               <label className="text-sm text-gray-500 block" htmlFor="address">
-                Address
+                {t("address")}
               </label>
               <input
                 {...register("address")}
@@ -278,7 +281,7 @@ const OrderMultipleProducts = () => {
             {/* PLZ */}
             <div className="mb-5">
               <label className="text-sm text-gray-500 block" htmlFor="plz">
-                Plz
+                PLZ
               </label>
               <input
                 {...register("plz")}
@@ -294,10 +297,10 @@ const OrderMultipleProducts = () => {
                 </p>
               )}
             </div>
-            {/* location */}
+            {/* Country */}
             <div className="mb-5">
               <label className="text-sm text-gray-500 block" htmlFor="plz">
-                Location
+                {t("country")}
               </label>
               <input
                 {...register("location")}
@@ -316,7 +319,7 @@ const OrderMultipleProducts = () => {
             {/* phone */}
             <div className="mb-5">
               <label className="text-sm text-gray-500 block" htmlFor="plz">
-                Phone
+                {t("phone")}
               </label>
               <input
                 {...register("phone")}
@@ -335,7 +338,7 @@ const OrderMultipleProducts = () => {
             {/* Referral */}
             <div className="mb-5">
               <label className="text-sm text-gray-500 block" htmlFor="plz">
-                Referral
+                {t("referral")}
               </label>
               <input
                 {...register("referral")}
@@ -356,11 +359,11 @@ const OrderMultipleProducts = () => {
               htmlFor="save"
               className="font-poppins font-bold text-black text-xs"
             >
-              Do you want to save this info for future time use.
+              {t("saveInfo")}
             </label>
           </div>
           <div className="lg:mt-16 mt-8">
-            <Button label="Order" loader={loader} />
+            <Button label="order" loader={loader} />
           </div>
         </form>
       </div>

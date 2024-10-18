@@ -46,6 +46,7 @@
   "textStyles": "Textstile",
   "fontStyle": "Schriftstile",
   "fontSize": "Schriftgröße",
+  "country": "Land",
 
   "text-xl": "Extragroß",
   "text-lg": "Groß",
@@ -314,6 +315,12 @@
   "address": "Adresse",
   "streetNo": "Straßennummer",
   "saveInfo": "Möchten Sie diese Informationen für die zukünftige Verwendung speichern?",
+
+  "clear-cart": "Warenkorb Leeren",
+  "checkout": "Kasse",
+  "cart": "Warenkorb",
+  "404": "Ups! Diese Seite konnte nicht gefunden werden ...",
+  "back-home": "Zurück zur Startseite",
 
   "front": "Vorderseite",
   "back": "Rückseite",

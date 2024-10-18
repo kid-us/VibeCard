@@ -83,7 +83,7 @@ const Wallets = () => {
                   <p className="text-xs text-white font-poppins">
                     {t("price")}{" "}
                     <span className="text-teal-500 font-poppins text-sm font-bold">
-                      €24.99
+                      {wallet.price}
                     </span>
                   </p>
                 </div>

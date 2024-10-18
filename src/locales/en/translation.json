@@ -190,6 +190,7 @@
   "copy": "Copy",
   "share": "Share",
   "copied": "Copied",
+  "country": "Country",
 
   "editSuccess": "You have updated your card Successfully.",
   "editPopUp": "Only changed fields will be updated. If a field value is not provided, the previous data for that field will remain unchanged. You can choose to update a specific field or make changes to the entire card",
@@ -314,6 +315,12 @@
   "address": "Address",
   "streetNo": "Street No",
   "saveInfo": "Do you want to save this info for future time use.",
+
+  "clear-cart": "Clear Cart",
+  "checkout": "Checkout",
+  "cart": "Cart",
+  "404": "Opps! this page could not be found ...",
+  "back-home": "Back to Home",
 
   "front": "Front",
   "back": "Back",

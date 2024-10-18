@@ -129,7 +129,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
   return (
     <>
       <div className="overlay z-40 bg-neutral-950/90"></div>
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-9">
         <div className="fixed z-50 lg:grid grid-cols-2 lg:rounded-3xl rounded overflow-hidden lg:h-[85vh] h-[90vh] lg:w-[80%] mx-2 lg:mt-20 mt-10 lg:overflow-hidden overflow-y-scroll">
           <div className="relative flex justify-center bg-white">
             <button
@@ -369,7 +369,7 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
                   {t("saveInfo")}
                 </label>
               </div>
-              <div className="mt-8">
+              <div className="my-8">
                 <Button label={t("order")} loader={loader} />
               </div>
             </form>

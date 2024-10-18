@@ -1,6 +1,7 @@
 import useWallets from "@/hooks/useWallets";
 import { useCartStore } from "@/store/useCartStore";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 interface Props {
@@ -9,6 +10,8 @@ interface Props {
 
 const Cart = ({ home }: Props) => {
   const { allWallets } = useWallets();
+
+  const { t } = useTranslation();
 
   const cart = useCartStore((state) => state.cart);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
@@ -57,7 +60,7 @@ const Cart = ({ home }: Props) => {
               <div className="animate__animated animate__fadeInRight secondary-bg shadow shadow-teal-500 w-[98%] md:w-[60%] lg:w-[28%] lg:h-[90%] h-[100%] fixed lg:top-20 top-0 right-0  z-50">
                 <div className="flex justify-between px-5 pt-5">
                   <p className="text-white font-poppins font-bold text-xl">
-                    {cart.length} Cart
+                    {cart.length} {t("cart")}
                   </p>
                   <button
                     onClick={() => setViewCart(false)}
@@ -110,12 +113,12 @@ const Cart = ({ home }: Props) => {
                     }}
                     className="bg-red-600 shadow shadow-zinc-900 bi-trash font-poppins w-full text-white rounded mt-3 h-12"
                   >
-                    Clear Cart
+                    {"clear-cart"}
                   </button>
 
                   <Link to={"/order-multiple-products"}>
                     <p className="bg-teal-600 shadow shadow-zinc-900 font-poppins w-full text-white rounded mt-3 h-12 text-center pt-3">
-                      Checkout
+                      {t("checkout")}
                     </p>
                   </Link>
                 </div>
