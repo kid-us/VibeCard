@@ -356,13 +356,14 @@ const WalletsDetail = () => {
                   }
                   className="bg-white bi-cart-fill w-full mt-8 shadow shadow-zinc-900 text-black font-poppins rounded py-3"
                 >
+                  <span className="mx-1"></span>
                   {t("addToCart")}
                 </button>
               </div>
               <div className="mb-10">
                 <button
                   onClick={() => setOrder(true)}
-                  className="btn-bg w-full mt-8 shadow text-white rounded"
+                  className="btn-bg w-full mt-8 shadow text-white font-bold rounded"
                 >
                   {t("order")}
                 </button>

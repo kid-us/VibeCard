@@ -421,7 +421,7 @@ const ProductDetail = () => {
                 <div className="w-full lg:mb-0 mb-5">
                   <button
                     onClick={() => handleOrder()}
-                    className="btn-bg py-3 lg:text-center rounded shadow-md shadow-zinc-950 hover:shadow-none hover:text-gray-400 transition ease-in-out delay-200 text-center w-full font-poppins"
+                    className="btn-bg py-3 lg:text-center rounded shadow-md shadow-zinc-950 hover:shadow-none transition ease-in-out delay-200 text-center w-full font-poppins text-white font-bold"
                   >
                     <span className="bi-palette-fill me-2"></span>
                     {t("designBtn")}

@@ -128,9 +128,9 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
 
   return (
     <>
-      <div className="overlay z-40 bg-neutral-950/90"></div>
-      <div className="flex justify-center mt-9">
-        <div className="fixed z-50 lg:grid grid-cols-2 lg:rounded-3xl rounded overflow-hidden lg:h-[85vh] h-[90vh] lg:w-[80%] mx-2 lg:mt-20 mt-10 lg:overflow-hidden overflow-y-scroll">
+      <div className="overlay z-[999] bg-neutral-950/90"></div>
+      <div className="flex justify-center">
+        <div className="fixed z-[1000] top-0 lg:grid grid-cols-2 lg:rounded-3xl rounded overflow-hidden lg:h-[85vh] h-[90vh] lg:w-[80%] mx-2 lg:mt-20 mt-10 lg:overflow-hidden overflow-y-scroll">
           <div className="relative flex justify-center bg-white">
             <button
               onClick={() => hideModal()}
