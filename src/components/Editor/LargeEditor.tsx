@@ -314,6 +314,7 @@ const LargeEditor: React.FC = () => {
           view={orientation}
         />
       )}
+
       {error && (
         <div className="fixed flex top-4 right-0 z-50 text-white bg-red-500 rounded ps-10 text-sm py-3">
           <p>{t("logoError")}</p>
@@ -323,7 +324,8 @@ const LargeEditor: React.FC = () => {
           ></p>
         </div>
       )}
-      <Navbar />
+
+      <Navbar bulb />
 
       <div className="container mx-auto">
         <div className="grid grid-cols-10 secondary-bg rounded mt-10 relative">
@@ -515,17 +517,11 @@ const LargeEditor: React.FC = () => {
                             color: "#333",
                           }}
                         >
-                          {imageSize.map((size, index) =>
-                            size !== image ? (
-                              <option key={index} value={`${size}`}>
-                                {size}
-                              </option>
-                            ) : (
-                              <option key={size} value={image}>
-                                {image}
-                              </option>
-                            )
-                          )}
+                          {imageSize.map((size, index) => (
+                            <option key={index} value={`${size}`}>
+                              {size}
+                            </option>
+                          ))}
                         </select>
                       </div>
                     </div>

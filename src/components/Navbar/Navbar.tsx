@@ -10,7 +10,11 @@ import Logout from "../Logout/Logout";
 import { useTranslation } from "react-i18next";
 import { en, de } from "@/assets";
 
-const Navbar = () => {
+interface Props {
+  bulb?: boolean;
+}
+
+const Navbar = ({ bulb }: Props) => {
   const { t, i18n } = useTranslation();
 
   const changeLanguage = (lng: string) => {
@@ -63,9 +67,11 @@ const Navbar = () => {
       {loading && <Loading />}
 
       <header className={`fixed main-bg lg:py-3 py-2 top-0 z-50 w-full nav-bg`}>
-        <div className="right-64 top-10">
-          <div className="absolute w-[5%] lg:w-[25%] lg:right-20 -right-40 bulb"></div>
-        </div>
+        {!bulb && (
+          <div className="right-64 top-10">
+            <div className="absolute w-[5%] lg:w-[25%] lg:right-20 -right-40 bulb"></div>
+          </div>
+        )}
 
         <div className="lg:container mx-auto flex justify-between">
           <div>

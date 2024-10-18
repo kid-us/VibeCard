@@ -304,6 +304,7 @@ const SmallEditor: React.FC = () => {
 
   return (
     <>
+      {/* Order */}
       {order && (
         <CardOrder
           backFile={backFile ? backFile : null}
@@ -312,6 +313,8 @@ const SmallEditor: React.FC = () => {
           view={orientation}
         />
       )}
+
+      {/* Error */}
       {error && (
         <div className="fixed flex top-2 right-2 z-50 text-white bg-red-500 rounded ps-5 text-sm py-2">
           <p>{t("logoError")} </p>
@@ -321,6 +324,7 @@ const SmallEditor: React.FC = () => {
           ></p>
         </div>
       )}
+
       <div className="px-2">
         <div className="secondary-bg rounded mt-1 relative">
           {/* Preview */}
@@ -568,17 +572,11 @@ const SmallEditor: React.FC = () => {
                       color: "#333",
                     }}
                   >
-                    {imageSize.map((size, index) =>
-                      size !== image ? (
-                        <option key={index} value={`${size}`}>
-                          {size}
-                        </option>
-                      ) : (
-                        <option key={size} value={image}>
-                          {image}
-                        </option>
-                      )
-                    )}
+                    {imageSize.map((size, index) => (
+                      <option key={index} value={`${size}`}>
+                        {size}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>

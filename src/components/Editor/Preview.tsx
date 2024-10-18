@@ -13,25 +13,32 @@ const Preview = ({ showPreview, orientation }: Props) => {
   const { t } = useTranslation();
 
   const { back, front } = useProduct();
-
   const printRef = useRef<HTMLDivElement>(null);
 
   const [frontImage, setFrontImage] = useState<string | null>(null);
   const [backImage, setBackImage] = useState<string | null>(null);
 
-  //   Get images from a file
+  // Get images from a file
   useEffect(() => {
-    if (front.image) {
-      const url = URL.createObjectURL(front.image);
-      setFrontImage(url);
-    }
-    if (back.image) {
-      const url = URL.createObjectURL(back.image);
-      setBackImage(url);
-    }
-  }, [front, back]);
+    let frontUrl: string | null = null;
+    let backUrl: string | null = null;
 
-  //   Style
+    if (front.image instanceof File) {
+      frontUrl = URL.createObjectURL(front.image);
+      setFrontImage(frontUrl);
+    }
+
+    if (back.image instanceof File) {
+      backUrl = URL.createObjectURL(back.image);
+      setBackImage(backUrl);
+    }
+
+    // Cleanup URLs on unmount or when image changes
+    return () => {
+      if (frontUrl) URL.revokeObjectURL(frontUrl);
+      if (backUrl) URL.revokeObjectURL(backUrl);
+    };
+  }, [front, back]);
 
   // Handling Print
   const handlePrint = async () => {
