@@ -113,7 +113,7 @@ const Cart = ({ home }: Props) => {
                     }}
                     className="bg-red-600 shadow shadow-zinc-900 bi-trash font-poppins w-full text-white rounded mt-3 h-12"
                   >
-                    {"clear-cart"}
+                    {t("clear-cart")}
                   </button>
 
                   <Link to={"/order-multiple-products"}>

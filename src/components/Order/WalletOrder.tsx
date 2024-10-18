@@ -31,7 +31,7 @@ const schema = z.object({
   streetNo: z.string().min(2, { message: "Street name required" }),
   address: z.string().min(2, { message: "Address required." }),
   plz: z.string().min(2, { message: "PLZ required." }),
-  location: z.string().min(2, { message: "Location required." }),
+  location: z.string().min(2, { message: "Country required." }),
   phone: z.string().min(10, { message: "Phone number required." }),
   referral: z.string().optional(),
 });
@@ -307,10 +307,13 @@ const WalletOrder = ({ id, quantity, img, hideModal }: Props) => {
                     </p>
                   )}
                 </div>
-                {/* location */}
+                {/* country */}
                 <div className="mb-4">
-                  <label className="text-xs text-gray-400 block" htmlFor="plz">
-                    {t("location")}
+                  <label
+                    className="text-xs text-gray-400 block"
+                    htmlFor="location"
+                  >
+                    {t("country")}
                   </label>
                   <input
                     {...register("location")}

@@ -35,7 +35,7 @@ const schema = z.object({
   streetNo: z.string().min(2, { message: "Street name required" }),
   address: z.string().min(2, { message: "Address required." }),
   plz: z.string().min(2, { message: "PLZ required." }),
-  location: z.string().min(2, { message: "Location required." }),
+  location: z.string().min(2, { message: "Country required." }),
   phone: z.string().min(10, { message: "Phone number required." }),
   referral: z.string().optional(),
 });
@@ -62,26 +62,26 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
   useEffect(() => {
     let frontImageUrl: string | null = null;
     let backImageUrl: string | null = null;
-  
+
     if (front.image) {
       frontImageUrl = URL.createObjectURL(front.image);
       setFrontImage(frontImageUrl);
     }
-  
+
     if (back.image) {
       backImageUrl = URL.createObjectURL(back.image);
       setBackImage(backImageUrl);
     }
     // Clean up the object URLs when the component unmounts or images change
-  return () => {
-    if (frontImageUrl) {
-      URL.revokeObjectURL(frontImageUrl);
-    }
-    if (backImageUrl) {
-      URL.revokeObjectURL(backImageUrl);
-    }
-  };
-}, [front, back]);
+    return () => {
+      if (frontImageUrl) {
+        URL.revokeObjectURL(frontImageUrl);
+      }
+      if (backImageUrl) {
+        URL.revokeObjectURL(backImageUrl);
+      }
+    };
+  }, [front, back]);
 
   const [checkbox, setCheckbox] = useState<boolean>(false);
   const [frontImage, setFrontImage] = useState<string | null>(null);
@@ -224,7 +224,7 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
   return (
     <>
       <div className="overlay z-40"></div>
-      <div className="fixed z-50 lg:grid grid-cols-2 secondary-bg h-[100vh] w-full lg:overflow-auto overflow-y-scroll">
+      <div className="fixed z-[100] top-0 lg:grid grid-cols-2 secondary-bg h-[100vh] w-full lg:overflow-auto overflow-y-scroll">
         <p
           onClick={() => closeOrder()}
           className="absolute z-50 cursor-pointer bi-x-lg right-4 top-2 font-bold text-red-700 text-xl"
@@ -532,13 +532,13 @@ const CardOrder = ({ closeOrder, frontFile, backFile, view }: Props) => {
                   </p>
                 )}
               </div>
-              {/* location */}
+              {/* Country */}
               <div className="mb-5">
                 <label
                   className="text-sm text-gray-500 block"
                   htmlFor="location"
                 >
-                  {t("location")}
+                  {t("country")}
                 </label>
                 <input
                   {...register("location")}
