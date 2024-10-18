@@ -1,6 +1,5 @@
 import { Data, StyleData } from "@/services/viewCard";
 import BottomContent from "./BootomContent";
-import { userPic } from "@/assets";
 import Watermark from "../Watermark/Watermark";
 
 interface Props {
@@ -39,7 +38,7 @@ const Default = ({ data, styles, cover, profile, logo, capture }: Props) => {
           />
         )}
         <div className="absolute lg:top-10 top-16 left-2 lg:w-20 lg:h-20 w-24 h-24 border-[4px] rounded-full border-white overflow-hidden z-50">
-          <img src={profile ? profile : userPic} alt="user" />
+          {profile && <img src={profile} alt="user" />}
         </div>
 
         {/* Pronoun and Name */}
