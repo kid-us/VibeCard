@@ -60,6 +60,7 @@ const ContactUs = () => {
         withCredentials: true,
       })
       .then(() => {
+        setLoader(false);
         setSuccessMsg(true);
       })
       .catch((error) => {
