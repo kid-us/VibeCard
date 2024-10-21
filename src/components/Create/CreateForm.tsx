@@ -13,7 +13,6 @@ import { useCoverColorStore } from "../../store/useCoverColorStore";
 import axios from "axios";
 import { baseUrl } from "../../services/request";
 import Modal from "../Modal/Modal";
-import { useLocation } from "react-router-dom";
 import { t } from "i18next";
 import useAuthStore from "@/store/useUserData";
 import { useLayoutStore } from "@/store/useLayoutStore";
@@ -41,10 +40,6 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const CreateForm = ({ layout }: Props) => {
-  const pageLocation = useLocation();
-  const searchParams = new URLSearchParams(pageLocation.search);
-  const editedUrl = searchParams.get("edit");
-
   const { plan } = useAuthStore();
 
   const { watermark } = useLayoutStore();
@@ -275,7 +270,7 @@ const CreateForm = ({ layout }: Props) => {
 
       <p className="mb-4">{t("dashBtn")}</p>
 
-      <form className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-10 shadow lg:shadow-zinc-400 rounded-xl secondary-bg lg:overflow-auto lg:h-auto h-auto overflow-y-scroll border border-gray-700 mb-14">
+      <form className="lg:px-8 lg:py-6 pb-5 mt-5 lg:mb-0 px-1 pt-10 shadow lg:shadow-zinc-400 rounded-xl secondary-bg lg:overflow-auto lg:h-[82vh] h-auto overflow-y-scroll border border-gray-700 mb-14">
         {/* Images */}
         <div className="lg:flex justify-between flex-shrink-0 grid grid-cols-3 gap-1 lg:px-0 px-1">
           {/* Profile */}
@@ -302,13 +297,10 @@ const CreateForm = ({ layout }: Props) => {
         </div>
 
         {/* Inputs Fields */}
-        <div className="grid grid-cols-2 lg:gap-x-8 gap-x-3 mt-5 lg:p-4 lg:px-0 px-2 lg:h-[47dvh] overflow-y-scroll">
+        <div className="grid grid-cols-2 lg:gap-x-8 gap-x-3 mt-2 lg:p-4 lg:px-0 px-2">
           {/* Pronoun */}
           <div className="mb-4">
-            <label
-              className="lg:text-xs text-sm text-gray-100 block"
-              htmlFor="pronoun"
-            >
+            <label className="text-xs text-gray-400 block" htmlFor="pronoun">
               {t("pronoun")} <span className="text-red-700 text-2xl">*</span>{" "}
             </label>
 
@@ -338,10 +330,7 @@ const CreateForm = ({ layout }: Props) => {
 
           {/* Name */}
           <div className="mb-3">
-            <label
-              className="lg:text-xs text-sm text-gray-100 block"
-              htmlFor="name"
-            >
+            <label className="text-xs text-gray-400 block" htmlFor="name">
               {/* {t("name")} */}
               Name
               <span className="text-red-700 text-2xl">*</span>
@@ -367,10 +356,7 @@ const CreateForm = ({ layout }: Props) => {
 
           {/* Email */}
           <div className="mb-3">
-            <label
-              className="lg:text-xs text-sm text-gray-100 block"
-              htmlFor="email"
-            >
+            <label className="text-xs text-gray-400 block" htmlFor="email">
               {t("email")}
               <span className="text-red-700 text-2xl">*</span>
             </label>
@@ -394,10 +380,7 @@ const CreateForm = ({ layout }: Props) => {
 
           {/* Phone */}
           <div className="mb-3">
-            <label
-              className="lg:text-xs text-sm text-gray-100 block"
-              htmlFor="phone"
-            >
+            <label className="text-xs text-gray-400 block" htmlFor="phone">
               {t("phone")}
               <span className="text-red-700 text-2xl">*</span>
             </label>
@@ -421,10 +404,7 @@ const CreateForm = ({ layout }: Props) => {
 
           {/* Job-Title */}
           <div className="mb-3">
-            <label
-              className="lg:text-xs text-sm text-gray-100 block"
-              htmlFor="job-title"
-            >
+            <label className="text-xs text-gray-400 block" htmlFor="job-title">
               {t("jobTitle")}
               <span className="text-red-700 text-2xl">*</span>
             </label>
@@ -449,10 +429,7 @@ const CreateForm = ({ layout }: Props) => {
 
           {/* Location */}
           <div className="mb-3">
-            <label
-              className="lg:text-xs text-sm text-gray-100 block"
-              htmlFor="location"
-            >
+            <label className="text-xs text-gray-400 block" htmlFor="location">
               {t("location")}
               <span className="text-red-700 text-2xl">*</span>
             </label>
@@ -479,10 +456,7 @@ const CreateForm = ({ layout }: Props) => {
 
           {/* Company */}
           <div className="mb-3">
-            <label
-              className="lg:text-xs text-sm text-gray-100 block"
-              htmlFor="company"
-            >
+            <label className="text-xs text-gray-400 block" htmlFor="company">
               {t("company")}
               <span className="text-red-700 text-2xl">*</span>
             </label>
@@ -509,10 +483,7 @@ const CreateForm = ({ layout }: Props) => {
 
           {/* Tag-line || Bio*/}
           <div className="mb-3">
-            <label
-              className="lg:text-xs text-sm text-gray-100 block"
-              htmlFor="tag-line"
-            >
+            <label className="text-xs text-gray-400 block" htmlFor="tag-line">
               {t("bio")}
               <span className="text-transparent text-2xl">*</span>
             </label>
@@ -531,20 +502,14 @@ const CreateForm = ({ layout }: Props) => {
         </div>
 
         {/* Button */}
-        <div className="lg:absolute -bottom-2 lg:pe-10 w-full lg:left-5 lg:mb-0">
-          <div
-            className={`flex ${
-              editedUrl ? "justify-between" : "justify-end"
-            } rounded-b-xl secondary-bg py-3 lg:shadow border border-gray-700`}
+        <div className={`flex justify-end secondary-bg lg:mt-0 mt-4`}>
+          <button
+            onClick={handleSubmit(onSubmit)}
+            type="submit"
+            className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded lg:px-16 lg:py-3 py-3  lg:w-auto w-full lg:mx-0 mx-2"
           >
-            <button
-              onClick={handleSubmit(onSubmit)}
-              type="submit"
-              className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full lg:mx-0 mx-5"
-            >
-              {loader ? <Loader /> : t("create")}
-            </button>
-          </div>
+            {loader ? <Loader /> : t("Create")}
+          </button>
         </div>
       </form>
     </div>
