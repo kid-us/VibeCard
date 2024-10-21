@@ -370,7 +370,7 @@ const EditForm = ({ layout }: Props) => {
 
       <form
         onSubmit={handleFormSubmit}
-        className="lg:px-8 lg:pt-10 lg:pb-16 lg:mt-6 lg:mb-0 pt-10 shadow lg:shadow-zinc-400 rounded-xl secondary-bg lg:overflow-auto lg:h-auto h-auto overflow-y-scroll border border-gray-700 mb-14"
+        className="lg:px-8 lg:py-6 pb-5 mt-5 lg:mb-0 px-1 pt-10 shadow lg:shadow-zinc-400 rounded-xl secondary-bg lg:overflow-auto lg:h-[82vh] h-auto overflow-y-scroll border border-gray-700 mb-14"
       >
         {/* Images */}
         <div className="lg:flex justify-between flex-shrink-0 grid grid-cols-3 gap-1 lg:px-0 px-1">
@@ -397,11 +397,11 @@ const EditForm = ({ layout }: Props) => {
         </div>
 
         {/* Inputs Fields */}
-        <div className="grid grid-cols-2 lg:gap-x-8 gap-x-3 mt-5 lg:p-4 lg:px-0 px-2 lg:h-[47dvh] overflow-y-scroll">
+        <div className="grid grid-cols-2 lg:gap-x-8 gap-x-3 mt-2 lg:p-4 lg:px-0 px-2 ">
           {/* Pronoun */}
           <div className="mb-4">
             <label
-              className="lg:text-xs text-sm text-gray-100 block"
+              className="lg:text-xs text-xs text-gray-400 block"
               htmlFor="pronoun"
             >
               {t("pronoun")} <span className="text-red-700 text-2xl">*</span>{" "}
@@ -427,7 +427,7 @@ const EditForm = ({ layout }: Props) => {
           {/* Name */}
           <div className="mb-3">
             <label
-              className="lg:text-xs text-sm text-gray-100 block"
+              className="lg:text-xs text-xs text-gray-400 block"
               htmlFor="name"
             >
               Name
@@ -455,7 +455,7 @@ const EditForm = ({ layout }: Props) => {
           {/* Email */}
           <div className="mb-3">
             <label
-              className="lg:text-xs text-sm text-gray-100 block"
+              className="lg:text-xs text-xs text-gray-400 block"
               htmlFor="email"
             >
               {t("email")}
@@ -479,7 +479,7 @@ const EditForm = ({ layout }: Props) => {
           {/* Phone */}
           <div className="mb-3">
             <label
-              className="lg:text-xs text-sm text-gray-100 block"
+              className="lg:text-xs text-xs text-gray-400 block"
               htmlFor="phone"
             >
               {t("phone")}
@@ -504,7 +504,7 @@ const EditForm = ({ layout }: Props) => {
           {/* Job-Title */}
           <div className="mb-3">
             <label
-              className="lg:text-xs text-sm text-gray-100 block"
+              className="lg:text-xs text-xs text-gray-400 block"
               htmlFor="job-title"
             >
               {t("jobTitle")}
@@ -531,7 +531,7 @@ const EditForm = ({ layout }: Props) => {
           {/* Location */}
           <div className="mb-3">
             <label
-              className="lg:text-xs text-sm text-gray-100 block"
+              className="lg:text-xs text-xs text-gray-400 block"
               htmlFor="location"
             >
               {t("location")}
@@ -558,7 +558,7 @@ const EditForm = ({ layout }: Props) => {
           {/* Company */}
           <div className="mb-3">
             <label
-              className="lg:text-xs text-sm text-gray-100 block"
+              className="lg:text-xs text-xs text-gray-400 block"
               htmlFor="company"
             >
               {t("company")}
@@ -585,7 +585,7 @@ const EditForm = ({ layout }: Props) => {
           {/* Tag-line || Bio*/}
           <div className="mb-3">
             <label
-              className="lg:text-xs text-sm text-gray-100 block"
+              className="lg:text-xs text-xs text-gray-400 block"
               htmlFor="tag-line"
             >
               {t("bio")}
@@ -605,17 +605,13 @@ const EditForm = ({ layout }: Props) => {
         </div>
 
         {/* Button */}
-        <div className="lg:absolute -bottom-2 lg:pe-10 w-full lg:left-5">
-          <div
-            className={`flex justify-end rounded-b-xl secondary-bg py-5 lg:shadow border border-gray-700`}
+        <div className={`flex justify-end  secondary-bg lg:mt-0 mt-4`}>
+          <button
+            type="submit"
+            className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded lg:px-16 lg:py-3 py-3  lg:w-auto w-full lg:mx-0 mx-2"
           >
-            <button
-              type="submit"
-              className="btn-bg shadow-md active:shadow-none shadow-gray-900 text-white rounded px-16 lg:py-3 py-3 lg:me-10 lg:w-auto w-full lg:mx-0 mx-5"
-            >
-              {loader ? <Loader /> : t("update")}
-            </button>
-          </div>
+            {loader ? <Loader /> : t("update")}
+          </button>
         </div>
       </form>
     </div>

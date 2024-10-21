@@ -364,7 +364,7 @@ const Create = () => {
           <div
             className={`block ${
               previewCard && "hidden"
-            } col-span-5 w-full lg:p-3 lg:mt-20 lg:pt-0 p-3 pt-2`}
+            } col-span-5 w-full lg:p-3 p-1 lg:mt-20 lg:pt-0 pt-2`}
           >
             {editedUrl ? (
               <EditForm layout={layout} />

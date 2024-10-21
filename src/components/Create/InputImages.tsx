@@ -66,7 +66,7 @@ const InputImages = ({
 
   return (
     <div>
-      <p className="text-xs text-gray-100 mb-4 font-poppins first-letter:uppercase text-center">
+      <p className="text-xs mb-4 font-poppins first-letter:uppercase lg:text-center text-gray-400">
         {t(title)}
       </p>
       <div
