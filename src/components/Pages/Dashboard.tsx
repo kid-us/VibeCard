@@ -241,9 +241,12 @@ const Dashboard = () => {
                         {t("previousCard")}
                       </p>
 
-                      <div className="flex justify-between secondary-bg mb-5 rounded-xl shadow border-gradient-2 border shadow-zinc-900 pt-3">
+                      <div className="flex justify-between bg-white mb-5 rounded-xl shadow border-gradient-2 border shadow-zinc-900 pt-3">
                         {links.map((link) => (
-                          <div className="relative grid lg:grid-cols-12 grid-cols-2 lg:gap-2 gap-y-7 justify-between w-full text-white lg:p-5 py-3 ps-5 mb-4 rounded shadow shadow-zinc-900">
+                          <div
+                            key={link.card_url}
+                            className="relative grid lg:grid-cols-12 grid-cols-2 lg:gap-2 gap-y-7 justify-between w-full text-white lg:p-5 py-3 ps-5 mb-4 shadow-zinc-900"
+                          >
                             {/* Share Social Medias */}
                             {viewShare && cardUrl === link.card_url && (
                               <div className="absolute lg:right-32 right-0 lg:px-0 px-5 z-50 top-10 lg:-top-20 secondary-bg border-gradient py-1 space-x-2">
@@ -272,7 +275,7 @@ const Dashboard = () => {
                                   alt="Card Image"
                                   className="rounded-full lg:w-14 w-14 h-14 object-cover border-gradient"
                                 />
-                                <div className="content-center lg:ms-3">
+                                <div className="content-center lg:ms-3 text-black">
                                   <p className="font-poppins font-extrabold">
                                     {link.pronouns} {link.full_name}
                                   </p>
@@ -287,21 +290,21 @@ const Dashboard = () => {
                             </div>
 
                             {/* View */}
-                            <div className="w-full lg:col-span-2 lg:text-center">
+                            <div className="w-full lg:col-span-2 lg:text-center text-black">
                               <Link
                                 to={`/card/${link.card_url}`}
-                                className="block text-sm hover:text-gray-400 font-poppins"
+                                className="block hover:text-gray-400 font-poppins"
                               >
                                 {t("view") + " "}
-                                <span className="bi-arrow-up-right text-sky-600 ms-1"></span>
+                                <span className="bi-arrow-up-right text-sky-900 ms-1"></span>
                               </Link>
                             </div>
 
                             {/* Copy */}
-                            <div className="w-full lg:col-span-2 lg:text-center">
+                            <div className="w-full lg:col-span-2 lg:text-center text-black">
                               <button
                                 onClick={() => handleCopy(link.card_url)}
-                                className={`font-poppins text-sm`}
+                                className={`font-poppins`}
                               >
                                 <span className="bi-clipboard me-2"></span>
                                 {copiedUrls.includes(link.card_url)
@@ -311,13 +314,13 @@ const Dashboard = () => {
                             </div>
 
                             {/* Share */}
-                            <div className="w-full lg:col-span-2 lg:text-center">
+                            <div className="w-full lg:col-span-2 lg:text-center text-black">
                               <button
                                 onClick={() => {
                                   setViewShare(true);
                                   setCardUrl(link.card_url);
                                 }}
-                                className={`font-poppins text-sm`}
+                                className={`font-poppins`}
                               >
                                 <span className="bi-share-fill me-2"></span>
                                 {t("share")}
@@ -325,10 +328,10 @@ const Dashboard = () => {
                             </div>
 
                             {/* Edit */}
-                            <div className="w-full lg:col-span-2 lg:text-center">
+                            <div className="w-full lg:col-span-2 lg:text-center text-black">
                               <Link
                                 to={`/create?edit=${link.card_url}`}
-                                className="block font-poppins text-sm mb-2 hover:text-gray-400"
+                                className="block font-poppins mb-2 hover:text-gray-400"
                               >
                                 <span className="bi-pen-fill text-green-600"></span>{" "}
                                 {t("edit")}
@@ -344,7 +347,7 @@ const Dashboard = () => {
                                   setDeletedCardUrl(link.card_url);
                                   setDeleteCard(true);
                                 }}
-                                className="text-white rounded-lg font-poppins text-sm hover:text-gray-400"
+                                className="rounded-lg font-poppins hover:text-gray-400 text-black"
                               >
                                 <span className="bi-trash-fill text-red-600"></span>{" "}
                                 {t("delete")}
@@ -359,7 +362,7 @@ const Dashboard = () => {
                                 }
                                 className="flex justify-center gap-x-2 lg:ps-4"
                               >
-                                {i18n.language === "en" && (
+                                {i18n.language !== "de" && (
                                   <img
                                     src={enGW}
                                     alt="Google Wallet"
