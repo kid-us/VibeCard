@@ -66,7 +66,6 @@ const CreateForm = ({ layout }: Props) => {
   const {
     register,
     handleSubmit,
-    getValues,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
