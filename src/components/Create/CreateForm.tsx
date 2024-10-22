@@ -31,10 +31,10 @@ interface FilePreviews {
 const schema = z.object({
   name: z.string().min(3, { message: "Name required" }),
   company: z.string().min(1, { message: "Company required" }),
+  email: z.string().email({ message: "Valid email address required" }),
   phone: z.string().min(6, { message: "Phone number required" }),
   job: z.string().min(3, { message: "Job title required" }),
   location: z.string().min(3, { message: "Location required" }),
-  email: z.string().email({ message: "Valid email address required" }),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -66,6 +66,7 @@ const CreateForm = ({ layout }: Props) => {
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 

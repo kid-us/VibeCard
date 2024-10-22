@@ -90,6 +90,10 @@ import googleWallet from "./google-wallet.png";
 // Company
 import company from "./company.jpg";
 
+// Google Wallet
+import deGW from "./de_gw.png";
+import enGW from "./en_gw.png";
+
 export {
   userPic,
   google,
@@ -168,6 +172,8 @@ export {
 
   // Goggle Wallet
   googleWallet,
+  deGW,
+  enGW,
 
   // Company
   company,

@@ -9,7 +9,7 @@ import Loader from "../Loader/Loader";
 import ShareComponent from "../Share/ShareComponent";
 import useSubscription from "@/hooks/useSubscription";
 import { useTranslation } from "react-i18next";
-import { googleWallet } from "@/assets";
+import { deGW, enGW } from "@/assets";
 
 interface Card {
   card_url: string;
@@ -24,12 +24,14 @@ const Dashboard = () => {
   const [title] = useState("Dashboard");
   useDocumentTitle(title);
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  // alert(i18n.language);
 
   // Scroll to top
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const { quota } = useSubscription();
 
@@ -357,12 +359,20 @@ const Dashboard = () => {
                                 }
                                 className="flex justify-center gap-x-2 lg:ps-4"
                               >
-                                <img
-                                  src={googleWallet}
-                                  alt="Google Wallet"
-                                  className="w-7"
-                                />
-                                Add to Google wallet
+                                {i18n.language === "en" && (
+                                  <img
+                                    src={enGW}
+                                    alt="Google Wallet"
+                                    className="w-48"
+                                  />
+                                )}
+                                {i18n.language === "de" && (
+                                  <img
+                                    src={deGW}
+                                    alt="Google Wallet"
+                                    className="lg:w-auto w-64"
+                                  />
+                                )}
                               </button>
                             </div>
                           </div>
